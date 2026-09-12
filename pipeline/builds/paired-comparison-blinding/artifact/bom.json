@@ -1,0 +1,35 @@
+{
+  "build": "paired-comparison-blinding",
+  "rows": [
+    {
+      "file": "SKILL.md",
+      "kind": "body",
+      "why": "the method itself",
+      "status": "needed"
+    },
+    {
+      "file": "references/position-bias-evidence.md",
+      "kind": "reference",
+      "why": "the four external sources, their verbatim quotes and fetch dates; bundled because the numbers are the reason the method is mechanical rather than an instruction to the judge",
+      "status": "needed"
+    },
+    {
+      "file": "evals/evals.json",
+      "kind": "evals",
+      "why": "package.verifiable is true, so evals are authored",
+      "status": "needed"
+    },
+    {
+      "file": "assets/",
+      "kind": "asset",
+      "why": "not needed - the method emits a prompt and a key file, both of which are the caller's artefacts, not a template we can pre-shape",
+      "status": "not needed"
+    },
+    {
+      "file": "scripts/",
+      "kind": "script",
+      "why": "not needed in v1 - the un-blinding is a few lines and bundling code would ship an executable that has to be audited for a job the body can state",
+      "status": "not needed"
+    }
+  ]
+}

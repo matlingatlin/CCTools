@@ -1,0 +1,352 @@
+{
+  "_note": "PATH 2 with a PROCESS EXPERIMENT attached. The package is an existing skill decomposed as usual; the build is the intervention arm of pipeline/prereg/2026-09-02-dispatched-authoring.md, which asks whether dispatching the field WRITING cuts wall clock. The baseline is eval-set-curation-v2 at 79.4 minutes.",
+  "id": "data-contract-assertions-v2",
+  "origin": "existing-artifact",
+  "filled_by": "coordinator, decomposing .claude/skills/data-contract-assertions (187-line body, 0 references, 0 URLs, 0 runnable evals)",
+  "incoming_artifact": ".claude/skills/data-contract-assertions/SKILL.md",
+  "gap_kind": "wrong-shaped",
+  "_gap_observed": "The description is 1448 characters against a listing cap of 1024, so the router sees it truncated and the boundary clauses at its end never arrive. Reproducible with skill_contract.py, which reports desc.max as an ERROR.",
+  "candidate_sentence": "Derives a contract from a profile of data ALREADY ARRIVING and asserts it at the ingest boundary - so a silent unit change, a null-rate collapse or a type drift stops the batch, while legitimate evolution widens the contract instead of blocking it.",
+  "unit_type": "skill",
+  "content_kind": "reference",
+  "verifiable": true,
+  "failure_kind": "shape",
+  "expected_failure": "Asked to check an arriving batch against its predecessor, the baseline compares whole-column statistics and reports the loudest distribution change, so it flags the benign channel-mix shift and misses the unit change confined to one merchant. PREDICTION, NOT OBSERVATION: this project's expected_failure has been refuted 4 of 4, every time because it was written from the solution's point of view. It is the hypothesis the probe exists to test.",
+  "trigger_terms": [
+    "the numbers look wrong but nothing errored",
+    "upstream changed something and nobody told us",
+    "a column silently changed units",
+    "half the rows are null today",
+    "derive a data contract from a sample",
+    "set a drift threshold",
+    "our alerts are so noisy we muted them",
+    "fail the pipeline or quarantine the batch"
+  ],
+  "budget": {
+    "max_agents": 4,
+    "max_paired_runs": 8
+  },
+  "threshold": "contract default_rule verbatim; threshold_rule null is not accepted - see the note below",
+  "threshold_rule": "default",
+  "_threshold_note": "Set to the contract default explicitly. The previous build's package wrote the threshold as prose that resolve_rule() could not resolve, and decide.py would have returned UNDECIDABLE after the entire build had run. Phase 2.0 caught it and wrote a structured rule by hand; this package does not repeat the fault.",
+  "sources": [
+    {
+      "source_id": "S1",
+      "url": "https://mlsys.org/Conferences/2019/doc/2019/167.pdf",
+      "type": "paper",
+      "title": "Data Validation for Machine Learning",
+      "authors": "Breck, Polyzotis, Roy, Whang, Zinkevich",
+      "year": 2019,
+      "fetched": "2026-09-02",
+      "access": "open",
+      "read": "full",
+      "read_detail": "PDF downloaded and text-extracted locally with pypdf; Table 1 cross-checked with pdfminer, which agreed. Quotes byte-matched against the extraction; only ligature glyphs and line-break hyphenation normalised."
+    },
+    {
+      "source_id": "S2",
+      "url": "https://arxiv.org/pdf/2306.02421",
+      "type": "paper",
+      "title": "Auto-Validate by-History: Auto-Program Data Quality Constraints to Validate Recurring Data Pipelines",
+      "authors": "Tu, He, Cui, Ge, Zhang, Shi, Zhang, Chaudhuri",
+      "year": 2023,
+      "fetched": "2026-09-02",
+      "access": "open",
+      "read": "full",
+      "read_detail": "PDF fetched and extracted. Precision/recall for the incumbents live in scatter plots, so only the in-text characterisation is quoted."
+    },
+    {
+      "source_id": "S3",
+      "url": "https://openproceedings.org/2021/conf/edbt/p79.pdf",
+      "type": "paper",
+      "title": "Automating Data Quality Validation for Dynamic Data Ingestion",
+      "authors": "Redyuk, Kaoudi, Markl, Schelter",
+      "year": 2021,
+      "fetched": "2026-09-02",
+      "access": "open",
+      "read": "full",
+      "read_detail": "PDF fetched and extracted; the hand-tuning cost and the ground-truth caveat read in place."
+    },
+    {
+      "source_id": "S4",
+      "url": "https://arxiv.org/pdf/2303.06094",
+      "type": "paper",
+      "title": "Moving Fast With Broken Data: Implementing an Automatic Data Validation System for ML Pipelines",
+      "authors": "Shankar, Fawaz, Gyllstrom, Parameswaran (Meta / UC Berkeley)",
+      "year": 2023,
+      "fetched": "2026-09-02",
+      "access": "open",
+      "read": "full",
+      "read_detail": "PDF fetched and extracted. The abandonment narrative is unquantified in the source and is recorded as REPEATED for that reason."
+    },
+    {
+      "source_id": "S5",
+      "url": "https://www.vldb.org/pvldb/vol11/p1781-schelter.pdf",
+      "type": "paper",
+      "title": "Automating Large-Scale Data Quality Verification",
+      "authors": "Schelter et al.",
+      "year": 2018,
+      "fetched": "2026-09-02",
+      "access": "open",
+      "read": "full",
+      "read_detail": "PDF fetched and extracted; Table 3 coverage figures read directly."
+    },
+    {
+      "source_id": "S6",
+      "url": "https://www.nature.com/articles/s41467-024-46142-w",
+      "type": "paper",
+      "title": "Empirical data drift detection experiments on real-world medical imaging data",
+      "authors": "not recorded by the gatherer",
+      "year": 2024,
+      "fetched": "2026-09-02",
+      "access": "open",
+      "read": "full",
+      "read_detail": "HTML fetched and read in full."
+    },
+    {
+      "source_id": "S7",
+      "url": "https://arxiv.org/pdf/1810.11953",
+      "type": "paper",
+      "title": "Failing Loudly: An Empirical Study of Methods for Detecting Dataset Shift",
+      "authors": "Rabanser, Gunnemann, Lipton",
+      "year": 2019,
+      "fetched": "2026-09-02",
+      "access": "open",
+      "read": "full",
+      "read_detail": "PDF and ar5iv HTML both fetched; the numeric table is reported as transcribed rather than quoted, because both renderings mangle it."
+    },
+    {
+      "source_id": "S8",
+      "url": "https://www.evidentlyai.com/blog/data-drift-detection-large-datasets",
+      "type": "vendor engineering post",
+      "title": "Which test is the best? We compared 5 methods to detect data drift on large datasets",
+      "authors": "Evidently AI",
+      "year": 2023,
+      "fetched": "2026-09-02",
+      "access": "open",
+      "read": "full",
+      "read_detail": "Raw HTML read. VENDOR SOURCE: the post argues for the author's own product's defaults. Measurements may be sound; the framing is not neutral."
+    },
+    {
+      "source_id": "S9",
+      "url": "https://legacy.017.docs.greatexpectations.io/docs/0.14.13/guides/expectations/how_to_create_and_edit_expectations_with_a_profiler/",
+      "type": "documentation",
+      "title": "How to create and edit Expectations with the User Configurable Profiler",
+      "authors": "Great Expectations",
+      "year": 2022,
+      "fetched": "2026-09-02",
+      "access": "open",
+      "read": "full",
+      "read_detail": "Raw HTML read after a summariser paraphrased the passage. VENDOR DOCUMENTATION: a stated design property, not an experiment."
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "C1",
+      "source_id": "S1",
+      "claim": "Schema change is the normal state of a production feed: across more than 700 Google ML pipelines the schema evolved in most of them, the majority with up to five revisions.",
+      "locator": "Figure 6 and surrounding text",
+      "quote": "The graph illustrates that the schema evolves in most of the examined pipelines, in line with our hypothesis of data-schema co-evolution. The majority of cases have up to five schema revisions, with the distribution tapering off after that point.",
+      "what_was_measured": "Number of manual schema revisions per pipeline.",
+      "effect_size": "most pipelines revised, majority up to five",
+      "sample": ">700 Google ML pipelines already using data validation",
+      "limits": "Counts MANUAL edits by pipeline owners, not producer changes directly, and the histogram is not given as numbers - 'most' and 'up to five' are the authors' reading of their own figure. Population is self-selected for teams already validating. Conflates 'the data legitimately changed' with 'the initial inference was wrong'.",
+      "verdict": "MEASURED",
+      "verified_by": "dispatched claim-gatherers, 2026-09-02. Every PDF was downloaded and text-extracted locally and each quote byte-matched against that extraction by script rather than read through a fetch summariser; one gatherer reports the summariser paraphrased a passage it checked."
+    },
+    {
+      "claim_id": "C2",
+      "source_id": "S1",
+      "claim": "The anomalies that actually fire at an ingest boundary are dominated by structural surprises - new columns, out-of-domain categorical values, missing columns - and a large minority are never fixed.",
+      "locator": "Table 1 and surrounding text",
+      "quote": "As shown, the most common anomalies are new feature columns, unexpected string values, and missing feature columns. The first two are unsurprising: even in a healthy pipeline, there will be new values for fields such as \"postal code\", and new feature columns are constantly being created by feature engineers. Missing features and missing data are more cause for concern.",
+      "what_was_measured": "Share of pipelines on which each anomaly category fired in 30 days, and the share of firings subsequently fixed.",
+      "effect_size": "Fixed-given-fired ranges 28 to 100 percent by category; new feature column 65, out-of-domain values 66, missing column 53.",
+      "sample": "One month of production telemetry across the same pipeline population.",
+      "limits": "'Not fixed' is NOT 'false alarm' - the paper's own explanations are a batch sliding out of the rolling window, and an on-call missing the alert. The fixed measurement is heuristic and the paper says it 'can miss some fixes'. Table values transcribed from a PDF table, not quoted.",
+      "verdict": "MEASURED",
+      "verified_by": "dispatched claim-gatherers, 2026-09-02. Every PDF was downloaded and text-extracted locally and each quote byte-matched against that extraction by script rather than read through a fetch summariser; one gatherer reports the summariser paraphrased a passage it checked."
+    },
+    {
+      "claim_id": "C3",
+      "source_id": "S1",
+      "claim": "A goodness-of-fit test used as a drift assertion false-alarms most of the time at production volume: 0.01 percent noise in 100M points made a chi-square test at the 1 percent level fire in 7 of 10 trials.",
+      "locator": "Distribution-skew section, Figure 5",
+      "quote": "As shown, this method would needlessly fire an alert 7 out of 10 times and would most likely be considered a flaky detection method.",
+      "what_was_measured": "Alert rate of a chi-square goodness-of-fit test under a deliberately negligible perturbation.",
+      "effect_size": "7 of 10 trials fired.",
+      "sample": "100M points from N(0,1), 10k replaced from N(0,2), alpha=0.01, 10 trials.",
+      "limits": "n=10, one synthetic setup, one test, one batch size - a point estimate with a wide interval, not a calibrated FPR. That the injected 0.01 percent is harmless is asserted, not shown. The authors report repeating it on real product data with 'qualitatively the same results' but give no numbers. It does not establish that their replacement metric has a lower false-alarm rate.",
+      "verdict": "MEASURED",
+      "verified_by": "dispatched claim-gatherers, 2026-09-02. Every PDF was downloaded and text-extracted locally and each quote byte-matched against that extraction by script rather than read through a fetch summariser; one gatherer reports the summariser paraphrased a passage it checked."
+    },
+    {
+      "claim_id": "C4",
+      "source_id": "S1",
+      "claim": "Boundary validation collapses diagnosis time on a silent format change: an upstream backend stored features in an unexpected format, they were silently dropped in parsing, and total diagnose-and-fix was two days against months for comparable issues.",
+      "locator": "Case study section",
+      "quote": "The total time to diagnose and fix the problem was two days, whereas similar issues have taken months to resolve.",
+      "what_was_measured": "Wall-clock time to diagnose and fix one incident.",
+      "effect_size": "two days against an unquantified 'months'.",
+      "sample": "One incident, n=1.",
+      "limits": "A single case study reported by the team that built the tool, with an uncontrolled comparison - 'months' is a recollection of unspecified issues, not a matched baseline. It measures time-to-DIAGNOSE, not time-to-detect: how long the silent drop ran before validation was switched on is not stated.",
+      "verdict": "MEASURED",
+      "verified_by": "dispatched claim-gatherers, 2026-09-02. Every PDF was downloaded and text-extracted locally and each quote byte-matched against that extraction by script rather than read through a fetch summariser; one gatherer reports the summariser paraphrased a passage it checked."
+    },
+    {
+      "claim_id": "C5",
+      "source_id": "S1",
+      "claim": "Unit-testing the training code against the schema catches a defect class the data cannot show: adopted on more than 70 percent of pipelines, run 80K+ times in a month, 6 percent of executions failed.",
+      "locator": "Model unit testing section",
+      "quote": "Specifically, more than 70% of pipelines had at least one model unit test defined. Based on analysis of test logs over a period of one month, we determined that these tests were executed more than 80K times (including runs executed as part of continuous test framework). Of all of these executions 6% had failures indicating that either the training code had incorrect assumptions about the data or the schema itself was under specified.",
+      "what_was_measured": "Adoption and failure rate of schema-driven fuzz tests over the training code.",
+      "effect_size": "6 percent of 80K+ executions failed.",
+      "sample": "One month across the same pipeline population.",
+      "limits": "6 percent is a rate over EXECUTIONS, not distinct defects; repeated runs of one unfixed defect inflate it and CI reruns are included. It is ambiguous by construction between a wrong code assumption and an under-specified schema. Adoption is confounded by the test shipping in standard templates. The authors call the method 'obviously not fool-proof'.",
+      "verdict": "MEASURED",
+      "verified_by": "dispatched claim-gatherers, 2026-09-02. Every PDF was downloaded and text-extracted locally and each quote byte-matched against that extraction by script rather than read through a fetch summariser; one gatherer reports the summariser paraphrased a passage it checked."
+    },
+    {
+      "claim_id": "C6",
+      "source_id": "S5",
+      "claim": "Constraints auto-suggested from a profile of a 10 percent sample did not all hold on the remaining 90 percent: one suggested uniqueness constraint covered only 63.6 percent of held-out rows.",
+      "locator": "Constraint suggestion evaluation, Table 3",
+      "quote": "However, the system also suggests two constraints which do not hold for the data.",
+      "what_was_measured": "Coverage on held-out data of constraints derived from a sample profile.",
+      "effect_size": "isInRange on 'lang' covers 0.991; isUnique on 'statuses count' covers 0.636. On the reddit dataset every suggested constraint covered 1.0.",
+      "sample": "Two datasets, one split each.",
+      "limits": "The failure rate is a property of the data's messiness as much as of the method - the structurally simple dataset produced a perfect suite. The authors frame suggestion as human-in-the-loop and say the suggestions 'might not necessarily hold for future data'.",
+      "verdict": "MEASURED",
+      "verified_by": "dispatched claim-gatherers, 2026-09-02. Every PDF was downloaded and text-extracted locally and each quote byte-matched against that extraction by script rather than read through a fetch summariser; one gatherer reports the summariser paraphrased a passage it checked."
+    },
+    {
+      "claim_id": "C7",
+      "source_id": "S9",
+      "claim": "Profiler-generated expectations are deliberately over-fitted to the sample by design: a 10,000-row table yields a row-count expectation whose min and max are both 10,000.",
+      "locator": "User Configurable Profiler documentation",
+      "quote": "These Expectations are deliberately over-fitted on your data e.g. if your table has 10,000 rows, the Profiler will produce an Expectation with the following config:",
+      "what_was_measured": null,
+      "effect_size": null,
+      "sample": null,
+      "limits": "Vendor documentation of one legacy suite-generation path, not an experiment and not every GX path. It is a stated design property. The same page continues that the suite 'is not specifically intended to be used as is'.",
+      "verdict": "REPEATED",
+      "verified_by": "dispatched claim-gatherers, 2026-09-02. Every PDF was downloaded and text-extracted locally and each quote byte-matched against that extraction by script rather than read through a fetch summariser; one gatherer reports the summariser paraphrased a passage it checked."
+    },
+    {
+      "claim_id": "C8",
+      "source_id": "S2",
+      "claim": "Evaluated against 2000 production pipelines, Deequ and TFDV in default configuration showed high precision and LOW RECALL, because static predefined thresholds cannot adapt per pipeline.",
+      "locator": "Motivation and evaluation",
+      "quote": "Commercial data-validation solutions like Amazon Deequ and Google TFDV have high precision but low recall, because they use predefined and static configurations (e.g., JS-Divergence and L-infinity are the default for TFDV), which lack the ability adapt to different pipelines, and thus the low recall.",
+      "what_was_measured": "Precision and recall of default-configured validation tools against production column histories.",
+      "effect_size": "Reported only as plot positions; 'high' and 'low' are the authors' words.",
+      "sample": "2000 Microsoft production pipelines.",
+      "limits": "The tools were run in DEFAULT configuration, so this measures out-of-the-box behaviour, not the frameworks' ceiling. Recall was measured against SUBSTITUTE columns and synthetic issue types, not logged incidents - the authors say plainly that few documented incidents exist to test against. This is a competing method's paper reporting on its rivals. A typo in the source ('lack the ability adapt') is preserved verbatim.",
+      "verdict": "MEASURED",
+      "verified_by": "dispatched claim-gatherers, 2026-09-02. Every PDF was downloaded and text-extracted locally and each quote byte-matched against that extraction by script rather than read through a fetch summariser; one gatherer reports the summariser paraphrased a passage it checked."
+    },
+    {
+      "claim_id": "C9",
+      "source_id": "S3",
+      "claim": "In a head-to-head, automated Deequ and TFDV configurations produced false alarms in the majority of cases, while hand-tuned Deequ reached 100 and 92 percent ROC AUC - at about two hours of tuning per dataset, performed with sight of the ground truth.",
+      "locator": "Evaluation",
+      "quote": "The results indicate that our approach outperforms other automated baseline solutions and reaches the predictive performance of hand-tuned baselines (ROC AUC score of 95%, whereas the hand-tuned Deequ solution reaches 100% and 92% on the Flights and FBPosts datasets, respectively). Other automated solutions tend to produce false alarms in the majority of cases.",
+      "what_was_measured": "ROC AUC of automated and hand-tuned validation configurations.",
+      "effect_size": "hand-tuned Deequ 100 and 92 percent; the authors' method 95.",
+      "sample": "Two labelled datasets with hand-labelled dirty counterparts.",
+      "limits": "The positive base rate is 50 percent by construction - far above production, where corrupted batches are rare - which inflates apparent precision for every method. The hand-tuned arm is optimistically biased and the authors say so: tuning 'involved analysis of the ground-truth clean data'. The automated arms were frozen after inference and never revised, which is the worst case rather than normal practice. DIRECTLY CONTRADICTED by C8.",
+      "verdict": "MEASURED",
+      "verified_by": "dispatched claim-gatherers, 2026-09-02. Every PDF was downloaded and text-extracted locally and each quote byte-matched against that extraction by script rather than read through a fetch summariser; one gatherer reports the summariser paraphrased a passage it checked."
+    },
+    {
+      "claim_id": "C10",
+      "source_id": "S4",
+      "claim": "A single hand-set threshold assertion - alert when a feature's non-null fraction drops more than 30 percent - produced so many false positives at Meta that engineers silenced the alerts and then abandoned the check.",
+      "locator": "Motivation",
+      "quote": "However, this method produced too many false positive alerts, and ML engineers thus silenced them. Some ML engineers discovered an increase in precision when manually tuning the threshold, but this approach required significant effort. Eventually, ML engineers abandoned this data validation method.",
+      "what_was_measured": null,
+      "effect_size": null,
+      "sample": null,
+      "limits": "NOT measured: the false-positive volume is never quantified and 'abandoned' is a narrative from the authors' own organisation. The mechanism behind it IS quantified in the same paper - with more than 10,000 features, 'most of the features had at least one anomalous data quality statistic'. Scope is feature tables with tens of thousands of columns; a 20-column ingest table does not face the same multiplicity.",
+      "verdict": "REPEATED",
+      "verified_by": "dispatched claim-gatherers, 2026-09-02. Every PDF was downloaded and text-extracted locally and each quote byte-matched against that extraction by script rather than read through a fetch summariser; one gatherer reports the summariser paraphrased a passage it checked."
+    },
+    {
+      "claim_id": "C11",
+      "source_id": "S7",
+      "claim": "Distribution-shift monitors are near-blind to corruption confined to a minority of rows: 10 percent anomalous samples were hard to detect, while the same perturbation at 50 or 100 percent was detected above chance with 50 samples.",
+      "locator": "Table 2b and surrounding text",
+      "quote": "Moreover, the results in Table 2b show that while target data exhibiting only 10% anomalous samples are hard to detect, suggesting that this setting might be better addressed via outlier detection, perturbation percentages 50% and 100% can already be detected with better than chance accuracy using 50 samples.",
+      "what_was_measured": "Shift-detection accuracy as a function of the fraction of perturbed samples.",
+      "effect_size": "10 percent hard to detect; 50 and 100 percent detectable above chance at n=50.",
+      "sample": "Image benchmarks with synthetic perturbations, 5 random splits, alpha=0.05.",
+      "limits": "Image classification only. It does NOT cover tabular ingest, schema changes, null-rate spikes, unit changes or categorical drift - the failure modes an ingest contract mostly guards. The figures are detection ACCURACY over their shift battery, not a per-detector false-negative rate on a real pipeline.",
+      "verdict": "MEASURED",
+      "verified_by": "dispatched claim-gatherers, 2026-09-02. Every PDF was downloaded and text-extracted locally and each quote byte-matched against that extraction by script rather than read through a fetch summariser; one gatherer reports the summariser paraphrased a passage it checked."
+    },
+    {
+      "claim_id": "C12",
+      "source_id": "S6",
+      "claim": "Aggregate model performance is not a reliable indicator that the input distribution changed: under real and synthetic drift it failed to move.",
+      "locator": "Results",
+      "quote": "This lends credence to our observation that aggregate model performance is not a reliable indicator of data drift (despite widespread use).",
+      "what_was_measured": "Movement of aggregate performance metrics under known input drift.",
+      "effect_size": "Triple-aggregated metrics did not move; per-class metrics were more sensitive but described by the authors as noisy.",
+      "sample": "Chest X-ray classifiers; COVID-19 emergence plus synthetic shifts.",
+      "limits": "Says nothing about whether the undetected drift was harmful - only that performance metrics did not reveal it. One modality.",
+      "verdict": "MEASURED",
+      "verified_by": "dispatched claim-gatherers, 2026-09-02. Every PDF was downloaded and text-extracted locally and each quote byte-matched against that extraction by script rather than read through a fetch summariser; one gatherer reports the summariser paraphrased a passage it checked."
+    },
+    {
+      "claim_id": "C13",
+      "source_id": "S8",
+      "claim": "The KS test's alert behaviour is driven by sample size rather than by severity: it flagged a deliberately tiny 0.5 percent shift once the compared samples exceeded about 100,000 observations.",
+      "locator": "Experiment results",
+      "quote": "It raises flags even for a minor change of 0.5%, as soon as we have more than 100,000 objects in a dataset.",
+      "what_was_measured": "Share of runs in which a test reported drift, by sample size and injected shift.",
+      "effect_size": "0.5 percent shift flagged above ~100,000 observations.",
+      "sample": "Sizes swept 1,000 to 1,000,000, 100 repetitions per configuration, alpha=0.05.",
+      "limits": "VENDOR EXPERIMENT arguing for the author's own product defaults. This is a small REAL shift being flagged, not a null-true false positive - the complaint is that the alert is not actionable. Their own recommendation is to use KS under about 1000 observations.",
+      "verdict": "MEASURED",
+      "verified_by": "dispatched claim-gatherers, 2026-09-02. Every PDF was downloaded and text-extracted locally and each quote byte-matched against that extraction by script rather than read through a fetch summariser; one gatherer reports the summariser paraphrased a passage it checked."
+    }
+  ],
+  "representative_tasks": [
+    {
+      "task": "A vendor feed lands daily. Yesterday's batch is at pipeline/packages/fixtures/data-contract-assertions-v2/reference.csv and today's at pipeline/packages/fixtures/data-contract-assertions-v2/current.csv. Derive a contract from the first and say what today's batch does to it.",
+      "artifact_expected": "Six differences found, and SPLIT: three that block and three that widen the contract. Ground truth in ground_truth.json. Reporting all six as problems is the failure this fixture exists to catch."
+    },
+    {
+      "task": "Something is wrong with the amount column in pipeline/packages/fixtures/data-contract-assertions-v2/current.csv but the column-level statistics look fine. Find it.",
+      "artifact_expected": "The unit change confined to merchant belltower - that segment's median moves 83x while the whole-column median moves 1.14x. A per-segment check finds it; a global one cannot."
+    },
+    {
+      "task": "We want to alert on drift in pipeline/packages/fixtures/data-contract-assertions-v2/current.csv. What threshold should we use?",
+      "artifact_expected": "That no source supports a mapping from drift magnitude to harm, so a magnitude threshold cannot be derived from the literature. An answer that invents a PSI or KS cutoff and calls it principled is wrong; naming what the threshold depends on is right."
+    },
+    {
+      "task": "Write the assertions we should run on every batch of this feed, given pipeline/packages/fixtures/data-contract-assertions-v2/reference.csv as the profile.",
+      "artifact_expected": "Assertions that survive the three benign changes. A suite over-fitted to the reference - a row count pinned to 4000, a merchant set closed to the eight present - blocks the onboarding and fails."
+    }
+  ],
+  "contradictions_kept": [
+    {
+      "topic": "Do default-configured validation tools over-alert or under-alert?",
+      "a": "C9: automated Deequ and TFDV 'produce false alarms in the majority of cases' on a balanced benchmark.",
+      "b": "C8: the same two tools show 'high precision but low recall' across 2000 production pipelines.",
+      "status": "NOT RESOLVED. Opposite verdicts on the same tools. The likely split is base rate - a balanced clean/corrupted benchmark against production batches that are almost all clean - and whether the derived suite is ever revised. A skill citing only one gives exactly the wrong advice in the other regime."
+    },
+    {
+      "topic": "How small a corruption is detectable?",
+      "a": "C3: a 0.01 percent perturbation OVER-detected, firing 7 of 10 times at n=100M.",
+      "b": "C11: a 10 percent perturbation largely UNDETECTED by two-sample tests.",
+      "status": "NOT RESOLVED. Sensitivity is dominated by sample size and the statistic, not by how damaging the corruption is. The consequence is that 'will my monitor fire' is a poor proxy for 'is this batch bad' in both directions."
+    },
+    {
+      "topic": "Is detected drift a usable proxy for harm?",
+      "a": "C12: aggregate performance failed to move under real drift, so drift detection is the only available signal when labels are absent.",
+      "b": "C13 and the gatherer's own finding: no primary source publishes a mapping from drift magnitude to expected performance loss.",
+      "status": "NOT RESOLVED, and it bounds the skill. 'Is this drift worth blocking' has no answer independent of whether a performance signal exists. The skill must not invent a threshold rule the literature does not carry."
+    }
+  ],
+  "_claims_note": "None came from the incoming artefact - it has no references and no URLs. Fetched by three dispatched gatherers on 2026-09-02, each extracting PDFs locally and byte-matching quotes rather than trusting a fetch summariser. TWO SOURCES ARE VENDOR MATERIAL (S8, S9) and are marked as such in read_detail: their measurements may be sound and their framing argues for their own product. The single most useful finding is a NEGATIVE one, recorded in the third contradiction: nobody publishes drift-magnitude-to-harm, which is exactly what a blocking decision needs."
+}

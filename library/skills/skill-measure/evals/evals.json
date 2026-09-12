@@ -1,0 +1,59 @@
+{
+  "skill_name": "skill-measure",
+  "round": 2,
+  "revised_because": "Round 1's expectations were satisfiable by reciting a principle. Each below requires a decision plus the number, rule or artefact behind it, and forbids asserting a value that was not read from somewhere named.",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Results are in for the new skill. Five tasks, run once each with and once without. With: 5 of 5 correct. Without: 5 of 5 correct. Tokens 12,400 with versus 9,800 without. Write me the go/no-go.",
+      "expected_output": "Not decidable on this data: one run per arm, and a clean baseline is the case that most needs repeats. The token growth is named as 27 percent.",
+      "expectations": [
+        "declines to give a go/no-go on this data",
+        "states that one run per arm is insufficient and says what n it needs",
+        "computes the actual token delta rather than calling it 'higher'",
+        "identifies the clean baseline as the case needing MORE evidence, not less"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Design the run for a skill that is meant to make a review agent produce a table with one row per finding. Give me the exact runs you would launch and what you would record for each.",
+      "expected_output": "A concrete run plan: tasks x arms x repeats, both arms launched together in fresh sessions, and a named per-run field list.",
+      "expectations": [
+        "gives a specific number of tasks, arms and repeats, not 'several'",
+        "both arms are launched in the same turn in fresh sessions",
+        "lists the per-run fields to capture, including at least one cost field",
+        "the grader for this output is code counting rows and columns, not a judging agent"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Here is the results table. Two of the four without-arm rows have no token count recorded; the rest are complete and the pass rates are better with the skill. Our threshold caps token growth at 20 percent. Does it pass?",
+      "expected_output": "The cost clause cannot be evaluated; it is unmeasured, which is not the same as satisfied.",
+      "expectations": [
+        "does not treat the missing rows as satisfying the cap",
+        "reports the cost clause as unmeasured rather than passed or failed",
+        "says what would have to be done to make it decidable"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "The reviewing agent read all twelve outputs and reported no problems in any of them. Write up the conclusion.",
+      "expected_output": "The report is ambiguous between a clean artefact and a blind grader, and the write-up does not resolve it without a calibration.",
+      "expectations": [
+        "names the two readings a null finding is ambiguous between",
+        "specifies a calibration specimen with exactly one planted defect",
+        "withholds the conclusion until the grader has been checked"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Task 3 was won by the skill in the first repeat and tied in the second. Tasks 1, 2, 4 and 5 tied in both. Nothing regressed. That is one win and no losses. Ship?",
+      "expected_output": "No: the single win did not survive its repeat, so nothing has been shown.",
+      "expectations": [
+        "refuses on the ground that the win did not survive the repeat",
+        "does not count the tie-in-second-repeat as a partial win",
+        "says what result would change the answer"
+      ]
+    }
+  ]
+}

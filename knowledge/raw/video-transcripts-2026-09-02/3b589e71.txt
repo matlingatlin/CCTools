@@ -1,0 +1,31 @@
+[   0.0] I just gave the second brain that I built
+[   2.1] for my cloud code a massive overhaul.
+[   4.4] And here are the three systems that you need
+[   6.2] to build one for you or your business.
+[   8.8] The first step we're gonna take is for our knowledge base
+[  11.0] and we're gonna use Obsidian as the software.
+[  13.3] But you could use this in almost any system,
+[  15.2] even notes, as long as your cloud code
+[  17.8] can see the file structure.
+[  19.0] Now that we have that installed,
+[  20.1] here's where the game changer is
+[  21.4] and we're gonna grab this document
+[  22.8] from Carpathia right up here.
+[  25.1] And this is LLMWiki, which outlines
+[  27.4] a certain type of file structure
+[  29.6] for your cloud code to use
+[  31.3] when building your knowledge bases inside of Obsidian.
+[  34.2] Once we use that document and tell cloud code
+[  36.5] how to organize the information and build out your brain,
+[  39.0] we're then gonna build a self-learning skill,
+[  41.5] which is going to be on demand or could be weekly,
+[  44.4] is that it's gonna go through your brain
+[  45.8] and find gaps of information in research YouTube
+[  48.6] or Google or whatever source that you want
+[  51.0] to find information to fill and update those gaps.
+[  54.0] For your setup and learning skill,
+[  55.5] I do recommend you building your own
+[  57.5] because you are gonna be connected
+[  58.7] to your own sources and software.
+[  60.4] But if you want to use mine as an example,
+[  62.5] just comment in brain and I'll send it to you directly.

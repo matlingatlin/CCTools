@@ -1,0 +1,13 @@
+{
+  "label": "measure.with.r2",
+  "model": "opus",
+  "started": 1788312589.3566458,
+  "ended": 1788313026.4736319,
+  "duration_s": 437.1,
+  "tokens": 1289483,
+  "tool_calls": 19,
+  "num_turns": 20,
+  "cost_usd": 2.1432729999999998,
+  "returncode": 0,
+  "stderr_tail": ""
+}

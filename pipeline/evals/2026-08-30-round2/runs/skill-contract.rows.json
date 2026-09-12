@@ -1,0 +1,267 @@
+{
+  "skill": "skill-contract",
+  "repeats": [
+    1,
+    2
+  ],
+  "paired": [
+    {
+      "test": "Q1",
+      "repeat": 1,
+      "arm": "with",
+      "correct": true,
+      "n_expectations": 4,
+      "n_met": 4,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q1",
+      "repeat": 1,
+      "arm": "without",
+      "correct": false,
+      "n_expectations": 4,
+      "n_met": 2,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q2",
+      "repeat": 1,
+      "arm": "with",
+      "correct": false,
+      "n_expectations": 4,
+      "n_met": 3,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q2",
+      "repeat": 1,
+      "arm": "without",
+      "correct": false,
+      "n_expectations": 4,
+      "n_met": 2,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q3",
+      "repeat": 1,
+      "arm": "with",
+      "correct": true,
+      "n_expectations": 3,
+      "n_met": 3,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q3",
+      "repeat": 1,
+      "arm": "without",
+      "correct": false,
+      "n_expectations": 3,
+      "n_met": 2,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q4",
+      "repeat": 1,
+      "arm": "with",
+      "correct": false,
+      "n_expectations": 3,
+      "n_met": 2,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q4",
+      "repeat": 1,
+      "arm": "without",
+      "correct": false,
+      "n_expectations": 3,
+      "n_met": 1,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q1",
+      "repeat": 2,
+      "arm": "with",
+      "correct": true,
+      "n_expectations": 4,
+      "n_met": 4,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q1",
+      "repeat": 2,
+      "arm": "without",
+      "correct": false,
+      "n_expectations": 4,
+      "n_met": 2,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q2",
+      "repeat": 2,
+      "arm": "with",
+      "correct": false,
+      "n_expectations": 4,
+      "n_met": 3,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q2",
+      "repeat": 2,
+      "arm": "without",
+      "correct": false,
+      "n_expectations": 4,
+      "n_met": 2,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q3",
+      "repeat": 2,
+      "arm": "with",
+      "correct": false,
+      "n_expectations": 3,
+      "n_met": 2,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q3",
+      "repeat": 2,
+      "arm": "without",
+      "correct": false,
+      "n_expectations": 3,
+      "n_met": 2,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q4",
+      "repeat": 2,
+      "arm": "with",
+      "correct": false,
+      "n_expectations": 3,
+      "n_met": 2,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q4",
+      "repeat": 2,
+      "arm": "without",
+      "correct": false,
+      "n_expectations": 3,
+      "n_met": 1,
+      "tokens": null,
+      "tool_calls": null
+    }
+  ],
+  "scenarios": [
+    {
+      "ts": null,
+      "talent": "skill-contract",
+      "scenario": "Q1",
+      "kind": "normal",
+      "baseline": "miss",
+      "with": "pass",
+      "result": "pass",
+      "repeat": 1,
+      "backfill": false,
+      "expectation_critique": "Expectations 1 and 2 are close to unfailable here: the request literally says 'I want the actual file contents', so any answer that responds at all produces frontmatter with a name and a description. They confirm compliance with the prompt, not skill. Expectation 3 is the only one that discriminates on the method's core claim (rules earn their place by a named observation), and it did discriminate - but its second half ('no rule about Terraform practice in general') needs a judgement call about what counts as general, and a grader with a looser reading could pass both. Expectation 4 also discriminated. What the set cannot see: whether the description would actually route (nothing tests trigger phrasings or negative boundaries), whether the produced file would beat baseline on the two probe runs it was built from, and whether extra unearned rules cost anything - an answer can pass 1, 2 and 4 while being twice as long as it needs to be."
+    },
+    {
+      "ts": null,
+      "talent": "skill-contract",
+      "scenario": "Q2",
+      "kind": "normal",
+      "baseline": "miss",
+      "with": "miss",
+      "result": "fail",
+      "repeat": 1,
+      "backfill": false,
+      "expectation_critique": "Expectations 1 and 2 are satisfied trivially - the offered description is flamboyantly bad (topic label, second person, marketing adjectives, six capabilities the body lacks), so any answer that engages at all rejects it and says it names a topic. They cannot separate a shallow rejection from a diagnosis. Expectation 3 is a conditional with a vacuous escape: an answer that never mentions length can neither cite a limit nor be caught, so silence outscores a wrong number but is indistinguishable from not knowing the rule exists; a positive form ('says where the length rule lives, or says it has not checked') would measure something. Expectation 4 is the one that should discriminate, but 'proposes' does not settle whether pointing at a replacement produced earlier in the same session counts as producing one - both answers landed in exactly that gap, so it discriminated between neither. The set also has no expectation for the failure that matters most in practice: whether the answer connects the bad description to a concrete mis-fire (both do, but only by accident of the set)."
+    },
+    {
+      "ts": null,
+      "talent": "skill-contract",
+      "scenario": "Q3",
+      "kind": "normal",
+      "baseline": "miss",
+      "with": "pass",
+      "result": "pass",
+      "repeat": 1,
+      "backfill": false,
+      "expectation_critique": "Expectation 1 is nearly unfailable in the direction it cares about: an answer that proposes no human read at all passes it by omission, so 'mechanical first' and 'mechanical only' score the same. Expectation 3's bar is set by a negative example ('not validate it'), which is low enough that naming any check clears it - it cannot separate 'run the code checker' from a named file plus a regex plus a persisted eval file, though those are very different amounts of specificity. Expectation 2 is the only sharp one and it worked. The set's real blind spot is that it never asks for the test itself: one answer here builds a baseline-vs-with scenario suite with normal, adversarial, pressure and negative-trigger cases, the other runs a field checker and independent readers, and the set is indifferent between them - a large difference in what 'next' means, invisible to all three expectations."
+    },
+    {
+      "ts": null,
+      "talent": "skill-contract",
+      "scenario": "Q4",
+      "kind": "normal",
+      "baseline": "miss",
+      "with": "miss",
+      "result": "fail",
+      "repeat": 1,
+      "backfill": false,
+      "expectation_critique": "Expectations 1 and 3 overlap heavily and are both negative, so both are passed by saying nothing - an answer that never touches field rules scores 2/3 by silence, which is roughly what happened. Expectation 3 in particular is now near-unfailable: it only bites on an answer that volunteers a number, and expectation 1 already catches that case. Expectation 2 is the only positive requirement and both answers fail it, which makes the set's discriminating power in this question rest entirely on one item that nothing passed. Nothing in the set addresses the actual question asked - 'we're short on time, what goes in the field' - so the largest difference between the two answers is unmeasured: one hands over a ready description and a reusable shape, the other refuses to write the field at all and offers shipping without auto-invocation instead. Both behaviours are defensible, and the set cannot tell them apart or say which serves the asker."
+    },
+    {
+      "ts": null,
+      "talent": "skill-contract",
+      "scenario": "Q1",
+      "kind": "normal",
+      "baseline": "miss",
+      "with": "pass",
+      "result": "pass",
+      "repeat": 2,
+      "backfill": false,
+      "expectation_critique": "Two of the four barely measure anything. Expectation 1 and expectation 2 are satisfied by any answer that obeys the literal request ('I want the actual file contents') - pasting frontmatter with name and description is the minimum entry fee, and both answers clear it without effort. They should be preconditions, not scored rows. Expectation 4 is the sharpest of the set but is a presence test: a single sentence saying 'no bundled files needed' would score identically to a reasoned two-way back-check, so it rewards the ritual rather than the reasoning; it would discriminate better if it required the omissions to be justified against the probe. Expectation 3 is the only one that both discriminates and resists gaming, but 'every rule traces' has no stated tolerance - a set with one untraced rule out of six and a set with five score the same 'not met'. Missing entirely: nothing in the set tests the thing the probe actually diagnosed - whether the file, as written, would force the two destroyed resources to be named and a verdict line to be emitted. An answer could pass all four expectations with a body that never enumerates destroys individually."
+    },
+    {
+      "ts": null,
+      "talent": "skill-contract",
+      "scenario": "Q2",
+      "kind": "normal",
+      "baseline": "miss",
+      "with": "miss",
+      "result": "fail",
+      "repeat": 2,
+      "backfill": false,
+      "expectation_critique": "Expectation 1 cannot fail. The prompt hands over a description that is self-evidently topic-prose, and the question 'Good to go?' invites a yes/no - any competent answer opens with 'No'. It measures nothing. Expectation 2 is only marginally harder; naming 'topic not trigger' is the first thing anyone says about that string. Expectation 3 is conditional and therefore rewards silence: an answer that never mentions length passes it by saying nothing, which is the wrong incentive - it should read 'either cites a limit with its source, or explicitly defers the limit to a check it names'. Expectation 4 is ill-posed for a multi-question sequence: the replacement already exists in the previous question's answer, so 'propose a replacement' collapses into 'repeat yourself', and both answers land in the same ambiguous place. Nothing in this set tests the most consequential fault - that the description promises a scope the body does not have - even though both answers happen to raise it."
+    },
+    {
+      "ts": null,
+      "talent": "skill-contract",
+      "scenario": "Q3",
+      "kind": "normal",
+      "baseline": "miss",
+      "with": "miss",
+      "result": "fail",
+      "repeat": 2,
+      "backfill": false,
+      "expectation_critique": "Expectation 1 is too permissive to separate anything: 'mechanical or code check' covers both a format/contract script and an eval run, which are different claims about what 'checking' means, and both pass. As written it also cannot catch the failure it presumably targets - an answer that runs a check first but treats the result as advisory scores the same as one that gates on it. Expectation 3 is a naming test, satisfiable by mentioning any plausible file even if the answer never runs it, and it does not distinguish naming the check from naming an output artefact. Expectation 2 is the only genuinely discriminating row here and it did discriminate. The set has no expectation for the question actually asked ('what do you do next') as an ordering - an answer that lists the right activities in the wrong order can score full marks on rows 2 and 3."
+    },
+    {
+      "ts": null,
+      "talent": "skill-contract",
+      "scenario": "Q4",
+      "kind": "normal",
+      "baseline": "miss",
+      "with": "miss",
+      "result": "fail",
+      "repeat": 2,
+      "backfill": false,
+      "expectation_critique": "Expectation 3 is dead weight in this instance: neither answer states a number, so both pass without engaging, and the row records nothing about either. It also has a loophole the results expose - an answer can invoke 'the character cap' as an unsourced constraint and still pass, because the rule polices digits rather than unsourced authority. Merging it into expectation 1 ('no field rule, numeric or otherwise, asserted without a source') would make it bite. Expectations 1 and 2 overlap heavily - an answer that recites rules from memory almost always also fails to name an artefact, and one that names an artefact almost always avoids reciting - so the set is closer to two independent measurements than three. Nothing here scores the actual question ('we're short on time'): whether the answer holds the line, hands over a field, or negotiates a cheaper correct path is invisible to all three rows, even though that is the pressure the question applies."
+    }
+  ]
+}

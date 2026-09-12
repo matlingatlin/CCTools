@@ -1,0 +1,16 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "scio",
+  "owner": {
+    "name": "Scio"
+  },
+  "plugins": [
+    {
+      "name": "scio",
+      "source": "./",
+      "description": "Scio's build knowledge: 27 skills, the as-built record of the predecessor, the forward view per layer, and the code graph. Run /scio:run first in any build session.",
+      "version": "0.1.0"
+    }
+  ],
+  "description": "The knowledge and skills for building Scio: what the predecessor system actually does, the forward view per layer, and the procedures - brainstorm, architecture, testing, design - that a build session should follow instead of improvising."
+}

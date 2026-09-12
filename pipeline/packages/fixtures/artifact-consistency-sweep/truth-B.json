@@ -1,0 +1,235 @@
+[
+ {
+  "id": "B1",
+  "level": "CLASS",
+  "where": "SKILL.md Rules (l.50) vs Steps 1, 2, 7 and 'In this repo' (l.55-57)",
+  "anchor": "rules",
+  "keywords": [
+   "rebuilding",
+   "querying",
+   "fetching",
+   "forbids"
+  ],
+  "quote": "This skill installs, fetches and runs nothing; it is a writing discipline.",
+  "finding": "The rules section contradicts three of the seven steps. Step 1 requires 'a content hash', step 2 requires querying the wiki's index, step 7 requires running a lint and rebuilding a search index, and the instance section spells those out as `python3 knowledge/kb.py find` / `lint` / `build` - all of which are running something. The Rules line also forbids fetching while the rule two lines above it o",
+  "found_by": "review.5.2.whole.r1"
+ },
+ {
+  "id": "B2",
+  "level": "CLASS",
+  "where": "evals/ (missing evals/files/check.py) and bom.json",
+  "anchor": "check.py",
+  "keywords": [
+   "executed",
+   "packages",
+   "across",
+   "prior"
+  ],
+  "quote": "\"check.py T1: no rival page\",",
+  "finding": "The three eval prompts cannot be executed from the files the BOM lists. 20 of the 31 expectations across T1/T2/T3 name `check.py`, but the artefact contains no check.py and bom.json does not list one; the file exists only in a prior run (run-9c1ec672c16b) and in pipeline/packages/fixtures/. I had to fetch it from outside the artefact to run this review. As shipped, the fixture wiki and raw sources",
+  "found_by": "review.5.2.whole.r1",
+  "scope": "grader-code"
+ },
+ {
+  "id": "B3",
+  "level": "CLASS",
+  "where": "SKILL.md step 3 (l.32-34)",
+  "anchor": "step 3",
+  "keywords": [
+   "Consequently",
+   "occurrence",
+   "located",
+   "orders"
+  ],
+  "quote": "One row per claim: claim, source, locator, verbatim line, verdict - MEASURED (the source measured it),",
+  "finding": "Step 3 is the only step that does not end in a located artefact. It orders 'one row per claim' with five fields but never says where the rows live; step 4 only says the body carries 'the claims graded'. Consequently nothing checks step 3 as written - the grader's proxy (`verdict word per claim`) greps the whole note for one occurrence of MEASURED|REPEATED|DERIVED, so a page with five claims and on",
+  "found_by": "review.5.2.whole.r1"
+ },
+ {
+  "id": "B4",
+  "level": "CLASS",
+  "where": "SKILL.md step 6 (l.40-41) vs check.py T1 'LOG row' / T3 'LOG says no material'",
+  "anchor": "step 6",
+  "keywords": [
+   "under-specify",
+   "required",
+   "with-arm",
+   "follows"
+  ],
+  "quote": "a row per consulted source in the source log (also on no material); an operation-log line.",
+  "finding": "The grader requires the source URL slug in the operation-log line, but the step requires the URL only in the no-material branch of step 2; for new/update/disputed the step asks for 'an operation-log line' with no required content. A with-arm that follows the steps exactly and logs 'ingest: model-prices (update)' fails T1's LOG check. The steps under-specify what the evals grade - the log line shou",
+  "found_by": "review.5.2.whole.r1"
+ },
+ {
+  "id": "B5",
+  "level": "CLASS",
+  "where": "SKILL.md step 2 (l.29) vs step 4 (l.35-36)",
+  "anchor": "step 2",
+  "keywords": [
+   "contradicted",
+   "page-level",
+   "reconcile",
+   "contested"
+  ],
+  "quote": "mark the page `disputed` there",
+  "finding": "'disputed' is defined twice with two different scopes and the steps never reconcile them: step 2 marks the page disputed 'there', i.e. at the contradicted line, while step 4 makes `status` a page-level frontmatter enum whose values include `disputed`. A page whose one contested number sits among nine verified ones has no defined status. The grader hides the ambiguity - it greps the whole note case",
+  "found_by": "review.5.2.whole.r1"
+ },
+ {
+  "id": "B6",
+  "level": "CLASS",
+  "where": "SKILL.md frontmatter description (l.3) and 'Not this skill' (l.17-19)",
+  "anchor": "description",
+  "keywords": [
+   "doc-claim-reconciliation",
+   "skill-knowledge",
+   "unified-memory",
+   "deep-reading"
+  ],
+  "quote": "whole-wiki clean-up is the kb-curator agent.",
+  "finding": "No - 'In this repo' is not the only place naming this repository. The description and the body both name five repo-local units (deep-reading, skill-knowledge, unified-memory, doc-claim-reconciliation, kb-curator). In another project those routing pointers are dangling: a reader is sent to an agent that does not exist. The generality rule wants the sibling routing in the instance section or phrased",
+  "found_by": "review.5.2.whole.r1"
+ },
+ {
+  "id": "B7",
+  "level": "INSTANCE",
+  "where": "check.py:46 (T2 'LOG row')",
+  "anchor": "check.py",
+  "keywords": [
+   "therefore",
+   "require",
+   "gamma",
+   "lower"
+  ],
+  "quote": "check(\"LOG row\", \"gamma\" in log.lower())",
+  "finding": "Vacuous check - it passes on the untouched wiki. The fixture LOG.md already carries '2026-08-25 ingest: gamma-card -> local-models (new)', so `'gamma' in log.lower()` is true before any ingest and can never fail. T2's LOG expectation therefore grades nothing; it should require the new fetch date or the model-card slug.",
+  "found_by": "review.5.2.whole.r1",
+  "scope": "grader-code"
+ },
+ {
+  "id": "B8",
+  "level": "INSTANCE",
+  "where": "check.py:49-50 (T3) vs references/rationale.md before/after",
+  "anchor": "check.py",
+  "keywords": [
+   "documents",
+   "present",
+   "appends",
+   "fully"
+  ],
+  "quote": "check(\"prompt-caching unchanged\", \"writes 1.25x\" in pc and \"blog\" not in fm(pc))",
+  "finding": "T3 is the only scenario that beat baseline, and its grader does not fully grade the failure rationale.md documents. 'no page changed' is checked only for prompt-caching, and only as 'writes 1.25x still present and the substring blog absent from frontmatter' - a run that appends a corroborating claims row to the body, or that edits model-prices or local-models, passes. rationale.md names the claims",
+  "found_by": "review.5.2.whole.r1",
+  "scope": "grader-code"
+ },
+ {
+  "id": "B9",
+  "level": "INSTANCE",
+  "where": "check.py:32 (T1 'old price kept as history or superseded row')",
+  "anchor": "check.py",
+  "keywords": [
+   "beta-price",
+   "adjacent",
+   "weight",
+   "guard"
+  ],
+  "quote": "check(\"old price kept as history or superseded row\", \"$3\" in mp and \"$15\" in mp)",
+  "finding": "Passes on the untouched wiki (13/19 T1 checks pass before any ingest). '$3' and '$15' are the fixture's own values, so the check only fires if a run deletes them; it cannot tell 'kept as a dated superseded row' - which is what the expectation claims - from 'not touched'. It carries weight only because the adjacent beta-price check fails; on its own it is a guard, not a grade.",
+  "found_by": "review.5.2.whole.r1",
+  "scope": "grader-code"
+ },
+ {
+  "id": "B10",
+  "level": "INSTANCE",
+  "where": "SKILL.md Rules (l.48)",
+  "anchor": "rules",
+  "keywords": [
+   "recorded",
+   "appears",
+   "numeric",
+   "touches"
+  ],
+  "quote": "`null` for not-fetched and not-measured; `0` only for a measured zero.",
+  "finding": "A rule with no observed failure behind it. rationale.md opens by saying every body rule is recorded there and 'a rule with nothing behind it does not belong in the body', yet null/0 appears in no rationale bullet, no step produces a numeric field it could apply to, and no eval touches it. It is a DATA.md convention imported from the host repo, so it also belongs in 'In this repo' if it stays.",
+  "found_by": "review.5.2.whole.r1"
+ },
+ {
+  "id": "B11",
+  "level": "INSTANCE",
+  "where": "evals/evals.json, T1 expectation 5",
+  "anchor": "evals.json",
+  "keywords": [
+   "bracketed",
+   "confirmed",
+   "expected",
+   "contain"
+  ],
+  "quote": "\"check.py T1: beta price updated with date ['| Beta 5 | $3 | $15 | 2026-08-20 |']\",",
+  "finding": "The expectation embeds the grader's FAIL detail rather than the expected state: the bracketed row is the OLD 2026-08-20 row that check.py prints when the check fails (confirmed by running T1 on the untouched wiki). A reader takes it as the row a passing run should contain. The expectation should quote the new row, e.g. Beta 5 at $2/$10 dated 2026-09.",
+  "found_by": "review.5.2.whole.r1"
+ },
+ {
+  "id": "B12",
+  "level": "INSTANCE",
+  "where": "references/rationale.md (l.7-9, 32) and SKILL.md step 1 (l.24)",
+  "anchor": "step 1",
+  "keywords": [
+   "unconditionally",
+   "defensible",
+   "evidence",
+   "MANIFEST"
+  ],
+  "quote": "in a `raw/` directory when the wiki has one, fetch date in the file name, provenance in `raw/MANIFEST.md`.",
+  "finding": "Two more leaks outside the instance section. rationale.md cites this repository by name three times as the evidence for general rules ('this repository's own history (CLAUDE.md...)', 'this repository's 44 notes', kb-curator) - defensible as provenance, but it means the answer to 'is In this repo the only place' is no even outside the body. Step 1 asserts `raw/MANIFEST.md` unconditionally although ",
+  "found_by": "review.5.2.whole.r1"
+ },
+ {
+  "id": "B13",
+  "level": "INSTANCE",
+  "where": "SKILL.md step 4 (l.36)",
+  "anchor": "step 4",
+  "keywords": [
+   "unbounded",
+   "versions",
+   "outcome",
+   "limits"
+  ],
+  "quote": "Date what will move.",
+  "finding": "Step 4's last clause has no checkable outcome and no eval expectation - 'what will move' is unbounded, and neither the schema nor the grader looks for a date on any body claim. Either name the fields that must carry an as-of date (prices, versions, limits) or drop the clause.",
+  "found_by": "review.5.2.whole.r1"
+ },
+ {
+  "id": "C6->B",
+  "level": "CLASS",
+  "where": "SKILL.md step 3",
+  "anchor": "step 3",
+  "keywords": [
+   "accordingly",
+   "silently",
+   "skipped",
+   "becomes"
+  ],
+  "quote": "**Locate every number, date and quote in the raw before writing it,** and grade it",
+  "finding": "Step 3 does not end in something checkable. 'Every number, date and quote' has no observable output for the ones judged not worth a row \u2014 the claims table shows what WAS written, never what was skipped \u2014 so 'every' can be silently satisfied by grading one figure. check.py accordingly checks a single row per task. Either bound it to a checkable set ('every number, date and quote that becomes a body",
+  "found_by": "review.5.2.whole.r2",
+  "missed_in": "review.5.2.whole.r1",
+  "note": "present verbatim in text B; the reviewer of B did not report it; reported by review.5.2.whole.r2"
+ },
+ {
+  "id": "C7->B",
+  "level": "CLASS",
+  "where": "SKILL.md frontmatter description vs the body's 'Not this skill' paragraph",
+  "anchor": "description",
+  "keywords": [
+   "disciplined",
+   "portable",
+   "siblings",
+   "finding"
+  ],
+  "quote": "NOT summarising a text (deep-reading), NOT claims for a skill bundle (skill-knowledge), NOT agent memory (unified-memory), NOT docs broken by code (doc-claim-reconciliation); whole-wiki clean-up is the kb-curator agent.",
+  "finding": "No \u2014 the 'In this repo' section is not the only place naming this repository. The body is disciplined (it defers: 'the local names are under *In this repo*'), but the description names five repo-local units, so a portable copy of this skill routes against siblings that may not exist in the host repo. This is the one finding in tension with the repo's own description discipline (siblings must be di",
+  "found_by": "review.5.2.whole.r2",
+  "missed_in": "review.5.2.whole.r1",
+  "note": "present verbatim in text B; the reviewer of B did not report it; reported by review.5.2.whole.r2"
+ }
+]

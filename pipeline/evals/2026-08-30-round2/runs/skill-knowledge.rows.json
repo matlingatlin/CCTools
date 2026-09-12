@@ -1,0 +1,331 @@
+{
+  "skill": "skill-knowledge",
+  "repeats": [
+    1,
+    2
+  ],
+  "paired": [
+    {
+      "test": "Q1",
+      "repeat": 1,
+      "arm": "with",
+      "correct": true,
+      "n_expectations": 4,
+      "n_met": 4,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q1",
+      "repeat": 1,
+      "arm": "without",
+      "correct": true,
+      "n_expectations": 4,
+      "n_met": 4,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q2",
+      "repeat": 1,
+      "arm": "with",
+      "correct": false,
+      "n_expectations": 3,
+      "n_met": 2,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q2",
+      "repeat": 1,
+      "arm": "without",
+      "correct": false,
+      "n_expectations": 3,
+      "n_met": 0,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q3",
+      "repeat": 1,
+      "arm": "with",
+      "correct": true,
+      "n_expectations": 3,
+      "n_met": 3,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q3",
+      "repeat": 1,
+      "arm": "without",
+      "correct": false,
+      "n_expectations": 3,
+      "n_met": 2,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q4",
+      "repeat": 1,
+      "arm": "with",
+      "correct": true,
+      "n_expectations": 3,
+      "n_met": 3,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q4",
+      "repeat": 1,
+      "arm": "without",
+      "correct": false,
+      "n_expectations": 3,
+      "n_met": 1,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q5",
+      "repeat": 1,
+      "arm": "with",
+      "correct": true,
+      "n_expectations": 3,
+      "n_met": 3,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q5",
+      "repeat": 1,
+      "arm": "without",
+      "correct": false,
+      "n_expectations": 3,
+      "n_met": 0,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q1",
+      "repeat": 2,
+      "arm": "with",
+      "correct": true,
+      "n_expectations": 4,
+      "n_met": 4,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q1",
+      "repeat": 2,
+      "arm": "without",
+      "correct": false,
+      "n_expectations": 4,
+      "n_met": 2,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q2",
+      "repeat": 2,
+      "arm": "with",
+      "correct": true,
+      "n_expectations": 3,
+      "n_met": 3,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q2",
+      "repeat": 2,
+      "arm": "without",
+      "correct": false,
+      "n_expectations": 3,
+      "n_met": 0,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q3",
+      "repeat": 2,
+      "arm": "with",
+      "correct": true,
+      "n_expectations": 3,
+      "n_met": 3,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q3",
+      "repeat": 2,
+      "arm": "without",
+      "correct": false,
+      "n_expectations": 3,
+      "n_met": 2,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q4",
+      "repeat": 2,
+      "arm": "with",
+      "correct": true,
+      "n_expectations": 3,
+      "n_met": 3,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q4",
+      "repeat": 2,
+      "arm": "without",
+      "correct": false,
+      "n_expectations": 3,
+      "n_met": 2,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q5",
+      "repeat": 2,
+      "arm": "with",
+      "correct": true,
+      "n_expectations": 3,
+      "n_met": 3,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q5",
+      "repeat": 2,
+      "arm": "without",
+      "correct": false,
+      "n_expectations": 3,
+      "n_met": 0,
+      "tokens": null,
+      "tool_calls": null
+    }
+  ],
+  "scenarios": [
+    {
+      "ts": null,
+      "talent": "skill-knowledge",
+      "scenario": "Q1",
+      "kind": "normal",
+      "baseline": "pass",
+      "with": "pass",
+      "result": "pass",
+      "repeat": 1,
+      "backfill": false,
+      "expectation_critique": "Weak set: the question already hands over the verbatim sentence and says 'add this to the claim set', so 'produces a row' and 'quote is verbatim' are close to free \u2014 any answer that copies the given sentence into a field passes both, including one that then mislabels the verdict. The verdict expectation is the only one with real teeth. Expectation 4 is also lenient: an answer may name the blog's weakness AND the missing measurement and still pass, since it only requires the measurement reason to be present, not that source-genre reasoning be absent. Nothing in the set tests what the question actually risks \u2014 that 'roughly in half' is later hardened into '50%', that 'how reached' and 'how much read' be kept apart, or that fetch date and locator be stamped. Both answers volunteer those; the set gives no credit and would not catch an answer that omitted them."
+    },
+    {
+      "ts": null,
+      "talent": "skill-knowledge",
+      "scenario": "Q2",
+      "kind": "normal",
+      "baseline": "miss",
+      "with": "miss",
+      "result": "fail",
+      "repeat": 1,
+      "backfill": false,
+      "expectation_critique": "The question asks the open 'what do we do about knowledge?', but the set silently assumes one answer shape \u2014 a coverage check of the two failures against the nine claims \u2014 and scores only that. Expectations 1 and 2 are near-duplicates: 2 entails 1, so an answer is effectively measured twice on the same move. Expectation 2 is also unsatisfiable as stated: the nine claims are never shown, so no answer can return a real covered/not-covered verdict, and the best available response (a per-failure table with the decision left to be filled) is indistinguishable from a template. Conversely, nothing in the set rewards or requires the other obviously correct move \u2014 recording the two observed failures themselves as claims before the transcript is lost, keeping observed and proposed provenance apart, and stating n=1 as n=1 \u2014 so an answer can do all of that and score zero. Expectation 3 is the only one that could not be passed by an empty scaffold."
+    },
+    {
+      "ts": null,
+      "talent": "skill-knowledge",
+      "scenario": "Q3",
+      "kind": "normal",
+      "baseline": "miss",
+      "with": "pass",
+      "result": "pass",
+      "repeat": 1,
+      "backfill": false,
+      "expectation_critique": "The strongest of the five sets: expectation 1 discriminated (one row carries the two fields separately, the other folds provenance into a citation plus a locator), and expectation 2 is genuinely failable \u2014 an abstract stating an effect 'clearly with a percentage' is exactly the bait for a measured verdict. Expectation 3 is the soft one: 'get the full text' is the obvious next line and almost any competent answer emits it, so it discriminates little. The set also leaves the question's real trap unmeasured \u2014 whether the percentage is barred from setting a threshold or being restated as established, and whether a verbatim quote from the abstract is required before the row enters. Both answers address that unprompted; a worse answer that skipped it would still score 3/3 on expectations 2 and 3."
+    },
+    {
+      "ts": null,
+      "talent": "skill-knowledge",
+      "scenario": "Q4",
+      "kind": "normal",
+      "baseline": "miss",
+      "with": "pass",
+      "result": "pass",
+      "repeat": 1,
+      "backfill": false,
+      "expectation_critique": "Expectation 1 measures a file format rather than the property that matters. The property is that both numbers, with their own locators and scopes, survive and are visible to the next reader; 'as their own rows' fails an answer that achieves exactly that under one disputed claim heading, which is a defensible schema and arguably harder to average away. Expectation 2 is close to unfailable: 'do not just pick one' is the reflex answer to this question, and as worded it would also pass an answer that DID pick a side while offering any stated basis, however thin. Expectation 3 is the discriminating one. The set misses what both answers independently flagged as the first thing to check \u2014 that 15 and 40 are very likely different denominators, populations or windows, i.e. not a contradiction at all \u2014 and it does not require the resolved-when / expiry condition that keeps a disputed pair from sitting unresolved forever."
+    },
+    {
+      "ts": null,
+      "talent": "skill-knowledge",
+      "scenario": "Q5",
+      "kind": "normal",
+      "baseline": "miss",
+      "with": "pass",
+      "result": "pass",
+      "repeat": 1,
+      "backfill": false,
+      "expectation_critique": "Sharply discriminating but structurally single-issue: expectations 2 and 3 are both conditional on 1 \u2014 an answer that never routes to an independent reader fails all three automatically, so one missed move is scored as three misses and the set reports a 3-0 gap where the underlying difference is one. Nothing here is trivially satisfiable, which is the set's strength, but its coverage is narrow: it gives no credit for the other real bundling gates (a locator behind every verdict rather than a recollection, unresolved-vs-checked-and-unconfirmed labelled rather than dropped, negative verdicts retained through the bundle, source type and fetch date surviving), all of which one answer raises and the set cannot see. An answer could also pass all three by merely describing the routing without any pre-flight discipline."
+    },
+    {
+      "ts": null,
+      "talent": "skill-knowledge",
+      "scenario": "Q1",
+      "kind": "normal",
+      "baseline": "miss",
+      "with": "pass",
+      "result": "pass",
+      "repeat": 2,
+      "backfill": false,
+      "expectation_critique": "Expectation 1 (produce a row) is satisfied trivially by both and by any answer willing to emit a markdown table; it measures formatting compliance, not judgement, and it cannot separate an answer that understood the source from one that did not. Expectation 3 is a vocabulary test disguised as a reasoning test: an answer that reaches the correct substantive position (asserted without measurement, do not promote to a number) but stamps it REPORTED rather than repeated fails, while an answer that types the right word for the wrong reason passes. If the point is the epistemic status, the expectation should be phrased on the status, with the house label as the encoding. Expectations 2 and 4 are the only two that a competent-looking wrong answer can actually fail: 2 catches paraphrase-as-quote (and did), and 4 catches the credibility shortcut. Nothing in the set tests the most consequential downstream behaviour either answer volunteered - a ban on restating the hedge as a 50% figure - so an answer that produced a tidy row and then licensed the number would still score 4/4."
+    },
+    {
+      "ts": null,
+      "talent": "skill-knowledge",
+      "scenario": "Q2",
+      "kind": "normal",
+      "baseline": "miss",
+      "with": "pass",
+      "result": "pass",
+      "repeat": 2,
+      "backfill": false,
+      "expectation_critique": "Expectations 1 and 2 cannot come apart: any answer that produces a per-failure covered/not-covered outcome has by construction checked the failures separately, so the set is really two measurements, not three, and 1 inflates the score of an answer that gets 2. The bigger problem is validity: the set silently assumes one procedure (coverage-check each observed failure against the held claims, then fetch or skip) and scores everything else as absent. The question asked what to do about knowledge, and recording the two probe failures as observed claims distinguished from proposal claims, refusing to launder un-exercised proposal claims, and turning each miss into an eval scenario are all defensible knowledge work that the rubric cannot see - an answer can do that well and score near zero. Expectation 3 is the sharpest item here and the only one that punishes the common real failure (a log that records only what happened); it should be kept and the redundancy in 1/2 collapsed into a single item, with something added that rewards correctly classifying a failure as a method gap rather than a knowledge gap, which is the judgement call the scenario actually turns on."
+    },
+    {
+      "ts": null,
+      "talent": "skill-knowledge",
+      "scenario": "Q3",
+      "kind": "normal",
+      "baseline": "miss",
+      "with": "pass",
+      "result": "pass",
+      "repeat": 2,
+      "backfill": false,
+      "expectation_critique": "Expectation 2 is close to unfailable in this framing: the question hands over the fact that the source is an abstract, so an answer only misses by actively erring, and both answers cleared it in their first sentence. As written it detects a blunder rather than measuring competence; it would earn its place as \"the verdict cell itself, not only the prose, carries the abstract-only status\", which is a real and commonly-missed distinction. Expectation 1 is the one item with teeth and it discriminated. Expectation 3 is nearly free once 2 is met, since naming the upgrade path is the natural next sentence after refusing the measured verdict. The set also has a hole where the abstract case does its real damage: nothing requires the percentage to be carried verbatim with its comparison, and nothing requires the unknown fields (what was measured, n, population, limits) to be left empty rather than guessed - an answer that invented a plausible sample and stated limits as \"none\" would still score 3/3, which is the exact failure this scenario exists to catch."
+    },
+    {
+      "ts": null,
+      "talent": "skill-knowledge",
+      "scenario": "Q4",
+      "kind": "normal",
+      "baseline": "miss",
+      "with": "pass",
+      "result": "pass",
+      "repeat": 2,
+      "backfill": false,
+      "expectation_critique": "Expectations 1 and 2 are both satisfied by simply not taking the bait, and the question telegraphs the bait: an answer only has to notice that two numbers disagree to clear both. They are near-duplicates of each other, since keeping both rows is how one avoids picking a winner. Expectation 3 is the only item that required something the answer had to supply itself, and it separated the two answers - it should be the spine of the set, with 1 and 2 collapsed into one item. The set is also blind to the instruction actually given. The user said \"clean it up\", and nothing here checks that a cleanup was performed or even that the refusal is scoped to the contradiction rather than the whole request; an answer can score 3/3 while declining the task outright. Worth noting for scoring integrity that one answer ends mid-sentence at \"Shape of the cleaned section:\" with an empty code fence, so its cleanup output does not exist - the rubric has no item that notices a truncated deliverable."
+    },
+    {
+      "ts": null,
+      "talent": "skill-knowledge",
+      "scenario": "Q5",
+      "kind": "normal",
+      "baseline": "miss",
+      "with": "pass",
+      "result": "pass",
+      "repeat": 2,
+      "backfill": false,
+      "expectation_critique": "This is the weakest set of the five, because all three items are consequences of one move. An answer that knows the house rule (you cannot verify your own gathering; hand the row and only the row to a second reader; they return one of a fixed list) scores 3/3 in a single paragraph, and an answer that does not know it scores 0/3 no matter how good the rest is. The set has roughly one bit of resolution while presenting three. Expectations 1 and 2 in particular cannot come apart - naming what the reader is given presupposes that a reader has been routed to. It also has no item for anything else a correct answer to \"ready to bundle?\" ought to do, so the substantial and correct content one answer offered - verdicts stamped per claim rather than per source so a document's weak claims are not laundered by its strong ones, a required evidence pointer for anything marked verified, hedges preserved verbatim through the bundle step, and reuse-first against entries already in the file - is scored as a total miss. That is a rubric that punishes independent competence. At minimum the set needs one item that rewards blocking the bundle for a substantive reason other than the independence rule, so the two failure modes (bundling uncritically vs. blocking for a different good reason) are distinguishable."
+    }
+  ]
+}

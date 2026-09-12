@@ -1,0 +1,102 @@
+{
+  "target": "paired-comparison-blinding",
+  "queries": [
+    {
+      "query": "blind the grader",
+      "expect": "paired-comparison-blinding",
+      "kind": "positive",
+      "source": "trigger_terms"
+    },
+    {
+      "query": "A/B",
+      "expect": "paired-comparison-blinding",
+      "kind": "positive",
+      "source": "trigger_terms"
+    },
+    {
+      "query": "which arm produced",
+      "expect": "paired-comparison-blinding",
+      "kind": "positive",
+      "source": "trigger_terms"
+    },
+    {
+      "query": "paired comparison",
+      "expect": "paired-comparison-blinding",
+      "kind": "positive",
+      "source": "trigger_terms"
+    },
+    {
+      "query": "position bias",
+      "expect": "paired-comparison-blinding",
+      "kind": "positive",
+      "source": "trigger_terms"
+    },
+    {
+      "query": "the judge can tell",
+      "expect": "paired-comparison-blinding",
+      "kind": "positive",
+      "source": "trigger_terms"
+    },
+    {
+      "query": "unblind",
+      "expect": "paired-comparison-blinding",
+      "kind": "positive",
+      "source": "trigger_terms"
+    },
+    {
+      "query": "randomise the order",
+      "expect": "paired-comparison-blinding",
+      "kind": "positive",
+      "source": "trigger_terms"
+    },
+    {
+      "query": "with and without arm",
+      "expect": "paired-comparison-blinding",
+      "kind": "positive",
+      "source": "trigger_terms"
+    },
+    {
+      "query": "I have twelve outputs, six from the arm with the new skill and six without. Set up the grading so one agent scores them all.",
+      "expect": "paired-comparison-blinding",
+      "kind": "positive",
+      "source": "representative_tasks"
+    },
+    {
+      "query": "The grader came back saying answer A was consistently stronger across all five questions. Write up the result.",
+      "expect": "paired-comparison-blinding",
+      "kind": "positive",
+      "source": "representative_tasks"
+    },
+    {
+      "query": "Write the check that proves our un-blinding step maps the labels back correctly.",
+      "expect": "paired-comparison-blinding",
+      "kind": "positive",
+      "source": "representative_tasks"
+    },
+    {
+      "query": "I need my LLM judge's scores to agree with human labels before I trust them",
+      "expect": "llm-judge-calibration",
+      "kind": "near-miss",
+      "source": "sibling"
+    },
+    {
+      "query": "the suite went green but I think someone loosened the assertions",
+      "expect": "oracle-weakening-audit",
+      "kind": "near-miss",
+      "source": "sibling"
+    },
+    {
+      "query": "which of our 88 skills owns the job of writing eval prompts",
+      "expect": "capability-routing-table",
+      "kind": "near-miss",
+      "source": "sibling"
+    },
+    {
+      "query": "prove this new skill beats baseline before we ship it",
+      "expect": "skill-measure",
+      "kind": "near-miss",
+      "source": "sibling"
+    }
+  ],
+  "note": "negatives are stubs until someone writes them; an empty near-miss set makes the mis-fire rate unmeasurable, and this file says so rather than scoring 0"
+}

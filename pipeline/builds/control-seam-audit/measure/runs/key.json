@@ -1,0 +1,26 @@
+{
+  "r1.Q1": {
+    "A": "without",
+    "B": "with"
+  },
+  "r1.Q2": {
+    "A": "with",
+    "B": "without"
+  },
+  "r1.Q3": {
+    "A": "without",
+    "B": "with"
+  },
+  "r2.Q1": {
+    "A": "with",
+    "B": "without"
+  },
+  "r2.Q2": {
+    "A": "without",
+    "B": "with"
+  },
+  "r2.Q3": {
+    "A": "without",
+    "B": "with"
+  }
+}

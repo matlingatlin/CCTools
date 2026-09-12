@@ -1,0 +1,673 @@
+{
+  "contract_version": "1.3.0",
+  "unit": "skill",
+  "authority": "anthropic",
+  "written": "2026-08-30",
+  "note": "The ONE source for what a skill's fields must contain. Both the code validator and the builder skill read this file. Nothing restates a rule from here in prose - a rule restated in a second place is a rule that will drift, and the drift is silent because both copies look authoritative.",
+  "sources": {
+    "guide": "https://resources.anthropic.com/hubfs/The-Complete-Guide-to-Building-Skill-for-Claude.pdf",
+    "cc-docs": "https://code.claude.com/docs/en/skills",
+    "best-practices": "https://platform.claude.com/docs/en/agents-and-tools/agent-skills/best-practices",
+    "spec": "https://agentskills.io/specification",
+    "evaluating": "https://agentskills.io/skill-creation/evaluating-skills",
+    "plugin-dev": "claude-plugins-official: plugin-dev/skills/skill-development",
+    "skill-creator": "/mnt/skills/examples/skill-creator",
+    "fetched": "2026-08-30",
+    "note_in_kb": "knowledge/notes/anthropic-skill-authoring-contract.md"
+  },
+  "unreconciled": [
+    {
+      "id": "body-length",
+      "problem": "Anthropic states four different body limits and reconciles none of them.",
+      "values": [
+        {
+          "value": "under 500 lines",
+          "source": "best-practices ('for optimal performance'), cc-docs (inside a Tip), best-practices checklist"
+        },
+        {
+          "value": "< 5000 tokens recommended",
+          "source": "spec, progressive-disclosure table"
+        },
+        {
+          "value": "under 5,000 words",
+          "source": "guide"
+        },
+        {
+          "value": "<5k words, target 1500-2000",
+          "source": "plugin-dev"
+        },
+        {
+          "value": "<500 lines ideal, and explicitly soft",
+          "source": "skill-creator: '<500 lines ideal' plus 'These word counts are approximate and you can feel free to go longer if needed.'"
+        }
+      ],
+      "our_decision": "CORRECTED 2026-08-30. Previously: 'Enforce BOTH as errors; both are Anthropic's, the stricter binds.' That ground was unsound - neither is Anthropic's AS A REQUIREMENT, so 'the stricter binds' was choosing between two recommendations. Now: both are WARNINGS. The mechanism actually worth designing against is not either number but compaction truncation, which Anthropic does document: the most recent invocation of each skill is re-attached at 5,000 TOKENS per skill against a 25,000-token shared budget, most recent first, silently. A body near the word cap does not survive it. Words, lines and tokens are three different quantities.",
+      "revisit_when": "Anthropic states a length as a requirement rather than a recommendation, or we measure truncation loss directly."
+    },
+    {
+      "id": "toc-threshold",
+      "problem": "Table-of-contents threshold for reference files is given as 100 lines (best-practices) and 300 lines (skill-creator).",
+      "our_decision": "Warn at 100, error at 300. The stricter is a warning because we cannot tell which is authoritative."
+    },
+    {
+      "id": "voice",
+      "problem": "plugin-dev mandates imperative and forbids second person; current skill-creator warns against 'heavy-handed musty MUSTs'. Neither acknowledges the other.",
+      "our_decision": "Not enforced. Recorded so nobody enforces one of them by accident."
+    }
+  ],
+  "directory": {
+    "rules": [
+      {
+        "id": "dir.skillmd",
+        "check": "code",
+        "severity": "error",
+        "rule": "a file named exactly SKILL.md exists, case-sensitive",
+        "authority": "guide"
+      },
+      {
+        "id": "dir.kebab",
+        "check": "code",
+        "severity": "error",
+        "rule": "^[a-z0-9]+(-[a-z0-9]+)*$",
+        "applies_to": "directory name",
+        "authority": "guide"
+      },
+      {
+        "id": "dir.no-readme",
+        "check": "code",
+        "severity": "error",
+        "rule": "no README.md inside the skill directory",
+        "authority": "guide"
+      },
+      {
+        "id": "dir.bundled-known",
+        "check": "code",
+        "severity": "warn",
+        "rule": "bundled directories are one of references/ assets/ scripts/ evals/",
+        "authority": "house",
+        "note": "CORRECTED 2026-08-30. Was authority: spec. The spec says the opposite: 'A skill directory may contain ANY files and directories beyond the required SKILL.md. The conventions below are RECOMMENDATIONS', and its diagram ends '... # Any additional files or directories'. There is no restriction to deviate from - the restriction is ours. evals/ comes from evaluating + skill-creator, not the spec at all."
+      }
+    ]
+  },
+  "fields": [
+    {
+      "id": "name",
+      "location": "frontmatter",
+      "required": true,
+      "information": "The job the skill does, as a name. Not a label.",
+      "format": "kebab-case string",
+      "content_source": "internal - derived from candidate_sentence. No fetch.",
+      "rules": [
+        {
+          "id": "name.pattern",
+          "check": "code",
+          "severity": "error",
+          "rule": "^[a-z0-9]+(-[a-z0-9]+)*$",
+          "authority": "guide"
+        },
+        {
+          "id": "name.matches-dir",
+          "check": "code",
+          "severity": "error",
+          "rule": "equals the directory name",
+          "authority": "spec",
+          "note": "CORRECTED 2026-08-30. Was authority: cc-docs, which CONTRADICTS it - there name is optional, is only a display label, and a plugin skill may deliberately differ (name: fancy becomes /my-plugin:fancy). The real carrier is the spec: 'Must match the parent directory name'. The rule binds for spec-conformant distribution."
+        },
+        {
+          "id": "name.reserved",
+          "check": "code",
+          "severity": "error",
+          "rule": "must not contain 'claude' or 'anthropic'",
+          "authority": "guide"
+        },
+        {
+          "id": "name.max",
+          "check": "code",
+          "severity": "error",
+          "rule": "length <= 64 characters",
+          "authority": "spec, best-practices",
+          "note": "Added 2026-08-30. Imposed by the spec, best-practices AND Anthropic's own quick_validate.py; the contract had no name-length rule at all."
+        }
+      ],
+      "agent_check": "Does this name describe the JOB the skill does, or is it a label? Would a person with this problem plausibly type these words?"
+    },
+    {
+      "id": "description",
+      "location": "frontmatter",
+      "required": true,
+      "information": "BOTH what the skill does AND when to use it. Concrete triggers: symptoms, error strings, tool names, file extensions - the words a user actually types when they have the problem. Plus NOT-clauses naming the sibling that owns adjacent work.",
+      "format": "third person, one paragraph",
+      "content_source": "three places: (a) what it does - internal, from candidate_sentence; (b) trigger vocabulary - from the domain, may require a fetch; (c) NOT-clauses - from a scan of sibling descriptions in the library",
+      "written_when": "LAST of all fields. It needs the finished body's scope, the trigger terms, and the sibling scan.",
+      "rules": [
+        {
+          "id": "desc.present",
+          "check": "code",
+          "severity": "error",
+          "rule": "non-empty",
+          "authority": "spec, best-practices"
+        },
+        {
+          "id": "desc.max",
+          "check": "code",
+          "severity": "error",
+          "rule": "length <= 1024 characters",
+          "authority": "spec, guide",
+          "note": "the spec's hard validation limit. Distinct from the 1536-character listing truncation of description + when_to_use COMBINED, which is a host behaviour, not an authoring allowance."
+        },
+        {
+          "id": "desc.no-angle-brackets",
+          "check": "code",
+          "severity": "error",
+          "rule": "contains no < or >",
+          "authority": "guide",
+          "reason": "security restriction: frontmatter appears in Claude's system prompt; malicious content could inject instructions"
+        },
+        {
+          "id": "desc.target",
+          "check": "code",
+          "severity": "warn",
+          "rule": "length <= 500 characters",
+          "authority": "measured",
+          "note": "44 shipped Anthropic skills on this machine (/mnt/skills + ~/.claude/skills): median 308, max 982, none over 1024. A different, larger population than the 11 read in full for the practice table in the knowledge note. Warn only."
+        }
+      ],
+      "agent_check": "Does it state BOTH what it does and when to use it? Is it triggers rather than a summary of the procedure - a workflow summary becomes a shortcut and the agent skips the body. Would a person with this problem type these words? Does it collide with any sibling description shown to you - if so, name the sibling."
+    },
+    {
+      "id": "frontmatter-policy",
+      "location": "frontmatter",
+      "required": false,
+      "information": "Invocation and tool policy, decided by what the skill turned out to be.",
+      "content_source": "internal - from content_kind in the package, and from what was actually bundled",
+      "written_when": "after the bundle is final",
+      "rules": [
+        {
+          "id": "fm.parses",
+          "check": "code",
+          "severity": "error",
+          "rule": "line-anchored: line 1 is exactly ---, a later line is exactly ---, and the block between parses as YAML",
+          "authority": "measured",
+          "reason": "splitting on --- ignores line boundaries and reports green on an unterminated file; three talents once shipped unloadable",
+          "corroboration": "cc-docs, independently: 'Claude Code reads the frontmatter only when the opening --- is the file's first line. Otherwise it treats the whole file, --- markers included, as skill content.'"
+        },
+        {
+          "id": "fm.task-kind",
+          "check": "code",
+          "severity": "warn",
+          "rule": "if package content_kind == 'task', disable-model-invocation should be true",
+          "authority": "cc-docs"
+        },
+        {
+          "id": "fm.script-needs-tools",
+          "check": "code",
+          "severity": "warn",
+          "rule": "if scripts/ is non-empty, allowed-tools should pre-approve their invocation",
+          "authority": "house",
+          "reason": "cc-docs documents the PATTERN - 'Using the same variable in both places LETS a skill run a bundled script without a permission prompt' - but requires nothing. The guide mentions allowed-tools once, as '# Optional'. The spec marks it 'No / (Experimental)'.",
+          "note": "CORRECTED 2026-08-30. Was authority: guide, severity: error. No source requires it. 8 of 38 shipped Anthropic skills bundle scripts without it. Suspected during the first checker run and left standing for verification rather than corrected on a guess."
+        },
+        {
+          "id": "fm.portable-fields",
+          "check": "code",
+          "severity": "warn",
+          "rule": "frontmatter outside {name, description, license, compatibility, metadata, allowed-tools} is a HARD ERROR at claude.ai upload and API packaging, and valid in Claude Code",
+          "authority": "cc-docs",
+          "note": "CORRECTED TWICE, 2026-08-30. First from spec/warn to cc-docs/error on the verification's finding that cc-docs calls it a hard error. That raise was itself a scope drift: cc-docs says 'packaging or upload fails with a hard error' - it is an error AT UPLOAD, not in Claude Code, where disable-model-invocation, paths and hooks are legitimate fields. Back to warn, with the upload consequence stated in the rule so it blocks a distribution decision rather than a local build. Caught by running it: 9 of our 84 use Claude Code extensions and 0 of Anthropic's 38 do."
+        }
+      ],
+      "agent_check": "Does the invocation policy match what this skill actually is - a reference that runs inline, or a task invoked deliberately?"
+    },
+    {
+      "id": "body.purpose",
+      "location": "body",
+      "required": true,
+      "information": "What the skill is for, in a few sentences. Anthropic question 1.",
+      "format": "prose. State what to do rather than narrating how or why.",
+      "content_source": "internal - candidate_sentence",
+      "rules": [
+        {
+          "id": "purpose.present",
+          "check": "code",
+          "severity": "error",
+          "rule": "text answering 'what is the purpose' exists in the body",
+          "authority": "plugin-dev",
+          "quote": "'1. What is the purpose of the skill, in a few sentences?'"
+        }
+      ],
+      "agent_check": "Can a reader say in one sentence what this skill is for, from this text alone?"
+    },
+    {
+      "id": "body.when",
+      "location": "body",
+      "required": true,
+      "information": "When the skill should be used, expanded beyond the description. Anthropic question 2.",
+      "content_source": "same as description (b) - domain trigger vocabulary",
+      "rules": [
+        {
+          "id": "when.present",
+          "check": "code",
+          "severity": "error",
+          "rule": "text answering 'when should this be used' exists in the body",
+          "authority": "plugin-dev",
+          "quote": "'2. When should the skill be used?'"
+        }
+      ],
+      "agent_check": "Are these conditions OBSERVABLE? Would a reader know whether they are in this situation?"
+    },
+    {
+      "id": "body.steps",
+      "location": "body",
+      "required": true,
+      "information": "How Claude uses the skill in practice, with every bundled resource referenced. Anthropic question 3. The steps themselves come from the OBSERVED failures in the gap probe plus the verified claim set - a rule with no observed row behind it is an opinion.",
+      "format": "For multi-step work, Anthropic's own shape: a fenced Task Progress checklist block, then Step N headers, each with the command to run and what it produces, and explicit loop-backs.",
+      "content_source": "gap-probe failure list + claim set. THIS is where fetched knowledge lands in the body.",
+      "rules": [
+        {
+          "id": "body.max-lines",
+          "check": "code",
+          "severity": "warn",
+          "rule": "body <= 500 lines",
+          "authority": "best-practices, cc-docs, spec checklist",
+          "see": "unreconciled/body-length",
+          "note": "CORRECTED 2026-08-30 from error to warn. NOT ONE Anthropic source states a body length as a limit. Every carrier is hedged: best-practices says 'under 500 lines FOR OPTIMAL PERFORMANCE' under a heading called Practical guidance; cc-docs puts it inside a Tip element; the spec says '< 5000 tokens RECOMMENDED'; the guide's 5,000 words is item 1 under Solutions to the symptom 'Skill seems slow', a remedy after a problem, not a limit stated in advance - and the guide's own Critical rules page, where SKILL.md casing, kebab-case, no-README, 1024 chars and the angle-bracket ban all live, says nothing about length. skill-creator settles it: '<500 lines IDEAL' and 'These word counts are approximate and you can feel free to go longer if needed.' Following Anthropic means this does not fail a build."
+        },
+        {
+          "id": "body.max-words",
+          "check": "code",
+          "severity": "warn",
+          "rule": "body <= 5000 words",
+          "authority": "guide",
+          "see": "unreconciled/body-length",
+          "note": "CORRECTED 2026-08-30 from error to warn. NOT ONE Anthropic source states a body length as a limit. Every carrier is hedged: best-practices says 'under 500 lines FOR OPTIMAL PERFORMANCE' under a heading called Practical guidance; cc-docs puts it inside a Tip element; the spec says '< 5000 tokens RECOMMENDED'; the guide's 5,000 words is item 1 under Solutions to the symptom 'Skill seems slow', a remedy after a problem, not a limit stated in advance - and the guide's own Critical rules page, where SKILL.md casing, kebab-case, no-README, 1024 chars and the angle-bracket ban all live, says nothing about length. skill-creator settles it: '<500 lines IDEAL' and 'These word counts are approximate and you can feel free to go longer if needed.' Following Anthropic means this does not fail a build."
+        },
+        {
+          "id": "body.files-exist",
+          "check": "code",
+          "severity": "error",
+          "rule": "every file path presented as a POINTER to a bundled file resolves - a markdown link, or a path under references/ assets/ scripts/ evals/. An illustrative path in prose is not a pointer.",
+          "corrected": "2026-08-30. Was 'every file path named in the body resolves'. It could not tell a pointer from an example, so it flagged settings.json, COSTS.md and src/auth.ts - illustrative paths that our own generality rule REQUIRES a portable talent to use.",
+          "authority": "plugin-dev",
+          "quote": "'[ ] Referenced files actually exist' / 'Check references: All referenced files exist'"
+        },
+        {
+          "id": "body.no-invented-commands",
+          "check": "agent",
+          "severity": "error",
+          "rule": "every slash-command or CLI invocation named in the body exists",
+          "corrected": "2026-08-30. Was check: code. Not mechanically decidable: a /token in prose is as often a path, an endpoint, a JSON pointer or a type name as a slash-command. The heuristic produced 27 false positives in 84 skills and 14 in 38 of Anthropic's. Moved to the agent check, where the surrounding sentence settles it.",
+          "authority": "house"
+        },
+        {
+          "id": "body.critical-first",
+          "check": "code",
+          "severity": "warn",
+          "rule": "if the body uses an Important or Critical heading, it appears before the step section. Singular and plural both count as a step section (Steps, Procedure, Workflow, Instructions), and a heading that is itself the Important/Critical one is not counted as the section it precedes.",
+          "authority": "guide",
+          "corrected": "2026-08-30 — see corrections[2]"
+        }
+      ],
+      "agent_check": "Does every step end in something CHECKABLE - a number, a file:line, a table row, a named artefact? Is every rule traceable to an observed failure - name which one. Is anything written as a one-time step that should apply throughout the task? Claude Code does not re-read the file on later turns, so standing guidance must be written as standing."
+    },
+    {
+      "id": "body.pointers",
+      "location": "body",
+      "required": "when anything is bundled",
+      "information": "One line per bundled file saying what it contains, when to load it, and whether to run it or read it.",
+      "format": "a list, one level deep from SKILL.md",
+      "content_source": "derived from the bundle",
+      "rules": [
+        {
+          "id": "ptr.every-file",
+          "check": "code",
+          "severity": "warn",
+          "rule": "every file under references/ has a pointer in the body",
+          "corrected": "2026-08-30. Was an error over EVERY bundled file. 35 of 38 shipped Anthropic skills violated it, including on LICENSE.txt. Anthropic's text is 'Reference supporting files from SKILL.md so Claude knows what each file contains and when to load it' - a recommendation about files loaded INTO CONTEXT, not a requirement over scripts, licences or assets. A rule that 92% of the authority's own artefacts break is the rule being wrong.",
+          "authority": "cc-docs, plugin-dev",
+          "quote": "'Reference supporting files from SKILL.md so Claude knows what each file contains and when to load it'"
+        },
+        {
+          "id": "ptr.resolves",
+          "check": "code",
+          "severity": "error",
+          "rule": "every file path presented as a POINTER to a bundled file resolves - a markdown link, or a path under references/ assets/ scripts/ evals/. An illustrative path in prose is not a pointer.",
+          "corrected": "2026-08-30. Was 'every file path named in the body resolves'. It could not tell a pointer from an example, so it flagged settings.json, COSTS.md and src/auth.ts - illustrative paths that our own generality rule REQUIRES a portable talent to use.",
+          "authority": "plugin-dev"
+        },
+        {
+          "id": "ptr.one-level",
+          "check": "code",
+          "severity": "error",
+          "rule": "no reference file links to another reference file; every reference links directly from SKILL.md",
+          "authority": "best-practices",
+          "reason": "Claude previews nested references with head -100 rather than reading them, producing SILENTLY incomplete information",
+          "note": "CORRECTED 2026-08-30. Was 'no bundled file references another bundled file', which also forbade a script importing a helper and a reference citing an asset - neither of which any source discourages. best-practices governs LINK CHAINS: its bad example is SKILL.md -> advanced.md -> details.md, all markdown links. The stated failure mode (head -100 previewing) applies only to files Claude READS."
+        }
+      ],
+      "agent_check": "Does each pointer say WHAT the file contains, WHEN to open it, and whether to RUN it or READ it? Anthropic: 'Run analyze_form.py to extract fields' (execute) versus 'See analyze_form.py for the extraction algorithm' (read)."
+    },
+    {
+      "id": "bundle.references",
+      "location": "references/",
+      "required": false,
+      "information": "The domain knowledge: tables, API surface, a paper's findings, failure-mode lists. Every claim carries its source and a verbatim quote.",
+      "format": "focused files, descriptively named",
+      "content_source": "FETCHED at authoring time, once. The skill never fetches at run time. Fetched knowledge is dated per source and carries an expiry condition - what would make the row untrue.",
+      "rules": [
+        {
+          "id": "ref.descriptive-name",
+          "check": "code",
+          "severity": "error",
+          "rule": "filename is not doc1/file2/untitled and similar",
+          "authority": "best-practices"
+        },
+        {
+          "id": "ref.toc-warn",
+          "check": "code",
+          "severity": "warn",
+          "rule": "files over 100 lines carry a table of contents",
+          "authority": "best-practices",
+          "see": "unreconciled/toc-threshold"
+        },
+        {
+          "id": "ref.toc-error",
+          "check": "code",
+          "severity": "error",
+          "rule": "files over 300 lines carry a table of contents",
+          "authority": "skill-creator"
+        },
+        {
+          "id": "ref.grep-patterns",
+          "check": "code",
+          "severity": "warn",
+          "rule": "files over 10000 words are accompanied by grep search patterns in SKILL.md",
+          "authority": "plugin-dev"
+        },
+        {
+          "id": "ref.no-duplication",
+          "check": "code",
+          "severity": "error",
+          "rule": "no passage duplicated between SKILL.md and a reference file",
+          "authority": "plugin-dev",
+          "quote": "Information should live in either SKILL.md or references files, not both"
+        },
+        {
+          "id": "ref.dated",
+          "check": "code",
+          "severity": "error",
+          "rule": "every source carries a fetch date",
+          "authority": "house"
+        }
+      ],
+      "agent_check": "Is every claim traceable to a source WITH A QUOTE? Is anything here that belongs in SKILL.md, or vice versa? Does any row state a value that moves on its own - a price, a model id, a limit - which must be fetched rather than written down?"
+    },
+    {
+      "id": "bundle.assets",
+      "location": "assets/",
+      "required": false,
+      "information": "Templates and static resources used WITHIN the output Claude produces - not loaded into context.",
+      "format": "the SHAPE: field names, order, what belongs in each. Nothing filled in.",
+      "content_source": "derived from what the steps emit",
+      "rules": [
+        {
+          "id": "asset.has-fields",
+          "check": "code",
+          "severity": "error",
+          "rule": "a template contains named fields or slots",
+          "authority": "house"
+        }
+      ],
+      "agent_check": "Is this a FORM or a CONTENT? A template is field names and order with nothing filled in. A filled-in good example gets copied: measured, subjects reproduced an example's features even when the brief forbade them - suction cups 6 percent to 54 percent. If an example is needed, a NEGATIVE one is the safe form; a positive one must be single, uncommon, and far-domain."
+    },
+    {
+      "id": "bundle.scripts",
+      "location": "scripts/",
+      "required": false,
+      "information": "Deterministic checks and repeated helper work. Executed, not read.",
+      "content_source": "DISCOVERED from the eval transcripts - if every test run wrote the same helper, bundle it. Not designed up front.",
+      "rules": [
+        {
+          "id": "script.documented-constants",
+          "check": "code",
+          "severity": "error",
+          "rule": "no undocumented numeric constants",
+          "authority": "best-practices"
+        },
+        {
+          "id": "script.no-network",
+          "check": "code",
+          "severity": "error",
+          "rule": "no network calls",
+          "authority": "house-security",
+          "note": "Deliberate departure from the standard, kept visible: the spec contemplates network-using skills - 'compatibility: Requires git, docker, jq, and access to the internet'."
+        },
+        {
+          "id": "script.no-credentials",
+          "check": "code",
+          "severity": "error",
+          "rule": "no credential or environment-secret reads",
+          "authority": "house-security"
+        },
+        {
+          "id": "script.no-installs",
+          "check": "code",
+          "severity": "error",
+          "rule": "no package or external CLI installation",
+          "authority": "house-security"
+        }
+      ],
+      "agent_check": "Does this script replace work that was ACTUALLY repeated across test runs, or is it a script somebody thought was tidy? Anthropic's signal is observation: did all the test runs independently write the same helper?"
+    },
+    {
+      "id": "evals",
+      "location": "evals/evals.json",
+      "required": "when package.verifiable is true",
+      "information": "Realistic prompts from the domain, drawn from the observed failures. Assertions are added AFTER the first outputs are seen.",
+      "format": "Anthropic's schema",
+      "schema": {
+        "skill_name": "string, matches frontmatter name",
+        "evals": [
+          {
+            "id": "integer, unique",
+            "prompt": "the task to execute",
+            "expected_output": "human-readable description of success",
+            "files": "optional list of input paths relative to skill root",
+            "expectations": "list of verifiable statements"
+          }
+        ]
+      },
+      "schema_note": "skill-creator's references/schemas.md calls the field 'expectations'; its SKILL.md and agentskills.io call it 'assertions'. We use 'expectations' to match the schema file. Recorded as an inconsistency in Anthropic's own material.",
+      "rules": [
+        {
+          "id": "eval.exists",
+          "check": "code",
+          "severity": "error",
+          "rule": "evals/evals.json exists when package.verifiable is true",
+          "authority": "evaluating, skill-creator"
+        },
+        {
+          "id": "eval.schema",
+          "check": "code",
+          "severity": "error",
+          "rule": "validates against the schema above"
+        },
+        {
+          "id": "eval.min",
+          "check": "code",
+          "severity": "error",
+          "rule": "at least 2 evals",
+          "authority": "evaluating",
+          "note": "Anthropic says 'START WITH 2-3 test cases' - guidance on where to begin, not a floor. best-practices' checklist sets a different bar ('at least three'). The floor of 2 is OURS; kept as an error because a single scenario cannot separate systematic from draw. Labelled 2026-08-30."
+        },
+        {
+          "id": "eval.files-resolve",
+          "check": "code",
+          "severity": "error",
+          "rule": "every path in files[] resolves",
+          "authority": "house"
+        },
+        {
+          "id": "eval.name-matches",
+          "check": "code",
+          "severity": "error",
+          "rule": "skill_name equals the frontmatter name",
+          "authority": "skill-creator",
+          "quote": "references/schemas.md: 'skill_name: Name matching the skill's frontmatter'"
+        }
+      ],
+      "agent_check": "Would a naive baseline plausibly FAIL these? Is any expectation trivially satisfiable - Anthropic: if an assertion says 'includes a summary' and the output has a section titled 'Summary' with one vague sentence, that is a FAIL, the label is there but the substance is not. Is there at least one case where the right outcome is NO finding?"
+    }
+  ],
+  "whole_artifact": {
+    "code_rules": [
+      {
+        "id": "whole.bom",
+        "check": "code",
+        "severity": "error",
+        "rule": "every file planned in the bill of materials exists, and every existing file was planned",
+        "authority": "house"
+      },
+      {
+        "id": "whole.no-orphans",
+        "check": "code",
+        "severity": "error",
+        "rule": "no file in the directory is unreferenced by the body",
+        "authority": "house"
+      }
+    ],
+    "agent_check": "Does the description promise anything the body does not do? Is the same thing stated in two places? Does the skill as a whole answer Anthropic's three questions - what it is for, when to use it, and how Claude uses it with every bundled resource referenced?"
+  },
+  "acceptance": {
+    "note": "The decision rule is preregistered per build in the package's threshold field. This is the default shape.",
+    "default_rule": "Across k >= 2 repeats: zero regressions on correctness, no more than 20 percent worse on tokens or tool calls, and at least one test where the skill wins with the win surviving the repeat.",
+    "staged": [
+      {
+        "stage": 1,
+        "tests": "3-5",
+        "arms": 2,
+        "repeats": 2,
+        "runs": "12-20",
+        "when": "always"
+      },
+      {
+        "stage": 2,
+        "tests": 20,
+        "arms": 2,
+        "repeats": 2,
+        "runs": 80,
+        "when": "only if stage 1 is borderline - a win that did not survive the repeat, or a regression in one run but not the other"
+      }
+    ],
+    "authority": "guide (prove the skill improves results vs baseline; count tool calls and tokens with and without), evaluating (the delta is cost/benefit, not a threshold), house (repeats, from MIN_ITERS_FOR_VERDICT = 2)",
+    "anthropic_sets_no_threshold": "These are aspirational targets - rough benchmarks rather than precise thresholds. Aim for rigor but accept that there will be an element of vibes-based assessment.",
+    "probe_never_gates": "A gap probe NEVER terminates a build. A clean baseline raises the bar; it does not remove the reason to build. Two cases make this binding: a skill that turns 18 of 20 into 19 of 20 has earned its place, and a skill that leaves 20 of 20 at 20 of 20 while making the OUTPUT SHAPE right has also earned it. Neither is visible before the artefact exists, so no pre-build measurement may exclude one. The probe's job is to say WHICH axis the skill must then win on - not whether it may be written.",
+    "win_axes": {
+      "note": "A win on any single axis satisfies the win clause, provided no correctness regression.",
+      "correctness": "the with-arm is right where the without-arm is wrong",
+      "shape": "the output conforms where the baseline's does not - columns present, every row carries its locator, the verdict is not buried, the file parses. Graded by CODE, so this axis has no blind judge. It is the axis that makes a 20-of-20 versus 20-of-20 run decidable instead of a tie.",
+      "cost": "fewer tokens or tool calls for the same result - a win, not merely a tolerance",
+      "consistency": "the same outcome across repeats where the baseline varies; needs at least 2 repeats to be visible at all"
+    },
+    "repeats_by_probe": {
+      "fails": 1,
+      "uneven": 2,
+      "clean": 2,
+      "refuted": 2,
+      "note": "Added 2026-09-02 from SKILL-BUILDER-SPEC section 2's own table ('baseline fails -> 1 suffices'), which the default_rule's 'k >= 2' contradicted. decide.py reads the 2.3 gap_verdict event's probe_outcome; an outcome not in this map keeps the default. MIN_ITERS_FOR_VERDICT = 2 still governs every non-failing probe."
+    },
+    "probe_rows_for_correctness": {
+      "value": true,
+      "note": "Added 2026-09-02. The probe runs representative_tasks without the skill in fresh sessions with the fixture as a path - the without-arm's definition - and the clean build then ran the same prompts again as the without-arm. Probe rows (probe_gap event rows with test, repeat, correct) count for the repeats, no_regression and win clauses; NEVER for cost, which needs the same turn and load as the with-arm. One without-run per test still runs in the arms' turn for the cost clauses. Arm runs in the clean build: 8 -> 5."
+    },
+    "equivalent_prose": [
+      {
+        "prose": "Across k >= 2 repeats: zero regressions on correctness, no more than 20 percent worse on tokens or tool calls, and at least one win on correctness or shape that survives every repeat. A clean baseline does not stop the build; a win on shape alone satisfies the clause.",
+        "maps_to": "the default rule with identical parameters: min_repeats 2, cost_tolerance 0.20 on tokens and tool_calls, require_win with win_axes correctness|shape and win_must_survive; the last sentence restates probe_never_gates and win_axes.note",
+        "written": "2026-09-02, by the eval-set-curation-v2 package before its numbers existed; reused verbatim by llm-wiki-ingest before its numbers existed",
+        "note": "Registered 2026-09-02 after decide.py refused it on llm-wiki-ingest as 'prose that is not the default rule'. The refusal was right in kind (no code can evaluate free prose) and wrong in this instance (the prose is a paraphrase with the same parameters). A phrasing is added here only with its parameter mapping written out, so the equivalence is a checked claim, not a convenience."
+      }
+    ]
+  },
+  "failure_kinds": {
+    "note": "What the skill adds decides how it is tested. Set per build in the package.",
+    "knowledge": {
+      "gap": "the model does not know",
+      "test": "does the answer become right",
+      "discriminates": true
+    },
+    "shape": {
+      "gap": "the model can, but the output comes out wrong-shaped",
+      "test": "MECHANICAL conformance - count columns, check every row carries its locator, check the verdict is not buried",
+      "discriminates": true,
+      "note": "cheapest to measure - the grader is code, not a judge",
+      "authoring_rule": "write a POSITIVE RECIPE stating what the output IS, never a prohibition list. Measured: the prohibition arm produced clearly more of the unwanted content than the recipe arm, and trended worse than the no-guidance control. And no nuance clauses - one appended nuance clause degraded a winning recipe from consistent to noisy."
+    },
+    "discipline": {
+      "gap": "the model knows and skips it under a competing incentive",
+      "test": "pressure scenarios",
+      "discriminates": false,
+      "evidence": "two preregistered rounds in this repo: technique traps 1 of 12, pressure 2 of 12",
+      "policy": "PARK. The builder refuses this failure_kind until a test that discriminates exists."
+    }
+  },
+  "corrections": [
+    {
+      "date": "2026-08-30",
+      "trigger": "First run of pipeline/validate/skill_contract.py over 84 in-house skills and 38 shipped Anthropic skills.",
+      "finding": "Anthropic's own skills failed at 3.6 errors each against our 1.4. Three rules accounted for 58 of their 136 errors and 88 of our 121, and in all three the contract was wrong, not the artefacts.",
+      "rules_changed": [
+        "ptr.every-file",
+        "body.no-invented-commands",
+        "body.files-exist",
+        "ptr.resolves"
+      ],
+      "method": "A failing artefact has three possible causes and only one means the contract is wrong: the contract misread the doc, the doc and the practice disagree, or the rule is stricter than the doc warrants. Each of these three was the first."
+    },
+    {
+      "date": "2026-08-30",
+      "trigger": "Rule-by-rule source verification of all 45 rows against the six cited sources, all reached.",
+      "counts": {
+        "supported": 36,
+        "not_in_source": 6,
+        "mislabelled": 2,
+        "not_supported": 1,
+        "source_unreachable": 0
+      },
+      "rules_changed": [
+        "dir.bundled-known",
+        "name.matches-dir",
+        "name.max (added)",
+        "fm.portable-fields",
+        "fm.script-needs-tools",
+        "body.max-lines",
+        "body.max-words",
+        "ptr.one-level",
+        "eval.min",
+        "+ 12 authority labels"
+      ],
+      "headline": "The two body-length rules were the only errors in the file blocking on a number Anthropic never states as a limit. Demoted to warnings. Following Anthropic means a recommendation does not fail a build.",
+      "counter_finding": "The severity assignments are mostly calibrated: fm.task-kind, body.critical-first, ref.toc-warn, ref.grep-patterns and desc.target are all warn and all map to genuinely advisory passages; desc.max, dir.skillmd, dir.kebab, dir.no-readme and desc.no-angle-brackets are errors and all map to passages the guide files under Critical rules or Security restrictions. Recorded because a pass that condemns everything cannot discriminate.",
+      "self_correction": "fm.portable-fields was raised to error on the verification's finding and had to be put back the same run. The verification was right that the source is stronger than the rule; I was wrong about WHERE it is stronger. A scope drift committed one step after being told about scope drift."
+    },
+    {
+      "date": "2026-08-30",
+      "trigger": "First positive controls for the checker (pipeline/validate/selftest_skill.py): one clean fixture skill, one planted defect at a time, 43 code rules each required to have a control.",
+      "finding": "body.critical-first could not fail on its own canonical case. Its step-section pattern matched the singular 'step' but not 'Steps', which is the commonest heading name for a step section, so a skill with Important placed after '## Steps' scored PASS. Widening it then exposed a second fault: a heading that names both, such as 'Important - read before the steps', counted on both sides and made the rule fail on exactly the shape it exists to reward.",
+      "rules_changed": [
+        "body.critical-first"
+      ],
+      "method": "Neither fault was reachable from the negative corpus. Running the checker over Anthropic's skills finds rules that fire when they should not; only a planted defect finds a rule that stays green on an artefact that really is broken. Widening flags 0 additional skills across our 84 and the 57 in intake/, and the corpus totals are unchanged at 27 errors and 77 warnings, so the fix costs nothing.",
+      "not_rechecked": "Anthropic's 38 were not re-run - that corpus was not kept on disk. The 0-additional measurement is over our 84 plus intake's 57."
+    },
+    {
+      "date": "2026-08-30",
+      "trigger": "The coordinator, mid-run, argued that a clean gap probe should stop a build. The user corrected it: that inverts a rule already agreed, and it was never written down where it could bind.",
+      "finding": "A pre-build measurement cannot exclude a build. The value a skill adds may be entirely in the output SHAPE, which does not exist to be measured until the artefact does. Excluding on a clean probe therefore rules out a whole class of worthwhile skills for a reason that could not have been checked.",
+      "rules_changed": [
+        "acceptance.probe_never_gates",
+        "acceptance.win_axes"
+      ],
+      "method": "Written into the contract as data rather than left as an agreement in conversation. The rule had been agreed once already and drifted within the same session, which is what a rule living only in a chat message does."
+    }
+  ]
+}

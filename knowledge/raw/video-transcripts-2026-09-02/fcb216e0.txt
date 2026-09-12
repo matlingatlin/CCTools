@@ -1,0 +1,5 @@
+[   0.0] Hide API key, purge get secret, use public database key, enable RLS, encrypt sensitive
+[   5.6] data, enforce server-side auth, lock record access, block field tampering, secure session
+[  10.6] cookies, hash passwords, rate limit login, add bot protection, parameterize queries,
+[  15.8] validate all input, escape user content, restrict field uploads, trim API responses,
+[  21.3] add security headers, force HTTPS scan dependencies.

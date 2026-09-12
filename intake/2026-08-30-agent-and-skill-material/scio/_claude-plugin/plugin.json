@@ -1,0 +1,8 @@
+{
+  "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
+  "name": "scio",
+  "version": "0.1.0",
+  "description": "Scio's build knowledge: the 27 skills, the as-built record of the predecessor system, the forward view per layer, and the code graph. Install this in a build repo so a session knows what already exists before it proposes anything.",
+  "author": { "name": "Scio" },
+  "skills": ["./.claude/skills"]
+}

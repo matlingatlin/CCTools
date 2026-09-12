@@ -1,0 +1,44 @@
+{
+  "_written": "2026-09-01, phase 6.2, AFTER all four arm-runs were on disk and read. Nothing here was written before the outputs existed.",
+  "_axes": "correctness = did it answer the question. shape = the named win axis from 2.3: a per-seam artefact that enumerates every boundary and states per boundary which control watches it.",
+  "tests": {
+    "Q1": {
+      "prompt_summary": "green suite, confidently wrong number, where do we look",
+      "correctness": [
+        "C1. Names the extract-to-transform unit mismatch with a file:line on at least one side, and states the consequence as a 100x magnitude error.",
+        "C2. Names the silent drop of the GBP rows inside transform.aggregate, and ties it to North America being understated.",
+        "C3. Names report.rank sorting on a key transform does not emit, and states that the ranking is therefore not a function of revenue."
+      ],
+      "shape": [
+        "S1. Enumerates the pipeline's boundaries as a set, independently of where the symptom pointed, and the set includes BOTH the ingest boundary (the feed file entering extract) and the egress boundary (the rendered report leaving report and reaching a reader). A count of 4 for a 3-unit pipeline is the check.",
+        "S2. Presents a per-boundary artefact - a table or an equivalent one-row-per-boundary structure - in which every boundary carries either a named control or the explicit answer NONE. An answer organised only by fault does not satisfy this.",
+        "S3. Marks each boundary by what a fault there would do: complete silently, or raise."
+      ]
+    },
+    "Q2": {
+      "prompt_summary": "review this test suite and tell me what it cannot catch",
+      "correctness": [
+        "C1. States that no test feeds one stage's real output into the next stage.",
+        "C2. Identifies that test_report's own fixtures carry the same key report.rank wrongly reads, and that this is why the rank defect cannot surface.",
+        "C3. Identifies that the transform suites' fixtures are dollar-shaped floats rather than the integer minor units extract emits, and that this is why the unit defect cannot surface."
+      ],
+      "shape": [
+        "S1. Each gap is tied to the specific boundary it enters at, rather than being listed only as a category of missing test.",
+        "S2. Each existing control named is classified by where its input comes from - produced by the upstream stage in the same run, or built by the test file itself."
+      ]
+    },
+    "Q3": {
+      "prompt_summary": "we added the FX suite after the March incident, are we covered now",
+      "correctness": [
+        "C1. Answers no.",
+        "C2. Names at least two of the three defects this suite does not catch.",
+        "C3. Notes that the suite asserts the unpriceable-currency behaviour as correct, i.e. that it locks the drop in rather than flagging it."
+      ],
+      "shape": [
+        "S1. Answers from the boundary artefact - names the boundary rows this suite watches, or states explicitly that it watches none of them - rather than only describing the suite's subject matter.",
+        "S2. States that recency and thoroughness are not coverage, as a rule rather than as a remark about this one suite."
+      ]
+    }
+  },
+  "_ruling": "correct = every correctness expectation MET. shape_ok = every shape expectation MET. A partially met list is NOT MET; there is no partial credit, because a per-seam table missing the ingest row is the exact failure this build is about."
+}

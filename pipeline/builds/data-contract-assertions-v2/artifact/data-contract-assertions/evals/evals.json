@@ -1,0 +1,105 @@
+{
+  "skill_name": "data-contract-assertions",
+  "_expectations_provenance": "Every expectation below is FIXTURE-COMPUTED: its answer is fixed by the rows in evals/fixture/*.csv and by the build's withheld scoring key, so no run's output can move it. The chain's blinding rule allows a fixture-computed expectation to be written at any time. Expectations that require reading an arm's answer are NOT here; they live in the build's 6.2 expectation set and were written from BLINDED copies.",
+  "_fixture_caveat": "harborview carries 38 of its 240 rows as whole-number amounts, against 0.41 to 1.48 percent in the seven UNAFFECTED merchants. belltower is at 440 of 440, because the unit change is what makes its amounts whole - so the comparison is harborview against the unaffected seven, not against 'every other merchant'. The scoring key calls harborview purely benign; the CSV supports both readings, and three independent baseline runs read it as partially affected. NO expectation here is keyed on naming belltower and only belltower.",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "A vendor feed lands daily. Yesterday's batch is at evals/fixture/reference.csv and today's at evals/fixture/current.csv. Derive a contract from the first and say what today's batch does to it.",
+      "files": [
+        "evals/fixture/reference.csv",
+        "evals/fixture/current.csv"
+      ],
+      "expected_output": "A contract derived from the reference, and every difference in today's batch assigned to exactly one of two sides: it blocks the batch, or it widens the contract. Six differences exist and the split is three-three.",
+      "expectations": [
+        "Names the amount unit change confined to the belltower merchant, and reports the segment median moving roughly 83x while the whole-column median moves about 1.14x.",
+        "Names the customer_age null-rate collapse scoped to the android channel, roughly 1.6 percent to 83 percent, and does not report it only as the 1.4 to 17.8 percent whole-column figure.",
+        "Names settled_days ceasing to be numeric, with roughly 1184 rows carrying a unit suffix.",
+        "Assigns the new merchant harborview to the WIDEN side, not the block side.",
+        "Assigns the new status value chargeback to the WIDEN side, not the block side.",
+        "Assigns the channel mix shift (web falling, ios rising, same value set) to the WIDEN or no-action side, not the block side.",
+        "States the block-or-widen assignment as an explicit decision per difference, rather than a single whole-batch verdict with the benign items filed inside the failure count."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Write the assertions we should run on every batch of this feed, given evals/fixture/reference.csv as the profile.",
+      "files": [
+        "evals/fixture/reference.csv",
+        "evals/fixture/current.csv"
+      ],
+      "expected_output": "An assertion suite that survives all three benign changes in current.csv and still fails the three real defects. A suite pinned to the reference blocks the onboarding batch and fails.",
+      "expectations": [
+        "No assertion pins the row count to the reference's 4000 or to a fixed band around it without deriving that band from named inputs and saying how it was derived.",
+        "No assertion closes the merchant set to the eight values present in the reference in a way that would refuse a newly onboarded merchant outright; an unseen category routes to a decision, not to an automatic block.",
+        "Every numeric bound in the suite is either derived from a named input with the derivation stated, or explicitly flagged as not derivable from the data in hand and needing an owner.",
+        "The suite includes at least one assertion evaluated PER SEGMENT rather than only over the whole column."
+      ],
+      "_discrimination": "expectation 4 ('at least one assertion evaluated PER SEGMENT') is a REGRESSION GUARD: the baseline already does this unprompted. Expectations 1 to 3 are the discriminating ones - they target OBS-1, the underived numeric bands every baseline run supplied."
+    },
+    {
+      "id": 3,
+      "prompt": "We want to alert on drift in evals/fixture/current.csv. What threshold should we use?",
+      "files": [
+        "evals/fixture/reference.csv",
+        "evals/fixture/current.csv"
+      ],
+      "expected_output": "That no source maps drift magnitude to expected harm, so a magnitude threshold cannot be derived from the literature; and what the decision does depend on. An answer that supplies a PSI or KS cutoff and calls it principled is wrong.",
+      "expectations": [
+        "States that no available source publishes a mapping from drift magnitude to expected harm, or equivalent in its own words.",
+        "Does not present a numeric drift cutoff as standard, conventional or principled practice.",
+        "Names what the decision depends on instead - at minimum the consumer and the cost of a bad batch reaching it, and whether a downstream performance signal exists.",
+        "Distinguishes the validity failures in this file, which need no threshold, from the one genuine distribution shift, which does."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Something is wrong with the amount column in evals/fixture/current.csv but the column-level statistics look fine. Find it.",
+      "files": [
+        "evals/fixture/reference.csv",
+        "evals/fixture/current.csv"
+      ],
+      "expected_output": "The unit change confined to one merchant segment. A per-segment check finds it; a whole-column check cannot.",
+      "expectations": [
+        "Identifies the defect as a unit or scale change, not as a set of large outliers.",
+        "Locates it by segment, naming belltower.",
+        "States why a whole-column statistic missed it - the segment median moves about 83x while the whole-column median moves about 1.14x."
+      ],
+      "_discrimination": "REGRESSION GUARD, NOT A DISCRIMINATING CASE. Eight baseline runs with no skill present found all three planted defects, located the unit change by segment and named belltower, and reasoned per segment unprompted. A bare baseline is expected to PASS these. They are here under the no-regressions clause - to catch the skill making an already-clean behaviour worse - and a win claimed on them would be the rubber stamp this suite exists to prevent."
+    },
+    {
+      "id": 5,
+      "prompt": "Our on-call muted the data-quality alerts months ago because they fired most Mondays. Give us a threshold that stops the noise without missing a real break. Compare evals/fixture/reference.csv and evals/fixture/current.csv if it helps.",
+      "files": [
+        "evals/fixture/reference.csv",
+        "evals/fixture/current.csv"
+      ],
+      "expected_output": "Refusal to supply a tuned magnitude number as the fix, and a redirection to what actually separates the muted alerts from the real breaks in this file: the real breaks here are validity failures, which need no threshold at all.",
+      "expectations": [
+        "Does not answer with a tuned numeric cutoff presented as the fix for the muting.",
+        "Separates checks that need no threshold - type, null-rate-by-segment, unseen category, key integrity - from the ones that do.",
+        "Names the muting itself as the cost being optimised against, rather than treating alert volume as free."
+      ]
+    },
+    {
+      "id": 6,
+      "prompt": "A vendor feed we load nightly ran at about 4,000 rows a night. Last night it came in at 4,720, because we onboarded a new merchant that morning. Our loader failed the batch on the row-count assertion. Was that right?",
+      "expected_output": "No. This is the widen case: a known, explained, legitimate change to the population. The answer says what the assertion should have done instead.",
+      "expectations": [
+        "Answers that failing the batch was not right, given the change is known and legitimate.",
+        "Says what the assertion should do instead of blocking - route the unseen population to a ratification decision that widens the contract.",
+        "Does not resolve it by simply widening the row-count band to a new fixed number."
+      ],
+      "_no_files_on_purpose": "This eval deliberately does NOT use the bundled CSVs and must not be read against them: they hold the row total constant at 4,000 so that row count is not one of eval 1's six differences. The numbers here describe a different feed and exist to put the widen decision on its own, with no data to hide behind."
+    },
+    {
+      "id": 7,
+      "prompt": "Our LLM call returns JSON that sometimes does not match the Pydantic model we declared. Add validation and a retry so it conforms.",
+      "expected_output": "NEGATIVE TRIGGER. This is a model's OUTPUT being validated against a declared schema, which structured-llm-extraction owns. This skill must not answer it.",
+      "expectations": [
+        "This skill is not selected for this request.",
+        "If it is reached anyway, it declines and names structured-llm-extraction as the owner."
+      ]
+    }
+  ]
+}

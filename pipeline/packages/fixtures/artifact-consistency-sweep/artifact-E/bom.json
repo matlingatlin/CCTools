@@ -1,0 +1,40 @@
+{
+  "build": "data-contract-assertions-v2",
+  "unit": "data-contract-assertions",
+  "bill_of_materials": [
+    {
+      "file": "references/threshold-evidence.md",
+      "kind": "reference",
+      "status": "needed",
+      "why": "the 13 verified claims with verbatim quotes, fetch dates and limits, and the three contradictions the package refuses to resolve. The incumbent carries 0 references and 0 URLs, so every number in its body is unsourced. This file is also the only place the NEGATIVE finding can be carried with its source: no primary source publishes a mapping from drift magnitude to expected harm."
+    },
+    {
+      "file": "evals/evals.json",
+      "kind": "eval",
+      "status": "needed",
+      "why": "package.verifiable is true, so eval.exists is an ERROR without it. The incumbent's evals.md carries judged PREDICTIONS and no runnable evals, which is why the extend gate returned UNDECIDABLE at 1.1b."
+    },
+    {
+      "file": "evals/fixture/reference.csv",
+      "kind": "eval input",
+      "status": "needed",
+      "why": "eval.files-resolve resolves files[] against the SKILL DIRECTORY, so an eval that points outside it is not runnable. The incumbent's evals were unrunnable predictions; bundling the two CSVs is what makes these actually executable. 190KB on disk and zero context cost - evals are never loaded at invocation time."
+    },
+    {
+      "file": "evals/fixture/current.csv",
+      "kind": "eval input",
+      "status": "needed",
+      "why": "the arriving batch the evals are run against. Same reason as reference.csv. ground_truth.json is NOT bundled: it is the scoring key and a skill that ships its own answer key cannot be evaluated."
+    }
+  ],
+  "not_needed": [
+    {
+      "file": "assets/",
+      "why": "the artefact the steps emit is a per-column checks table whose columns are named in the body. A separate template would restate those names in a second place and the two would drift. Re-checked at 4.6: no pointer wanted one."
+    },
+    {
+      "file": "scripts/",
+      "why": "the contract's own content_source for scripts is DISCOVERED from the eval transcripts, not designed up front. Decided at 7.1, and a row pre-committing one here would be an improvisation dressed as a plan."
+    }
+  ]
+}

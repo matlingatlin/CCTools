@@ -1,0 +1,28 @@
+[   0.0] So here's an interesting open source repo
+[   1.9] that just came out a few days ago.
+[   3.1] It's called OpenSpace.
+[   4.7] It's from HCUDs.
+[   5.9] You're seeing these guys all over the place.
+[   7.2] They're the makers of things like CLI, anything,
+[   9.5] and Lightrag.
+[  10.6] And what this repo is all about,
+[  12.4] it's about creating an internal tool
+[  15.9] that helps you automatically improve your skills.
+[  18.5] It does self-evolving skills, essentially.
+[  21.0] And what it essentially does
+[  22.0] is it analyzes your skill usage
+[  24.1] on a particular task after it's all done
+[  26.6] and then sees, did the skill fail?
+[  28.9] Did the skill actually work?
+[  30.4] And can it be improved?
+[  32.0] From there, it decides if it needs to repair the skill,
+[  33.9] if it needs to enhance the skill,
+[  35.4] or if it's considered as good as it's gonna get
+[  37.5] and it calls that captured.
+[  38.9] So it's an interesting project.
+[  39.9] If you check out the repo,
+[  41.1] they have a bunch of real-world examples
+[  42.7] they've tested it on.
+[  43.5] They claim it uses 46% fewer tokens
+[  46.8] once it's run through the self-improvement process.
+[  48.7] So definitely take a look.

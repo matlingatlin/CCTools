@@ -1,0 +1,14 @@
+[   0.0] If you built your app with cloud code, it probably looks like this.
+[   3.4] Generic font, AI glow around in potent text, and a dark theme with the most basic accent color.
+[   8.9] Regular people can tell it's slopped from a mile away.
+[  11.5] Look, cloud is great at coding, don't get me wrong here,
+[  14.2] but you need these three things to really make a good app.
+[  17.4] The first is UI UX Pro Max.
+[  19.6] It's a free GitHub skill that you can give to cloud code.
+[  22.3] The second is CodeRabbit.
+[  23.6] It reviews your code and makes sure you're not questioning any slop or any security vulnerabilities
+[  28.4] that can literally bankrupt you if you have any AI integrations.
+[  32.2] Last is 21st.dev.
+[  33.8] It's a theme library with pre-made designs that you can plug straight into cloud
+[  37.6] like this insane interactive 3D model.
+[  40.4] Come and swap for the link and go build something crazy.

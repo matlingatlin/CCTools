@@ -1,0 +1,58 @@
+{
+  "skill_name": "skill-knowledge",
+  "round": 2,
+  "revised_because": "Round 1's expectations rewarded stating a principle. Each below requires a produced artefact - a row, a list, a verdict - or a refusal with the specific thing that is missing named.",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Source: an engineering blog post, read in full, fetched today. It says: 'In our experience, teams that add a linting step to CI cut review time roughly in half.' Add this to the claim set for the skill we are building.",
+      "expected_output": "A claim row is produced, with the verbatim line as its quote, and the verdict is repeated rather than measured because no measurement was reported.",
+      "expectations": [
+        "produces an actual claim row with named fields, not advice about how to make one",
+        "the quote field contains the sentence verbatim",
+        "the verdict is repeated, not measured",
+        "the reason given is that no measurement or sample was reported, not that a blog is a weak source"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "The probe showed two failures: the agent did not check whether the migration held a lock past the request timeout, and it did not name which service read the renamed table. We already have nine claims from the proposal stage. What do we do about knowledge?",
+      "expected_output": "A coverage check per failure, with an explicit outcome for each, and a logged skip if nothing is fetched.",
+      "expectations": [
+        "checks the two failures separately rather than assessing coverage in general",
+        "gives a per-failure covered or not-covered outcome",
+        "states that the skip and its reason are recorded even when nothing is fetched"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "I found the paper. It's paywalled so I have the abstract, which states the effect clearly with a percentage. Write the claim row.",
+      "expected_output": "The row records that the source was reached as an abstract only, and does not carry a measured verdict on that basis.",
+      "expectations": [
+        "the produced row keeps how the source was reached separate from how much was read",
+        "does not assign a measured verdict from an abstract",
+        "names what would be needed to upgrade it"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Two of our sources give different numbers for the same thing: one says 15 percent, the other 40 percent. The reference file is getting messy. Clean it up.",
+      "expected_output": "Both are kept as separate rows; the contradiction is preserved rather than resolved by preference.",
+      "expectations": [
+        "keeps both numbers as their own rows",
+        "does not pick one on credibility grounds without a stated basis",
+        "says why a collapsed contradiction cannot be detected afterwards"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "I gathered these claims and I have gone through each one against its source. Here are my verdicts. Ready to bundle into the reference file?",
+      "expected_output": "Not yet: the gatherer's own verification does not count, and the ruling goes to someone who did not gather.",
+      "expectations": [
+        "routes verification to a reader who did not gather the sources",
+        "names what that reader is given and what they are NOT given",
+        "lists the verdicts that reader may return"
+      ]
+    }
+  ]
+}

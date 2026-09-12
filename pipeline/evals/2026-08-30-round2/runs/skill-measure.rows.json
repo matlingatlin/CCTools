@@ -1,0 +1,331 @@
+{
+  "skill": "skill-measure",
+  "repeats": [
+    1,
+    2
+  ],
+  "paired": [
+    {
+      "test": "Q1",
+      "repeat": 1,
+      "arm": "with",
+      "correct": true,
+      "n_expectations": 4,
+      "n_met": 4,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q1",
+      "repeat": 1,
+      "arm": "without",
+      "correct": true,
+      "n_expectations": 4,
+      "n_met": 4,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q2",
+      "repeat": 1,
+      "arm": "with",
+      "correct": false,
+      "n_expectations": 4,
+      "n_met": 3,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q2",
+      "repeat": 1,
+      "arm": "without",
+      "correct": false,
+      "n_expectations": 4,
+      "n_met": 3,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q3",
+      "repeat": 1,
+      "arm": "with",
+      "correct": true,
+      "n_expectations": 3,
+      "n_met": 3,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q3",
+      "repeat": 1,
+      "arm": "without",
+      "correct": true,
+      "n_expectations": 3,
+      "n_met": 3,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q4",
+      "repeat": 1,
+      "arm": "with",
+      "correct": true,
+      "n_expectations": 3,
+      "n_met": 3,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q4",
+      "repeat": 1,
+      "arm": "without",
+      "correct": false,
+      "n_expectations": 3,
+      "n_met": 2,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q5",
+      "repeat": 1,
+      "arm": "with",
+      "correct": true,
+      "n_expectations": 3,
+      "n_met": 3,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q5",
+      "repeat": 1,
+      "arm": "without",
+      "correct": true,
+      "n_expectations": 3,
+      "n_met": 3,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q1",
+      "repeat": 2,
+      "arm": "with",
+      "correct": false,
+      "n_expectations": 4,
+      "n_met": 3,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q1",
+      "repeat": 2,
+      "arm": "without",
+      "correct": false,
+      "n_expectations": 4,
+      "n_met": 3,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q2",
+      "repeat": 2,
+      "arm": "with",
+      "correct": false,
+      "n_expectations": 4,
+      "n_met": 3,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q2",
+      "repeat": 2,
+      "arm": "without",
+      "correct": false,
+      "n_expectations": 4,
+      "n_met": 3,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q3",
+      "repeat": 2,
+      "arm": "with",
+      "correct": true,
+      "n_expectations": 3,
+      "n_met": 3,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q3",
+      "repeat": 2,
+      "arm": "without",
+      "correct": true,
+      "n_expectations": 3,
+      "n_met": 3,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q4",
+      "repeat": 2,
+      "arm": "with",
+      "correct": true,
+      "n_expectations": 3,
+      "n_met": 3,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q4",
+      "repeat": 2,
+      "arm": "without",
+      "correct": false,
+      "n_expectations": 3,
+      "n_met": 2,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q5",
+      "repeat": 2,
+      "arm": "with",
+      "correct": true,
+      "n_expectations": 3,
+      "n_met": 3,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q5",
+      "repeat": 2,
+      "arm": "without",
+      "correct": true,
+      "n_expectations": 3,
+      "n_met": 3,
+      "tokens": null,
+      "tool_calls": null
+    }
+  ],
+  "scenarios": [
+    {
+      "ts": null,
+      "talent": "skill-measure",
+      "scenario": "Q1",
+      "kind": "normal",
+      "baseline": "pass",
+      "with": "pass",
+      "result": "pass",
+      "repeat": 1,
+      "backfill": false,
+      "expectation_critique": "Expectation 1 is badly worded and near-unfailable as written: both answers open with the words 'No-go', which is literally a go/no-go verdict, yet both are graded met because each attaches 'this run cannot decide'. An answer that flatly said 'no-go, it is useless' would also start with a refusal-shaped sentence and could slip through; the expectation should read 'declines to let this data decide, and says so in words'. Expectation 3 is arithmetic on two supplied numbers - trivially satisfied by any answer that mentions both figures, and it cannot separate understanding from subtraction. Expectations 2 and 4 are the only ones with teeth, and 4 is the sharpest: it distinguishes 'the clean baseline raises the bar' from the weaker, commoner 'the eval was uninformative' framing - though as written it accepts both, since the second answer earns 'met' by prescribing harder tasks plus k>=3 rather than by naming the raised bar. Nothing in the set tests whether the answer names the axis the skill must win on, which both volunteered."
+    },
+    {
+      "ts": null,
+      "talent": "skill-measure",
+      "scenario": "Q2",
+      "kind": "normal",
+      "baseline": "miss",
+      "with": "miss",
+      "result": "fail",
+      "repeat": 1,
+      "backfill": false,
+      "expectation_critique": "Expectation 3 is close to unfailable: any answer that lists per-run fields at all will list tokens, so 'including at least one cost field' adds no discrimination - it would only bite on an answer that recorded pass/fail alone, and it gives no credit for the harder discipline both answers show (never estimating an unmetered cost, null rather than 0). Expectation 1 is checkable but shallow: it counts whether numbers appear, not whether the numbers are defensible - an answer naming '2 tasks x 2 arms x 1 repeat' satisfies it while missing the point. Expectation 2 bundles two separate controls (same-turn pairing, fresh sessions) into one ruling, so an answer that gets one and misses the other collapses to a single verdict; it should be split. Expectations 2 and 4 are the only ones that actually separated the answers here, and 4 is the best in the set because it forces a real design choice (deterministic parser vs model judge) that an otherwise thorough answer can get wrong. Nothing in the set asks for an oracle expected-row-count fixed before the run, a negative-trigger task, or a preregistered ship rule - all things offered unrewarded."
+    },
+    {
+      "ts": null,
+      "talent": "skill-measure",
+      "scenario": "Q3",
+      "kind": "normal",
+      "baseline": "pass",
+      "with": "pass",
+      "result": "pass",
+      "repeat": 1,
+      "backfill": false,
+      "expectation_critique": "This is the weakest set of the five: all three expectations are met by both answers, and expectations 1 and 2 are effectively the same test stated twice - any answer that reports the clause as unmeasured has, by construction, not treated the missing rows as satisfying it, so the set gives itself two rulings for one behaviour. Expectation 3 is a very low bar: 'run the missing rows again' satisfies it, with no requirement that the answer specify HOW (both arms launched together, instrumentation as a required field) or that it rule out the cheaper wrong route. The real traps in this question go unmeasured: whether the answer refuses to impute the missing cells from the two complete ones, and whether it refuses to let the better pass rates discharge a separate cost clause. Both answers address at least the second, one addresses imputation explicitly, and the set rewards neither. A set that scores full marks for both answers on a question where they differ in substance is not measuring."
+    },
+    {
+      "ts": null,
+      "talent": "skill-measure",
+      "scenario": "Q4",
+      "kind": "normal",
+      "baseline": "miss",
+      "with": "pass",
+      "result": "pass",
+      "repeat": 1,
+      "backfill": false,
+      "expectation_critique": "Expectation 3 is nearly free here: the question hands the answer a suspiciously perfect result, and any answer that opens by calling the sweep uninformative satisfies it without doing any of the work - it should require the withholding to be conditional on a named check, not merely announced. Expectation 1 rewards phrasing over reasoning: one answer earns 'met' by enumerating (a) and (b), the other by contrasting the two cases in a single clause, and the ruling turns on whether an implicit second reading counts, which is a judgement about wording rather than about understanding. Expectation 2 is the only genuinely discriminating item in the whole grading run, because 'exactly one' is a specific, failable criterion that a thorough and otherwise sensible answer can get wrong by planting more defects. The set also fails to reward two substantive points one answer raises unprompted - that the reviewer was probably unblinded, and that quality review is the wrong instrument for the question - which suggests the set is under-specified rather than that those points are worthless."
+    },
+    {
+      "ts": null,
+      "talent": "skill-measure",
+      "scenario": "Q5",
+      "kind": "normal",
+      "baseline": "pass",
+      "with": "pass",
+      "result": "pass",
+      "repeat": 1,
+      "backfill": false,
+      "expectation_critique": "Expectations 1 and 2 are one behaviour split into two rulings: an answer that refuses because the win did not replicate has thereby declined to bank it as a partial win, so no realistic answer fails one and passes the other, and the set effectively has two independent tests rather than three. Expectation 3 is loose enough that 'run it more times' satisfies it; it does not require a NUMBER of repeats or a stated condition under which the answer flips, which is what would make it a measurement. The genuine trap in this question is unmeasured: the data are being read after the fact, so the discriminating behaviour is checking the result against the threshold AS PREREGISTERED rather than against a bar that looks fair now the numbers are visible. One answer does exactly that ('Check it against the threshold as written first, not one that seems fair now the numbers are visible') and the set gives it no credit; the other reaches for preregistration only prospectively. An expectation naming that would have separated the answers where these three did not."
+    },
+    {
+      "ts": null,
+      "talent": "skill-measure",
+      "scenario": "Q1",
+      "kind": "normal",
+      "baseline": "miss",
+      "with": "miss",
+      "result": "fail",
+      "repeat": 2,
+      "backfill": false,
+      "expectation_critique": "Expectation 1 is not a measurement as worded: both answers headline a NO-GO and both also state the data cannot decide, so the expectation is simultaneously met and failed by each answer and separates nothing. It also fights the question, which explicitly asks for a go/no-go - an answer could satisfy 'declines' by evasion and miss the point entirely. Expectation 3 is near-free: dividing two supplied numbers is one arithmetic step and both answers did it in a clause. The set has no expectation that could catch the two failure modes actually in play - reading a token threshold in after seeing the number (one answer flagged this against itself, and got no credit for it), and noticing that a 5/5 baseline means the TASK SET, not the skill, is what failed. Expectations 2 and 4 are the only ones that a plausible wrong answer could fail."
+    },
+    {
+      "ts": null,
+      "talent": "skill-measure",
+      "scenario": "Q2",
+      "kind": "normal",
+      "baseline": "miss",
+      "with": "miss",
+      "result": "fail",
+      "repeat": 2,
+      "backfill": false,
+      "expectation_critique": "Expectations 1 and 3 are close to unfailable for any answer that produces a run design at all: naming a task x arm x repeat product and listing a token field is what the format itself forces, and both answers cleared them in a single line. Expectation 2 bundles two independent controls (same-turn launch, fresh session) into one all-or-nothing ruling, so an answer that got one and not the other cannot be scored honestly. Expectation 4 is the only one that discriminated. Missing from the set are the requirements where a run design for THIS skill actually stands or falls: per-task ground-truth finding counts to compare rows against, a negative-trigger task where no table may be emitted, a task that tempts merging findings, and a preregistered pass bar - all present in the answers, none of them measured."
+    },
+    {
+      "ts": null,
+      "talent": "skill-measure",
+      "scenario": "Q3",
+      "kind": "normal",
+      "baseline": "pass",
+      "with": "pass",
+      "result": "pass",
+      "repeat": 2,
+      "backfill": false,
+      "expectation_critique": "This set failed nothing and could not have. Expectations 1 and 2 are the same ruling stated negatively and then positively - an answer that records the cost clause as unmeasured has by construction not treated the gap as a pass, so one measurement is counted twice. Expectation 3 is satisfied by any 're-run the missing cells' sentence, which is the obvious next line after the verdict. Real discriminators were available and unused: whether the answer refuses to drop the incomplete pairs (dropping them biases the surviving sample toward cheap runs - one answer said so, the other did not); whether it keeps the correctness clause separate from the cost clause instead of letting better pass rates absorb the gap; and whether it treats a harness that loses metrics without erroring as impugning the numbers that DID land, including the pass rates from the same harness. Both answers were substantively strong here, but the set would have scored a much weaker answer identically."
+    },
+    {
+      "ts": null,
+      "talent": "skill-measure",
+      "scenario": "Q4",
+      "kind": "normal",
+      "baseline": "miss",
+      "with": "pass",
+      "result": "pass",
+      "repeat": 2,
+      "backfill": false,
+      "expectation_critique": "Expectations 1 and 3 are near-duplicates and both are handed to the answer by the question's own shape: naming the ambiguity IS the reason to withhold the conclusion, so no answer can plausibly satisfy one and fail the other, and any answer that spots the trap at all clears both. Expectation 2 is the only one with teeth, and it earned its place - it separated the two answers on a real design point (one planted defect in one specimen vs several defects across several outputs). The set misses the other substantive divide: only one answer states that this quality review is not the skill's with-vs-without test at all and cannot support an adoption decision even if the grader were calibrated. An answer could satisfy all three expectations and still leave the reader believing a calibrated clean sweep would prove the skill works."
+    },
+    {
+      "ts": null,
+      "talent": "skill-measure",
+      "scenario": "Q5",
+      "kind": "normal",
+      "baseline": "pass",
+      "with": "pass",
+      "result": "pass",
+      "repeat": 2,
+      "backfill": false,
+      "expectation_critique": "Expectations 1 and 2 are one measurement written twice: an answer that refuses BECAUSE the win did not survive the repeat has already declined to credit the repeat-2 tie, and there is no realistic answer that fails one and passes the other. Expectation 3 is satisfied by any 'run more repeats' sentence and cannot distinguish a vague one from a bar with a number in it - both answers happened to supply numbers, but the expectation did not require one. The set is silent on the two things that actually differ between strong and weak answers to this question: that nine ties out of ten paired observations means the task set is at ceiling and more repeats on THESE tasks buy nothing (a rerun-as-specified recommendation is therefore partly wrong), and that no cost column was cited at all, which alone defaults the decision to no. An answer could clear all three expectations and still prescribe a rerun that cannot possibly decide anything."
+    }
+  ]
+}

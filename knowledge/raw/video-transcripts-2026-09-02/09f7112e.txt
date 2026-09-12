@@ -1,0 +1,19 @@
+[   0.0] The guy who built Twitter just gave a million dollar AI agent to everyone and nobody noticed
+[   4.7] because everyone is busy watching the Claude vs Chad GPT fight.
+[   8.2] And this is one of the best things I've ever covered on this page.
+[  10.6] So welcome back guys.
+[  11.6] This is day 104 of building you 100X.
+[  14.6] It's called Goose built by Jack Dorsey at Block.
+[  16.9] He used it to fire 4,000 employees.
+[  18.8] It now writes 90% of Block's code.
+[  20.8] Here's the one thing that makes it different from Claude code, cursor and every other
+[  23.9] agent.
+[  24.9] Those tools lock you to one company.
+[  26.4] Goose works with any model, Claude, GPT, Gemini, Deepsea, SwitchIn, OneLine, ZeroLogin.
+[  31.4] Here's how you use it.
+[  32.4] Step one, one terminal command Goose is installed.
+[  34.2] Step two, plug in any AI model API key.
+[  36.1] Step three, type your task in plain English.
+[  37.8] Goose reads files, writes code, runs tests, ships products while you sleep.
+[  41.2] Free, open source, no logins, comment Goose and I'll send you the setup back.
+[  43.9] Follow for day 105.

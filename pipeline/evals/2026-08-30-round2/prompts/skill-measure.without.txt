@@ -1,0 +1,17 @@
+You are answering a set of independent questions from a colleague who is building a library of Claude Code skills. Answer each one as you actually would in that job. Where a question asks you to produce something - a file, a row, a run plan - PRODUCE IT; do not describe what you would produce. Where it asks a judgement, be decisive and short.
+
+Write your answers to the file named at the end of this prompt, one section per question, headed exactly '## Q1', '## Q2', and so on. Do not write anything else to disk. When you are done, reply with one line: the file path and the number of questions answered.
+
+At the very end of the file add a section '## consulted' listing any skills, files or tools you looked at while answering. If none, write 'none'.
+
+QUESTIONS
+
+Q1. Results are in for the new skill. Five tasks, run once each with and once without. With: 5 of 5 correct. Without: 5 of 5 correct. Tokens 12,400 with versus 9,800 without. Write me the go/no-go.
+
+Q2. Design the run for a skill that is meant to make a review agent produce a table with one row per finding. Give me the exact runs you would launch and what you would record for each.
+
+Q3. Here is the results table. Two of the four without-arm rows have no token count recorded; the rest are complete and the pass rates are better with the skill. Our threshold caps token growth at 20 percent. Does it pass?
+
+Q4. The reviewing agent read all twelve outputs and reported no problems in any of them. Write up the conclusion.
+
+Q5. Task 3 was won by the skill in the first repeat and tied in the second. Tasks 1, 2, 4 and 5 tied in both. Nothing regressed. That is one win and no losses. Ship?

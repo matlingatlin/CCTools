@@ -1,0 +1,48 @@
+{
+  "_fixture": "SYNTHETIC. Not a real claim set. Sources are fictional (example.invalid is reserved by RFC 2606) and every quote is invented for the fixture. Nothing here may be cited. Its only job is to be a claim set the gate accepts, so selftest_claims.py can break it one field at a time.",
+  "build": "fixture",
+  "coverage": [
+    { "observed_failure": "the run did not name which service reads the renamed table", "covered": false,
+      "reason": "no claim in the package addresses dependent readers" },
+    { "observed_failure": "the run did not check the lock duration against the timeout", "covered": true,
+      "reason": "claim C1 from the package covers it" }
+  ],
+  "sources": [
+    { "source_id": "F1", "url": "https://example.invalid/fixture/lock-study", "title": "FIXTURE study",
+      "fetched": "2026-09-01", "access": "open", "read": "full text" },
+    { "source_id": "F2", "url": "https://example.invalid/fixture/vendor-note", "title": "FIXTURE vendor note",
+      "fetched": "2026-09-01", "access": "open", "read": "abstract only" }
+  ],
+  "claims": [
+    { "claim_id": "G1",
+      "claim": "FIXTURE, INVENTED. Renaming a table breaks dependent readers until they are redeployed.",
+      "quote": "FIXTURE QUOTE, INVENTED. Every reader holding the old name failed until it was redeployed.",
+      "source_id": "F1", "locator": "section 4",
+      "verdict": "MEASURED",
+      "what_was_measured": "share of dependent services erroring after a rename",
+      "effect_size": "fixture value, not a real number",
+      "sample": "fixture value, not a real number",
+      "limits": "the source says it did not test read-replica lag",
+      "gathered_by": "gatherer-agent-1",
+      "verification": { "by": "verifier-agent-2", "verdict": "supported", "how": "re-read section 4 and matched the quote" },
+      "adopted": true, "contradicts": ["G2"] },
+    { "claim_id": "G2",
+      "claim": "FIXTURE, INVENTED. Renaming a table is safe when an alias is left behind.",
+      "quote": "FIXTURE QUOTE, INVENTED. With an alias in place we observed no reader failures.",
+      "source_id": "F2", "locator": "abstract",
+      "verdict": "REPEATED",
+      "limits": "no measurement was reported",
+      "gathered_by": "gatherer-agent-1",
+      "verification": { "by": "verifier-agent-2", "verdict": "supported", "how": "the abstract carries the sentence" },
+      "adopted": true, "contradicts": ["G1"] },
+    { "claim_id": "G3",
+      "claim": "FIXTURE, INVENTED. Locks always escalate under load.",
+      "quote": "FIXTURE QUOTE, INVENTED. Under load the engine may upgrade a shared lock.",
+      "source_id": "F1", "locator": "section 2",
+      "verdict": "REPEATED",
+      "gathered_by": "gatherer-agent-1",
+      "verification": { "by": "verifier-agent-2", "verdict": "not-supported",
+                        "how": "the source says MAY upgrade; the claim says ALWAYS" },
+      "adopted": false }
+  ]
+}

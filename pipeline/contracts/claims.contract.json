@@ -1,0 +1,139 @@
+{
+  "contract_version": "1.1.0",
+  "unit": "gathered-claim-set",
+  "authority": "house",
+  "written": "2026-09-01",
+  "note": "What phase 3 must hand to phase 4. The package contract already gates the claims that ARRIVE with a package; this gates the ones the builder goes and fetches itself, which is a harder case: nobody outside the run has looked at them. Read by pipeline/validate/claims_contract.py.",
+  "principle": "A fetched claim is weaker than a supplied one until someone who did not fetch it has ruled on it. The gate is therefore not 'is it well-formed' but 'has it been independently ruled on, and does the row still say what the source says'.",
+  "rules": [
+    {
+      "id": "cl.rows",
+      "check": "code",
+      "severity": "error",
+      "rule": "claims is a non-empty list of objects, each with a claim field",
+      "reason": "prose cannot be verified row by row; a paragraph hides which sentence carries the finding"
+    },
+    {
+      "id": "cl.quote",
+      "check": "code",
+      "severity": "error",
+      "rule": "every claim has a non-empty verbatim quote",
+      "reason": "THE gate. Without a verbatim line a finding is indistinguishable from a reconstruction, and reconstructions drift toward the argument they were recalled to support."
+    },
+    {
+      "id": "cl.locator",
+      "check": "code",
+      "severity": "error",
+      "rule": "every claim has a non-empty locator",
+      "reason": "'whole document' is an acceptable locator and is itself informative; an absent one means nobody recorded where they looked"
+    },
+    {
+      "id": "cl.source_resolves",
+      "check": "code",
+      "severity": "error",
+      "rule": "every claim source_id appears in sources",
+      "reason": "a dangling source_id is a claim nobody can go back and check"
+    },
+    {
+      "id": "cl.verdict",
+      "check": "code",
+      "severity": "error",
+      "rule": "every claim verdict is MEASURED or REPEATED",
+      "reason": "the two are not strong and weak; a widely repeated claim is not upgraded by being widely repeated"
+    },
+    {
+      "id": "cl.measured_evidence",
+      "check": "code",
+      "severity": "error",
+      "rule": "a MEASURED claim carries what_was_measured and at least one of effect_size or sample",
+      "reason": "MEASURED without a dependent variable and a number is a verdict asserted, not established"
+    },
+    {
+      "id": "cl.verified",
+      "check": "code",
+      "severity": "error",
+      "rule": "every claim carries a verification with a verdict of supported, not-supported, not-in-source, source-unreachable or not-checkable",
+      "reason": "an unverified fetched claim is a memory with a URL attached. The last two are RESULTS, not gaps in the process."
+    },
+    {
+      "id": "cl.verifier_not_gatherer",
+      "check": "code",
+      "severity": "error",
+      "rule": "verification.by differs from the claim's gathered_by",
+      "reason": "whoever gathered a source does not rule on their own gathering. A model critiquing its own output with no external signal measures worse than no critique at all."
+    },
+    {
+      "id": "cl.unsupported_dropped",
+      "check": "code",
+      "severity": "error",
+      "rule": "no claim with verification verdict not-supported or not-in-source is marked adopted",
+      "reason": "the point of verifying is that the answer can be no. A verification that never removes anything is decoration."
+    },
+    {
+      "id": "cl.reach_vs_read",
+      "check": "code",
+      "severity": "error",
+      "rule": "every source records access and read separately, and a MEASURED claim may not rest on a source read as abstract-only",
+      "reason": "'we found it' and 'we opened it' are different facts. An abstract found through a search engine and a paper read in full are both 'found'."
+    },
+    {
+      "id": "cl.dated",
+      "check": "code",
+      "severity": "error",
+      "rule": "every source fetched is an ISO date YYYY-MM-DD",
+      "reason": "bundled knowledge goes stale and nothing in the runtime will say when; the date is what makes staleness detectable later"
+    },
+    {
+      "id": "cl.contradictions_kept",
+      "check": "code",
+      "severity": "error",
+      "rule": "if two adopted claims are marked as contradicting each other, both remain in the set",
+      "reason": "collapsing a contradiction to the more convenient side is the one edit that cannot be detected afterwards"
+    },
+    {
+      "id": "cl.no_dup_source_ids",
+      "check": "code",
+      "severity": "error",
+      "rule": "source_id values are unique",
+      "reason": "claims join to sources by this id; a duplicate makes the join ambiguous and silently wrong"
+    },
+    {
+      "id": "cl.coverage_answered",
+      "check": "code",
+      "severity": "error",
+      "rule": "every observed failure listed in coverage carries covered true or false",
+      "reason": "phase 3 exists to answer a question per observed failure. An unanswered one is the absence the chain gate was built for, one level down."
+    },
+    {
+      "id": "cl.derived_names_its_assumption",
+      "check": "code",
+      "severity": "error",
+      "rule": "a DERIVED claim states what it assumes, in its own text or in an assumes field",
+      "why": "A computed figure whose assumptions are not stated reads exactly like a measured one. The claim that prompted this verdict is a sample-size floor of about 1,000 questions, computed from variance parameters the paper's own author calls fictional; cited without that, it becomes a measured requirement.",
+      "added": "2026-09-02"
+    }
+  ],
+  "agent_checks": [
+    {
+      "on": "quote",
+      "ask": "Does the quote actually carry the claim beside it, or is it adjacent text that merely appears near it?"
+    },
+    {
+      "on": "limits",
+      "ask": "Does the row record what the SOURCE says it does not establish, or only what it does?"
+    },
+    {
+      "on": "contradictions",
+      "ask": "Are two rows disagreeing, or saying different things about different populations? Only the first is a contradiction."
+    }
+  ],
+  "verdicts": {
+    "MEASURED": "the source reports a number it measured itself, with a dependent variable and a sample",
+    "REPEATED": "the source restates a finding measured by someone else",
+    "DERIVED": "the source computes the figure analytically from ASSUMED parameters. Neither measured nor repeated. Added 2026-09-02 after a claim-gatherer hit the gap and invented the label rather than mislabel: a paper's '~1,000 questions' floor is a worked sample-size calculation from variance parameters its own author calls fictional. With only two verdicts the honest options were to call an assumption a measurement or to throw the finding away, and the first is the worse of the two."
+  },
+  "derived_rules": {
+    "must_name_the_assumption": "a DERIVED claim states, in its own text, what was assumed",
+    "never_evidence_for_a_number": "a DERIVED figure may inform a default or a rule of thumb and may never be cited as evidence that the number holds. If a step needs the number to be true, it needs a MEASURED claim."
+  }
+}

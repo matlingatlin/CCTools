@@ -1,0 +1,35 @@
+{
+  "verdict": "clear",
+  "clauses": [
+    {
+      "clause": "regressions",
+      "verdict": "pass",
+      "detail": "none"
+    },
+    {
+      "clause": "dropped-tests",
+      "verdict": "pass",
+      "detail": "none"
+    },
+    {
+      "clause": "new-failures",
+      "verdict": "pass",
+      "detail": "none"
+    },
+    {
+      "clause": "pre-existing-failures",
+      "verdict": "pass",
+      "detail": "none"
+    }
+  ],
+  "counts": {
+    "before": 8,
+    "after": 8,
+    "regressions": 0,
+    "dropped": 0,
+    "fixed": 3,
+    "new_pass": 0,
+    "new_fail": 0
+  },
+  "reason": "no scenario the incumbent passed has been broken, and none was dropped"
+}

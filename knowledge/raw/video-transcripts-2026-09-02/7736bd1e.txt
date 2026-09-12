@@ -1,0 +1,29 @@
+[   0.0] A developer from Kazakhstan just made a move
+[   2.3] that could reshape how AI companies profit from training.
+[   5.4] He just fine-tuned an 8 billion parameter AI model
+[   8.6] on a four gigabytes laptop GPU
+[  10.8] that costs less than a PlayStation.
+[  12.4] His name is Alpamees Makajan
+[  14.3] and his tool is called SUP.
+[  15.9] And here is the problem he is solving.
+[  17.5] Fine-tuning an AI model used to mean
+[  19.4] paying thousands of dollars to AI data centers,
+[  22.0] writing custom training scripts
+[  23.4] and debugging for days.
+[  24.7] Most people simply gave up and used Claude or ChatGPT.
+[  27.7] SUP just solved all of that.
+[  29.3] Can you describe what you want the model to do
+[  31.0] and point it at your data?
+[  32.0] When the full code appears on screen,
+[  33.6] take a screenshot and send it to us in the DMs
+[  35.6] to receive the repository link.
+[  37.1] Then run SUP train and it figures out everything else.
+[  39.8] Batch size, memory settings, all of it.
+[  41.9] It instantly went viral.
+[  43.4] Over 85,000 people are already using it.
+[  46.0] Developers are training medical assistants
+[  47.8] and reasoning models on consumer laptops.
+[  50.0] SUP is democratizing AI,
+[  51.8] making customization accessible to anyone with a laptop.
+[  54.6] Does this democratize AI
+[  56.1] or destroy the business model of AI companies?

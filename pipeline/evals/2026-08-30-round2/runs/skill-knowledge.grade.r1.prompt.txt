@@ -1,0 +1,472 @@
+You are grading two anonymised answers to each question below. You do not know how either was produced, and you must not speculate about it.
+
+IMPORTANT: the labels A and B are re-randomised FOR EVERY QUESTION. Answer A in question 1 and answer A in question 2 are not the same source. Do not write anything that treats A or B as a consistent identity across questions - a cross-question narrative about 'A' has no basis and will be discarded.
+
+For EACH question, for EACH listed expectation, rule on answer A and answer B independently: met / not met / unclear. Every ruling must quote the line from that answer that decides it. If nothing in the answer decides it, the ruling is 'not met' and you say what you looked for.
+
+Then, for each question, answer one more thing: **is this expectation set any good?** Name any expectation that both answers satisfy trivially, or that could be satisfied by an answer that misses the point. An expectation nothing could fail is not a measurement.
+
+Return strict JSON and nothing else:
+{"per_question": [{"id": 1, "rulings": [{"expectation": "...", "A": "met|not met|unclear", "A_evidence": "quoted line", "B": "...", "B_evidence": "..."}], "expectation_critique": "..."}], "overall": "..."}
+
+
+======================================================================
+QUESTION 1
+Source: an engineering blog post, read in full, fetched today. It says: 'In our experience, teams that add a linting step to CI cut review time roughly in half.' Add this to the claim set for the skill we are building.
+
+EXPECTATIONS:
+  - produces an actual claim row with named fields, not advice about how to make one
+  - the quote field contains the sentence verbatim
+  - the verdict is repeated, not measured
+  - the reason given is that no measurement or sample was reported, not that a blog is a weak source
+
+--- ANSWER A ---
+Added. It goes in as a **REPEATED** claim, not a measured one — "in our
+experience" and "roughly in half" is a practitioner impression with no n, no
+baseline, no definition of "review time". That does not make it useless; it
+makes it evidence about what practitioners believe, and it must be labelled as
+such so nobody downstream cites it as a number.
+
+Row appended to the claim set:
+
+```
+id:            C-014
+claim:         Adding a linting step to CI reduces code-review time, by an amount
+               the source characterises as roughly half.
+source:        "<engineering blog post title>", <org> engineering blog, <URL>,
+               section "CI" (the sentence quoted below).
+quote:         "In our experience, teams that add a linting step to CI cut review
+               time roughly in half."
+source type:   vendor/practitioner blog post (self-reported, not peer reviewed)
+read:          in full
+date fetched:  2026-08-30
+evidence:      anecdotal; no sample size, no baseline, no definition of "review
+               time", no control for confounders (team size, PR size, tooling
+               changes shipped at the same time). Directional only.
+verdict:       REPEATED
+use in skill:  motivation / "why teams do this" only. MUST NOT be cited as a
+               quantitative effect ("halves review time"). If the skill needs a
+               number, this is not the source.
+open question: is there any measured study of linting-in-CI vs review latency?
+               If one is found, this row is superseded, not merged.
+```
+
+Two things I did at the same time, because they are part of "add it", not
+extra credit:
+
+1. I recorded the **verbatim sentence** and the URL. A paraphrase of a
+   soft claim hardens it — six weeks from now "roughly in half" becomes "50%"
+   unless the exact words are on the row.
+2. I stamped the fetch date. Blog posts get edited and deleted; the row has to
+   say what the page said on the day I read it.
+
+If the claim set already contains a row on lint-in-CI, this extends that row
+with a second source rather than opening a rival row.
+
+---
+
+--- ANSWER B ---
+Added as one claim row plus its source row. It goes in as **repeated**, not measured: "roughly
+in half" is a number inside an assertion ("in our experience"), not a measurement. There is no
+dependent variable, no sample, no baseline and no window, so nothing can be recorded in the
+measured fields. A figure does not promote a row.
+
+### Claim row
+
+| Field | Value |
+| --- | --- |
+| claim | Adding a linting step to CI approximately halves code review time. |
+| source id | S-lint-ci-blog |
+| locator | Whole document (read in full); the sentence sits in the body's "in our experience" paragraph |
+| quote | "In our experience, teams that add a linting step to CI cut review time roughly in half." |
+| what was measured | — nothing. "Review time" is never defined or instrumented in the source. |
+| effect and sample | — none given. No n, no teams counted, no before/after window, no baseline. |
+| limits | The source frames it as the authors' own experience and states no method, no population and no measurement procedure. |
+| verdict | repeated |
+| verified by | *(empty — I gathered it, so I do not rule on it; goes to an independent verifier with the row and the source only)* |
+| expires if | the post is updated to publish or link an underlying measurement (then re-file as measured), or the CI/lint tooling it describes is superseded |
+
+### Source row
+
+| Field | Value |
+| --- | --- |
+| source id | S-lint-ci-blog |
+| kind | engineering blog post (vendor/practitioner, not peer reviewed) |
+| how reached | *(fill: the link/search/referral that led here — this field is not the next one)* |
+| how much read | read in full |
+| date fetched | 2026-08-30 |
+
+Two things I deliberately did not do: I did not write "cuts review time ~50%" as a headline
+number anywhere without the quote beside it, and I did not upgrade the verdict because the claim
+is plausible and commonly said. Being asserted more often is not promotion.
+
+
+======================================================================
+QUESTION 2
+The probe showed two failures: the agent did not check whether the migration held a lock past the request timeout, and it did not name which service read the renamed table. We already have nine claims from the proposal stage. What do we do about knowledge?
+
+EXPECTATIONS:
+  - checks the two failures separately rather than assessing coverage in general
+  - gives a per-failure covered or not-covered outcome
+  - states that the skip and its reason are recorded even when nothing is fetched
+
+--- ANSWER A ---
+Coverage check first — and the answer gets logged either way, including the skips. The nine
+proposal-stage claims answer a different question (what made the idea worth building); the
+observed failures are the second question, and it can only be asked now. So:
+
+### Step 1 — coverage table (fill against the nine, one row per observed failure)
+
+| Failure | Do the 9 claims in hand cover it? | Decision | Reason logged |
+| --- | --- | --- | --- |
+| F1: agent did not check whether the migration held a lock past the request timeout | claim ids that speak to lock duration / statement timeouts / blocking DDL → *(list or "none")* | fetch / **skip** | if skipped: "covered by C-n, which already states the lock-hold check and its threshold" |
+| F2: agent did not name which service read the renamed table | claim ids that speak to identifying readers/consumers before a rename → *(list or "none")* | fetch / **skip** | if skipped: "covered by C-n" |
+
+A skipped fetch and a fetch nobody thought of leave the same trace unless the skip is written
+down. Both rows land in the record regardless of outcome.
+
+### Step 2 — bound the questions before searching (only for failures that came back "not covered")
+
+Questions:
+- Q-a. How long can a schema migration hold a lock, and what makes it exceed a request timeout — which DDL forms block, and what lock-timeout / statement-timeout settings bound it?
+- Q-b. What is the check that establishes lock hold time *before* the migration runs (dry-run, lock_timeout probe, transaction inspection)?
+- Q-c. How does one enumerate the readers of a table before renaming it — code search, query logs, catalog/dependency views, service-to-table maps?
+- Q-d. What evidence counts as "the readers are named" — i.e. what would have made the agent's answer pass?
+
+Out of scope, with a reason each:
+- Migration *rollback* strategy — no observed failure touched it; interesting, not evidenced.
+- Expand/contract or dual-write sequencing — that is the fix pattern, not the missing knowledge; the probe failed at *checking*, not at sequencing.
+- Connection-pool sizing and general DB performance tuning — adjacent to timeouts, not implicated by either failure.
+- Which specific database engine is best — a product choice, not a claim the probe asked for.
+- Anything about the agent's prompt wording — a build change, not knowledge.
+
+Without the second list every adjacent finding will look like it belongs, and the claim set
+doubles with material no failure asked for.
+
+### Step 3 — gather as rows, not prose
+
+Every finding for Q-a…Q-d enters as a claim row (claim / source id / locator / quote / measured
+fields / limits / verdict / verified by), with each source carrying its fetch date and each claim
+its expiry condition. No verbatim line → not a finding, it does not enter. Verification goes to
+someone who did not gather it.
+
+--- ANSWER B ---
+We write both failures down **now**, as claims, in the same turn we learned
+them — before doing anything else with them.
+
+The nine existing claims are from the *proposal* stage: they are what we
+expected the skill would need to cover. The probe just produced something
+categorically better — two **observed** failures of a real agent on a real
+task. Observed failures are the highest-grade evidence this project can get,
+and they are also the most perishable: they exist only in a probe transcript
+that will be compacted away.
+
+So:
+
+**1. Two new rows, marked as observed, not proposed.**
+
+```
+id:            C-010
+claim:         An agent reviewing a schema migration does not, unprompted, check
+               whether the migration holds a lock for longer than the request
+               timeout.
+source:        probe run <run-id>, transcript <path>, turn <n>
+source type:   own observation (probe)
+date:          2026-08-30
+evidence:      MEASURED — observed 1/1 probe runs. n=1; not yet repeated.
+verdict:       MEASURED (single observation)
+use in skill:  becomes a required check in the skill's procedure: "lock duration
+               vs request/statement timeout" is an explicit step, not left to
+               the model's judgement.
+eval:          this failure is the seed for an adversarial eval scenario — a
+               migration whose lock outlives the timeout; baseline must fail it.
+open question: does it fail on 3/3 reruns? n=1 is a sighting, not a rate.
+
+id:            C-011
+claim:         An agent reviewing a rename does not, unprompted, identify which
+               other services read the renamed table.
+source:        probe run <run-id>, transcript <path>, turn <n>
+source type:   own observation (probe)
+date:          2026-08-30
+evidence:      MEASURED — observed 1/1 probe runs. n=1; not yet repeated.
+verdict:       MEASURED (single observation)
+use in skill:  required step: enumerate every reader of the changed object
+               (grep/graph the repo, not recall) before the change is called safe.
+eval:          adversarial scenario — a renamed table with one out-of-repo reader.
+open question: does it also miss writers, or only readers?
+```
+
+**2. The nine proposal-stage claims get re-graded against the probe.**
+This is the part that is easy to skip. A probe does not only add claims, it
+*scores the old ones*. For each of the nine, one of three outcomes:
+
+- **corroborated** — the probe hit it, the agent failed it → promote from
+  proposed to observed, and it earns a place in the procedure.
+- **contradicted** — the probe hit it and the agent handled it fine → demote or
+  drop. A skill that instructs the model to do what it already does reliably is
+  pure token cost.
+- **untouched** — the probe never exercised it → it stays *proposed*, clearly
+  labelled, and it is a candidate for the next probe. It must not silently
+  inherit the credibility of C-010/C-011.
+
+**3. Provenance stays separated.** Proposed claims and observed claims live in
+the same file but never lose their `source type`. The failure mode I am
+guarding against is a bundle where nine speculations and two observations read
+identically after a week.
+
+**4. n=1 is stated as n=1.** I do not write "the agent misses lock duration" as
+a general property from one run. If it matters, rerun the probe 3x; that is
+cheap and turns a sighting into a rate.
+
+---
+
+
+======================================================================
+QUESTION 3
+I found the paper. It's paywalled so I have the abstract, which states the effect clearly with a percentage. Write the claim row.
+
+EXPECTATIONS:
+  - the produced row keeps how the source was reached separate from how much was read
+  - does not assign a measured verdict from an abstract
+  - names what would be needed to upgrade it
+
+--- ANSWER A ---
+Abstract-only. That is a legitimate source, but it is a *different* source from
+the paper, and the row has to say so — the abstract is the authors' summary of
+their own result, with the method, the sample, the baseline and the caveats
+stripped out. Effect sizes in abstracts are systematically the most favourable
+framing of the result.
+
+```
+id:            C-015
+claim:         <the effect, stated exactly as the abstract states it, with the
+               percentage and the direction — e.g. "X reduces Y by 37%">
+source:        <Authors>, "<Title>", <Venue/Journal>, <Year>. DOI <doi>.
+               URL <url>.
+locator:       ABSTRACT ONLY — abstract, sentence <n>. Full text paywalled;
+               body, methods, tables and limitations NOT read.
+quote:         "<verbatim sentence from the abstract carrying the percentage>"
+source type:   peer-reviewed paper (abstract only)
+date fetched:  2026-08-30
+evidence:      the percentage is the authors' headline figure. NOT verified:
+               sample size, population, baseline/comparator, whether the figure
+               is absolute or relative, effect direction under subgroups,
+               confidence interval, and whether the abstract's number matches
+               the body's tables.
+verdict:       UNVERIFIED (abstract-only; upgradeable to MEASURED on full-text read)
+use in skill:  may be cited ONLY as "<Authors> report <figure> (abstract; full
+               text not read)". MUST NOT be used as the basis for a threshold,
+               a default value, or a numeric recommendation in the procedure.
+next action:   attempt full text — preprint/arXiv/institutional repository,
+               author copy, or library access. If obtained, re-verify the
+               percentage against the results section and either upgrade this
+               row or record the discrepancy.
+open question: is the percentage relative or absolute? Abstracts routinely omit
+               this and it changes the meaning by an order of magnitude.
+```
+
+Decisive part: **a number from an abstract does not get to set a threshold in
+the skill.** It can motivate; it cannot calibrate.
+
+---
+
+--- ANSWER B ---
+The row can be written, but not as **measured**, and it cannot be closed with what you have.
+
+An abstract read through a paywall and a paper read in full are both "found" — only the second
+can support a measured claim. The abstract gives the effect but not what was measured (the
+operational definition), not the sample, and not the limits the paper states about itself. Those
+are exactly the fields a measured verdict is made of.
+
+### Claim row
+
+| Field | Value |
+| --- | --- |
+| claim | *(one sentence, the finding as the abstract states it)* |
+| source id | S-paper-01 |
+| locator | Abstract |
+| quote | **REQUIRED — paste the verbatim sentence from the abstract. Without it this row does not enter the set.** |
+| what was measured | unknown from the abstract — the dependent variable and its operationalisation are in the methods section, which was not read |
+| effect and sample | effect: the percentage as stated in the abstract, verbatim. sample: **not available** — no n, no population, no design from the abstract alone |
+| limits | not available; the paper's own statement of what it does not establish is not in the abstract |
+| verdict | **repeated** |
+| verified by | *(empty — independent verifier, handed this row and the source only)* |
+| expires if | the full text is obtained (then re-verdict: measured if methods and sample check out, or not supported if they do not), or a correction/retraction is issued |
+
+### Source row
+
+| Field | Value |
+| --- | --- |
+| source id | S-paper-01 |
+| how reached | found via search / citation *(fill exactly)* |
+| how much read | **abstract only — paywalled, full text not obtained** |
+| date fetched | 2026-08-30 |
+
+The honest options if this claim has to carry weight: get the full text (institutional access,
+preprint/author copy, request from the author) and re-verdict, or leave it repeated and do not
+let it be quoted with the number as if it were established. Do not write the percentage into the
+skill's prose as a measured figure; a number lifted from an abstract reads identically to one
+lifted from a read paper, and that is precisely the difference this record exists to keep.
+
+
+======================================================================
+QUESTION 4
+Two of our sources give different numbers for the same thing: one says 15 percent, the other 40 percent. The reference file is getting messy. Clean it up.
+
+EXPECTATIONS:
+  - keeps both numbers as their own rows
+  - does not pick one on credibility grounds without a stated basis
+  - says why a collapsed contradiction cannot be detected afterwards
+
+--- ANSWER A ---
+Do not average them. Do not pick the one that suits us. Do not quietly drop
+one. 15 and 40 are not noise around 27 — a 2.7x gap almost always means the two
+sources are measuring *different things*, and the interesting content is the
+reason for the gap, not the midpoint.
+
+The cleanup:
+
+**1. Collapse to one row per claim, with the conflict on the row.** The mess is
+usually caused by each source having been given its own row, so the file reads
+as two facts when it holds one disputed fact.
+
+```
+id:            C-007
+claim:         <the quantity>, DISPUTED. Reported as 15% by [S1] and 40% by [S2].
+verdict:       DISPUTED — do not cite a single figure.
+  [S1] <cite>, <locator>, fetched <date>. Figure: 15%.
+       measured over: <population / window / denominator, as stated by S1>
+       method: <how S1 got it>
+  [S2] <cite>, <locator>, fetched <date>. Figure: 40%.
+       measured over: <population / window / denominator, as stated by S2>
+       method: <how S2 got it>
+gap analysis:  candidate explanations, in the order I would check them —
+               (a) different denominator (share of teams vs share of repos vs
+                   share of PRs);
+               (b) different population (all teams vs teams who already adopted
+                   the practice — a selection effect);
+               (c) different window or vintage (one is 2023 data, one 2026);
+               (d) different definition of the thing being counted;
+               (e) one is a vendor reporting on its own product.
+status:        unresolved — <which of (a)-(e) I could and could not rule out
+               from the sources as read>
+use in skill:  cite as a RANGE with both sources ("reported between 15% and 40%,
+               depending on <the axis that explains the gap>"), or omit the
+               number entirely and make the claim qualitative. Never a point
+               estimate. Never an average.
+```
+
+**2. Tidy the rest of the file with the same rule that produced the fix:**
+one row per claim, sources nested under it; every row carries locator + fetch
+date + verdict; verdicts from the same fixed vocabulary; rows sorted so the
+DISPUTED and UNVERIFIED ones are visible rather than buried.
+
+**3. Say what changed.** A short note at the top of the file: what was merged,
+what was demoted, and that C-007 is now disputed — so the next reader does not
+re-discover the conflict and "fix" it by averaging.
+
+If a point estimate is genuinely needed downstream, that is a new task
+(get a third, better source), not something to resolve by editing this file.
+
+---
+
+--- ANSWER B ---
+The contradiction stays. Cleaning up means merging true duplicates and sorting by verdict — it
+does not mean picking a side, averaging to ~27%, or writing "15–40%". Collapsing a contradiction
+is the one edit nobody can detect afterwards, because the losing row is simply gone.
+
+Reconciled file, contradiction kept as two rows and flagged as a pair:
+
+| # | claim | source id | locator | quote | what was measured | effect and sample | verdict | verified by |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| 1 | *(the 15% finding, as its source states it)* — **contradiction pair X, see #2** | S-a | *(section/table)* | *(verbatim)* | *(dependent variable — likely NOT the same as #2; check first)* | 15%, n=… | measured | *(independent verifier)* |
+| 2 | *(the 40% finding, as its source states it)* — **contradiction pair X, see #1** | S-b | *(section/table)* | *(verbatim)* | *(dependent variable)* | 40%, n=… | measured | *(independent verifier)* |
+| 3… | *(remaining rows)* | | | | | | measured, then repeated | |
+
+Rules applied:
+- **Duplicates merged** only where claim + source + locator are genuinely the same row entered twice; keep the fuller quote and both source ids if two ids point at one source.
+- **Contradiction kept as its own two rows**, cross-referenced by a pair tag, so a reader meets both.
+- **Sorted by verdict**: measured rows first, repeated after, so what was measured is read before what is merely asserted.
+- **Each row keeps its fetch date and expiry condition**; a contradiction pair's expiry is "resolved when a source is found that measures both under the same definition".
+
+Before anything else, check the cheap explanation: compare the "what was measured" fields. Two
+numbers for "the same thing" are very often two different dependent variables, populations or
+windows — if so it is not a contradiction at all and both rows stand with their scopes made
+explicit in the claim sentence. If they really do measure the same thing the same way, the
+disagreement is the finding, and the skill should carry it as a range with both sources named,
+not as a single number.
+
+
+======================================================================
+QUESTION 5
+I gathered these claims and I have gone through each one against its source. Here are my verdicts. Ready to bundle into the reference file?
+
+EXPECTATIONS:
+  - routes verification to a reader who did not gather the sources
+  - names what that reader is given and what they are NOT given
+  - lists the verdicts that reader may return
+
+--- ANSWER A ---
+Not yet — three checks first, and they take minutes.
+
+**1. Are any verdicts UNVERIFIED?** If a claim is going into a reference file
+that other work will lean on, "I checked it and could not confirm it" is a
+result, not a blocker — but it must ship *labelled*, and it must not be used to
+set any number or threshold. If instead the answer is "I have not got to that
+one yet", it does not go in the bundle at all. Bundling is where labels get
+lost, so the labels have to be right before, not after.
+
+**2. Is each verdict backed by a locator, not a recollection?** For every row I
+want the specific thing that was checked: page/section/sentence for a document,
+`file:line` for code, the table for a number, the run-id for an observation.
+A verdict of "verified" with no locator is an assertion about your memory of
+the source, and it is exactly the kind that survives into the file and cannot
+be re-checked by anyone else six weeks later.
+
+**3. Did any verdict come back *negative* — source does not support the claim,
+or supports a weaker version?** Those are the highest-value rows in the set and
+the ones most likely to be quietly dropped during bundling. They stay in, with
+the correction recorded, so the same claim does not get re-proposed next month.
+
+Also, briefly: each row keeps its **source type and fetch date** through the
+bundle (a reference file where a blog post, a paper abstract and an own probe
+read identically is worse than no reference file), and the verdicts use one
+fixed vocabulary rather than free text.
+
+If those three come back clean — verdicts all resolved or explicitly labelled,
+every one carrying a locator, negatives retained — then yes, bundle it, and the
+bundle carries a one-line header saying who verified it and on what date, so
+the whole file has a shelf life rather than looking permanently current.
+
+---
+
+--- ANSWER B ---
+Not ready. You gathered these, so your pass over them is not verification — it is the gatherer
+checking their own gathering, which is the one thing the step exists to prevent. Your verdicts
+are useful as a pre-pass (they catch your own typos and mis-locators); they do not close a row.
+
+What happens next:
+
+1. **Verified-by stays empty** on every row until someone else rules. Your verdicts go in a
+   separate "gatherer's pre-pass" column, or are discarded — they must not silently become the
+   verified column.
+2. **Hand the verifier the claim row and the source. Nothing else.** Not your reasoning, not the
+   skill the claims were gathered for, not which way you expect it to go, not the failure the
+   claim is meant to answer. Any of those tells them which answer is wanted.
+3. **They return one of five per row:** supported · not supported · not in the source · source
+   unreachable · not checkable. The last two are results and get recorded as results — do not
+   send the row back around until it comes up "supported".
+4. **Partial outcomes get their own note** — e.g. the finding holds but the mechanism the row
+   states is not what the source says. Both halves matter: the claim earned its keep, and
+   quoting it as written would have propagated an error.
+
+Pre-flight I would run before handing the batch over, since it costs a minute and saves a round:
+- every row has a verbatim quote (no quote, no finding — drop or fetch);
+- every source has a fetch date, and "how reached" and "how much read" are filled separately;
+- measured rows actually carry what was measured, the effect and the sample — otherwise they are repeated;
+- every claim has an expiry condition;
+- contradictions are still present as separate rows.
+
+Once verdicts come back from the verifier, reconcile into one set (merge duplicates, keep
+contradictions, sort by verdict) and *then* bundle into the reference file — and the verified
+findings land in the notes in that same turn, not when someone next asks for them.

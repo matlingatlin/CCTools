@@ -1,0 +1,154 @@
+{
+ "per_question": [
+  {
+   "id": 1,
+   "rulings": [
+    {
+     "expectation": "declines to give a go/no-go on this data",
+     "A": "unclear",
+     "A_evidence": "\"**No-go on this evidence.** Not \\\"the skill is bad\\\" - the run cannot support a decision either way\" and later \"**Decision: do not ship. Re-run before deciding.**\" - the answer both declares the data unable to decide and issues a shipping verdict, so the expectation as worded is half-satisfied and half-contradicted by the same answer.",
+     "B": "unclear",
+     "B_evidence": "\"**Verdict: NO-GO - but the no-go is on the experiment, not (yet) on the skill.**\" together with \"On the evidence in hand the decision is forced ... Do not adopt.\" - it disclaims a verdict on the skill while still forcing a decision from this data. Both answers behave identically here; nothing in either separates them on this expectation."
+    },
+    {
+     "expectation": "states that one run per arm is insufficient and says what n it needs",
+     "A": "met",
+     "A_evidence": "\"**One run per cell.** With n=1 per arm I cannot tell which baseline I am looking at.\" and \"Minimum to reopen: >=2 repeats per task per arm\"",
+     "B": "met",
+     "B_evidence": "\"n=1 per task per arm. With single runs there is no variance estimate\" and \"At least 3 repeats per task per arm, same model, same prompt scaffolding\""
+    },
+    {
+     "expectation": "computes the actual token delta rather than calling it 'higher'",
+     "A": "met",
+     "A_evidence": "\"What *is* demonstrated is 12,400 vs 9,800 = **+26.5% tokens**\"",
+     "B": "met",
+     "B_evidence": "\"The only thing the run measured is cost: +2,600 tokens, +26.5%.\""
+    },
+    {
+     "expectation": "identifies the clean baseline as the case needing MORE evidence, not less",
+     "A": "met",
+     "A_evidence": "\"**The baseline passed, so the bar goes up, not down.** A clean baseline is the case most likely to be made worse by an added skill, so the artefact now has to prove two things it has not proved\"",
+     "B": "met",
+     "B_evidence": "\"Baseline scored 5/5. A ceiling like that means every task was solvable without the skill, so the correctness column carries zero information\" - and the requirement raised from it: \"Rebuild the task set so the baseline is expected to FAIL the tasks the skill claims to fix.\" The demand is a harder evidentiary bar, though it is framed as a defective task set rather than as a higher bar for a clean baseline."
+    }
+   ],
+   "expectation_critique": "Expectation 1 is not a measurement as worded: both answers headline a NO-GO and both also state the data cannot decide, so the expectation is simultaneously met and failed by each answer and separates nothing. It also fights the question, which explicitly asks for a go/no-go - an answer could satisfy 'declines' by evasion and miss the point entirely. Expectation 3 is near-free: dividing two supplied numbers is one arithmetic step and both answers did it in a clause. The set has no expectation that could catch the two failure modes actually in play - reading a token threshold in after seeing the number (one answer flagged this against itself, and got no credit for it), and noticing that a 5/5 baseline means the TASK SET, not the skill, is what failed. Expectations 2 and 4 are the only ones that a plausible wrong answer could fail."
+  },
+  {
+   "id": 2,
+   "rulings": [
+    {
+     "expectation": "gives a specific number of tasks, arms and repeats, not 'several'",
+     "A": "met",
+     "A_evidence": "\"5 tasks x 2 arms x 2 repeats = **20 runs**\"",
+     "B": "met",
+     "B_evidence": "\"**Runs to launch: 6 tasks x 2 arms x 3 repeats = 36 runs.**\""
+    },
+    {
+     "expectation": "both arms are launched in the same turn in fresh sessions",
+     "A": "met",
+     "A_evidence": "\"Both arms of a given (task, repeat) launched together in the same turn, fresh session each; nothing reused from the probe, because a baseline collected an hour ago is a different machine.\"",
+     "B": "not met",
+     "B_evidence": "I looked for an explicit statement that the two arms are launched in the same turn and that each run starts in a fresh session. Neither appears. The closest line is \"Run them interleaved by repeat (all 12 arm-pairs of repeat 1, then repeat 2, then 3) so a mid-session model or infra change hits both arms equally\" - which pairs the arms in ordering, but the phrase \"mid-session\" implies runs sharing one session rather than a fresh one per run, and the controls listed are \"same model id, same temperature, same repo snapshot, same reviewer prompt text\" with no launch-time or session control."
+    },
+    {
+     "expectation": "lists the per-run fields to capture, including at least one cost field",
+     "A": "met",
+     "A_evidence": "\"| tokens / tool calls / duration | captured at the run, not reconstructed; `null` if genuinely not captured, never 0 |\"",
+     "B": "met",
+     "B_evidence": "\"run_id, task_id, arm(with|without), repeat(1..3), model_id, started_at, wall_clock_s, tokens_in, tokens_out, tokens_total,\""
+    },
+    {
+     "expectation": "the grader for this output is code counting rows and columns, not a judging agent",
+     "A": "not met",
+     "A_evidence": "I looked for a statement that grading is a deterministic script/parser counting rows and columns. The answer records count fields (\"rows emitted | integer\", \"phantom rows | rows with no corresponding finding\") but never says what does the counting, and its grader section reads as a judging agent: \"hand it to the grader with no hint. If it comes back \\\"no findings\\\", the grader is blind\" and \"Let the grader also attack the expectations\" - an agent, not code.",
+     "B": "met",
+     "B_evidence": "\"Grading is a parser script, not a model, for everything except mapping a row to a ground-truth finding - that mapping is done by a human once per output and the mapping file is committed\" (also \"Primary metric: **row-to-finding fidelity** ... Deterministic, scriptable.\")"
+    }
+   ],
+   "expectation_critique": "Expectations 1 and 3 are close to unfailable for any answer that produces a run design at all: naming a task x arm x repeat product and listing a token field is what the format itself forces, and both answers cleared them in a single line. Expectation 2 bundles two independent controls (same-turn launch, fresh session) into one all-or-nothing ruling, so an answer that got one and not the other cannot be scored honestly. Expectation 4 is the only one that discriminated. Missing from the set are the requirements where a run design for THIS skill actually stands or falls: per-task ground-truth finding counts to compare rows against, a negative-trigger task where no table may be emitted, a task that tempts merging findings, and a preregistered pass bar - all present in the answers, none of them measured."
+  },
+  {
+   "id": 3,
+   "rulings": [
+    {
+     "expectation": "does not treat the missing rows as satisfying the cap",
+     "A": "met",
+     "A_evidence": "\"**It does not pass. It does not fail either - it is undetermined, and undetermined is not a pass.**\" plus the explicit refusal of imputation: \"Averaging the two known baselines and applying that to the missing rows assumes the missing rows behaved like the present ones, which is exactly the thing we do not know.\"",
+     "B": "met",
+     "B_evidence": "\"That is a *null*, not a zero and not a fine result ... Quietly averaging the two rows that do have counts, or scoring the missing pair as \\\"no growth observed\\\", is the classic way a measurement lies - the missing number silently counting as a pass.\""
+    },
+    {
+     "expectation": "reports the cost clause as unmeasured rather than passed or failed",
+     "A": "met",
+     "A_evidence": "\"Token growth is a ratio, and half the denominators are missing. With two of four baseline token counts absent there is no defensible way to compute growth against the 20% cap\"",
+     "B": "met",
+     "B_evidence": "\"**Token clause: NOT MEASURED.** Record it as `null`, not as met.\""
+    },
+    {
+     "expectation": "says what would have to be done to make it decidable",
+     "A": "met",
+     "A_evidence": "\"**Do this:** re-run the two missing without-arm rows under the same conditions and recompute the ratio on all four pairs.\"",
+     "B": "met",
+     "B_evidence": "\"To close it: re-run the two without-arm cells that lack counts - freshly, paired against their with-arm partners in the same turn, because tokens from a solo re-run an hour later are not comparable to the with-arm numbers already in the table.\""
+    }
+   ],
+   "expectation_critique": "This set failed nothing and could not have. Expectations 1 and 2 are the same ruling stated negatively and then positively - an answer that records the cost clause as unmeasured has by construction not treated the gap as a pass, so one measurement is counted twice. Expectation 3 is satisfied by any 're-run the missing cells' sentence, which is the obvious next line after the verdict. Real discriminators were available and unused: whether the answer refuses to drop the incomplete pairs (dropping them biases the surviving sample toward cheap runs - one answer said so, the other did not); whether it keeps the correctness clause separate from the cost clause instead of letting better pass rates absorb the gap; and whether it treats a harness that loses metrics without erroring as impugning the numbers that DID land, including the pass rates from the same harness. Both answers were substantively strong here, but the set would have scored a much weaker answer identically."
+  },
+  {
+   "id": 4,
+   "rulings": [
+    {
+     "expectation": "names the two readings a null finding is ambiguous between",
+     "A": "met",
+     "A_evidence": "\"either the outputs are clean, or the reviewer does not detect problems. There was no positive control in this review\"",
+     "B": "met",
+     "B_evidence": "\"it has two indistinguishable causes: the twelve outputs really are clean, or the reviewing agent cannot see the defect class we pointed it at.\""
+    },
+    {
+     "expectation": "specifies a calibration specimen with exactly one planted defect",
+     "A": "not met",
+     "A_evidence": "I looked for a single specimen altered in exactly one place. The answer plants several defects across several outputs instead: \"**Calibrate.** Seed known defects of the kind the review is supposed to find into 3-4 of the twelve outputs (or into copies), shuffle, and re-run the same reviewer blind.\" That design cannot tell which defect class was caught, which is the point of the single-defect specimen.",
+     "B": "met",
+     "B_evidence": "\"take one of the twelve real outputs, alter it in exactly one place, in the defect class we most need caught (one defect, not several; several teaches only that the grader found *something*) - and hand it to the same grader with the same brief and no hint that it is planted\""
+    },
+    {
+     "expectation": "withholds the conclusion until the grader has been checked",
+     "A": "met",
+     "A_evidence": "\"**Conclusion recorded: none. The review is uninformative and no quality claim is entered.**\" and \"Before this result can be cited: 1. **Calibrate.**\"",
+     "B": "met",
+     "B_evidence": "\"**Conclusion: no conclusion. The review is uninterpretable until the grader is calibrated.**\" and \"**Status: NOT EVIDENCE.** The grader was not calibrated before the pass\""
+    }
+   ],
+   "expectation_critique": "Expectations 1 and 3 are near-duplicates and both are handed to the answer by the question's own shape: naming the ambiguity IS the reason to withhold the conclusion, so no answer can plausibly satisfy one and fail the other, and any answer that spots the trap at all clears both. Expectation 2 is the only one with teeth, and it earned its place - it separated the two answers on a real design point (one planted defect in one specimen vs several defects across several outputs). The set misses the other substantive divide: only one answer states that this quality review is not the skill's with-vs-without test at all and cannot support an adoption decision even if the grader were calibrated. An answer could satisfy all three expectations and still leave the reader believing a calibrated clean sweep would prove the skill works."
+  },
+  {
+   "id": 5,
+   "rulings": [
+    {
+     "expectation": "refuses on the ground that the win did not survive the repeat",
+     "A": "met",
+     "A_evidence": "\"**Not yet - that is a draw, not a win.** Task 3 was won in repeat 1 and tied in repeat 2. A win that appears in one repeat and not the other is a draw with a good draw in it: it is what a small random advantage looks like\"",
+     "B": "met",
+     "B_evidence": "\"Task 3 won in repeat 1 and tied in repeat 2 - the skill did not reproduce its own only success. An effect that appears in one of its two attempts on the same task, with everything else held fixed, is indistinguishable from run-to-run variance.\""
+    },
+    {
+     "expectation": "does not count the tie-in-second-repeat as a partial win",
+     "A": "met",
+     "A_evidence": "\"So the scoreboard is not \\\"one win, no losses\\\" - it is **five ties and no losses**, with one repeat that went nicely.\"",
+     "B": "met",
+     "B_evidence": "\"If anything the repeat is evidence against the win, not support for it.\" The tally line \"one win, zero losses, nine ties\" counts per paired observation, not per task, and the task-level credit is explicitly refused."
+    },
+    {
+     "expectation": "says what result would change the answer",
+     "A": "met",
+     "A_evidence": "\"**Name the axis and re-run task 3 specifically**, >=3 repeats per arm, paired, launched together. If the win reproduces in the majority of repeats on a stated axis, ship. If it alternates, it was noise and the answer is no.\"",
+     "B": "met",
+     "B_evidence": "\"Write the ship bar down before rerunning - e.g. wins on >= 3 of 6 tasks, reproduced in every repeat of those tasks, zero regressions, <= 1.20x tokens.\""
+    }
+   ],
+   "expectation_critique": "Expectations 1 and 2 are one measurement written twice: an answer that refuses BECAUSE the win did not survive the repeat has already declined to credit the repeat-2 tie, and there is no realistic answer that fails one and passes the other. Expectation 3 is satisfied by any 'run more repeats' sentence and cannot distinguish a vague one from a bar with a number in it - both answers happened to supply numbers, but the expectation did not require one. The set is silent on the two things that actually differ between strong and weak answers to this question: that nine ties out of ten paired observations means the task set is at ceiling and more repeats on THESE tasks buy nothing (a rerun-as-specified recommendation is therefore partly wrong), and that no cost column was cited at all, which alone defaults the decision to no. An answer could clear all three expectations and still prescribe a rerun that cannot possibly decide anything."
+  }
+ ],
+ "overall": "Fifteen expectation slots were ruled across five questions, per answer. The great majority came back 'met' for both answers, which is mostly a fact about the expectation sets rather than about the answers: in questions 3, 4 and 5 the sets contain paraphrase pairs where one expectation cannot be satisfied without the other (Q3 'does not treat missing as a pass' / 'reports it as unmeasured'; Q4 'names the two readings' / 'withholds the conclusion'; Q5 'refuses because the win did not repeat' / 'does not count it as a partial win'), so the effective number of independent measurements is roughly nine, not fifteen. Four rulings discriminated at all: in question 2, one answer specified same-turn paired launch in fresh sessions and the other specified only interleaving with no session control; in question 2, one answer named a deterministic parser script as the grader while the other described handing tables to a grader that judges; and in question 4, one answer specified a single specimen altered in exactly one place while the other seeded several defects across three or four outputs, which cannot isolate the defect class. Question 1's first expectation ('declines to give a go/no-go') is not usable as written - both answers open with a NO-GO headline and both also state the run cannot decide, so it is met and contradicted within each answer, and it is in tension with the question, which asks for the go/no-go. The recurring weakness across all five sets is that they reward what the question's framing already suggests (compute the delta, name the ambiguity, ask for more repeats) and never test the judgement calls where the answers genuinely diverge: whether a ceiling-level baseline means the TASK SET is what failed, whether a threshold was preregistered or read in after the numbers, whether dropping incomplete pairs biases the surviving sample, whether a metric-losing harness impugns the rows that did land, and whether a quality review can substitute for a with-vs-without comparison at all. Several answers volunteered exactly those points and received no credit for them. To be a measurement rather than a checklist, each set needs at least one expectation a fluent, plausible, wrong answer would fail."
+}

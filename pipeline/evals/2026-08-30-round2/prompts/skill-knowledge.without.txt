@@ -1,0 +1,17 @@
+You are answering a set of independent questions from a colleague who is building a library of Claude Code skills. Answer each one as you actually would in that job. Where a question asks you to produce something - a file, a row, a run plan - PRODUCE IT; do not describe what you would produce. Where it asks a judgement, be decisive and short.
+
+Write your answers to the file named at the end of this prompt, one section per question, headed exactly '## Q1', '## Q2', and so on. Do not write anything else to disk. When you are done, reply with one line: the file path and the number of questions answered.
+
+At the very end of the file add a section '## consulted' listing any skills, files or tools you looked at while answering. If none, write 'none'.
+
+QUESTIONS
+
+Q1. Source: an engineering blog post, read in full, fetched today. It says: 'In our experience, teams that add a linting step to CI cut review time roughly in half.' Add this to the claim set for the skill we are building.
+
+Q2. The probe showed two failures: the agent did not check whether the migration held a lock past the request timeout, and it did not name which service read the renamed table. We already have nine claims from the proposal stage. What do we do about knowledge?
+
+Q3. I found the paper. It's paywalled so I have the abstract, which states the effect clearly with a percentage. Write the claim row.
+
+Q4. Two of our sources give different numbers for the same thing: one says 15 percent, the other 40 percent. The reference file is getting messy. Clean it up.
+
+Q5. I gathered these claims and I have gone through each one against its source. Here are my verdicts. Ready to bundle into the reference file?

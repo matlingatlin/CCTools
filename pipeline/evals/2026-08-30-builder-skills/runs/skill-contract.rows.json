@@ -1,0 +1,331 @@
+{
+  "skill": "skill-contract",
+  "repeats": [
+    1,
+    2
+  ],
+  "paired": [
+    {
+      "test": "Q1",
+      "repeat": 1,
+      "arm": "with",
+      "correct": true,
+      "n_expectations": 3,
+      "n_met": 3,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q1",
+      "repeat": 1,
+      "arm": "without",
+      "correct": false,
+      "n_expectations": 3,
+      "n_met": 2,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q2",
+      "repeat": 1,
+      "arm": "with",
+      "correct": true,
+      "n_expectations": 3,
+      "n_met": 3,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q2",
+      "repeat": 1,
+      "arm": "without",
+      "correct": true,
+      "n_expectations": 3,
+      "n_met": 3,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q3",
+      "repeat": 1,
+      "arm": "with",
+      "correct": true,
+      "n_expectations": 2,
+      "n_met": 2,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q3",
+      "repeat": 1,
+      "arm": "without",
+      "correct": false,
+      "n_expectations": 2,
+      "n_met": 1,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q4",
+      "repeat": 1,
+      "arm": "with",
+      "correct": true,
+      "n_expectations": 2,
+      "n_met": 2,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q4",
+      "repeat": 1,
+      "arm": "without",
+      "correct": false,
+      "n_expectations": 2,
+      "n_met": 1,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q5",
+      "repeat": 1,
+      "arm": "with",
+      "correct": true,
+      "n_expectations": 2,
+      "n_met": 2,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q5",
+      "repeat": 1,
+      "arm": "without",
+      "correct": false,
+      "n_expectations": 2,
+      "n_met": 1,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q1",
+      "repeat": 2,
+      "arm": "with",
+      "correct": true,
+      "n_expectations": 3,
+      "n_met": 3,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q1",
+      "repeat": 2,
+      "arm": "without",
+      "correct": false,
+      "n_expectations": 3,
+      "n_met": 2,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q2",
+      "repeat": 2,
+      "arm": "with",
+      "correct": true,
+      "n_expectations": 3,
+      "n_met": 3,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q2",
+      "repeat": 2,
+      "arm": "without",
+      "correct": false,
+      "n_expectations": 3,
+      "n_met": 2,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q3",
+      "repeat": 2,
+      "arm": "with",
+      "correct": true,
+      "n_expectations": 2,
+      "n_met": 2,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q3",
+      "repeat": 2,
+      "arm": "without",
+      "correct": false,
+      "n_expectations": 2,
+      "n_met": 1,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q4",
+      "repeat": 2,
+      "arm": "with",
+      "correct": true,
+      "n_expectations": 2,
+      "n_met": 2,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q4",
+      "repeat": 2,
+      "arm": "without",
+      "correct": false,
+      "n_expectations": 2,
+      "n_met": 1,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q5",
+      "repeat": 2,
+      "arm": "with",
+      "correct": true,
+      "n_expectations": 2,
+      "n_met": 2,
+      "tokens": null,
+      "tool_calls": null
+    },
+    {
+      "test": "Q5",
+      "repeat": 2,
+      "arm": "without",
+      "correct": false,
+      "n_expectations": 2,
+      "n_met": 1,
+      "tokens": null,
+      "tool_calls": null
+    }
+  ],
+  "scenarios": [
+    {
+      "ts": null,
+      "talent": "skill-contract",
+      "scenario": "Q1",
+      "kind": "normal",
+      "baseline": "miss",
+      "with": "pass",
+      "result": "pass",
+      "repeat": 1,
+      "backfill": false,
+      "expectation_critique": "The set grades narrated process, not the artefact the question asked for: neither answer writes a SKILL.md, and no expectation notices. 'Description written last' is the weakest \u2014 it is a one-clause ordering claim that any answer can assert without doing it, and both do; it also names the very field the prompt highlights, so it is close to a cue. 'Field rules read from the contract' is satisfied by any answer that merely refuses to proceed without the contract attached, which loses the distinction that actually separates these two (A reads per field at the moment of writing; B validates in one pass at the end) \u2014 the phrasing should say WHEN the read happens. Only the bill-of-materials expectation discriminates here, and it does so because it names a concrete artefact rather than an attitude."
+    },
+    {
+      "ts": null,
+      "talent": "skill-contract",
+      "scenario": "Q2",
+      "kind": "normal",
+      "baseline": "pass",
+      "with": "pass",
+      "result": "pass",
+      "repeat": 1,
+      "backfill": false,
+      "expectation_critique": "Expectations 1 and 2 are two views of one rule \u2014 if every step names its run, no unobserved step can survive \u2014 so a single sentence passes both, and both answers spend one sentence each. Worse, all three are satisfiable in the abstract: the question asks for a drafted steps section, and an answer that only describes how it would draft one still scores 3/3. That is visible here \u2014 A passes 'every step ends in something checkable' on a parenthetical of three example checks (lock mode, batched backfill, old column still written) that are themselves three items from a two-failure probe and are not tied to either observation, which is the exact violation expectation 2 exists to catch. The set cannot see it because it grades the claim, not the steps. A stronger set would require the actual steps, one per observed failure, with the run id quoted."
+    },
+    {
+      "ts": null,
+      "talent": "skill-contract",
+      "scenario": "Q3",
+      "kind": "normal",
+      "baseline": "miss",
+      "with": "pass",
+      "result": "pass",
+      "repeat": 1,
+      "backfill": false,
+      "expectation_critique": "Expectation 2 is close to unfailable: the question is a leading trap ('reads well. Ship it?') and both answers open with 'No.' before any reasoning, so it separates nothing \u2014 an answer that rejected the field for the wrong reason would still pass. Expectation 1 carries the whole question, and it is an ordering claim an answer can assert without any means of checking, which is how the two answers actually differ in a way the set half-misses: the real split is that B reads the cap out of the contract ('I read the cap out of the contract file rather than asserting one from memory') while A recites 1024 from library knowledge. No expectation asks where the number came from, even though a recalled cap is precisely the failure the surrounding method is built against."
+    },
+    {
+      "ts": null,
+      "talent": "skill-contract",
+      "scenario": "Q4",
+      "kind": "normal",
+      "baseline": "miss",
+      "with": "pass",
+      "result": "pass",
+      "repeat": 1,
+      "backfill": false,
+      "expectation_critique": "Expectation 1 grades narration rather than result: A produces the more concrete two-sided discriminator of the pair and still fails, purely for not saying out loud that it opened the sibling's file. If reading the sibling matters because the boundary would otherwise be guessed, the expectation should test the boundary against the incumbent's actual wording, not the presence of a read step. Expectation 2 is loose in the other direction \u2014 'names the other skill and says what goes there' passes it, with no requirement that the discriminator be in user vocabulary rather than solution vocabulary, or that negative triggers be run in both directions; both answers happen to go further than the bar, so the bar was not what separated them."
+    },
+    {
+      "ts": null,
+      "talent": "skill-contract",
+      "scenario": "Q5",
+      "kind": "normal",
+      "baseline": "miss",
+      "with": "pass",
+      "result": "pass",
+      "repeat": 1,
+      "backfill": false,
+      "expectation_critique": "Expectation 1 is unfailable against this question: the prompt invites a refusal and both answers decline in their opening clause, so it cannot tell a principled refusal from a reflexive one, nor from an answer that declines and then recites the rules anyway. Expectation 2 is the only one doing work, and it does it well \u2014 it catches that B's counter-offer is still a single up-front summary, which reintroduces the drift the rule exists to prevent, just with citations. Its wording is nearly too subtle for that job, though: 'reads the contract' would score B as met, and only 'at the moment the field is written' separates them. Worth stating explicitly as 'refuses an up-front whole-contract summary in favour of per-field reads at write time'."
+    },
+    {
+      "ts": null,
+      "talent": "skill-contract",
+      "scenario": "Q1",
+      "kind": "normal",
+      "baseline": "miss",
+      "with": "pass",
+      "result": "pass",
+      "repeat": 2,
+      "backfill": false,
+      "expectation_critique": "Only the bill-of-materials expectation discriminates; the other two are close to free. The question says 'Work in whatever order you think best', which openly invites an ordering answer, so 'description last' is the cued response, and because the contract file was not attached, 'read the contract rather than recall it' is forced by the missing input rather than by method - both answers flag the absence unprompted. The set's larger gap: the question asked for a SKILL.md to be written, and neither answer contains one. Every expectation is about process, so an answer that describes an impeccable order and produces no artefact scores full marks. There is also no expectation covering whether the candidate sentence was actually used or discarded, which is the one substantive judgement the task poses."
+    },
+    {
+      "ts": null,
+      "talent": "skill-contract",
+      "scenario": "Q2",
+      "kind": "normal",
+      "baseline": "miss",
+      "with": "pass",
+      "result": "pass",
+      "repeat": 2,
+      "backfill": false,
+      "expectation_critique": "Expectations two and three are satisfied by stating the principle, not by obeying it, and both answers state it in almost the same words. The set therefore cannot catch the actual hazard visible here: the transcript was not attached, and A nonetheless supplies invented content for the two steps ('confirm the migration is reversible or state explicitly that it is not', 'check the table's row count and whether the change takes a blocking lock on it') - plausible generic migration advice presented as the probe-derived steps, which is exactly what expectation two exists to prevent, yet A passes it on the strength of a disclaimer sentence. An expectation that the answer refuse to draft steps without the transcript, or that no rule content appear that is not quoted from it, would separate the two answers; as written only the first expectation does any work."
+    },
+    {
+      "ts": null,
+      "talent": "skill-contract",
+      "scenario": "Q3",
+      "kind": "normal",
+      "baseline": "miss",
+      "with": "pass",
+      "result": "pass",
+      "repeat": 2,
+      "backfill": false,
+      "expectation_critique": "The second expectation is unfailable for any answer that knows the cap: the question hands over the number 1,380 and asks 'Ship it?', so refusing on length is the obvious move and both answers open with 'No.' The first expectation is the only discriminator but is ambiguously worded - it does not say whether reasoning from a character count counts as 'the code check' or whether a checker must actually be run, which is why B lands unclear rather than cleanly on one side. Missing entirely is the expectation that would have bitten here: both answers assert the 1,024 cap from memory, and neither proposes reading it out of the contract - the precise failure mode question 5 is built to test. As a set it measures whether the answer says 'length before readability', not whether the length rule itself was verified."
+    },
+    {
+      "ts": null,
+      "talent": "skill-contract",
+      "scenario": "Q4",
+      "kind": "normal",
+      "baseline": "miss",
+      "with": "pass",
+      "result": "pass",
+      "repeat": 2,
+      "backfill": false,
+      "expectation_critique": "Both answers hit the second expectation with near-identical phrasing about a boundary asserted from only one end, which suggests it is testing possession of a stock idiom rather than a judgement - it is the strong expectation of the set, but it does not separate. The first is weak by construction: the question already tells the answer that two skills overlap, so 'read the other one first' is the cued opening move, and its wording ('description') is narrower than what a good answer might sensibly do (read the bodies), so it penalises depth. The set also never checks the deliverable: the question says 'Write the new one's description' and neither answer contains a description, only a procedure for arriving at one - nothing in the set can fail that."
+    },
+    {
+      "ts": null,
+      "talent": "skill-contract",
+      "scenario": "Q5",
+      "kind": "normal",
+      "baseline": "miss",
+      "with": "pass",
+      "result": "pass",
+      "repeat": 2,
+      "backfill": false,
+      "expectation_critique": "The first expectation is close to unfailable: the question is a transparent trap ('from memory so we can move fast') and any refusal, however thin, satisfies it - both answers open with 'No'. The second is the real discriminator but is phrased for a situation the question does not contain: nothing is being written here, so it rewards uttering the phrase 'at write time' over demonstrating it, and it marks A down for a read that is arguably the correct response to the actual request. What the set does not measure is the thing at stake - whether the answer leaks any specific remembered rule value while refusing. Both answers happen to avoid that, but the same answers cheerfully recalled the 1,024 cap in question 3, so the set is not detecting the behaviour it is named after."
+    }
+  ]
+}

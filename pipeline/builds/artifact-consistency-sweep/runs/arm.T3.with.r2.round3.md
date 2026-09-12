@@ -1,0 +1,153 @@
+Ledger (plan → examined): step×rule 7×3=21 → 21; step×step (7−1)+6 shared terms=12 → 12; step×check 7×23=161 → 161; description×body 7 clauses → 7; file×BOM 14 files present + 0 BOM rows (no `bom.json` in the bundle) + 20 named paths = 34 → 34; claim×rationale 3 rules → 3. No shortfall.
+
+```json
+{
+  "findings": [
+    {
+      "level": "CLASS",
+      "where": "SKILL.md step 2 (no material branch) vs step 6 / step 7; evals/evals.json eval 3",
+      "finding": "Step 2's no-material branch ends in 'stop' after naming only the raw, the source-log row and the operation-log line, while step 6 claims its log line happens 'in every branch' and step 7 (lint, rebuild the index, one commit) carries no branch qualifier at all. A reader following step 2 never reaches step 7, yet eval 3 grades lint-shaped state ('no dangling [[link]]; every note listed in INDEX.md') on exactly that branch. Either 'stop' is wrong or steps 6-7 do not in fact apply in every branch.",
+      "quote": "\"**no material** - no claim, no value, no newer date for any page: keep the raw, write the source-log row and the operation-log line, touch no page, stop.\" || \"one operation-log line naming the disposition, the source URL and the pages touched, in every branch.\""
+    },
+    {
+      "level": "CLASS",
+      "where": "references/rationale.md line 3 vs SKILL.md ## Rules (rule 3) and SKILL.md line 9",
+      "finding": "rationale.md asserts that every rule in SKILL.md appears there with its evidence, and that a rule with nothing behind it does not belong in the body. Rule 3 (installs nothing / fetches no external code) has no entry in rationale.md at all. The two documents also disagree about what the file contains: SKILL.md says it holds the failures behind each STEP, rationale.md says it holds every RULE; its eight bullets are in fact organised by step.",
+      "quote": "\"Every rule in SKILL.md is here with the run or the source it came from; a rule with nothing behind it does not belong in the body.\" || \"This skill installs nothing and fetches no external code.\""
+    },
+    {
+      "level": "CLASS",
+      "where": "SKILL.md step 3 vs step 4",
+      "finding": "Step 3 permits claim rows to live either in the page's Claims table or in a wiki-level claims ledger where one exists. Step 4 then requires, unconditionally, that the page body contain a Claims table with one row per claim. The ledger branch step 3 opens is forbidden by step 4, and no expectation grades the ledger branch.",
+      "quote": "\"The claim rows go in the page's `## Claims` table (step 4) or in the wiki's claims ledger where one exists.\" || \"4. **Write the page in the schema.**\""
+    },
+    {
+      "level": "CLASS",
+      "where": "SKILL.md step 1 vs evals/files/raw/*.md (all three fixtures); no manifest anywhere in the bundle",
+      "finding": "Step 1 orders provenance out of the raw file and into the directory's manifest, on the ground that the raw must stay byte-identical. Every bundled raw fixture carries 'source:' and 'fetched:' lines inside the file, and the bundle contains no manifest (no MANIFEST.md, and evals/files/raw has no manifest file). The artefact's own test material demonstrates the shape the step forbids, and nothing grades the manifest.",
+      "quote": "\"Where the wiki keeps a `raw/` directory: fetch date in the file name, and provenance (source, date, hash, size, which page it feeds) in the directory's manifest rather than inside the immutable file.\" || \"source: https://example.test/pricing-2026-09\""
+    },
+    {
+      "level": "CLASS",
+      "where": "SKILL.md step 7 vs ## Rules rule 3; evals/evals.json (all three evals)",
+      "finding": "Step 7 requires the fact and its lint pass to land in one commit, and requires the search index to be rebuilt. Rule 3 restricts the skill to the wiki's own query, lint and index commands 'and nothing else' - a commit is none of those. The eval fixture is also not a git repository and has no search index or build command, so neither the commit nor the rebuild can be performed or graded in any of the three executable evals.",
+      "quote": "\"The fact and its lint pass land in one commit.\" || \"It runs the wiki's own query, lint and index commands, and nothing else.\""
+    },
+    {
+      "level": "CLASS",
+      "where": "SKILL.md frontmatter description vs SKILL.md body 'Not this skill' (lines 17-20)",
+      "finding": "The body states that the sibling units are phrased by job and that the local names live under 'In this repo'. The description carries five repo-local unit names (deep-reading, skill-knowledge, unified-memory, doc-claim-reconciliation, kb-curator) in its NOT clauses, so the description already does what the body says it defers. A copy of the skill in another repository inherits five names that do not exist there.",
+      "quote": "\"NOT summarising a text (deep-reading), NOT claims for a skill bundle (skill-knowledge), NOT agent memory (unified-memory), NOT docs broken by code (doc-claim-reconciliation); whole-wiki clean-up is the kb-curator agent.\" || \"Each is its own unit - the local names are under *In this repo*.\""
+    },
+    {
+      "level": "CLASS",
+      "where": "SKILL.md step 4 vs evals/evals.json expectations (all evals) and evals/files/check.py",
+      "finding": "Named sub-clauses of the steps are graded by no expectation: step 4's claims-row columns 'source' and 'locator' (only the quote and the verdict word are checked), step 6's 'the pages touched' in the log line, step 6's index row for a new page (no eval creates a page), step 7's index rebuild. A page satisfying every check can omit half the schema step 4 defines.",
+      "quote": "\"a `## Claims` table with one row per claim - claim | source | locator | verbatim quote | verdict; what it means here; what is open.\""
+    },
+    {
+      "level": "CLASS",
+      "where": "evals.md line 49 vs evals.md scenarios S3, S4, S6",
+      "finding": "Three of the six declared scenarios have no executable expectation, and the artefact acknowledges this without closing it. The consequence is that step 1's video/transcript branch, step 5 (cascade) and the negative trigger are graded by nothing executable; the trigger-matrix numbers offered in place of S6 are asserted in prose with no bundled artefact behind them.",
+      "quote": "\"S3 (transcript with no URL), S4 (cascade under pressure) and S6 (negative trigger) have no executable eval yet; S6's claim is carried by the trigger matrix instead (recall 11/12, mis-fire 0/4, sibling reached 4/4).\""
+    },
+    {
+      "level": "INSTANCE",
+      "where": "evals/files/check.py lines 54-57 vs evals/evals.json eval 3 prompt",
+      "finding": "The T3 'byte-identical to the fixture' checks compare the wiki against a path that resolves to the same directory the eval prompt tells the model to edit. check.py sits in evals/files/, so the fixture path is evals/files/wiki/notes - the very wiki passed in as argv[1]. before and after therefore hash the same file after the edit and can never differ. The central check of the one scenario that measured a win (S5/T3) cannot fail.",
+      "quote": "\"fixture = pathlib.Path(__file__).resolve().parent / \\\"wiki\\\" / \\\"notes\\\"\" || \"Edit the wiki in place and list the files you changed.\""
+    },
+    {
+      "level": "INSTANCE",
+      "where": "evals/evals.json eval 1 expectation 3 vs SKILL.md step 2 (update branch)",
+      "finding": "Eval 1 requires the superseded price to be kept as a dated row, and check.py enforces it. No step orders retaining a superseded value on the update branch - only the disputed branch says to keep both values. An expectation grades behaviour no step produces; a run that follows the steps exactly may fail it.",
+      "quote": "\"the 2026-08-20 Beta 5 row ($3, $15) is kept as a dated superseded row\" || \"**update** - a page owns it: extend it, never a rival.\""
+    },
+    {
+      "level": "INSTANCE",
+      "where": "evals.md ## Method vs the bundle and evals/evals.json",
+      "finding": "evals.md names a grader that is not in the bundle (knowledge/kb.py, a host-repo path; the eval fixture wiki contains no lint script), and the grader that actually exists and is wired into every eval, evals/files/check.py, is named nowhere in evals.md. The document that states how the scenarios are graded describes a different mechanism from the one that ships.",
+      "quote": "\"The observable criterion for every scenario is the state of the files, checked by `python3 knowledge/kb.py lint --json` and by reading the note.\""
+    },
+    {
+      "level": "INSTANCE",
+      "where": "evals/evals.json eval 1 expectation 8 vs SKILL.md step 5",
+      "finding": "The only expectation touching a neighbour link is already true in the fixture: prompt-caching.md ships containing [[model-prices]]. The check passes without any cascade work and fails only if the run deletes an existing link, so step 5's actual requirement - a sentence per named neighbour before the edge - is graded by nothing that can fail.",
+      "quote": "\"prompt-caching still names [[model-prices]]\" || \"No true sentence, no edge.\""
+    },
+    {
+      "level": "INSTANCE",
+      "where": "evals/files/check.py line 26 vs evals/evals.json eval 1 expectation 1",
+      "finding": "The 'no rival page' check only detects a new note whose file stem contains the substring 'pric'. A rival page named beta-5-2026-09, new-pricing-note or 2026-09-prices-alpha (the second of these does contain 'pric', the first and third do not) passes. The expectation is broader than the check that grades it.",
+      "quote": "\"check(\\\"no rival page\\\", not any(s not in (\\\"model-prices\\\",\\\"prompt-caching\\\",\\\"local-models\\\") and \\\"pric\\\" in s for s in notes), str(sorted(notes)))\""
+    },
+    {
+      "level": "INSTANCE",
+      "where": "evals/files/check.py line 32 and evals/evals.json eval 1 expectation 4 vs evals.md S1 pass criterion",
+      "finding": "S1's pass criterion requires the verdict MEASURED specifically; the expectation asks only for 'a verdict word' and check.py accepts any of MEASURED|REPEATED|DERIVED. A run that grades a measured vendor price as REPEATED or DERIVED passes the grader while failing the stated criterion, so step 3's grading distinction is not tested.",
+      "quote": "\"re.search(r\\\"MEASURED|REPEATED|DERIVED\\\", l)\" || \"a claims-table row carries the verbatim raw line and a verdict word\""
+    },
+    {
+      "level": "INSTANCE",
+      "where": "evals.md line 3 vs the per-scenario execution lines of S1, S2, S5",
+      "finding": "The header states three arms and k=2. Each executed scenario reports four arms (with, without, probe, incumbent), and 'without' ran at k=1 in every one of them ('without 1/1', 'without 0/1'). The S5 result line adds 0/5 baseline runs, which is only reachable by summing three separate baseline arms. The arm and repeat counts the verdict rests on contradict the counts the scenarios report.",
+      "quote": "\"three arms, k=2, code grader, blinded, preregistered rule\" || \"EXECUTED as T1: with 2/2, without 1/1, probe 2/2, incumbent 2/2\""
+    },
+    {
+      "level": "INSTANCE",
+      "where": "evals.md S5 heading and result vs evals.md ## Method",
+      "finding": "The Method reserves the verdict 'PASS. Beats baseline.' for scenarios where the baseline plausibly fails, and reserves plain PASS for normal scenarios. S5 is tagged normal yet is reported as beating the baseline 5 runs to 0 - the single measured win in the build. The scenario classification and the verdict rule contradict each other, and the blend of normal versus adversarial scenarios is miscounted as a result.",
+      "quote": "\"### S5 — no material · normal — EXECUTED as T3: with 2/2; without 0/1, probe 0/2, incumbent 0/2 — the one measured win, and the rule step 2 was rewritten for\" || \"**Result:** PASS. Beats baseline (0/5 baseline runs vs 2/2 with)\""
+    },
+    {
+      "level": "INSTANCE",
+      "where": "the bundle as a whole; evals/evals.json 'files' arrays",
+      "finding": "No bill of materials is present - there is no bom.json or equivalent, so nothing declares which files the artefact ships and the file-versus-BOM comparison collapses to files-present versus paths-named. The only manifest in the bundle is each eval's 'files' array, which lists three paths and omits evals.md, references/rationale.md and SKILL.md; SKILL.md in turn names only references/rationale.md and never names evals.md or check.py. Two bundled documents are pointed at by nothing.",
+      "quote": "\"evals/files/check.py\""
+    },
+    {
+      "level": "INSTANCE",
+      "where": "evals.md S1 pass criterion vs evals/evals.json eval 1 and evals/files/check.py",
+      "finding": "'INDEX unchanged' is graded by nothing: check.py only tests that each note's [[stem]] appears in INDEX.md, which stays true if a run appends rows. The same holds for 'and date' in S5's criterion for the no-material log line - check.py checks for the words 'no material' and the source slug only. Pass criteria that appear in the eval document have no counterpart in the executable expectations.",
+      "quote": "\"INDEX unchanged, SOURCES +1 row\""
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "checkable": true,
+      "graded_by": "ungraded — no expectation in evals/evals.json and no check in check.py inspects the raw, its fetch-date file name, or a manifest; evals.md S3 is the scenario for it and is pending"
+    },
+    {
+      "step": 2,
+      "checkable": true,
+      "graded_by": "eval 3 'LOG.md says no material and names the blog' + 'model-prices, prompt-caching and local-models are byte-identical to the fixture' (but see the check.py self-comparison finding), eval 1 'LOG.md has a line naming the source and \"update\"', eval 2 'LOG.md names the card and \"disputed\"' and 'a row is marked disputed and the page status is disputed'"
+    },
+    {
+      "step": 3,
+      "checkable": true,
+      "graded_by": "eval 1 'a claims-table row carries the verbatim raw line and a verdict word'; eval 2 'a claims row carries 753B, the card's verbatim line and a verdict word' and 'a claims row carries 744B and a verdict word'. The 'every number, date and quote' scope and the claims-ledger branch are graded by nothing"
+    },
+    {
+      "step": 4,
+      "checkable": true,
+      "graded_by": "eval 1 'a Beta 5 row carries $2, $10 and a 2026-09 date' and 'the new source with its fetch date is in model-prices' frontmatter'; check.py's schema:{stem} frontmatter-key check in every task. The claims-row 'source' and 'locator' columns and the 'what it means here / what is open' sections are graded by nothing"
+    },
+    {
+      "step": 5,
+      "checkable": true,
+      "graded_by": "nothing that can fail — the only related expectation, eval 1 'prompt-caching still names [[model-prices]]', is already satisfied by the fixture before any run; evals.md S4 is the scenario for this step and is pending"
+    },
+    {
+      "step": 6,
+      "checkable": true,
+      "graded_by": "eval 1 'SOURCES.md has a row for the pricing page' + 'LOG.md has a line naming the source and \"update\"'; eval 2 'SOURCES.md has a row for the card' + 'LOG.md names the card and \"disputed\"'; eval 3 'SOURCES.md has a row for the blog' + 'LOG.md says no material and names the blog'. The 'pages touched' element and the map-of-contents row for a new page are graded by nothing"
+    },
+    {
+      "step": 7,
+      "checkable": true,
+      "graded_by": "partly — the shared expectation 'every note keeps its frontmatter; no dangling [[link]]; every note listed in INDEX.md' (evals 1-3) grades the lint-clean end state. The index rebuild, the one-commit requirement and the by-hand fallback's 'say so in the log line' are graded by nothing, and the fixture wiki has no lint script, so the branch that actually applies is the ungraded one"
+    }
+  ]
+}
+```

@@ -1,0 +1,19 @@
+You are answering a set of independent questions from a colleague who is building a library of Claude Code skills. Answer each one as you actually would in that job: concrete, decisive, and short - a few sentences to a short paragraph each. Say what you would DO.
+
+Write your answers to the file named at the end of this prompt, one section per question, headed exactly '## Q1', '## Q2', and so on. Do not write anything else to disk. When you are done, reply with one line: the file path and the number of questions answered.
+
+At the very end of the file add a section '## consulted' listing any skills, files or tools you looked at while answering. If none, write 'none'.
+
+QUESTIONS
+
+Q1. The baseline already handles all five tasks correctly without the new skill. Should we drop the build?
+
+Q2. I ran the skill on one task and it beat the baseline clearly. Ship it?
+
+Q3. We forgot to capture token counts for the without-arm. The pass rates are better with the skill. Does it meet a threshold that caps token growth at 20%?
+
+Q4. The reviewer agent read the output and reported no problems. Good to go?
+
+Q5. Write the eval expectations now so we have them ready before the run.
+
+Q6. Here are the results. The threshold we wrote says 'ship if it feels better'. Does it pass?

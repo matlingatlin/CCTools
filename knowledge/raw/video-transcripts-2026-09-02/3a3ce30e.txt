@@ -1,0 +1,13 @@
+[   0.0] You need a Claude code agentic OS and here's how to build one now your Claude code agentic
+[   5.1] OS really has four parts. Now the first part simple enough to understand that's you in Claude code.
+[  11.2] Next we need to add some sort of memory for me I use Obsidian because it's super easy to set up
+[  15.6] and it's free. Third we need to add all of our skill packs and automations and these should
+[  19.8] be related to day-to-day tasks. So I have productivity with GWS I have research that
+[  24.6] brings in notebook LLM I have all my content creation skills and then you pretty much apply
+[  29.4] that to any sort of custom skill stack you want. Lastly we want to put all those skills on our
+[  33.8] dashboard so I can easily run the skill by just pressing a button and then I combine that with
+[  38.6] whatever sort of observability I want. So right here you have different usage windows I can very
+[  43.8] quickly go into my vault but you can replace this with anything. The best part about this is the
+[  48.3] custom side of it so I can have custom skills I can have custom gauges on my dashboard whatever
+[  53.8] you want it to be you can make it work that's why it's so powerful. So if you want to get
+[  57.3] your hands on this you can find it in my community there's a link to it in my profile.

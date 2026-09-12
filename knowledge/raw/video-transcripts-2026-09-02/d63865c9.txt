@@ -1,0 +1,25 @@
+[   0.0] One of the Godfathers of AI just quietly published nine rules for building AI agents.
+[   4.3] Let's breeze through them real quick. You can find the full post over on next.
+[   7.4] Stop writing prompts. If you find yourself iterating on a single message at three in the morning,
+[  11.2] you are still in the prompting era. So this is actually really good here.
+[  14.7] I'm going to be transcribing this myself and feeding it to Claude, see what I can get.
+[  18.5] All right. So here's a summary. You can find the actual paper online somewhere. It's free.
+[  22.6] One, the first thing you want to do is you want to give it a why,
+[  24.6] why you're trying to do the thing, and then use that goal feature, I think, to do this.
+[  28.2] You want to set explicit negatives. So tell things that can't do. This will help you keep on task.
+[  33.8] Match the effort dial. So I guess you're going to give us some instructions for low,
+[  36.6] medium, high for certain tasks, et cetera. I mean, this is the type of stuff that if you
+[  39.4] feed this to Claude and say, turn this into, I mean, this is exactly what I'm going to do.
+[  42.9] I'm going to take this entire thing, including the paper, and I'm going to make a skill in
+[  46.1] Claude that is how to kick off a loop slash fable project or something like that. And then
+[  51.5] every time I want to do a new one, it'll reference this, it'll ask me questions,
+[  55.8] it'll build a plan. And then I'll just say, go, I don't have to build a plan actually for
+[  59.1] whatever the thing is going to be. This is good stuff. I will check it out. And then the actual
+[  63.0] paper, I believe the paper, here's an image of it. So this is online somewhere. I'm sure you'll
+[  68.2] find this. Field notes on agents that run for days loops.md. So that is actually probably
+[  73.4] worked downloading as well, as well as this tweet that I'm going to get to help
+[  77.4] kind of build that skill out. So if that's useful, hopefully that's useful.
+[  80.6] If you want some help, if you want to get a glimpse into my AI agents,
+[  83.6] just know I used to run multiple brands while feeling sane and a team of 30,
+[  87.8] then grab it by commenting or DMing, get a glimpse into my AI productivity system,
+[  93.0] comment OS and I'll send it to you.

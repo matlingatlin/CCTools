@@ -1,0 +1,11 @@
+[   0.0] This free tool tripled what Opus 5 scores without touching the model itself.
+[   5.2] This happened on ARC AGI 3, the benchmark built to test actual reasoning.
+[  10.6] Prime Intellect built the harness and it's the layer that wraps around a model and does the driving.
+[  15.8] While it runs, it edits its own prompts, its skills and its memory based on what keeps
+[  21.2] failing so it finishes on a better setup than it started with.
+[  24.5] Now the honest part, Opus 5 on its own scores 30 and ARC verified that themselves.
+[  30.1] The 95.5 with the harness comes from Prime Intellect's own report so nobody's actually replicated it
+[  36.6] and it's 0.1 above the human expert score. It's MIT licensed, free and it's already
+[  42.0] passed 13,000 stars on GitHub and it works with the model that you already pay for.
+[  46.6] Opus didn't get smarter last week but the things steering it did.
+[  50.4] Comment Prime and I'll send you the repo.

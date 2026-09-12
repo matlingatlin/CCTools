@@ -1,0 +1,8 @@
+{
+  "file-explorer": true, "global-search": true, "switcher": true, "graph": true,
+  "backlink": true, "outgoing-link": true, "tag-pane": true, "page-preview": true,
+  "canvas": true, "outline": true, "word-count": false, "file-recovery": true,
+  "properties": true, "bookmarks": true, "note-composer": false, "command-palette": true,
+  "daily-notes": false, "templates": false, "slides": false, "audio-recorder": false,
+  "workspaces": false, "sync": false, "publish": false, "random-note": false, "zk-prefixer": false
+}

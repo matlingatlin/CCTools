@@ -1,0 +1,64 @@
+{
+ "skill_name": "llm-wiki-ingest",
+ "evals": [
+  {
+   "id": 1,
+   "prompt": "The wiki at evals/files/wiki has notes/, INDEX.md, SOURCES.md and LOG.md. Ingest the source evals/files/raw/2026-09-02-pricing-page.md into it. Edit the wiki in place and list the files you changed.",
+   "expected_output": "The owning note (model-prices) is updated in place: a dated row per changed price, the superseded price kept, the new source with its fetch date in frontmatter; no new page; a SOURCES row and a LOG line; the neighbour still names the owner.",
+   "files": [
+    "evals/files/wiki",
+    "evals/files/raw/2026-09-02-pricing-page.md",
+    "evals/files/check.py"
+   ],
+   "expectations": [
+    "model-prices is the page updated; no rival page",
+    "a Beta 5 row carries $2, $10 and a 2026-09 date",
+    "the 2026-08-20 Beta 5 row ($3, $15) is kept as a dated superseded row",
+    "a claims-table row carries the verbatim raw line and a verdict word",
+    "the new source with its fetch date is in model-prices' frontmatter",
+    "SOURCES.md has a row for the pricing page",
+    "LOG.md has a line naming the source and 'update'",
+    "prompt-caching still names [[model-prices]]",
+    "every note keeps its frontmatter; no dangling [[link]]; every note listed in INDEX.md"
+   ]
+  },
+  {
+   "id": 2,
+   "prompt": "The wiki at evals/files/wiki has notes/, INDEX.md, SOURCES.md and LOG.md. Ingest the source evals/files/raw/2026-09-02-gamma-model-card.md into it. Edit the wiki in place and list the files you changed.",
+   "expected_output": "Both parameter counts kept as their own dated rows with their sources, the note marked disputed at that fact, neither value overwritten; SOURCES and LOG rows.",
+   "files": [
+    "evals/files/wiki",
+    "evals/files/raw/2026-09-02-gamma-model-card.md",
+    "evals/files/check.py"
+   ],
+   "expectations": [
+    "local-models holds both 744B and 753B",
+    "a claims row carries 753B, the card's verbatim line and a verdict word",
+    "a claims row carries 744B and a verdict word",
+    "a row is marked disputed and the page status is disputed",
+    "both sources dated 2026-08-25 and 2026-09-02",
+    "the model card is in local-models' frontmatter sources",
+    "SOURCES.md has a row for the card",
+    "LOG.md names the card and 'disputed'",
+    "every note keeps its frontmatter; no dangling [[link]]; every note listed in INDEX.md"
+   ]
+  },
+  {
+   "id": 3,
+   "prompt": "The wiki at evals/files/wiki has notes/, INDEX.md, SOURCES.md and LOG.md. Ingest the source evals/files/raw/2026-09-02-blog-restating-caching.md into it. Edit the wiki in place and list the files you changed.",
+   "expected_output": "No page changed and no page created; one LOG line saying no material with the source URL.",
+   "files": [
+    "evals/files/wiki",
+    "evals/files/raw/2026-09-02-blog-restating-caching.md",
+    "evals/files/check.py"
+   ],
+   "expectations": [
+    "model-prices, prompt-caching and local-models are byte-identical to the fixture",
+    "no new note",
+    "LOG.md says no material and names the blog",
+    "SOURCES.md has a row for the blog",
+    "every note keeps its frontmatter; no dangling [[link]]; every note listed in INDEX.md"
+   ]
+  }
+ ]
+}

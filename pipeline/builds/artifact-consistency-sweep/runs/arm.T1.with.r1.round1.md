@@ -1,0 +1,199 @@
+I read the method skill first, then swept the artefact at `./artifact-A` (SKILL.md, evals.md, evals/evals.json, 9 fixture files; there is no `references/` directory). Bill of materials taken from `pipeline/builds/llm-wiki-ingest/bom.json` (14 rows) and from the `files` lists inside `evals/evals.json`.
+
+**Plan counts — steps 7 · rules 5 · description clauses 18 · grading units 9 (3 `evals.json` prose expectations + 6 `evals.md` scenarios; machine `expectations` arrays: 0) · files present 12 · BOM rows 14.** Owed rows: step×rule 35, step×step 15 (6 handoffs + 9 shared terms: raw, index, operation log, sources list, claims row, date, disputed, lint, neighbour), step×check 63, description×body 18, file×BOM 26, claim×rationale 29 (5 rules + 24 imperative sentences).
+
+Ledger (plan / examined / non-consistent): step×rule 35/35/3 · step×step 15/15/6 · step×check 63/63/12 · description×body 18/18/2 · file×BOM 26/26/4 · claim×rationale 29/29/7. No shortfall.
+
+```json
+{
+  "findings": [
+    {
+      "level": "CLASS",
+      "where": "Rules bullet 5 x steps 2 and 7",
+      "finding": "A rule forbids exactly what two steps order. Step 2 orders 'Query the wiki's own index' and step 7 orders 'Run the wiki's deterministic lint ... and fix what it names before committing' - both are running external code, which In this repo spells out as 'python3 knowledge/kb.py find' and 'python3 knowledge/kb.py lint'. The description also promises 'lint' as a delivered part. Either the rule or steps 2 and 7 must change.",
+      "quote": "This skill never installs, fetches or runs external code; it is a writing discipline."
+    },
+    {
+      "level": "CLASS",
+      "where": "evals/evals.json, all three evals",
+      "finding": "Every eval carries an empty expectations array, so no step is graded by any executable check anywhere in the artefact. Grading rests entirely on the prose expected_output, which nothing parses. Combined with the missing grader (next finding), the suite cannot return a verdict on any step.",
+      "quote": "\"expectations\": []"
+    },
+    {
+      "level": "CLASS",
+      "where": "evals/evals.json files lists (evals 1, 2, 3) vs the bundle",
+      "finding": "All three evals declare a grader file that is not in the bundle - the artefact contains no check.py anywhere. Every eval names it, so nothing the evals claim to check can run.",
+      "quote": "\"evals/files/check.py\""
+    },
+    {
+      "level": "CLASS",
+      "where": "evals.md Method vs evals/evals.json files lists",
+      "finding": "The two eval documents name two different graders and neither is bundled: evals.md grades by 'python3 knowledge/kb.py lint --json' (a repo path outside the artefact, absent from the eval fixture) while evals.json names evals/files/check.py (absent). The fixture wiki at evals/files/wiki has no lint of any kind, so every pass criterion phrased as 'lint reports 0 errors' (S1) or 'lint reports the note-only source as INFO, not ERROR' (S3) is graded by nothing.",
+      "quote": "The observable criterion for every scenario is the state of the files, checked by `python3 knowledge/kb.py lint --json` and by reading the note."
+    },
+    {
+      "level": "CLASS",
+      "where": "evals.md scenarios S1-S6 vs evals/evals.json",
+      "finding": "evals.md declares six scenarios; evals.json implements three (S1, S2, S5). S3 (raw for a source with no URL, grading REPEATED vs MEASURED), S4 (the cascade under pressure) and S6 (the negative-trigger the house rule requires) have no runnable counterpart, which is why steps 1, 5 and 7 end up graded by nothing.",
+      "quote": "### S6 — a claim to bundle into a skill · negative-trigger"
+    },
+    {
+      "level": "CLASS",
+      "where": "SKILL.md step 1 vs step 4 vs evals/evals.json eval 1 and the fixture notes",
+      "finding": "Step 1 requires a content hash in the page's source entry, but step 4's frontmatter source fields are 'sources (url or path, fetch date, note)' - no hash; the three fixture notes carry url + fetched only; and eval 1's expected output asks only for 'the new source with its fetch date in frontmatter'. A run that omits the hash passes every check while disobeying step 1.",
+      "quote": "When the wiki has its own `raw/` directory, the copy goes there with the fetch date in the file name and a content hash in the page's source entry."
+    },
+    {
+      "level": "CLASS",
+      "where": "SKILL.md step 6 vs evals/evals.json eval 1 and evals.md S1",
+      "finding": "Step 6 orders an index row unconditionally, but the update branch of step 2 extends an existing page that the index already lists. Both graders say the opposite of step 6: evals.md S1 requires 'INDEX unchanged, SOURCES +1 row', and eval 1's expected output lists only 'a SOURCES row and a LOG line'. Step 6 is contradicted by the checks that grade it.",
+      "quote": "One row in the index (map of contents), one row per source in the source log, one entry in the operation log saying what was ingested and what it changed."
+    },
+    {
+      "level": "CLASS",
+      "where": "SKILL.md step 2 (no material definition) vs evals/evals.json eval 3 fixture",
+      "finding": "The no-material test has three disjuncts, and the third one fires on the eval-3 fixture: the blog is 'fetched: 2026-09-02' while prompt-caching.md's only source is 'fetched: 2026-08-20', so the source does bring a newer date to a page. Read literally the step forbids the triage the eval demands ('No page changed and no page created'). The discriminator the graded case turns on is the one the step gets wrong.",
+      "quote": "**no material** (the source adds no claim, no value and no newer date to any page)"
+    },
+    {
+      "level": "CLASS",
+      "where": "SKILL.md step 2 vs steps 6 and 7",
+      "finding": "The no-material branch stops before steps 6 and 7, both of which are written unconditionally ('One row in the index ... one entry in the operation log'; 'A verified fact and its lint pass land in the same commit'). Neither later step says which branches it applies in, and step 2 writes the operation-log line itself, so two steps own the same row under different rules - the branch writes one line with the URL and the reason, step 6 writes an entry 'saying what was ingested and what it changed'.",
+      "quote": "**No material means no page is touched**: keep the raw, write one operation-log line with the URL and the reason, and stop."
+    },
+    {
+      "level": "CLASS",
+      "where": "SKILL.md step 3 vs step 2, step 4 and evals/evals.json eval 1",
+      "finding": "The claim row is defined with five fields and no date, yet step 2's disputed branch requires 'both values as their own rows with dates', step 4 requires 'Date anything that will move', eval 1's expected output requires 'a dated row per changed price' and In this repo cites claims.contract.json, whose cl.dated rule requires an ISO fetch date. The row definition the whole skill hangs on omits a field every other part demands.",
+      "quote": "A claim is one row: what it says, source, locator, verbatim line, and a verdict"
+    },
+    {
+      "level": "INSTANCE",
+      "where": "SKILL.md step 4",
+      "finding": "The status vocabulary is called fixed but is never listed - not in step 4, not in step 2, not in the Rules, not in In this repo. The only value observable in the artefact is 'status: verified' in the three fixture notes, plus 'disputed' from step 2. A writer has nothing to check a status against and no grader can score one.",
+      "quote": "Frontmatter with title, sources (url or path, fetch date, note), status from the fixed vocabulary, tags, related."
+    },
+    {
+      "level": "INSTANCE",
+      "where": "SKILL.md step 2 vs evals/evals.json eval 2 vs evals.md S2",
+      "finding": "The term disputed is used at two scopes without saying which is meant: step 2 says mark the page but qualifies it 'where it disagrees' (a line), eval 2's expected output says 'the note marked disputed at that fact', evals.md S2 says 'the note marked disputed at that line'. The fixture's frontmatter has a page-level 'status: verified', so a page-level and a line-level mark are different edits and both would be defended by some part of the artefact.",
+      "quote": "**disputed** (the source contradicts a page: keep both values as their own rows with dates, mark the page `disputed` where it disagrees)"
+    },
+    {
+      "level": "CLASS",
+      "where": "Rules bullet 3 vs all seven steps and all evals",
+      "finding": "A rule that no step could obey and nothing grades. No step introduces a field that could hold null or 0 - step 3's row fields are text, source, locator, quote and verdict; step 4's frontmatter is title, sources, status, tags, related. No fixture note and no expected output contains a null or a numeric field. The rule governs a schema the artefact does not define.",
+      "quote": "`null` for not-fetched and not-measured; `0` only for a measured zero."
+    },
+    {
+      "level": "CLASS",
+      "where": "SKILL.md steps 2, 3 and 5 (closing sentences)",
+      "finding": "Three of seven steps end in a rationale rather than an output, so their closing sentence names nothing a reader can check: step 5 closes on why one-way links happen, step 3 on how claims are not promoted, step 2 on what baseline runs did on 2026-09-02. Step 5 in particular never states the observable ('every neighbour named in related: carries a sentence naming this page'), which is why the cascade ends up ungraded.",
+      "quote": "Parallel authoring produces one-way links structurally; this step is where they are closed."
+    },
+    {
+      "level": "CLASS",
+      "where": "SKILL.md intro vs the five Rules bullets and steps 1, 3, 4, 5, 6, 7",
+      "finding": "The intro claims the added parts come from observed breakage, but exactly one place in the artefact cites an observation - step 2's 'Observed 2026-09-02'. All five rules and six of seven steps are asserted with no failure behind them and no date, so nothing says which of them earned its place or when it could be retired.",
+      "quote": "with the parts his gist leaves to the reader filled in from what broke here."
+    },
+    {
+      "level": "INSTANCE",
+      "where": "SKILL.md step 3",
+      "finding": "Term drift inside one step: the gate is stated over 'finding' while the unit defined in the very next sentence, and used by step 2, step 4 and every eval, is the claim row. Nothing else in the artefact uses the word finding, so the rule that carries the most weight is phrased over a unit the skill does not define.",
+      "quote": "No quote, no finding."
+    },
+    {
+      "level": "INSTANCE",
+      "where": "description vs SKILL.md steps 1 and 4",
+      "finding": "The description offers 'measurement' as an ingestable source, but the body gives no raw shape for one. Step 1's provenance is 'URL or path, fetch date, and a content hash or commit' and adds only a video/image carve-out; step 4's source entry is 'url or path, fetch date, note'. A measurement the agent made itself has no URL, no fetch date and no upstream bytes, so the promised trigger cannot be served as written.",
+      "quote": "Use when a fetched page, paper, repo, transcript or measurement is about to become a note in an LLM-maintained wiki or knowledge base"
+    },
+    {
+      "level": "INSTANCE",
+      "where": "SKILL.md In this repo vs step 3",
+      "finding": "The cited authority does not say what the step says it says. claims.contract.json's code-checked rule cl.verdict reads 'every claim verdict is MEASURED or REPEATED' - two verdicts - so a DERIVED row ordered by step 3 would be rejected by the gate this line names as the definition of the three verdicts. The same line claims the contract defines the claim-row fields, which include cl.dated, a field step 3 omits.",
+      "quote": "`pipeline/contracts/claims.contract.json` (the claim-row fields and the three verdicts)"
+    },
+    {
+      "level": "INSTANCE",
+      "where": "bill of materials (pipeline/builds/llm-wiki-ingest/bom.json) vs the bundle",
+      "finding": "Three BOM rows are marked as present but their files are absent from the artefact: references/rationale.md (there is no references/ directory at all), evals/files/check.py and evals/files/pristine.sha256.json. Every one carries \"status\": \"exists\". The pristine-hash row's own why says the T3 grader compares against it, so both graders named by the BOM are missing together.",
+      "quote": "\"file\": \"references/rationale.md\""
+    },
+    {
+      "level": "INSTANCE",
+      "where": "SKILL.md step 2 vs evals/files/wiki/INDEX.md",
+      "finding": "The step orders a query on three keys, but the fixture index carries only titles - no trigger terms and no source URLs appear in INDEX.md, and the URLs live in SOURCES.md, which the step never names. Two thirds of the step's stated query cannot be exercised by any eval.",
+      "quote": "**Search before writing.** Query the wiki's own index for the topic (title, trigger terms, the source URL)."
+    },
+    {
+      "level": "INSTANCE",
+      "where": "evals/evals.json eval 1 vs evals.md S1 and SKILL.md step 3",
+      "finding": "The runnable eval grades less than the scenario it implements: step 3 requires a verdict on every claim and evals.md S1 requires the row carry 'the verbatim line and MEASURED', but eval 1's expected output asks only for a dated row per changed price. No expected output in evals.json contains the word MEASURED, REPEATED or DERIVED, so the verdict vocabulary - the core of step 3 - is graded nowhere.",
+      "quote": "The owning note (model-prices) is updated in place: a dated row per changed price, the superseded price kept, the new source with its fetch date in frontmatter; no new page; a SOURCES row and a LOG line; the neighbour still names the owner."
+    },
+    {
+      "level": "INSTANCE",
+      "where": "evals/evals.json eval 1 fixture vs SKILL.md step 2",
+      "finding": "The eval-1 raw also restates what prompt-caching.md already holds ('Cache reads are billed at 10% of the input price; cache writes at 125%' vs the note's '0.1x ... writes 1.25x'), which step 2 classes as no material for that note. Eval 1's expected output says nothing about prompt-caching, so a run that adds the pricing page to that note as a corroborating source - the exact failure step 2 was written to stop - passes eval 1.",
+      "quote": "A corroborating source is not added to the page's source list - that list says what the page was *derived from*, not what agrees with it - and no claims row is added for a value the page already holds."
+    },
+    {
+      "level": "INSTANCE",
+      "where": "SKILL.md step 7 heading vs its body, and vs the eval prompts",
+      "finding": "The heading orders two actions and the body performs one - lint and fix are given, the rebuild is never described. The step's only observable is a commit, but all three eval prompts end 'Edit the wiki in place and list the files you changed' - no eval produces a commit, so nothing can grade the sentence.",
+      "quote": "A verified fact and its lint pass land in the same commit."
+    },
+    {
+      "level": "INSTANCE",
+      "where": "evals.md scenario blocks S3, S5, S6",
+      "finding": "Schema drift inside the eval record: S1, S2 and S4 carry an Input / Pass criterion / Baseline / With talent / Result shape, while S3, S5 and S6 omit the With talent line entirely. The Method paragraph turns on the baseline-vs-with contrast, so half the scenarios state only one arm of the comparison they are scored by.",
+      "quote": "- **Baseline:** writes a thin note anyway."
+    },
+    {
+      "level": "INSTANCE",
+      "where": "evals.md header and every Result line",
+      "finding": "The suite has never been executed - the header records the verdict as pending and all six Result lines read 'Result: pending' - so no step is graded by an observed outcome today, only by an intended one. Nothing in the artefact separates a criterion that was checked from one that was merely written.",
+      "quote": "**Last eval:** not run — suite authored 2026-09-02, status candidate until `eval-harness` baseline-vs-with has run · **Verdict:** pending"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "checkable": true,
+      "graded_by": "ungraded - no expected_output in evals.json mentions the raw copy, the fetch date in the file name or the content hash, and the fixture pre-supplies evals/files/raw/, so the step cannot fail in any run; evals.md S3 grades it but has no evals.json counterpart"
+    },
+    {
+      "step": 2,
+      "checkable": false,
+      "graded_by": "evals.json eval 3 (no material: 'No page changed and no page created; one LOG line saying no material with the source URL'), eval 1 (update branch) and eval 2 (disputed branch); the closing sentence itself is a rationale about baseline runs, not an output of the step, and the 'no newer date' disjunct is contradicted by the eval-3 fixture"
+    },
+    {
+      "step": 3,
+      "checkable": false,
+      "graded_by": "ungraded - the closing sentence names nothing observable, and no expected_output in evals.json contains MEASURED, REPEATED, DERIVED, a locator or a verbatim-line requirement; evals.md S1 and S3 grade the verdicts but S3 has no runnable eval"
+    },
+    {
+      "step": 4,
+      "checkable": true,
+      "graded_by": "partially - evals.json eval 1 grades the source entry with its fetch date and, via 'a dated row per changed price', the dating clause; status vocabulary, tags, related, 'what it means for this project', 'what is still open' and 'say what would make it wrong' are graded by nothing"
+    },
+    {
+      "step": 5,
+      "checkable": false,
+      "graded_by": "ungraded - eval 1's 'the neighbour still names the owner' is a no-regression check on an existing link, not the creation of a back-link with a sentence; evals.md S4 is the only grader of the cascade and has no evals.json counterpart"
+    },
+    {
+      "step": 6,
+      "checkable": true,
+      "graded_by": "evals.json evals 1, 2 ('SOURCES and LOG rows') and 3 ('one LOG line'); the index row is graded in the opposite direction - evals.md S1 requires 'INDEX unchanged' and eval 1 omits an index row"
+    },
+    {
+      "step": 7,
+      "checkable": true,
+      "graded_by": "ungraded and unrunnable - the fixture wiki ships no lint and no check.py; evals.md's grader 'python3 knowledge/kb.py lint --json' is outside the artefact; the eval prompts end at 'list the files you changed', so the commit the step names is never produced"
+    }
+  ]
+}
+```

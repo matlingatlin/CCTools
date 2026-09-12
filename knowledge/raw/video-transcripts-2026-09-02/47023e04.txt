@@ -1,0 +1,17 @@
+[   0.0] A solo founder from Kazakhstan just became the worst nightmare for AI companies.
+[   4.9] He just made a tool that can train an AI model on a 4 gigabyte laptop GPU that costs less
+[  10.6] than a Playstation.
+[  11.8] His name is Alpamesh Makhajan and his tool is called Soop.
+[  15.3] And here's the problem he's solving.
+[  17.1] Fine tuning and LLM used to mean paying thousands of dollars to AI data centers, writing custom
+[  22.4] training scripts and debugging for days.
+[  25.0] Most people just gave up and used Claude or Chat GPT.
+[  28.4] Soop just solved all of that.
+[  29.8] You just describe what you want the model to do, point it at your data, run Soop train
+[  34.4] and it figures out everything else.
+[  36.3] Batch size, memory settings, all of it.
+[  38.6] It instantly went viral.
+[  40.2] Over 85,000 people are already using it.
+[  44.0] Developers are training medical assistants and reasoning models on consumer laptops.
+[  48.3] Soop is democratizing AI, making customization accessible to anyone with a laptop.
+[  53.2] So if you want the link, comment Soop and I'll send it to you.

@@ -1,0 +1,22 @@
+You are writing TWO sections of a Claude Code skill's body and nothing else: "what this is" (purpose) and "when to use it". Someone else adjudicates your draft and a separate reader checks it. Write, then stop.
+
+READ THESE (paths — open them yourself, nothing is pasted):
+- /home/user/skills-repo/pipeline/packages/data-contract-assertions-v2.json — see `candidate_sentence` and `trigger_terms`.
+- /home/user/skills-repo/pipeline/builds/data-contract-assertions-v2/observed-failures.md — what six baseline runs with no skill present actually did. This is your evidence.
+- /home/user/skills-repo/.claude/skills/data-contract-assertions/SKILL.md — the INCUMBENT. This is an extend, not a fresh skill. Its "When to use" / "When NOT to use" material is the starting point, not the answer.
+- /home/user/skills-repo/pipeline/contracts/skill.contract.json — obey the rules under "id": "body.purpose" and "id": "body.when". Read them from the file.
+
+WRITE TO: /home/user/skills-repo/pipeline/builds/data-contract-assertions-v2/artifact/data-contract-assertions/_field-purpose-when.md
+Write ONLY those two sections, with their headings, as they will appear in SKILL.md. No frontmatter, no steps, no pointers.
+
+WHAT THE SKILL IS: it derives a contract from a profile of data ALREADY ARRIVING and asserts it at the ingest boundary — so a silent unit change, a null-rate collapse or a type drift stops the batch, while legitimate evolution WIDENS the contract instead of blocking it.
+
+HARD CONSTRAINTS:
+1. The purpose is a few sentences. State what to do, not how or why.
+2. "When to use" conditions must be OBSERVABLE. The reader's single question is: would someone know whether they are in this situation? "You depend on a dataset you do not produce" is observable. "Data quality matters to you" is not.
+3. A "when NOT to use" list naming the sibling that owns the adjacent job. The real siblings, with what each actually owns: structured-llm-extraction (validates a MODEL'S OUTPUT against a declared schema); eval-set-curation (choosing which production examples become an eval set); integration-contract-completeness (sweeping the mirror sides of a CODE contract in a patch); mlops-production-review (reviewing training/serving CODE in a diff); hybrid-parse-escalation (cheap bulk field parsing); external-domain-audit (auditing an implementation against an external SPEC). Do not invent siblings.
+4. The one thing the incumbent's version does not say and yours must: the job is not "find every difference". It is to SPLIT the differences into the ones that block the batch and the ones that widen the contract. The build's fixture has six differences of which exactly three must block; observed-failures.md OBS-2 shows a baseline run getting all six facts right and then quarantining the whole batch anyway.
+5. Do not state any numeric threshold, band or cutoff anywhere. Not 0.1, not 0.25, not "5 percent". The evidence base carries none and OBS-1 is the failure of supplying one.
+6. Keep both sections together under 40 lines. This text is loaded on every invocation.
+
+Output the file, then two lines: what you judged, and what you were unsure about.

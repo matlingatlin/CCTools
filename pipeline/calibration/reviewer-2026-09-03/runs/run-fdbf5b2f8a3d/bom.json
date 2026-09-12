@@ -1,0 +1,16 @@
+{
+ "bill_of_materials": [
+  {
+   "file": "evals/evals.json",
+   "kind": "evals",
+   "why": "bundled file, listed from the adopted skill's directory for this calibration",
+   "status": "exists"
+  },
+  {
+   "file": "references/probe-and-pairing.md",
+   "kind": "reference",
+   "why": "bundled file, listed from the adopted skill's directory for this calibration",
+   "status": "exists"
+  }
+ ]
+}

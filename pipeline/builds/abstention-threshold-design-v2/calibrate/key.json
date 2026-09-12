@@ -1,0 +1,7 @@
+{
+ "kind": "recommended-cut-moved-off-the-maximum-coverage-row",
+ "class": "the recommended cut is not the highest-coverage cut meeting the target",
+ "source": "with.r2 Q2, verbatim except the recommendation",
+ "expectation_that_must_go_unmet": "Q2 E2",
+ "note": "exactly one change; the grader is not told a defect exists. calibrate.py's own catalogue plants defects in a SKILL ARTEFACT (frontmatter, quotes, fetch dates) and none of its five kinds applies to an answer transcript, so the defect class this grader is actually trusted on was planted by hand instead. Recorded as a deviation."
+}

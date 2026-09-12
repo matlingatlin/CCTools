@@ -1,0 +1,6 @@
+[   0.0] Who the hell is this guy and why is this GitHub repo going viral?
+[   3.1] Matt was one of the OGs at Vercel and he created a bunch of skills which has over 1 million installs which you can start using in Claude Code.
+[  11.7] His main goal was to create Claude Code for real engineers.
+[  14.7] This includes engineering skills for daily code work, productivity skills which include the caveman feature, grill me, handoff and creating your own skill and a bunch of other good skills.
+[  24.7] If I were you, I would trust this guy.
+[  26.6] Just call him his name Matt and I'll send everything over.

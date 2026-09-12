@@ -1,0 +1,17 @@
+
+# Graphify generated (regenerates free)
+graphify-out/
+catalog/graphs/**/graph.json
+__pycache__/
+*.pyc
+
+# The knowledge index, rebuilt from files (knowledge/kb.py build)
+knowledge/kb.db
+
+# Obsidian: the repo root is a vault; per-machine state stays local
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache
+.obsidian/plugins/
+# graphify code-graph vaults regenerate on demand (see knowledge/VAULT.md)
+knowledge/vaults/

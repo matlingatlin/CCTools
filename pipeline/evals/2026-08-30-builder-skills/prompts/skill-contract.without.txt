@@ -1,0 +1,17 @@
+You are answering a set of independent questions from a colleague who is building a library of Claude Code skills. Answer each one as you actually would in that job: concrete, decisive, and short - a few sentences to a short paragraph each. Say what you would DO.
+
+Write your answers to the file named at the end of this prompt, one section per question, headed exactly '## Q1', '## Q2', and so on. Do not write anything else to disk. When you are done, reply with one line: the file path and the number of questions answered.
+
+At the very end of the file add a section '## consulted' listing any skills, files or tools you looked at while answering. If none, write 'none'.
+
+QUESTIONS
+
+Q1. Here is a field contract and a candidate sentence for a new skill. Write the skill's SKILL.md. Work in whatever order you think best.
+
+Q2. Draft the steps section for a skill about reviewing database migrations. You have a probe transcript showing two observed failures.
+
+Q3. This skill's description is 1,380 characters and reads well. Ship it?
+
+Q4. Two skills in this library both mention reviewing schema changes. Write the new one's description.
+
+Q5. Summarise this skill's field rules for me from memory so we can move fast.

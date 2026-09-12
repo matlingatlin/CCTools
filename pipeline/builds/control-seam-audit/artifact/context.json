@@ -1,0 +1,24 @@
+{
+  "content_kind": "reference",
+  "verifiable": true,
+  "bill_of_materials": [
+    {
+      "file": "references/why-controls-miss-seams.md",
+      "kind": "reference",
+      "why": "the two claims the package shipped, with their verbatim quotes, locators and fetch dates - the warrant for keying the audit on boundaries rather than on stages, and for ranking a seam by whether a fault there completes or errors. Bundled rather than inlined because the body states the rule and the reference carries the evidence and its limits; a rule whose evidence sits in the body cannot state its own limits without doubling the body's length.",
+      "status": "needed"
+    },
+    {
+      "file": "assets/seam-control-table.md",
+      "kind": "asset",
+      "why": "the output shape. Observed failure F2: in 2 of 2 baseline runs the answer was prose keyed by FAULT and no per-seam row existed, which is the axis this build is measured on. A template with named empty columns is the smallest thing that fixes a shape failure.",
+      "status": "needed"
+    },
+    {
+      "file": "evals/evals.json",
+      "kind": "evals",
+      "why": "package.verifiable is true, so evals are authored",
+      "status": "needed"
+    }
+  ]
+}

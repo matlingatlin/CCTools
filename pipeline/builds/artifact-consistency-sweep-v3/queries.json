@@ -1,0 +1,110 @@
+{
+ "target": "artifact-consistency-sweep",
+ "target_source": "package-id-fallback",
+ "queries": [
+  {
+   "query": "review the whole skill",
+   "expect": "artifact-consistency-sweep",
+   "kind": "positive",
+   "source": "trigger_terms"
+  },
+  {
+   "query": "does the body contradict the rules",
+   "expect": "artifact-consistency-sweep",
+   "kind": "positive",
+   "source": "trigger_terms"
+  },
+  {
+   "query": "which step is graded by nothing",
+   "expect": "artifact-consistency-sweep",
+   "kind": "positive",
+   "source": "trigger_terms"
+  },
+  {
+   "query": "whole-artefact review",
+   "expect": "artifact-consistency-sweep",
+   "kind": "positive",
+   "source": "trigger_terms"
+  },
+  {
+   "query": "consistency sweep",
+   "expect": "artifact-consistency-sweep",
+   "kind": "positive",
+   "source": "trigger_terms"
+  },
+  {
+   "query": "steps vs rules vs evals",
+   "expect": "artifact-consistency-sweep",
+   "kind": "positive",
+   "source": "trigger_terms"
+  },
+  {
+   "query": "did the review miss anything",
+   "expect": "artifact-consistency-sweep",
+   "kind": "positive",
+   "source": "trigger_terms"
+  },
+  {
+   "query": "review before the arms run",
+   "expect": "artifact-consistency-sweep",
+   "kind": "positive",
+   "source": "trigger_terms"
+  },
+  {
+   "query": "find every contradiction in one pass",
+   "expect": "artifact-consistency-sweep",
+   "kind": "positive",
+   "source": "trigger_terms"
+  },
+  {
+   "query": "unconverged review",
+   "expect": "artifact-consistency-sweep",
+   "kind": "positive",
+   "source": "trigger_terms"
+  },
+  {
+   "query": "Review the whole skill artefact at pipeline/packages/fixtures/artifact-consistency-sweep/artifact-A (SKILL.md, references/, evals/) - the artefact as written before its first whole-artefact review. You cannot see how it was written. Find every place where two parts of the artefact contradict each other or where a step cannot be checked or is graded by nothing: steps against rules, steps against each other, steps against the eval expectations, the description against the body, bundled files against the bill of materials. Return a findings list (level CLASS or INSTANCE, where, finding, verbatim quote) and, for every numbered step, whether it ends in something checkable and which eval check grades it.",
+   "expect": "artifact-consistency-sweep",
+   "kind": "positive",
+   "source": "representative_tasks"
+  },
+  {
+   "query": "Review the whole skill artefact at pipeline/packages/fixtures/artifact-consistency-sweep/artifact-B (SKILL.md, references/, evals/) - the same skill after its first rewrite (body halved, rationale moved to a reference). You cannot see how it was written. Find every place where two parts of the artefact contradict each other or where a step cannot be checked or is graded by nothing: steps against rules, steps against each other, steps against the eval expectations, the description against the body, bundled files against the bill of materials. Return a findings list (level CLASS or INSTANCE, where, finding, verbatim quote) and, for every numbered step, whether it ends in something checkable and which eval check grades it.",
+   "expect": "artifact-consistency-sweep",
+   "kind": "positive",
+   "source": "representative_tasks"
+  },
+  {
+   "query": "Review the whole skill artefact at pipeline/packages/fixtures/artifact-consistency-sweep/artifact-C (SKILL.md, references/, evals/) - the same skill after its second rewrite. You cannot see how it was written. Find every place where two parts of the artefact contradict each other or where a step cannot be checked or is graded by nothing: steps against rules, steps against each other, steps against the eval expectations, the description against the body, bundled files against the bill of materials. Return a findings list (level CLASS or INSTANCE, where, finding, verbatim quote) and, for every numbered step, whether it ends in something checkable and which eval check grades it.",
+   "expect": "artifact-consistency-sweep",
+   "kind": "positive",
+   "source": "representative_tasks"
+  },
+  {
+   "query": "run two independent adversarial reviewers on this draft until both pass",
+   "expect": "santa-method",
+   "kind": "near-miss",
+   "source": "sibling"
+  },
+  {
+   "query": "I added the streaming parse path, does the patch need the non-streaming one too",
+   "expect": "integration-contract-completeness",
+   "kind": "near-miss",
+   "source": "sibling"
+  },
+  {
+   "query": "the suite went green after we widened the tolerance, was the check weakened",
+   "expect": "oracle-weakening-audit",
+   "kind": "near-miss",
+   "source": "sibling"
+  },
+  {
+   "query": "the reviewer left twelve comments on my PR, which do I act on",
+   "expect": "receiving-code-review",
+   "kind": "near-miss",
+   "source": "sibling"
+  }
+ ],
+ "note": "negatives are stubs until someone writes them; an empty near-miss set makes the mis-fire rate unmeasurable, and this file says so rather than scoring 0",
+ "target_warning": "target taken from the package id because none was given; if the built skill's frontmatter name differs, every positive will score as a no-fire"
+}

@@ -1,0 +1,23 @@
+{
+  "useMarkdownLinks": false,
+  "newLinkFormat": "shortest",
+  "showUnsupportedFiles": false,
+  "alwaysUpdateLinks": false,
+  "attachmentFolderPath": "knowledge/sources",
+  "userIgnoreFilters": [
+    "pipeline/builds/",
+    "pipeline/fixtures/",
+    "pipeline/ledgers/",
+    "pipeline/calibration/",
+    "pipeline/workflows/",
+    "pipeline/queries/",
+    "pipeline/validate/",
+    "pipeline/build/",
+    "catalog/graphs/",
+    "knowledge/vaults/",
+    "__pycache__/"
+  ],
+  "showLineNumber": false,
+  "readableLineLength": true,
+  "strictLineBreaks": false
+}

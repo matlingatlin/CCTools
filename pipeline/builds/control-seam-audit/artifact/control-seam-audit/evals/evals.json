@@ -1,0 +1,68 @@
+{
+  "skill_name": "control-seam-audit",
+  "_note": "expectations on evals 1-3 were written at phase 6.2 from four paired outputs that already existed, never before them; they are the measured expectations for the three representative tasks, restated so they read without the build's fixture in hand. Evals 4-8 carry expected_output and NO expectations array, because no output for them has been seen yet and an expectation written from hope is graded against hope.",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Our nightly revenue job has three stages - extract reads the regional CSV feeds, transform converts to USD and aggregates per region, report ranks the regions and prints the summary. Each stage has its own unittest file and all 34 tests pass. Last night's run put APAC top at $41,339,000 and North America last at $11,175,075. Finance says APAC did about $0.4M and that North America was the largest by a wide margin. Where do we look?",
+      "expected_output": "An enumeration of the job's boundaries before any of them is examined - including what enters extract and who reads report's output, not only the two internal handoffs - then a per-seam table with both sides quoted, a SILENT/LOUD mark, and the control watching each seam or NONE. The wrong number is explained from a row of that table, not instead of it.",
+      "expectations": [
+        "C1. Names the extract-to-transform unit mismatch with a file:line on at least one side, and states the consequence as a 100x magnitude error.",
+        "C2. Names the silent drop of the GBP rows inside transform.aggregate, and ties it to North America being understated.",
+        "C3. Names report.rank sorting on a key transform does not emit, and states that the ranking is therefore not a function of revenue.",
+        "S1. Enumerates the pipeline's boundaries as a set, independently of where the symptom pointed, and the set includes BOTH the ingest boundary (the feed file entering extract) and the egress boundary (the rendered report leaving report and reaching a reader). A count of 4 for a 3-unit pipeline is the check.",
+        "S2. Presents a per-boundary artefact - a table or an equivalent one-row-per-boundary structure - in which every boundary carries either a named control or the explicit answer NONE. An answer organised only by fault does not satisfy this.",
+        "S3. Marks each boundary by what a fault there would do: complete silently, or raise."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Review this eval harness's test suite and tell me what it cannot catch. Four stages: a loader that reads run transcripts, a blinder that relabels the two arms, a grader that scores each item, and a tallier that maps the labels back and computes win rates. Each stage has unit tests with its own hand-built fixtures. There is one integration test that runs the loader and the blinder together.",
+      "expected_output": "A list of faults that would pass every existing control, each tied to the boundary it enters at, distinguishing the one boundary the integration test actually spans from the ones nothing spans. Each named control is classified by where its input comes from - produced by the upstream stage in the same run, or built by the test file itself.",
+      "expectations": [
+        "C1. States that no test feeds one stage's real output into the next stage.",
+        "C2. Identifies that test_report's own fixtures carry the same key report.rank wrongly reads, and that this is why the rank defect cannot surface.",
+        "C3. Identifies that the transform suites' fixtures are dollar-shaped floats rather than the integer minor units extract emits, and that this is why the unit defect cannot surface.",
+        "S1. Each gap is tied to the specific boundary it enters at, rather than being listed only as a category of missing test.",
+        "S2. Each existing control named is classified by where its input comes from - produced by the upstream stage in the same run, or built by the test file itself."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "We added tests/test_transform_fx.py after the FX incident in March. It is the newest and most thorough suite we have - eleven assertions over the rate table and the conversion arithmetic. Are we covered now?",
+      "expected_output": "No, with the reason read off the table rather than offered as doubt: the seam rows whose control column holds this suite are named, and if that set is empty the answer says it protects none of the rows on the table. A control added after an incident is treated as evidence about that incident, not as coverage of the seams around it.",
+      "expectations": [
+        "C1. Answers no.",
+        "C2. Names at least two of the three defects this suite does not catch.",
+        "C3. Notes that the suite asserts the unpriceable-currency behaviour as correct, i.e. that it locks the drop in rather than flagging it.",
+        "S1. Answers from the boundary artefact - names the boundary rows this suite watches, or states explicitly that it watches none of them - rather than only describing the suite's subject matter.",
+        "S2. States that recency and thoroughness are not coverage, as a rule rather than as a remark about this one suite."
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "We found three bugs at the handoffs in our pipeline. The fix is obvious - add one end-to-end golden test that runs the whole thing against today's production feed and snapshots the output. Confirm that closes it and I'll write the ticket.",
+      "expected_output": "A CATCHES or MISSES verdict for the proposed golden test against each of the three faults, not a yes. The answer names the class the golden test cannot close - a fault that today's data currently masks is recorded by the snapshot as correct - and says which seams remain unwatched after it is added."
+    },
+    {
+      "id": 5,
+      "prompt": "There are only two stages in this thing - a parser and a writer - so there is exactly one boundary to worry about. Give me the audit for it.",
+      "expected_output": "Three boundaries, not one: what enters the parser and from whom, the parser-to-writer handoff, and what leaves the writer and who consumes it. The premise in the request is corrected rather than accepted, and the ingest and egress rows are filled in like any other."
+    },
+    {
+      "id": 6,
+      "prompt": "The seam I care about is between our scheduler and the third-party billing SDK we call. We have the scheduler source. The SDK is a compiled wheel and we cannot read what it does with the payload. Audit that seam.",
+      "expected_output": "The producing side is quoted with file:line and the consuming side is recorded as UNKNOWN, with UNKNOWN reported as the finding rather than filled in from the SDK's documentation, parameter names or type hints. The fault mode and the control column are still filled, and the absence of a readable consumer is stated as what makes this seam unverifiable from inside."
+    },
+    {
+      "id": 7,
+      "prompt": "test_parse_amount is failing on the input '2.000,25' - it expects 200025 and gets 200025000. It fails every time, same input, same function. Fix it.",
+      "expected_output": "A root-cause investigation of that one function against that one input. No seam enumeration, no per-boundary table, no coverage audit: a defect with a reproducing failing test inside a single unit is not what this method is for, and the answer does not manufacture a boundary audit around it."
+    },
+    {
+      "id": 8,
+      "prompt": "Three stages: a fetcher, a normaliser, a writer. Ten unit tests each. There are also two integration tests - one runs the fetcher's real output through the normaliser and asserts the record count and the field units on both sides, the other runs the normaliser's real output through the writer and asserts the same. The ingest side is a schema-validated internal queue that rejects unknown fields, and the writer's output is consumed by one internal dashboard whose own test reads the writer's real output. Nothing has gone wrong. Audit it.",
+      "expected_output": "A filled table with all four boundaries enumerated and a named control on every row, and an EMPTY list of faults that pass every control - stated as a result, not left off. The right outcome here is no finding; an answer that manufactures a fault to have something to report, or that omits rows because they are covered, is wrong."
+    }
+  ]
+}

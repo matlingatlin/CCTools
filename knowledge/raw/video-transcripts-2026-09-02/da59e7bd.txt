@@ -1,0 +1,19 @@
+[   0.0] Claude Code hits its token limit right in the middle of your task, and you're stuck.
+[   5.0] Here's how to fix that permanently.
+[   7.5] Four plugins solve this completely, and most Claude Code users don't know any of them
+[  12.2] exist.
+[  13.2] The first one is Omniroot.
+[  15.1] It gives Claude Code access to 200-plus free AI models, so the moment one model hits
+[  20.3] its limit, it switches to the next one automatically, practically unlimited tokens.
+[  25.9] The second is Headroom.
+[  27.6] It sits between you and Claude Code and compresses your prompts before they go in.
+[  32.2] Instead of burning millions of tokens on large tasks, you're using a fraction of that.
+[  37.0] Third is Claude Mem.
+[  38.9] This gives Claude Code long-term memory across sessions, so you stop re-explaining your
+[  43.3] code base every time you start a new chat.
+[  46.2] The fourth is Claude Code Setup.
+[  48.4] It analyzes your entire code base, watches how you work, and automatically builds AI
+[  53.0] skills for the tasks you keep repeating.
+[  55.7] It also tells you exactly which MCPs and sub-agents to use for your specific workflow.
+[  61.3] If you want the full setup guide with all four plugins, just comment plugins, and I'll
+[  65.3] send it to you.

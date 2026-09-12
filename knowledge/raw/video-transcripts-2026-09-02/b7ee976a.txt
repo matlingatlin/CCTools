@@ -1,0 +1,17 @@
+[   0.0] Here are four steps that are absolutely crucial
+[   3.3] before you deploy your automated trading strategy.
+[   6.0] Step one, please do a parameter stability test.
+[   9.2] And what you can do is you can turn this into like a heat map.
+[  12.2] Here's an example of what an overfit strategy looks like.
+[  15.4] And here's an example of what robust parameters look like.
+[  19.0] Step two, you want to do a Monte Carlo
+[  21.6] on every parameter set.
+[  23.4] If you do a Monte Carlo on just one parameter set,
+[  26.3] you're doing it completely wrong.
+[  27.6] So step three will really be a meta-analysis
+[  30.5] of all the results we just collected,
+[  32.2] but this would be a cluster analysis.
+[  34.7] And step four, in sample, add a sample test,
+[  37.5] as well as walk forward validation.
+[  39.6] Once you've done all that and it all checks out,
+[  41.6] you're good to basically deploy live.

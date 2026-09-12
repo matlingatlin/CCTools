@@ -1,0 +1,159 @@
+Four independent requests from colleagues. Answer each as you actually would on the job.
+Where a request asks for a number, GIVE THE NUMBER; do not describe how one would be obtained.
+Be decisive and concrete. Reply in your final message - one section per question, headed
+exactly '## Q1', '## Q2', '## Q3', '## Q4'. Do not write any files.
+
+At the very end add a section '## consulted' listing any skills, files or tools you looked at.
+If none, write 'none'.
+
+## Q1
+Our invoice-extraction model is confidently wrong on about one record in twenty, and right
+now a human reviews every record. Where do we put the auto-approve cut? We have roughly
+4,000 records a day and an AP team of six. Tell us what to do.
+
+## Q2
+The file ./scored_predictions.csv in your working directory has 200 rows: id, score
+(the model's confidence, 0-1) and correct (1 if the prediction was right, 0 if wrong).
+Pick the cut for a 95 percent precision target and tell us what it buys.
+
+## Q3
+Can we just auto-approve everything the model says it is 90 percent sure about? Yes or no,
+and why.
+
+## Q4
+Different system, different file. ./selfreported_confidence.csv has 200 rows: id,
+stated_confidence (the LLM's own stated 0-1 confidence in its answer) and correct.
+Product wants to auto-send every answer above a confidence cut and route the rest to
+support. Give us the cut.
+
+You have been given the following method to work from. Use it.
+
+=== METHOD ===
+# Abstention Threshold Design
+
+Decide when a system should stop answering. An abstention threshold is a business
+decision disguised as a number: it trades **coverage** (how much you answer) for
+**precision** (how right you are when you do). Derive it from the score distribution
+against a stated target — never from a round number that felt safe.
+
+## When to use
+- Being wrong costs more than being silent, and the model is sometimes wrong.
+- Someone proposes "flag anything below 0.8 for review" and nobody can say what 0.8 buys.
+- You need a defensible auto-approval rate: "we auto-ship X% at Y% precision."
+- A human review queue exists or is being proposed and its intake rule is undefined.
+- Quality complaints and "too much manual review" are being reported at the same time.
+
+**When NOT to use:** escalating malformed records in a bulk deterministic parse for cost
+reasons (`hybrid-parse-escalation`); proving a judge's scores match human labels
+(`llm-judge-calibration`); gating irreversible or outward-facing actions, which are gated
+on *consequence* whether or not the model is confident (`agent-blast-radius-guard`).
+
+## Steps
+
+1. **State both numbers BEFORE looking at any score.** (a) the precision/quality target
+   on the **answered** segment, and (b) the **minimum acceptable coverage** — the answer
+   rate below which the feature stops being worth shipping. Name who agreed to each. A
+   target with no coverage floor always resolves to "abstain more," which is how a feature
+   quietly becomes a manual process.
+
+   **When you set the target, weigh it against coverage.** A business that names 99% without
+   naming what it costs usually has not priced the abstained segment: 95% precision at 90%
+   coverage often serves users better than 99% at 40%. Have that argument HERE, in step 1,
+   while the target is still open. Once the pair is agreed it is binding — step 6 never trades
+   precision away to buy coverage, and a cut that misses the agreed target escalates (step 7)
+   rather than quietly settling for a number that "often" suffices.
+2. **List candidate uncertainty measures — plural.** Self-consistency spread across k
+   samples; a judge or verifier score; retrieval margin (top-1 minus top-2 similarity);
+   validator/schema failure count; ensemble or cross-model disagreement; distance from
+   the training distribution; the model's own logprob or verbalized confidence. Test 2–3.
+3. **Build a labeled holdout.** A few hundred real cases with ground-truth
+   correct/incorrect, sampled from actual traffic including the hard slices
+   (`eval-set-curation` when sampling is the hard part; `synthetic-eval-data-generation`
+   when there is no traffic yet). Never tune the cut on data used to build or prompt the
+   system.
+4. **Validate that the measure separates right from wrong — this is what makes the rest
+   legitimate.** Per candidate: bucket the holdout by score decile and report observed
+   accuracy per bucket; compute AUROC (or rank correlation) against the correct/incorrect
+   label.
+   - **AUROC ≈ 0.5, or flat accuracy across buckets** → the measure carries no
+     information. **Do not threshold it.** Return to step 2 with a different signal. A cut
+     on an uninformative score abstains on a random subset: full coverage loss, zero
+     precision gain.
+   - **Clearly above chance and roughly monotone** → usable. Record the number.
+5. **Sweep the coverage–risk curve.** Move the threshold across the score range; at each
+   point record coverage, precision/error on the answered segment, and absolute abstained
+   volume per day. Eight to ten rows is enough. This table, not intuition, is what you
+   review with stakeholders.
+6. **Cut where the precision target is met on the ANSWERED segment — then check the
+   coverage floor.** If a threshold satisfies both, take the one with the highest
+   coverage. If none does, say so and choose explicitly: relax a target with the owner on
+   the record, improve the model or the signal (`measured-optimization-loop`), or don't
+   ship this autonomously. Quietly honoring the precision target and eating the coverage
+   loss is the most common failure here.
+7. **Design the abstained path, with a named receiver.** For everything below the cut,
+   specify who or what handles it (person, team, queue, safer fallback, degraded
+   "unverified" answer), its capacity per day against the abstained volume from step 5,
+   the latency the user sees, and what the user is shown. A threshold whose overflow has
+   no owner has not reduced risk; it moved it somewhere nobody measures.
+8. **Re-validate on a cadence and on every change.** A new model version, prompt,
+   retrieval index, or traffic mix shifts the score distribution, so the same number means
+   something different. Monitor the abstention rate as the drift alarm — it moving under a
+   fixed threshold means the distribution moved — and re-run steps 3–6.
+
+```dot
+digraph abstention {
+  "Measure separates right from wrong on holdout?" [shape=diamond];
+  "Try a different signal (step 2)" [shape=box];
+  "Sweep coverage-risk curve" [shape=box];
+  "A cut meets BOTH precision target and coverage floor?" [shape=diamond];
+  "Ship it + name the receiver for the rest" [shape=box];
+  "Escalate the tradeoff to the owner - do not pick silently" [shape=box];
+
+  "Measure separates right from wrong on holdout?" -> "Try a different signal (step 2)" [label="no"];
+  "Measure separates right from wrong on holdout?" -> "Sweep coverage-risk curve" [label="yes"];
+  "Sweep coverage-risk curve" -> "A cut meets BOTH precision target and coverage floor?";
+  "A cut meets BOTH precision target and coverage floor?" -> "Ship it + name the receiver for the rest" [label="yes"];
+  "A cut meets BOTH precision target and coverage floor?" -> "Escalate the tradeoff to the owner - do not pick silently" [label="no"];
+}
+```
+
+## The four traps this exists to prevent
+
+| Trap | Why it looks fine | The counter |
+|---|---|---|
+| **Thresholding an uncalibrated score.** A model's own confidence (logprob or self-reported 0–1) is often near-constant and near-1.0, including on wrong answers. | It is the score already there, and 0.9 sounds meaningful. | Step 4 is mandatory. Flat buckets or AUROC ≈ 0.5 disqualifies the measure — swap the signal, don't tune the cut. |
+| **Abstention treated as free.** 99% precision at 40% coverage is celebrated as a quality win. | The dashboard only shows the answered segment. | The step-1 coverage floor, and quoting precision and coverage as one pair — never precision alone. |
+| **Nobody owns the rejects.** The cut ships; the queue fills. | Model metrics improve immediately. | Step 7: named receiver with stated capacity vs measured abstained volume. No receiver, no threshold. |
+| **Set once, trusted forever.** The number sits in config and nobody revisits it. | It was derived carefully — once. | Step 8: cadence plus abstention-rate monitoring. A threshold is a calibration, not a constant. |
+
+## Example
+**Before:** "Invoice line-item extraction auto-posts when model confidence > 0.9."
+**After:** On a 400-invoice holdout, model confidence has AUROC 0.54 (wrong extractions
+average 0.93, right ones 0.95) — signal discarded. Self-consistency across 5 samples
+scores AUROC 0.81. Sweep: full field agreement → 96% precision at 71% coverage; ≥4/5
+agreement → 91% at 88%. Target 95% precision, floor 60% coverage, so full agreement is
+the cut. The abstained 29% ≈ 140 invoices/day against an AP team reviewing 200; they land
+in the exceptions queue with disagreeing fields highlighted. Re-validated each model upgrade,
+alerting if the abstention rate leaves 24–34%.
+
+## Rules
+- **No threshold on an unvalidated measure.** Skipping step 4 makes the number decoration;
+  report the missing validation instead of producing a cut.
+- **Precision and coverage are always quoted together.** A precision figure with no
+  coverage beside it is not a result.
+- **The abstained path is part of the design, not follow-up work.**
+- **Consequence gating is separate and composes with this** — irreversible actions need a
+  human gate at any confidence (`agent-blast-radius-guard`).
+- Method only: your own reasoning and scoring runs over your own holdout. No external CLI
+  installs, no credentials, no hooks.
+
+## In this repo (one instance)
+The factory's auto-vs-gate decisions are abstention thresholds. "Human gate ∝ autonomy" is
+the coverage–risk tradeoff in prose: description sharpening auto-applies (high coverage,
+cheap errors) while merges and deletions abstain to the human-gate ledger under
+`pipeline/ledgers/`. When a talent's eval verdict is the uncertainty measure, apply step 4
+first — a verdict that reads "passed" for nearly every talent has AUROC near 0.5 against
+real quality and cannot carry an auto-adopt threshold. State the intended auto-adopt rate
+in `pipeline/BRAIN.md` before choosing the bar, and re-check it whenever scenario design
+changes.
+=== END METHOD ===

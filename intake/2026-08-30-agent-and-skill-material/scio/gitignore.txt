@@ -1,0 +1,5 @@
+*.pyc
+.graphify_*
+__pycache__/
+graphify-out/
+scio.db

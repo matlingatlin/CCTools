@@ -1,0 +1,104 @@
+{
+ "target": "llm-wiki-ingest",
+ "target_source": "package-id-fallback",
+ "queries": [
+  {
+   "query": "add this to the knowledge base",
+   "expect": "llm-wiki-ingest",
+   "kind": "positive",
+   "source": "trigger_terms"
+  },
+  {
+   "query": "ingest this source",
+   "expect": "llm-wiki-ingest",
+   "kind": "positive",
+   "source": "trigger_terms"
+  },
+  {
+   "query": "put this in the wiki",
+   "expect": "llm-wiki-ingest",
+   "kind": "positive",
+   "source": "trigger_terms"
+  },
+  {
+   "query": "write a note from this page",
+   "expect": "llm-wiki-ingest",
+   "kind": "positive",
+   "source": "trigger_terms"
+  },
+  {
+   "query": "update the note with this",
+   "expect": "llm-wiki-ingest",
+   "kind": "positive",
+   "source": "trigger_terms"
+  },
+  {
+   "query": "karpathy llm wiki",
+   "expect": "llm-wiki-ingest",
+   "kind": "positive",
+   "source": "trigger_terms"
+  },
+  {
+   "query": "raw wiki schema",
+   "expect": "llm-wiki-ingest",
+   "kind": "positive",
+   "source": "trigger_terms"
+  },
+  {
+   "query": "record this finding",
+   "expect": "llm-wiki-ingest",
+   "kind": "positive",
+   "source": "trigger_terms"
+  },
+  {
+   "query": "this contradicts the note",
+   "expect": "llm-wiki-ingest",
+   "kind": "positive",
+   "source": "trigger_terms"
+  },
+  {
+   "query": "The wiki at pipeline/packages/fixtures/llm-wiki-ingest/wiki has a note that owns model prices. Ingest the source pipeline/packages/fixtures/llm-wiki-ingest/raw/2026-09-02-pricing-page.md into that wiki.",
+   "expect": "llm-wiki-ingest",
+   "kind": "positive",
+   "source": "representative_tasks"
+  },
+  {
+   "query": "Ingest pipeline/packages/fixtures/llm-wiki-ingest/raw/2026-09-02-gamma-model-card.md into the same wiki. Its parameter count differs from what the wiki holds.",
+   "expect": "llm-wiki-ingest",
+   "kind": "positive",
+   "source": "representative_tasks"
+  },
+  {
+   "query": "Ingest pipeline/packages/fixtures/llm-wiki-ingest/raw/2026-09-02-blog-restating-caching.md into the same wiki.",
+   "expect": "llm-wiki-ingest",
+   "kind": "positive",
+   "source": "representative_tasks"
+  },
+  {
+   "query": "gather the claims and quotes we need to bundle into the eval-set-curation skill's references file",
+   "expect": "skill-knowledge",
+   "kind": "near-miss",
+   "source": "sibling"
+  },
+  {
+   "query": "save my current task state so the next agent can resume where I stopped",
+   "expect": "unified-memory",
+   "kind": "near-miss",
+   "source": "sibling"
+  },
+  {
+   "query": "the PR renamed the endpoint, which docs still say the old path",
+   "expect": "doc-claim-reconciliation",
+   "kind": "near-miss",
+   "source": "sibling"
+  },
+  {
+   "query": "audit every skill in .claude/skills for stale evals and overlapping descriptions",
+   "expect": "library-curator",
+   "kind": "near-miss",
+   "source": "sibling"
+  }
+ ],
+ "note": "negatives are stubs until someone writes them; an empty near-miss set makes the mis-fire rate unmeasurable, and this file says so rather than scoring 0",
+ "target_warning": "target taken from the package id because none was given; if the built skill's frontmatter name differs, every positive will score as a no-fire"
+}

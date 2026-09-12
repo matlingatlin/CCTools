@@ -1,0 +1,18 @@
+{
+  "skill_name": "migration-review",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Review this migration and say whether it is safe to deploy: ALTER TABLE orders DROP COLUMN legacy_ref;",
+      "expected_output": "A hold verdict, with the drop marked irreversible.",
+      "expectations": ["names the drop as irreversible", "emits a verdict line"]
+    },
+    {
+      "id": 2,
+      "prompt": "Review this migration: ALTER TABLE orders ADD COLUMN note text NULL;",
+      "expected_output": "A ship verdict, with the add marked reversible.",
+      "expectations": ["names the add as reversible", "emits a verdict line"],
+      "files": ["references/lock-modes.md"]
+    }
+  ]
+}

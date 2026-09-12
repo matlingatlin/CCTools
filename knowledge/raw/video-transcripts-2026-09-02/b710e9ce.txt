@@ -1,0 +1,29 @@
+[   0.0] Clod code hits its token limit right in the middle of your task.
+[   3.8] And you're stuck.
+[   4.6] Here's how to fix that permanently.
+[   6.5] There are four plugins that solve this completely.
+[   9.3] And most Clod code users don't know any of them exist.
+[  12.2] The first one is Omniru.
+[  13.9] It gives Clod code access to 200 plus free AI models.
+[  17.8] The moment one model hits its limit,
+[  19.6] it switches to the next automatically.
+[  21.7] Practically unlimited tokens.
+[  23.6] The second is Headroom.
+[  25.1] It sits between you and Clod code
+[  27.1] and compresses your prompts before they go in.
+[  29.3] So instead of burning millions of tokens on large tasks,
+[  32.7] you use a fraction of that.
+[  34.3] Third is Clod Mem.
+[  35.6] It gives Clod code long-term memory across sessions.
+[  38.7] So you stop re-explaining your code base
+[  40.9] every time you start a new chat.
+[  42.6] The fourth is Clod code setup.
+[  44.5] It analyzes your entire code base,
+[  46.6] watches how you work,
+[  47.8] and automatically builds AI skills
+[  50.2] for the tasks you keep repeating.
+[  51.6] It also tells you exactly which MCPs and sub-agents
+[  55.1] to use for your specific workflow.
+[  57.2] If you want the full setup guide
+[  58.6] with all four plugins, just comment plugins
+[  61.2] and I'll send it to you.

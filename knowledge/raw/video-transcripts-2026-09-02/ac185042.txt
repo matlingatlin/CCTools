@@ -1,0 +1,9 @@
+[   0.0] Four GitHub Repos went viral this week and barely anyone's actually using them yet.
+[   4.4] Number one, Graft, which cuts code costs by roughly four times and runs about three times faster with any agent.
+[  11.1] Number two, Open Montage, which literally makes any coding agent shoot, cut and export video like a studio.
+[  17.6] Number three, Codebase Memory MCP.
+[  19.8] So it loads your whole repo into a knowledge graph your agent can query instantly.
+[  25.0] Number four is Agency Agents.
+[  27.1] Basically a full AI agency inside one repo 232 subagents covering 16 domains.
+[  34.2] Comment agent and I'll send you all four links.
+[  36.9] Let's go.

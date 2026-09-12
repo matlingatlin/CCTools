@@ -1,0 +1,67 @@
+{
+ "key": {
+  "E1-A": "without",
+  "E1-B": "with",
+  "E1-C": "incumbent",
+  "E2-A": "with",
+  "E2-B": "incumbent",
+  "E2-C": "without",
+  "E3-A": "without",
+  "E3-B": "incumbent",
+  "E3-C": "with",
+  "E4-A": "incumbent",
+  "E4-B": "without",
+  "E4-C": "with"
+ },
+ "grader_r1": {
+  "E1": {
+   "A": 7,
+   "B": 7,
+   "C": 5
+  },
+  "E2": {
+   "A": 6,
+   "B": 5,
+   "C": 2
+  },
+  "E3": {
+   "A": 1,
+   "B": 2,
+   "C": 6
+  },
+  "E4": {
+   "A": 3,
+   "B": 4,
+   "C": 5
+  }
+ },
+ "grader_r2": {
+  "E1": {
+   "A": 6,
+   "B": 7,
+   "C": 5
+  },
+  "E2": {
+   "A": 6,
+   "B": 5,
+   "C": 2
+  },
+  "E3": {
+   "A": 1,
+   "B": 3,
+   "C": 6
+  },
+  "E4": {
+   "A": 4,
+   "B": 4,
+   "C": 5
+  }
+ },
+ "per_arm_mean": {
+  "with": 24.0,
+  "without": 13.5,
+  "incumbent": 16.0
+ },
+ "delta_with_minus_without_points": 43.75,
+ "delta_with_minus_incumbent_points": 33.333333333333336
+}

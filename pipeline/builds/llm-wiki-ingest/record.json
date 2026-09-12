@@ -1,0 +1,33 @@
+{
+  "id": "llm-wiki-ingest",
+  "opened": "2026-09-02T22:13:04+00:00",
+  "mode": "v3",
+  "coordinator_tier": "fable",
+  "package": {
+    "path": "/home/user/skills-repo-kb/pipeline/packages/llm-wiki-ingest.json",
+    "sha256": "9d500c214a2ee876c40d036466b0e5841068f6f8c5c38cb7bea0df4d8eb8f316",
+    "candidate_sentence": "Turns one verified source into one wiki page in the shared schema - raw kept, triaged against the page that owns the topic, every number quoted before it is written, claims graded, neighbours naming the page back, index and log rows, lint clean - and emits the page, the register rows and the log line.",
+    "content_kind": "reference",
+    "verifiable": true,
+    "failure_kind": "shape",
+    "threshold": "Across k >= 2 repeats: zero regressions on correctness, no more than 20 percent worse on tokens or tool calls, and at least one win on correctness or shape that survives every repeat. A clean baseline does not stop the build; a win on shape alone satisfies the clause.",
+    "threshold_rule": null,
+    "budget": {
+      "max_agents": 4,
+      "max_paired_runs": 8
+    },
+    "origin": "existing-artifact",
+    "filled_by": "coordinator, from .claude/skills/llm-wiki-ingest/SKILL.md (candidate, authored 2026-09-02) and knowledge/notes/llm-wiki-pattern.md",
+    "gap_kind": "missing",
+    "n_claims": 7,
+    "n_measured_claims": 0,
+    "n_sources": 5
+  },
+  "admission": {
+    "package_contract_version": "1.2.0",
+    "errors": 0,
+    "warnings": [],
+    "indeterminate": []
+  },
+  "note": "record.json is written once. Everything that happened is in events.jsonl."
+}

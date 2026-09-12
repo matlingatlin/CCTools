@@ -1,0 +1,140 @@
+{
+ "per_question": [
+  {
+   "id": 1,
+   "rulings": [
+    {
+     "expectation": "the produced grading setup relabels per item, not once for the whole set",
+     "A": "met",
+     "A_evidence": "\"For each ticket id, derive a coin flip from a seeded hash of the id, and use it to decide BOTH which arm is printed first AND which label it carries. Order and label are swapped together, per item.\" - and the code does it inside the per-item loop: key[\"map\"][i] = {\"A\": first, \"B\": second}.",
+     "B": "met",
+     "B_evidence": "\"For each ticket i, load old[i] and new[i]. Draw a coin per ticket: if heads, slot_A = old, slot_B = new; else slot_A = new, slot_B = old.\" - plus a per-ticket key row: ticket_id,slot_A_version,slot_B_version."
+    },
+    {
+     "expectation": "a key is written somewhere the grader does not receive",
+     "A": "met",
+     "A_evidence": "\"The key is written to key.json outside the directory the grader is given, and the run record says in words: 'label key withheld from grader; written to key.json, not included in any grader input.'\"",
+     "B": "met",
+     "B_evidence": "\"Write a key file key.csv with ticket_id,slot_A_version,slot_B_version and keep it OUT of the judging directory. The judge sees only ticket text + Answer A + Answer B, never version names, filenames, or ordering hints.\""
+    },
+    {
+     "expectation": "the grader's instructions state that the labels are re-randomised per item",
+     "A": "met",
+     "A_evidence": "Inside the judge prompt itself: \"The labels A and B are re-randomised independently for every item in this set. A on this item has no relationship to A on any other item, so do not reason across items about 'A' or 'B'.\"",
+     "B": "not met",
+     "B_evidence": "The produced judge prompt (\"use as-is\") contains no statement that labels are re-randomised per item; the nearest line is \"Do not consider which answer appears first, which is longer, or which sounds more confident\", which addresses position bias but not label identity across items. The re-randomisation is stated only to the human ('Draw a coin per ticket'), never to the grader. I looked through the whole fenced prompt block for any mention of re-randomisation, shuffling, or A/B not being stable across tickets, and found none."
+    },
+    {
+     "expectation": "the answer produces the prompt or the setup, not a description of one",
+     "A": "met",
+     "A_evidence": "Produces runnable code (\"# blind.py\" with flip() and build()) and a complete fenced judge prompt ending \"Output exactly: REASONING: <2-4 sentences> WINNER: A | B | TIE\".",
+     "B": "met",
+     "B_evidence": "\"3. Judge prompt (use as-is):\" followed by a complete fenced template with {{ticket_text}}, {{answer_a}}, {{answer_b}} and a JSON output contract. Steps 1-2 and 4 are prose procedure rather than code, but the prompt artefact itself is produced."
+    }
+   ],
+   "expectation_critique": "Three of the four expectations are cleared by any competent answer to this request: relabelling per item, withholding the key, and 'produces the prompt' are all satisfied by pasting a template and saying 'coin flip per ticket'. In particular 'produces the prompt or the setup' is passable by an answer whose setup is wrong, since it grades form (an artefact exists) not content. Only the third expectation - that the re-randomisation is stated inside the grader's own instructions - discriminated here, and it is the one an answer can miss while doing everything else right, because it is the difference between the human knowing the design and the judge knowing it. Nothing in the set tests the other blinding leaks either answer raised on its own (stripping version-identifying tells, key/run-id checksums, order counterbalancing), so a setup that randomises labels but leaves a 'prompt-v2' header in the output would pass all four."
+  },
+  {
+   "id": 2,
+   "rulings": [
+    {
+     "expectation": "at least one test asserts that a swapped or inverted key changes the verdict, not just that mapping runs",
+     "A": "met",
+     "A_evidence": "\"1. Scoring with a swapped key produces the opposite verdict - new-wins and old-wins counts exchange, ties unchanged.\" and \"2. The correct key and the swapped key disagree on every non-tie item.\"",
+     "B": "met",
+     "B_evidence": "\"5. Inversion detection. Feed a key deliberately swapped for one ticket and assert the output differs - i.e. write at least one test that FAILS if the mapping is reversed.\""
+    },
+    {
+     "expectation": "it states why a round-trip test alone cannot catch an inverted mapping",
+     "A": "met",
+     "A_evidence": "\"3. A round-trip test alone is explicitly NOT sufficient - keep it if you like, but it passes on an inverted mapping, so it must not be the only mapping test.\" The reason is given: the round trip is satisfied by an inverted map because the inversion is undone on the way back.",
+     "B": "not met",
+     "B_evidence": "Round-trip is listed as test 1 - \"Straight round-trip: label a known set, unmap it, assert every item recovers its original version\" - with no statement anywhere that it is insufficient or that it survives inversion. The closest remark is about fixtures, not round trips: \"A symmetric fixture (6 old-first, 6 new-first, balanced verdicts) will pass under an inverted map; make sure your fixtures are asymmetric enough to catch it.\" That names a different blind spot (fixture symmetry). I looked for any sentence tying round-trip/label-then-unmap to inversion blindness and found none."
+    },
+    {
+     "expectation": "it covers loud failure on unresolvable rows rather than skipping them",
+     "A": "met",
+     "A_evidence": "\"4. Unknown label in a result row (e.g. 'C', 'Answer A', empty) - raises, does not skip. 5. Result row whose item id has no key entry - raises. 6. Key entry with no corresponding result row - raises (this is the silent-shrink case).\" plus \"8. Row count in == row count out.\"",
+     "B": "met",
+     "B_evidence": "\"6. Unknown or unexpected label ('C', 'a' lowercase, 'Answer A', empty, null) - raises, never defaults to a version. 7. Ticket id in verdicts but missing from the key, and vice versa - raises; no silent drop. Assert the count of joined rows equals expected.\""
+    }
+   ],
+   "expectation_critique": "Expectations 1 and 3 are close to free for any answer that has understood the question: 'name a test for a swapped key' and 'raise on unresolvable rows' are the two obvious items and both answers produce them almost verbatim, so they separate nothing. Expectation 1 is also loosely worded - it says 'asserts that a swapped key changes the verdict', which a weak test satisfies (output differs) as well as a strong one (output is the exact inverse and disagrees on every non-tie item); a wrong answer proposing merely 'assert the output differs' passes. Only expectation 2 has bite, and it is the one an answer can fail while listing more tests overall. The set also asks nothing about whether the tests were AUTHORED - both answers list test descriptions, not test code, and the expectations do not notice."
+  },
+  {
+   "id": 3,
+   "rulings": [
+    {
+     "expectation": "asks or establishes whether the labels were re-randomised per item",
+     "A": "met",
+     "A_evidence": "Establishes it rather than asking: \"'Answer A' is a slot label, not a version - it means nothing until it's joined to the key, and with counterbalanced order there is no single 'A' across the set.\"",
+     "B": "met",
+     "B_evidence": "\"The labels were re-randomised per item. 'A' on ticket 3 and 'A' on ticket 7 are different arms. There is no cross-item entity called 'A' for that sentence to be about.\""
+    },
+    {
+     "expectation": "refuses to use the summary sentence as a result under per-item relabelling",
+     "A": "met",
+     "A_evidence": "\"No. ... Using it as a headline is exactly the error the anonymisation exists to prevent, and it's a coin-flip whether it names the right version\", plus \"the judge's own closing sentence is a summary of its per-item verdicts, not an independent result.\"",
+     "B": "met",
+     "B_evidence": "\"No - that line cannot be the headline, and it should not appear in the write-up as a result at all\", and \"it is not a finding about either version - it describes labels.\""
+    },
+    {
+     "expectation": "computes the headline from the per-item rulings instead",
+     "A": "met",
+     "A_evidence": "\"The headline should come from the tally: e.g. 'New prompt won 8 of 12, old won 2, 2 ties; margin clear on 5.' If the judge's global remark disagrees with the tally, the tally wins and the disagreement is worth reporting.\" No per-item data was supplied in the question, so the numbers are an illustrative shape rather than a computation.",
+     "B": "met",
+     "B_evidence": "\"Headline goes from the per-item tally, mapped back through the withheld key: 'new wins X of 12, old Y, Z ties.'\" Placeholders rather than numbers, again because no per-item verdicts were supplied."
+    }
+   ],
+   "expectation_critique": "The third expectation ('computes the headline') cannot actually be tested by this question: no per-item rulings or key were provided, so neither answer can compute anything and both can only specify the computation. Under the rule that a description of what one would produce counts as 'not met', a strict reader could fail both; I ruled met because the question makes production impossible, which is a defect in the question, not the answers. Expectations 1 and 2 also collapse into one another - any answer that refuses will, in the same breath, say why, i.e. that the labels are per-item. A single sentence ('A is a slot label, not a version, so no') satisfies all three at surface level, which is why both answers look equal here despite differing in how much they add (position-bias symptom check, reading the closing paragraph for rubric feedback rather than for the winner). Nothing in the set rewards or detects those additions."
+  },
+  {
+   "id": 4,
+   "rulings": [
+    {
+     "expectation": "rejects the instruction-only remedy",
+     "A": "met",
+     "A_evidence": "\"No. Two reasons, one evidential and one economic.\" and \"Add the sentence if you want - but as a garnish on top of the shuffle, not instead of it.\"",
+     "B": "met",
+     "B_evidence": "\"No - that doesn't work and it costs you the only real defence\" and \"Keep the instruction if you like, it's harmless, but it is not a substitute.\""
+    },
+    {
+     "expectation": "attributes that to a source it read rather than asserting it bare",
+     "A": "met",
+     "A_evidence": "\"the paper that established this effect had exactly that instruction in its template - 'ensuring that the order in which the responses were presented does not affect your judgment' - and measured conflict rates of 46.3% and 5.0% for GPT-4 and 82.5% and 52.5% for ChatGPT with the instruction present.\" A verbatim quote from the source template plus its reported numbers, and it bounds the claim: \"that is one phrasing in one paper, not a proof that no instruction could ever work.\"",
+     "B": "not met",
+     "B_evidence": "The claim is asserted bare: \"Empirically judges asked to ignore order still show first- or last-position preference, and now you have no way to measure it.\" 'Empirically' names no paper, no template, no measurement and no number. I looked for any citation, quoted instruction, conflict rate, or study reference in the answer and found none; the only proposed evidence is prospective and the reader's own - \"run the 12 tickets with A and B swapped and count the flips.\""
+    },
+    {
+     "expectation": "proposes the mechanical alternative",
+     "A": "met",
+     "A_evidence": "\"the mechanical remedy costs a coin flip per item. Swapping order and label per item is a dozen lines of code and a seeded hash\", plus \"Randomising is the only move that works without knowing your judge's direction.\"",
+     "B": "met",
+     "B_evidence": "\"Randomising (better: running both orders per item) is cheap - it's a coin flip in the harness - and it turns position bias from an invisible confound into a number you can report.\""
+    }
+   ],
+   "expectation_critique": "Expectations 1 and 3 are trivially met by both: any answer that says 'no, shuffle instead' clears them, and they carry no information. Expectation 2 is the only discriminating one, but as written it grades the PRESENCE of attribution, not its truth - an answer that invents a plausible paper, a plausible quoted instruction and plausible percentages would pass it exactly as well as a correct one, and this grading pass cannot check the numbers without leaving the anonymised material. A stronger form would require the source be identifiable enough to check (title/venue/authors), which neither answer supplies - the citing answer says only 'the paper that established this effect'. The set also does not test the substantive point one answer raised and the other did not: that the bias DIRECTION is judge-specific, which is what rules out the cheaper fix of always seating the new arm in the disfavoured slot."
+  },
+  {
+   "id": 5,
+   "rulings": [
+    {
+     "expectation": "identifies that a small quality gap increases the order effect rather than decreasing it",
+     "A": "unclear",
+     "A_evidence": "It asserts the direction of the CONCLUSION - \"No - that's backwards. Blinding matters most precisely when the candidates are close\" - but the mechanism it gives is that the true difference shrinks below a fixed bias, not that the order effect itself grows: \"When they're near-identical, the true difference is smaller than the bias, so whatever tilt exists ... becomes the deciding vote.\" And \"When one version is obviously better, the effect is large enough to survive a biased procedure\" refers to the quality effect surviving, not to the order effect being smaller. That is a claim about relative dominance, which is adjacent to but not the same as the expectation's claim that the order effect increases; no measurement is offered either way.",
+     "B": "met",
+     "B_evidence": "\"The order effect is largest when the two candidates are close, and it shrinks or nearly vanishes when one is clearly better. Same judge, same paper: 46.3% conflict rate on the close pair versus 5.0% on the wide-gap pair; the second study reports that on near-identical answer pairs even the strongest judge tested was order-consistent in only about 65% of cases, and one judge in 23.8%.\" The magnitude claim is stated directly and attached to numbers."
+    },
+    {
+     "expectation": "does not accept closeness as a reason to skip blinding",
+     "A": "met",
+     "A_evidence": "\"No - that's backwards. Blinding matters most precisely when the candidates are close\" and \"Blinding costs a shuffle and a join. Keep it.\"",
+     "B": "met",
+     "B_evidence": "\"No - you have it backwards, and this is the case where blinding matters most\" and \"'they are very close' is not a reason to skip blinding - it is the flag that an unblinded run here is close to a coin flip with extra steps.\""
+    }
+   ],
+   "expectation_critique": "Expectation 2 is free - it is the negation of the user's leading question, and any answer beginning 'no' satisfies it, including one that refuses for a wrong reason (e.g. 'blinding is always mandatory'). That leaves a two-item set with one live item. Expectation 1 is the right thing to test but is graded on assertion alone: it does not require the direction be measured or sourced, so 'blinding matters more when they're close' passes on rhetoric. It also blurs two distinct claims - the order effect being LARGER in absolute terms versus the true difference being SMALLER than a fixed bias - which is exactly the seam the two answers fall on either side of, and the wording gives a grader no rule for which counts. Nothing in the set tests the downstream consequence both answers volunteered (with n=12 on a close pair the honest outcome may be 'no detectable difference'), which is arguably the more useful part of the reply."
+  }
+ ],
+ "overall": "Across the five questions the two answers are close on procedure and separate on evidence. Every expectation about mechanism - relabel per item, withhold the key, raise on unresolvable rows, refuse the label-summary headline, refuse the instruction-only fix, propose the shuffle - was met by both answers in all five questions; not one of those twelve rulings discriminated. Four rulings discriminated, and in each the losing answer failed the same kind of expectation: making the design legible to the party that has to act on it, or attaching a claim to something read rather than asserting it. Specifically: a judge prompt that randomises per item but never tells the judge so (Q1); a test list that includes a round-trip without noting that a round trip is exactly the test an inverted map survives (Q2); a correct refusal of the 'just instruct it to ignore position' fix with no source, where the counterpart quotes the instruction from the paper's own template and its conflict rates (Q4); and a correct 'blinding matters most when they are close' whose mechanism is stated as the true difference shrinking rather than the order effect growing, where the counterpart gives the measured rates for close versus wide pairs (Q5). I make no claim about which source produced which of those, since the labels are re-randomised per question. Quality of the expectation sets: weak overall as instruments. Roughly two thirds of the expectations are cleared by any competent answer, and Q3's 'computes the headline' is untestable as posed because no per-item verdicts were supplied - the question makes production impossible, so both answers can only specify the computation. Q5's second expectation and Q4's first and third are satisfied by the word 'no'. The two expectations that carry the most weight are also the softest: Q4's 'attributes that to a source' grades the presence of a citation, not its truth, so a fabricated paper with invented percentages would pass, and this blinded pass has no way to check; Q5's first expectation blurs 'the order effect is larger' with 'the true difference is smaller than the bias', which is precisely the distinction the two answers split on. If this set is to be reused, the discriminating expectations should be tightened to demand a checkable source and to state which of those two mechanisms counts, and expectations both answers satisfy verbatim should be replaced with ones aimed at what the answers volunteered unprompted and unrewarded - stripping version-identifying tells from the outputs, key/run-id checksums, order counterbalancing with a reported conflict rate, and the judge-specific direction of the bias."
+}

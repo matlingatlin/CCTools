@@ -1,0 +1,21 @@
+[   0.0] Number three trending repo today on GitHub.
+[   3.4] And it's only been out for maybe four or five days
+[   6.9] and it's already got almost 30,000 stars.
+[   9.3] So you definitely gotta check this out.
+[  11.0] This is OpenMake or multi-agent interactive classroom.
+[  14.2] Really what it is, is it's a multi-agent graph
+[  17.7] that can go take any topic
+[  19.4] instead of just giving you answers on it.
+[  20.9] It actually generates interactive quizzes,
+[  23.7] lesson plans, everything you need to learn
+[  25.7] about that topic.
+[  26.6] So I'm actually gonna launch this today
+[  28.9] and play around with it.
+[  31.1] And I'm gonna post the courses on my website,
+[  33.0] JustMendas.ai.
+[  34.4] So if you have a certain topic in the AI
+[  37.0] or marketing space or founding companies
+[  39.6] or building companies, hit it in the comments
+[  42.2] and I'll make a course about it.
+[  43.4] And I'll tag you with the link to it
+[  44.6] so you can check it out.

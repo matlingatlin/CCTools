@@ -1,0 +1,21 @@
+[   0.0] If you're using Claude code, you've definitely heard about Graphify and Obsidian.
+[   3.8] Graphify creates a knowledge graph of all the data inside of your Claude code setup,
+[   8.2] essentially helping you achieve unlimited memory with Claude.
+[  11.2] But what about a system that can do the same for your rules and behaviors?
+[  15.1] Every time you boot up in a session of Claude, it's going to pull in your static ClaudeMD file with all of your rules.
+[  21.0] But the problem lies in the fact that the document is static and your rules can become outdated pretty quick.
+[  26.3] This GitHub repo called base solves this.
+[  28.9] The difference between base and Graphify is that base creates a knowledge graph around your rules and behaviors and the projects you're working on.
+[  37.3] So whenever you boot open a session of Claude, it's going to instantly become aware of the sessions you already have working.
+[  42.9] And that's done through a hook and MCP that base comes pre-installed with.
+[  47.1] As you can see, I have a dev node here.
+[  49.4] I have a content node inside of dev base created a knowledge domain.
+[  53.9] And inside of the dev domain, it's only activated with these particular rules based on the keywords that you use in your session.
+[  61.2] So instead of relying on a static MD file, that's going to pull all the text inside of your file inside of your session to waste context.
+[  68.3] It's only going to activate these particular rules if one of these keywords come up in the conversation.
+[  73.7] And you could tell base the projects that you're working on.
+[  76.2] So whenever you ask Claude, Hey, what's going on?
+[  78.7] What do we need to work on next as full context using base with Claude?
+[  83.1] You'll see that your consistent behavior and output is increased by 90%.
+[  87.9] And as you're using base with Claude, it's naturally going to see what files are being touched and worked on so base can update the information so nothing ever goes stale.
+[  96.8] If you want to try it out, just comment base and I'll send you the repo link.

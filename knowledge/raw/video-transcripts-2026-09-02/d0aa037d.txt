@@ -1,0 +1,21 @@
+[   0.0] this thing is awesome. You can create your own cloud code powered agentic OS in just three simple
+[   7.4] steps. Step number one is what you're looking at right here and that is creating the architecture.
+[  12.6] We need to figure out what cloud code needs to actually do for you. So the way you do that
+[  17.3] is instead of just sitting there in the terminal telling cloud code to do random things,
+[  21.4] we're going to break down all of your daily tasks and your business tasks
+[  25.0] into domains. So for example, I have things for like research and content in my community.
+[  30.1] From there, we're going to take a look at each domain and say, Hey, what are you doing as individual
+[  34.8] tasks within that domain? And for each of those, we're going to turn them into skills for each skill,
+[  40.1] we're then going to see, can we turn this into an automation? And as you do that for every single
+[  44.7] task for every single domain, you're going to create the backbone for your agentic OS
+[  49.4] infrastructure. From there, we're going to add memory. The easiest way to do this is with
+[  53.1] obsidian because a true rag system is overkill for most people. I suggest using something
+[  57.5] like Karpathy's obsidian setup, where we have our vault dividing into three sub folders,
+[  62.2] one for raw, which is just kind of like a landing ground for everything we research,
+[  66.2] a wiki section for detailed reports, and then outputs for actual deliverables we want to share
+[  71.0] with people. Last but not least, we have the observability piece. This is where we turn
+[  74.8] all our skills into literally just buttons on a dashboard that anyone can use, even if they
+[  79.6] aren't an actual cloud code user. So this is great if you have members on your team who
+[  83.6] need to use this stuff or even clients. And then for observability, you can add whatever
+[  87.4] you want. I have things related to usage, my routines, stuff going on in my vault. The best
+[  92.2] part is, is this is this is completely customizable and you can turn it into whatever you want.

@@ -1,0 +1,5 @@
+{"_schema": "one row per arm-run. tokens and tool_calls are MEASURED, read from the task-completion notification for that run. duration_ms is MEASURED wall clock for the run itself. Discovered available 2026-08-30 AFTER the preregistration was written - see AMENDMENT-1 in PREREGISTRATION.md."}
+{"skill": "skill-contract", "arm": "without", "repeat": 1, "tokens": 61330, "tool_calls": 2, "duration_ms": 42468}
+{"skill": "skill-contract", "arm": "with", "repeat": 1, "tokens": 64308, "tool_calls": 2, "duration_ms": 51237}
+{"skill": "skill-contract", "arm": "without", "repeat": 2, "tokens": 61615, "tool_calls": 2, "duration_ms": 47331}
+{"skill": "skill-contract", "arm": "with", "repeat": 2, "tokens": 64082, "tool_calls": 2, "duration_ms": 44798}

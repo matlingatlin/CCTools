@@ -1,0 +1,90 @@
+{
+  "skill_name": "eval-set-curation",
+  "fixture": "logged_traffic.csv",
+  "fixture_ground_truth": {
+    "n_rows": 2000,
+    "slice_counts": {
+      "simple_lookup": 1647,
+      "multi_hop": 264,
+      "ambiguous": 67,
+      "adversarial": 22
+    },
+    "accuracy_overall": 0.8875,
+    "accuracy_by_slice": {
+      "simple_lookup": 0.9472,
+      "multi_hop": 0.6705,
+      "ambiguous": 0.4627,
+      "adversarial": 0.3182
+    },
+    "distinct_strings_in_those_rows": 60,
+    "contaminated_rows": 37,
+    "expected_adversarial_in_random_200": 2.2,
+    "near_duplicate_clusters_ORIGINAL_PACKAGE_FIGURE": 6,
+    "near_duplicate_rows_ORIGINAL_PACKAGE_FIGURE": 120,
+    "near_duplicate_structure_CORRECTED": {
+      "why_corrected": "The package's ground_truth.json says 6 near-duplicate clusters over 120 rows. That is the count of HAND-WRITTEN template families in the first 120 rows and it is not the answer this skill's own step 1 produces. Step 1 clause 1 instructs normalising IDs, timestamps and numbers before exact match. Applied to the other 1880 rows, whose text is 'simple_lookup case 970 89fcd07f', that normalisation collapses them to FOUR strings - one per slice. Measured, not argued: normalising 8-hex tokens and digits over the whole file leaves 64 distinct strings, of which 4 cover 1880 rows and 60 cover the remaining 120.",
+      "distinct_strings_after_step1_normalisation": 64,
+      "template_families_over_the_1880_placeholder_rows": 4,
+      "template_families_over_the_120_real_text_rows": 6,
+      "total_families_a_correct_step1_run_should_report": 10,
+      "found_by": "the whole-artefact reviewer at phase 5.2, which no field reader could see because it needed SKILL.md's step 1 and evals.json's ground truth in view at once",
+      "consequence_for_grading": "An arm run that applies step 1 correctly reports roughly 10 clusters, not 6. Graded against the package's figure it would be marked WRONG for being RIGHT. The expectation set at 6.2 is written against the corrected structure and the correction is a fixture-computed fact, so it was written before any arm output was read - the blinding-order exception for fixture-computed expectations covers it."
+    }
+  },
+  "known_fixture_defect": "1880 of the 2000 rows carry placeholder query text of the form 'simple_lookup case 970 89fcd07f', which contains its own slice label. All four baseline probe runs found this and two called for the freeze to stop until it was resolved. ASSESSED TWICE, AND THE FIRST ASSESSMENT WAS WRONG. First assessment, at phase 4.0: it does not make E1, E3 or E4 easier, because the slice column is supplied explicitly so a label inside the query adds nothing, and the near-duplicate structure lives entirely in the 120 real-text rows. The second half of that is FALSE and the whole-artefact reviewer at 5.2 found it: the placeholder rows are themselves a templated family by this skill's own definition, and step 1's normalisation clause collapses them. The defect does not make the F1 evals easier - it makes the package's ground truth for them WRONG, and a run that answers correctly would be graded as a miss. See near_duplicate_structure_CORRECTED. It WOULD matter for any eval that ran a model on these queries, which none of these do. Carried to phase 7.2 as a test bug.",
+  "evals": [
+    {
+      "id": 1,
+      "kind": "normal",
+      "carries": "F1, and the stratification-with-a-floor half of F3",
+      "prompt": "We have 2000 logged support queries in logged_traffic.csv with a slice column and a correct column. Pick the 200 that become our eval set, and tell us what the choice costs.",
+      "files": [
+        "evals/logged_traffic.csv"
+      ],
+      "expected_output": "FILLED IN AFTER THE MEASUREMENT - see expectations below.",
+      "expectations": []
+    },
+    {
+      "id": 2,
+      "kind": "normal / regression guard",
+      "carries": "no failure - the baseline passes this 4 of 4 and the skill may not lose it",
+      "prompt": "Someone reports 88.75 percent accuracy on logged_traffic.csv and wants to ship on it. Is that number trustworthy?",
+      "files": [
+        "evals/logged_traffic.csv"
+      ],
+      "expected_output": "FILLED IN AFTER THE MEASUREMENT - see expectations below. This eval is a DELIBERATE, BOUNDED EXCEPTION to the rule that every bundled item answers an observed failure: it answers an observed NON-failure. It is here to catch a regression, not to teach anything, and it is the only such exception in this bundle.",
+      "expectations": []
+    },
+    {
+      "id": 3,
+      "kind": "clever / edge",
+      "carries": "F1 alone, and it is the sharpest of the two F1 evals - 3 of 4 baseline runs failed it identically",
+      "prompt": "Before we freeze logged_traffic.csv as an eval set, what has to be removed?",
+      "files": [
+        "evals/logged_traffic.csv"
+      ],
+      "expected_output": "FILLED IN AFTER THE MEASUREMENT - see expectations below.",
+      "expectations": []
+    },
+    {
+      "id": 4,
+      "kind": "clever / edge",
+      "carries": "F3",
+      "prompt": "How many examples do we need per slice on logged_traffic.csv before a per-slice score means anything?",
+      "files": [
+        "evals/logged_traffic.csv"
+      ],
+      "expected_output": "FILLED IN AFTER THE MEASUREMENT - see expectations below.",
+      "expectations": []
+    },
+    {
+      "id": 5,
+      "kind": "negative-trigger",
+      "carries": "the boundary against synthetic-eval-data-generation",
+      "prompt": "We launch next month and have no production traffic at all yet. Help me build an eval set.",
+      "expected_output": "This unit must NOT be selected. The request has no population to select from, which is the one precondition this method requires; it belongs to synthetic-eval-data-generation. Scored at phase 6.5 by pipeline/build/triggers.py, which is a routing test rather than an output test, so it carries no expectations list.",
+      "expectations": []
+    }
+  ],
+  "f2_hole": "F2 - the holdout is a pool, not a seal - has NO eval of its own at 6.1, and this is a decision with a scheduled reckoning rather than an omission left to persist. Two reasons it was not given one: the probe's evidence for F2 is weak on 2 of its 4 runs because their task set never asked for a split, and an eval that asks 'seal the holdout' telegraphs its own answer. The reckoning: the build that produced this bundle must state whether F2 went untested, and a run of this method on a real reused holdout - not a planted fixture - is where sealing can actually be observed. Until then, treat step 3 as the least-tested of the three."
+}

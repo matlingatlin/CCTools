@@ -1,0 +1,22 @@
+[   0.0] Someone has just built the most powerful claw skill
+[   2.0] that I've ever seen and almost nobody's using it.
+[   4.2] An engineer from the Vercel team has built the one skill
+[   6.6] that finds every other claw code skill for you.
+[   8.8] It sits on top of a directory of over 700,000 skills.
+[  12.2] And instead of you having to trawl
+[  13.4] through the entire list yourself,
+[  14.7] you just tell it what you're working,
+[  15.6] whether it's content writing or a mobile app design.
+[  18.3] And from there, it searches the entire database,
+[  20.7] filters out anything sketchy
+[  22.2] and only surfaces the skills that are genuinely trusted.
+[  24.8] Then it installs them straight into claw code
+[  26.6] or whichever agent you have to be running.
+[  28.2] The whole setup is done in literally one command
+[  30.3] and that's all there is to it.
+[  31.5] You run it once and it handles everything else from there.
+[  33.8] Most people are still picking skills
+[  35.2] based on a star count and a guess.
+[  36.9] This one does the entire vetting process for you.
+[  39.0] If you want to try it for yourself,
+[  39.8] just comment the word skill and I'll send it over.

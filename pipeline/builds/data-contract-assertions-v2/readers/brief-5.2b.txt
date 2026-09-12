@@ -1,0 +1,50 @@
+You are an INDEPENDENT reader. You did not write this and you must not guess at how it was written. Rule on what is in front of you.
+
+The artefact you may see is at: /home/user/skills-repo/pipeline/builds/data-contract-assertions-v2/readers/r5.2/data-contract-assertions
+That directory holds exactly what this phase declared its reader needs, and nothing else. If something you expect is absent, that is because this phase's reader was not given it — say so as an observation, not as a defect in the skill.
+
+ALREADY SETTLED BY CODE — do not spend a word on any of it. The artefact checker was run on the exact directory above and its output is here verbatim:
+ON THE DIRECTORY YOU WERE GIVEN (a subset of the bundle):
+ok   data-contract-assertions               err  0 · warn  1 · indet  4 · pass 38
+       [w] desc.target                999 chars, target 500
+       [?] fm.task-kind               needs package.content_kind, not supplied
+       [?] purpose.present            not mechanically decidable: 'text answering what the purpose is' cannot be distinguished from any other prose by code. Routed to the agent check.
+       [?] when.present               not mechanically decidable: 'text answering when to use it' cannot be distinguished from any other prose by code. Routed to the agent check.
+       [?] whole.bom                  needs the build's bill of materials, not supplied
+
+1 skill(s) · 0 error(s) · 1 warning(s) · 4 indeterminate · 38 pass
+An indeterminate is NOT a pass — it is a check that could not run.
+
+ON THE COMPLETE ARTEFACT, including the files this phase withheld from you:
+ok   data-contract-assertions               err  0 · warn  1 · indet  2 · pass 40
+       [w] desc.target                999 chars, target 500
+       [?] purpose.present            not mechanically decidable: 'text answering what the purpose is' cannot be distinguished from any other prose by code. Routed to the agent check.
+       [?] when.present               not mechanically decidable: 'text answering when to use it' cannot be distinguished from any other prose by code. Routed to the agent check.
+
+1 skill(s) · 0 error(s) · 1 warning(s) · 2 indeterminate · 40 pass
+An indeterminate is NOT a pass — it is a check that could not run.
+And the reader preflight said:
+SAFE_TO_DISPATCH
+
+YOUR FIELD: THE WHOLE ARTEFACT
+
+THE CONTRACT RULES FOR THIS FIELD are in /home/user/skills-repo/pipeline/contracts/skill.contract.json — open it, find the field with "id": "description" and every other field - you see the artefact entire, which is what a field-local reader cannot, and read its `rules` and its `agent_check` from the file. Do not work from memory or from a summary.
+
+THE QUESTION YOU ARE ASKED:
+You are the whole-artefact review, and TWO FIELDS HAVE BEEN ESCALATED TO YOU AS UNCONVERGED. Take those first.
+
+THE ESCALATION. The references field and the body-steps field each ran three check rounds and each closed the third RED on ONE recurring class: A SENTENCE ASSERTING MORE MODALITY OR SCOPE THAN THE CLAIM ROW IT CITES CARRIES. Eight instances were found across three rounds; each round's sweep fixed real ones and the next round found more. The last two, both hand-fixed after the final round and therefore NEVER READ BY ANY READER, are in Step 4 ('the one case the reference carries is a check that kept firing being silenced - an unquantified account of a single organisation, scoped there to tables with tens of thousands of columns') and Step 8 ('Muting is what the reference's one recorded case ends in ... That is a single unquantified account at one organisation, so it is the reason to count firings before enabling a check, not a law about what yours will do'). The reader's standing objection, verbatim: 'C10 is a single REPEATED (not MEASURED), unquantified narrative about one hand-set null-fraction threshold at one organization, and C10's own limits note it is scoped to feature tables with tens of thousands of columns, not a small ingest table.' RULE ON IT. Are those two sentences now within what C10 carries, or still beyond it? And the harder question a field-local reader could not reach: is this class a defect in the TEXT, or is it the unavoidable cost of writing operational prose about a claim set whose every row is hedged - in which case the fix is the writing brief, not the sentences? The build's own convergence detector returned CHURN for both fields, which reads 'the field may be underspecified rather than badly written'.
+
+THEN your own job, which is what field readers structurally cannot see: CONTRADICTIONS BETWEEN SECTIONS. Does the description promise something the steps do not deliver? Does a step contradict a standing rule? Does references/threshold-evidence.md assert something the body denies, or repeat a passage the body already carries (a duplicated passage is a contract ERROR)? Does evals/evals.json test what the body actually says, or something adjacent - and do the bundled fixture CSVs at evals/fixture/ match what the evals claim about them (check the data, do not take the eval's word)?
+
+THEN attack the build's two central claims: (1) the skill states NO numeric threshold, band or cutoff anywhere, because the bundled evidence carries no drift-magnitude-to-harm mapping - is that true of every file, and does the absence leave anything unactionable? (2) it deliberately does not teach profiling, per-column typing or per-segment comparison, because eight baseline runs with no skill present did all three unprompted - is anything taught anyway, and is that judgement safe?
+
+FINALLY: is this artefact BETTER than the predecessor it replaces - a 190-line body with a 1446-character description against a 1024 cap, zero references, zero sources and zero runnable evals - or only different? Name specifically what got WORSE.
+
+Answer in this shape and nothing else:
+
+VERDICT: GREEN or RED
+FINDINGS: one numbered line per finding. Each names the defect CLASS in three or four words, then quotes the exact text at fault, then says what is wrong with it. If a finding is an instance of a class that has more instances in the field, say so and say how many you counted.
+WHAT YOU DID NOT CHECK: anything you could not rule on, and why.
+
+RED for any error-severity rule broken or any agent_check you answer against the field. A warning alone is not RED; report it and stay GREEN. Do not soften a finding because the rest is good, and do not manufacture a finding because you were asked to look.

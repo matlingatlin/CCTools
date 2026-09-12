@@ -1,0 +1,84 @@
+# The knowledge base's routines had no trigger: reviewed 2026-09-04, the repo had no CI, no
+# active git hooks and no cron touching kb.py, so `kb.py lint` exited 1 on errors and nothing
+# ever called it. This is the trigger. It deliberately is NOT a git hook: CLAUDE.md's fourth
+# gate is explicit about auto-run hooks, and a hook only binds the machine it is installed on.
+name: kb check
+
+# The path filter must cover every area kb.py INDEXES, not just knowledge/. Measured
+# 2026-09-08: the index holds 666 documents across 8 areas and only 177 of them (note + raw)
+# live under knowledge/ - 73% sat outside the trigger. selftest asserts on intake/ content
+# directly, so a change there could break the check while CI stayed silent, and the failure
+# would surface at the next unrelated knowledge/ push, attributed to the wrong commit. A
+# delayed, mis-attributed failure is worse than no check. kb.py selftest now fails if AREAS
+# gains a glob this list does not cover.
+on:
+  push:
+    paths: ['knowledge/**', 'intake/**', 'pipeline/**', 'library/**', 'docs/**', 'catalog/**', '*.md',
+            '.github/workflows/kb-check.yml']
+  pull_request:
+    paths: ['knowledge/**', 'intake/**', 'pipeline/**', 'library/**', 'docs/**', 'catalog/**', '*.md',
+            '.github/workflows/kb-check.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      # No dependencies to install: kb.py is standard library only (sqlite3, re, pathlib),
+      # which is why this job needs no cache, no lockfile and no network.
+      - name: kb.py check
+        run: python3 knowledge/kb.py check
+      # watch.py itself is NOT run here -- it talks to the network, and this job must not. Its
+      # PREDICATE is offline, and it decides whether a run fails, so it is tested here: added
+      # 2026-09-08, when the byte comparison gained a `noise` verdict for a page whose bytes
+      # moved and whose prose did not. An untested relaxation is how a watcher stops watching.
+      - name: watch.py predicate selftest (offline)
+        run: python3 knowledge/watch.py --selftest
+      # The TAMPER check used to run only in the weekly network job, which meant our own raw
+      # layer's integrity was verified once a week for a reason that never needed the network:
+      # it compares OUR bytes to OUR recorded sha. It runs here now, on every push, together
+      # with the WATCH.tsv shape checks and the accounting that every stored raw file is
+      # watched, superseded, pinned at a commit, or declared unwatchable. Added 2026-09-08
+      # after the same URL was found watched twice -- one wasted fetch every run, forever.
+      - name: watch.py offline integrity + accounting
+        run: python3 knowledge/watch.py --offline
+      # The host truncates a description at 1,536 characters, silently, from the TAIL -- which is
+      # where this library's house style puts the NOT-clauses. So the next disambiguator added to
+      # a near-wall description is removed by the act of adding it, and nothing says so. Measured
+      # 2026-09-08: three descriptions sat 90-94 characters under that wall. This gate makes the
+      # growth loud at the moment of the edit. The target and the five already above it are
+      # argued in pipeline/decisions/2026-09-08-description-headroom.md; the path filter above
+      # already covers library/**, the neutral path
+      # the library moved to on 2026-09-12, so a description edit still reaches this job.
+      - name: description headroom selftest (offline)
+        run: python3 pipeline/queries/desc_headroom.py --selftest
+      - name: description headroom gate
+        run: python3 pipeline/queries/desc_headroom.py --gate
+      # pdftext.py is a probe with a REFUSAL in it, and the refusal is the part worth testing.
+      # It reads held PDFs with nothing but zlib, because this runner has no PDF toolchain
+      # either; what makes it safe is that it reports the decodable fraction and withholds the
+      # text below a floor. Measured 2026-09-11: the Anthropic guide extracts at 17.6% and the
+      # output still reads as clean English sentences, so a version of this tool without the
+      # guard would hand back a convincing fragment of a document and say nothing. The mutation
+      # that lowers COVERAGE_FLOOR below that 17.6% is caught by these fixtures; without them a
+      # one-character edit silently turns a refusal into an answer.
+      - name: pdftext.py predicate selftest (offline)
+        run: python3 knowledge/pdftext.py --selftest
+      # pdfread.py is the OTHER PDF path: a real library, cloned from what the container already
+      # ships rather than downloaded, in a virtualenv isolated from the poisoned system
+      # `cryptography` that makes `pypdf` panic on import. Building that venv is filesystem work
+      # and no gate depends on it, so it does NOT run here. Its predicates do, because they are
+      # offline and free and one of them is a path check: the reader may open held bytes under
+      # knowledge/raw/ and nothing else, answered on the NORMALISED path so that
+      # `knowledge/raw/../../etc/passwd` is refused. A prefix test on the string as typed is the
+      # classic way that check passes what it should stop, and a predicate with no CI is a
+      # predicate that rots.
+      - name: pdfread.py predicate selftest (offline)
+        run: python3 knowledge/pdfread.py --selftest

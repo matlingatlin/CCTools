@@ -1,0 +1,115 @@
+{
+  "target": "abstention-threshold-design",
+  "queries": [
+    {
+      "query": "when should the model say I don",
+      "expect": "abstention-threshold-design",
+      "kind": "positive",
+      "source": "trigger_terms"
+    },
+    {
+      "query": "auto-approve vs send to review",
+      "expect": "abstention-threshold-design",
+      "kind": "positive",
+      "source": "trigger_terms"
+    },
+    {
+      "query": "set a confidence threshold",
+      "expect": "abstention-threshold-design",
+      "kind": "positive",
+      "source": "trigger_terms"
+    },
+    {
+      "query": "route uncertain cases to a human",
+      "expect": "abstention-threshold-design",
+      "kind": "positive",
+      "source": "trigger_terms"
+    },
+    {
+      "query": "what precision can we ship at",
+      "expect": "abstention-threshold-design",
+      "kind": "positive",
+      "source": "trigger_terms"
+    },
+    {
+      "query": "auto-approval rate",
+      "expect": "abstention-threshold-design",
+      "kind": "positive",
+      "source": "trigger_terms"
+    },
+    {
+      "query": "coverage vs accuracy tradeoff",
+      "expect": "abstention-threshold-design",
+      "kind": "positive",
+      "source": "trigger_terms"
+    },
+    {
+      "query": "selective prediction",
+      "expect": "abstention-threshold-design",
+      "kind": "positive",
+      "source": "trigger_terms"
+    },
+    {
+      "query": "human-in-the-loop cutoff",
+      "expect": "abstention-threshold-design",
+      "kind": "positive",
+      "source": "trigger_terms"
+    },
+    {
+      "query": "Our extraction model is confidently wrong on about one record in twenty and a human reviews everything. Where do we put the auto-approve cut?",
+      "expect": "abstention-threshold-design",
+      "kind": "positive",
+      "source": "representative_tasks"
+    },
+    {
+      "query": "Here are 200 scored predictions with labels. Pick the cut for a 95 percent precision target.",
+      "expect": "abstention-threshold-design",
+      "kind": "positive",
+      "source": "representative_tasks"
+    },
+    {
+      "query": "Can we just auto-approve everything the model says it is 90 percent sure about?",
+      "expect": "abstention-threshold-design",
+      "kind": "positive",
+      "source": "representative_tasks"
+    },
+    {
+      "query": "I have 400k scraped receipts to parse into fields. The regex handles most of them; I want to only pay an LLM for the ones it mangles. How do I set that up cheaply?",
+      "expect": "hybrid-parse-escalation",
+      "kind": "near-miss",
+      "source": "sibling"
+    },
+    {
+      "query": "We use GPT to score support-reply tone from 1 to 5. Before I put that score on a dashboard, how do I know it agrees with what a human would say?",
+      "expect": "llm-judge-calibration",
+      "kind": "near-miss",
+      "source": "sibling"
+    },
+    {
+      "query": "Our deployment agent is about to get permission to force-push and drop staging tables. What controls do I put around it before I let it run overnight?",
+      "expect": "agent-blast-radius-guard",
+      "kind": "near-miss",
+      "source": "sibling"
+    },
+    {
+      "query": "This nightly job fans out 300 subagents and the bill is getting silly. Which tasks can go on a cheaper model and how do I cap the spend?",
+      "expect": "cost-aware-model-routing",
+      "kind": "near-miss",
+      "source": "sibling"
+    },
+    {
+      "query": "We have 40,000 logged support tickets. Which 250 should become the eval set so the score means something?",
+      "expect": "eval-set-curation",
+      "kind": "near-miss",
+      "source": "sibling"
+    },
+    {
+      "query": "We are A/B testing a new prompt next week and I know we will argue about the result afterwards. What do we write down beforehand so nobody moves the bar?",
+      "expect": "preregistered-decision-rule",
+      "kind": "near-miss",
+      "source": "sibling"
+    }
+  ],
+  "note": "negatives are stubs until someone writes them; an empty near-miss set makes the mis-fire rate unmeasurable, and this file says so rather than scoring 0",
+  "_target_note": "triggers.py defaults the target to the PACKAGE id, which is abstention-threshold-design-v2. The skill's frontmatter name is abstention-threshold-design - the -v2 lives on the build, not on the unit - so scoring against the package id counted 0 of 12 positives as no-fires when the router had in fact chosen the skill every time. Corrected here, by hand, and recorded rather than silently fixed."
+}

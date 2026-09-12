@@ -1,0 +1,2 @@
+{"ts": "2026-09-03T19:21:44+00:00", "kind": "waiting", "started": "2026-09-03T19:04:30+00:00", "ended": "2026-09-03T19:12:14+00:00", "duration_ms": 464000, "note": "run window(s) from measured.jsonl"}
+{"ts": "2026-09-03T19:21:44+00:00", "kind": "derived", "started": "2026-09-03T19:12:14+00:00", "ended": "2026-09-03T19:21:44+00:00", "duration_ms": 570022, "note": "after the last run window, to close"}

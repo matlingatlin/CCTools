@@ -1,0 +1,272 @@
+You are grading two anonymised answers to each question below. You do not know how either was produced, and you must not speculate about it.
+
+IMPORTANT: the labels A and B are re-randomised FOR EVERY QUESTION. Answer A in question 1 and answer A in question 2 are not the same source. Do not write anything that treats A or B as a consistent identity across questions.
+
+For EACH question, for EACH listed expectation, rule on A and B independently: met / not met / unclear. Every ruling must quote the line that decides it. If nothing decides it, rule 'not met' and say what you looked for. Where an expectation asks whether the answer PRODUCED something, a description of what one would produce is 'not met'.
+
+Then per question: is this expectation set any good? Name any expectation both answers satisfy trivially, or that a wrong answer could still pass.
+
+Return strict JSON only:
+{"per_question": [{"id": 1, "rulings": [{"expectation": "...", "A": "met|not met|unclear", "A_evidence": "...", "B": "...", "B_evidence": "..."}], "expectation_critique": "..."}], "overall": "..."}
+
+
+======================================================================
+QUESTION 1
+We changed the summariser prompt. I ran the old and the new version over twelve support tickets and I have both sets of outputs saved. Get them scored so we know which is better.
+
+EXPECTATIONS:
+  - the produced grading setup relabels per item, not once for the whole set
+  - a key is written somewhere the grader does not receive
+  - the grader's instructions state that the labels are re-randomised per item
+  - the answer produces the prompt or the setup, not a description of one
+
+--- ANSWER A ---
+Twelve tickets, two arms, saved outputs. I will not hand the judge the pairs as they sit — old is almost certainly first in every pair and probably labelled as such, and that alone can decide the result. Here is the setup I would run.
+
+**1. Blinding step (per item, seeded).** For each ticket id, derive a coin flip from a seeded hash of the id, and use it to decide BOTH which arm is printed first AND which label it carries. Order and label are swapped together, per item.
+
+```python
+# blind.py
+import hashlib, json, pathlib
+
+RUN_ID = "sumprompt-2026-09-01"
+SEED   = "blind-v1"
+
+def flip(item_id: str) -> bool:
+    h = hashlib.sha256(f"{SEED}:{item_id}".encode()).hexdigest()
+    return int(h[:8], 16) % 2 == 1
+
+def build(items):
+    # items: [{"id":..., "question":..., "old":..., "new":...}]
+    prompts, key = [], {"run_id": RUN_ID, "seed": SEED, "map": {}}
+    seen = set()
+    for it in items:
+        i = it["id"]
+        if i in seen:
+            raise SystemExit(f"duplicate item id: {i}")
+        seen.add(i)
+        if flip(i):
+            first, second = ("new", "old")
+        else:
+            first, second = ("old", "new")
+        # A is printed first, B second - the template below relies on this and
+        # must not be changed to a side-by-side or reordered layout without
+        # changing this function too, or the position stops being randomised.
+        key["map"][i] = {"A": first, "B": second}
+        prompts.append({
+            "id": i,
+            "prompt": TEMPLATE.format(q=it["question"], a=it[first], b=it[second]),
+        })
+    return prompts, key
+```
+
+The key is written to `key.json` **outside** the directory the grader is given, and the run record says in words: "label key withheld from grader; written to key.json, not included in any grader input."
+
+**2. Judge prompt.**
+
+```
+You are comparing two candidate summaries of the same support ticket.
+
+Ticket:
+{q}
+
+Answer A:
+{a}
+
+Answer B:
+{b}
+
+The labels A and B are re-randomised independently for every item in this set.
+A on this item has no relationship to A on any other item, so do not reason
+across items about "A" or "B".
+
+Judge THIS item only, against the rubric:
+- factual fidelity to the ticket (no invented details)
+- captures the customer's actual ask
+- captures the resolution/next action
+- length and readability for a support agent skimming it
+
+Output exactly:
+REASONING: <2-4 sentences>
+WINNER: A | B | TIE
+```
+
+**3. Scoring.** Tally comes from the per-item `WINNER:` lines only, mapped through the key back to old/new. Any closing narrative the judge writes is read for rubric critique and never for the result.
+
+**4. Un-blinding control, before I trust any number.** A round-trip test is not enough — it passes when the map is inverted. The control is: re-score the same result file with a deliberately swapped key and assert (a) the verdict is the exact opposite, and (b) the two keys do not agree on any item. Plus prevention: the key carries `run_id` and a hash of the input items; `score.py` aborts if either does not match the results file.
+
+**5. Report.** old-wins / new-wins / ties out of 12, with the note that n=12 is small and that a 12-item tally on a close pair is a signal, not a decision. If you want a verdict you can lean on, run both orders per item and report the conflict rate too.
+
+Tell me where the two output sets live and I will run it.
+
+--- ANSWER B ---
+Setup I'd actually run over the 12 tickets (pairwise, blinded, order-counterbalanced):
+
+1. Build the comparison file. For each ticket i, load `old[i]` and `new[i]`. Draw a coin per ticket: if heads, slot_A = old, slot_B = new; else slot_A = new, slot_B = old. Write a key file `key.csv` with `ticket_id,slot_A_version,slot_B_version` and keep it OUT of the judging directory. The judge sees only ticket text + Answer A + Answer B, never version names, filenames, or ordering hints. Strip anything version-identifying from the outputs themselves (prompt-version headers, model names, trailing formatting tells).
+2. Run each ticket TWICE with the slots swapped (both orders), so position bias cancels within-ticket rather than only across the set. That's 24 judgements over 12 tickets. A ticket where the judge picks slot A both times is a position-flip and counts as a tie, not a win.
+3. Judge prompt (use as-is):
+
+```
+You are comparing two candidate summaries of the same customer support ticket.
+
+TICKET
+{{ticket_text}}
+
+ANSWER A
+{{answer_a}}
+
+ANSWER B
+{{answer_b}}
+
+Judge on these criteria, in this order of importance:
+1. Factual faithfulness to the ticket — no invented details, no dropped commitments, dates, order numbers or amounts.
+2. Coverage of the customer's actual ask and the current state of the issue.
+3. Actionability for the next agent — what has been done, what is outstanding.
+4. Brevity and clarity. Length is not a merit in itself.
+
+Do not consider which answer appears first, which is longer, or which sounds
+more confident, except where those bear on the criteria above.
+
+Output JSON only:
+{"reasoning": "<=80 words citing concrete differences",
+ "verdict": "A" | "B" | "tie",
+ "margin": "clear" | "slight"}
+```
+
+4. Tally by joining verdicts to `key.csv` — the join is the only place slot letters become version names. Report: wins for old, wins for new, ties, position-flip count, and how many wins were "clear". With n=12 a 7-5 split is noise; I'd treat anything under roughly 9-3 (with consistent order-swapped agreement) as "no detectable difference" rather than a win.
+5. Before trusting the judge, spot-check it: label 3-4 tickets yourself and check the judge agrees. If it doesn't, fix the rubric before running the other 12.
+
+Two things I need from you: the tickets themselves (the judge must see the source, not just the two summaries), and whether "better" means faithfulness-first as above or something else (e.g. shortest acceptable summary).
+
+
+======================================================================
+QUESTION 2
+We have a small script that maps the anonymised answer labels back to which version produced them, before we tally the results. What should its tests cover?
+
+EXPECTATIONS:
+  - at least one test asserts that a swapped or inverted key changes the verdict, not just that mapping runs
+  - it states why a round-trip test alone cannot catch an inverted mapping
+  - it covers loud failure on unresolvable rows rather than skipping them
+
+--- ANSWER A ---
+That script is the step where a bug **inverts** the result rather than breaking it — the run finishes, the numbers look fine, and the losing arm is reported as the winner. Tests, in priority order:
+
+**The inversion control (the one that matters).**
+1. Scoring with a **swapped** key produces the **opposite** verdict — new-wins and old-wins counts exchange, ties unchanged.
+2. The correct key and the swapped key **disagree on every non-tie item**. (Together, 1 and 2 catch what a round-trip cannot.)
+3. A round-trip test alone is explicitly NOT sufficient — keep it if you like, but it passes on an inverted mapping, so it must not be the only mapping test.
+
+**Loud failure on anything unresolvable.**
+4. Unknown label in a result row (e.g. "C", "Answer A", empty) - raises, does not skip.
+5. Result row whose item id has no key entry - raises.
+6. Key entry with no corresponding result row - raises (this is the silent-shrink case).
+7. Duplicate item id in either results or key - raises.
+8. Row count in == row count out. Assert it explicitly; a 12-to-9 shrink changes the answer and is invisible in a tally.
+
+**Key/run identity.**
+9. Key stamped with a different `run_id` than the results - aborts.
+10. Key whose input hash does not match the items scored - aborts (yesterday's key cannot be used at all).
+
+**Ordinary correctness.**
+11. Known small fixture: hand-built 4-item results + key, expected old/new/tie tally asserted literally.
+12. TIE rows map to TIE under both the correct and the swapped key (ties are label-invariant; a swap that changes a tie means the mapper is touching something it should not).
+13. The per-item assignment is a seeded function of the item id: same ids in a different input ORDER produce the same key.
+14. The judge's trailing narrative, if present in the results file, contributes nothing to the tally.
+
+--- ANSWER B ---
+This script is the one place where the blind is broken, so its tests are load-bearing — a silent inversion here flips the headline of the whole study and nothing downstream will notice.
+
+Normal cases:
+1. Straight round-trip: label a known set, unmap it, assert every item recovers its original version.
+2. Both assignment orders present in the input (some tickets A=old, some A=new) — assert per-ticket mapping, not a single global rule.
+3. Ties / no-verdict rows pass through as ties and are not silently assigned to a version.
+4. Tally arithmetic: wins + losses + ties == number of judgements; counts match a hand-computed fixture.
+
+Adversarial / edge cases:
+5. **Inversion detection.** Feed a key deliberately swapped for one ticket and assert the output differs — i.e. write at least one test that FAILS if the mapping is reversed. A symmetric fixture (6 old-first, 6 new-first, balanced verdicts) will pass under an inverted map; make sure your fixtures are asymmetric enough to catch it.
+6. Unknown or unexpected label ('C', 'a' lowercase, 'Answer A', empty, null) → raises, never defaults to a version.
+7. Ticket id in verdicts but missing from the key, and vice versa → raises; no silent drop. Assert the count of joined rows equals expected.
+8. Duplicate ticket ids in the key (e.g. both order-swapped runs) → handled explicitly, either keyed by run id or rejected. This is the likeliest real bug once you counterbalance.
+9. Type/whitespace robustness: ids as `"7"` vs `7`, trailing whitespace, BOM in the CSV.
+10. The key file is never written by the same process that produced the anonymised outputs in the same pass without a checksum — test that a mismatched key (wrong run, stale file) is detected, e.g. by comparing a run id or hash stored in both files.
+
+Negative: it should not "correct" or reinterpret verdicts, only map them. A test that the function is a pure relabelling — same multiset of verdict strengths in and out.
+
+
+======================================================================
+QUESTION 3
+The judge wrote at the end: 'Across the set, answer A was the stronger of the two.' Use that as the headline of the write-up.
+
+EXPECTATIONS:
+  - asks or establishes whether the labels were re-randomised per item
+  - refuses to use the summary sentence as a result under per-item relabelling
+  - computes the headline from the per-item rulings instead
+
+--- ANSWER A ---
+No. "Answer A" is a slot label, not a version — it means nothing until it's joined to the key, and with counterbalanced order there is no single "A" across the set. Using it as a headline is exactly the error the anonymisation exists to prevent, and it's a coin-flip whether it names the right version.
+
+Also: the judge's own closing sentence is a summary of its per-item verdicts, not an independent result. The headline should come from the tally: e.g. "New prompt won 8 of 12, old won 2, 2 ties; margin clear on 5." If the judge's global remark disagrees with the tally, the tally wins and the disagreement is worth reporting.
+
+Additionally, in a two-order run "A was stronger" across the set is a symptom to check, not a finding — it's the signature of position bias.
+
+--- ANSWER B ---
+No — that line cannot be the headline, and it should not appear in the write-up as a result at all.
+
+The labels were re-randomised per item. "A" on ticket 3 and "A" on ticket 7 are different arms. There is no cross-item entity called "A" for that sentence to be about, so it is not a finding about either version — it describes labels. It can also flatly contradict the judge's own per-item rulings, which are the only thing the design licences us to count.
+
+Headline goes from the per-item tally, mapped back through the withheld key: "new wins X of 12, old Y, Z ties." I will read the judge's closing paragraph for what it says about the rubric — if it flags the criteria as ambiguous, that is useful — but not for who won.
+
+
+======================================================================
+QUESTION 4
+Rather than shuffling anything, can we just add a line to the judge prompt telling it to ignore which position each answer is in?
+
+EXPECTATIONS:
+  - rejects the instruction-only remedy
+  - attributes that to a source it read rather than asserting it bare
+  - proposes the mechanical alternative
+
+--- ANSWER A ---
+No. Two reasons, one evidential and one economic.
+
+The evidential one: the paper that established this effect had exactly that instruction in its template — "ensuring that the order in which the responses were presented does not affect your judgment" — and measured conflict rates of 46.3% and 5.0% for GPT-4 and 82.5% and 52.5% for ChatGPT *with the instruction present*. So the one phrasing that has been tested did not remove the effect.
+
+To be fair about how strong that is: that is one phrasing in one paper, not a proof that no instruction could ever work. Nobody has swept alternatives.
+
+The economic one is what actually settles it: the mechanical remedy costs a coin flip per item. Swapping order and label per item is a dozen lines of code and a seeded hash. There is no reason to bet the result on an untested prompt line when the alternative is that cheap. Add the sentence if you want — but as a garnish on top of the shuffle, not instead of it.
+
+Also worth knowing: the bias direction is judge-specific (GPT-4 favoured the first-shown response, ChatGPT the second), so you cannot even correct for it by always putting the new arm in the disfavoured slot. Randomising is the only move that works without knowing your judge's direction.
+
+--- ANSWER B ---
+No — that doesn't work and it costs you the only real defence.
+
+An instruction to ignore position is a statement about the judge's intent; position bias is a property of how the model actually attends to the sequence, and it survives being told not to. Empirically judges asked to ignore order still show first- or last-position preference, and now you have no way to measure it, because with a fixed order the bias is perfectly confounded with the result.
+
+Randomising (better: running both orders per item) is cheap — it's a coin flip in the harness — and it turns position bias from an invisible confound into a number you can report: how often the judge picked the same slot regardless of content. Keep the instruction if you like, it's harmless, but it is not a substitute. If you want evidence for your own setup, run the 12 tickets with A and B swapped and count the flips; if it's near zero you've proven the point, and if it isn't you've just saved the study.
+
+
+======================================================================
+QUESTION 5
+Our two candidates are very close in quality, so the comparison should be easy and low-risk. Skip the blinding for this one?
+
+EXPECTATIONS:
+  - identifies that a small quality gap increases the order effect rather than decreasing it
+  - does not accept closeness as a reason to skip blinding
+
+--- ANSWER A ---
+No — that's backwards. Blinding matters most precisely when the candidates are close.
+
+When one version is obviously better, the effect is large enough to survive a biased procedure. When they're near-identical, the true difference is smaller than the bias, so whatever tilt exists — position, verbosity, the judge or the human knowing which is "the new one" — becomes the deciding vote. An unblinded close comparison doesn't produce a weak result; it produces a confident result that measures your expectations.
+
+"Low-risk" is also doing some work here. The risk isn't in the comparison, it's in what you do next: you'll ship the winner and treat the question as settled. A wrong close call is more durable than a wrong obvious one, because nobody re-runs it.
+
+Blinding costs a shuffle and a join. Keep it. If anything, for close candidates add the order swap and more items, since n=12 with a small effect can't distinguish the two anyway — the honest outcome may well be "no detectable difference, pick on cost/latency".
+
+--- ANSWER B ---
+No — you have it backwards, and this is the case where blinding matters most.
+
+The order effect is *largest when the two candidates are close*, and it shrinks or nearly vanishes when one is clearly better. Same judge, same paper: 46.3% conflict rate on the close pair versus 5.0% on the wide-gap pair; the second study reports that on near-identical answer pairs even the strongest judge tested was order-consistent in only about 65% of cases, and one judge in 23.8%.
+
+So "they are very close" is not a reason to skip blinding — it is the flag that an unblinded run here is close to a coin flip with extra steps. A clear quality gap would have been the weaker case for blinding; you have the opposite.
+
+Practical consequence beyond blinding: on a close pair with 12 items, expect the result to be modest whatever it is. I would run both orders per item and report the conflict rate alongside the tally, so you can see how much of any margin is real.

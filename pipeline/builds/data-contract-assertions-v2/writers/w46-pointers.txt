@@ -1,0 +1,18 @@
+You are checking and repairing ONE thing in a finished Claude Code skill: its POINTERS. Nothing else.
+
+READ THESE (paths):
+- /home/user/skills-repo/pipeline/builds/data-contract-assertions-v2/artifact/data-contract-assertions/SKILL.md — the assembled body.
+- /home/user/skills-repo/pipeline/builds/data-contract-assertions-v2/artifact/data-contract-assertions/references/ and /home/user/skills-repo/pipeline/builds/data-contract-assertions-v2/artifact/data-contract-assertions/evals/ — the actual bundle.
+- /home/user/skills-repo/pipeline/builds/data-contract-assertions-v2/bom.json — the bill of materials.
+- /home/user/skills-repo/pipeline/contracts/skill.contract.json — the field with "id": "body.pointers". Read every rule.
+
+WRITE TO: /home/user/skills-repo/pipeline/builds/data-contract-assertions-v2/artifact/data-contract-assertions/_field-pointers.md — the corrected pointers section only, as it should appear in SKILL.md.
+
+Check, and say so per file:
+1. Does every file under references/ have a pointer in the body?
+2. Does each pointer say WHAT the file contains, WHEN to open it, and whether to READ it or RUN it? Anthropic's own contrast: "Run analyze_form.py to extract fields" (execute) versus "See analyze_form.py for the extraction algorithm" (read).
+3. Does every path presented as a pointer RESOLVE on disk? Check each one with ls.
+4. Does any bundled file link to another bundled file? That is an ERROR — a nested reference gets previewed rather than read, so the information goes silently incomplete. Every reference must link directly from SKILL.md.
+5. Is anything in the directory that the bill of materials does not declare, or declared and absent?
+
+Output the corrected section, then a list of every defect you found with the file it was in.

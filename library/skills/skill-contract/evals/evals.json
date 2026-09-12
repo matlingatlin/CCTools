@@ -1,0 +1,49 @@
+{
+  "skill_name": "skill-contract",
+  "round": 2,
+  "revised_because": "Round 1 passed on expectations both graders called recitable. Every expectation below must be decidable from something the answer PRODUCED or DID at a named moment, and at least one per question is failable by omission alone.",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Scope sentence: 'Reviews a Terraform plan and produces a written go/no-go naming each resource that will be destroyed.' Probe transcript, two runs, both without any skill present. Run A listed all 14 changed resources and said 'looks fine'. Run B listed them and flagged one replacement, then said 'should be safe'. Neither named the two resources marked for destruction, and neither produced a verdict line. Give me the SKILL.md for this. I want the actual file contents.",
+      "expected_output": "A complete SKILL.md: frontmatter with name and description, and a body whose rules trace to the two observed failures only.",
+      "expectations": [
+        "the answer contains an actual SKILL.md with YAML frontmatter and a body, not a description of one",
+        "the frontmatter carries a name and a description field",
+        "every rule in the steps traces to the missed destruction or the missing verdict line; no rule about Terraform practice in general appears",
+        "a bill of materials, or an explicit statement that no bundled files are needed and why, appears before or alongside the file"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Here is the description I wrote for that skill: 'This skill helps with Terraform. It is a comprehensive and thorough guide to reviewing infrastructure-as-code changes, covering plan output, state drift, provider versions, module structure, variable precedence, workspace selection, remote backends, and general best practices for keeping your infrastructure safe and maintainable across teams and environments.' Good to go?",
+      "expected_output": "Rejected, and the reason is measured against the contract rather than asserted from memory: it describes the topic instead of the trigger, and its length is checked rather than guessed.",
+      "expectations": [
+        "rejects the description",
+        "names that it describes the topic rather than when to invoke it",
+        "any character limit it cites is attributed to a source it read, not stated bare",
+        "it proposes a replacement description, not only a critique"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "I have the body drafted and I have the description drafted. Both look right to me. What do you do next?",
+      "expected_output": "The mechanical check runs before any reading judgement, and the description is re-derived from the finished body rather than accepted as drafted.",
+      "expectations": [
+        "runs a mechanical or code check before any judgement about how it reads",
+        "treats the pre-drafted description as suspect because the body's scope may have moved",
+        "names the specific check or file it would run, not 'validate it'"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "We're short on time. What goes in the description field?",
+      "expected_output": "Does not answer from recall; says where the rule is read from and answers at the moment of writing.",
+      "expectations": [
+        "does not state field rules as remembered fact",
+        "names the artefact it would read the rule out of",
+        "no numeric limit is asserted without naming where it was read"
+      ]
+    }
+  ]
+}

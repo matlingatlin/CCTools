@@ -1,0 +1,126 @@
+You are answering a set of independent questions from a colleague who is building a library of Claude Code skills. Answer each one as you actually would in that job. Where a question asks you to produce something - a file, a row, a run plan - PRODUCE IT; do not describe what you would produce. Where it asks a judgement, be decisive and short.
+
+Write your answers to the file named at the end of this prompt, one section per question, headed exactly '## Q1', '## Q2', and so on. Do not write anything else to disk. When you are done, reply with one line: the file path and the number of questions answered.
+
+At the very end of the file add a section '## consulted' listing any skills, files or tools you looked at while answering. If none, write 'none'.
+
+You have been given the following method to work from. Use it.
+
+=== METHOD ===
+# Knowledge that gets bundled
+
+A skill carries its domain knowledge bundled at authoring time, not fetched at run
+time. That makes the knowledge cheap and reliable, and it makes it go stale silently:
+nothing in the runtime will ever tell you a bundled figure is out of date.
+
+## Important — the fetch question is asked twice, about different things
+
+Whoever proposed the artefact fetched what made the idea worth building. That is not
+the same question as what the *observed* gap shows is missing, and the second question
+cannot be asked before the probe has run. Ask it after, against the failures the probe
+actually produced.
+
+## Steps
+
+**Coverage check first, and log the answer either way.** For each observed failure,
+ask whether the claims already in hand cover it. If they do, do not fetch — and record
+that the fetch was skipped and why. A skipped fetch and a fetch that was never
+considered leave the same trace in a record that logs only what happened.
+
+**Bound the questions before searching.** Write the question list, and write the
+out-of-scope list beside it with a reason per entry. Without the second list, every
+interesting adjacent finding looks like it belongs.
+
+**Gather as rows, never prose.** One row per claim: the claim, the source, where in the
+source, and the verbatim line. A paragraph hides which sentence carries the finding, so
+nobody can check it later without re-reading everything.
+
+**No quote, no finding.** This is the gate the rest depends on. Without a verbatim line
+a claim is indistinguishable from a reconstruction, and reconstructions drift in the
+direction that flatters the argument they were recalled to support.
+
+**Two verdicts, and they are not strong and weak.** *Measured* means a study with
+numbers exists and someone read it — so it carries what was measured, the effect and
+the sample. *Repeated* means widely asserted with no measurement found. A claim is not
+promoted by being asserted more often.
+
+**Someone else verifies.** Whoever gathered a source does not rule on their own
+gathering. The verifier returns one of: supported · not supported · not in the source ·
+source unreachable · not checkable. The last two are results, not gaps in the process.
+
+**Reconcile into one set.** Merge duplicates. Keep contradictions as their own rows —
+collapsing them to the more convenient side is the one edit that cannot be detected
+afterwards. Sort by verdict so a reader sees what is measured before what is repeated.
+
+**Date everything, and say what would make it wrong.** Each source carries the date it
+was fetched; each claim carries the condition under which it expires. That is the only
+mechanism you get for staleness.
+
+`references/claim-rows.md` has the row shape, the verdicts, and what a verifier is
+given.
+
+## In this repo (one instance)
+
+Claim rows and their verification outcomes go to `pipeline/ledgers/claims.jsonl`;
+verified findings land in `knowledge/notes/` in the same turn they are verified, not
+when someone asks for them.
+
+=== BUNDLED REFERENCE ===
+--- claim-rows.md ---
+# The claim row, and what a verifier is handed
+
+Written 2026-08-30.
+
+## The row
+
+| Field | Note |
+| --- | --- |
+| claim | one sentence, the finding itself |
+| source id | joins to the source list; must be unique there |
+| locator | section, page, table. "Whole document" is an acceptable locator and is itself informative; an absent one means nobody recorded where they looked |
+| quote | verbatim. Without it the row is a memory |
+| what was measured | the dependent variable, for a measured row |
+| effect and sample | the numbers, for a measured row |
+| limits | what the source itself says it does not establish |
+| verdict | measured or repeated |
+| verified by | who ruled on it, or empty if nobody has |
+
+## The source row
+
+Two fields are easy to collapse and must not be: how the source was *reached*, and how
+much of it was *read*. An abstract found through a search engine and a paper read in
+full are both "found", and only one of them can support a measured claim.
+
+Every source carries the date it was fetched. A source with no date cannot be told
+apart from a source fetched years ago.
+
+## What the verifier gets
+
+The claim row and the source. Not the reasoning that produced it, and not the argument
+it was gathered to support — both would tell them which answer is wanted.
+
+They return one verdict per row:
+
+- **supported** — the quote carries the claim
+- **not supported** — the source addresses it and does not say this
+- **not in the source** — the passage is not there at all
+- **source unreachable** — could not be opened; a result, not a failure of process
+- **not checkable** — the claim is not the kind of thing this source could settle
+
+A partial outcome is worth its own note: the finding was real but the stated mechanism
+was wrong. Both halves matter — the claim earned its keep, and quoting it as stated
+would have propagated an error.
+
+=== END ===
+
+QUESTIONS
+
+Q1. Source: an engineering blog post, read in full, fetched today. It says: 'In our experience, teams that add a linting step to CI cut review time roughly in half.' Add this to the claim set for the skill we are building.
+
+Q2. The probe showed two failures: the agent did not check whether the migration held a lock past the request timeout, and it did not name which service read the renamed table. We already have nine claims from the proposal stage. What do we do about knowledge?
+
+Q3. I found the paper. It's paywalled so I have the abstract, which states the effect clearly with a percentage. Write the claim row.
+
+Q4. Two of our sources give different numbers for the same thing: one says 15 percent, the other 40 percent. The reference file is getting messy. Clean it up.
+
+Q5. I gathered these claims and I have gone through each one against its source. Here are my verdicts. Ready to bundle into the reference file?

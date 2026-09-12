@@ -1,0 +1,51 @@
+You are an INDEPENDENT reader. You did not write this and you must not guess at how it was written. Rule on what is in front of you.
+
+The artefact you may see is at: /home/user/skills-repo/pipeline/builds/data-contract-assertions-v2/readers/r4.5/data-contract-assertions
+That directory holds exactly what this phase declared its reader needs, and nothing else. If something you expect is absent, that is because this phase's reader was not given it — say so as an observation, not as a defect in the skill.
+
+ALREADY SETTLED BY CODE — do not spend a word on any of it. The artefact checker was run on the exact directory above and its output is here verbatim:
+ON THE DIRECTORY YOU WERE GIVEN (a subset of the bundle):
+FAIL data-contract-assertions               err  2 · warn  1 · indet  9 · pass 31
+       [w] desc.target                999 chars, target 500
+       [?] fm.task-kind               needs package.content_kind, not supplied
+       [?] purpose.present            not mechanically decidable: 'text answering what the purpose is' cannot be distinguished from any other prose by code. Routed to the agent check.
+       [?] when.present               not mechanically decidable: 'text answering when to use it' cannot be distinguished from any other prose by code. Routed to the agent check.
+       [E] body.files-exist           unresolved: evals/evals.json
+       [E] ptr.resolves               unresolved: evals/evals.json
+       [?] eval.exists                absent, and package.verifiable not supplied — cannot say whether it is required
+       [?] eval.schema                evals/evals.json absent
+       [?] eval.min                   evals/evals.json absent
+       [?] eval.files-resolve         evals/evals.json absent
+       [?] eval.name-matches          evals/evals.json absent
+       [?] whole.bom                  needs the build's bill of materials, not supplied
+
+1 skill(s) · 2 error(s) · 1 warning(s) · 9 indeterminate · 31 pass
+An indeterminate is NOT a pass — it is a check that could not run.
+
+ON THE COMPLETE ARTEFACT, including the files this phase withheld from you:
+ok   data-contract-assertions               err  0 · warn  1 · indet  2 · pass 40
+       [w] desc.target                999 chars, target 500
+       [?] purpose.present            not mechanically decidable: 'text answering what the purpose is' cannot be distinguished from any other prose by code. Routed to the agent check.
+       [?] when.present               not mechanically decidable: 'text answering when to use it' cannot be distinguished from any other prose by code. Routed to the agent check.
+
+1 skill(s) · 0 error(s) · 1 warning(s) · 2 indeterminate · 40 pass
+An indeterminate is NOT a pass — it is a check that could not run.
+And the reader preflight said:
+SAFE_TO_DISPATCH
+  [-] waived, names a file phase 4.5 withheld by design: [E] body.files-exist           unresolved: evals/evals.json
+  [-] waived, names a file phase 4.5 withheld by design: [E] ptr.resolves               unresolved: evals/evals.json
+
+YOUR FIELD: the body's STEPS section, including its standing rules
+
+THE CONTRACT RULES FOR THIS FIELD are in /home/user/skills-repo/pipeline/contracts/skill.contract.json — open it, find the field with "id": "body.steps", and read its `rules` and its `agent_check` from the file. Do not work from memory or from a summary.
+
+THE QUESTION YOU ARE ASKED:
+ROUND 3, THE LAST ROUND ALLOWED. Two independent readers, ruling on different fields, both flagged the SAME class: a sentence in SKILL.md asserting more than the claim row it cites carries. Two instances were named and both have been rewritten by hand: Step 4's 'A large minority of anomalies that fire at the boundary are never resolved' (which asserted permanence C2 does not carry, and cited C1 and C10 alongside it for a rate neither reports), and Step 9's 'Boundary validation is what turns a silent format change from a months-long diagnosis into a short one' (which stated an n-of-1 uncontrolled incident as a general property and named an incident type C4 never identifies). YOUR JOB IS THE SWEEP, NOT THOSE TWO. Go through EVERY sentence in SKILL.md that carries a parenthesised claim citation, open the cited row in references/threshold-evidence.md, and say whether the row carries what the sentence asserts - including the modality (does 'is' or 'never' or 'always' overstate a measured share or a single case) and the scope (does the sentence name a defect class, a population or a mechanism the row does not). Report per citation group and say how many you opened. If you find a third instance of this class, say so plainly: two rounds have now closed red on it and the field is one round from being marked unconverged. THEN the standing questions for your field, unchanged. Also, unchanged: does every step end in something CHECKABLE; is anything written as a one-time step that should apply throughout the task; does the body state ANY numeric threshold, band or cutoff (it must not) and does that absence leave any step unactionable; does any step teach profiling, per-column typing or per-segment comparison, which eight baseline runs did unprompted; is the Task Progress checklist consistent with the steps.
+
+Answer in this shape and nothing else:
+
+VERDICT: GREEN or RED
+FINDINGS: one numbered line per finding. Each names the defect CLASS in three or four words, then quotes the exact text at fault, then says what is wrong with it. If a finding is an instance of a class that has more instances in the field, say so and say how many you counted.
+WHAT YOU DID NOT CHECK: anything you could not rule on, and why.
+
+RED for any error-severity rule broken or any agent_check you answer against the field. A warning alone is not RED; report it and stay GREEN. Do not soften a finding because the rest is good, and do not manufacture a finding because you were asked to look.

@@ -1,0 +1,13 @@
+{"_schema": "one row per arm-run, round 2. tokens/tool_calls/duration_ms MEASURED from the task-completion notification. The cost clause is LIVE this round - see AMENDMENT 1 in ../2026-08-30-builder-skills/PREREGISTRATION.md."}
+{"skill": "skill-measure", "arm": "with", "repeat": 1, "tokens": 66924, "tool_calls": 2, "duration_ms": 87760}
+{"skill": "skill-measure", "arm": "without", "repeat": 1, "tokens": 65149, "tool_calls": 2, "duration_ms": 96868}
+{"skill": "skill-measure", "arm": "with", "repeat": 2, "tokens": 66524, "tool_calls": 2, "duration_ms": 83189}
+{"skill": "skill-measure", "arm": "without", "repeat": 2, "tokens": 64599, "tool_calls": 2, "duration_ms": 87789}
+{"skill": "skill-knowledge", "arm": "without", "repeat": 1, "tokens": 64755, "tool_calls": 3, "duration_ms": 85090}
+{"skill": "skill-knowledge", "arm": "with", "repeat": 1, "tokens": 66609, "tool_calls": 2, "duration_ms": 87989}
+{"skill": "skill-knowledge", "arm": "without", "repeat": 2, "tokens": 62760, "tool_calls": 2, "duration_ms": 62961}
+{"skill": "skill-knowledge", "arm": "with", "repeat": 2, "tokens": 67211, "tool_calls": 2, "duration_ms": 97523}
+{"skill": "skill-contract", "arm": "without", "repeat": 1, "tokens": 63541, "tool_calls": 2, "duration_ms": 72957, "round": 2}
+{"skill": "skill-contract", "arm": "with", "repeat": 1, "tokens": 68533, "tool_calls": 2, "duration_ms": 109217, "round": 2}
+{"skill": "skill-contract", "arm": "without", "repeat": 2, "tokens": 63614, "tool_calls": 2, "duration_ms": 71412, "round": 2}
+{"skill": "skill-contract", "arm": "with", "repeat": 2, "tokens": 68822, "tool_calls": 2, "duration_ms": 111372, "round": 2}

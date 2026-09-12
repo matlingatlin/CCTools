@@ -1,0 +1,47 @@
+{
+ "simple_lookup": {
+  "n": 1647,
+  "acc": 0.9472,
+  "wilson95": [
+   0.9353,
+   0.957
+  ],
+  "half_width_pts": 1.1
+ },
+ "multi_hop": {
+  "n": 264,
+  "acc": 0.6705,
+  "wilson95": [
+   0.6117,
+   0.7244
+  ],
+  "half_width_pts": 5.6
+ },
+ "ambiguous": {
+  "n": 67,
+  "acc": 0.4627,
+  "wilson95": [
+   0.3486,
+   0.5808
+  ],
+  "half_width_pts": 11.6
+ },
+ "adversarial": {
+  "n": 22,
+  "acc": 0.3182,
+  "wilson95": [
+   0.1636,
+   0.5268
+  ],
+  "half_width_pts": 18.2
+ },
+ "_overall_acc": 0.8875,
+ "_macro_avg_of_four_slices": 0.5997,
+ "_contaminated_rows": 37,
+ "_proportional_200_adversarial": 2.2,
+ "_distinct_strings_raw": 1940,
+ "_distinct_strings_after_normalising_ids_and_digits": 64,
+ "_families_over_the_placeholder_rows": 2,
+ "_rows_in_those_families": 1791,
+ "_exact_duplicate_pairs": 60
+}

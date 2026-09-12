@@ -1,0 +1,1 @@
+{"planted": "the ingest row (seam 0, feed.csv -> extract.parse_rows) was deleted from Table 1, while the prose above the table still claims 4 boundaries including ingest and egress", "class": "a stated enumeration is not carried by the artefact beneath it", "expectation_it_should_fail": "Q1/Q2 S1 - the boundary set includes BOTH the ingest and the egress boundary"}

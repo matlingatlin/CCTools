@@ -1,0 +1,122 @@
+{
+  "target": "eval-set-curation",
+  "target_source": "skill-dir frontmatter name",
+  "queries": [
+    {
+      "query": "we have 40k logs, which 200 do I evaluate on",
+      "expect": "eval-set-curation-v2",
+      "kind": "positive",
+      "source": "trigger_terms"
+    },
+    {
+      "query": "is my eval set representative",
+      "expect": "eval-set-curation-v2",
+      "kind": "positive",
+      "source": "trigger_terms"
+    },
+    {
+      "query": "stratified sample across slices",
+      "expect": "eval-set-curation-v2",
+      "kind": "positive",
+      "source": "trigger_terms"
+    },
+    {
+      "query": "dedupe the eval set",
+      "expect": "eval-set-curation-v2",
+      "kind": "positive",
+      "source": "trigger_terms"
+    },
+    {
+      "query": "near-duplicate test cases",
+      "expect": "eval-set-curation-v2",
+      "kind": "positive",
+      "source": "trigger_terms"
+    },
+    {
+      "query": "test-set contamination",
+      "expect": "eval-set-curation-v2",
+      "kind": "positive",
+      "source": "trigger_terms"
+    },
+    {
+      "query": "frozen holdout",
+      "expect": "eval-set-curation-v2",
+      "kind": "positive",
+      "source": "trigger_terms"
+    },
+    {
+      "query": "per-slice accuracy",
+      "expect": "eval-set-curation-v2",
+      "kind": "positive",
+      "source": "trigger_terms"
+    },
+    {
+      "query": "We have 2000 logged support queries at pipeline/packages/fixtures/eval-set-curation-v2/logged_traffic.csv with a slice column and a correct column. Pick the 200 that become our eval set, and tell us what the choice costs.",
+      "expect": "eval-set-curation-v2",
+      "kind": "positive",
+      "source": "representative_tasks"
+    },
+    {
+      "query": "Someone reports 88.75 percent accuracy on pipeline/packages/fixtures/eval-set-curation-v2/logged_traffic.csv and wants to ship on it. Is that number trustworthy?",
+      "expect": "eval-set-curation-v2",
+      "kind": "positive",
+      "source": "representative_tasks"
+    },
+    {
+      "query": "Before we freeze pipeline/packages/fixtures/eval-set-curation-v2/logged_traffic.csv as an eval set, what has to be removed?",
+      "expect": "eval-set-curation-v2",
+      "kind": "positive",
+      "source": "representative_tasks"
+    },
+    {
+      "query": "How many examples do we need per slice on pipeline/packages/fixtures/eval-set-curation-v2/logged_traffic.csv before a per-slice score means anything?",
+      "expect": "eval-set-curation-v2",
+      "kind": "positive",
+      "source": "representative_tasks"
+    },
+    {
+      "query": "We launch next month and have no production traffic at all yet. Help me build an eval set.",
+      "expect": "synthetic-eval-data-generation",
+      "kind": "near-miss",
+      "source": "sibling",
+      "why_a_near_miss": "shares the eval-set vocabulary; the discriminator is that it is not a selection decision over data that already exists"
+    },
+    {
+      "query": "Set up eval-driven development for my Claude Code agent so I can measure pass@k on its own task completion before I change it.",
+      "expect": "eval-harness",
+      "kind": "near-miss",
+      "source": "sibling",
+      "why_a_near_miss": "shares the eval-set vocabulary; the discriminator is that it is not a selection decision over data that already exists"
+    },
+    {
+      "query": "Wire our prompt changes behind a CI gate so a pull request fails if the assertion pass rate on our eval cases drops.",
+      "expect": "llm-eval-harness",
+      "kind": "near-miss",
+      "source": "sibling",
+      "why_a_near_miss": "shares the eval-set vocabulary; the discriminator is that it is not a selection decision over data that already exists"
+    },
+    {
+      "query": "I have 400 failed traces from last week. Cluster them and tell me what the failure modes are and in what proportion.",
+      "expect": "error-analysis-taxonomy",
+      "kind": "near-miss",
+      "source": "sibling",
+      "why_a_near_miss": "shares the eval-set vocabulary; the discriminator is that it is not a selection decision over data that already exists"
+    },
+    {
+      "query": "Our LLM grader scores helpfulness 1 to 5 and I do not trust it. How do I check it against human labels before I believe the numbers?",
+      "expect": "llm-judge-calibration",
+      "kind": "near-miss",
+      "source": "sibling",
+      "why_a_near_miss": "shares the eval-set vocabulary; the discriminator is that it is not a selection decision over data that already exists"
+    },
+    {
+      "query": "We already have a labelled eval set and a trusted scorer. Run an automated search over prompt variants to find a better one.",
+      "expect": "metric-driven-prompt-optimization",
+      "kind": "near-miss",
+      "source": "sibling",
+      "why_a_near_miss": "shares the eval-set vocabulary; the discriminator is that it is not a selection decision over data that already exists"
+    }
+  ],
+  "note": "negatives are stubs until someone writes them; an empty near-miss set makes the mis-fire rate unmeasurable, and this file says so rather than scoring 0",
+  "target_warning": null
+}

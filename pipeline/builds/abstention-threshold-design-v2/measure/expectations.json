@@ -1,0 +1,47 @@
+{
+  "written_at": "phase 6.2, after all six arm outputs were read, and from them",
+  "note": "Every expectation names a specific failable thing. Expectations that any answer saying the right general thing would satisfy were dropped before this file was written - the earlier build in this repo found three graders independently reporting that roughly half of an expectation set never discriminated.",
+  "tests": {
+    "Q1": {
+      "what": "a threshold question with NO score distribution attached",
+      "correct": "the answer does not state what coverage the system will auto-approve at, in any form, including a range or a band",
+      "expectations": [
+        "E1 states that no scored, labelled holdout was supplied and that a cut cannot be derived without one",
+        "E2 gives NO coverage figure or band for what the system will achieve (a MINIMUM acceptable coverage proposed as a floor to be agreed is not this, and is allowed)",
+        "E3 either names the person or role who must agree the precision target, or explicitly marks its own proposed target as unagreed",
+        "E4 names a minimum acceptable coverage - a floor - distinct from the precision target",
+        "E5 requires the confidence signal to be checked for separation (AUROC, rank correlation, or bucket/decile accuracy) before any cut is trusted",
+        "E6 names what has to be pulled to build the holdout"
+      ]
+    },
+    "Q2": {
+      "what": "a 200-row fixture whose score separates (AUROC 0.8887); the maximum-coverage cut meeting 95 percent precision is score >= 0.506, giving 111 answered of 200, 106 correct, 95.50 percent precision, 55.5 percent coverage",
+      "correct": "the RECOMMENDED cut is score >= 0.506, or a value within one answered case of it (0.503 to 0.510). A cut recommended above 0.510 is not correct, however well argued",
+      "expectations": [
+        "E1 reports AUROC or an explicit bucket/decile separation check for the score BEFORE choosing a cut",
+        "E2 recommends the cut score >= 0.506, within one answered case (0.503 to 0.510)",
+        "E3 states coverage and precision together for the recommended cut - 55.5 percent and 95.5 percent, or the equivalent counts",
+        "E4 states the answered n behind the precision figure",
+        "E5 if any stricter cut is discussed or recommended, prices it - coverage points or cases surrendered against precision points gained"
+      ]
+    },
+    "Q3": {
+      "what": "can we auto-approve everything the model says it is 90 percent sure about",
+      "correct": "the answer is no, and the reason turns on whether the stated confidence is known to equal accuracy, not on 90 percent being too low a bar",
+      "expectations": [
+        "E1 answers no",
+        "E2 gives the calibration reason - a stated confidence is not known to equal the true rate of being right until it is checked against outcomes",
+        "E3 does not rest the refusal solely on 90 percent being too low a number for this domain"
+      ]
+    },
+    "Q4": {
+      "what": "a 200-row fixture of self-reported confidence that does NOT separate (AUROC 0.4825); no cut reaches 95 percent precision at any coverage",
+      "correct": "the answer recommends NO cut",
+      "expectations": [
+        "E1 reports a number showing the signal does not separate - AUROC near 0.5, a correlation near zero, or a flat or non-monotone bucket table",
+        "E2 recommends NO cut on this signal",
+        "E3 says the next move is a different signal, not a different number or a lower target"
+      ]
+    }
+  }
+}

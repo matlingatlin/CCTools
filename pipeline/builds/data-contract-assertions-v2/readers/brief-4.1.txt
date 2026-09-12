@@ -1,0 +1,57 @@
+You are an INDEPENDENT reader. You did not write this and you must not guess at how it was written. Rule on what is in front of you.
+
+The artefact you may see is at: /home/user/skills-repo/pipeline/builds/data-contract-assertions-v2/readers/r4.1/data-contract-assertions
+That directory holds exactly what this phase declared its reader needs, and nothing else. If something you expect is absent, that is because this phase's reader was not given it — say so as an observation, not as a defect in the skill.
+
+ALREADY SETTLED BY CODE — do not spend a word on any of it. The artefact checker was run on the exact directory above and its output is here verbatim:
+ON THE DIRECTORY YOU WERE GIVEN (a subset of the bundle):
+FAIL data-contract-assertions               err  2 · warn  0 · indet  9 · pass 32
+       [?] fm.task-kind               needs package.content_kind, not supplied
+       [?] purpose.present            not mechanically decidable: 'text answering what the purpose is' cannot be distinguished from any other prose by code. Routed to the agent check.
+       [?] when.present               not mechanically decidable: 'text answering when to use it' cannot be distinguished from any other prose by code. Routed to the agent check.
+       [E] body.files-exist           unresolved: evals/evals.json
+       [E] ptr.resolves               unresolved: evals/evals.json
+       [?] eval.exists                absent, and package.verifiable not supplied — cannot say whether it is required
+       [?] eval.schema                evals/evals.json absent
+       [?] eval.min                   evals/evals.json absent
+       [?] eval.files-resolve         evals/evals.json absent
+       [?] eval.name-matches          evals/evals.json absent
+       [?] whole.bom                  needs the build's bill of materials, not supplied
+
+1 skill(s) · 2 error(s) · 0 warning(s) · 9 indeterminate · 32 pass
+An indeterminate is NOT a pass — it is a check that could not run.
+
+ON THE COMPLETE ARTEFACT, including the files this phase withheld from you:
+ok   data-contract-assertions               err  0 · warn  1 · indet  2 · pass 40
+       [w] desc.target                966 chars, target 500
+       [?] purpose.present            not mechanically decidable: 'text answering what the purpose is' cannot be distinguished from any other prose by code. Routed to the agent check.
+       [?] when.present               not mechanically decidable: 'text answering when to use it' cannot be distinguished from any other prose by code. Routed to the agent check.
+
+1 skill(s) · 0 error(s) · 1 warning(s) · 2 indeterminate · 40 pass
+An indeterminate is NOT a pass — it is a check that could not run.
+And the reader preflight said:
+INDETERMINATE
+  [?] artefact checker skipped by flag
+
+
+NOTE - the unrestricted preflight on this same directory said:
+DO_NOT_DISPATCH
+  [x] contract error on the reader's copy: [E] body.files-exist           unresolved: evals/evals.json
+  [x] contract error on the reader's copy: [E] ptr.resolves               unresolved: evals/evals.json
+
+Those unresolved pointers are THE HARNESS withholding files this phase did not declare, not a defect in the skill. See the build's gate_conflict event.
+
+YOUR FIELD: references and assets, batched as one reader
+
+THE CONTRACT RULES FOR THIS FIELD are in /home/user/skills-repo/pipeline/contracts/skill.contract.json — open it, find the field with "id": "bundle.references" and the field with "id": "bundle.assets", and read its `rules` and its `agent_check` from the file. Do not work from memory or from a summary.
+
+THE QUESTION YOU ARE ASKED:
+Is every claim in references/ traceable to a source WITH A VERBATIM QUOTE, and does each quote CARRY the claim beside it rather than merely sitting adjacent to it? Is anything in references/ that belongs in SKILL.md, or vice versa? Does any row state a value that MOVES on its own - a price, a model id, a limit - which must be fetched rather than written down? Separately for assets: this build classified assets/ as NOT NEEDED, on the ground that the artefact the steps emit is a per-column checks table whose columns are named in the body, and a separate template would restate them in a second place. Rule on that classification: is it a reason, or is it a reason-shaped sentence? A template that would have to exist is a RED. NOTE: 13 of 13 quotes in this file were already byte-matched against the source package by script and every source carries a fetch date; do not re-verify that by eye.
+
+Answer in this shape and nothing else:
+
+VERDICT: GREEN or RED
+FINDINGS: one numbered line per finding. Each names the defect CLASS in three or four words, then quotes the exact text at fault, then says what is wrong with it. If a finding is an instance of a class that has more instances in the field, say so and say how many you counted.
+WHAT YOU DID NOT CHECK: anything you could not rule on, and why.
+
+RED for any error-severity rule broken or any agent_check you answer against the field. A warning alone is not RED; report it and stay GREEN. Do not soften a finding because the rest is good, and do not manufacture a finding because you were asked to look.

@@ -1,0 +1,107 @@
+I read SKILL.md, evals.md, evals/evals.json, check.py, the fixture wiki and the three raw sources, and ran the grader on the **untouched** wiki for all three tasks.
+
+**Baseline grader run (no ingest performed):** T1 13/17 pass, T2 11/16, T3 12/13 — all exit 1.
+- T1 fails only: `beta price updated with date`, `new source in note frontmatter with fetch date`, `SOURCES row`, `LOG row`. It already passes `old price kept as history or superseded row`, `no rival page`, `neighbour names owner back`.
+- T2 fails: `both values present`, `disputed marker`, `both sources dated`, `model card in frontmatter sources`, `SOURCES row`. It already passes `LOG row`.
+- T3 fails only: `LOG says no material`.
+
+```json
+{
+  "findings": [
+    {
+      "level": "CLASS",
+      "where": "SKILL.md step 2 vs step 6",
+      "finding": "The no-material branch and the register step disagree about the wiki-level source log. Step 2 ends the procedure ('and stop') after one operation-log line; step 6 requires 'one row per source in the source log' for every ingest. Step 2's exemption is written only about the page's own source list ('the page's source list'), so whether SOURCES.md gains a row for a kept-raw/no-material source is undecided — and T3's grader inspects LOG.md only, so either reading scores PASS.",
+      "quote": "**No material means no page is touched**: keep the raw, write one operation-log line with the URL and the reason, and stop. ... 6. **Register.** One row in the index (map of contents), one row per source in the source log"
+    },
+    {
+      "level": "CLASS",
+      "where": "SKILL.md step 1 vs step 4",
+      "finding": "The two steps specify different shapes for a source entry. Step 1 requires a content hash in it; step 4's schema lists the source fields without one. No fixture note carries a hash, check.py never looks for one, and the 'In this repo' claim contract is cited only for the claim row, not the source entry. One of the two steps is unfollowable as written.",
+      "quote": "the copy goes there with the fetch date in the file name and a content hash in the page's source entry ... Frontmatter with title, sources (url or path, fetch date, note), status from the fixed vocabulary, tags, related."
+    },
+    {
+      "level": "CLASS",
+      "where": "SKILL.md step 4",
+      "finding": "Step 4 does not end in something checkable: it defers to a 'fixed vocabulary' of status values that the skill never states, in the body or in 'In this repo'. Only `disputed` is inferable, from step 2. A reader cannot tell whether a note's status is in-schema, and check.py's schema check only asserts that a `status:` key exists, not that its value is legal.",
+      "quote": "status from the fixed vocabulary"
+    },
+    {
+      "level": "CLASS",
+      "where": "evals/evals.json + evals/files/check.py vs SKILL.md step 3",
+      "finding": "The discipline the skill is named for is graded by nothing. Step 3 requires a verbatim line and a MEASURED/REPEATED/DERIVED verdict per claim; no check in any of T1/T2/T3 mentions a quote or a verdict, and the prompts' expected_output drops the requirement that evals.md's own S1 states ('a dated row with the verbatim line and MEASURED'). Coverage of the steps is likewise partial: step 1 is unexercised (raws are pre-supplied, nothing checks a raw copy landed), step 5 has no eval that creates a page with new neighbours, step 7 is unexecutable because the fixture ships no lint, and the 'new' triage branch is never exercised (T1 update, T2 disputed, T3 no material). Either the suite gains those cases or the steps stop claiming to be tested.",
+      "quote": "A claim is one row: what it says, source, locator, verbatim line, and a verdict - **MEASURED** ... **REPEATED** ... **DERIVED**"
+    },
+    {
+      "level": "CLASS",
+      "where": "SKILL.md Rules",
+      "finding": "A rule with no observed failure and no field to apply to. Nothing in this skill's schema, steps, fixture, or grader produces a nullable or zero-valued field; the rule is imported from the repo's metrics contract (the spend_measured convention), not from anything the ingest procedure writes. Step 2 is the only place in the body that cites an observation; this rule cites none and does no work.",
+      "quote": "`null` for not-fetched and not-measured; `0` only for a measured zero."
+    },
+    {
+      "level": "CLASS",
+      "where": "SKILL.md step 6 vs step 7",
+      "finding": "Step 6 has the author hand-write an index row; step 7 then rebuilds the index. Which is authoritative — and whether a hand-written row survives the rebuild — is never stated, and 'In this repo' confirms a generator exists (kb.py build). In the eval fixture there is no rebuild and no lint at all, so step 7 cannot be performed on the artefact the prompts hand the agent, while check.py still requires the hand-written `[[stem]]` row.",
+      "quote": "6. **Register.** One row in the index (map of contents) ... 7. **Lint, then rebuild the index.**"
+    },
+    {
+      "level": "INSTANCE",
+      "where": "evals/files/check.py:41 (T2 LOG row)",
+      "finding": "Vacuous check: it PASSES on the untouched wiki, because the fixture LOG.md already contains '2026-08-25 ingest: gamma-card -> local-models (new)'. A run that writes no log line at all scores PASS on the only check for T2's logging requirement. Needs the new URL slug (gamma-7-model-card) or a 2026-09-02 date.",
+      "quote": "check(\"LOG row\", \"gamma\" in log.lower())"
+    },
+    {
+      "level": "INSTANCE",
+      "where": "evals/files/check.py:42-46 (T3)",
+      "finding": "T3 grades 'no page changed' only through prompt-caching's frontmatter, and never inspects SOURCES.md or INDEX.md. The exact baseline failure step 2 records — a corroborating source added plus a claims row — passes T3 if the source went into SOURCES.md, or if the claims row went into the note body rather than frontmatter. model-prices and local-models are not checked for being unchanged either.",
+      "quote": "check(\"prompt-caching unchanged\", \"writes 1.25x\" in pc and \"blog\" not in fm(pc))"
+    },
+    {
+      "level": "INSTANCE",
+      "where": "evals/files/check.py:26 (T1 no rival page)",
+      "finding": "The rival-page check only fires on a filename containing the substring 'pric'. The evals.md baseline ('writes a new \"pricing-2026-09\" note') is caught, but a rival named beta-5-costs, model-rates-2026-09 or sept-pricing-update... (any name without 'pric') passes, even though the prompt's expected_output says 'no new page'.",
+      "quote": "check(\"no rival page\", not any(s not in (\"model-prices\",\"prompt-caching\",\"local-models\") and \"pric\" in s for s in notes), str(sorted(notes)))"
+    },
+    {
+      "level": "INSTANCE",
+      "where": "evals/files/check.py:29,33 (T1)",
+      "finding": "Two of T1's seven task checks pass before any ingest ($3/$15 and the [[model-prices]] backlink are in the fixture). They are legitimate no-regression guards, but they are the only checks bearing on 'superseded price kept' and on cascade, so neither behaviour is positively evidenced by a passing T1 — 13 of 17 T1 checks already pass on the untouched wiki.",
+      "quote": "check(\"old price kept as history or superseded row\", \"$3\" in mp and \"$15\" in mp)"
+    },
+    {
+      "level": "INSTANCE",
+      "where": "evals/files/check.py:28",
+      "finding": "The price regex is loose in two ways: `\\$2(\\.00)?` also matches the '$2' of an unchanged '$25' Alpha row, and re.S lets the date match anywhere later in the file, so 'Beta 5 ... $25 ... $10 ... 2026-09' in any order-of-appearance satisfies it without Beta's own row being updated. It fails on the untouched fixture only because Alpha's row precedes Beta's.",
+      "quote": "check(\"beta price updated with date\", re.search(r\"Beta 5.*\\$2(\\.00)?.*\\$10(\\.00)?.*2026-09\", mp, re.S) is not None)"
+    },
+    {
+      "level": "INSTANCE",
+      "where": "evals/evals.json (all three) vs bom.json",
+      "finding": "Every eval's `expectations` array is empty, so the BOM's stated purpose for the file ('expectations added after outputs (2.4)') is unmet while its status reads 'exists'. Nothing in evals.json wires check.py in either — it is listed among `files` but no prompt, command, or exit-code contract invokes it, so grading is unspecified, and shipping the grader into the agent's own file set lets the run read the answer key.",
+      "quote": "\"expectations\": []"
+    },
+    {
+      "level": "INSTANCE",
+      "where": "evals.md Method and Scenarios",
+      "finding": "The eval record describes a different suite from the one shipped: its stated observable criterion for every scenario is a repo lint that does not exist in the fixture, and its six scenarios do not map onto evals.json's three tasks — S3 (no-URL transcript), S4 (cascade under pressure) and S6 (negative trigger) have no executable eval, so the negative-trigger requirement is asserted but untestable.",
+      "quote": "The observable criterion for every scenario is the state of the files, checked by `python3 knowledge/kb.py lint --json` and by reading the note."
+    },
+    {
+      "level": "INSTANCE",
+      "where": "bom.json",
+      "finding": "The BOM omits SKILL.md — the primary artefact under review is absent from its own bill of materials — and files evals.md under the copy-pasted rationale used for the fixture files, which it is not (no prompt references it).",
+      "quote": "{\"file\": \"evals.md\", \"kind\": \"other\", \"why\": \"fixture wiki or raw source the eval prompts reference (2.5)\"}"
+    },
+    {
+      "level": "INSTANCE",
+      "where": "SKILL.md:12",
+      "finding": "Answering (5): SKILL.md is otherwise clean — every repository path (knowledge/, pipeline/, intake/, .claude/agents/) is confined to lines 86-93, and the sibling-talent names in 'When NOT to use' match house convention. The one leak outside the section is this deictic 'here', which means this repository and is unverifiable to any other reader; only step 2 actually cites its observation.",
+      "quote": "made procedural, with the parts his gist leaves to the reader filled in from what broke here."
+    }
+  ],
+  "class_finding": true,
+  "verdict": "red"
+}
+```
+
+The short version: the body is internally inconsistent in three places (no-material vs register, hash vs schema, index row vs rebuild), one step defers to a vocabulary that is never written down, one rule is inherited rather than observed — and the suite cannot demonstrate the skill's central claim, because no check anywhere looks for a quote or a verdict, and two graders pass on a wiki nobody has touched.

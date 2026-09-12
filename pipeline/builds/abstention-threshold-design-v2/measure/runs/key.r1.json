@@ -1,0 +1,23 @@
+{
+ "Q1": {
+  "A": "without",
+  "B": "with",
+  "C": "incumbent"
+ },
+ "Q2": {
+  "A": "incumbent",
+  "B": "with",
+  "C": "PLANTED",
+  "D": "without"
+ },
+ "Q3": {
+  "A": "incumbent",
+  "B": "without",
+  "C": "with"
+ },
+ "Q4": {
+  "A": "incumbent",
+  "B": "with",
+  "C": "without"
+ }
+}

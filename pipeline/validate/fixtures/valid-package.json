@@ -1,0 +1,72 @@
+{
+  "_fixture": "SYNTHETIC. Not a real build package. Every source below is fictional (example.invalid is a reserved non-resolving TLD, RFC 2606) and every quote is invented for the fixture. Nothing here may be cited, copied into a real package, or read as a finding. Its only job is to be a package that passes every rule in pipeline/contracts/package.contract.json, so pipeline/validate/selftest_package.py can break it one field at a time and check that the break is caught.",
+  "id": "migration-review",
+  "candidate_sentence": "Reviews a database migration script and produces a written go or no-go verdict naming each irreversible statement.",
+  "unit_type": "skill",
+  "content_kind": "reference",
+  "verifiable": true,
+  "failure_kind": "knowledge",
+  "sources": [
+    {
+      "source_id": "S1",
+      "url": "https://example.invalid/fixture/migration-safety-guide",
+      "fetched": "2026-08-30",
+      "access": "full page",
+      "read": "read in full"
+    },
+    {
+      "source_id": "S2",
+      "url": "https://example.invalid/fixture/incident-study",
+      "fetched": "2026-08-29",
+      "access": "abstract only",
+      "read": "abstract read, body paywalled"
+    }
+  ],
+  "claims": [
+    {
+      "claim": "FIXTURE CLAIM, INVENTED. A column drop and a table rename cannot be rolled back once dependent reads have started.",
+      "quote": "FIXTURE QUOTE, INVENTED. Once a reader has resolved the new name, the rename is no longer reversible.",
+      "source_id": "S1",
+      "locator": "section 3, paragraph 2",
+      "verdict": "REPEATED"
+    },
+    {
+      "claim": "FIXTURE CLAIM, INVENTED. Migrations that lock a table for longer than the request timeout produce a visible outage.",
+      "quote": "FIXTURE QUOTE, INVENTED. Of the migrations we sampled, those holding an exclusive lock past the timeout produced user-visible errors.",
+      "source_id": "S2",
+      "locator": "abstract",
+      "verdict": "MEASURED",
+      "what_was_measured": "share of sampled migrations that produced user-visible request errors",
+      "sample": "fixture value, not a real number",
+      "effect_size": "fixture value, not a real number"
+    }
+  ],
+  "expected_failure": "Without the skill the reviewer lists the statements in the file but does not separate the reversible ones from the irreversible ones, and gives no verdict.",
+  "trigger_terms": [
+    "migration",
+    "alembic",
+    "drop column",
+    "rollback",
+    "schema change"
+  ],
+  "representative_tasks": [
+    {
+      "task": "Review a migration that drops one column and adds two, and say whether it is safe to deploy.",
+      "artifact_expected": "A verdict line plus one row per statement marked reversible or irreversible.",
+      "fixture_kind": "skill bundle"
+    },
+    {
+      "task": "Review a migration that renames a table used by a second service.",
+      "artifact_expected": "A verdict line naming the rename as irreversible and the dependent reader as the reason.",
+      "fixture_kind": "runbook without expectations"
+    }
+  ],
+  "budget": {
+    "max_agents": 2,
+    "max_paired_runs": 6
+  },
+  "threshold": "Across k >= 2 repeats: zero regressions on correctness, no more than 20 percent worse on tokens or tool calls, and at least one test where the skill wins with the win surviving the repeat.",
+  "origin": "harvest",
+  "filled_by": "fixture (synthetic)",
+  "gap_kind": "missing"
+}

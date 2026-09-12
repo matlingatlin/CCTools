@@ -1,0 +1,41 @@
+{
+  "generated": "2026-08-27",
+  "by": "research-scout (wave 1)",
+  "tiers": {"primary": "authoritative source / maker", "reputable": "established expert or lab", "community": "useful but verify"},
+  "people": [
+    {"name": "Boris Cherny", "tier": "primary", "why": "Claude Code creator; source on its design/best practices"},
+    {"name": "Andrej Karpathy", "tier": "reputable", "why": "knowledge-graph / agent-efficiency inspiration (Graphify lineage)"},
+    {"name": "Simon Willison", "tier": "reputable", "why": "practical LLM tooling, agents, prompt-injection writing"},
+    {"name": "Harrison Chase", "tier": "reputable", "why": "LangChain; agent framework patterns"},
+    {"name": "Jerry Liu", "tier": "reputable", "why": "LlamaIndex; RAG and retrieval"},
+    {"name": "Omar Khattab", "tier": "reputable", "why": "DSPy, ColBERT; retrieval + prompt optimization (Stanford)"},
+    {"name": "Shreya Shankar", "tier": "reputable", "why": "LLM evaluation methodology (Berkeley)"},
+    {"name": "Chip Huyen", "tier": "reputable", "why": "ML systems, applied LLM engineering"},
+    {"name": "Eugene Yan", "tier": "reputable", "why": "applied ML / LLM patterns, evals"},
+    {"name": "Jason Liu", "tier": "community", "why": "structured output (instructor), pydantic-first prompting"},
+    {"name": "Safi Shamsi", "tier": "community", "why": "Graphify; codebase knowledge graphs"}
+  ],
+  "orgs": [
+    {"name": "Anthropic", "tier": "primary", "why": "Claude / Claude Code maker; official docs + anthropics/skills"},
+    {"name": "Model Context Protocol (modelcontextprotocol)", "tier": "primary", "why": "MCP spec + reference servers"},
+    {"name": "OpenAI", "tier": "reputable", "why": "agents SDK, evals, function calling research"},
+    {"name": "Google DeepMind", "tier": "reputable", "why": "agent + reasoning research"},
+    {"name": "Meta AI (FAIR)", "tier": "reputable", "why": "open models, retrieval, NLP"},
+    {"name": "Zep", "tier": "community", "why": "Graphiti temporal knowledge-graph agent memory"},
+    {"name": "LangChain", "tier": "community", "why": "agent/orchestration framework + ecosystem"},
+    {"name": "LlamaIndex", "tier": "community", "why": "RAG / data framework"}
+  ],
+  "institutions": [
+    {"name": "Stanford NLP / CRFM", "tier": "primary", "why": "foundation models, DSPy, retrieval"},
+    {"name": "Berkeley (BAIR / Sky)", "tier": "primary", "why": "LLM systems, evals, agents"},
+    {"name": "CMU LTI", "tier": "primary", "why": "NLP, retrieval, agents"},
+    {"name": "MIT CSAIL", "tier": "primary", "why": "reasoning, program synthesis"},
+    {"name": "Princeton NLP", "tier": "primary", "why": "SWE-bench, agents, language models"}
+  ],
+  "venues": [
+    {"name": "arXiv (cs.AI, cs.CL, cs.SE)", "tier": "primary", "why": "preprints — open access"},
+    {"name": "ACL Anthology", "tier": "primary", "why": "NLP papers — open access"},
+    {"name": "OpenReview (ICLR/NeurIPS)", "tier": "primary", "why": "peer review + papers — open access"},
+    {"name": "Semantic Scholar API", "tier": "primary", "why": "programmatic paper search/metadata"}
+  ]
+}

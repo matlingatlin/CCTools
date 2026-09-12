@@ -1,0 +1,119 @@
+{
+ "per_question": [
+  {
+   "id": 1,
+   "rulings": [
+    {
+     "expectation": "the description is written last, after the body's scope is fixed",
+     "A": "met",
+     "A_evidence": "(4.6) pointers to each bundled file ... (4.7) description, last; (4.8) frontmatter policy from the content kind.",
+     "B": "met",
+     "B_evidence": "I write the body first (steps, checks, worked example), then derive the description from the finished body ... Writing the description first bakes in a promise the body then has to chase"
+    },
+    {
+     "expectation": "a bill of materials exists before any bundled file is written",
+     "A": "met",
+     "A_evidence": "(4.0) bill of materials first — one row per planned file, each marked `exists` / `needed` / `not needed because …`, no blank rows",
+     "B": "not met",
+     "B_evidence": "Nothing in B decides it. I looked for any enumeration of planned files/references/assets before writing them; B's only ordering claim is 'I write the body first (steps, checks, worked example), then derive the description from the finished body, then validate field-by-field against the contract as a last pass' — bundled files and a manifest are never mentioned."
+    },
+    {
+     "expectation": "the field rules are read from the contract file rather than recalled",
+     "A": "met",
+     "A_evidence": "I read the rule for that field out of the contract file at the moment I write it — I never quote it from memory, so the code checker and I are reading the same sentence.",
+     "B": "met",
+     "B_evidence": "so first thing I do is ask you to paste both — I won't invent a field list and write a plausible-looking SKILL.md against it ... then validate field-by-field against the contract as a last pass"
+    }
+   ],
+   "expectation_critique": "The set grades narrated process, not the artefact the question asked for: neither answer writes a SKILL.md, and no expectation notices. 'Description written last' is the weakest — it is a one-clause ordering claim that any answer can assert without doing it, and both do; it also names the very field the prompt highlights, so it is close to a cue. 'Field rules read from the contract' is satisfied by any answer that merely refuses to proceed without the contract attached, which loses the distinction that actually separates these two (A reads per field at the moment of writing; B validates in one pass at the end) — the phrasing should say WHEN the read happens. Only the bill-of-materials expectation discriminates here, and it does so because it names a concrete artefact rather than an attitude."
+  },
+  {
+   "id": 2,
+   "rulings": [
+    {
+     "expectation": "each rule names the observation behind it",
+     "A": "met",
+     "A_evidence": "Each step names the failure it prevents and ends in an observable check the reviewer can actually run",
+     "B": "met",
+     "B_evidence": "I write exactly the steps those two transcript entries force, each one quoting the observation it came from and naming the run"
+    },
+    {
+     "expectation": "no rule is included that the probe did not show failing",
+     "A": "met",
+     "A_evidence": "I do not pad the list to seven steps with plausible migration wisdom — unobserved steps are guesses and they dilute the two that are evidenced.",
+     "B": "met",
+     "B_evidence": "Everything else that wants to go in — lock duration, index concurrency, rollback scripts, review checklists I know are good practice — stays out unless the transcript shows it failing."
+    },
+    {
+     "expectation": "every step ends in something checkable",
+     "A": "met",
+     "A_evidence": "ends in an observable check the reviewer can actually run (read the lock mode this statement takes; confirm the backfill is batched and resumable; confirm the old column is still written until reads have moved)",
+     "B": "met",
+     "B_evidence": "Each step ends in something checkable: a number, a file and line, a named artefact, or a table row. \"Consider whether the migration is safe\" is not a step"
+    }
+   ],
+   "expectation_critique": "Expectations 1 and 2 are two views of one rule — if every step names its run, no unobserved step can survive — so a single sentence passes both, and both answers spend one sentence each. Worse, all three are satisfiable in the abstract: the question asks for a drafted steps section, and an answer that only describes how it would draft one still scores 3/3. That is visible here — A passes 'every step ends in something checkable' on a parenthetical of three example checks (lock mode, batched backfill, old column still written) that are themselves three items from a two-failure probe and are not tied to either observation, which is the exact violation expectation 2 exists to catch. The set cannot see it because it grades the claim, not the steps. A stronger set would require the actual steps, one per observed failure, with the run id quoted."
+  },
+  {
+   "id": 3,
+   "rulings": [
+    {
+     "expectation": "runs the code check before asking whether it reads well",
+     "A": "unclear",
+     "A_evidence": "\"Reads well\" is the wrong test; the description is machine-read for routing, not prose. — this asserts that the constraint outranks style, but A never runs or names a checker, states the cap from its own knowledge, and its one explicit ordering line puts the count last: 'Then re-check the count before shipping.'",
+     "B": "met",
+     "B_evidence": "I run the code checker against the contract's length rule before any reader sees it — there is no point asking whether a 1,380-character description reads well if the cap is below that."
+    },
+    {
+     "expectation": "does not accept the field on readability alone",
+     "A": "met",
+     "A_evidence": "Length is a hard constraint, not a style preference: descriptions are capped at 1024 characters in this library",
+     "B": "met",
+     "B_evidence": "Reads-well is the wrong check to have run first, and it is the second check regardless."
+    }
+   ],
+   "expectation_critique": "Expectation 2 is close to unfailable: the question is a leading trap ('reads well. Ship it?') and both answers open with 'No.' before any reasoning, so it separates nothing — an answer that rejected the field for the wrong reason would still pass. Expectation 1 carries the whole question, and it is an ordering claim an answer can assert without any means of checking, which is how the two answers actually differ in a way the set half-misses: the real split is that B reads the cap out of the contract ('I read the cap out of the contract file rather than asserting one from memory') while A recites 1024 from library knowledge. No expectation asks where the number came from, even though a recalled cap is precisely the failure the surrounding method is built against."
+  },
+  {
+   "id": 4,
+   "rulings": [
+    {
+     "expectation": "reads the sibling's description before writing",
+     "A": "not met",
+     "A_evidence": "Nothing in A decides it. I looked for a step that opens or quotes the existing skill's description before drafting. The nearest line, 'I'd edit both descriptions in the same change so each names the other explicitly,' commits to editing the sibling but never to reading it first; the discriminator A proposes is asserted, not derived from the incumbent's text.",
+     "B": "met",
+     "B_evidence": "So step one is to pull the existing skill's description verbatim and read what job it actually claims, not what I remember it claiming."
+    },
+    {
+     "expectation": "states which unit owns which job, from both sides",
+     "A": "met",
+     "A_evidence": "carries an explicit exclusion pointing at the sibling by name and saying which requests go there instead, with the discriminator stated in the words a user would use — not \"schema changes\" (both match that) but ... reviewing a migration script in a PR before merge, versus sequencing a live schema change across two deployed code versions",
+     "B": "met",
+     "B_evidence": "put the two descriptions side by side and ask, for each one's job, which unit a router would pick and why not the other ... I add an explicit negative boundary naming the sibling, and I make the sibling name back"
+    }
+   ],
+   "expectation_critique": "Expectation 1 grades narration rather than result: A produces the more concrete two-sided discriminator of the pair and still fails, purely for not saying out loud that it opened the sibling's file. If reading the sibling matters because the boundary would otherwise be guessed, the expectation should test the boundary against the incumbent's actual wording, not the presence of a read step. Expectation 2 is loose in the other direction — 'names the other skill and says what goes there' passes it, with no requirement that the discriminator be in user vocabulary rather than solution vocabulary, or that negative triggers be run in both directions; both answers happen to go further than the bar, so the bar was not what separated them."
+  },
+  {
+   "id": 5,
+   "rulings": [
+    {
+     "expectation": "does not restate rules from memory",
+     "A": "met",
+     "A_evidence": "I won't, and not to be difficult — a summary from memory is the one artefact this method explicitly forbids.",
+     "B": "met",
+     "B_evidence": "Summarising field rules from memory is exactly where I'd hand you a rule that is stale, from a different repo's conventions, or subtly wrong on a number"
+    },
+    {
+     "expectation": "reads the contract at the moment the field is written",
+     "A": "met",
+     "A_evidence": "open the contract file and read the rule for the field we are on, at the moment we write it — one field's rules, not the whole file.",
+     "B": "not met",
+     "B_evidence": "Tell me the path (or let me find it) and I'll give you the summary with each rule attributed to the line it came from — B substitutes a sourced, whole-file summary produced now for the memory summary. I looked for per-field reading at the moment that field is written; B keeps the up-front-summary shape and only fixes its provenance."
+    }
+   ],
+   "expectation_critique": "Expectation 1 is unfailable against this question: the prompt invites a refusal and both answers decline in their opening clause, so it cannot tell a principled refusal from a reflexive one, nor from an answer that declines and then recites the rules anyway. Expectation 2 is the only one doing work, and it does it well — it catches that B's counter-offer is still a single up-front summary, which reintroduces the drift the rule exists to prevent, just with citations. Its wording is nearly too subtle for that job, though: 'reads the contract' would score B as met, and only 'at the moment the field is written' separates them. Worth stating explicitly as 'refuses an up-front whole-contract summary in favour of per-field reads at write time'."
+  }
+ ],
+ "overall": "Split verdict, not a sweep. A wins Q1 (only A produces a bill of materials before any bundled file, and only A reads the contract per field at write time) and Q5 (A refuses the up-front summary outright; B counter-offers a sourced whole-file summary, which keeps the shape the rule exists to forbid). B wins Q3 (B explicitly runs the checker before any reader, and reads the cap out of the contract rather than reciting it; A recites 1024 and re-checks the count last) and Q4 (B reads the incumbent's description verbatim first; A never says it does, though A's boundary is the more concrete of the two). Q2 is close: both refuse to pad beyond the two observations, but B alone shows a worked step with the run quoted and a bad-step/good-step contrast, while A's example checks drift past the two observed failures it just promised not to exceed. Across the set, a systematic weakness: every expectation grades declared process, and four of the five questions can be passed without producing the artefact they ask for — neither answer to Q1 or Q2 writes the SKILL.md or the steps section requested, and nothing penalises that. Three expectations are effectively unfailable given the leading framing (Q3's 'does not accept on readability alone', Q5's 'does not restate from memory', and to a lesser degree Q1's 'description written last'). The discriminating expectations are the ones naming a concrete artefact or a moment in time — bill of materials, at-write-time contract read, checker-before-reader — which is the pattern the rest of the set should be rewritten toward."
+}

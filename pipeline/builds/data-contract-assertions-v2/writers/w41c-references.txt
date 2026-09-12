@@ -1,0 +1,16 @@
+You are repairing ONE defect CLASS in a bundled reference file. An independent reader returned RED on it. The file is at:
+/home/user/skills-repo/pipeline/builds/data-contract-assertions-v2/artifact/data-contract-assertions/references/threshold-evidence.md
+
+THE CLASS: **a claim sentence asserts more than its verbatim quote carries.** The reader found two instances and said so:
+
+1. C2. The claim says "and a large minority are never fixed". The quote beside it ("As shown, the most common anomalies are new feature columns, unexpected string values, and missing feature columns...") supports only the structural-surprises half. The fix-rate figures that carry the other half come from data the file's own Limits line admits is "transcribed from a PDF table, not quoted".
+2. C9. The claim says "at real tuning cost". The adjoining quote gives only ROC AUC figures and says nothing about tuning cost. That phrase is substantiated only by an unquoted Limits sentence.
+
+DO NOT FIX ONLY THOSE TWO. Sweep the class across ALL THIRTEEN claims in one pass. For each claim in turn: read the claim sentence, read the quote directly beside it, and ask whether the quote alone carries every assertion the sentence makes. Where it does not, do ONE of these and say which:
+  (a) cut the unsupported clause out of the claim sentence, or
+  (b) move it below the quote under an explicit label - "Not in the quote; transcribed from Table N" or "Not in the quote; from the source's stated limits" - so a reader can see at a glance which half is quoted and which is not.
+Do not weaken or trim any quote to make a claim fit. The quotes are byte-matched against the source package by a script and any edit to them fails.
+
+State in your output how many of the thirteen you changed and how many you checked and left alone. "I checked all thirteen" with no count of the ones you touched is not an answer.
+
+EVERYTHING ELSE STILL BINDS: quotes stay byte-identical to the package's `quote` field; every source keeps its fetch date and expiry condition; the three contradictions stay unresolved; no invented threshold, band or cutoff; no instructions or steps; under 300 lines with a working table of contents. Do not restructure the file - this is a targeted sweep, not a rewrite.

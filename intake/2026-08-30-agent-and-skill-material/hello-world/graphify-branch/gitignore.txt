@@ -1,0 +1,43 @@
+# Dependencies
+node_modules/
+
+# Python
+.venv/
+__pycache__/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+
+# Env & secrets
+.env
+.env.*
+!.env.example
+
+# Build output. Anchored to the repo root: a bare `build/` also matches source
+# directories called "build" — it silently excluded apps/api/src/modules/build.
+/dist/
+/build/
+**/dist/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Scratch. Anchored, for the same reason `/build/` above is: a bare `workspace/`
+# also matched apps/api/src/modules/workspace, so three real source files were
+# never committed and a fresh clone could not compile the api. The lesson was
+# already written one rule higher and this line did not learn it.
+/workspace/
+
+# Engine run artifacts
+apps/engine/out/
+
+# Local dev run (scripts/dev-up.sh): pids + logs
+.local/
+
+# graphify output: generated graph, rendered HTML, SHA256 cache
+graphify-out/
+.graphify_*

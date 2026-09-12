@@ -1,0 +1,850 @@
+diff --git a/knowledge/INDEX.md b/knowledge/INDEX.md
+index 3f0c604..2078dec 100644
+--- a/knowledge/INDEX.md
++++ b/knowledge/INDEX.md
+@@ -69,6 +69,8 @@ carries a source URL, a fetch date, and a status (`verified` / `unverified` /
+ - [[plugins-and-marketplaces]] — packaging and distributing all of the above
+ 
+ ## 2b. Building an agent
++- [[claude-agent-sdk-hosting-and-limits-2026-09]] — the TypeScript Agent SDK's contract at 0.3.259: query options by name, `AgentDefinition`, the hook event table and output shape, skills as files scoped by a list, the four isolation settings, subagent caps (depth 3, concurrency 20, spend unlimited), resources and the $0.05/hour figure. Vendor documentation, graded. Added 2026-09-03.
++- [[typescript-stack-scan-2026-09]] — versions measured against the registry on 2026-09-03 (TypeScript 7.0.2 with 6.0.3 beside it, NestJS 12, Fastify 5, Hono 4, Prisma 7/8-rc, Drizzle 0.45, Vitest 5, Biome 2, dependency-cruiser 18, Turborepo 2, Node 24 LTS), the TypeScript 7 no-compiler-API friction with `nest build`, framework and ORM positions, sandbox prices. Added 2026-09-03.
+ - [[agent-design-template]] — **the shape.** Six loading tiers inside one agent
+   (identity / functions / conditional rules / knowledge / templates / walls), where
+   rules, templates and references belong, the composition patterns between agents
+@@ -107,6 +109,10 @@ carries a source URL, a fetch date, and a status (`verified` / `unverified` /
+ - [[testing-skills-methodology]] — pressure-testing skills with subagents (RED-GREEN-REFACTOR)
+ 
+ ## 3b. Domain evidence — what is measured vs merely repeated
++- [[agent-harness-principles-2026]] — the 2026 harness canon graded claim by claim: 12-Factor Agents, Anthropic's long-running harness (initializer + incremental coder), Osmani's ratchet rule, deterministic-vs-agentic fitness functions, a 70-project corpus, the four-layer skill-harnessing architecture. One corpus count; the rest is guidance. Added 2026-09-03.
++- [[build-evidence-tooling-2026]] — what already exists for a build that must prove itself, per facet (CTRF, SARIF, in-toto/SLSA + GitHub attestations, verified fakes, Turborepo-style replay, Atlas/Neon migration rehearsal, OpenVEX recall, cruft drift, dependency-cruiser): adopt, do not author. Graded by how much was read raw. Added 2026-09-03.
++- [[evidence-artefact-schemas-2026-09]] — what CTRF (ctrf@0.3.0 schema), SARIF 2.1.0, the in-toto Statement v1 and SLSA Provenance v1 actually REQUIRE, field by field and enum by enum, read from the schema files; the fixture shapes Scio's gates emit and how a missing artefact stays unjudged. Added 2026-09-06.
++- [[app-builder-prior-art-and-library-standards-2026-09]] — the shadcn registry-item schema (name+type required, 12 types, include/validate since May 2026) and DTCG 2025.10 (stable 2025-10-28) as MEASURED library shapes; what Replit Agent 4, Lovable, Bolt and v0 ship in 2026 as REPEATED rows; the prior-art verdicts of the 2026-09-08 brainstorm. Added 2026-09-08.
+ Added 2026-08-28. Every claim in these five carries **MEASURED** (a study with numbers,
+ read) or **REPEATED** (widely asserted, no measurement found). Written because the
+ knowledge base held only Claude Code mechanics and no domain knowledge at all, which is
+@@ -119,6 +125,10 @@ why an architect agent had to be written from recall.
+   starve the generator / saturate the evaluator
+ - [[requirements-discovery]] — differentiated perspectives beat undirected review by
+   ~35%; **generic checklists buy nothing**; the rewrite literature is empty
++- [[preview-and-sandbox-egress-boundary-2026-09]] — iframe `sandbox` tokens and the allow-scripts/allow-same-origin trap, `frame-ancestors`, and a sandbox egress firewall with three modes, live updates, stated limits, credentials brokering and request proxying; the facts under Scio ADR-0025. Fetched 2026-09-09.
++- [[otel-genai-semantic-conventions-2026-09]] — the GenAI conventions moved to a dedicated repository with no release and every page in Development; the span, metric and event names, the cache-token attributes and the Anthropic input-token sum rule, read from the repository itself. Fetched 2026-09-09.
++- [[supabase-row-level-security-2026-09]] — where an app role lives in the JWT (`app_metadata`, never `user_metadata` or the top-level `role`), the `to authenticated` clause, the secret key as `service_role` with `bypassrls`, and RLS-enabled-no-policy exposing nothing; the facts under Scio's rendered migration (ADR-0020). Fetched 2026-09-09.
++- [[inter-rater-agreement-kappa-2026-09]] — Cohen's and McHugh's interpretation bands for kappa, Fleiss named for three or more raters, Landis & Koch left unverified; the source of Scio ADR-0018's preregistered 0.80 threshold. Fetched 2026-09-09.
+ - [[architecture-evidence]] — the measured failure modes, and the design literature we
+   are missing
+ 
+diff --git a/knowledge/notes/agent-builder-prior-art.md b/knowledge/notes/agent-builder-prior-art.md
+index d6eb5b0..b11f0de 100644
+--- a/knowledge/notes/agent-builder-prior-art.md
++++ b/knowledge/notes/agent-builder-prior-art.md
+@@ -15,7 +15,7 @@ sources:
+     fetched: 2026-08-29
+ status: verified
+ tags: [agents, skills, prior-art, evidence, measured-vs-repeated]
+-related: ["[[agent-design-template]]", "[[skill-anatomy]]", "[[subagents]]", "[[llm-idea-generation]]", "[[api-agent-loop]]", "[[effective-agents-anthropic]]", "[[managed-agents-architecture]]", "[[model-agnostic-agent-harnesses]]", "[[production-site-checklist]]", "[[claude-code-ecosystem-plugins]]", "[[third-party-landscape]]", "[[adversarial-plan-review-claudex]]"]
++related: ["[[agent-design-template]]", "[[skill-anatomy]]", "[[subagents]]", "[[llm-idea-generation]]", "[[api-agent-loop]]", "[[effective-agents-anthropic]]", "[[managed-agents-architecture]]", "[[model-agnostic-agent-harnesses]]", "[[production-site-checklist]]", "[[claude-code-ecosystem-plugins]]", "[[third-party-landscape]]", "[[adversarial-plan-review-claudex]]", "[[agent-harness-principles-2026]]", "[[build-evidence-tooling-2026]]"]
+ ---
+ 
+ # Agent-builder prior art
+@@ -315,3 +315,6 @@ extracted and read in full, code included. The two GitHub repositories were read
+ `primitives-guide.md` were not read. Claims about their internals are therefore
+ what their authors say about themselves, not what was verified. Anyone acting on
+ the governance model in `agent-skill-creator` should read `GATES.md` first.
++
++## Added 2026-09-03
++Osmani's essay on harness engineering (April 2026), distinct from his skill library above, is graded claim by claim in [[agent-harness-principles-2026]]. The tools an app builder would reuse for its evidence surface — test-report and static-analysis formats, attestations, migration rehearsal, drift detection — are in [[build-evidence-tooling-2026]].
+diff --git a/knowledge/notes/agent-design-template.md b/knowledge/notes/agent-design-template.md
+index e16c5d2..e88bde4 100644
+--- a/knowledge/notes/agent-design-template.md
++++ b/knowledge/notes/agent-design-template.md
+@@ -12,7 +12,7 @@ sources:
+     fetched: 2026-08-27
+ status: verified
+ tags: [agents, subagents, skills, rules, hooks, design, template]
+-related: ["[[claude-code-extension-layer]]", "[[subagents]]", "[[skill-anatomy]]", "[[claude-md-and-memory]]", "[[hooks]]", "[[dynamic-workflows]]", "[[architecture-evidence]]", "[[llm-idea-generation]]", "[[design-fixation-and-anchoring]]", "[[requirements-discovery]]", "[[agent-builder-prior-art]]", "[[api-agent-loop]]", "[[effective-agents-anthropic]]", "[[managed-agents-architecture]]"]
++related: ["[[claude-code-extension-layer]]", "[[subagents]]", "[[skill-anatomy]]", "[[claude-md-and-memory]]", "[[hooks]]", "[[dynamic-workflows]]", "[[architecture-evidence]]", "[[llm-idea-generation]]", "[[design-fixation-and-anchoring]]", "[[requirements-discovery]]", "[[agent-builder-prior-art]]", "[[api-agent-loop]]", "[[effective-agents-anthropic]]", "[[managed-agents-architecture]]", "[[anthropic-skill-authoring-contract]]"]
+ ---
+ 
+ # Agent design template — how to layer an agent
+@@ -99,6 +99,8 @@ mode, including rows that say nothing-here."* This is the pattern Anthropic's ow
+ security agent uses: a 16,300-word corpus on disk, 2,400–5,700 words loaded per
+ run.
+ 
++Tiers 1, 3 and 4 are Anthropic's own `SKILL.md` / `references/` / `assets/` split seen from the loading side; what Anthropic states about the body, the bundled files, the evals and the baseline is held in [[anthropic-skill-authoring-contract]].
++
+ ## Rules
+ 
+ A file in `.claude/rules/` **without** `paths:` loads at start. **With** `paths:`
+diff --git a/knowledge/notes/api-agent-loop.md b/knowledge/notes/api-agent-loop.md
+index 2c493fa..f59b02f 100644
+--- a/knowledge/notes/api-agent-loop.md
++++ b/knowledge/notes/api-agent-loop.md
+@@ -9,7 +9,7 @@ sources:
+     fetched: 2026-08-29
+ status: verified
+ tags: [api, agents, tool-use, sdk, mechanics]
+-related: ["[[agent-design-template]]", "[[agent-builder-prior-art]]", "[[subagents]]", "[[effective-agents-anthropic]]", "[[managed-agents-architecture]]", "[[loop-engineering-and-fable-prompting]]"]
++related: ["[[agent-design-template]]", "[[agent-builder-prior-art]]", "[[subagents]]", "[[effective-agents-anthropic]]", "[[managed-agents-architecture]]", "[[loop-engineering-and-fable-prompting]]", "[[claude-agent-sdk-hosting-and-limits-2026-09]]"]
+ ---
+ 
+ # The API agent loop
+@@ -124,3 +124,6 @@ pipelines; this loop only when the task is genuinely open-ended and model-driven
+ The four questions to clear first are complexity, value, viability, and **cost of
+ error** — can a mistake be caught and rolled back. A "no" on any of them means
+ stay at a simpler tier.
++
++## Added 2026-09-03
++The other craft — hosting the Agent SDK's subprocess rather than writing the loop against the Messages API — has its own contract (options, hooks, limits, isolation) in [[claude-agent-sdk-hosting-and-limits-2026-09]].
+diff --git a/knowledge/notes/architecture-evidence.md b/knowledge/notes/architecture-evidence.md
+index dab661d..78bad98 100644
+--- a/knowledge/notes/architecture-evidence.md
++++ b/knowledge/notes/architecture-evidence.md
+@@ -21,7 +21,7 @@ sources:
+     fetched: 2026-08-27
+ status: verified
+ tags: [architecture, evidence, failure-modes, measured-vs-repeated, gap]
+-related: ["[[design-fixation-and-anchoring]]", "[[requirements-discovery]]", "[[subagents]]", "[[agent-design-template]]"]
++related: ["[[design-fixation-and-anchoring]]", "[[requirements-discovery]]", "[[subagents]]", "[[agent-design-template]]", "[[agent-harness-principles-2026]]", "[[build-evidence-tooling-2026]]", "[[evidence-artefact-schemas-2026-09]]"]
+ ---
+ 
+ # Software architecture — what is measured, and the gap
+@@ -122,3 +122,11 @@ the way the rows above were.
+ - **A boundary that a prompt states is a convention.** A PreToolUse hook runs
+   before every permission check, including bypassPermissions, and can only
+   tighten. If the agent also has Bash, the wall is decorative.
++
++## Added 2026-09-03
++Two neighbours extend the gap this note names. [[agent-harness-principles-2026]] holds the 2026 harness canon and the one corpus count in it (70 projects, five decision dimensions) — guidance, not measurement, which is this note's point applied to agent architecture. [[build-evidence-tooling-2026]] lists the standards an architect must adopt rather than author when a build has to prove itself (CTRF, SARIF, in-toto/SLSA), so that "risk is mostly absence" has a checklist against it.
++
++## Added 2026-09-06
++The evidence formats this note argues for are pinned field by field in [[evidence-artefact-schemas-2026-09]] (CTRF, SARIF, in-toto, SLSA - what each requires, measured from the schema files).
++
++The kappa reported above is read against the interpretation bands in [[inter-rater-agreement-kappa-2026-09]] (added 2026-09-09).
+diff --git a/knowledge/notes/claude-code-ecosystem-plugins.md b/knowledge/notes/claude-code-ecosystem-plugins.md
+index 1b3bc59..0157ca3 100644
+--- a/knowledge/notes/claude-code-ecosystem-plugins.md
++++ b/knowledge/notes/claude-code-ecosystem-plugins.md
+@@ -23,7 +23,7 @@ sources:
+   - note: "Four short videos ('5 plugins', 'token limit mid-task', 'unlazy', '4 repos'), transcribed locally 2026-09-02. Claims graded per tool."
+ status: verified
+ tags: [claude-code, plugins, memory, compression, routing, tokens, claims-graded]
+-related: ["[[claude-code-extension-layer]]", "[[claude-md-and-memory]]", "[[model-agnostic-agent-harnesses]]", "[[hooks]]", "[[mcp]]", "[[agent-builder-prior-art]]", "[[testing-skills-methodology]]", "[[harness-over-model-prime-agent]]", "[[graphify-assessment]]", "[[third-party-landscape]]", "[[glm-5.3-local]]", "[[model-routing-free-and-local]]", "[[system-prompt-transparency]]"]
++related: ["[[claude-code-extension-layer]]", "[[claude-md-and-memory]]", "[[model-agnostic-agent-harnesses]]", "[[hooks]]", "[[mcp]]", "[[agent-builder-prior-art]]", "[[testing-skills-methodology]]", "[[harness-over-model-prime-agent]]", "[[graphify-assessment]]", "[[third-party-landscape]]", "[[glm-5.3-local]]", "[[model-routing-free-and-local]]", "[[system-prompt-transparency]]", "[[production-site-checklist]]"]
+ ---
+ 
+ # The plugin stack
+@@ -78,6 +78,8 @@ never mention. MEASURED from the README unless marked.
+   has an agent scaffold; the roster is a reuse-first source for *names of jobs*, not
+   for methods — none of the 230 files carries an eval.
+ 
++[[production-site-checklist]] grades the same video genre's front-end tools (UI UX Pro Max, CodeRabbit, 21st.dev) for the shipped site rather than the developer's session; the two notes split "tools the videos sell" by which side of the build they serve.
++
+ ## Re-sightings (2026-09-02, later the same day)
+ 
+ - The "four plugins" script arrived a second time from the same creator as a re-cut
+diff --git a/knowledge/notes/claude-code-extension-layer.md b/knowledge/notes/claude-code-extension-layer.md
+index e7484c9..6c440ae 100644
+--- a/knowledge/notes/claude-code-extension-layer.md
++++ b/knowledge/notes/claude-code-extension-layer.md
+@@ -5,7 +5,7 @@ sources:
+     fetched: 2026-08-27
+ status: verified
+ tags: [claude-code, best-practice, architecture, context, overview]
+-related: ["[[skill-anatomy]]", "[[claude-md-and-memory]]", "[[subagents]]", "[[hooks]]", "[[mcp]]", "[[plugins-and-marketplaces]]", "[[dynamic-workflows]]", "[[claude-code-ecosystem-plugins]]", "[[llm-wiki-pattern]]", "[[token-economy-playbook]]"]
++related: ["[[skill-anatomy]]", "[[claude-md-and-memory]]", "[[subagents]]", "[[hooks]]", "[[mcp]]", "[[plugins-and-marketplaces]]", "[[dynamic-workflows]]", "[[claude-code-ecosystem-plugins]]", "[[llm-wiki-pattern]]", "[[token-economy-playbook]]", "[[claude-agent-sdk-hosting-and-limits-2026-09]]", "[[graphify-assessment]]"]
+ ---
+ 
+ # Claude Code extension layer
+@@ -50,6 +50,8 @@ note: which feature to reach for, how they layer, and what each costs in context
+   **Guardrails belong in hooks** — "never edit .env" in CLAUDE.md/a skill is a
+   request; a PreToolUse hook is a guarantee.
+ 
++[[graphify-assessment]] is one worked case of this choice for a single tool: Graphify can enter as a skill, an MCP server or a self-installed PreToolUse hook, and the assessment took the skill-plus-CLI form and kept the self-writing hooks out.
++
+ ## How features layer when defined at multiple levels
+ 
+ - **CLAUDE.md** — additive: all levels contribute simultaneously; conflicts
+@@ -112,3 +114,6 @@ prescribes, and the one element we do not have is the third — a button surface
+ skills for people who do not run the CLI, which is a real gap for a shared library.
+ 
+ Context costs across all of these, measured and ranked as a policy: [[token-economy-playbook]] (added 2026-09-02).
++
++## Added 2026-09-03
++How the same features (skills, subagents, hooks, plugins) are reached from a hosting application through the Agent SDK's options is in [[claude-agent-sdk-hosting-and-limits-2026-09]]; skills stay filesystem artefacts there, scoped by a list, never registered in code.
+diff --git a/knowledge/notes/design-fixation-and-anchoring.md b/knowledge/notes/design-fixation-and-anchoring.md
+index 9c9155c..16c4e85 100644
+--- a/knowledge/notes/design-fixation-and-anchoring.md
++++ b/knowledge/notes/design-fixation-and-anchoring.md
+@@ -24,7 +24,7 @@ sources:
+     fetched: 2026-08-28
+ status: verified
+ tags: [design-fixation, anchoring, bias, evidence, measured-vs-repeated]
+-related: ["[[ideation-and-idea-selection]]", "[[llm-idea-generation]]", "[[architecture-evidence]]", "[[agent-design-template]]"]
++related: ["[[ideation-and-idea-selection]]", "[[llm-idea-generation]]", "[[architecture-evidence]]", "[[agent-design-template]]", "[[requirements-discovery]]"]
+ ---
+ 
+ # Design fixation and anchoring — what is measured
+@@ -112,6 +112,8 @@ Originality: **2.67 vs 3.43** on a 5-point scale. Mann-Whitney U = 116.5,
+ 
+ The label alone. Hand documentation over as raw material, not as settled truth.
+ 
++This framing result is the one most directly about requirements work; the rest of what is measured about eliciting and reviewing requirements — scenario-based inspection beating checklists — is in [[requirements-discovery]].
++
+ ## Fischhoff: a system description is a pruned fault tree
+ 
+ Six branches for "car won't start," plus "all other problems." Delete three
+diff --git a/knowledge/notes/effective-agents-anthropic.md b/knowledge/notes/effective-agents-anthropic.md
+index c79b7be..8738dd7 100644
+--- a/knowledge/notes/effective-agents-anthropic.md
++++ b/knowledge/notes/effective-agents-anthropic.md
+@@ -6,7 +6,7 @@ sources:
+     fetched: 2026-08-29
+ status: verified
+ tags: [agents, patterns, tool-design, evidence, measured-vs-repeated]
+-related: ["[[agent-design-template]]", "[[api-agent-loop]]", "[[agent-builder-prior-art]]", "[[subagents]]", "[[managed-agents-architecture]]", "[[loop-engineering-and-fable-prompting]]", "[[learning-resources-agents]]", "[[harness-over-model-prime-agent]]"]
++related: ["[[agent-design-template]]", "[[api-agent-loop]]", "[[agent-builder-prior-art]]", "[[subagents]]", "[[managed-agents-architecture]]", "[[loop-engineering-and-fable-prompting]]", "[[learning-resources-agents]]", "[[harness-over-model-prime-agent]]", "[[agent-harness-principles-2026]]"]
+ ---
+ 
+ # Building effective agents
+@@ -113,3 +113,6 @@ the PR description alone) **with no success rate given in the piece**.
+ Treat the patterns as a well-earned vocabulary and the tool-design section as
+ directly actionable. Treat "simple patterns beat frameworks" as the considered
+ opinion of people with unusual visibility — not as a measured result.
++
++## Added 2026-09-03
++The same vendor's later, more concrete guidance — an initializer agent plus an incremental coding agent bridged by `init.sh`, a progress log and a feature list, and the one-shot failure it prevents — is in [[agent-harness-principles-2026]], beside the practitioner canon (12-Factor Agents, Osmani) that restates this note's "add complexity only when it demonstrably improves outcomes" as "every line traceable to a failure".
+diff --git a/knowledge/notes/glm-5.3-local.md b/knowledge/notes/glm-5.3-local.md
+index 3ee4f6d..17b1c4e 100644
+--- a/knowledge/notes/glm-5.3-local.md
++++ b/knowledge/notes/glm-5.3-local.md
+@@ -20,7 +20,7 @@ sources:
+   - note: "Release dates come from search-result snippets (REPEATED): z.ai's blog post did not render on fetch and the GitHub README carries no dates. Coding Plan tier prices were not retrievable (z.ai/subscribe renders client-side)."
+ status: verified
+ tags: [models, open-weights, local-inference, glm, claude-code, pricing, claims-graded]
+-related: ["[[model-agnostic-agent-harnesses]]", "[[local-finetuning-layer-streaming]]", "[[claude-code-ecosystem-plugins]]", "[[loop-engineering-and-fable-prompting]]", "[[best-local-llm-2026-09]]", "[[model-routing-free-and-local]]"]
++related: ["[[model-agnostic-agent-harnesses]]", "[[local-finetuning-layer-streaming]]", "[[claude-code-ecosystem-plugins]]", "[[loop-engineering-and-fable-prompting]]", "[[best-local-llm-2026-09]]", "[[model-routing-free-and-local]]", "[[adversarial-plan-review-claudex]]"]
+ ---
+ 
+ # GLM-5.3 locally
+@@ -99,6 +99,8 @@ unsupported ([[model-agnostic-agent-harnesses]]).
+   fields checked against what Z.ai's endpoint actually returns, and Z.ai's data-use terms
+   read first (not done here). This is the experiment the Nemotron note wanted, at a
+   fraction of the friction.
++- The same three variables are also the cheapest way to give [[adversarial-plan-review-claudex]] a
++  rival model that is not Codex: one build reviewed through this endpoint, findings compared.
+ - **"Local" is not on the table for us**, and it is not what the Coding Plan users in the
+   videos mean either — they mean *Z.ai-hosted behind Claude Code*.
+ - The custom licence's $10B clause is irrelevant to us; Flash being MIT matters only if
+diff --git a/knowledge/notes/graphify-assessment.md b/knowledge/notes/graphify-assessment.md
+index e7b37af..90a78a5 100644
+--- a/knowledge/notes/graphify-assessment.md
++++ b/knowledge/notes/graphify-assessment.md
+@@ -9,7 +9,7 @@ sources:
+     fetched: 2026-08-27
+ status: verified
+ tags: [graphify, knowledge-graph, tokens, tooling, decision]
+-related: ["[[llm-wiki-pattern]]", "[[claude-code-extension-layer]]", "[[claude-code-ecosystem-plugins]]", "[[mcp]]", "[[temporal-kg-agent-memory]]", "[[third-party-landscape]]", "[[token-economy-playbook]]"]
++related: ["[[llm-wiki-pattern]]", "[[claude-code-extension-layer]]", "[[claude-code-ecosystem-plugins]]", "[[mcp]]", "[[temporal-kg-agent-memory]]", "[[third-party-landscape]]", "[[token-economy-playbook]]", "[[graphify-features]]", "[[claude-md-and-memory]]"]
+ ---
+ 
+ # Graphify — assessment
+@@ -20,6 +20,8 @@ An on-device tool that turns a **codebase** into a queryable knowledge graph an
+ traverses instead of re-reading files. Decision: **pilot on harvested source repos
+ (code-only); do NOT point it at our own markdown/JSON KB.**
+ 
++The complete command and flag inventory, the v3→v8 version diffs and the stated limitations are in the companion [[graphify-features]]; this note holds the decision and the pilot.
++
+ ## How it works
+ 
+ - **Code** parsed locally and deterministically via **tree-sitter AST** (~37 grammars) —
+@@ -63,6 +65,8 @@ persists in git.
+   Staleness (snapshot; doc changes need manual `--update`); "only as good as the graph"
+   (weak on dynamic dispatch/metaprogramming/cross-language).
+ 
++One further claim, "Graphify gives unlimited memory", is graded in [[claude-md-and-memory]] against this note: Graphify builds a code graph, and memory is the video's word.
++
+ ## Fit for our two use cases
+ 
+ **(a) Navigating harvested SOURCE repos (ECC, superpowers): strong fit — the intended
+@@ -212,3 +216,7 @@ with a second backend, and that is not worth writing until one harvest actually
+ **Where this sits in the wider token picture (added 2026-09-02).** [[token-economy-playbook]] ranks the measured levers; the graph is fourth there, behind output tokens, untouched files and prompt caching, and it records the session in which a current graph was queried zero times.
+ 
+ The hand-curated wikilink graph this note prefers for the knowledge base is the `wiki/` layer of [[llm-wiki-pattern]], whose lint now has a script (`kb.py lint`, 2026-09-02).
++
++**Licence, re-read 2026-09-09.** The repository page shows two licence files, `LICENSE` (Apache-2.0) and `LICENSE-MIT`: Graphify is dual-licensed, so the single-licence readings recorded earlier in this note and its companion were each half right (fetched 2026-09-09, github.com/Graphify-Labs/graphify; the README also confirms the PyPI name `graphifyy`, CLI `graphify`). MEASURED.
++
++**Query count, 2026-09-09.** The number this note said the repository lacked now has a first value: zero queries across a ~45-commit Scio session with the graph rebuilt after every commit, until the owner asked; then ≈355 tokens for a graph answer against ≈3,844 for the file it would have replaced (see [[token-economy-playbook]] §4). The instrument was never the gap.
+diff --git a/knowledge/notes/graphify-features.md b/knowledge/notes/graphify-features.md
+index e5360f6..4052cbd 100644
+--- a/knowledge/notes/graphify-features.md
++++ b/knowledge/notes/graphify-features.md
+@@ -9,7 +9,7 @@ sources:
+     fetched: 2026-08-27
+ status: verified
+ tags: [graphify, knowledge-graph, tooling, reference]
+-related: ["[[graphify-assessment]]", "[[token-economy-playbook]]"]
++related: ["[[graphify-assessment]]", "[[token-economy-playbook]]", "[[third-party-landscape]]"]
+ ---
+ 
+ # Graphify — full feature reference
+@@ -20,6 +20,8 @@ complete capability inventory. `github.com/safishamsi/graphify` (mirror
+ Python ≥3.10, v0.9.50. Features differ by branch (v3→v8); version-specific items
+ flagged. Two surfaces: the `/graphify` assistant skill and the `graphify` shell CLI.
+ 
++The compiled page [[third-party-landscape]] points its Graphify row here for the command surface (`query/explain/path`, `export obsidian`).
++
+ ## Contents
+ - CLI commands · Language/format support · Graph model · Outputs · Integration ·
+   Query · Configuration · Version diffs · Limitations
+@@ -165,3 +167,5 @@ HTTP-MCP API-key auth implied not documented; grammar count quoted 36 vs 37+.
+ `BENCHMARKS.md` / `ARCHITECTURE.md` exist upstream but were not fetched.
+ 
+ Policy for when to query the graph at all, and the measured cost of forcing it into every call: [[token-economy-playbook]] (added 2026-09-02).
++
++**Licence, re-read 2026-09-09.** The repository page shows two licence files, `LICENSE` (Apache-2.0) and `LICENSE-MIT`: Graphify is dual-licensed, so the single-licence readings recorded earlier in this note and its companion were each half right (fetched 2026-09-09, github.com/Graphify-Labs/graphify; the README also confirms the PyPI name `graphifyy`, CLI `graphify`). MEASURED.
+diff --git a/knowledge/notes/harness-over-model-prime-agent.md b/knowledge/notes/harness-over-model-prime-agent.md
+index 4a681cc..abb52b3 100644
+--- a/knowledge/notes/harness-over-model-prime-agent.md
++++ b/knowledge/notes/harness-over-model-prime-agent.md
+@@ -10,7 +10,7 @@ sources:
+   - note: "Two short videos ('tripled what Opus 5 scores', 'Claude Flow swarm'), transcribed locally 2026-09-02; claims graded."
+ status: verified
+ tags: [harness, self-improvement, agents, swarm, benchmarks, claims-graded]
+-related: ["[[loop-engineering-and-fable-prompting]]", "[[effective-agents-anthropic]]", "[[subagents]]", "[[claude-code-ecosystem-plugins]]", "[[model-agnostic-agent-harnesses]]", "[[third-party-landscape]]", "[[agent-builder-prior-art]]", "[[adversarial-plan-review-claudex]]"]
++related: ["[[loop-engineering-and-fable-prompting]]", "[[effective-agents-anthropic]]", "[[subagents]]", "[[claude-code-ecosystem-plugins]]", "[[model-agnostic-agent-harnesses]]", "[[third-party-landscape]]", "[[agent-builder-prior-art]]", "[[adversarial-plan-review-claudex]]", "[[agent-harness-principles-2026]]"]
+ ---
+ 
+ # Harness over model
+@@ -95,3 +95,6 @@ saving. Skill-library evolution as a *loop* rather than a harness is HKUDS/OpenS
+    fresh-context verifiers. Ruflo bets on many agents plus a consensus protocol. Neither
+    side has published a controlled comparison; we have one measurement on our own work
+    (W_MAX_AGENTS 2→4, wall clock only), which says nothing about quality.
++
++## Added 2026-09-03
++The claim this note rests on — the harness moves the score more than the model — has a second-hand 2026 restatement (Terminal Bench 2.0, same model, custom harness versus Claude Code, no number given) recorded and graded in [[agent-harness-principles-2026]].
+diff --git a/knowledge/notes/hooks.md b/knowledge/notes/hooks.md
+index a856a2c..19c6e15 100644
+--- a/knowledge/notes/hooks.md
++++ b/knowledge/notes/hooks.md
+@@ -7,7 +7,7 @@ sources:
+     fetched: 2026-08-27
+ status: verified
+ tags: [claude-code, hooks, enforcement, security, mechanics]
+-related: ["[[skill-anatomy]]", "[[mcp]]", "[[subagents]]", "[[claude-code-extension-layer]]", "[[agent-design-template]]", "[[claude-code-ecosystem-plugins]]"]
++related: ["[[skill-anatomy]]", "[[mcp]]", "[[subagents]]", "[[claude-code-extension-layer]]", "[[agent-design-template]]", "[[claude-code-ecosystem-plugins]]", "[[agent-harness-principles-2026]]", "[[claude-agent-sdk-hosting-and-limits-2026-09]]", "[[claude-md-and-memory]]", "[[plugins-and-marketplaces]]"]
+ ---
+ 
+ # Hooks
+@@ -63,3 +63,11 @@ enforcement once invoked. `allowManagedHooksOnly` and `allowedHttpHookUrls`
+ restrict sources. **For this project:** the factory's "never exfiltrate / never
+ touch credentials" rule for third-party skills belongs in a PreToolUse hook, since
+ that is the only mechanism a downloaded skill cannot talk its way past.
++
++[[claude-md-and-memory]] states the same distinction from the memory side — CLAUDE.md and auto memory are context, not enforcement — and sends every "must never" rule here. A plugin ships hooks beside its skills and agents (`hooks/` at the plugin root), which is how [[plugins-and-marketplaces]] distributes enforcement with the rest of a setup.
++
++## Added 2026-09-03
++Hooks as the execution-control layer of a skill harness (the four-layer reference architecture of arXiv 2606.20631) and as deterministic fitness functions that stay the primary enforcement mechanism are placed in the canon in [[agent-harness-principles-2026]].
++
++## Added 2026-09-03 (SDK contract)
++Which hook events the TypeScript SDK exposes (several are TypeScript-only) and the callback's fixed output shape (`permissionDecision`, `updatedInput`, `updatedToolOutput`, `additionalContext`) are in [[claude-agent-sdk-hosting-and-limits-2026-09]].
+diff --git a/knowledge/notes/ideation-and-idea-selection.md b/knowledge/notes/ideation-and-idea-selection.md
+index 81aae42..c3fd4dd 100644
+--- a/knowledge/notes/ideation-and-idea-selection.md
++++ b/knowledge/notes/ideation-and-idea-selection.md
+@@ -21,7 +21,7 @@ sources:
+     fetched: 2026-08-28
+ status: verified
+ tags: [ideation, brainstorming, decision-making, evidence, measured-vs-repeated]
+-related: ["[[design-fixation-and-anchoring]]", "[[llm-idea-generation]]", "[[requirements-discovery]]"]
++related: ["[[design-fixation-and-anchoring]]", "[[llm-idea-generation]]", "[[requirements-discovery]]", "[[agent-builder-prior-art]]"]
+ ---
+ 
+ # Ideation and idea selection — what is measured
+@@ -105,9 +105,14 @@ finding that does not exist in their paper, and attributed to Mullen et al. the
+ exact opposite of their conclusion — three fabrications in one short text, each
+ attached to a real citation. Go to the primary source or do not cite.
+ 
++The same failure mode recurs outside this literature in [[agent-builder-prior-art]], where a comparison article's quota claims did not match the vendor documentation it cited.
++
+ ## What could not be found measured
+ 
+ Osborn's rules 2 (free-wheeling) and 4 (combination) in isolation. The 6-3-5
+ brainwriting protocol specifically — its famous "108 ideas in 30 minutes" is
+ 6 × 3 × 6, arithmetic presented as a result. Optimal group size derived from
+ data. Session duration, room setup, sticky-note colour. All **REPEATED**.
++
++## Added 2026-09-03
++One measurement now exists for a structured procedure of this kind: the first run of Scio's brainstorm skill, recorded in [[llm-idea-generation]] (non-duplicate ratio 0.87, scorer exact agreement 0.74, one run, no baseline).
+diff --git a/knowledge/notes/llm-idea-generation.md b/knowledge/notes/llm-idea-generation.md
+index 5773502..1b7cca3 100644
+--- a/knowledge/notes/llm-idea-generation.md
++++ b/knowledge/notes/llm-idea-generation.md
+@@ -33,7 +33,7 @@ sources:
+     fetched: 2026-08-28
+ status: verified
+ tags: [llm, ideation, diversity, evaluation, agents, measured-vs-repeated]
+-related: ["[[design-fixation-and-anchoring]]", "[[ideation-and-idea-selection]]", "[[subagents]]", "[[agent-design-template]]", "[[agent-builder-prior-art]]"]
++related: ["[[design-fixation-and-anchoring]]", "[[ideation-and-idea-selection]]", "[[subagents]]", "[[agent-design-template]]", "[[agent-builder-prior-art]]", "[[architecture-evidence]]", "[[effective-agents-anthropic]]"]
+ ---
+ 
+ # LLM idea generation — what is measured
+@@ -117,6 +117,8 @@ Two operational details worth keeping: **ordinary personas beat visionary ones**
+ the differentiation step** and declared the ideas already varied — detect and
+ discard those runs.
+ 
++[[architecture-evidence]] applies the persona distinction to an architect agent: the 2.6× between-agent variation is a diversity result, and for correctness work the same personas measure random-to-harmful.
++
+ ## The model cannot rank its own ideas
+ 
+ | Evaluator | Agreement with expert ranking |
+@@ -179,6 +181,8 @@ generation prompt and re-measure.*
+ No measured evidence exists that an LLM critiquing its own proposals with no
+ external input improves them.
+ 
++Anthropic's own fit test for its evaluator-optimizer pattern — use it only when a human could articulate the feedback *and* the model can supply it — draws the same line from the pattern side ([[effective-agents-anthropic]]).
++
+ ## Multi-agent
+ 
+ "Multi-agent ideation beats compute-matched single-model sampling" is **NOT
+@@ -202,3 +206,6 @@ independent replication. RQ-Bench's headline rests on 50 samples and 2 experts.
+ And **almost all 2025–2026 ideation benchmarks score with LLM judges**, which the
+ judge literature says over-reward vague novelty language — so leaderboard
+ positions measure *appeal to an LLM judge*, not idea quality.
++
++## First run of a structured ideation procedure, measured 2026-09-03
++Scio's `brainstorm` skill (five independent generator agents, one frame each, Verbalized Sampling with MEDIAN labels, one additive cross-read, two independent scorers) ran for the first time on 2026-09-03 (`docs/next/ideas/2026-09-03-product-improvement.md` in Scio). MEASURED on that run: 30 raw ideas, 26 unique after dedup by claim (non-duplicate ratio 0.87, against Si et al.'s ~5% survival for 4,000 unstructured seeds); all five frames survived; two scorers agreed exactly on 46 of 62 scores (0.74) and within one point on 62 of 62; the five-way tie at the top of the novelty scale was broken by the procedure, not by judgement. One run, one scope, no baseline arm — a data point that the frame mechanism holds diversity, not a result about quality.
+diff --git a/knowledge/notes/llm-wiki-pattern.md b/knowledge/notes/llm-wiki-pattern.md
+index bf9bd46..c0a4f92 100644
+--- a/knowledge/notes/llm-wiki-pattern.md
++++ b/knowledge/notes/llm-wiki-pattern.md
+@@ -7,7 +7,7 @@ sources:
+   - note: "Surfaced by a 98-second 'build your own agentic OS' video that calls it 'Karpathy's Obsidian setup' with three folders raw/wiki/outputs; graded below."
+ status: verified
+ tags: [knowledge-base, memory, obsidian, wiki, compile, method]
+-related: ["[[claude-md-and-memory]]", "[[graphify-assessment]]", "[[temporal-kg-agent-memory]]", "[[loop-engineering-and-fable-prompting]]", "[[research-methodology]]", "[[third-party-landscape]]"]
++related: ["[[claude-md-and-memory]]", "[[graphify-assessment]]", "[[temporal-kg-agent-memory]]", "[[loop-engineering-and-fable-prompting]]", "[[research-methodology]]", "[[third-party-landscape]]", "[[claude-code-extension-layer]]"]
+ ---
+ 
+ # The LLM Wiki pattern
+@@ -41,6 +41,8 @@ is the browser (graph view, backlinks), not the engine.
+ - "A true RAG system is overkill for most people" — the gist argues this on the merits
+   (compile once vs retrieve each time); as stated in the video it is opinion.
+ 
++That 98-second video is graded as a whole in [[claude-code-extension-layer]], where its three-step "agentic OS" is set beside this repo's `agentic-os` skill; only its memory step lands here.
++
+ A second video (66 s, "massive overhaul of my Claude Code second brain") uses the gist by
+ name ("this document from Karpathy — LLM Wiki") as step one, then adds a **self-learning
+ skill** that "goes through your brain, finds gaps, and researches YouTube or Google to fill
+diff --git a/knowledge/notes/loop-engineering-and-fable-prompting.md b/knowledge/notes/loop-engineering-and-fable-prompting.md
+index cb7990f..250e330 100644
+--- a/knowledge/notes/loop-engineering-and-fable-prompting.md
++++ b/knowledge/notes/loop-engineering-and-fable-prompting.md
+@@ -12,7 +12,7 @@ sources:
+   - note: "Short video (TikTok, creator reposting @8xMoysei's X post 'Master Claude With Fable 5: 6 Rules Straight From Anthropic's Docs', 124k views, 5 Jul 2026), transcribed locally 2026-09-02. The video's own claims are graded, not trusted."
+ status: verified
+ tags: [prompting, agents, loops, fable-5, effort, harness, claims-graded]
+-related: ["[[effective-agents-anthropic]]", "[[api-agent-loop]]", "[[subagents]]", "[[skill-authoring-best-practices]]", "[[prompt-patterns-kernel]]", "[[harness-over-model-prime-agent]]", "[[llm-wiki-pattern]]", "[[third-party-landscape]]", "[[glm-5.3-local]]", "[[best-local-llm-2026-09]]", "[[system-prompt-transparency]]", "[[adversarial-plan-review-claudex]]"]
++related: ["[[effective-agents-anthropic]]", "[[api-agent-loop]]", "[[subagents]]", "[[skill-authoring-best-practices]]", "[[prompt-patterns-kernel]]", "[[harness-over-model-prime-agent]]", "[[llm-wiki-pattern]]", "[[third-party-landscape]]", "[[glm-5.3-local]]", "[[best-local-llm-2026-09]]", "[[system-prompt-transparency]]", "[[adversarial-plan-review-claudex]]", "[[agent-harness-principles-2026]]", "[[long-text-comprehension]]", "[[model-agnostic-agent-harnesses]]"]
+ ---
+ 
+ # Loop engineering and Fable 5 prompting
+@@ -60,6 +60,7 @@ Everything below is MEASURED against the docs page unless marked.
+   work. Lower effort settings on Claude Fable 5 still perform well and often exceed
+   `xhigh` performance on prior models." Default effort on the API is `high` for Fable
+   5.1, Fable 5, Opus 5 and Sonnet 5; Haiku 4.5 has no effort parameter.
++  The same control is the one real lever behind a circulating power-user tips list graded in [[long-text-comprehension]], which gestures at it without naming it.
+ - **Give the reason, not only the request.** Template verbatim: "I'm working on [the
+   larger task] for [who it's for]. They need [what the output enables]. With that in
+   mind: [request]."
+@@ -97,6 +98,7 @@ These are the lines that change what we do, all MEASURED from the page:
+ 4. **Effort per run.** `dispatch.py` fixes the model tier per run but not the effort; the
+    contract's "never route down" list should say which effort the measurement runs at,
+    or two builds on the same tier are still not comparable.
++   [[model-agnostic-agent-harnesses]] adds the other unpinned axis of the same comparison: a run routed through a gateway to a non-Claude model reports the gateway's `usage`, so neither effort nor cost is comparable until both are named per run.
+ 5. **"Prefer asynchronous communication between orchestrator and subagents over blocking"**
+    — the same conclusion the review reached from the coordinator-time measurement
+    ("do not idle on a run").
+@@ -111,3 +113,6 @@ These are the lines that change what we do, all MEASURED from the page:
+ | the "why" template, boundaries, audit-before-reporting block | MEASURED (docs, verbatim) |
+ | Fable 5 GA date, price, context, output | MEASURED (docs) |
+ | pulled offline / July 1 redeploy / 50% free until July 7 | UNVERIFIED |
++
++## Added 2026-09-03
++The rule that a steering line must be earned by a failure and the file kept short (HumanLayer under 60 lines, per Osmani) is recorded with its sources in [[agent-harness-principles-2026]]; it is the same discipline as LOOPS.md rule 8 (scaffolding has an expiry), stated from the other end.
+diff --git a/knowledge/notes/managed-agents-architecture.md b/knowledge/notes/managed-agents-architecture.md
+index a7ca0d6..9b6f2e0 100644
+--- a/knowledge/notes/managed-agents-architecture.md
++++ b/knowledge/notes/managed-agents-architecture.md
+@@ -6,7 +6,7 @@ sources:
+     fetched: 2026-08-29
+ status: verified
+ tags: [agents, architecture, isolation, credentials, mechanics]
+-related: ["[[agent-design-template]]", "[[api-agent-loop]]", "[[effective-agents-anthropic]]", "[[subagents]]"]
++related: ["[[agent-design-template]]", "[[api-agent-loop]]", "[[effective-agents-anthropic]]", "[[subagents]]", "[[agent-harness-principles-2026]]", "[[claude-agent-sdk-hosting-and-limits-2026-09]]"]
+ ---
+ 
+ # Managed Agents — architecture
+@@ -101,3 +101,8 @@ gates or guardrails. Skills appear only in footer navigation.
+ For any of that, the API reference at
+ `platform.claude.com/docs/en/managed-agents/overview` is where to look — **it was
+ not read for this note.**
++
++## Added 2026-09-03
++Re-fetched 2026-09-03 (raw kept in `knowledge/raw/web-2026-09-03-harness-and-evidence/`): no new material — the p50/p95 figures and the decoupling sentence this note holds are unchanged. The practitioner restatements of the same split (harness owns state and control flow, the model owns the next step) are collected in [[agent-harness-principles-2026]].
++
++The self-hosted alternative's contract — subprocess per session, the four isolation settings, the vendor's $0.05/hour container figure — is in [[claude-agent-sdk-hosting-and-limits-2026-09]].
+diff --git a/knowledge/notes/production-site-checklist.md b/knowledge/notes/production-site-checklist.md
+index d586f5c..a0645d3 100644
+--- a/knowledge/notes/production-site-checklist.md
++++ b/knowledge/notes/production-site-checklist.md
+@@ -4,7 +4,7 @@ sources:
+   - note: "8-second short video, on-screen list 'Your vibe coded site is fake. It's missing 20 things that make it real.' Items 1-19 readable in the frame; item 20 is cut off. Creator unidentified (badge reads '...amesh'). Received and transcribed 2026-09-02."
+ status: verified
+ tags: [web, checklist, launch, app-builder, product]
+-related: ["[[requirements-discovery]]", "[[agent-builder-prior-art]]", "[[claude-code-ecosystem-plugins]]", "[[third-party-landscape]]"]
++related: ["[[requirements-discovery]]", "[[agent-builder-prior-art]]", "[[claude-code-ecosystem-plugins]]", "[[third-party-landscape]]", "[[build-evidence-tooling-2026]]", "[[app-builder-prior-art-and-library-standards-2026-09]]", "[[supabase-row-level-security-2026-09]]"]
+ ---
+ 
+ # Production checklist for a generated site
+@@ -66,7 +66,7 @@ transit: the intake's sensitivity level answers it), "lock record access" beyond
+ the model was *told* to do is not an item that was done — each of the seventeen is a gate
+ row that returns what it examined, or it is a wish.
+ 
+-Items 3, 4 and 6 are Supabase-shaped (anon key + RLS + server-side auth), which tells
++Items 3, 4 and 6 are Supabase-shaped (anon key + RLS + server-side auth; the vendor's own rules for the policies are in [[supabase-row-level-security-2026-09]]), which tells
+ you the stack the author assumes — the same one below. `code-security-review` covers
+ 13–16 and 18–20 with sources; 1–2 are `agent-surface-security-audit`'s credential rule.
+ 
+@@ -125,3 +125,9 @@ A 41-second video ("how to not make slop with Claude Code") names three tools. G
+ 
+ The video's diagnosis ("generic font, AI glow, dark theme, basic accent colour") is
+ opinion, but it is the same observation as the 19-item list above from the design side.
++
++## Added 2026-09-03
++The machine-readable formats a shipped site's checks can emit (CTRF for tests, SARIF for static checks) and the attestation that binds them to a commit are in [[build-evidence-tooling-2026]].
++
++## Added 2026-09-08
++Design tokens: the DTCG Format Module reached its first stable version (2025.10) on 2025-10-28 — see [[app-builder-prior-art-and-library-standards-2026-09]].
+diff --git a/knowledge/notes/skill-anatomy.md b/knowledge/notes/skill-anatomy.md
+index 0932dd0..19feb36 100644
+--- a/knowledge/notes/skill-anatomy.md
++++ b/knowledge/notes/skill-anatomy.md
+@@ -8,7 +8,7 @@ sources:
+     fetched: 2026-08-29
+ status: verified
+ tags: [claude-code, skills, mechanics]
+-related: ["[[skill-authoring-best-practices]]", "[[agent-design-template]]", "[[agent-builder-prior-art]]", "[[anthropic-skill-authoring-contract]]", "[[token-economy-playbook]]"]
++related: ["[[skill-authoring-best-practices]]", "[[agent-design-template]]", "[[agent-builder-prior-art]]", "[[anthropic-skill-authoring-contract]]", "[[token-economy-playbook]]", "[[claude-code-extension-layer]]", "[[plugins-and-marketplaces]]", "[[subagents]]", "[[hooks]]", "[[mcp]]", "[[claude-md-and-memory]]", "[[skill-authoring-eval-methodology]]"]
+ ---
+ 
+ # Skill anatomy
+@@ -18,6 +18,8 @@ plus markdown instructions (what to do when loaded). Skills follow the
+ [Agent Skills](https://agentskills.io) open standard; Claude Code extends it.
+ Custom commands (`.claude/commands/*.md`) are merged into skills — same mechanism.
+ 
++Which feature to reach for before a skill is written at all — skill versus CLAUDE.md, subagent, hook or MCP — is the hub note [[claude-code-extension-layer]]; this note starts once the answer is "a skill".
++
+ ## Where skills live
+ 
+ | Level | Path | Scope |
+@@ -30,6 +32,8 @@ Custom commands (`.claude/commands/*.md`) are merged into skills — same mechan
+ Precedence on name clash: enterprise > personal > project; any level > bundled.
+ Plugin skills are namespaced (`/plugin:skill`) so they never clash.
+ 
++The plugin row is the distribution path: [[plugins-and-marketplaces]] holds how a plugin bundles skills with agents, hooks and MCP servers, and the standalone-to-plugin conversion.
++
+ **Cloud/Cowork sessions do NOT read `~/.claude/skills/` on the user's machine.**
+ They load (a) skills enabled on the claude.ai account and (b) project skills
+ committed to the cloned repo's `.claude/skills/`. → For this project, skills must
+@@ -148,6 +152,8 @@ Only 6 fields survive claude.ai upload / API packaging: `name`, `description`,
+ `license`, `compatibility`, `metadata`, `allowed-tools`. Anything else fails the
+ upload with a hard error (fine in Claude Code itself).
+ 
++`context: fork` is the inverse of a subagent's `skills:` field; [[subagents]] describes the pairing, in which either the skill chooses the agent or the agent preloads the skill. The `hooks` field is the bridge to [[hooks]]: a skill's hooks register at invocation and persist for the session, so a skill can carry enforcement it cannot itself guarantee. [[mcp]] supplies the connection and the tool schemas; a skill is where the instructions for using them well live, which is why the two pair rather than compete.
++
+ ## Body features
+ 
+ - `$ARGUMENTS`, `$ARGUMENTS[N]`/`$N`, `$name` — argument substitution.
+@@ -168,6 +174,8 @@ upload with a hard error (fine in Claude Code itself).
+ - On auto-compaction, the most recent invocation of each skill is re-attached:
+   first 5,000 tokens per skill, 25,000-token shared budget, most recent first.
+ 
++That recurring cost is why [[claude-md-and-memory]] draws its boundary where it does: content that should not sit in context every session belongs in a skill, not in CLAUDE.md or a rule.
++
+ ## Control & security
+ 
+ - Permission rules: `Skill(name)` / `Skill(name *)`; deny `Skill` disables all.
+@@ -183,4 +191,6 @@ automates baseline-vs-skill comparisons: eval cases in `evals/evals.json`,
+ isolated subagent runs, grading, benchmark (pass rate vs token overhead), blind
+ A/B between skill versions, and description trigger-tuning.
+ 
++The loop that plugin runs — draft, test prompts, quantitative evals, description-improver, repeat at scale — is written out in [[skill-authoring-eval-methodology]], which also reads the official template as `name` + `description` + a body heading and nothing more.
++
+ The loading economics above are one of three token sinks; the other two (retrieval, the generation loop) and the ranked policy are in [[token-economy-playbook]] (added 2026-09-02).
+diff --git a/knowledge/notes/skill-authoring-best-practices.md b/knowledge/notes/skill-authoring-best-practices.md
+index a0e5509..2232480 100644
+--- a/knowledge/notes/skill-authoring-best-practices.md
++++ b/knowledge/notes/skill-authoring-best-practices.md
+@@ -9,7 +9,7 @@ sources:
+     fetched: 2026-08-27
+ status: verified
+ tags: [claude-code, skills, authoring, testing]
+-related: ["[[skill-anatomy]]", "[[long-text-comprehension]]", "[[anthropic-skill-authoring-contract]]", "[[testing-skills-methodology]]", "[[loop-engineering-and-fable-prompting]]", "[[prompt-patterns-kernel]]"]
++related: ["[[skill-anatomy]]", "[[long-text-comprehension]]", "[[anthropic-skill-authoring-contract]]", "[[testing-skills-methodology]]", "[[loop-engineering-and-fable-prompting]]", "[[prompt-patterns-kernel]]", "[[skill-authoring-eval-methodology]]"]
+ ---
+ 
+ # Skill authoring best practices
+@@ -30,6 +30,8 @@ because the description said "code review between tasks").
+   superpowers refinement (triggers only) is stricter and empirically motivated;
+   we follow the stricter form.
+ 
++The official `skill-creator`'s description-improver pass, and its rule to run a benchmark several times and report variance, extend this rule and the testing section below; both are in [[skill-authoring-eval-methodology]].
++
+ ## Conciseness
+ 
+ - Context is a public good. Only add what the agent doesn't already know;
+diff --git a/knowledge/notes/skill-authoring-eval-methodology.md b/knowledge/notes/skill-authoring-eval-methodology.md
+index ccdc60c..2c9c964 100644
+--- a/knowledge/notes/skill-authoring-eval-methodology.md
++++ b/knowledge/notes/skill-authoring-eval-methodology.md
+@@ -4,7 +4,8 @@ sources:
+   - url: https://github.com/anthropics/skills
+     fetched: 2026-08-27
+   - url: https://agentskills.io/specification
+-    note: canonical Agent Skills spec (the repo's spec/ is now just this pointer)
++    note: "canonical Agent Skills spec (the repo's spec/ is now just this pointer). No fetch date was recorded when this source was added; set to null by the curator on 2026-09-09 rather than invented"
++    fetched: null
+ status: verified
+ tags: [skills, authoring, eval, description-triggering, methodology]
+ related: ["[[skill-authoring-best-practices]]", "[[testing-skills-methodology]]", "[[skill-anatomy]]", "[[anthropic-skill-authoring-contract]]"]
+diff --git a/knowledge/notes/subagents.md b/knowledge/notes/subagents.md
+index e1e22d8..d067cc9 100644
+--- a/knowledge/notes/subagents.md
++++ b/knowledge/notes/subagents.md
+@@ -5,7 +5,7 @@ sources:
+     fetched: 2026-08-27
+ status: verified
+ tags: [claude-code, subagents, context, mechanics]
+-related: ["[[skill-anatomy]]", "[[dynamic-workflows]]", "[[hooks]]", "[[claude-code-extension-layer]]", "[[agent-design-template]]", "[[agent-builder-prior-art]]", "[[api-agent-loop]]", "[[effective-agents-anthropic]]", "[[managed-agents-architecture]]", "[[testing-skills-methodology]]", "[[loop-engineering-and-fable-prompting]]", "[[model-agnostic-agent-harnesses]]", "[[harness-over-model-prime-agent]]"]
++related: ["[[skill-anatomy]]", "[[dynamic-workflows]]", "[[hooks]]", "[[claude-code-extension-layer]]", "[[agent-design-template]]", "[[agent-builder-prior-art]]", "[[api-agent-loop]]", "[[effective-agents-anthropic]]", "[[managed-agents-architecture]]", "[[testing-skills-methodology]]", "[[loop-engineering-and-fable-prompting]]", "[[model-agnostic-agent-harnesses]]", "[[harness-over-model-prime-agent]]", "[[agent-harness-principles-2026]]", "[[claude-agent-sdk-hosting-and-limits-2026-09]]", "[[plugins-and-marketplaces]]", "[[architecture-evidence]]", "[[llm-idea-generation]]", "[[third-party-landscape]]"]
+ ---
+ 
+ # Subagents
+@@ -20,6 +20,8 @@ thread. Each has a custom system prompt, restricted tools, and its own context.
+ 4. `~/.claude/agents/` (user) → 5. plugin `agents/`. Name conflicts: highest
+ priority wins; closest-to-cwd wins among project dirs.
+ 
++The plugin tier at the bottom of that order is described in [[plugins-and-marketplaces]]: a standalone project or user agent overrides a same-named plugin agent, which is why plugin agents rank last.
++
+ ## What loads into a (non-fork) subagent at startup
+ 
+ Custom system prompt + env details (NOT the full Claude Code prompt); the task
+@@ -118,6 +120,8 @@ harness. Note for the factory: a normal subagent DOES load this repo's CLAUDE.md
+ (so doc-driven rules apply), but Explore/Plan do not — pick `general-purpose` when
+ the rules must hold.
+ 
++[[architecture-evidence]] built its architect agent on the isolation described here: separation — an isolated context and a restricted tool surface — is what measured, a persona costume did not, and an agent that also holds Bash makes any prose wall decorative. For ideation the same isolation is the mechanism [[llm-idea-generation]] needs: a generator starved of the existing solution vocabulary and an evaluator saturated with it cannot share one context window, and measured diversity comes from fan-out across instances, not from one instance.
++
+ ---
+ 
+ ## A subagent has no Task tool here — MEASURED 2026-09-01
+@@ -283,3 +287,11 @@ experiment cannot be trusted by the experiment that uses it. In this repo the fo
+ `pipeline/build/dispatch.py`, with each fault reconstructed as a positive control in
+ `selftest_dispatch.py`. Neighbour: `testing-skills-methodology.md` (mutation-testing the
+ controls that guard this).
++
++This is the measurement [[third-party-landscape]] cites when it says the harness is part of the instrument.
++
++## Added 2026-09-03
++Where subagents sit in the wider harness canon — 12-Factor's "small, focused agents", the 70-project corpus in which subagent architecture is one of five recurring decision dimensions — is in [[agent-harness-principles-2026]].
++
++## Added 2026-09-03 (SDK contract)
++The SDK's programmatic `AgentDefinition` (fields, what a fresh subagent inherits, the depth/concurrency/spend defaults of 3 / 20 / unlimited and the output scan before the parent reads a result) is recorded with its version in [[claude-agent-sdk-hosting-and-limits-2026-09]].
+diff --git a/knowledge/notes/testing-skills-methodology.md b/knowledge/notes/testing-skills-methodology.md
+index e04f88a..ac18ab0 100644
+--- a/knowledge/notes/testing-skills-methodology.md
++++ b/knowledge/notes/testing-skills-methodology.md
+@@ -5,7 +5,7 @@ sources:
+     fetched: 2026-08-27
+ status: verified
+ tags: [skills, testing, tdd, pressure]
+-related: ["[[skill-authoring-best-practices]]", "[[anthropic-skill-authoring-contract]]", "[[skill-authoring-eval-methodology]]", "[[subagents]]", "[[claude-code-ecosystem-plugins]]", "[[local-finetuning-layer-streaming]]", "[[adversarial-plan-review-claudex]]"]
++related: ["[[skill-authoring-best-practices]]", "[[anthropic-skill-authoring-contract]]", "[[skill-authoring-eval-methodology]]", "[[subagents]]", "[[claude-code-ecosystem-plugins]]", "[[local-finetuning-layer-streaming]]", "[[adversarial-plan-review-claudex]]", "[[research-methodology]]"]
+ ---
+ 
+ # Testing skills with subagents
+@@ -250,6 +250,8 @@ the word that names a class is exactly the word most likely to appear in both nu
+ 
+ In this repo: `pipeline/queries/round_convergence.py`, ledger at `pipeline/ledgers/fields.jsonl`.
+ 
++[[research-methodology]] places this class-over-instance comparison as the third rung of a validation ladder borrowed from systematic trading (parameter stability, resampling every set, cluster analysis, walk-forward).
++
+ ## Mutation testing has a cache trap — MEASURED 2026-09-02
+ 
+ Mutating the code under test and re-running its controls is the only way to know a control can
+diff --git a/knowledge/notes/third-party-landscape.md b/knowledge/notes/third-party-landscape.md
+index d81b246..6661d6e 100644
+--- a/knowledge/notes/third-party-landscape.md
++++ b/knowledge/notes/third-party-landscape.md
+@@ -10,7 +10,7 @@ sources:
+ status: verified
+ fetched: 2026-09-02
+ tags: [summary, landscape, skills, agents, plugins, tools, harvest, claims-graded]
+-related: ["[[agent-builder-prior-art]]", "[[claude-code-ecosystem-plugins]]", "[[model-agnostic-agent-harnesses]]", "[[harness-over-model-prime-agent]]", "[[graphify-assessment]]", "[[temporal-kg-agent-memory]]", "[[llm-wiki-pattern]]", "[[loop-engineering-and-fable-prompting]]", "[[production-site-checklist]]", "[[learning-resources-agents]]", "[[local-finetuning-layer-streaming]]", "[[prompt-patterns-kernel]]", "[[claude-md-and-memory]]", "[[mcp]]", "[[model-routing-free-and-local]]", "[[token-economy-playbook]]"]
++related: ["[[agent-builder-prior-art]]", "[[claude-code-ecosystem-plugins]]", "[[model-agnostic-agent-harnesses]]", "[[harness-over-model-prime-agent]]", "[[graphify-assessment]]", "[[temporal-kg-agent-memory]]", "[[llm-wiki-pattern]]", "[[loop-engineering-and-fable-prompting]]", "[[production-site-checklist]]", "[[learning-resources-agents]]", "[[local-finetuning-layer-streaming]]", "[[prompt-patterns-kernel]]", "[[claude-md-and-memory]]", "[[mcp]]", "[[model-routing-free-and-local]]", "[[token-economy-playbook]]", "[[typescript-stack-scan-2026-09]]", "[[app-builder-prior-art-and-library-standards-2026-09]]"]
+ ---
+ 
+ # The third-party landscape, summarised
+@@ -298,3 +298,9 @@ From `pipeline/LESSONS.md` and the STATUS log, all measured on this repository's
+ `knowledge/notes/` (the wikilinked pages above) · `intake/2026-08-30-agent-and-skill-material/scio/docs/{ECC-MINED,TOOLING-SCAN,SKILLS-LIBRARY}.md` and `docs/mined/*` (ten verdict tables, ~250 rows) · `catalog/{catalog.json,CATALOG.md,SHORTLIST.md,first-wave.md,second-wave.md}` · `pipeline/{LESSONS,CURATION-LESSONS,STATUS}.md` · `intake/wave*.md` and `intake/ecc-reaudit.md`. Query with `knowledge/kb.py find "<name>"`.
+ 
+ Two policy pages compiled from this landscape on 2026-09-02: [[token-economy-playbook]] (what is measured about saving tokens, ranked) and [[model-routing-free-and-local]] (which jobs may leave Claude, and the mechanics per arm).
++
++## Added 2026-09-03
++Sandbox provider prices at vendor-table precision (E2B, Vercel Sandbox, Northflank) and the TypeScript 7 / NestJS build-tool friction are in [[typescript-stack-scan-2026-09]].
++
++## Added 2026-09-08
++The measured shape of a shadcn registry item (only name and type required; 12 item types; include + validate since May 2026), the DTCG 2025.10 stable date, and what the 2026 app-builder field ships (Replit Agent 4 Design Mode and checkpoints, Lovable refinement loop, v0 JSON Render) are in [[app-builder-prior-art-and-library-standards-2026-09]] — the competitor rows there are REPEATED, the schema rows MEASURED.
+diff --git a/knowledge/notes/token-economy-playbook.md b/knowledge/notes/token-economy-playbook.md
+index c2194f0..f444c3e 100644
+--- a/knowledge/notes/token-economy-playbook.md
++++ b/knowledge/notes/token-economy-playbook.md
+@@ -24,7 +24,7 @@ sources:
+     note: "The observation appended 2026-09-02 lives in Scio at commit 0776d94; the raw copy here predates it. Quoted below."
+ status: verified
+ tags: [tokens, cost, prompt-caching, retrieval, graphify, batch-api, policy, measured]
+-related: ["[[graphify-assessment]]", "[[graphify-features]]", "[[skill-anatomy]]", "[[claude-code-extension-layer]]", "[[model-routing-free-and-local]]", "[[third-party-landscape]]", "[[model-agnostic-agent-harnesses]]"]
++related: ["[[graphify-assessment]]", "[[graphify-features]]", "[[skill-anatomy]]", "[[claude-code-extension-layer]]", "[[model-routing-free-and-local]]", "[[third-party-landscape]]", "[[model-agnostic-agent-harnesses]]", "[[claude-agent-sdk-hosting-and-limits-2026-09]]"]
+ ---
+ 
+ # Token economy playbook
+@@ -114,6 +114,8 @@ all the contract text in the build.
+ The floor is **non-monotonic across models**, so it is a *routing* hazard: sending a call
+ that caches on Opus 5 to Haiku 4.5 raises the floor eightfold and silently caches nothing.
+ 
++On the Agent SDK the fields to price these rates from are the per-model `modelUsage` record (`cacheReadInputTokens`, `cacheCreationInputTokens`), not `total_cost_usd`, which is a cumulative estimate that mixes the main loop and subagents — [[claude-agent-sdk-hosting-and-limits-2026-09]], claim 17.
++
+ ### 2.4 Prices (MEASURED, pricing page 2026-09-02, per MTok)
+ 
+ Fable 5.1 $10 / $50 · Opus 5 $5 / $25 · Sonnet 5 $2 / $10 · Haiku 4.5 $1 / $5 · Batch API
+@@ -160,10 +162,15 @@ same text than the older one. Output is five times input on every card, which is
+ 
+ ## 4. What is still unmeasured
+ 
+-- The graph **query count** per session — the only number that would settle "graph on
+-  every code question" against "graph never asked".
++- ~~The graph **query count** per session~~ **Measured 2026-09-09 in Scio:** a session of ~45
++  commits rebuilt the graph after every one (the post-commit hook) and queried it **zero** times
++  before being asked; the first real question (`graphify explain` on `Spend.recordUsage`, one
++  disambiguation plus one answer) cost ≈355 tokens where reading `spend.ts` costs ≈3,844 - an
++  11× difference on one question. The count is now the discipline gap, not the instrument gap.
+ - Real `count_tokens` on the Scio prompts, and `cache_read_input_tokens` after the reorder.
+ - Cache hit rates inside a Claude Code session (not observable from the CLI; the
+   Agent SDK's `usage` is).
+ - Every skill re-measured on Fable 5.1 (Scio ADR-0008): a skill that saved tokens on Opus
+   may add tokens on a model that already does the thing.
++
++The OpenTelemetry names for the four token classes and the sum rule for Anthropic input tokens are in [[otel-genai-semantic-conventions-2026-09]] (fetched 2026-09-09; the conventions moved to a dedicated repository with no release).
+diff --git a/knowledge/sources/SOURCES.md b/knowledge/sources/SOURCES.md
+index 72896a5..cbdd03b 100644
+--- a/knowledge/sources/SOURCES.md
++++ b/knowledge/sources/SOURCES.md
+@@ -52,3 +52,42 @@ Added 2026-09-02 (LLM wiki implementations):
+ - https://github.com/kfchou/wiki-skills — MIT; six skills, pre-commit hook, contradiction script (fetched 2026-09-02) → llm-wiki-pattern
+ - https://github.com/toolboxmd/karpathy-wiki — MIT; session hook, CLI, tier-1 lint at every ingest (fetched 2026-09-02) → llm-wiki-pattern
+ 
++Added 2026-09-03 (Scio architecture session; raw in knowledge/raw/web-2026-09-03-harness-and-evidence/):
++- https://raw.githubusercontent.com/humanlayer/12-factor-agents/main/README.md — MIT; twelve factor titles and the four-step loop (fetched 2026-09-03, raw) → agent-harness-principles-2026
++- https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents — Nov 26, 2025 (fetched 2026-09-03, raw) → agent-harness-principles-2026
++- https://addyosmani.com/blog/agent-harness-engineering/ — April 19, 2026 (fetched 2026-09-03, raw) → agent-harness-principles-2026
++- https://www.infoq.com/articles/agentic-fitness-functions-evolutionary-architecture/ — deterministic vs agentic fitness functions (fetched 2026-09-03, raw; article date not located) → agent-harness-principles-2026
++- https://arxiv.org/abs/2604.18071 — Hu Wei, 20 Apr 2026, 70 projects (abstract, raw) → agent-harness-principles-2026
++- https://arxiv.org/abs/2606.20631 — Xia et al., 29 May 2026, four-layer skill-harnessing architecture (abstract, raw) → agent-harness-principles-2026
++- https://www.anthropic.com/engineering/managed-agents — re-fetched (raw); no material, values unchanged → managed-agents-architecture (log only)
++- https://ctrf.io/ — (fetched 2026-09-03, raw) → build-evidence-tooling-2026
++- https://pythonspeed.com/articles/verified-fakes/ — (fetched 2026-09-03, raw) → build-evidence-tooling-2026
++- https://arxiv.org/abs/2503.24260 — MaintainCoder, 31 Mar 2025 / v3 29 Sep 2025 (abstract page, raw) → build-evidence-tooling-2026
++- https://docs.github.com/actions/security-for-github-actions/using-artifact-attestations/using-artifact-attestations-to-establish-provenance-for-builds — navigation shell only (raw) → build-evidence-tooling-2026 (partial)
++- https://atlasgo.io/blog/2025/10/v038-analyzers-pii-and-migration-hooks — navigation shell only (raw) → build-evidence-tooling-2026 (unverified)
++- Search-summary-only (not fetched raw, links in Scio docs/next/ideas/2026-09-03-product-improvement.md): SARIF, OpenVEX, Turborepo/Nx caching, Infracost, cruft, dependency-cruiser, ArchUnitTS, Spec Kit, Neon+Atlas, Escape/XBOW, GRC risk exceptions, BYOC, SWE-EVO, SWE-CI, UI-Bench, WebCoderBench, A.S.E → build-evidence-tooling-2026 (secondary)
++
++Added 2026-09-03, evening (Scio Slice 1 design; raw in knowledge/raw/web-2026-09-03-sdk-and-stack/):
++- https://code.claude.com/docs/en/agent-sdk/typescript — Options field table, AgentDefinition (fetched 2026-09-03, raw) → claude-agent-sdk-hosting-and-limits-2026-09
++- https://code.claude.com/docs/en/agent-sdk/hosting — subprocess model, isolation, resources, cost, limitations (raw) → claude-agent-sdk-hosting-and-limits-2026-09
++- https://code.claude.com/docs/en/agent-sdk/subagents — AgentDefinition, inheritance, caps (raw) → claude-agent-sdk-hosting-and-limits-2026-09
++- https://code.claude.com/docs/en/agent-sdk/hooks — event table, output shape (raw) → claude-agent-sdk-hosting-and-limits-2026-09
++- https://code.claude.com/docs/en/agent-sdk/skills — filesystem-only skills, skills option (raw) → claude-agent-sdk-hosting-and-limits-2026-09
++- npm view (registry.npmjs.org), nodejs.org/dist/index.json — versions and LTS lines, 2026-09-03 (raw text) → typescript-stack-scan-2026-09
++- https://fernforge.github.io/devnotes/nestjs-typescript-7/ — secondary; tsgo decorator metadata, no compiler API (raw) → typescript-stack-scan-2026-09
++- https://github.com/nestjs/nest-cli/issues/3479 — shell only (raw) → typescript-stack-scan-2026-09 (unverified)
++- https://northflank.com/blog/ai-sandbox-pricing — vendor price table (raw) → typescript-stack-scan-2026-09 (secondary)
++- Search-summary-only: Encore Drizzle-vs-Prisma and NestJS-vs-Fastify-vs-Hono, Drizzle RLS docs, MarkTechPost sandbox comparison 2026-08-27 → typescript-stack-scan-2026-09 (secondary)
++| 2026-09-06 | https://registry.npmjs.org/ctrf/-/ctrf-0.3.0.tgz | evidence-artefact-schemas-2026-09 |
++| 2026-09-06 | https://ctrf.io/docs/specification/overview | evidence-artefact-schemas-2026-09 |
++| 2026-09-06 | https://json.schemastore.org/sarif-2.1.0.json | evidence-artefact-schemas-2026-09 |
++| 2026-09-06 | https://raw.githubusercontent.com/in-toto/attestation/main/spec/v1/statement.md | evidence-artefact-schemas-2026-09 |
++| 2026-09-06 | https://slsa.dev/spec/v1.0/provenance | evidence-artefact-schemas-2026-09 |
++| 2026-09-06 | https://slsa.dev/spec/v1.1/provenance | evidence-artefact-schemas-2026-09 |
++| 2026-09-06 | node_modules/.pnpm/@anthropic-ai+claude-agent-sdk@0.3.259/node_modules/@anthropic-ai/claude-agent-sdk/sdk.d.ts (installed) | claude-agent-sdk-hosting-and-limits-2026-09 |
++| 2026-09-08 | https://ui.shadcn.com/schema/registry-item.json | JSON Schema | verified | app-builder-prior-art-and-library-standards-2026-09 |
++| 2026-09-08 | https://ui.shadcn.com/docs/registry/registry-item-json | Official docs | verified | app-builder-prior-art-and-library-standards-2026-09 |
++| 2026-09-08 | https://ui.shadcn.com/docs/changelog/2026-05-registry-include | Official changelog | verified | app-builder-prior-art-and-library-standards-2026-09 |
++| 2026-09-08 | https://www.w3.org/community/design-tokens/category/status-updates/ | W3C CG feed | partial | app-builder-prior-art-and-library-standards-2026-09 |
++| 2026-09-08 | https://lovable.dev/guides/bolt-vs-replit-vs-lovable | Vendor comparison | secondary | app-builder-prior-art-and-library-standards-2026-09 |
++| 2026-09-08 | https://blog.replit.com/agent-4 | Vendor blog (404 on fetch) | secondary | app-builder-prior-art-and-library-standards-2026-09 |
+diff --git a/pipeline/LESSONS.md b/pipeline/LESSONS.md
+index 292bda1..9c45afd 100644
+--- a/pipeline/LESSONS.md
++++ b/pipeline/LESSONS.md
+@@ -87,6 +87,15 @@ consumes the source-yield verdicts. Related: [[testing-skills-methodology]], [[r
+   (wave 4) yielded 10 validated talents where surface triage had found 0. When a large
+   source was triaged fast, schedule a deep pass on its high-value tier.
+ 
++- **A routing rule with no gate at the moment of use is skipped - measured twice.** (1) 2026-08-28:
++  the agent cap of 2 was read and three authors were dispatched minutes later (CLAUDE.md, W_MAX_AGENTS).
++  (2) 2026-09-09, Scio: the routing table said "graph first"; the graph was rebuilt after each of
++  ~45 commits and queried zero times; the first query cost ≈355 tokens against ≈3,844 for the file it
++  replaced. Same shape both times: the rule was known, the tool existed, nothing made the call the
++  FIRST step of the procedure. Directive: when a rule says "X before Y", write X as the first
++  command of the runbook or as a hook, never as a sentence; a sentence is a convention and this
++  ledger now holds two measurements of what conventions are worth at the moment of use.
++
+ ## SOURCE-YIELD TABLE (adopted+adapted / seen, by source_type)
+ | source_type | waves | seen | yield | verdict |
+ | --- | --- | --- | --- | --- |
+diff --git a/pipeline/STATUS.md b/pipeline/STATUS.md
+index 34d34e0..36ccc08 100644
+--- a/pipeline/STATUS.md
++++ b/pipeline/STATUS.md
+@@ -824,3 +824,31 @@ a complete 24/24 ledger, 7 findings, and four gaps the run named itself. The art
+ candidate, not routed. Across both builds 5 of 6 whole-artefact reviews were red at class
+ level: the fan-out's revert-to-serial condition is met.
+ 
++2026-09-03 · knowledge: ingest (llm-wiki-ingest shape) — 12 raw web fetches kept under knowledge/raw/web-2026-09-03-harness-and-evidence/; NEW agent-harness-principles-2026 and build-evidence-tooling-2026; UPDATE llm-idea-generation and ideation-and-idea-selection (first measured run of Scio's brainstorm procedure); NO MATERIAL managed-agents (re-fetch, values unchanged); cascade sentences in effective-agents-anthropic, managed-agents-architecture, architecture-evidence, loop-engineering-and-fable-prompting, harness-over-model-prime-agent, agent-builder-prior-art, production-site-checklist; INDEX §3b and SOURCES rows added; kb.py lint run before commit (result in the commit message).
++
++2026-09-03 · knowledge: ingest, evening — 10 raw items under knowledge/raw/web-2026-09-03-sdk-and-stack/; NEW claude-agent-sdk-hosting-and-limits-2026-09 and typescript-stack-scan-2026-09; cascade sentences in subagents, hooks, managed-agents-architecture, api-agent-loop, claude-code-extension-layer, agent-harness-principles-2026, build-evidence-tooling-2026, third-party-landscape; INDEX §2b and SOURCES rows; kb.py lint before commit.
++
++2026-09-06 · knowledge: ingest — 9 raw items under knowledge/raw/web-2026-09-06-evidence-schemas/ (ctrf@0.3.0 schema and types from the npm tarball, SARIF 2.1.0 schema, in-toto Statement v1, SLSA Provenance v1.0 and v1.1 pages); NEW evidence-artefact-schemas-2026-09 (nine MEASURED claims: the required fields and enums of each format); cascade sentence and related link in build-evidence-tooling-2026; INDEX §3b and SOURCES rows; kb.py lint before commit.
++
++2026-09-06 · knowledge: UPDATE claude-agent-sdk-hosting-and-limits-2026-09 — claim 15 (hook input/output field names per event, MEASURED from the installed 0.3.259 sdk.d.ts, raw copy kept); SOURCES row; kb.py lint before commit.
++
++2026-09-08 · knowledge: ingest — 4 raw items under knowledge/raw/web-2026-09-08-app-builder-prior-art/ (shadcn registry-item schema + docs + May 2026 include/validate changelog, DTCG status feed; the Replit Agent 4 page 404'd and is recorded as such); NEW app-builder-prior-art-and-library-standards-2026-09 (7 MEASURED claims on the registry item and token shapes, 5 REPEATED competitor rows, the three prior-art verdicts of the Scio 2026-09-08 brainstorm); cascade sentences and related links in third-party-landscape, build-evidence-tooling-2026, evidence-artefact-schemas-2026-09, production-site-checklist; INDEX §3b and SOURCES rows; kb.py lint before commit.
++
++2026-09-08 · knowledge: UPDATE app-builder-prior-art-and-library-standards-2026-09 — section 4, eighteen REPEATED rows from the Scio brainstorm's facet searches (cost attribution, elicitation, content-addressed caches, SDD, IEEE 828, AC 20-148, agent evidence provenance, bandit allocation, Pact, best-of-N, agentic pentest, synthetic users, LCAP, single-pass generation, LLM Gherkin, ambiguity detection, VRT baselines, clean-room builds), kept so the next run does not search from zero; kb.py build + lint before commit.
++
++2026-09-09 · knowledge: UPDATE claude-agent-sdk-hosting-and-limits-2026-09 — claim 16 (allowedTools vs tools vs dontAsk vs AgentDefinition.tools, MEASURED from the installed 0.3.259 sdk.d.ts already in raw); the finding that a restricted session allow-list denies every subagent write.
++2026-09-09 · knowledge: UPDATE claude-agent-sdk-hosting-and-limits-2026-09 — claim 17 (total_cost_usd is a cumulative estimate; usage is main-loop only; modelUsage carries cacheReadInputTokens and cacheCreationInputTokens; MEASURED from the installed 0.3.259 sdk.d.ts in raw). Scio ADR-0019/0020/0021 filed on it and on token-economy-playbook §2.3–2.4.
++2026-09-09 · knowledge: NEW inter-rater-agreement-kappa-2026-09 — Cohen and McHugh bands for kappa (MEASURED from McHugh 2012, PMC3900052, fetched 2026-09-09); Fleiss named for 3+ raters; Landis & Koch bands UNVERIFIED. Scio ADR-0018 threshold preregistered at 0.80 on it.
++2026-09-09 · knowledge: NEW otel-genai-semantic-conventions-2026-09 — twelve MEASURED claims from the dedicated semantic-conventions-genai repository (moved, no release, Development; spans/metrics/events names; cache attributes; Anthropic sum rule; content capture Opt-In). Scio ADR-0026 rests on it.
++2026-09-09 · knowledge: NEW preview-and-sandbox-egress-boundary-2026-09 — twelve MEASURED claims (MDN iframe sandbox and frame-ancestors; Vercel sandbox firewall last_updated 2026-08-31). Scio ADR-0025 rests on it.
++2026-09-09 · knowledge: CURATE (kb-curator agent, coordinator committed) — 18 notes gained a one-sentence back-link, lint 33 → 2 warnings; one schema fix (skill-authoring-eval-methodology: fetched set to null where no date was ever recorded). Settled the same turn: Graphify licence contradiction (graphify-assessment MIT vs graphify-features Apache-2.0) — the repository is dual-licensed, dated sentence added to both. OPEN proposals, human needed: (1) the Anthropic skill-authoring PDF is recorded as 30 pages in anthropic-skill-authoring-contract and 33 in skill-anatomy/agent-builder-prior-art — count the raw file; (2) graphify-features should carry a dated row that manifest.json exists and exports are subcommands; (3) token-economy-playbook §4 should say modelUsage, not usage, per claim 17; (4) skill-anatomy states 1024 and 1,536 for description length without relating them; (5) two frontmatter-only related edges remain (claude-md-and-memory → model-agnostic-agent-harnesses; agent-builder-prior-art → managed-agents-architecture): argue or drop.
++2026-09-09 · knowledge: UPDATE otel-genai-semantic-conventions-2026-09 — claim 13, the newest commit on main (b5d8440, 2026-09-08) read from the commits listing; Scio ADR-0026 pins it.
++2026-09-09 · knowledge: MEASURED the graph query count in a real session (Scio): 0 queries over ~45 commits with the hook rebuilding each time; first query 355 tokens vs 3,844 for the file. Recorded in token-economy-playbook §4 and graphify-assessment.
++2026-09-09 · knowledge: NEW supabase-row-level-security-2026-09 — nine MEASURED claims from the Supabase RLS page (auth.uid/auth.jwt, app_metadata vs user_metadata, the to clause, service_role bypassrls and its one exception, no-policy default). Scio's rendered migration (review 17) rests on it; the app_metadata JSON path itself is REPEATED until the custom-claims page is read.
++2026-09-09 · knowledge: UPDATE typescript-stack-scan-2026-09 — claims 10-14 MEASURED from Scio's composition root (platform-express 12.0.1 + express 5.2.1; a full NestJS 12 app under TypeScript 7's native compiler; Biome's parameter-decorator switch; Vitest file parallelism colliding on one database, twice; Postgres identifier folding).
++2026-09-09 · knowledge: UPDATE typescript-stack-scan-2026-09 — claim 15 MEASURED: a Date-round-tripped timestamptz cannot serve as an optimistic-lock guard (millisecond vs microsecond); an integer version column can. From Scio review 18.
++2026-09-09 · knowledge: UPDATE typescript-stack-scan-2026-09 — claims 16-19 MEASURED from Scio's buyer's screens (jsdom import.meta.url scheme; Vitest --dir vs include roots; dependency-cruiser and an ESM-only Vite plugin; Playwright 1.63 on the pre-installed Chromium with a webServer, the journey in 4 s).
++2026-09-09 · knowledge: UPDATE typescript-stack-scan-2026-09 — claims 20-22 MEASURED from Scio review 19 (CSP and inline styles; express handlers before the Nest router; Biome lower-casing hex in a generated stylesheet).
++2026-09-09 · knowledge: UPDATE typescript-stack-scan-2026-09 — claims 23-25 from Scio's identity verifier (jose 6.2.12 MIT dated vs WebCrypto measured; Uint8Array typing under TS 7; the clock-skew test pitfall).
++2026-09-09 · knowledge: UPDATE typescript-stack-scan-2026-09 — claims 26-27 MEASURED from Scio's repository push (git 2.43.0: fixed author, committer and dates give a content-addressed, retry-stable commit id; a bare repository with -b main takes a push from the binary alone). Open item: the hosted git adapter.
++2026-09-11 · knowledge: UPDATE typescript-stack-scan-2026-09 — claim 28 MEASURED, qualifying claim 26: the retry-stable commit id holds only for identical content; a second build re-initing a fresh tree is refused as non-fast-forward (git exit 1, remote unchanged). Open item: what a rebuild means.

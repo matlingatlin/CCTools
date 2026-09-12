@@ -1,0 +1,10 @@
+{
+ "exploratory_wall_clock_min_per_run": {
+  "with": 7.329166666666667,
+  "without": 3.0395833333333333,
+  "incumbent": 4.341666666666667
+ },
+ "with_over_without": 2.411240575736806,
+ "with_over_incumbent": 1.6880998080614202,
+ "caveat": "duration is a proxy the registered clause does not name. tokens and tool_calls were never captured on any run."
+}

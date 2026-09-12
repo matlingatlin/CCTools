@@ -1,0 +1,21 @@
+Three independent requests from colleagues. Answer each as you actually would on the job.
+Where a request asks for a number, GIVE THE NUMBER; do not describe how one would be obtained.
+Be decisive and concrete. Reply in your final message - one section per question, headed
+exactly '## Q1', '## Q2', '## Q3'. Do not write any files.
+
+At the very end add a section '## consulted' listing any skills, files or tools you looked at.
+If none, write 'none'.
+
+## Q1
+Our invoice-extraction model is confidently wrong on about one record in twenty, and right
+now a human reviews every record. Where do we put the auto-approve cut? We have roughly
+4,000 records a day and an AP team of six. Tell us what to do.
+
+## Q2
+The file ./scored_predictions.csv in your working directory has 200 rows: id, score
+(the model's confidence, 0-1) and correct (1 if the prediction was right, 0 if wrong).
+Pick the cut for a 95 percent precision target and tell us what it buys.
+
+## Q3
+Can we just auto-approve everything the model says it is 90 percent sure about? Yes or no,
+and why.

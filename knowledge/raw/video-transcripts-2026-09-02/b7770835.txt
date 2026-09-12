@@ -1,0 +1,57 @@
+[   0.0] I'm a 23 year old AI engineer in big tech and this is my AI development setup.
+[   4.6] P.S. my setup is better than yours.
+[   6.7] I have Pi as my agent harness.
+[   9.3] I have ChatGBT as the model provider using the $20 subscription.
+[  13.1] I have Herter which helps me manage multiple agents at the same time.
+[  17.0] And I do all of this in a terminal called Wester.
+[  19.4] So as you can see here I've got my AI development setup all loaded up.
+[  23.4] I really like Pi because of its customizability you can change certain aspects that you
+[  27.1] just absolutely cannot change with other providers.
+[  29.8] When I load up Pi you can see all of my contact.
+[  32.6] You can see all the skills that I have and I'll go through those in a second.
+[  35.7] You can see the extensions that I have.
+[  37.3] This is what makes Pi unique and you can see the theme.
+[  40.4] So one of the first things that I can do with my Pi setup is I can use Transcribe
+[  45.0] natively in Pi for free.
+[  46.9] This is completely free.
+[  47.9] Hello Pi.
+[  48.9] What are you up to today?
+[  49.9] So as you can see that totally worked.
+[  51.7] I send the message.
+[  53.1] It will respond.
+[  54.1] There you go.
+[  55.1] So everything happens in the terminal.
+[  56.2] I've got NeoVim.
+[  57.7] I track all my calories and protein for the day using a TUI.
+[  61.5] I even do Spotify with a TUI.
+[  63.9] I like a terminal centric workflow where I can navigate around with keybinds.
+[  69.1] I can do terminal multiplexing.
+[  72.5] I can switch around to different workspaces, etc.
+[  77.6] So I really like TUI.
+[  79.2] AXI is an agent framework that was developed by Kun Chen who is a principal engineer
+[  83.5] at Meta and a few other companies.
+[  85.4] AXI is a framework that is supposed to replace MCP.
+[  88.1] It prioritizes making tune formatted CLIs that wrap capabilities.
+[  94.4] So instead of using the GitHub CLI, you create an AXI wrapper around it and use that instead.
+[  99.9] Instead of using the AXI MCP, you create an AXI around it and use that instead.
+[ 104.6] So that's what these skills are.
+[ 105.8] Use AXI to do some searching.
+[ 108.1] Search for Kun Chen's GitHub.
+[ 110.5] There you go.
+[ 111.5] So this is the guy who invented AXI.
+[ 113.4] And it got returned results in the tune formatting which is much more token efficient than regular
+[ 118.1] JSON.
+[ 119.1] I have a few other skills like how to programmatically work with Herter, Unslop, which makes the
+[ 123.6] agent respond in a way that isn't horrible.
+[ 126.4] Chrome DevTools AXI allows it to play with a browser.
+[ 129.5] And then AXI is just the skill for knowing what AXI is and how to make CLIs using it.
+[ 134.6] As you can see, my pie is very pretty and it does these little thinking things
+[ 138.7] just like Claude does.
+[ 140.8] And I've sort of customized the interface to my liking.
+[ 143.1] So one of the extensions I have is called Toggle Skills.
+[ 145.6] What this does is it allows me to toggle which skills are agent invocable or manual.
+[ 150.5] That being said, this extension is not created by me.
+[ 153.2] It was created by a guy named Dylan Mulroy whose GitHub can be seen right here.
+[ 157.0] This is important because you don't want all skills to be invocable by an agent.
+[ 161.5] You don't want to clog the agent's context up.
+[ 163.8] You only want it to be able to see the skills that you want it to use autonomously.

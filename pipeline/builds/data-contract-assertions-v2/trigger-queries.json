@@ -1,0 +1,122 @@
+{
+ "target": "data-contract-assertions",
+ "target_source": "explicit",
+ "queries": [
+  {
+   "query": "the numbers look wrong but nothing errored",
+   "expect": "data-contract-assertions",
+   "kind": "positive",
+   "source": "trigger_terms"
+  },
+  {
+   "query": "upstream changed something and nobody told us",
+   "expect": "data-contract-assertions",
+   "kind": "positive",
+   "source": "trigger_terms"
+  },
+  {
+   "query": "a column silently changed units",
+   "expect": "data-contract-assertions",
+   "kind": "positive",
+   "source": "trigger_terms"
+  },
+  {
+   "query": "half the rows are null today",
+   "expect": "data-contract-assertions",
+   "kind": "positive",
+   "source": "trigger_terms"
+  },
+  {
+   "query": "derive a data contract from a sample",
+   "expect": "data-contract-assertions",
+   "kind": "positive",
+   "source": "trigger_terms"
+  },
+  {
+   "query": "set a drift threshold",
+   "expect": "data-contract-assertions",
+   "kind": "positive",
+   "source": "trigger_terms"
+  },
+  {
+   "query": "our alerts are so noisy we muted them",
+   "expect": "data-contract-assertions",
+   "kind": "positive",
+   "source": "trigger_terms"
+  },
+  {
+   "query": "fail the pipeline or quarantine the batch",
+   "expect": "data-contract-assertions",
+   "kind": "positive",
+   "source": "trigger_terms"
+  },
+  {
+   "query": "A vendor feed lands daily. Yesterday's batch is at pipeline/packages/fixtures/data-contract-assertions-v2/reference.csv and today's at pipeline/packages/fixtures/data-contract-assertions-v2/current.csv. Derive a contract from the first and say what today's batch does to it.",
+   "expect": "data-contract-assertions",
+   "kind": "positive",
+   "source": "representative_tasks"
+  },
+  {
+   "query": "Something is wrong with the amount column in pipeline/packages/fixtures/data-contract-assertions-v2/current.csv but the column-level statistics look fine. Find it.",
+   "expect": "data-contract-assertions",
+   "kind": "positive",
+   "source": "representative_tasks"
+  },
+  {
+   "query": "We want to alert on drift in pipeline/packages/fixtures/data-contract-assertions-v2/current.csv. What threshold should we use?",
+   "expect": "data-contract-assertions",
+   "kind": "positive",
+   "source": "representative_tasks"
+  },
+  {
+   "query": "Write the assertions we should run on every batch of this feed, given pipeline/packages/fixtures/data-contract-assertions-v2/reference.csv as the profile.",
+   "expect": "data-contract-assertions",
+   "kind": "positive",
+   "source": "representative_tasks"
+  },
+  {
+   "query": "Our extraction call returns JSON that sometimes does not match the Pydantic schema we declared. I want the validator error fed back and the call retried until it conforms.",
+   "expect": "structured-llm-extraction",
+   "kind": "near-miss",
+   "source": "sibling"
+  },
+  {
+   "query": "We have 40,000 logged support tickets and need to pick the 200 that become the eval set, without three near-duplicates of the same templated ticket eating the slots.",
+   "expect": "eval-set-curation",
+   "kind": "near-miss",
+   "source": "sibling"
+  },
+  {
+   "query": "This patch adds a parse path for the new wire format but no matching serializer. Did we cover the other half of the contract, and the async variant?",
+   "expect": "integration-contract-completeness",
+   "kind": "near-miss",
+   "source": "sibling"
+  },
+  {
+   "query": "Review this PR before we promote the model: it changes the feature engineering and the serving endpoint, and I want train-serve skew and the promotion gate checked.",
+   "expect": "mlops-production-review",
+   "kind": "near-miss",
+   "source": "sibling"
+  },
+  {
+   "query": "We parse two million receipts a night and paying an LLM per record is too expensive. I want a regex pass first and only the low-confidence rejects escalated.",
+   "expect": "hybrid-parse-escalation",
+   "kind": "near-miss",
+   "source": "sibling"
+  },
+  {
+   "query": "Audit our S3 client against the published API specification and tell me which conformance cases the test suite is missing.",
+   "expect": "external-domain-audit",
+   "kind": "near-miss",
+   "source": "sibling"
+  },
+  {
+   "query": "Our classifier is confidently wrong on about one case in twenty. Where do we set the cut so the auto-approved slice holds the precision we promised, and what coverage does that cost?",
+   "expect": "abstention-threshold-design",
+   "kind": "near-miss",
+   "source": "sibling"
+  }
+ ],
+ "note": "negatives are stubs until someone writes them; an empty near-miss set makes the mis-fire rate unmeasurable, and this file says so rather than scoring 0",
+ "target_warning": null
+}

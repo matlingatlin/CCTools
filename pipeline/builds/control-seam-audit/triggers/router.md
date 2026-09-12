@@ -1,0 +1,3 @@
+```json
+{"1": "control-seam-audit", "2": "control-seam-audit", "3": "control-seam-audit", "4": "integration-contract-completeness", "5": "control-seam-audit", "6": "control-seam-audit", "7": "control-seam-audit", "8": "control-seam-audit", "9": "control-seam-audit", "10": "control-seam-audit", "11": "test-coverage", "12": "integration-contract-completeness", "13": "stage-ablation-attribution", "14": "oracle-weakening-audit", "15": "agent-fault-injection", "16": "data-contract-assertions", "17": "systematic-debugging", "18": "interface-depth-design"}
+```

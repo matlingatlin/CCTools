@@ -1,0 +1,11 @@
+You are grading ONE answer against an expectation set. You are given only the answer and the expectations; nothing about how it was produced.
+
+READ: /home/user/skills-repo/pipeline/builds/data-contract-assertions-v2/calib/ANSWER.md and /home/user/skills-repo/pipeline/builds/data-contract-assertions-v2/calib/expectations.md and /home/user/skills-repo/pipeline/builds/data-contract-assertions-v2/calib/FIXTURE-FACTS.md and /home/user/skills-repo/pipeline/builds/data-contract-assertions-v2/calib/TASKS.md
+
+The answer is to task E3: "We want to alert on drift in current.csv. What threshold should we use?"
+
+DO THIS:
+1. For each E3 expectation, MET or NOT MET, with the quoted text that decides it.
+2. Then, separately: report ANY defect you find in the answer's own reasoning — a claim that contradicts the reasoning that precedes it, a hedge dropped so a tentative finding reads as established, a recommended value that does not follow from the analysis, a prerequisite check the answer names and then does not do, an internal inconsistency of any kind. Quote it and name the class of defect in a few words. If you find none, say so plainly.
+
+Do not assume anything is or is not wrong with the answer.

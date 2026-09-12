@@ -1,0 +1,127 @@
+{
+  "per_question": [
+    {
+      "id": 1,
+      "rulings": [
+        {
+          "expectation": "the answer contains an actual SKILL.md with YAML frontmatter and a body, not a description of one",
+          "A": "met",
+          "A_evidence": "\"---\\nname: terraform-plan-destroy-review\\ndescription: >-\" opens a fenced markdown file that runs through \"# Terraform plan destroy review\", \"## What this is\", \"## Steps\" and \"## Pointers\" - a complete file, not an account of one.",
+          "B": "met",
+          "B_evidence": "\"File: `terraform-plan-gate/SKILL.md`\" is followed by a fenced file opening \"---\\nname: terraform-plan-gate\" and running through \"# Terraform plan gate\", \"## Procedure\", \"## Required output\", \"## Negative triggers\"."
+        },
+        {
+          "expectation": "the frontmatter carries a name and a description field",
+          "A": "met",
+          "A_evidence": "\"name: terraform-plan-destroy-review\" and \"description: >-\\n  Use when someone asks whether a Terraform plan, `terraform apply`, or an\\n  infrastructure PR is safe to run\"",
+          "B": "met",
+          "B_evidence": "\"name: terraform-plan-gate\" and \"description: Use when reviewing a Terraform, OpenTofu, or Terragrunt plan before apply -\""
+        },
+        {
+          "expectation": "every rule in the steps traces to the missed destruction or the missing verdict line; no rule about Terraform practice in general appears",
+          "A": "met",
+          "A_evidence": "\"Every rule below is here because a run failed without it.\" - and each step carries its own citation, e.g. \"*(Run A produced zero such rows; Run B produced one and did not label it a deletion.)*\" and \"*(\"looks fine\" (Run A) and \"should be safe\" (Run B) are both readings, not verdicts)*\". The answer also records cutting an untraced rule: \"step 4 of the draft body originally asked the reviewer to judge whether each destroyed resource was data-bearing; cut, because no probe run failed on that\".",
+          "B": "not met",
+          "B_evidence": "\"**5. Check the plan is the artifact being applied.** A saved plan file applied later, a plan taken against a different workspace or var-file, or a plan older than the current state is a NO-GO on provenance alone, regardless of contents.\" - plan provenance is general Terraform practice; neither probe run failed on it. Step 3 (\"state the data consequence\", with a named checklist of databases, volumes, buckets, snapshots, stateful sets, DNS, IPs, key pairs) is likewise untraced to either observed failure. No step in B cites a probe run."
+        },
+        {
+          "expectation": "a bill of materials, or an explicit statement that no bundled files are needed and why, appears before or alongside the file",
+          "A": "met",
+          "A_evidence": "\"### 4.0 Bill of materials (before any file exists)\" with a File/Kind/Why needed/Status table, including negative rows: \"`scripts/` | script | not needed because - every step is one shell command the reader runs directly; nothing here is worth wrapping | not needed\", closed by \"Reverse check at the end: planned files that never appeared - `evals.md` ... Files that appeared unplanned - none.\"",
+          "B": "not met",
+          "B_evidence": "I looked for a file list, an assets/references/scripts inventory, or a sentence saying no bundled files are needed and why. Nothing in the answer addresses it: it moves straight from \"So the file has to do two things the baseline does not\" to \"File: `terraform-plan-gate/SKILL.md`\" and then to the fenced file, and no other path is mentioned anywhere."
+        }
+      ],
+      "expectation_critique": "Expectations 1 and 2 are close to unfailable here: the request literally says 'I want the actual file contents', so any answer that responds at all produces frontmatter with a name and a description. They confirm compliance with the prompt, not skill. Expectation 3 is the only one that discriminates on the method's core claim (rules earn their place by a named observation), and it did discriminate - but its second half ('no rule about Terraform practice in general') needs a judgement call about what counts as general, and a grader with a looser reading could pass both. Expectation 4 also discriminated. What the set cannot see: whether the description would actually route (nothing tests trigger phrasings or negative boundaries), whether the produced file would beat baseline on the two probe runs it was built from, and whether extra unearned rules cost anything - an answer can pass 1, 2 and 4 while being twice as long as it needs to be."
+    },
+    {
+      "id": 2,
+      "rulings": [
+        {
+          "expectation": "rejects the description",
+          "A": "met",
+          "A_evidence": "\"No. Rewrite it. Four things are wrong, and the first two matter most:\"",
+          "B": "met",
+          "B_evidence": "\"No. Four things are wrong with it and one of them is structural.\""
+        },
+        {
+          "expectation": "names that it describes the topic rather than when to invoke it",
+          "A": "met",
+          "A_evidence": "\"**It has no triggers.** Selection happens on this text alone, matched against what the user actually typed. \"This skill helps with Terraform\" matches nothing in particular. There is no \"Use when\", no plan-review phrasing\"",
+          "B": "met",
+          "B_evidence": "\"**It has no trigger.** \"This skill helps with Terraform\" is a topic label.\" - reinforced by \"It is written in the vocabulary of the solution, not the symptom. Nobody types \"comprehensive guide to reviewing infrastructure-as-code\".\""
+        },
+        {
+          "expectation": "any character limit it cites is attributed to a source it read, not stated bare",
+          "A": "not met",
+          "A_evidence": "I looked for any character/length claim and any attribution for one. The answer contains neither - length is never raised in its four points, and the closing instruction is only \"Use the description in the Q1 frontmatter: triggers-only, third person, quoted user phrasings, the destroy/verdict discriminator, and an explicit not-for clause.\" Nothing in the answer decides this expectation, so per the grading rule it is not met; note that the answer also does not violate it.",
+          "B": "met",
+          "B_evidence": "\"**Length and phrasing are contract questions I could not check** (I was told not to open the contract). It is ~490 characters, so a cap is probably not what kills it\" - the only number is a measurement of the text in front of it, the cap itself is explicitly left unasserted and handed to a named artefact, closed by \"Run the checker before arguing about the wording.\""
+        },
+        {
+          "expectation": "it proposes a replacement description, not only a critique",
+          "A": "unclear",
+          "A_evidence": "\"Use the description in the Q1 frontmatter: triggers-only, third person, quoted user phrasings, the destroy/verdict discriminator, and an explicit not-for clause.\" - it points at a concrete replacement text that exists (the Q1 frontmatter) rather than producing one here, and what it does write out is a list of the properties such a description would have, which is a description of what one would produce.",
+          "B": "unclear",
+          "B_evidence": "\"Use the description in the Q1 file instead: it is written from the finished body, and its last sentence exists only to lose the router's coin-flip against the neighbours (writing Terraform, cost, drift, state review).\" - identical move: a pointer to an existing text plus a characterisation of it, no replacement string produced in this answer."
+        }
+      ],
+      "expectation_critique": "Expectations 1 and 2 are satisfied trivially - the offered description is flamboyantly bad (topic label, second person, marketing adjectives, six capabilities the body lacks), so any answer that engages at all rejects it and says it names a topic. They cannot separate a shallow rejection from a diagnosis. Expectation 3 is a conditional with a vacuous escape: an answer that never mentions length can neither cite a limit nor be caught, so silence outscores a wrong number but is indistinguishable from not knowing the rule exists; a positive form ('says where the length rule lives, or says it has not checked') would measure something. Expectation 4 is the one that should discriminate, but 'proposes' does not settle whether pointing at a replacement produced earlier in the same session counts as producing one - both answers landed in exactly that gap, so it discriminated between neither. The set also has no expectation for the failure that matters most in practice: whether the answer connects the bad description to a concrete mis-fire (both do, but only by accident of the set)."
+    },
+    {
+      "id": 3,
+      "rulings": [
+        {
+          "expectation": "runs a mechanical or code check before any judgement about how it reads",
+          "A": "met",
+          "A_evidence": "\"I don't ship it, and I don't send it for another read-through.\" followed by \"The pass bar is mechanical, not impressionistic - both destroy addresses named, the replacement's forcing attribute named, last line matching `^VERDICT: (GO|NO-GO) - `.\" The read-through is explicitly refused, so nothing impressionistic precedes the mechanical bar.",
+          "B": "met",
+          "B_evidence": "\"2. **Run the code checker on the whole artefact** ... Anything red stops here\" then \"3. **Then, and only then, hand each field to a reader who did not write it**\" - the ordering is stated as a gate, not a preference."
+        },
+        {
+          "expectation": "treats the pre-drafted description as suspect because the body's scope may have moved",
+          "A": "unclear",
+          "A_evidence": "\"**Test the description separately, because the body's test cannot see it.** ... A correct body behind a description that never fires is a skill that does not exist.\" The description is treated as suspect and given its own test, but the stated reason is routing blindness, not that the body's scope moved while the description stood still; the answer never checks the description against the finished body's scope.",
+          "B": "met",
+          "B_evidence": "\"If the description was drafted at the same time as the body rather than after it, it is not a description, it is an intention - reread it against the finished body's actual scope and rewrite anything the body no longer does. A description that survives this untouched is fine; one that does not was never checked.\""
+        },
+        {
+          "expectation": "names the specific check or file it would run, not 'validate it'",
+          "A": "met",
+          "A_evidence": "\"the same 14-resource plan with two destroys and one replacement, run with the skill and without\", \"last line matching `^VERDICT: (GO|NO-GO) - `\", six named scenarios including \"**Negative trigger:** \"help me split this 400-line main.tf into modules.\" The skill must not fire.\", and \"Persist both as `evals.md` next to the SKILL.md, with the baseline column kept\".",
+          "B": "met",
+          "B_evidence": "\"Run the code checker on the whole artefact, not on the two fields you just wrote. Cross-field rules (name vs directory, pointers vs files that exist, frontmatter keys) can only go red once both fields exist.\" - it names the checker, its scope, and the specific rule classes it must catch; it names no path or command, which is weaker than a filename but well past 'validate it'."
+        }
+      ],
+      "expectation_critique": "Expectation 1 is nearly unfailable in the direction it cares about: an answer that proposes no human read at all passes it by omission, so 'mechanical first' and 'mechanical only' score the same. Expectation 3's bar is set by a negative example ('not validate it'), which is low enough that naming any check clears it - it cannot separate 'run the code checker' from a named file plus a regex plus a persisted eval file, though those are very different amounts of specificity. Expectation 2 is the only sharp one and it worked. The set's real blind spot is that it never asks for the test itself: one answer here builds a baseline-vs-with scenario suite with normal, adversarial, pressure and negative-trigger cases, the other runs a field checker and independent readers, and the set is indifferent between them - a large difference in what 'next' means, invisible to all three expectations."
+    },
+    {
+      "id": 4,
+      "rulings": [
+        {
+          "expectation": "does not state field rules as remembered fact",
+          "A": "not met",
+          "A_evidence": "\"Third person, no adjectives about its own quality, under the length cap, and matching what the body actually does.\" - four field rules asserted flat, with no source and no note that they were not checked; the four-part shape above it (\"1. `Use when` + the situation ... 4. `Not for ...` naming the neighbours it must lose to.\") is likewise given as settled rule.",
+          "B": "met",
+          "B_evidence": "\"it needs the finished body's real scope, the trigger vocabulary, and the neighbours' descriptions to sit beside\" - the answer argues about ordering and consequence and never asserts a format rule for the field; the closest thing to prescription is \"ship it non-auto-invocable (invoked by name only)\", which is a course of action, not a remembered field rule."
+        },
+        {
+          "expectation": "names the artefact it would read the rule out of",
+          "A": "not met",
+          "A_evidence": "I looked for a contract file, schema, spec, validator or docs page named as the source of the field rules. None appears; the rules arrive unattributed as \"Third person, no adjectives about its own quality, under the length cap\" and the only artefact referenced is the answer's own earlier output, \"Ship this, which is the frontmatter from Q1\".",
+          "B": "not met",
+          "B_evidence": "I looked for the same. The answer names no contract, checker, schema or doc anywhere - its most specific reference is \"the neighbours' descriptions to sit beside\", which is an input to writing the field, not the artefact the rules are read out of."
+        },
+        {
+          "expectation": "no numeric limit is asserted without naming where it was read",
+          "A": "met",
+          "A_evidence": "\"under the length cap\" - the cap is invoked but deliberately left unnumbered, so no numeric limit is asserted; the expectation as written is not violated, though the unattributed cap is exactly what expectations 1 and 2 catch.",
+          "B": "met",
+          "B_evidence": "\"It is the field with the least text and the most leverage\" - length is discussed only qualitatively; the answer's only numbers, \"ship with three rules instead of six\", are about body scope, not a field limit."
+        }
+      ],
+      "expectation_critique": "Expectations 1 and 3 overlap heavily and are both negative, so both are passed by saying nothing - an answer that never touches field rules scores 2/3 by silence, which is roughly what happened. Expectation 3 in particular is now near-unfailable: it only bites on an answer that volunteers a number, and expectation 1 already catches that case. Expectation 2 is the only positive requirement and both answers fail it, which makes the set's discriminating power in this question rest entirely on one item that nothing passed. Nothing in the set addresses the actual question asked - 'we're short on time, what goes in the field' - so the largest difference between the two answers is unmeasured: one hands over a ready description and a reusable shape, the other refuses to write the field at all and offers shipping without auto-invocation instead. Both behaviours are defensible, and the set cannot tell them apart or say which serves the asker."
+    }
+  ],
+  "overall": "The four questions separate the answers unevenly. Q1 and Q3 discriminated on real method differences: whether every rule in the produced file traces to a named observation rather than to general domain practice, whether a bill of materials is closed in both directions, and whether the pre-drafted description is re-checked against the finished body's scope rather than merely tested for routing. Q2 and Q4 mostly did not: their sets are dominated by trivially-satisfied items (rejecting an obviously bad description; naming that it is a topic label) and by conditional negatives that reward silence (no character limit cited, no field rule stated), so an answer can score well by declining to engage. A recurring flaw across the set: expectations phrased as prohibitions cannot distinguish an answer that knows the rule and withholds it from one that never knew it - the positive form ('names where the rule lives, or states it could not check') is the only version that measures anything, and where it appeared it worked. A second flaw: two questions ask for something to be produced (a replacement description in Q2, the field contents in Q4) but the expectation sets do not require the artefact to be present in the answer, so both answers could point at earlier output and neither could be ruled on cleanly. The strongest single observation across all four questions is that traceability discipline is visible and gradable - rules citing the probe runs, files planned and reconciled, checks named with their pass condition - while the softer expectations about tone, rejection and abstention added almost no signal."
+}

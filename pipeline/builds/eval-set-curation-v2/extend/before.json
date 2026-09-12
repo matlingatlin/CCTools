@@ -1,0 +1,5 @@
+{
+  "_note": "The incumbent's evals.md lists 11 scenarios and a Result summary of 11/11 passed. None of those results is an EXECUTED result. Its own Method section says the scenarios were graded by 'judge the likely output WITHOUT the talent vs WITH its method applied' - a prediction of what a run would do, made by an agent that never ran one. The package records the same fact as '0 executed evals'. A predicted pass is not a stored baseline, so this file records the honest state: no measured incumbent behaviour exists. Encoding the 11 predictions here as results would manufacture a baseline and let the extend gate certify 'no regressions' against numbers nobody measured.",
+  "unit": "eval-set-curation",
+  "scenarios": []
+}

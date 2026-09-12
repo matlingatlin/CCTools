@@ -1,0 +1,82 @@
+{
+ "bill_of_materials": [
+  {
+   "file": "evals/evals.json",
+   "kind": "evals",
+   "why": "the three prompts, expectations added after outputs (2.4)",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/raw/2026-09-02-blog-restating-caching.md",
+   "kind": "evals",
+   "why": "fixture wiki or raw source the eval prompts reference (2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/raw/2026-09-02-gamma-model-card.md",
+   "kind": "evals",
+   "why": "fixture wiki or raw source the eval prompts reference (2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/raw/2026-09-02-pricing-page.md",
+   "kind": "evals",
+   "why": "fixture wiki or raw source the eval prompts reference (2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/wiki/INDEX.md",
+   "kind": "evals",
+   "why": "fixture wiki or raw source the eval prompts reference (2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/wiki/LOG.md",
+   "kind": "evals",
+   "why": "fixture wiki or raw source the eval prompts reference (2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/wiki/SOURCES.md",
+   "kind": "evals",
+   "why": "fixture wiki or raw source the eval prompts reference (2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/wiki/notes/local-models.md",
+   "kind": "evals",
+   "why": "fixture wiki or raw source the eval prompts reference (2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/wiki/notes/model-prices.md",
+   "kind": "evals",
+   "why": "fixture wiki or raw source the eval prompts reference (2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/wiki/notes/prompt-caching.md",
+   "kind": "evals",
+   "why": "fixture wiki or raw source the eval prompts reference (2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "evals.md",
+   "kind": "other",
+   "why": "the eval record: scenarios, method, last verdict",
+   "status": "exists"
+  },
+  {
+   "file": "references/rationale.md",
+   "kind": "references",
+   "why": "the observed failures and sources behind each step, moved out of the body at the token iteration so a with-arm reads steps, not rationale",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/check.py",
+   "kind": "evals",
+   "why": "the code shape grader, back inside the artefact so its evals are reproducible; safe since dispatch mounts a method VIEW without evals/",
+   "status": "exists"
+  }
+ ]
+}

@@ -1,0 +1,4001 @@
+txn_id,merchant,channel,amount,currency,status,customer_age,settled_days
+T004000,greenline,web,21.36,USD,settled,58,1
+T004001,dunmore,ios,10.67,USD,settled,58,1 d
+T004002,greenline,web,101.59,USD,settled,28,1
+T004003,belltower,web,4560.0,USD,settled,44,0
+T004004,eastgate,web,13.22,USD,settled,41,0
+T004005,greenline,web,227.62,USD,settled,53,0
+T004006,eastgate,android,5.62,USD,settled,,1
+T004007,acme-parts,web,47.59,USD,settled,29,0
+T004008,eastgate,ios,35.56,USD,settled,46,1 d
+T004009,dunmore,web,29.17,USD,settled,35,2
+T004010,fairweather,ios,19.55,USD,settled,38,3
+T004011,acme-parts,ios,40.21,USD,settled,73,0
+T004012,dunmore,web,118.13,USD,settled,55,0
+T004013,cascade-foods,android,228.93,USD,settled,34,0
+T004014,cascade-foods,ios,15.82,USD,settled,77,1
+T004015,belltower,web,676.0,USD,settled,30,0
+T004016,dunmore,ios,49.63,USD,settled,43,0
+T004017,acme-parts,android,25.6,USD,settled,,0
+T004018,cascade-foods,web,140.22,USD,settled,66,0
+T004019,cascade-foods,ios,28.89,USD,settled,64,0
+T004020,northwind,android,26.02,USD,settled,,2
+T004021,acme-parts,web,104.3,USD,settled,74,1 d
+T004022,fairweather,ios,8.39,USD,settled,57,2
+T004023,greenline,ios,16.77,USD,settled,55,1
+T004024,dunmore,android,44.48,USD,refunded,,3 d
+T004025,belltower,web,1143.0,USD,settled,40,0
+T004026,eastgate,web,48.69,USD,settled,73,1 d
+T004027,eastgate,android,16.8,USD,pending,,1
+T004028,northwind,web,10.06,USD,pending,64,1 d
+T004029,acme-parts,web,30.87,USD,settled,31,2 d
+T004030,dunmore,web,48.35,USD,settled,76,0 d
+T004031,eastgate,web,49.82,USD,pending,77,0
+T004032,belltower,android,2392.0,USD,settled,,1
+T004033,belltower,web,1057.0,USD,settled,70,1 d
+T004034,dunmore,ios,23.24,USD,settled,20,0
+T004035,dunmore,web,40.18,USD,settled,38,1
+T004036,eastgate,ios,176.28,USD,settled,57,0
+T004037,cascade-foods,web,17.5,USD,settled,45,0
+T004038,belltower,ios,4241.0,USD,settled,72,0
+T004039,acme-parts,web,77.96,USD,settled,40,1 d
+T004040,belltower,ios,9100.0,USD,settled,75,0
+T004041,cascade-foods,ios,22.47,USD,settled,27,0
+T004042,greenline,ios,28.06,USD,settled,76,0
+T004043,eastgate,web,24.81,USD,settled,64,0 d
+T004044,dunmore,web,28.53,USD,settled,25,0
+T004045,greenline,ios,29.5,USD,settled,57,0 d
+T004046,greenline,web,29.95,USD,settled,68,1
+T004047,northwind,web,9.32,USD,settled,23,0
+T004048,northwind,web,14.61,USD,settled,78,1
+T004049,acme-parts,web,56.6,USD,settled,78,0 d
+T004050,fairweather,ios,33.61,USD,settled,39,0
+T004051,dunmore,ios,37.21,USD,settled,53,0
+T004052,fairweather,ios,108.23,USD,settled,69,0
+T004053,acme-parts,web,24.37,USD,settled,62,2 d
+T004054,greenline,ios,62.46,USD,settled,39,1
+T004055,fairweather,ios,22.62,USD,pending,29,0
+T004056,cascade-foods,android,31.57,USD,settled,,0 d
+T004057,greenline,ios,78.23,USD,settled,36,0 d
+T004058,northwind,web,71.6,USD,settled,64,1 d
+T004059,belltower,web,2484.0,USD,settled,71,1 d
+T004060,fairweather,web,20.51,USD,settled,76,1
+T004061,eastgate,ios,219.93,USD,settled,28,1 d
+T004062,greenline,ios,27.19,USD,settled,50,0
+T004063,eastgate,ios,31.33,USD,settled,36,0
+T004064,eastgate,web,14.88,USD,pending,38,0 d
+T004065,dunmore,ios,124.75,USD,settled,34,0
+T004066,cascade-foods,ios,17.85,USD,settled,54,1 d
+T004067,northwind,web,35.78,USD,settled,45,2 d
+T004068,cascade-foods,web,13.0,USD,settled,49,0
+T004069,greenline,android,79.82,USD,settled,,0
+T004070,belltower,web,446.0,USD,chargeback,51,0
+T004071,cascade-foods,ios,42.34,USD,settled,23,1
+T004072,greenline,ios,51.62,USD,settled,33,0 d
+T004073,northwind,web,13.34,USD,settled,42,1
+T004074,dunmore,web,91.41,USD,settled,20,2
+T004075,fairweather,android,60.56,USD,settled,19,0 d
+T004076,fairweather,web,6.64,USD,settled,40,0
+T004077,belltower,ios,2749.0,USD,settled,31,2
+T004078,cascade-foods,ios,14.97,USD,settled,28,1 d
+T004079,dunmore,web,14.32,USD,settled,68,2
+T004080,belltower,web,3376.0,USD,settled,39,2 d
+T004081,belltower,android,9774.0,USD,settled,,0
+T004082,cascade-foods,android,32.22,USD,pending,,0
+T004083,fairweather,android,35.22,USD,settled,,0 d
+T004084,eastgate,android,32.81,USD,settled,,0
+T004085,northwind,web,17.54,USD,settled,77,0
+T004086,dunmore,web,34.3,USD,settled,29,0 d
+T004087,fairweather,web,141.95,USD,pending,61,0
+T004088,fairweather,android,123.13,USD,settled,,1 d
+T004089,northwind,android,96.47,USD,settled,,1
+T004090,belltower,ios,7221.0,USD,chargeback,58,0 d
+T004091,greenline,ios,41.22,USD,settled,74,0 d
+T004092,greenline,ios,7.56,USD,settled,68,0
+T004093,cascade-foods,ios,28.25,USD,settled,23,1
+T004094,eastgate,ios,14.85,USD,settled,37,0
+T004095,greenline,ios,3.71,USD,settled,39,1 d
+T004096,greenline,web,19.22,USD,settled,65,0 d
+T004097,fairweather,ios,38.85,USD,chargeback,66,2 d
+T004098,greenline,ios,37.52,USD,settled,38,0
+T004099,fairweather,ios,15.05,USD,settled,32,2 d
+T004100,cascade-foods,ios,26.4,USD,settled,62,1 d
+T004101,cascade-foods,ios,12.26,USD,settled,35,1
+T004102,dunmore,web,30.37,USD,settled,46,0
+T004103,harborview,web,20.63,USD,settled,47,1
+T004104,eastgate,web,28.18,USD,settled,72,0
+T004105,belltower,web,1658.0,USD,settled,59,1 d
+T004106,eastgate,ios,12.44,USD,settled,54,0 d
+T004107,fairweather,ios,139.24,USD,settled,68,3
+T004108,greenline,ios,40.0,USD,chargeback,71,0 d
+T004109,dunmore,web,26.06,USD,settled,20,0
+T004110,harborview,ios,19.64,USD,settled,74,1
+T004111,cascade-foods,web,70.25,USD,settled,69,1 d
+T004112,fairweather,web,42.14,USD,settled,32,0 d
+T004113,eastgate,web,26.26,USD,settled,23,0
+T004114,dunmore,web,127.76,USD,settled,26,2
+T004115,northwind,android,31.49,USD,settled,,1
+T004116,fairweather,android,41.19,USD,settled,,0
+T004117,acme-parts,ios,15.77,USD,settled,34,0
+T004118,harborview,android,50.65,USD,settled,,1
+T004119,belltower,android,1939.0,USD,pending,,0
+T004120,northwind,ios,40.11,USD,settled,60,1
+T004121,belltower,web,3865.0,USD,settled,49,0
+T004122,cascade-foods,web,9.67,USD,settled,67,1
+T004123,greenline,android,28.66,USD,settled,,1
+T004124,fairweather,ios,115.47,USD,settled,19,2
+T004125,northwind,ios,39.1,USD,settled,59,0 d
+T004126,dunmore,web,33.58,USD,settled,43,1
+T004127,cascade-foods,web,18.4,USD,settled,77,1
+T004128,dunmore,web,30.91,USD,settled,49,1 d
+T004129,northwind,ios,65.05,USD,settled,27,0
+T004130,cascade-foods,web,37.8,USD,pending,57,0
+T004131,belltower,ios,4781.0,USD,settled,20,0
+T004132,eastgate,android,11.1,USD,settled,,0
+T004133,cascade-foods,ios,8.49,USD,pending,78,1
+T004134,dunmore,android,20.27,USD,settled,,0
+T004135,fairweather,web,9.96,USD,settled,35,1
+T004136,fairweather,web,27.81,USD,settled,58,0
+T004137,acme-parts,ios,24.34,USD,settled,34,1
+T004138,greenline,ios,13.78,USD,settled,73,1
+T004139,cascade-foods,web,52.12,USD,settled,47,0 d
+T004140,eastgate,web,49.81,USD,settled,41,1 d
+T004141,greenline,ios,52.87,USD,settled,43,2
+T004142,eastgate,ios,30.44,USD,settled,78,0
+T004143,northwind,ios,30.84,USD,settled,71,0
+T004144,greenline,ios,34.49,USD,settled,69,1 d
+T004145,greenline,web,14.05,USD,settled,67,1 d
+T004146,fairweather,ios,10.66,USD,settled,46,1
+T004147,eastgate,android,23.16,USD,settled,,1
+T004148,greenline,web,172.48,USD,settled,57,1 d
+T004149,fairweather,web,10.59,USD,settled,63,0 d
+T004150,greenline,web,107.0,USD,settled,74,0
+T004151,belltower,ios,5012.0,USD,settled,,0
+T004152,eastgate,android,6.62,USD,settled,30,0 d
+T004153,belltower,web,3497.0,USD,settled,36,1
+T004154,eastgate,web,22.79,USD,settled,43,1
+T004155,cascade-foods,ios,30.34,USD,pending,37,0
+T004156,harborview,web,12.69,USD,settled,54,0
+T004157,harborview,ios,8.2,USD,settled,74,1 d
+T004158,eastgate,ios,11.11,USD,chargeback,75,0
+T004159,belltower,ios,2300.0,USD,pending,77,0 d
+T004160,cascade-foods,android,32.08,USD,settled,,0
+T004161,fairweather,ios,20.81,USD,settled,69,0
+T004162,northwind,ios,136.77,USD,settled,33,2
+T004163,eastgate,android,19.94,USD,settled,,0
+T004164,northwind,ios,81.11,USD,settled,68,0
+T004165,fairweather,web,35.56,USD,pending,65,1
+T004166,dunmore,web,178.22,USD,settled,59,0
+T004167,eastgate,web,35.41,USD,settled,18,0
+T004168,acme-parts,ios,9.51,USD,settled,32,2 d
+T004169,greenline,android,144.32,USD,settled,37,0
+T004170,eastgate,android,43.0,USD,settled,,0
+T004171,cascade-foods,web,16.75,USD,settled,25,0
+T004172,eastgate,web,90.8,USD,settled,53,2
+T004173,fairweather,web,17.28,USD,pending,74,0
+T004174,northwind,web,18.36,USD,settled,57,1
+T004175,northwind,web,26.47,USD,settled,27,0
+T004176,fairweather,web,9.96,USD,settled,27,2
+T004177,northwind,android,28.21,USD,settled,,0 d
+T004178,northwind,ios,35.77,USD,settled,53,1
+T004179,northwind,android,99.64,USD,settled,,0
+T004180,northwind,ios,29.63,USD,settled,64,0
+T004181,northwind,android,45.04,USD,pending,,2
+T004182,greenline,android,19.47,USD,settled,,0
+T004183,belltower,ios,3353.0,USD,settled,39,1
+T004184,greenline,web,17.56,USD,settled,42,0 d
+T004185,northwind,ios,15.68,USD,settled,18,2
+T004186,belltower,web,5545.0,USD,settled,65,0
+T004187,eastgate,web,77.37,USD,pending,27,1
+T004188,greenline,ios,23.14,USD,settled,31,0 d
+T004189,eastgate,ios,71.05,USD,settled,52,1 d
+T004190,cascade-foods,web,73.33,USD,pending,38,0
+T004191,dunmore,web,45.58,USD,settled,24,2 d
+T004192,fairweather,ios,17.12,USD,settled,29,0
+T004193,cascade-foods,android,30.21,USD,settled,,0
+T004194,northwind,web,23.28,USD,settled,59,2
+T004195,fairweather,web,71.69,USD,settled,75,0
+T004196,eastgate,ios,17.16,USD,settled,78,3
+T004197,fairweather,web,6.53,USD,settled,45,0
+T004198,belltower,web,5100.0,USD,settled,64,0
+T004199,dunmore,web,46.5,USD,settled,26,0
+T004200,dunmore,android,31.06,USD,settled,,0
+T004201,fairweather,ios,19.7,USD,settled,33,0
+T004202,belltower,ios,1992.0,USD,pending,47,0
+T004203,dunmore,web,9.2,USD,settled,61,1
+T004204,greenline,ios,38.07,USD,settled,63,0
+T004205,eastgate,web,51.79,USD,settled,65,0
+T004206,fairweather,ios,37.01,USD,settled,64,1
+T004207,belltower,web,5387.0,USD,settled,63,0
+T004208,belltower,web,7536.0,USD,settled,64,0 d
+T004209,eastgate,android,13.5,USD,pending,,2
+T004210,acme-parts,ios,12.5,USD,settled,42,1
+T004211,northwind,android,56.08,USD,settled,,1 d
+T004212,cascade-foods,web,60.47,USD,settled,40,0
+T004213,eastgate,web,10.87,USD,chargeback,20,0 d
+T004214,cascade-foods,android,126.69,USD,settled,,0
+T004215,dunmore,ios,6.06,USD,settled,64,0
+T004216,eastgate,android,35.51,USD,settled,,1
+T004217,cascade-foods,web,39.02,USD,settled,59,2 d
+T004218,dunmore,android,75.52,USD,settled,,3
+T004219,dunmore,web,71.79,USD,pending,70,1
+T004220,northwind,web,9.74,USD,settled,38,0
+T004221,belltower,web,812.0,USD,settled,37,0
+T004222,greenline,web,29.2,USD,settled,56,0 d
+T004223,greenline,web,85.92,USD,settled,31,1
+T004224,eastgate,web,16.99,USD,settled,22,1
+T004225,fairweather,web,35.44,USD,settled,61,1
+T004226,cascade-foods,web,39.62,USD,pending,73,1
+T004227,fairweather,web,40.99,USD,pending,32,0
+T004228,northwind,android,4.96,USD,settled,,0
+T004229,fairweather,web,34.22,USD,settled,34,0
+T004230,acme-parts,ios,16.15,USD,settled,46,0
+T004231,belltower,android,1464.0,USD,settled,,0
+T004232,northwind,ios,46.73,USD,settled,21,0
+T004233,greenline,ios,135.0,USD,settled,24,0
+T004234,fairweather,web,25.45,USD,settled,65,2
+T004235,northwind,ios,25.47,USD,settled,59,1 d
+T004236,harborview,ios,51.69,USD,settled,33,0 d
+T004237,dunmore,web,21.3,USD,settled,35,0
+T004238,greenline,ios,36.78,USD,pending,34,1 d
+T004239,dunmore,android,24.04,USD,settled,,0 d
+T004240,dunmore,ios,33.42,USD,settled,44,0 d
+T004241,cascade-foods,ios,37.55,USD,settled,71,0
+T004242,belltower,web,5604.0,USD,settled,73,0 d
+T004243,belltower,ios,6213.0,USD,settled,71,2
+T004244,greenline,web,17.22,USD,pending,42,0
+T004245,cascade-foods,web,41.49,USD,settled,32,1
+T004246,northwind,ios,81.68,USD,settled,44,0
+T004247,greenline,web,29.32,USD,refunded,75,2 d
+T004248,eastgate,android,4.99,USD,pending,,1
+T004249,dunmore,web,33.17,USD,pending,78,1
+T004250,acme-parts,web,39.26,USD,pending,41,1
+T004251,cascade-foods,ios,16.43,USD,settled,74,0
+T004252,dunmore,ios,24.5,USD,pending,18,1
+T004253,harborview,android,123.03,USD,settled,,0 d
+T004254,eastgate,ios,28.08,USD,settled,71,2
+T004255,cascade-foods,web,14.08,USD,pending,26,0
+T004256,cascade-foods,ios,11.7,USD,settled,,0 d
+T004257,harborview,web,21.11,USD,settled,42,0
+T004258,cascade-foods,web,10.94,USD,settled,,0 d
+T004259,fairweather,ios,58.78,USD,settled,43,0
+T004260,eastgate,android,13.27,USD,settled,,0
+T004261,fairweather,ios,24.36,USD,settled,69,0
+T004262,dunmore,web,39.65,USD,settled,23,0
+T004263,dunmore,android,138.72,USD,settled,,1 d
+T004264,belltower,web,1650.0,USD,settled,32,1
+T004265,eastgate,ios,62.62,USD,settled,74,0 d
+T004266,cascade-foods,ios,25.88,USD,settled,28,1
+T004267,dunmore,android,84.45,USD,settled,,2
+T004268,greenline,web,30.77,USD,settled,78,2
+T004269,acme-parts,web,28.96,USD,settled,48,1
+T004270,eastgate,ios,22.92,USD,refunded,59,1 d
+T004271,dunmore,android,12.68,USD,settled,,0
+T004272,cascade-foods,web,26.63,USD,settled,19,1 d
+T004273,fairweather,android,33.6,USD,settled,,1
+T004274,harborview,android,36.95,USD,settled,,0 d
+T004275,fairweather,web,23.74,USD,pending,76,1
+T004276,cascade-foods,android,79.09,USD,pending,,3
+T004277,belltower,ios,532.0,USD,settled,56,3
+T004278,eastgate,android,10.68,USD,settled,33,0 d
+T004279,harborview,web,454.0,USD,settled,39,1
+T004280,northwind,ios,45.3,USD,settled,35,0
+T004281,dunmore,ios,35.77,USD,settled,45,0
+T004282,eastgate,ios,14.58,USD,settled,39,1
+T004283,cascade-foods,web,68.28,USD,settled,74,0 d
+T004284,eastgate,ios,66.41,USD,settled,,0 d
+T004285,greenline,web,5.7,USD,settled,56,0
+T004286,northwind,ios,62.12,USD,settled,37,2
+T004287,cascade-foods,android,56.53,USD,settled,,2
+T004288,greenline,ios,16.8,USD,settled,29,0
+T004289,harborview,ios,26.23,USD,settled,47,1
+T004290,greenline,web,15.57,USD,settled,78,0
+T004291,northwind,android,151.0,USD,settled,,1
+T004292,cascade-foods,web,28.45,USD,settled,75,1 d
+T004293,dunmore,web,31.08,USD,settled,67,0
+T004294,belltower,web,1075.0,USD,settled,70,0
+T004295,acme-parts,ios,79.52,USD,settled,59,0
+T004296,cascade-foods,android,23.31,USD,settled,,1
+T004297,northwind,web,18.3,USD,chargeback,53,0
+T004298,northwind,web,33.41,USD,settled,67,1
+T004299,greenline,android,15.51,USD,settled,,2 d
+T004300,dunmore,ios,11.24,USD,pending,35,0
+T004301,dunmore,web,13.72,USD,pending,22,1
+T004302,acme-parts,web,58.94,USD,settled,45,0
+T004303,acme-parts,web,31.48,USD,settled,20,0
+T004304,acme-parts,ios,9.18,USD,settled,72,2 d
+T004305,acme-parts,ios,18.9,USD,refunded,61,1
+T004306,cascade-foods,web,30.05,USD,settled,59,0 d
+T004307,dunmore,web,129.28,USD,settled,25,1 d
+T004308,fairweather,web,84.83,USD,settled,46,0 d
+T004309,fairweather,ios,2.58,USD,settled,57,0 d
+T004310,dunmore,ios,104.03,USD,settled,48,1
+T004311,acme-parts,android,21.21,USD,settled,,1
+T004312,northwind,web,20.2,USD,settled,64,1
+T004313,fairweather,ios,17.45,USD,settled,48,0
+T004314,eastgate,ios,16.3,USD,refunded,29,0
+T004315,eastgate,android,15.8,USD,settled,,0
+T004316,harborview,web,33.29,USD,settled,43,2 d
+T004317,harborview,ios,25.68,USD,settled,42,1 d
+T004318,northwind,web,28.42,USD,settled,72,1
+T004319,northwind,ios,38.31,USD,settled,,1
+T004320,eastgate,web,13.3,USD,settled,29,0 d
+T004321,cascade-foods,web,21.93,USD,settled,46,0
+T004322,eastgate,ios,35.82,USD,settled,,1
+T004323,dunmore,web,41.68,USD,settled,49,0 d
+T004324,greenline,phone,13.18,USD,pending,31,1
+T004325,greenline,ios,60.69,USD,settled,21,0
+T004326,eastgate,ios,15.87,USD,settled,32,1
+T004327,northwind,ios,37.49,USD,settled,33,0
+T004328,belltower,ios,3371.0,USD,settled,69,0
+T004329,fairweather,web,10.79,USD,settled,71,0 d
+T004330,northwind,web,46.35,USD,settled,47,0
+T004331,eastgate,android,59.81,USD,settled,,0
+T004332,acme-parts,android,7.49,USD,settled,18,2 d
+T004333,fairweather,ios,17.83,USD,settled,47,2
+T004334,acme-parts,android,10.46,USD,settled,,1
+T004335,acme-parts,ios,14.1,USD,settled,,0
+T004336,eastgate,android,38.07,USD,settled,,1
+T004337,dunmore,ios,113.35,USD,settled,74,1 d
+T004338,harborview,web,39.32,USD,settled,38,0
+T004339,harborview,ios,48.48,USD,settled,57,0 d
+T004340,eastgate,ios,40.66,USD,settled,50,0
+T004341,northwind,web,46.16,USD,chargeback,22,3 d
+T004342,harborview,android,14.91,USD,settled,,0
+T004343,northwind,phone,27.24,USD,settled,64,0
+T004344,belltower,ios,4070.0,USD,settled,72,0 d
+T004345,acme-parts,web,30.82,USD,settled,58,1
+T004346,fairweather,web,39.11,USD,settled,52,1
+T004347,dunmore,ios,114.1,USD,pending,63,0
+T004348,northwind,ios,10.47,USD,settled,45,0
+T004349,eastgate,web,8.34,USD,settled,31,1 d
+T004350,eastgate,ios,36.56,USD,settled,70,1 d
+T004351,dunmore,web,33.97,USD,settled,54,3
+T004352,greenline,web,41.7,USD,pending,39,0 d
+T004353,greenline,ios,102.89,USD,settled,59,0
+T004354,belltower,web,2340.0,USD,settled,26,1
+T004355,acme-parts,android,57.47,USD,settled,,1
+T004356,greenline,web,69.33,USD,refunded,18,1
+T004357,dunmore,ios,33.82,USD,settled,65,0
+T004358,acme-parts,android,62.65,USD,settled,,1
+T004359,belltower,ios,5845.0,USD,pending,40,0
+T004360,northwind,web,23.51,USD,settled,74,0 d
+T004361,belltower,android,2886.0,USD,refunded,,0
+T004362,acme-parts,ios,94.37,USD,settled,35,0
+T004363,northwind,web,95.02,USD,pending,52,0
+T004364,eastgate,web,67.02,USD,settled,28,1 d
+T004365,northwind,web,55.13,USD,settled,69,1
+T004366,acme-parts,web,22.2,USD,settled,53,1 d
+T004367,northwind,web,19.91,USD,settled,24,1
+T004368,eastgate,web,40.93,USD,settled,61,0
+T004369,eastgate,web,17.91,USD,settled,49,2
+T004370,eastgate,web,12.97,USD,settled,57,1
+T004371,cascade-foods,ios,63.75,USD,settled,48,0 d
+T004372,fairweather,web,127.69,USD,settled,53,1 d
+T004373,dunmore,web,19.12,USD,settled,34,0 d
+T004374,dunmore,ios,31.39,USD,settled,19,1 d
+T004375,greenline,ios,15.25,USD,settled,59,0
+T004376,greenline,web,126.36,USD,chargeback,60,1 d
+T004377,cascade-foods,ios,58.97,USD,settled,24,1
+T004378,greenline,ios,9.58,USD,settled,34,0
+T004379,greenline,web,17.01,USD,settled,63,1
+T004380,harborview,web,26.69,USD,settled,59,0 d
+T004381,eastgate,ios,21.62,USD,settled,36,0
+T004382,harborview,ios,11.86,USD,settled,70,2
+T004383,belltower,ios,16895.0,USD,pending,32,0 d
+T004384,northwind,web,37.68,USD,settled,58,0
+T004385,dunmore,ios,27.15,USD,settled,43,2 d
+T004386,harborview,android,29.98,USD,settled,,0
+T004387,cascade-foods,android,75.95,USD,settled,,0
+T004388,dunmore,android,20.75,USD,settled,,1
+T004389,harborview,web,21.17,USD,settled,18,1
+T004390,greenline,android,17.5,USD,settled,,0
+T004391,dunmore,web,16.22,USD,settled,20,0 d
+T004392,cascade-foods,web,26.6,USD,settled,47,0
+T004393,greenline,android,12.21,USD,settled,,1
+T004394,harborview,web,871.0,USD,pending,78,0 d
+T004395,dunmore,ios,31.0,USD,settled,33,1
+T004396,fairweather,web,14.72,USD,settled,41,1 d
+T004397,northwind,phone,6.15,USD,settled,28,1 d
+T004398,eastgate,web,11.73,USD,settled,47,1
+T004399,eastgate,web,78.41,USD,settled,36,1
+T004400,northwind,ios,79.82,USD,settled,21,0
+T004401,acme-parts,web,19.01,USD,pending,54,2
+T004402,northwind,android,39.39,USD,settled,,1
+T004403,acme-parts,android,30.84,USD,chargeback,,0 d
+T004404,northwind,web,25.87,USD,refunded,77,1
+T004405,eastgate,android,14.28,USD,settled,,0
+T004406,northwind,ios,15.31,USD,settled,,0
+T004407,eastgate,android,56.26,USD,settled,21,1 d
+T004408,belltower,ios,1059.0,USD,settled,46,0
+T004409,eastgate,ios,40.14,USD,settled,18,0
+T004410,harborview,web,15.98,USD,settled,68,1 d
+T004411,greenline,web,19.75,USD,settled,46,0 d
+T004412,dunmore,android,37.84,USD,settled,,0
+T004413,greenline,ios,149.13,USD,settled,18,1
+T004414,northwind,android,32.49,USD,settled,67,1
+T004415,eastgate,web,26.92,USD,settled,65,2 d
+T004416,acme-parts,android,37.51,USD,pending,,0
+T004417,belltower,ios,2143.0,USD,settled,20,2 d
+T004418,eastgate,web,43.88,USD,settled,25,1 d
+T004419,northwind,ios,3.63,USD,settled,73,2
+T004420,acme-parts,android,31.22,USD,settled,,1 d
+T004421,harborview,android,84.46,USD,settled,,3
+T004422,dunmore,android,40.64,USD,settled,27,0
+T004423,eastgate,android,53.22,USD,settled,54,0
+T004424,greenline,web,7.84,USD,settled,74,0
+T004425,belltower,ios,7690.0,USD,settled,78,0
+T004426,dunmore,web,12.07,USD,settled,22,0
+T004427,fairweather,web,19.44,USD,settled,18,1
+T004428,harborview,android,33.25,USD,settled,28,1 d
+T004429,dunmore,ios,141.25,USD,settled,46,0
+T004430,cascade-foods,ios,65.87,USD,pending,22,1 d
+T004431,greenline,ios,42.7,USD,settled,65,1
+T004432,northwind,android,66.03,USD,chargeback,,1
+T004433,acme-parts,web,38.31,USD,settled,32,1 d
+T004434,northwind,web,36.43,USD,settled,46,1
+T004435,northwind,web,70.93,USD,settled,23,0
+T004436,acme-parts,android,37.71,USD,settled,,1
+T004437,dunmore,ios,42.86,USD,refunded,30,1
+T004438,greenline,web,53.99,USD,pending,51,0 d
+T004439,fairweather,web,3.68,USD,settled,24,1
+T004440,fairweather,web,29.22,USD,settled,67,0
+T004441,harborview,web,3514.0,USD,settled,64,1 d
+T004442,fairweather,web,7.74,USD,settled,39,0 d
+T004443,belltower,web,3722.0,USD,settled,60,0
+T004444,dunmore,web,11.08,USD,settled,38,0
+T004445,dunmore,android,45.83,USD,settled,,0
+T004446,dunmore,web,22.06,USD,settled,72,0
+T004447,northwind,ios,95.2,USD,refunded,64,0
+T004448,cascade-foods,ios,37.05,USD,pending,40,0
+T004449,belltower,web,1661.0,USD,settled,19,2 d
+T004450,eastgate,android,35.25,USD,settled,,0
+T004451,harborview,web,66.87,USD,pending,51,0
+T004452,cascade-foods,web,28.39,USD,settled,36,0
+T004453,dunmore,ios,115.2,USD,settled,64,0
+T004454,dunmore,web,29.79,USD,settled,47,0
+T004455,cascade-foods,ios,73.64,USD,settled,56,0
+T004456,eastgate,web,79.09,USD,settled,28,2 d
+T004457,northwind,android,19.25,USD,settled,,1 d
+T004458,dunmore,ios,18.89,USD,settled,66,3
+T004459,fairweather,android,64.68,USD,settled,,0
+T004460,fairweather,android,15.18,USD,settled,,0 d
+T004461,acme-parts,android,32.51,USD,settled,,1
+T004462,greenline,ios,22.66,USD,settled,51,0 d
+T004463,acme-parts,web,19.1,USD,pending,31,0 d
+T004464,belltower,phone,2718.0,USD,settled,62,0 d
+T004465,eastgate,ios,22.61,USD,settled,49,0 d
+T004466,fairweather,web,23.86,USD,settled,26,0
+T004467,harborview,ios,42.68,USD,settled,75,1
+T004468,greenline,web,26.36,USD,settled,55,0
+T004469,eastgate,web,21.9,USD,settled,70,1 d
+T004470,dunmore,ios,14.8,USD,settled,78,0
+T004471,northwind,ios,6.2,USD,settled,35,0
+T004472,fairweather,phone,10.63,USD,settled,69,1
+T004473,belltower,web,6824.0,USD,settled,71,0
+T004474,eastgate,web,19.82,USD,settled,56,0
+T004475,greenline,web,14.0,USD,settled,20,1
+T004476,cascade-foods,web,24.74,USD,settled,69,2 d
+T004477,northwind,ios,38.41,USD,settled,19,1
+T004478,cascade-foods,ios,17.62,USD,settled,44,0
+T004479,greenline,web,11.89,USD,settled,18,0
+T004480,dunmore,ios,19.8,USD,settled,70,0 d
+T004481,greenline,web,44.94,USD,settled,68,0 d
+T004482,acme-parts,web,16.16,USD,settled,33,0
+T004483,harborview,ios,2585.0,USD,pending,41,0 d
+T004484,fairweather,android,14.02,USD,chargeback,70,0
+T004485,dunmore,web,12.17,USD,settled,41,0
+T004486,greenline,ios,25.91,USD,settled,31,0
+T004487,northwind,android,24.88,USD,settled,,0
+T004488,belltower,android,1682.0,USD,settled,,1
+T004489,northwind,ios,5.47,USD,settled,33,0 d
+T004490,greenline,android,22.04,USD,settled,35,0
+T004491,greenline,web,75.94,USD,settled,71,0
+T004492,northwind,ios,52.93,USD,settled,47,0 d
+T004493,eastgate,android,14.86,USD,chargeback,,1
+T004494,greenline,web,15.35,USD,settled,26,0
+T004495,dunmore,web,28.65,USD,settled,65,0
+T004496,greenline,web,15.0,USD,settled,23,2
+T004497,acme-parts,web,22.91,USD,chargeback,72,0
+T004498,belltower,android,881.0,USD,settled,,0 d
+T004499,harborview,ios,5005.0,USD,settled,18,0
+T004500,dunmore,web,21.73,USD,settled,30,0 d
+T004501,greenline,android,64.81,USD,settled,26,0
+T004502,dunmore,web,26.85,USD,settled,18,1
+T004503,cascade-foods,android,22.64,USD,settled,57,0 d
+T004504,cascade-foods,android,34.67,USD,settled,,0
+T004505,belltower,ios,1915.0,USD,settled,52,2 d
+T004506,greenline,ios,16.68,USD,settled,49,0
+T004507,belltower,web,1507.0,USD,settled,60,0
+T004508,northwind,android,56.28,USD,settled,,1
+T004509,harborview,web,12671.0,USD,settled,24,2
+T004510,acme-parts,ios,18.39,USD,settled,61,0 d
+T004511,harborview,ios,133.88,USD,settled,23,0 d
+T004512,greenline,web,41.38,USD,settled,29,0
+T004513,northwind,android,57.55,USD,pending,,0 d
+T004514,acme-parts,android,58.85,USD,settled,,1
+T004515,belltower,android,2853.0,USD,pending,,0
+T004516,fairweather,web,24.96,USD,settled,77,0 d
+T004517,greenline,web,22.59,USD,settled,32,1 d
+T004518,harborview,android,58.12,USD,settled,,0
+T004519,dunmore,ios,14.51,USD,settled,31,0
+T004520,acme-parts,ios,24.13,USD,settled,20,1
+T004521,fairweather,web,128.78,USD,settled,36,1
+T004522,harborview,web,13.22,USD,settled,72,3
+T004523,greenline,web,98.44,USD,settled,,0 d
+T004524,dunmore,ios,15.69,USD,settled,78,2
+T004525,cascade-foods,phone,23.62,USD,pending,67,1
+T004526,belltower,web,2080.0,USD,pending,47,0
+T004527,acme-parts,android,29.0,USD,settled,,0
+T004528,fairweather,web,29.43,USD,settled,45,0 d
+T004529,fairweather,android,60.11,USD,pending,,1
+T004530,acme-parts,android,17.83,USD,refunded,,0
+T004531,belltower,android,3043.0,USD,pending,,0
+T004532,eastgate,web,77.2,USD,settled,45,1
+T004533,fairweather,ios,24.5,USD,chargeback,45,0 d
+T004534,northwind,android,17.82,USD,settled,69,0 d
+T004535,belltower,web,1418.0,USD,settled,37,0
+T004536,eastgate,ios,33.52,USD,settled,56,1
+T004537,harborview,web,20.44,USD,settled,36,0
+T004538,cascade-foods,android,16.47,USD,pending,,1 d
+T004539,dunmore,web,5.3,USD,settled,59,1
+T004540,cascade-foods,web,20.87,USD,settled,72,2
+T004541,fairweather,android,105.99,USD,settled,,0
+T004542,northwind,web,35.8,USD,settled,49,0
+T004543,greenline,web,51.08,USD,chargeback,18,1
+T004544,eastgate,ios,26.03,USD,pending,36,0
+T004545,cascade-foods,web,31.44,USD,pending,,0 d
+T004546,eastgate,web,241.71,USD,settled,70,0 d
+T004547,eastgate,ios,30.38,USD,settled,22,2
+T004548,fairweather,android,24.93,USD,settled,,0
+T004549,greenline,web,13.76,USD,pending,40,0
+T004550,greenline,ios,43.6,USD,settled,57,0
+T004551,fairweather,web,9.04,USD,settled,50,1
+T004552,greenline,ios,9.47,USD,settled,75,2
+T004553,greenline,ios,46.99,USD,settled,28,0
+T004554,northwind,web,403.38,USD,settled,35,0 d
+T004555,eastgate,android,11.2,USD,settled,,0 d
+T004556,eastgate,web,21.26,USD,settled,41,0
+T004557,acme-parts,ios,74.63,USD,settled,24,1
+T004558,eastgate,web,58.18,USD,settled,27,0
+T004559,fairweather,ios,31.05,USD,settled,53,0
+T004560,harborview,web,17.34,USD,settled,54,1 d
+T004561,cascade-foods,web,41.77,USD,settled,40,1 d
+T004562,acme-parts,web,9.44,USD,settled,44,1
+T004563,northwind,android,52.25,USD,settled,,1
+T004564,harborview,web,85.96,USD,settled,57,1
+T004565,northwind,web,21.83,USD,settled,63,0 d
+T004566,cascade-foods,ios,37.82,USD,settled,41,0 d
+T004567,harborview,ios,22.85,USD,pending,33,0
+T004568,dunmore,web,67.7,USD,settled,51,0
+T004569,fairweather,web,30.41,USD,settled,,1
+T004570,acme-parts,ios,56.31,USD,settled,24,2
+T004571,acme-parts,web,37.77,USD,settled,63,1 d
+T004572,eastgate,android,39.61,USD,settled,,0
+T004573,greenline,ios,193.34,USD,settled,42,1 d
+T004574,cascade-foods,web,133.6,USD,settled,37,1
+T004575,northwind,web,28.42,USD,settled,27,2
+T004576,northwind,web,31.71,USD,settled,74,1
+T004577,belltower,ios,1462.0,USD,settled,74,1
+T004578,fairweather,ios,10.62,USD,refunded,55,0
+T004579,acme-parts,ios,25.55,USD,settled,51,2
+T004580,northwind,ios,66.41,USD,settled,76,1
+T004581,eastgate,ios,38.42,USD,settled,72,2
+T004582,harborview,web,30.33,USD,settled,37,2
+T004583,greenline,ios,41.5,USD,settled,27,1
+T004584,dunmore,ios,155.55,USD,settled,75,0
+T004585,fairweather,ios,25.16,USD,settled,19,0
+T004586,fairweather,web,49.2,USD,settled,41,0 d
+T004587,northwind,android,25.04,USD,pending,35,0
+T004588,acme-parts,ios,38.34,USD,pending,53,0
+T004589,greenline,ios,47.78,USD,pending,70,0 d
+T004590,greenline,ios,310.76,USD,refunded,65,0 d
+T004591,dunmore,android,26.1,USD,settled,,1
+T004592,greenline,android,79.17,USD,settled,,0 d
+T004593,cascade-foods,web,38.39,USD,settled,78,1
+T004594,cascade-foods,web,7.67,USD,settled,36,0 d
+T004595,northwind,web,35.19,USD,settled,58,0
+T004596,cascade-foods,android,18.22,USD,settled,,1 d
+T004597,acme-parts,ios,22.44,USD,pending,75,1 d
+T004598,belltower,ios,2488.0,USD,settled,72,0
+T004599,cascade-foods,ios,17.47,USD,pending,35,0 d
+T004600,acme-parts,ios,8.11,USD,settled,34,1
+T004601,belltower,ios,1028.0,USD,settled,36,1 d
+T004602,fairweather,android,29.88,USD,settled,,0
+T004603,eastgate,web,42.97,USD,settled,31,1
+T004604,acme-parts,web,21.55,USD,settled,35,0
+T004605,fairweather,web,19.25,USD,pending,31,1
+T004606,acme-parts,android,15.83,USD,settled,,0 d
+T004607,acme-parts,android,23.71,USD,settled,40,1
+T004608,eastgate,ios,25.82,USD,settled,33,0
+T004609,eastgate,web,61.02,USD,settled,34,0
+T004610,belltower,ios,2473.0,USD,settled,59,1
+T004611,northwind,ios,90.37,USD,settled,56,1 d
+T004612,cascade-foods,web,25.13,USD,settled,59,1
+T004613,cascade-foods,web,16.47,USD,settled,34,0
+T004614,harborview,web,58.51,USD,settled,50,0
+T004615,dunmore,web,13.87,USD,settled,24,0 d
+T004616,northwind,android,70.43,USD,settled,77,1 d
+T004617,belltower,web,1137.0,USD,settled,58,0
+T004618,fairweather,web,19.36,USD,settled,74,0
+T004619,eastgate,android,35.7,USD,settled,29,1 d
+T004620,dunmore,web,11.64,USD,settled,76,0
+T004621,belltower,web,20625.0,USD,settled,37,0
+T004622,fairweather,android,57.09,USD,refunded,60,0 d
+T004623,greenline,web,25.62,USD,settled,30,0
+T004624,harborview,web,16.18,USD,settled,68,0
+T004625,belltower,ios,3674.0,USD,settled,71,2
+T004626,belltower,web,1359.0,USD,settled,38,3
+T004627,dunmore,ios,3.9,USD,settled,40,0
+T004628,cascade-foods,ios,15.35,USD,settled,54,2 d
+T004629,greenline,web,17.16,USD,settled,43,1 d
+T004630,eastgate,ios,8.91,USD,settled,37,0
+T004631,fairweather,web,271.81,USD,settled,28,2 d
+T004632,belltower,web,1770.0,USD,settled,57,0
+T004633,northwind,ios,70.57,USD,settled,20,0
+T004634,belltower,web,4375.0,USD,settled,70,0 d
+T004635,dunmore,web,58.86,USD,settled,62,1
+T004636,dunmore,web,26.14,USD,settled,33,0
+T004637,greenline,ios,14.69,USD,settled,40,0
+T004638,harborview,web,10.59,USD,settled,29,0
+T004639,northwind,web,18.04,USD,settled,40,0
+T004640,dunmore,ios,40.69,USD,settled,69,0 d
+T004641,eastgate,web,47.36,USD,settled,29,0
+T004642,dunmore,web,27.24,USD,settled,57,0
+T004643,fairweather,android,1.97,USD,settled,,1
+T004644,dunmore,web,39.74,USD,settled,70,0
+T004645,northwind,ios,45.55,USD,settled,50,0
+T004646,cascade-foods,web,9.14,USD,settled,68,0
+T004647,belltower,ios,3670.0,USD,settled,68,1 d
+T004648,greenline,web,58.37,USD,settled,76,0 d
+T004649,northwind,ios,54.14,USD,settled,53,0
+T004650,acme-parts,web,98.19,USD,settled,33,0
+T004651,greenline,ios,25.32,USD,settled,42,1
+T004652,cascade-foods,web,203.89,USD,settled,36,3
+T004653,cascade-foods,android,55.13,USD,settled,,0
+T004654,fairweather,ios,19.18,USD,settled,21,2 d
+T004655,dunmore,web,28.37,USD,settled,20,0
+T004656,belltower,ios,1910.0,USD,settled,68,1 d
+T004657,fairweather,ios,95.48,USD,settled,45,0
+T004658,northwind,android,22.84,USD,settled,,0
+T004659,fairweather,android,31.51,USD,settled,,0 d
+T004660,greenline,ios,20.62,USD,settled,73,0
+T004661,dunmore,ios,58.9,USD,pending,23,0
+T004662,fairweather,ios,35.03,USD,settled,76,0 d
+T004663,harborview,web,43.32,USD,settled,75,0
+T004664,greenline,ios,6.74,USD,pending,36,0
+T004665,greenline,ios,9.84,USD,settled,53,0
+T004666,dunmore,android,69.2,USD,settled,,0
+T004667,northwind,android,18.4,USD,settled,39,0 d
+T004668,belltower,web,4237.0,USD,settled,19,0 d
+T004669,fairweather,ios,31.95,USD,settled,51,1 d
+T004670,dunmore,ios,47.6,USD,settled,58,0 d
+T004671,greenline,web,21.12,USD,settled,63,1 d
+T004672,fairweather,ios,30.29,USD,pending,38,0
+T004673,belltower,android,1909.0,USD,settled,,0 d
+T004674,fairweather,ios,27.88,USD,settled,49,1
+T004675,greenline,ios,104.73,USD,settled,27,1
+T004676,northwind,ios,33.63,USD,settled,43,2
+T004677,acme-parts,phone,43.42,USD,settled,46,0 d
+T004678,eastgate,ios,14.63,USD,settled,74,1 d
+T004679,northwind,android,78.13,USD,settled,,0
+T004680,belltower,web,4085.0,USD,settled,23,1
+T004681,northwind,ios,8.16,USD,settled,24,1 d
+T004682,acme-parts,web,18.1,USD,chargeback,42,0 d
+T004683,harborview,web,100.47,USD,settled,70,3
+T004684,belltower,web,6079.0,USD,settled,76,0
+T004685,acme-parts,ios,17.0,USD,refunded,71,0
+T004686,cascade-foods,ios,30.12,USD,settled,63,0
+T004687,acme-parts,web,51.99,USD,settled,29,0
+T004688,belltower,ios,500.0,USD,settled,64,0
+T004689,dunmore,ios,24.36,USD,settled,42,0
+T004690,cascade-foods,ios,26.59,USD,settled,18,1
+T004691,greenline,web,23.18,USD,settled,48,3 d
+T004692,fairweather,ios,28.77,USD,settled,66,2
+T004693,acme-parts,android,10.33,USD,pending,,0
+T004694,cascade-foods,web,15.25,USD,settled,42,0 d
+T004695,dunmore,web,96.47,USD,settled,71,0 d
+T004696,cascade-foods,ios,48.83,USD,settled,23,0 d
+T004697,greenline,ios,4.24,USD,settled,69,0
+T004698,cascade-foods,ios,23.99,USD,settled,52,2 d
+T004699,acme-parts,ios,75.26,USD,settled,72,0 d
+T004700,fairweather,android,5.45,USD,settled,,3
+T004701,cascade-foods,web,35.35,USD,settled,46,0 d
+T004702,cascade-foods,android,34.37,USD,settled,,1
+T004703,belltower,web,8386.0,USD,settled,26,3
+T004704,northwind,web,32.27,USD,settled,77,0 d
+T004705,greenline,ios,11.02,USD,pending,25,0
+T004706,dunmore,web,41.54,USD,settled,68,2
+T004707,eastgate,web,32.94,USD,settled,78,2 d
+T004708,acme-parts,web,15.01,USD,settled,35,0 d
+T004709,dunmore,ios,18.38,USD,settled,18,0
+T004710,harborview,web,7.87,USD,settled,73,0
+T004711,harborview,android,5.27,USD,settled,28,1
+T004712,dunmore,ios,62.38,USD,settled,59,1
+T004713,cascade-foods,ios,17.7,USD,settled,31,0 d
+T004714,northwind,ios,143.18,USD,settled,24,0
+T004715,dunmore,ios,13.68,USD,settled,61,0
+T004716,greenline,web,103.61,USD,settled,40,0 d
+T004717,greenline,android,42.92,USD,settled,39,3
+T004718,belltower,web,1905.0,USD,settled,36,0
+T004719,acme-parts,phone,72.8,USD,settled,78,0
+T004720,cascade-foods,web,23.91,USD,chargeback,33,0
+T004721,greenline,android,28.33,USD,settled,,0
+T004722,fairweather,ios,29.77,USD,settled,40,0
+T004723,greenline,ios,94.2,USD,settled,52,0 d
+T004724,northwind,web,28.39,USD,settled,19,1
+T004725,belltower,web,2145.0,USD,settled,43,0 d
+T004726,greenline,web,4.57,USD,settled,23,1
+T004727,dunmore,web,78.11,USD,settled,31,0
+T004728,belltower,android,6339.0,USD,settled,,0
+T004729,acme-parts,web,18.68,USD,settled,49,1
+T004730,dunmore,web,104.58,USD,settled,47,1
+T004731,eastgate,ios,7.49,USD,settled,74,0 d
+T004732,acme-parts,ios,104.38,USD,settled,41,1
+T004733,dunmore,ios,9.98,USD,settled,57,0
+T004734,greenline,ios,8.37,USD,pending,66,1 d
+T004735,eastgate,web,32.97,USD,settled,22,1
+T004736,dunmore,web,33.84,USD,settled,65,0
+T004737,northwind,web,25.96,USD,settled,39,1 d
+T004738,belltower,web,14398.0,USD,settled,52,0
+T004739,fairweather,ios,25.56,USD,settled,30,0
+T004740,eastgate,android,35.16,USD,settled,,0
+T004741,greenline,android,24.32,USD,settled,57,2
+T004742,acme-parts,web,60.85,USD,settled,,0
+T004743,belltower,web,552.0,USD,settled,49,1
+T004744,fairweather,web,23.52,USD,settled,72,0
+T004745,fairweather,ios,92.28,USD,settled,49,0 d
+T004746,harborview,web,83.24,USD,settled,20,0
+T004747,dunmore,ios,26.09,USD,pending,21,0
+T004748,cascade-foods,android,17.08,USD,settled,,0
+T004749,cascade-foods,ios,21.15,USD,settled,51,1
+T004750,acme-parts,web,13.73,USD,settled,41,0 d
+T004751,belltower,ios,1044.0,USD,settled,43,3
+T004752,northwind,android,24.58,USD,settled,,0
+T004753,fairweather,web,75.47,USD,settled,72,0
+T004754,dunmore,android,50.68,USD,settled,,3
+T004755,cascade-foods,ios,89.91,USD,settled,,0
+T004756,northwind,ios,155.53,USD,settled,52,0
+T004757,eastgate,ios,64.74,USD,settled,35,0
+T004758,belltower,ios,1418.0,USD,settled,73,0
+T004759,fairweather,android,8.95,USD,pending,,0
+T004760,cascade-foods,ios,50.45,USD,settled,26,1
+T004761,acme-parts,web,13.05,USD,pending,33,0
+T004762,fairweather,android,202.22,USD,pending,37,1
+T004763,greenline,ios,75.29,USD,pending,61,0
+T004764,eastgate,ios,17.14,USD,settled,47,1 d
+T004765,cascade-foods,ios,14.09,USD,settled,77,0 d
+T004766,fairweather,web,13.27,USD,settled,40,0
+T004767,belltower,ios,5637.0,USD,settled,49,0 d
+T004768,northwind,web,11.64,USD,settled,37,1
+T004769,northwind,web,28.06,USD,settled,76,0
+T004770,greenline,web,51.37,USD,settled,51,0
+T004771,cascade-foods,ios,6.95,USD,settled,45,1
+T004772,greenline,web,26.62,USD,settled,52,2
+T004773,acme-parts,web,32.05,USD,settled,,1
+T004774,cascade-foods,web,19.53,USD,settled,25,0
+T004775,acme-parts,web,11.97,USD,settled,70,1
+T004776,belltower,web,8183.0,USD,chargeback,72,0
+T004777,cascade-foods,web,45.8,USD,settled,40,2
+T004778,dunmore,web,17.08,USD,settled,33,3
+T004779,acme-parts,web,77.99,USD,settled,,0 d
+T004780,harborview,android,24.42,USD,settled,,0 d
+T004781,greenline,ios,20.38,USD,settled,63,0
+T004782,acme-parts,ios,17.57,USD,settled,31,0 d
+T004783,greenline,web,49.86,USD,pending,74,1 d
+T004784,dunmore,web,42.38,USD,settled,50,0
+T004785,harborview,ios,197.86,USD,settled,74,0
+T004786,fairweather,web,13.81,USD,settled,73,2 d
+T004787,dunmore,web,51.53,USD,settled,48,0
+T004788,cascade-foods,android,68.79,USD,settled,,1
+T004789,greenline,ios,32.07,USD,settled,68,2
+T004790,harborview,ios,7.89,USD,settled,31,1 d
+T004791,northwind,ios,49.9,USD,settled,18,0 d
+T004792,northwind,ios,80.9,USD,settled,71,0
+T004793,acme-parts,android,17.25,USD,settled,59,0
+T004794,acme-parts,ios,33.41,USD,settled,40,1
+T004795,dunmore,web,69.79,USD,settled,53,0
+T004796,acme-parts,ios,67.39,USD,settled,36,0 d
+T004797,acme-parts,ios,12.54,USD,settled,78,0
+T004798,fairweather,android,15.92,USD,settled,,1
+T004799,dunmore,ios,11.74,USD,settled,47,1 d
+T004800,eastgate,ios,14.33,USD,settled,19,0 d
+T004801,harborview,web,19.32,USD,settled,49,1
+T004802,dunmore,web,8.45,USD,pending,63,1
+T004803,eastgate,web,133.86,USD,pending,47,2
+T004804,harborview,ios,7.54,USD,settled,50,0
+T004805,northwind,web,82.95,USD,settled,22,0
+T004806,dunmore,android,20.91,USD,chargeback,,1
+T004807,dunmore,web,26.46,USD,pending,28,0 d
+T004808,greenline,ios,5.41,USD,settled,66,0
+T004809,northwind,web,49.21,USD,settled,63,1 d
+T004810,acme-parts,ios,19.57,USD,settled,26,0
+T004811,fairweather,web,24.69,USD,settled,52,0
+T004812,belltower,android,2470.0,USD,settled,,0 d
+T004813,fairweather,web,18.65,USD,settled,40,3
+T004814,eastgate,web,59.62,USD,settled,69,0 d
+T004815,greenline,web,62.23,USD,settled,18,1
+T004816,belltower,ios,1585.0,USD,settled,34,0 d
+T004817,belltower,web,1374.0,USD,settled,77,1
+T004818,acme-parts,web,18.76,USD,settled,55,1
+T004819,eastgate,ios,207.53,USD,settled,23,1
+T004820,eastgate,android,8.38,USD,settled,,0
+T004821,harborview,web,19.29,USD,settled,63,0 d
+T004822,eastgate,android,111.98,USD,settled,,1 d
+T004823,belltower,ios,1824.0,USD,settled,28,2 d
+T004824,dunmore,web,113.34,USD,settled,21,0 d
+T004825,greenline,web,18.67,USD,settled,48,1 d
+T004826,belltower,ios,3022.0,USD,settled,76,0 d
+T004827,dunmore,web,126.07,USD,settled,56,1
+T004828,northwind,ios,17.4,USD,settled,44,0
+T004829,greenline,web,28.1,USD,settled,24,1
+T004830,dunmore,ios,3.54,USD,settled,47,0 d
+T004831,acme-parts,android,32.07,USD,settled,,0 d
+T004832,belltower,phone,2007.0,USD,chargeback,76,1
+T004833,acme-parts,web,66.61,USD,settled,51,0
+T004834,northwind,web,32.8,USD,settled,76,1
+T004835,greenline,ios,35.71,USD,pending,54,0 d
+T004836,acme-parts,ios,6.86,USD,settled,41,0
+T004837,dunmore,web,22.97,USD,settled,70,1
+T004838,eastgate,android,34.88,USD,settled,,2 d
+T004839,eastgate,ios,10.67,USD,settled,41,0
+T004840,cascade-foods,web,39.32,USD,settled,38,0
+T004841,fairweather,web,8.09,USD,settled,22,3
+T004842,greenline,ios,20.64,USD,settled,52,0
+T004843,eastgate,android,45.3,USD,settled,,0
+T004844,eastgate,web,20.48,USD,settled,39,0 d
+T004845,northwind,web,47.58,USD,settled,36,1
+T004846,acme-parts,web,24.68,USD,settled,45,1
+T004847,northwind,web,36.38,USD,settled,65,1
+T004848,belltower,ios,5654.0,USD,chargeback,22,0
+T004849,greenline,web,23.75,USD,pending,64,2
+T004850,eastgate,ios,8.37,USD,pending,73,0
+T004851,acme-parts,web,92.84,USD,settled,23,0
+T004852,belltower,ios,2819.0,USD,settled,21,0
+T004853,dunmore,ios,12.17,USD,settled,51,0
+T004854,eastgate,web,41.11,USD,settled,50,0
+T004855,eastgate,web,8.33,USD,settled,47,0
+T004856,greenline,android,24.67,USD,settled,,0 d
+T004857,eastgate,ios,50.02,USD,pending,33,0 d
+T004858,fairweather,android,84.92,USD,settled,77,0
+T004859,fairweather,android,34.72,USD,settled,,2
+T004860,dunmore,ios,20.46,USD,settled,36,0
+T004861,cascade-foods,web,252.88,USD,settled,,0 d
+T004862,greenline,android,27.76,USD,settled,63,0
+T004863,greenline,web,46.5,USD,settled,18,2
+T004864,harborview,android,2641.0,USD,settled,,0
+T004865,fairweather,ios,35.41,USD,settled,45,0
+T004866,harborview,android,11.91,USD,settled,,1
+T004867,northwind,web,12.02,USD,settled,62,0
+T004868,northwind,web,22.41,USD,settled,24,1
+T004869,belltower,ios,468.0,USD,settled,46,0
+T004870,greenline,web,31.64,USD,settled,73,0
+T004871,eastgate,ios,102.19,USD,settled,60,2
+T004872,cascade-foods,ios,11.11,USD,settled,56,0 d
+T004873,cascade-foods,web,43.76,USD,chargeback,,0
+T004874,fairweather,android,32.21,USD,refunded,,1
+T004875,northwind,web,25.32,USD,settled,63,0 d
+T004876,northwind,android,23.02,USD,settled,,0
+T004877,belltower,web,2721.0,USD,settled,46,2
+T004878,dunmore,web,46.57,USD,pending,62,1 d
+T004879,acme-parts,ios,40.1,USD,settled,73,0
+T004880,acme-parts,ios,37.49,USD,settled,50,0 d
+T004881,greenline,web,27.12,USD,settled,27,0
+T004882,fairweather,web,74.75,USD,pending,56,0 d
+T004883,eastgate,web,19.7,USD,pending,42,1
+T004884,dunmore,web,39.52,USD,settled,20,1
+T004885,dunmore,android,19.71,USD,settled,,0 d
+T004886,greenline,ios,59.9,USD,settled,62,0
+T004887,eastgate,web,49.94,USD,settled,46,0
+T004888,belltower,ios,8729.0,USD,settled,65,2
+T004889,eastgate,web,21.59,USD,pending,53,0
+T004890,cascade-foods,web,38.54,USD,settled,77,2 d
+T004891,eastgate,web,32.89,USD,settled,69,0
+T004892,dunmore,android,31.47,USD,settled,,1
+T004893,acme-parts,android,348.55,USD,refunded,74,0
+T004894,eastgate,web,43.96,USD,settled,41,0 d
+T004895,cascade-foods,web,48.95,USD,settled,74,0 d
+T004896,fairweather,web,24.5,USD,settled,78,0
+T004897,belltower,web,5678.0,USD,settled,67,2
+T004898,greenline,web,10.28,USD,refunded,65,0
+T004899,greenline,web,15.48,USD,settled,72,1 d
+T004900,greenline,ios,101.45,USD,settled,62,1 d
+T004901,eastgate,web,16.95,USD,settled,50,0
+T004902,northwind,web,52.38,USD,settled,23,0
+T004903,greenline,ios,40.29,USD,settled,58,1 d
+T004904,greenline,ios,33.03,USD,chargeback,31,2
+T004905,northwind,web,46.68,USD,settled,29,1 d
+T004906,cascade-foods,android,76.65,USD,settled,,1
+T004907,dunmore,phone,42.44,USD,settled,32,1
+T004908,belltower,ios,1540.0,USD,settled,27,0
+T004909,fairweather,ios,13.06,USD,pending,48,2 d
+T004910,belltower,android,3960.0,USD,settled,,1
+T004911,acme-parts,web,33.87,USD,settled,49,0
+T004912,fairweather,ios,38.57,USD,settled,38,0 d
+T004913,dunmore,android,23.05,USD,refunded,,0 d
+T004914,greenline,web,44.88,USD,settled,43,0 d
+T004915,greenline,web,66.12,USD,settled,54,0
+T004916,acme-parts,ios,27.58,USD,pending,71,1
+T004917,dunmore,ios,25.52,USD,settled,70,2
+T004918,greenline,ios,41.77,USD,settled,54,0
+T004919,greenline,android,12.9,USD,settled,,1
+T004920,cascade-foods,ios,14.86,USD,settled,21,0 d
+T004921,cascade-foods,web,24.72,USD,settled,33,0
+T004922,dunmore,web,36.75,USD,settled,61,0
+T004923,fairweather,ios,35.09,USD,settled,26,0
+T004924,acme-parts,ios,15.33,USD,settled,58,1 d
+T004925,northwind,ios,19.31,USD,settled,38,1 d
+T004926,harborview,ios,55.13,USD,settled,45,1 d
+T004927,greenline,web,54.81,USD,pending,68,1
+T004928,eastgate,ios,20.44,USD,settled,18,1
+T004929,acme-parts,ios,19.21,USD,settled,62,0
+T004930,greenline,ios,40.99,USD,settled,44,0 d
+T004931,northwind,web,46.03,USD,settled,52,0
+T004932,eastgate,ios,58.66,USD,settled,65,2
+T004933,northwind,web,4.04,USD,settled,27,0
+T004934,northwind,ios,37.58,USD,settled,63,1
+T004935,belltower,ios,3523.0,USD,settled,53,0
+T004936,dunmore,web,64.71,USD,settled,42,0
+T004937,greenline,ios,26.91,USD,chargeback,59,1
+T004938,dunmore,web,11.25,USD,refunded,73,1
+T004939,eastgate,web,30.28,USD,settled,47,0
+T004940,fairweather,web,6.8,USD,pending,67,1
+T004941,belltower,ios,14930.0,USD,settled,51,1
+T004942,eastgate,android,35.16,USD,settled,,0 d
+T004943,eastgate,web,32.56,USD,pending,57,0
+T004944,dunmore,web,35.54,USD,settled,63,3
+T004945,belltower,web,848.0,USD,settled,29,0 d
+T004946,greenline,ios,38.09,USD,settled,44,0
+T004947,greenline,web,55.57,USD,pending,73,0
+T004948,greenline,ios,11.59,USD,settled,25,0
+T004949,acme-parts,android,13.99,USD,settled,,3
+T004950,dunmore,ios,31.78,USD,pending,42,1 d
+T004951,belltower,android,1943.0,USD,settled,,0
+T004952,greenline,ios,41.92,USD,settled,49,0
+T004953,dunmore,android,49.09,USD,settled,,1
+T004954,harborview,android,58.09,USD,settled,41,0 d
+T004955,eastgate,ios,36.67,USD,refunded,71,1
+T004956,fairweather,web,184.04,USD,settled,75,1
+T004957,eastgate,ios,15.45,USD,pending,29,0 d
+T004958,cascade-foods,android,11.4,USD,settled,,1
+T004959,dunmore,web,23.16,USD,settled,48,1 d
+T004960,belltower,web,4068.0,USD,settled,29,0
+T004961,fairweather,web,19.06,USD,pending,45,0
+T004962,northwind,web,18.42,USD,settled,47,0
+T004963,greenline,ios,13.85,USD,settled,76,0 d
+T004964,eastgate,web,12.27,USD,settled,19,1
+T004965,northwind,ios,15.64,USD,settled,36,3
+T004966,northwind,ios,10.47,USD,settled,71,0
+T004967,harborview,web,17.53,USD,pending,57,0
+T004968,northwind,web,25.7,USD,settled,67,0
+T004969,fairweather,web,60.52,USD,settled,70,0 d
+T004970,greenline,ios,35.94,USD,settled,76,0
+T004971,acme-parts,web,73.73,USD,settled,48,0
+T004972,greenline,phone,15.22,USD,settled,19,0
+T004973,belltower,ios,11856.0,USD,settled,74,0
+T004974,dunmore,web,70.23,USD,settled,45,0
+T004975,dunmore,web,11.5,USD,settled,67,1
+T004976,fairweather,android,159.65,USD,settled,,0 d
+T004977,dunmore,web,23.09,USD,settled,51,0 d
+T004978,acme-parts,ios,41.72,USD,settled,27,0 d
+T004979,dunmore,android,17.97,USD,pending,,0
+T004980,dunmore,ios,52.71,USD,settled,69,0
+T004981,fairweather,android,27.33,USD,settled,20,0
+T004982,greenline,ios,8.01,USD,settled,39,0 d
+T004983,belltower,ios,4456.0,USD,settled,78,2
+T004984,fairweather,ios,16.78,USD,pending,31,1
+T004985,belltower,ios,1528.0,USD,settled,28,1
+T004986,harborview,ios,36.94,USD,settled,32,1
+T004987,northwind,android,48.73,USD,settled,,0
+T004988,cascade-foods,phone,13.91,USD,settled,47,0
+T004989,dunmore,ios,51.41,USD,settled,78,1
+T004990,belltower,web,3287.0,USD,settled,24,0
+T004991,greenline,web,61.09,USD,settled,61,0
+T004992,acme-parts,web,18.71,USD,settled,78,0
+T004993,fairweather,ios,11.12,USD,settled,41,3 d
+T004994,acme-parts,ios,38.79,USD,pending,22,1
+T004995,fairweather,android,49.46,USD,settled,66,0
+T004996,greenline,ios,11.53,USD,settled,21,0
+T004997,harborview,ios,2189.0,USD,settled,31,2
+T004998,fairweather,android,167.09,USD,settled,,2 d
+T004999,belltower,web,2952.0,USD,pending,21,0
+T005000,belltower,ios,2592.0,USD,pending,65,0
+T005001,northwind,web,41.05,USD,settled,,1
+T005002,northwind,android,21.87,USD,settled,,0
+T005003,fairweather,web,28.88,USD,settled,28,1 d
+T005004,dunmore,ios,4.27,USD,settled,21,0 d
+T005005,harborview,android,366.8,USD,settled,,1
+T005006,acme-parts,ios,32.32,USD,settled,21,0
+T005007,eastgate,web,32.16,USD,pending,23,0
+T005008,cascade-foods,android,34.47,USD,pending,,1
+T005009,cascade-foods,android,20.53,USD,settled,,0
+T005010,eastgate,ios,21.87,USD,settled,44,0
+T005011,fairweather,web,38.96,USD,settled,67,2 d
+T005012,northwind,web,10.61,USD,settled,35,1
+T005013,harborview,web,9972.0,USD,settled,52,0
+T005014,belltower,android,1620.0,USD,settled,,1
+T005015,eastgate,android,36.97,USD,settled,,0 d
+T005016,greenline,web,8.96,USD,settled,41,1 d
+T005017,greenline,web,4.51,USD,settled,47,1
+T005018,northwind,web,16.95,USD,settled,39,0
+T005019,harborview,android,21.35,USD,settled,,1 d
+T005020,fairweather,phone,17.76,USD,settled,59,0 d
+T005021,acme-parts,android,25.94,USD,settled,,0 d
+T005022,eastgate,web,12.12,USD,settled,31,0 d
+T005023,greenline,web,18.54,USD,settled,58,1
+T005024,greenline,android,41.29,USD,chargeback,,1
+T005025,northwind,web,40.84,USD,settled,58,3 d
+T005026,eastgate,web,13.35,USD,settled,78,0
+T005027,eastgate,ios,18.01,USD,settled,77,2 d
+T005028,acme-parts,ios,63.34,USD,settled,19,1 d
+T005029,fairweather,web,80.42,USD,settled,47,0
+T005030,acme-parts,web,92.44,USD,chargeback,75,1
+T005031,acme-parts,android,13.51,USD,settled,,0
+T005032,eastgate,ios,58.37,USD,settled,65,0 d
+T005033,belltower,android,1467.0,USD,settled,76,0 d
+T005034,fairweather,ios,235.65,USD,settled,,3
+T005035,eastgate,web,19.82,USD,settled,29,1
+T005036,belltower,web,7239.0,USD,settled,59,2
+T005037,greenline,web,64.06,USD,pending,57,1
+T005038,belltower,web,2672.0,USD,settled,32,0 d
+T005039,eastgate,ios,68.26,USD,settled,50,0 d
+T005040,acme-parts,ios,30.63,USD,settled,27,0
+T005041,belltower,web,10949.0,USD,settled,18,0
+T005042,greenline,phone,33.54,USD,settled,32,2
+T005043,dunmore,ios,23.03,USD,pending,21,0
+T005044,dunmore,phone,32.78,USD,settled,76,3 d
+T005045,greenline,android,11.67,USD,settled,,0
+T005046,greenline,web,44.68,USD,settled,75,0
+T005047,cascade-foods,web,74.57,USD,pending,71,2
+T005048,cascade-foods,web,16.76,USD,settled,61,1
+T005049,acme-parts,ios,79.79,USD,settled,58,1
+T005050,acme-parts,android,5.59,USD,settled,30,0 d
+T005051,dunmore,web,19.11,USD,settled,74,2
+T005052,northwind,web,15.51,USD,settled,61,0
+T005053,cascade-foods,android,14.94,USD,settled,41,0 d
+T005054,fairweather,ios,33.67,USD,settled,55,0
+T005055,eastgate,ios,20.52,USD,settled,28,0
+T005056,acme-parts,web,62.83,USD,settled,35,1
+T005057,dunmore,web,31.49,USD,settled,49,0 d
+T005058,acme-parts,ios,49.14,USD,settled,48,1
+T005059,northwind,android,25.71,USD,settled,,0
+T005060,eastgate,web,111.02,USD,settled,34,0 d
+T005061,cascade-foods,ios,57.32,USD,settled,62,0 d
+T005062,fairweather,ios,10.88,USD,settled,48,2
+T005063,dunmore,web,11.78,USD,chargeback,42,0 d
+T005064,acme-parts,web,48.06,USD,settled,35,0 d
+T005065,belltower,web,5826.0,USD,settled,66,0
+T005066,northwind,android,18.24,USD,settled,,0
+T005067,acme-parts,web,30.13,USD,settled,70,0
+T005068,dunmore,android,160.29,USD,settled,,0
+T005069,belltower,android,916.0,USD,settled,,1 d
+T005070,cascade-foods,ios,25.15,USD,settled,25,0
+T005071,acme-parts,android,66.14,USD,settled,,0 d
+T005072,northwind,android,10.71,USD,settled,,0 d
+T005073,dunmore,ios,6.67,USD,settled,65,1
+T005074,greenline,web,38.46,USD,settled,52,0 d
+T005075,belltower,ios,4808.0,USD,settled,49,0
+T005076,greenline,phone,20.35,USD,pending,72,1
+T005077,belltower,android,5265.0,USD,settled,29,0
+T005078,dunmore,web,53.06,USD,settled,78,0 d
+T005079,fairweather,ios,35.79,USD,settled,21,0
+T005080,fairweather,web,9.01,USD,pending,56,1
+T005081,cascade-foods,android,26.48,USD,settled,38,1 d
+T005082,acme-parts,web,6.94,USD,settled,23,3
+T005083,northwind,android,45.43,USD,settled,,1
+T005084,fairweather,android,44.46,USD,settled,,0 d
+T005085,northwind,ios,27.19,USD,refunded,33,1 d
+T005086,harborview,android,27.26,USD,settled,,0 d
+T005087,eastgate,web,77.96,USD,settled,44,0
+T005088,acme-parts,ios,139.8,USD,settled,46,0 d
+T005089,northwind,ios,65.84,USD,settled,54,2
+T005090,eastgate,ios,22.44,USD,settled,68,3 d
+T005091,fairweather,web,53.69,USD,settled,30,1 d
+T005092,dunmore,web,120.27,USD,settled,45,2
+T005093,cascade-foods,android,37.79,USD,settled,,0 d
+T005094,fairweather,android,37.77,USD,settled,,1
+T005095,fairweather,ios,21.89,USD,settled,31,1
+T005096,dunmore,web,11.74,USD,settled,19,0
+T005097,belltower,web,1690.0,USD,settled,77,3 d
+T005098,greenline,android,20.75,USD,settled,,3 d
+T005099,belltower,ios,1149.0,USD,settled,65,0
+T005100,fairweather,web,40.94,USD,settled,60,0
+T005101,acme-parts,android,12.21,USD,pending,,1
+T005102,fairweather,android,47.14,USD,settled,,0 d
+T005103,acme-parts,web,6.87,USD,settled,69,1
+T005104,northwind,ios,65.17,USD,settled,18,0
+T005105,harborview,web,181.0,USD,settled,60,1 d
+T005106,northwind,web,63.34,USD,settled,72,1
+T005107,fairweather,web,37.14,USD,settled,77,1
+T005108,dunmore,web,45.11,USD,pending,63,1 d
+T005109,cascade-foods,web,11.57,USD,chargeback,31,1
+T005110,greenline,ios,18.47,USD,settled,45,0
+T005111,fairweather,web,40.16,USD,settled,76,0
+T005112,eastgate,web,61.33,USD,settled,40,0
+T005113,belltower,phone,5218.0,USD,settled,66,0 d
+T005114,greenline,ios,6.42,USD,settled,76,0
+T005115,harborview,android,30.09,USD,settled,,0 d
+T005116,northwind,web,202.62,USD,settled,40,0
+T005117,belltower,ios,4156.0,USD,pending,65,1
+T005118,northwind,web,185.98,USD,refunded,45,0 d
+T005119,cascade-foods,ios,61.84,USD,settled,46,2
+T005120,belltower,web,1594.0,USD,pending,40,0
+T005121,dunmore,android,119.91,USD,settled,19,0
+T005122,acme-parts,web,38.92,USD,settled,49,3 d
+T005123,cascade-foods,ios,11.69,USD,settled,29,0 d
+T005124,cascade-foods,ios,63.24,USD,settled,77,0
+T005125,northwind,web,98.2,USD,settled,34,1
+T005126,eastgate,web,24.66,USD,settled,44,1
+T005127,northwind,android,60.97,USD,settled,,0
+T005128,eastgate,ios,38.85,USD,settled,20,0
+T005129,cascade-foods,android,21.0,USD,settled,45,0 d
+T005130,eastgate,ios,29.68,USD,pending,50,1
+T005131,eastgate,web,295.22,USD,settled,66,0
+T005132,eastgate,android,13.0,USD,refunded,,0
+T005133,fairweather,ios,116.2,USD,settled,78,0 d
+T005134,fairweather,ios,32.65,USD,settled,19,0 d
+T005135,harborview,web,26.66,USD,settled,59,1
+T005136,eastgate,web,11.64,USD,settled,29,1
+T005137,dunmore,ios,8.59,USD,settled,77,1 d
+T005138,cascade-foods,ios,89.84,USD,settled,63,0 d
+T005139,dunmore,android,76.7,USD,settled,,0
+T005140,fairweather,ios,190.39,USD,settled,36,0 d
+T005141,greenline,ios,25.2,USD,settled,61,0
+T005142,eastgate,web,57.51,USD,refunded,73,3 d
+T005143,fairweather,ios,41.2,USD,settled,56,1
+T005144,eastgate,web,60.08,USD,settled,30,3
+T005145,greenline,ios,78.18,USD,settled,59,0
+T005146,fairweather,web,24.37,USD,pending,26,0 d
+T005147,cascade-foods,ios,45.54,USD,settled,20,0
+T005148,eastgate,web,81.78,USD,settled,22,0
+T005149,cascade-foods,web,9.97,USD,settled,23,2
+T005150,eastgate,web,27.33,USD,settled,73,0
+T005151,fairweather,web,19.37,USD,settled,36,0
+T005152,fairweather,web,34.96,USD,settled,23,2
+T005153,greenline,ios,4.29,USD,settled,27,0
+T005154,fairweather,android,112.85,USD,settled,,2
+T005155,acme-parts,ios,25.3,USD,pending,34,0 d
+T005156,cascade-foods,web,21.89,USD,settled,30,0 d
+T005157,belltower,web,2518.0,USD,settled,18,0
+T005158,greenline,web,21.46,USD,settled,31,1
+T005159,dunmore,ios,70.97,USD,settled,19,0
+T005160,acme-parts,android,48.76,USD,settled,40,2
+T005161,eastgate,ios,25.8,USD,settled,73,0
+T005162,fairweather,phone,67.08,USD,settled,57,1
+T005163,greenline,web,15.59,USD,settled,63,0 d
+T005164,cascade-foods,android,40.67,USD,settled,,1
+T005165,fairweather,ios,41.94,USD,settled,58,0
+T005166,cascade-foods,phone,101.4,USD,settled,43,1
+T005167,greenline,web,21.07,USD,settled,62,1
+T005168,belltower,ios,5408.0,USD,settled,49,1
+T005169,dunmore,ios,51.28,USD,settled,58,0 d
+T005170,belltower,ios,3312.0,USD,settled,35,0
+T005171,dunmore,web,38.11,USD,settled,32,1 d
+T005172,fairweather,web,73.36,USD,settled,33,1
+T005173,greenline,web,33.59,USD,pending,66,0 d
+T005174,northwind,android,74.34,USD,settled,68,0
+T005175,eastgate,web,93.12,USD,settled,23,1
+T005176,eastgate,android,25.33,USD,settled,,0
+T005177,northwind,android,17.79,USD,settled,,0
+T005178,greenline,web,48.17,USD,settled,68,0
+T005179,dunmore,ios,44.41,USD,settled,45,0
+T005180,belltower,web,2451.0,USD,settled,50,1
+T005181,cascade-foods,ios,18.35,USD,settled,51,0 d
+T005182,fairweather,web,24.38,USD,settled,73,1
+T005183,acme-parts,web,37.41,USD,settled,35,0
+T005184,cascade-foods,web,47.73,USD,settled,57,1
+T005185,fairweather,web,26.85,USD,settled,73,0 d
+T005186,dunmore,web,11.26,USD,settled,54,1 d
+T005187,dunmore,android,23.95,USD,settled,,1
+T005188,dunmore,web,21.83,USD,settled,39,1
+T005189,belltower,ios,3655.0,USD,settled,60,2 d
+T005190,acme-parts,ios,36.34,USD,settled,77,0
+T005191,northwind,ios,66.32,USD,settled,23,0
+T005192,acme-parts,web,7.52,USD,settled,45,0 d
+T005193,greenline,web,5.9,USD,settled,66,0
+T005194,eastgate,ios,61.39,USD,settled,39,1 d
+T005195,acme-parts,ios,29.67,USD,settled,75,0 d
+T005196,belltower,ios,10388.0,USD,settled,43,0 d
+T005197,belltower,ios,3262.0,USD,settled,73,0 d
+T005198,cascade-foods,ios,27.39,USD,chargeback,28,3
+T005199,cascade-foods,android,17.15,USD,settled,40,2
+T005200,dunmore,web,53.34,USD,pending,36,1
+T005201,greenline,web,60.53,USD,settled,73,1 d
+T005202,greenline,web,6.63,USD,settled,47,0
+T005203,cascade-foods,android,129.04,USD,pending,,0
+T005204,harborview,ios,119.02,USD,settled,59,1
+T005205,fairweather,web,127.83,USD,settled,67,0
+T005206,northwind,ios,17.15,USD,settled,48,0
+T005207,northwind,ios,45.31,USD,settled,58,0 d
+T005208,northwind,ios,21.74,USD,settled,60,2
+T005209,belltower,web,1290.0,USD,settled,43,1 d
+T005210,cascade-foods,web,36.67,USD,settled,38,3
+T005211,eastgate,web,34.18,USD,refunded,73,2
+T005212,dunmore,web,26.86,USD,pending,59,1 d
+T005213,fairweather,ios,50.16,USD,settled,40,1 d
+T005214,fairweather,ios,19.49,USD,pending,41,0 d
+T005215,eastgate,ios,72.69,USD,settled,,2
+T005216,fairweather,web,41.13,USD,settled,21,0
+T005217,belltower,web,4742.0,USD,settled,54,1
+T005218,cascade-foods,web,34.6,USD,settled,22,0 d
+T005219,northwind,android,4.06,USD,settled,,0 d
+T005220,belltower,ios,7654.0,USD,settled,34,0
+T005221,greenline,ios,15.27,USD,pending,33,0
+T005222,fairweather,web,97.09,USD,settled,56,0
+T005223,northwind,web,23.88,USD,pending,29,0
+T005224,cascade-foods,web,20.34,USD,settled,77,0
+T005225,dunmore,android,16.47,USD,settled,,0 d
+T005226,greenline,android,25.19,USD,settled,37,0
+T005227,eastgate,ios,32.85,USD,settled,24,1 d
+T005228,acme-parts,web,17.6,USD,settled,77,2 d
+T005229,northwind,ios,12.6,USD,settled,56,3
+T005230,eastgate,ios,50.76,USD,settled,40,0 d
+T005231,fairweather,ios,81.19,USD,pending,50,0 d
+T005232,harborview,web,139.39,USD,pending,24,1
+T005233,northwind,android,49.46,USD,settled,,0
+T005234,cascade-foods,android,27.99,USD,pending,,1
+T005235,dunmore,android,14.85,USD,settled,27,1
+T005236,cascade-foods,web,188.97,USD,settled,61,1
+T005237,eastgate,android,17.98,USD,settled,,0
+T005238,belltower,android,980.0,USD,pending,,0 d
+T005239,cascade-foods,web,18.1,USD,settled,66,0
+T005240,greenline,android,16.35,USD,chargeback,,0
+T005241,harborview,web,30.49,USD,settled,77,1 d
+T005242,cascade-foods,android,14.49,USD,settled,,0
+T005243,acme-parts,web,95.73,USD,settled,42,1
+T005244,belltower,web,1128.0,USD,pending,37,0
+T005245,dunmore,android,25.53,USD,settled,,2
+T005246,northwind,ios,18.21,USD,settled,60,1
+T005247,eastgate,ios,14.74,USD,settled,70,0
+T005248,harborview,web,41.88,USD,settled,27,0
+T005249,eastgate,ios,17.64,USD,settled,70,1 d
+T005250,acme-parts,android,26.97,USD,settled,,1 d
+T005251,greenline,android,45.19,USD,settled,,0 d
+T005252,greenline,web,80.65,USD,settled,46,1
+T005253,northwind,web,25.86,USD,settled,26,1
+T005254,fairweather,android,29.58,USD,settled,,1
+T005255,fairweather,ios,23.48,USD,settled,68,1
+T005256,acme-parts,android,42.19,USD,pending,53,0
+T005257,cascade-foods,android,25.63,USD,settled,,1
+T005258,acme-parts,web,15.74,USD,pending,31,0 d
+T005259,harborview,ios,5.51,USD,settled,21,0 d
+T005260,dunmore,web,38.01,USD,settled,76,1
+T005261,acme-parts,phone,190.88,USD,settled,60,0
+T005262,eastgate,web,17.06,USD,settled,73,1 d
+T005263,eastgate,android,32.32,USD,refunded,,0
+T005264,acme-parts,ios,50.52,USD,settled,18,1
+T005265,acme-parts,ios,31.56,USD,settled,74,0
+T005266,belltower,ios,5593.0,USD,settled,31,0
+T005267,harborview,web,25.72,USD,settled,65,1
+T005268,acme-parts,ios,31.43,USD,settled,59,0 d
+T005269,dunmore,ios,33.26,USD,settled,37,0
+T005270,cascade-foods,web,63.42,USD,settled,49,0
+T005271,cascade-foods,web,23.47,USD,settled,37,0
+T005272,acme-parts,android,128.67,USD,settled,,2
+T005273,eastgate,ios,58.03,USD,pending,72,1 d
+T005274,northwind,android,15.17,USD,settled,,1 d
+T005275,acme-parts,android,40.21,USD,pending,,1
+T005276,cascade-foods,phone,18.57,USD,settled,62,0
+T005277,acme-parts,ios,59.65,USD,settled,48,0 d
+T005278,cascade-foods,ios,6.54,USD,settled,69,0
+T005279,belltower,web,3479.0,USD,settled,43,0 d
+T005280,cascade-foods,ios,32.49,USD,settled,64,2
+T005281,acme-parts,web,22.29,USD,pending,35,1 d
+T005282,belltower,ios,2375.0,USD,settled,29,3
+T005283,eastgate,ios,41.62,USD,settled,33,0
+T005284,dunmore,ios,54.91,USD,settled,52,1
+T005285,belltower,web,6620.0,USD,settled,75,3 d
+T005286,cascade-foods,web,51.62,USD,settled,65,0
+T005287,dunmore,ios,31.2,USD,settled,78,0
+T005288,belltower,web,8864.0,USD,settled,56,0
+T005289,greenline,web,154.96,USD,settled,67,2
+T005290,eastgate,android,29.92,USD,settled,,0 d
+T005291,northwind,web,15.83,USD,settled,23,0
+T005292,dunmore,web,6.52,USD,pending,51,0 d
+T005293,cascade-foods,android,47.19,USD,settled,,0
+T005294,northwind,ios,65.13,USD,settled,33,0
+T005295,greenline,web,45.2,USD,settled,28,0
+T005296,belltower,web,1850.0,USD,settled,21,0
+T005297,dunmore,ios,15.09,USD,pending,54,1 d
+T005298,dunmore,ios,75.42,USD,refunded,54,1
+T005299,fairweather,ios,18.3,USD,settled,30,0 d
+T005300,belltower,web,4238.0,USD,settled,38,0
+T005301,dunmore,web,52.16,USD,settled,58,0
+T005302,cascade-foods,ios,27.16,USD,settled,30,0
+T005303,cascade-foods,android,25.13,USD,settled,,0
+T005304,acme-parts,ios,11.81,USD,settled,44,2
+T005305,belltower,web,2453.0,USD,settled,72,0
+T005306,northwind,web,18.8,USD,settled,47,0
+T005307,acme-parts,android,150.81,USD,settled,,1
+T005308,fairweather,ios,13.55,USD,pending,21,0 d
+T005309,eastgate,android,17.69,USD,pending,,0 d
+T005310,eastgate,ios,38.13,USD,settled,20,1
+T005311,belltower,web,2898.0,USD,pending,72,1
+T005312,cascade-foods,phone,25.8,USD,settled,29,0 d
+T005313,acme-parts,ios,33.89,USD,settled,50,2 d
+T005314,cascade-foods,web,48.24,USD,chargeback,25,0
+T005315,cascade-foods,ios,16.15,USD,settled,46,1 d
+T005316,dunmore,web,18.57,USD,settled,39,3
+T005317,acme-parts,ios,22.06,USD,settled,61,0
+T005318,northwind,web,134.13,USD,settled,72,0
+T005319,northwind,ios,11.5,USD,settled,48,3 d
+T005320,cascade-foods,ios,25.94,USD,settled,61,0
+T005321,cascade-foods,web,36.02,USD,settled,40,1
+T005322,belltower,ios,5713.0,USD,settled,56,1
+T005323,northwind,android,90.81,USD,settled,,0 d
+T005324,belltower,web,3040.0,USD,settled,69,0
+T005325,fairweather,ios,16.58,USD,settled,66,1
+T005326,northwind,web,48.69,USD,settled,44,1
+T005327,eastgate,ios,66.15,USD,settled,75,0 d
+T005328,fairweather,web,18.16,USD,settled,76,1 d
+T005329,fairweather,ios,44.1,USD,settled,71,0
+T005330,greenline,web,18.84,USD,pending,,2
+T005331,fairweather,ios,36.41,USD,settled,38,0
+T005332,dunmore,android,15.65,USD,pending,,1
+T005333,cascade-foods,web,24.28,USD,settled,52,0 d
+T005334,acme-parts,web,17.48,USD,settled,64,0
+T005335,belltower,web,1088.0,USD,settled,43,0 d
+T005336,cascade-foods,web,34.37,USD,settled,48,0
+T005337,greenline,web,7.62,USD,settled,51,0
+T005338,cascade-foods,web,73.76,USD,settled,72,0 d
+T005339,cascade-foods,ios,10.24,USD,settled,48,0
+T005340,fairweather,web,117.05,USD,settled,36,0
+T005341,belltower,ios,12037.0,USD,settled,53,0
+T005342,fairweather,android,11.69,USD,settled,,0
+T005343,harborview,android,30.47,USD,settled,,0
+T005344,acme-parts,web,12.61,USD,pending,46,1
+T005345,acme-parts,ios,137.36,USD,settled,50,0 d
+T005346,northwind,ios,26.04,USD,settled,32,0
+T005347,eastgate,android,15.47,USD,settled,,0
+T005348,dunmore,web,13.54,USD,settled,52,1
+T005349,harborview,ios,32.59,USD,settled,59,1 d
+T005350,fairweather,web,46.65,USD,settled,76,0
+T005351,fairweather,ios,16.06,USD,settled,26,0
+T005352,belltower,ios,1335.0,USD,settled,30,0
+T005353,greenline,web,34.28,USD,settled,54,1
+T005354,fairweather,ios,42.3,USD,settled,19,1
+T005355,northwind,ios,16.52,USD,settled,77,1 d
+T005356,fairweather,ios,14.81,USD,settled,34,0 d
+T005357,eastgate,ios,30.46,USD,settled,52,0 d
+T005358,cascade-foods,web,13.31,USD,settled,22,0 d
+T005359,belltower,web,1931.0,USD,settled,68,0
+T005360,eastgate,web,13.68,USD,settled,31,1 d
+T005361,cascade-foods,android,28.85,USD,refunded,,0
+T005362,acme-parts,ios,31.55,USD,settled,49,1 d
+T005363,northwind,android,30.7,USD,settled,24,1 d
+T005364,fairweather,web,61.23,USD,settled,26,0
+T005365,fairweather,ios,34.46,USD,settled,51,0
+T005366,greenline,ios,113.5,USD,refunded,68,1 d
+T005367,eastgate,web,32.55,USD,settled,68,0
+T005368,harborview,web,54.04,USD,settled,58,1
+T005369,northwind,ios,6.63,USD,settled,24,0
+T005370,northwind,ios,38.61,USD,settled,55,0 d
+T005371,cascade-foods,ios,20.87,USD,settled,52,1
+T005372,acme-parts,android,11.36,USD,settled,,1
+T005373,eastgate,android,70.16,USD,settled,40,0
+T005374,eastgate,web,10.68,USD,settled,45,1
+T005375,acme-parts,web,162.65,USD,pending,56,2 d
+T005376,acme-parts,ios,15.51,USD,settled,78,1
+T005377,dunmore,ios,39.58,USD,settled,59,1
+T005378,dunmore,ios,43.84,USD,settled,54,0
+T005379,acme-parts,android,27.29,USD,settled,,2
+T005380,fairweather,android,62.35,USD,settled,,1 d
+T005381,fairweather,web,32.69,USD,settled,49,1
+T005382,belltower,web,1927.0,USD,settled,57,0
+T005383,belltower,web,6789.0,USD,settled,50,0
+T005384,harborview,ios,8.62,USD,settled,63,0
+T005385,belltower,android,7920.0,USD,settled,,0
+T005386,fairweather,ios,8.96,USD,pending,43,0
+T005387,fairweather,ios,12.53,USD,settled,23,0
+T005388,dunmore,web,16.55,USD,pending,66,1
+T005389,dunmore,web,13.83,USD,settled,52,0
+T005390,northwind,web,40.65,USD,settled,18,0 d
+T005391,dunmore,ios,171.83,USD,settled,41,0 d
+T005392,belltower,ios,908.0,USD,settled,66,0 d
+T005393,cascade-foods,web,29.56,USD,settled,28,0
+T005394,eastgate,ios,35.49,USD,settled,69,3
+T005395,eastgate,ios,27.11,USD,settled,64,1
+T005396,cascade-foods,ios,45.66,USD,settled,64,1
+T005397,cascade-foods,android,41.18,USD,pending,,0 d
+T005398,belltower,web,2326.0,USD,settled,50,1
+T005399,eastgate,phone,22.12,USD,settled,65,1
+T005400,dunmore,ios,16.17,USD,settled,43,1
+T005401,northwind,android,35.72,USD,settled,,0
+T005402,belltower,android,3855.0,USD,settled,72,0
+T005403,dunmore,ios,37.98,USD,settled,63,0 d
+T005404,fairweather,web,24.59,USD,settled,40,0
+T005405,harborview,ios,21.33,USD,pending,37,3
+T005406,eastgate,android,86.65,USD,settled,33,1
+T005407,acme-parts,android,8.79,USD,settled,,0
+T005408,greenline,web,17.06,USD,settled,37,0
+T005409,eastgate,web,19.73,USD,settled,35,0
+T005410,northwind,web,34.56,USD,settled,44,0 d
+T005411,acme-parts,phone,19.2,USD,settled,69,0
+T005412,dunmore,ios,3.48,USD,settled,28,0
+T005413,northwind,ios,108.61,USD,settled,76,1
+T005414,belltower,android,1975.0,USD,settled,,1 d
+T005415,dunmore,android,29.48,USD,settled,74,0 d
+T005416,northwind,web,13.75,USD,settled,33,1
+T005417,cascade-foods,web,52.34,USD,settled,32,0
+T005418,cascade-foods,ios,33.82,USD,settled,59,0 d
+T005419,cascade-foods,android,122.17,USD,settled,71,0
+T005420,greenline,web,8.17,USD,refunded,34,0
+T005421,acme-parts,android,16.78,USD,chargeback,38,0
+T005422,greenline,phone,33.88,USD,pending,37,0 d
+T005423,dunmore,phone,49.34,USD,settled,73,1 d
+T005424,belltower,ios,3265.0,USD,settled,70,0 d
+T005425,cascade-foods,ios,142.45,USD,settled,40,0 d
+T005426,dunmore,ios,210.27,USD,settled,22,0
+T005427,northwind,ios,19.51,USD,settled,19,0 d
+T005428,acme-parts,web,27.04,USD,settled,64,1
+T005429,harborview,ios,85.31,USD,pending,41,1
+T005430,greenline,ios,52.69,USD,settled,25,0
+T005431,belltower,web,6594.0,USD,settled,29,3 d
+T005432,fairweather,web,40.51,USD,settled,59,0
+T005433,fairweather,android,94.49,USD,settled,48,0
+T005434,greenline,web,21.31,USD,settled,23,0 d
+T005435,harborview,ios,20.47,USD,settled,74,1
+T005436,fairweather,web,31.43,USD,chargeback,39,0
+T005437,dunmore,web,35.96,USD,settled,32,0 d
+T005438,belltower,ios,3451.0,USD,refunded,31,1
+T005439,greenline,web,125.06,USD,settled,57,0 d
+T005440,dunmore,ios,16.84,USD,chargeback,62,0
+T005441,greenline,ios,95.59,USD,settled,70,0
+T005442,greenline,ios,22.35,USD,pending,22,0
+T005443,belltower,web,2436.0,USD,settled,37,0 d
+T005444,belltower,android,2236.0,USD,settled,,0 d
+T005445,northwind,ios,16.61,USD,settled,22,0
+T005446,belltower,ios,1351.0,USD,settled,31,0
+T005447,harborview,ios,12.96,USD,settled,18,2
+T005448,harborview,ios,16.14,USD,settled,45,1
+T005449,northwind,ios,55.76,USD,settled,41,0
+T005450,acme-parts,web,26.44,USD,settled,74,0 d
+T005451,cascade-foods,android,31.19,USD,settled,,0
+T005452,greenline,ios,29.2,USD,pending,39,1
+T005453,harborview,android,14.15,USD,settled,,1
+T005454,eastgate,ios,68.52,USD,settled,58,0
+T005455,greenline,ios,23.82,USD,settled,62,0
+T005456,northwind,ios,22.92,USD,settled,68,0
+T005457,eastgate,ios,26.53,USD,settled,74,0
+T005458,harborview,ios,5.06,USD,settled,60,0
+T005459,greenline,ios,12.04,USD,settled,40,3
+T005460,dunmore,web,19.17,USD,settled,50,1 d
+T005461,greenline,android,151.64,USD,pending,74,0
+T005462,acme-parts,ios,14.33,USD,settled,37,0
+T005463,belltower,web,2933.0,USD,pending,22,0
+T005464,cascade-foods,web,49.16,USD,refunded,61,1 d
+T005465,belltower,web,5454.0,USD,settled,32,0
+T005466,cascade-foods,android,30.14,USD,settled,,1 d
+T005467,greenline,ios,136.04,USD,pending,23,3 d
+T005468,fairweather,android,96.37,USD,settled,48,1
+T005469,northwind,android,6.94,USD,chargeback,,0
+T005470,cascade-foods,web,42.86,USD,settled,27,0 d
+T005471,fairweather,web,12.53,USD,settled,19,0
+T005472,cascade-foods,android,85.53,USD,pending,38,1
+T005473,cascade-foods,web,48.26,USD,settled,70,0 d
+T005474,belltower,ios,1018.0,USD,settled,53,1
+T005475,dunmore,ios,75.29,USD,pending,54,0
+T005476,acme-parts,ios,63.26,USD,pending,32,2 d
+T005477,northwind,ios,22.13,USD,settled,69,0 d
+T005478,acme-parts,web,76.34,USD,settled,77,0
+T005479,acme-parts,ios,28.1,USD,settled,56,1 d
+T005480,eastgate,web,57.4,USD,settled,58,0
+T005481,greenline,ios,11.98,USD,settled,77,1 d
+T005482,acme-parts,ios,8.3,USD,settled,70,1 d
+T005483,harborview,web,27.58,USD,settled,44,2 d
+T005484,dunmore,web,92.34,USD,settled,69,1
+T005485,dunmore,ios,9.09,USD,settled,74,2
+T005486,harborview,ios,28.31,USD,settled,48,0
+T005487,northwind,ios,103.03,USD,settled,65,0
+T005488,acme-parts,web,13.76,USD,settled,26,0 d
+T005489,northwind,ios,22.66,USD,settled,44,0 d
+T005490,eastgate,android,33.84,USD,settled,,0
+T005491,acme-parts,web,16.89,USD,pending,60,0
+T005492,eastgate,ios,49.6,USD,settled,49,1
+T005493,belltower,web,2586.0,USD,settled,75,0
+T005494,harborview,android,1619.0,USD,settled,,0 d
+T005495,dunmore,web,130.92,USD,settled,24,1
+T005496,greenline,ios,11.6,USD,settled,70,3
+T005497,eastgate,phone,34.51,USD,settled,24,0 d
+T005498,northwind,web,20.35,USD,settled,41,0 d
+T005499,fairweather,ios,21.6,USD,settled,72,1
+T005500,greenline,ios,4.72,USD,settled,77,0 d
+T005501,dunmore,web,25.36,USD,settled,70,2 d
+T005502,cascade-foods,web,16.95,USD,settled,41,1
+T005503,acme-parts,web,34.75,USD,settled,52,2 d
+T005504,greenline,web,29.6,USD,settled,72,0
+T005505,cascade-foods,ios,28.58,USD,settled,62,0
+T005506,greenline,web,29.63,USD,settled,19,0
+T005507,acme-parts,android,19.84,USD,settled,,1
+T005508,northwind,web,42.92,USD,settled,36,1 d
+T005509,fairweather,ios,112.28,USD,settled,55,0
+T005510,belltower,android,489.0,USD,settled,,0 d
+T005511,dunmore,web,27.47,USD,settled,43,0 d
+T005512,eastgate,web,26.41,USD,settled,30,0 d
+T005513,acme-parts,ios,13.39,USD,settled,76,1
+T005514,cascade-foods,web,14.2,USD,refunded,34,1 d
+T005515,cascade-foods,ios,9.58,USD,settled,77,1
+T005516,northwind,ios,24.55,USD,settled,72,1
+T005517,belltower,ios,4804.0,USD,settled,50,3 d
+T005518,greenline,web,15.68,USD,settled,53,2
+T005519,dunmore,web,60.51,USD,settled,30,0
+T005520,dunmore,web,76.78,USD,pending,51,1
+T005521,harborview,phone,19.08,USD,settled,34,1
+T005522,dunmore,ios,15.03,USD,settled,26,0
+T005523,fairweather,ios,46.01,USD,settled,23,0 d
+T005524,greenline,android,40.09,USD,settled,28,1
+T005525,greenline,android,52.61,USD,settled,,0
+T005526,fairweather,web,110.09,USD,settled,38,2 d
+T005527,acme-parts,android,55.31,USD,settled,,1
+T005528,cascade-foods,web,166.3,USD,settled,43,0 d
+T005529,northwind,web,39.38,USD,settled,37,1
+T005530,acme-parts,web,26.31,USD,settled,59,0
+T005531,northwind,web,9.14,USD,settled,31,1
+T005532,belltower,ios,2134.0,USD,settled,55,0
+T005533,acme-parts,web,58.18,USD,settled,67,1
+T005534,harborview,ios,22.13,USD,pending,42,0
+T005535,cascade-foods,ios,111.19,USD,settled,25,0 d
+T005536,harborview,ios,7.96,USD,settled,31,0
+T005537,cascade-foods,web,18.37,USD,settled,37,0
+T005538,dunmore,ios,9.6,USD,settled,75,2
+T005539,fairweather,web,23.05,USD,settled,76,0
+T005540,greenline,web,24.41,USD,settled,54,0
+T005541,acme-parts,web,44.81,USD,settled,21,1
+T005542,eastgate,ios,46.23,USD,settled,45,0
+T005543,northwind,ios,71.97,USD,settled,73,0
+T005544,cascade-foods,android,13.04,USD,settled,68,0
+T005545,acme-parts,web,29.45,USD,settled,27,0
+T005546,belltower,web,4819.0,USD,settled,63,0 d
+T005547,dunmore,web,54.12,USD,settled,24,1
+T005548,greenline,web,36.99,USD,settled,59,0
+T005549,eastgate,web,19.09,USD,settled,25,0
+T005550,dunmore,android,39.56,USD,settled,,1 d
+T005551,dunmore,android,20.73,USD,chargeback,,0
+T005552,cascade-foods,web,62.76,USD,settled,30,0
+T005553,fairweather,ios,29.79,USD,settled,63,0
+T005554,acme-parts,ios,17.55,USD,settled,26,2
+T005555,greenline,ios,54.69,USD,settled,23,0
+T005556,acme-parts,ios,26.45,USD,settled,58,0 d
+T005557,acme-parts,web,28.61,USD,settled,35,0
+T005558,belltower,ios,1480.0,USD,settled,27,0
+T005559,eastgate,ios,62.56,USD,settled,69,0 d
+T005560,belltower,ios,5872.0,USD,settled,47,1
+T005561,acme-parts,android,13.98,USD,settled,,1
+T005562,eastgate,ios,19.52,USD,settled,37,0
+T005563,belltower,android,2566.0,USD,pending,,0
+T005564,dunmore,web,19.44,USD,settled,66,0 d
+T005565,dunmore,ios,89.04,USD,settled,60,2
+T005566,cascade-foods,ios,23.14,USD,settled,,0 d
+T005567,eastgate,android,31.78,USD,settled,36,0
+T005568,dunmore,web,60.27,USD,settled,34,1 d
+T005569,acme-parts,android,128.68,USD,settled,,1 d
+T005570,greenline,web,65.2,USD,settled,72,0 d
+T005571,northwind,web,44.14,USD,pending,32,0
+T005572,fairweather,web,25.94,USD,settled,61,0 d
+T005573,harborview,web,34.85,USD,pending,76,0
+T005574,eastgate,web,47.54,USD,settled,44,0
+T005575,cascade-foods,android,10.76,USD,settled,,0
+T005576,acme-parts,web,34.26,USD,settled,66,1
+T005577,eastgate,phone,42.64,USD,refunded,65,2
+T005578,cascade-foods,android,39.37,USD,settled,,1
+T005579,belltower,web,1747.0,USD,settled,57,2
+T005580,eastgate,android,17.83,USD,settled,,0
+T005581,northwind,android,51.62,USD,pending,,0
+T005582,belltower,android,2003.0,USD,settled,,1 d
+T005583,belltower,web,2030.0,USD,settled,64,1
+T005584,dunmore,ios,105.19,USD,pending,26,1
+T005585,eastgate,web,94.16,USD,settled,29,1
+T005586,acme-parts,ios,35.25,USD,settled,47,2
+T005587,eastgate,ios,11.01,USD,pending,27,2
+T005588,cascade-foods,ios,119.73,USD,settled,71,0
+T005589,greenline,android,17.46,USD,refunded,,0 d
+T005590,cascade-foods,ios,56.86,USD,settled,63,0
+T005591,dunmore,ios,41.7,USD,settled,36,0 d
+T005592,northwind,web,15.44,USD,settled,46,1 d
+T005593,acme-parts,ios,11.08,USD,pending,30,0
+T005594,eastgate,android,15.85,USD,pending,,1
+T005595,greenline,web,7.3,USD,settled,67,1
+T005596,acme-parts,ios,21.44,USD,settled,72,0 d
+T005597,northwind,ios,19.84,USD,settled,75,0
+T005598,belltower,phone,4300.0,USD,settled,,3
+T005599,northwind,ios,28.16,USD,settled,31,2
+T005600,greenline,ios,54.08,USD,settled,76,0
+T005601,eastgate,web,4.21,USD,settled,61,0
+T005602,eastgate,web,31.9,USD,settled,33,0
+T005603,harborview,web,58.83,USD,settled,51,0
+T005604,northwind,android,11.94,USD,settled,65,2
+T005605,cascade-foods,web,61.71,USD,settled,38,0
+T005606,fairweather,web,14.16,USD,settled,78,1
+T005607,fairweather,web,7.13,USD,settled,47,1
+T005608,belltower,android,3726.0,USD,settled,67,0
+T005609,acme-parts,android,33.66,USD,settled,,1
+T005610,dunmore,ios,71.81,USD,settled,68,0
+T005611,dunmore,ios,25.66,USD,settled,29,1 d
+T005612,cascade-foods,web,24.55,USD,settled,29,0
+T005613,northwind,ios,16.93,USD,settled,58,1
+T005614,harborview,android,22.43,USD,settled,,2
+T005615,dunmore,web,31.04,USD,settled,29,1 d
+T005616,northwind,ios,23.11,USD,settled,77,1
+T005617,acme-parts,web,18.72,USD,settled,40,0
+T005618,northwind,ios,10.68,USD,settled,33,0
+T005619,northwind,ios,38.86,USD,settled,57,0
+T005620,belltower,web,1157.0,USD,settled,27,0
+T005621,eastgate,web,17.75,USD,settled,61,0
+T005622,acme-parts,android,12.24,USD,settled,,1
+T005623,greenline,web,10.26,USD,settled,63,1 d
+T005624,northwind,web,39.75,USD,settled,48,0
+T005625,fairweather,web,9.96,USD,settled,69,1 d
+T005626,northwind,ios,20.44,USD,settled,34,1
+T005627,cascade-foods,web,125.89,USD,settled,73,0 d
+T005628,greenline,web,9.88,USD,settled,63,1
+T005629,fairweather,web,23.88,USD,settled,75,0
+T005630,fairweather,ios,151.93,USD,settled,38,1
+T005631,eastgate,android,38.49,USD,settled,,1 d
+T005632,cascade-foods,phone,68.55,USD,pending,55,0
+T005633,acme-parts,web,24.23,USD,settled,71,1
+T005634,acme-parts,web,15.7,USD,pending,18,0
+T005635,fairweather,web,46.28,USD,settled,44,0 d
+T005636,belltower,web,1278.0,USD,settled,68,0
+T005637,acme-parts,android,45.41,USD,settled,26,1
+T005638,fairweather,android,15.77,USD,settled,,2
+T005639,greenline,ios,15.93,USD,chargeback,40,0
+T005640,cascade-foods,web,12.49,USD,settled,42,1
+T005641,cascade-foods,web,9.18,USD,settled,59,1
+T005642,cascade-foods,ios,22.93,USD,settled,27,1
+T005643,belltower,web,1962.0,USD,settled,39,0
+T005644,eastgate,web,59.74,USD,settled,,0
+T005645,dunmore,ios,13.87,USD,refunded,28,2
+T005646,fairweather,phone,32.2,USD,settled,23,1 d
+T005647,fairweather,ios,12.4,USD,pending,30,1
+T005648,fairweather,web,34.85,USD,settled,37,1
+T005649,acme-parts,ios,13.92,USD,refunded,50,1
+T005650,dunmore,ios,15.6,USD,pending,72,2
+T005651,acme-parts,web,16.95,USD,pending,59,0
+T005652,fairweather,phone,22.3,USD,pending,63,0
+T005653,acme-parts,ios,153.26,USD,pending,18,0
+T005654,belltower,ios,5765.0,USD,pending,32,0 d
+T005655,greenline,web,37.4,USD,chargeback,58,2 d
+T005656,eastgate,web,40.93,USD,settled,71,2 d
+T005657,harborview,web,38.09,USD,settled,31,1 d
+T005658,fairweather,web,80.6,USD,pending,71,1 d
+T005659,eastgate,android,77.56,USD,settled,78,2
+T005660,dunmore,web,39.52,USD,pending,74,0
+T005661,fairweather,web,17.75,USD,pending,76,0 d
+T005662,greenline,web,21.02,USD,settled,25,0
+T005663,eastgate,web,6.95,USD,settled,75,0
+T005664,eastgate,android,49.8,USD,refunded,,1 d
+T005665,greenline,android,31.67,USD,pending,,1
+T005666,acme-parts,android,66.72,USD,settled,,0 d
+T005667,greenline,ios,2.24,USD,settled,78,1
+T005668,fairweather,web,14.42,USD,settled,41,1
+T005669,belltower,web,651.0,USD,pending,50,0
+T005670,dunmore,ios,82.41,USD,settled,51,0
+T005671,acme-parts,android,104.4,USD,settled,,0
+T005672,cascade-foods,web,32.1,USD,chargeback,30,1
+T005673,greenline,web,26.39,USD,settled,46,0 d
+T005674,cascade-foods,phone,74.39,USD,chargeback,61,0 d
+T005675,northwind,web,105.64,USD,settled,37,0
+T005676,acme-parts,ios,7.99,USD,settled,58,0
+T005677,belltower,web,1482.0,USD,settled,70,0
+T005678,eastgate,ios,28.0,USD,settled,22,0
+T005679,dunmore,web,28.32,USD,settled,18,0 d
+T005680,greenline,web,35.44,USD,settled,71,0
+T005681,northwind,android,58.36,USD,pending,,3
+T005682,greenline,android,70.48,USD,settled,,3
+T005683,eastgate,web,72.36,USD,pending,67,0
+T005684,eastgate,web,48.63,USD,settled,31,2 d
+T005685,acme-parts,web,83.77,USD,settled,,2
+T005686,eastgate,android,44.94,USD,settled,,1
+T005687,greenline,ios,42.58,USD,settled,41,0
+T005688,northwind,web,48.66,USD,settled,22,2
+T005689,greenline,ios,55.62,USD,settled,64,0
+T005690,greenline,phone,49.1,USD,settled,29,1 d
+T005691,dunmore,android,16.08,USD,settled,,0
+T005692,belltower,ios,12472.0,USD,settled,34,0
+T005693,eastgate,web,43.37,USD,settled,22,3 d
+T005694,northwind,android,75.87,USD,settled,,0 d
+T005695,fairweather,web,72.06,USD,pending,77,0
+T005696,harborview,web,3333.0,USD,settled,61,0
+T005697,fairweather,android,159.28,USD,settled,,1 d
+T005698,harborview,web,2737.0,USD,pending,66,1
+T005699,greenline,web,9.79,USD,settled,77,0 d
+T005700,greenline,ios,42.12,USD,settled,37,0
+T005701,acme-parts,web,76.65,USD,settled,18,0
+T005702,northwind,ios,2.64,USD,settled,43,2
+T005703,dunmore,web,12.07,USD,settled,43,0
+T005704,acme-parts,web,33.32,USD,pending,68,0
+T005705,northwind,android,5.04,USD,pending,,0 d
+T005706,eastgate,web,30.18,USD,pending,26,0
+T005707,cascade-foods,web,11.57,USD,settled,44,1 d
+T005708,northwind,ios,107.2,USD,refunded,65,1 d
+T005709,dunmore,web,28.58,USD,settled,35,2 d
+T005710,dunmore,web,4.5,USD,settled,76,0
+T005711,belltower,web,6518.0,USD,settled,18,0
+T005712,cascade-foods,ios,13.45,USD,settled,43,0 d
+T005713,northwind,android,21.52,USD,refunded,48,1
+T005714,dunmore,android,10.48,USD,settled,,0 d
+T005715,northwind,web,14.66,USD,refunded,55,2
+T005716,northwind,web,62.63,USD,settled,55,0
+T005717,fairweather,ios,67.51,USD,settled,21,2
+T005718,cascade-foods,web,26.93,USD,settled,33,1 d
+T005719,northwind,web,31.57,USD,settled,75,0
+T005720,northwind,web,45.62,USD,settled,58,1 d
+T005721,acme-parts,ios,16.97,USD,settled,57,0 d
+T005722,eastgate,web,54.02,USD,refunded,56,0
+T005723,cascade-foods,ios,30.47,USD,settled,75,0
+T005724,fairweather,ios,72.52,USD,settled,66,1 d
+T005725,harborview,android,17.59,USD,settled,,0
+T005726,northwind,web,28.1,USD,settled,61,0
+T005727,dunmore,ios,33.92,USD,settled,72,0
+T005728,belltower,ios,1485.0,USD,settled,,0
+T005729,cascade-foods,ios,22.2,USD,settled,38,0
+T005730,belltower,ios,4852.0,USD,settled,58,0
+T005731,cascade-foods,web,91.25,USD,pending,57,0
+T005732,greenline,android,20.15,USD,settled,,1
+T005733,cascade-foods,ios,105.44,USD,settled,78,2
+T005734,fairweather,ios,14.75,USD,pending,60,0 d
+T005735,fairweather,web,47.06,USD,settled,43,1
+T005736,northwind,ios,24.97,USD,settled,63,1
+T005737,fairweather,ios,25.7,USD,settled,58,0
+T005738,acme-parts,web,54.67,USD,settled,28,0
+T005739,acme-parts,web,42.17,USD,settled,39,0
+T005740,greenline,web,23.56,USD,settled,35,2
+T005741,harborview,android,27.83,USD,settled,46,0 d
+T005742,northwind,web,20.02,USD,settled,67,0 d
+T005743,northwind,ios,17.47,USD,settled,46,1
+T005744,greenline,web,12.55,USD,settled,74,0
+T005745,eastgate,web,33.69,USD,settled,42,1
+T005746,dunmore,web,36.94,USD,settled,21,0
+T005747,acme-parts,android,32.21,USD,settled,,1
+T005748,acme-parts,ios,16.15,USD,settled,72,1 d
+T005749,northwind,web,32.18,USD,settled,74,0
+T005750,cascade-foods,ios,42.6,USD,settled,32,0
+T005751,belltower,web,2573.0,USD,refunded,59,2
+T005752,eastgate,android,39.77,USD,settled,,0
+T005753,greenline,android,115.02,USD,settled,,1 d
+T005754,greenline,android,50.57,USD,settled,,0 d
+T005755,acme-parts,ios,21.2,USD,settled,24,1
+T005756,greenline,web,72.43,USD,settled,26,1
+T005757,belltower,ios,8184.0,USD,pending,73,0 d
+T005758,belltower,ios,1138.0,USD,settled,26,0 d
+T005759,cascade-foods,ios,56.3,USD,settled,50,2
+T005760,dunmore,web,55.65,USD,settled,71,0
+T005761,greenline,android,48.97,USD,settled,,0 d
+T005762,eastgate,web,27.99,USD,settled,57,1
+T005763,dunmore,android,69.46,USD,settled,,0 d
+T005764,fairweather,web,42.23,USD,settled,54,0
+T005765,northwind,ios,58.25,USD,pending,19,1
+T005766,northwind,web,59.24,USD,settled,39,0 d
+T005767,greenline,android,43.96,USD,settled,,1
+T005768,harborview,web,39.26,USD,pending,72,0
+T005769,belltower,web,3392.0,USD,settled,,1
+T005770,fairweather,ios,34.33,USD,settled,69,0
+T005771,northwind,web,10.2,USD,settled,43,1
+T005772,greenline,ios,57.38,USD,settled,36,0
+T005773,greenline,web,53.74,USD,settled,46,0
+T005774,eastgate,web,52.42,USD,settled,73,0
+T005775,acme-parts,web,6.81,USD,settled,78,0
+T005776,eastgate,web,14.49,USD,settled,33,2
+T005777,cascade-foods,ios,11.15,USD,settled,68,0
+T005778,eastgate,android,88.55,USD,settled,,2
+T005779,cascade-foods,ios,21.35,USD,settled,51,1 d
+T005780,greenline,ios,36.55,USD,pending,64,0
+T005781,eastgate,android,36.26,USD,settled,,0
+T005782,fairweather,ios,30.12,USD,settled,19,0
+T005783,greenline,android,46.56,USD,settled,,0
+T005784,acme-parts,phone,11.96,USD,settled,56,0
+T005785,acme-parts,android,27.68,USD,settled,39,0
+T005786,fairweather,phone,27.98,USD,settled,74,0 d
+T005787,eastgate,android,54.49,USD,settled,,0 d
+T005788,cascade-foods,android,23.47,USD,settled,,0 d
+T005789,eastgate,android,15.52,USD,settled,,2
+T005790,fairweather,ios,23.57,USD,settled,61,3
+T005791,acme-parts,web,26.18,USD,settled,58,0 d
+T005792,harborview,phone,3744.0,USD,settled,50,1 d
+T005793,cascade-foods,android,115.55,USD,settled,,0
+T005794,acme-parts,web,40.41,USD,settled,63,0
+T005795,acme-parts,web,8.23,USD,settled,75,0
+T005796,northwind,web,12.09,USD,pending,29,2
+T005797,northwind,android,51.17,USD,settled,,1
+T005798,greenline,web,16.71,USD,settled,42,1
+T005799,acme-parts,android,52.7,USD,settled,52,0
+T005800,cascade-foods,web,54.81,USD,settled,61,1
+T005801,fairweather,ios,3.94,USD,settled,40,0 d
+T005802,northwind,ios,33.94,USD,pending,69,1
+T005803,cascade-foods,ios,26.96,USD,settled,23,2
+T005804,northwind,android,5.52,USD,pending,,0
+T005805,cascade-foods,web,13.21,USD,settled,74,0
+T005806,acme-parts,ios,17.56,USD,settled,20,0
+T005807,acme-parts,web,23.8,USD,settled,19,0
+T005808,belltower,android,3395.0,USD,settled,,0
+T005809,acme-parts,web,11.97,USD,settled,34,0
+T005810,greenline,android,43.99,USD,settled,,0
+T005811,greenline,ios,17.95,USD,settled,55,0 d
+T005812,dunmore,ios,76.79,USD,settled,73,1
+T005813,dunmore,web,25.82,USD,settled,54,1
+T005814,belltower,web,1620.0,USD,settled,36,0
+T005815,cascade-foods,android,136.94,USD,settled,,0
+T005816,greenline,web,27.76,USD,pending,42,0
+T005817,fairweather,android,15.45,USD,settled,,1 d
+T005818,harborview,ios,7.18,USD,settled,42,0
+T005819,cascade-foods,ios,18.7,USD,settled,45,0
+T005820,acme-parts,web,115.98,USD,pending,31,2
+T005821,eastgate,web,20.86,USD,settled,35,1 d
+T005822,cascade-foods,web,9.51,USD,settled,69,1
+T005823,dunmore,android,51.41,USD,settled,,1
+T005824,northwind,web,81.91,USD,settled,44,1
+T005825,greenline,web,15.88,USD,settled,35,0
+T005826,harborview,web,49.18,USD,pending,28,3 d
+T005827,harborview,android,4093.0,USD,pending,,0 d
+T005828,greenline,android,42.32,USD,pending,,0 d
+T005829,harborview,ios,14.27,USD,settled,59,0
+T005830,northwind,ios,170.81,USD,settled,59,0 d
+T005831,eastgate,android,5.3,USD,settled,,3
+T005832,belltower,ios,2729.0,USD,settled,66,0
+T005833,cascade-foods,android,259.37,USD,settled,,1 d
+T005834,fairweather,web,21.75,USD,settled,70,0
+T005835,belltower,android,5552.0,USD,settled,48,0
+T005836,harborview,ios,46.11,USD,settled,77,1 d
+T005837,harborview,web,1668.0,USD,settled,52,0
+T005838,northwind,ios,47.96,USD,settled,28,1
+T005839,greenline,web,72.95,USD,settled,71,1
+T005840,greenline,web,34.78,USD,settled,35,0
+T005841,acme-parts,web,13.86,USD,settled,25,3 d
+T005842,dunmore,android,27.2,USD,refunded,,0
+T005843,fairweather,web,8.63,USD,settled,65,0
+T005844,northwind,ios,39.52,USD,settled,73,0 d
+T005845,greenline,web,15.47,USD,settled,32,1 d
+T005846,cascade-foods,web,149.66,USD,settled,20,2
+T005847,fairweather,ios,17.0,USD,pending,22,0
+T005848,dunmore,ios,23.87,USD,settled,57,0
+T005849,northwind,android,12.11,USD,settled,,1 d
+T005850,acme-parts,ios,12.66,USD,settled,43,2
+T005851,cascade-foods,web,44.23,USD,settled,39,0
+T005852,northwind,web,52.09,USD,settled,55,0
+T005853,belltower,ios,4524.0,USD,settled,66,0
+T005854,eastgate,web,38.2,USD,settled,70,0 d
+T005855,harborview,phone,4012.0,USD,settled,25,1 d
+T005856,cascade-foods,web,7.26,USD,pending,37,1
+T005857,fairweather,web,26.14,USD,refunded,45,0 d
+T005858,fairweather,web,29.57,USD,settled,53,1 d
+T005859,northwind,ios,66.94,USD,settled,61,0
+T005860,acme-parts,ios,88.79,USD,settled,34,0
+T005861,fairweather,ios,37.01,USD,settled,62,1
+T005862,greenline,web,54.76,USD,settled,,1 d
+T005863,cascade-foods,web,11.41,USD,settled,35,2
+T005864,harborview,web,35.52,USD,settled,35,0
+T005865,dunmore,ios,52.55,USD,refunded,51,0
+T005866,dunmore,web,50.15,USD,settled,19,0 d
+T005867,dunmore,web,10.41,USD,chargeback,43,0 d
+T005868,harborview,web,119.33,USD,pending,62,0 d
+T005869,greenline,web,30.19,USD,settled,60,0
+T005870,cascade-foods,web,4.03,USD,settled,71,1
+T005871,fairweather,web,81.84,USD,settled,72,0
+T005872,dunmore,ios,27.79,USD,settled,68,2
+T005873,cascade-foods,phone,35.88,USD,settled,47,0
+T005874,acme-parts,android,139.23,USD,settled,77,0
+T005875,greenline,ios,35.66,USD,settled,20,0 d
+T005876,greenline,android,20.87,USD,chargeback,,0 d
+T005877,cascade-foods,web,18.17,USD,settled,78,1
+T005878,harborview,ios,1150.0,USD,chargeback,60,0 d
+T005879,northwind,web,8.93,USD,settled,63,0
+T005880,belltower,web,7952.0,USD,settled,38,0 d
+T005881,greenline,ios,63.35,USD,settled,58,0 d
+T005882,cascade-foods,ios,33.25,USD,settled,53,2 d
+T005883,cascade-foods,ios,9.82,USD,chargeback,34,0 d
+T005884,northwind,web,59.08,USD,settled,66,0
+T005885,northwind,web,38.58,USD,settled,18,1
+T005886,fairweather,ios,6.28,USD,settled,48,0
+T005887,belltower,web,6901.0,USD,pending,61,1
+T005888,harborview,ios,45.16,USD,settled,32,0 d
+T005889,fairweather,web,9.69,USD,settled,29,0
+T005890,acme-parts,ios,42.9,USD,settled,35,0 d
+T005891,greenline,web,37.55,USD,settled,54,0 d
+T005892,harborview,ios,63.47,USD,settled,55,0 d
+T005893,northwind,web,14.44,USD,settled,23,1
+T005894,greenline,web,26.11,USD,settled,35,0
+T005895,fairweather,ios,21.41,USD,pending,67,1 d
+T005896,acme-parts,web,41.04,USD,pending,77,0 d
+T005897,northwind,android,19.86,USD,settled,21,0 d
+T005898,greenline,web,14.45,USD,settled,19,1 d
+T005899,greenline,ios,37.51,USD,settled,30,1
+T005900,eastgate,web,12.65,USD,settled,21,0
+T005901,belltower,web,1182.0,USD,pending,37,0
+T005902,eastgate,ios,18.53,USD,settled,61,0
+T005903,belltower,web,3384.0,USD,settled,27,1
+T005904,cascade-foods,phone,18.12,USD,settled,27,0
+T005905,northwind,web,6.13,USD,pending,22,0
+T005906,cascade-foods,web,12.95,USD,settled,75,0 d
+T005907,dunmore,ios,26.34,USD,settled,46,1 d
+T005908,belltower,web,2236.0,USD,pending,65,0
+T005909,fairweather,android,5.78,USD,settled,,1
+T005910,cascade-foods,ios,47.39,USD,settled,24,0
+T005911,cascade-foods,android,30.72,USD,settled,,1
+T005912,eastgate,web,25.27,USD,settled,51,0 d
+T005913,cascade-foods,web,16.74,USD,settled,52,1
+T005914,eastgate,web,7.22,USD,settled,27,2
+T005915,greenline,ios,26.57,USD,settled,29,0
+T005916,greenline,ios,87.11,USD,settled,70,0
+T005917,cascade-foods,web,99.82,USD,settled,34,1
+T005918,dunmore,ios,47.5,USD,settled,51,0 d
+T005919,cascade-foods,ios,18.45,USD,settled,50,3
+T005920,eastgate,ios,122.14,USD,settled,54,0 d
+T005921,cascade-foods,ios,63.92,USD,settled,68,1
+T005922,fairweather,web,22.25,USD,settled,53,1 d
+T005923,greenline,android,28.35,USD,settled,,1
+T005924,northwind,ios,32.48,USD,settled,39,0
+T005925,eastgate,ios,17.9,USD,settled,63,0
+T005926,eastgate,ios,27.34,USD,settled,34,1 d
+T005927,northwind,android,34.91,USD,settled,,0
+T005928,dunmore,android,333.08,USD,settled,,0
+T005929,eastgate,ios,35.31,USD,settled,45,0
+T005930,belltower,web,6672.0,USD,settled,59,0
+T005931,acme-parts,android,231.67,USD,settled,,0 d
+T005932,cascade-foods,android,21.97,USD,settled,,0 d
+T005933,cascade-foods,ios,14.09,USD,pending,40,0 d
+T005934,dunmore,ios,56.28,USD,settled,60,2 d
+T005935,eastgate,web,9.22,USD,settled,42,0
+T005936,greenline,ios,48.64,USD,settled,34,0
+T005937,harborview,ios,52.07,USD,settled,18,0
+T005938,eastgate,ios,62.24,USD,settled,43,2
+T005939,fairweather,web,6.19,USD,settled,,1 d
+T005940,eastgate,web,13.22,USD,settled,48,0 d
+T005941,cascade-foods,web,20.04,USD,settled,57,0
+T005942,eastgate,android,39.74,USD,settled,,0
+T005943,acme-parts,ios,57.18,USD,settled,39,1
+T005944,fairweather,android,28.35,USD,settled,,0
+T005945,dunmore,ios,15.71,USD,settled,57,0
+T005946,cascade-foods,ios,24.58,USD,settled,72,0
+T005947,acme-parts,ios,13.69,USD,settled,43,0 d
+T005948,cascade-foods,ios,24.4,USD,chargeback,73,1
+T005949,fairweather,web,85.34,USD,settled,67,1 d
+T005950,greenline,android,60.3,USD,settled,,0
+T005951,cascade-foods,ios,37.38,USD,settled,56,0
+T005952,northwind,android,22.87,USD,pending,,0 d
+T005953,northwind,android,6.52,USD,settled,,3
+T005954,greenline,android,22.32,USD,settled,,0 d
+T005955,cascade-foods,ios,31.67,USD,settled,53,1
+T005956,dunmore,web,30.33,USD,settled,73,1
+T005957,northwind,web,23.32,USD,settled,52,0 d
+T005958,greenline,ios,34.34,USD,settled,30,0 d
+T005959,acme-parts,web,51.14,USD,settled,19,0
+T005960,harborview,ios,127.98,USD,settled,68,0
+T005961,harborview,android,54.12,USD,pending,,1
+T005962,eastgate,ios,44.34,USD,settled,77,1
+T005963,greenline,android,41.34,USD,settled,,1
+T005964,eastgate,ios,33.88,USD,pending,53,1
+T005965,northwind,web,17.15,USD,settled,27,0
+T005966,fairweather,web,23.81,USD,settled,36,0 d
+T005967,northwind,web,198.33,USD,settled,73,2
+T005968,greenline,android,26.96,USD,settled,,0 d
+T005969,greenline,web,376.7,USD,settled,70,0 d
+T005970,cascade-foods,web,51.82,USD,chargeback,,1
+T005971,northwind,web,13.39,USD,settled,60,2 d
+T005972,greenline,ios,54.33,USD,settled,58,2
+T005973,acme-parts,web,43.22,USD,pending,,0
+T005974,eastgate,web,76.41,USD,settled,25,1
+T005975,dunmore,android,150.8,USD,settled,,1
+T005976,northwind,web,11.51,USD,settled,55,0 d
+T005977,belltower,web,7134.0,USD,settled,64,0 d
+T005978,acme-parts,ios,49.77,USD,settled,25,3
+T005979,cascade-foods,ios,89.93,USD,settled,60,0
+T005980,fairweather,ios,11.51,USD,settled,78,1
+T005981,fairweather,web,9.34,USD,settled,40,0 d
+T005982,dunmore,ios,142.46,USD,settled,42,0 d
+T005983,greenline,ios,18.79,USD,settled,47,0
+T005984,harborview,ios,16.3,USD,settled,24,1
+T005985,cascade-foods,web,7.78,USD,settled,60,1 d
+T005986,northwind,ios,21.48,USD,settled,64,0 d
+T005987,greenline,ios,12.37,USD,refunded,37,1
+T005988,northwind,web,14.28,USD,settled,23,0
+T005989,harborview,ios,120.83,USD,settled,27,1
+T005990,fairweather,ios,26.52,USD,settled,77,0
+T005991,greenline,web,82.03,USD,settled,60,1 d
+T005992,belltower,ios,705.0,USD,settled,27,0
+T005993,dunmore,android,10.69,USD,settled,,0
+T005994,eastgate,ios,18.11,USD,settled,30,1
+T005995,fairweather,ios,13.45,USD,settled,61,1
+T005996,northwind,android,33.89,USD,settled,,0 d
+T005997,northwind,ios,10.92,USD,settled,45,0
+T005998,cascade-foods,ios,10.71,USD,pending,76,2 d
+T005999,cascade-foods,web,49.49,USD,settled,58,1 d
+T006000,greenline,ios,18.27,USD,settled,26,1
+T006001,cascade-foods,android,12.44,USD,pending,,2 d
+T006002,cascade-foods,android,20.71,USD,settled,,1
+T006003,greenline,web,25.57,USD,settled,32,2
+T006004,fairweather,web,135.53,USD,settled,69,1
+T006005,eastgate,web,27.19,USD,refunded,28,0 d
+T006006,eastgate,android,30.56,USD,settled,,1
+T006007,greenline,web,11.58,USD,settled,47,0
+T006008,northwind,android,23.53,USD,settled,,3
+T006009,acme-parts,android,63.08,USD,settled,,0 d
+T006010,fairweather,web,42.57,USD,settled,35,0 d
+T006011,acme-parts,android,45.84,USD,settled,,0 d
+T006012,belltower,phone,1322.0,USD,settled,43,1
+T006013,belltower,web,5064.0,USD,settled,30,1
+T006014,fairweather,ios,43.11,USD,settled,72,0 d
+T006015,belltower,web,4937.0,USD,settled,70,1
+T006016,greenline,ios,12.42,USD,settled,78,1 d
+T006017,belltower,web,13901.0,USD,settled,18,0
+T006018,harborview,web,37.65,USD,settled,67,0
+T006019,belltower,web,6191.0,USD,settled,55,0
+T006020,greenline,web,49.12,USD,pending,74,0
+T006021,belltower,web,15916.0,USD,refunded,72,0
+T006022,belltower,ios,1225.0,USD,settled,37,0
+T006023,eastgate,android,38.8,USD,settled,,0
+T006024,cascade-foods,web,32.3,USD,settled,48,0
+T006025,acme-parts,ios,9.83,USD,settled,42,0
+T006026,acme-parts,web,11.37,USD,settled,57,0 d
+T006027,cascade-foods,ios,26.28,USD,settled,36,0
+T006028,greenline,ios,8.28,USD,settled,76,1 d
+T006029,greenline,ios,114.72,USD,refunded,64,0
+T006030,northwind,ios,22.42,USD,settled,73,0 d
+T006031,cascade-foods,android,18.02,USD,settled,,0
+T006032,eastgate,web,23.88,USD,settled,,0 d
+T006033,belltower,web,1704.0,USD,pending,76,1
+T006034,eastgate,ios,31.63,USD,settled,39,0
+T006035,harborview,web,2223.0,USD,settled,73,0
+T006036,cascade-foods,ios,12.13,USD,pending,26,0
+T006037,northwind,web,42.92,USD,settled,35,1
+T006038,northwind,web,117.58,USD,settled,67,0 d
+T006039,acme-parts,android,52.78,USD,settled,,0
+T006040,dunmore,ios,21.46,USD,settled,77,0
+T006041,cascade-foods,ios,24.11,USD,settled,21,0
+T006042,harborview,ios,81.39,USD,settled,53,0
+T006043,belltower,ios,2707.0,USD,pending,30,0
+T006044,belltower,android,10442.0,USD,settled,,0
+T006045,harborview,ios,4307.0,USD,pending,,0
+T006046,dunmore,ios,8.36,USD,settled,62,0
+T006047,cascade-foods,android,39.23,USD,settled,,0 d
+T006048,eastgate,ios,87.08,USD,settled,31,0
+T006049,dunmore,web,49.61,USD,settled,57,0
+T006050,harborview,ios,36.65,USD,refunded,23,0 d
+T006051,eastgate,ios,18.93,USD,settled,48,0
+T006052,acme-parts,ios,20.17,USD,settled,18,0
+T006053,dunmore,web,19.4,USD,settled,55,0
+T006054,greenline,ios,36.26,USD,settled,64,0 d
+T006055,cascade-foods,web,7.43,USD,pending,77,0
+T006056,eastgate,web,19.95,USD,settled,67,0
+T006057,harborview,web,32.25,USD,settled,39,1
+T006058,greenline,android,7.0,USD,settled,72,0
+T006059,belltower,android,2287.0,USD,pending,,1
+T006060,acme-parts,android,7.84,USD,pending,,0 d
+T006061,eastgate,android,28.58,USD,settled,,1 d
+T006062,dunmore,web,22.48,USD,chargeback,39,2
+T006063,belltower,ios,5210.0,USD,settled,27,0 d
+T006064,cascade-foods,android,35.27,USD,settled,,0 d
+T006065,harborview,ios,14.91,USD,settled,40,1
+T006066,cascade-foods,ios,25.21,USD,settled,20,0
+T006067,belltower,web,9163.0,USD,settled,23,1
+T006068,eastgate,android,27.36,USD,settled,49,2
+T006069,greenline,web,678.79,USD,settled,27,0
+T006070,cascade-foods,android,138.02,USD,settled,,1 d
+T006071,cascade-foods,ios,47.23,USD,refunded,67,1
+T006072,harborview,ios,29.98,USD,settled,54,2
+T006073,acme-parts,ios,23.09,USD,settled,30,0
+T006074,fairweather,android,17.14,USD,settled,,0
+T006075,greenline,ios,40.44,USD,pending,48,1
+T006076,eastgate,web,132.79,USD,pending,43,0 d
+T006077,eastgate,ios,30.3,USD,settled,31,0 d
+T006078,dunmore,ios,44.18,USD,settled,78,1
+T006079,cascade-foods,web,26.48,USD,settled,18,0
+T006080,acme-parts,web,14.94,USD,pending,53,0
+T006081,greenline,ios,100.12,USD,settled,75,2
+T006082,northwind,web,16.54,USD,pending,60,0
+T006083,greenline,web,49.15,USD,settled,27,2 d
+T006084,greenline,web,25.6,USD,pending,29,0
+T006085,greenline,ios,28.84,USD,settled,26,0
+T006086,fairweather,android,37.88,USD,settled,,0 d
+T006087,acme-parts,web,20.24,USD,pending,44,0 d
+T006088,eastgate,web,33.5,USD,settled,24,1
+T006089,northwind,ios,14.12,USD,settled,25,1
+T006090,northwind,web,76.54,USD,settled,33,0 d
+T006091,eastgate,android,15.63,USD,pending,,0
+T006092,greenline,web,54.33,USD,settled,58,0
+T006093,dunmore,ios,124.37,USD,settled,67,0 d
+T006094,eastgate,phone,70.26,USD,settled,57,0 d
+T006095,harborview,ios,115.26,USD,settled,19,0 d
+T006096,belltower,android,2377.0,USD,pending,,0
+T006097,dunmore,phone,149.99,USD,pending,61,0
+T006098,acme-parts,ios,33.91,USD,settled,33,0
+T006099,northwind,ios,8.24,USD,settled,73,0
+T006100,northwind,web,46.08,USD,chargeback,20,0 d
+T006101,eastgate,web,504.34,USD,settled,53,1 d
+T006102,cascade-foods,phone,29.47,USD,settled,46,0
+T006103,cascade-foods,android,122.9,USD,settled,,0
+T006104,greenline,ios,32.72,USD,settled,34,0
+T006105,northwind,web,89.07,USD,settled,75,1 d
+T006106,northwind,ios,77.33,USD,settled,69,0
+T006107,fairweather,android,42.02,USD,settled,,1 d
+T006108,greenline,web,63.71,USD,settled,55,0 d
+T006109,fairweather,ios,49.14,USD,settled,34,1
+T006110,eastgate,ios,14.78,USD,settled,42,0
+T006111,dunmore,web,43.81,USD,settled,60,0
+T006112,northwind,web,21.94,USD,settled,70,0
+T006113,fairweather,web,16.93,USD,settled,30,2
+T006114,fairweather,ios,21.0,USD,refunded,63,0
+T006115,greenline,ios,27.81,USD,chargeback,24,3
+T006116,acme-parts,android,51.75,USD,settled,,0 d
+T006117,eastgate,web,18.57,USD,settled,44,1
+T006118,eastgate,ios,35.98,USD,settled,55,0
+T006119,northwind,android,21.93,USD,settled,,0
+T006120,northwind,web,22.02,USD,settled,61,2
+T006121,northwind,ios,17.25,USD,settled,47,0
+T006122,dunmore,ios,283.55,USD,settled,55,0 d
+T006123,greenline,android,4.0,USD,settled,,0
+T006124,fairweather,android,32.73,USD,settled,,0 d
+T006125,northwind,web,68.91,USD,settled,74,0
+T006126,fairweather,web,6.7,USD,settled,64,0
+T006127,eastgate,web,24.24,USD,settled,58,2
+T006128,dunmore,web,46.14,USD,settled,30,2
+T006129,fairweather,web,28.26,USD,settled,31,0
+T006130,acme-parts,web,33.9,USD,pending,44,1 d
+T006131,eastgate,web,3.21,USD,settled,53,1 d
+T006132,dunmore,android,29.46,USD,settled,,3
+T006133,dunmore,web,17.68,USD,settled,66,0 d
+T006134,acme-parts,web,35.05,USD,settled,35,0
+T006135,acme-parts,ios,15.36,USD,settled,23,0
+T006136,cascade-foods,web,48.91,USD,settled,78,0 d
+T006137,harborview,android,23.86,USD,settled,,1
+T006138,fairweather,ios,27.24,USD,settled,18,3
+T006139,cascade-foods,web,32.7,USD,settled,78,0
+T006140,dunmore,ios,25.9,USD,settled,23,0
+T006141,fairweather,android,6.3,USD,settled,,1 d
+T006142,harborview,web,20.08,USD,settled,39,0
+T006143,dunmore,phone,67.53,USD,settled,34,1 d
+T006144,fairweather,ios,9.21,USD,settled,75,1 d
+T006145,acme-parts,web,58.27,USD,refunded,41,0
+T006146,dunmore,ios,14.23,USD,settled,61,0
+T006147,dunmore,web,66.6,USD,settled,21,2 d
+T006148,fairweather,ios,23.87,USD,chargeback,47,1
+T006149,acme-parts,ios,10.76,USD,settled,56,0 d
+T006150,acme-parts,web,6.06,USD,settled,19,0 d
+T006151,greenline,web,14.97,USD,settled,46,2
+T006152,harborview,ios,113.91,USD,settled,42,0
+T006153,dunmore,ios,45.04,USD,settled,54,1
+T006154,greenline,ios,14.1,USD,settled,44,0
+T006155,acme-parts,android,62.56,USD,settled,38,0
+T006156,dunmore,phone,97.65,USD,pending,69,0 d
+T006157,harborview,ios,22.84,USD,settled,26,0
+T006158,greenline,ios,15.3,USD,settled,40,1
+T006159,eastgate,ios,10.1,USD,settled,61,0 d
+T006160,dunmore,web,13.46,USD,settled,50,0
+T006161,harborview,android,14.94,USD,settled,,0
+T006162,fairweather,android,46.43,USD,settled,,0
+T006163,northwind,web,94.34,USD,settled,34,0
+T006164,fairweather,ios,11.38,USD,pending,27,2
+T006165,dunmore,ios,20.6,USD,settled,19,0 d
+T006166,cascade-foods,ios,50.4,USD,settled,63,1 d
+T006167,fairweather,web,22.89,USD,settled,77,0
+T006168,greenline,ios,12.53,USD,settled,56,0
+T006169,harborview,web,52.85,USD,settled,69,2
+T006170,eastgate,web,34.91,USD,refunded,67,2
+T006171,cascade-foods,ios,76.52,USD,settled,39,1
+T006172,cascade-foods,ios,22.58,USD,settled,68,2
+T006173,harborview,web,11.9,USD,settled,23,1
+T006174,greenline,web,33.16,USD,settled,45,0 d
+T006175,belltower,ios,3118.0,USD,settled,19,0
+T006176,acme-parts,android,36.12,USD,pending,,0 d
+T006177,cascade-foods,web,26.33,USD,refunded,52,0
+T006178,acme-parts,ios,37.86,USD,settled,52,2
+T006179,fairweather,ios,22.22,USD,settled,72,1 d
+T006180,belltower,ios,3383.0,USD,settled,57,0 d
+T006181,dunmore,web,10.93,USD,settled,75,0
+T006182,dunmore,android,40.27,USD,settled,75,0 d
+T006183,acme-parts,android,40.14,USD,settled,,0
+T006184,belltower,ios,5926.0,USD,settled,33,2 d
+T006185,eastgate,android,89.79,USD,settled,,1 d
+T006186,belltower,android,1782.0,USD,settled,,0
+T006187,harborview,web,21.36,USD,settled,47,0
+T006188,eastgate,ios,35.66,USD,pending,60,1
+T006189,belltower,web,2517.0,USD,settled,24,0
+T006190,dunmore,android,119.09,USD,settled,,1 d
+T006191,northwind,ios,33.62,USD,settled,53,2
+T006192,greenline,ios,13.56,USD,settled,74,0 d
+T006193,belltower,ios,1143.0,USD,settled,28,1
+T006194,eastgate,ios,82.39,USD,settled,20,0 d
+T006195,cascade-foods,ios,6.3,USD,settled,33,0
+T006196,dunmore,ios,27.62,USD,settled,69,1 d
+T006197,eastgate,ios,32.94,USD,settled,77,0
+T006198,eastgate,ios,19.55,USD,settled,50,2
+T006199,acme-parts,ios,27.02,USD,settled,32,2
+T006200,belltower,ios,2404.0,USD,settled,31,0
+T006201,fairweather,ios,18.65,USD,settled,68,0
+T006202,eastgate,android,20.62,USD,settled,,1 d
+T006203,cascade-foods,web,15.43,USD,settled,37,0 d
+T006204,eastgate,web,45.87,USD,settled,56,0
+T006205,acme-parts,web,44.13,USD,pending,26,0 d
+T006206,acme-parts,android,23.0,USD,settled,,1
+T006207,harborview,android,38.62,USD,settled,,0 d
+T006208,harborview,android,64.6,USD,settled,,0
+T006209,fairweather,ios,7.8,USD,settled,39,0
+T006210,cascade-foods,web,44.59,USD,pending,67,1 d
+T006211,northwind,ios,33.66,USD,settled,62,0 d
+T006212,greenline,ios,15.59,USD,pending,48,0
+T006213,acme-parts,web,57.85,USD,settled,52,0 d
+T006214,belltower,ios,4062.0,USD,settled,33,1
+T006215,belltower,web,719.0,USD,settled,31,0
+T006216,northwind,web,39.2,USD,settled,24,1 d
+T006217,dunmore,ios,7.92,USD,settled,45,1
+T006218,acme-parts,ios,20.51,USD,settled,29,3 d
+T006219,belltower,web,2964.0,USD,settled,61,0
+T006220,cascade-foods,ios,38.37,USD,settled,77,0
+T006221,acme-parts,web,4.32,USD,settled,60,0 d
+T006222,cascade-foods,ios,219.03,USD,refunded,19,0
+T006223,northwind,web,25.92,USD,settled,44,1 d
+T006224,acme-parts,ios,23.43,USD,refunded,37,0 d
+T006225,cascade-foods,web,19.25,USD,settled,52,0 d
+T006226,greenline,ios,56.2,USD,settled,62,2 d
+T006227,acme-parts,web,24.47,USD,settled,71,0 d
+T006228,acme-parts,android,59.67,USD,settled,45,1
+T006229,northwind,web,50.17,USD,settled,67,0
+T006230,belltower,ios,2878.0,USD,settled,60,0
+T006231,acme-parts,web,90.37,USD,settled,49,0 d
+T006232,fairweather,android,41.57,USD,settled,,1
+T006233,belltower,android,514.0,USD,settled,55,0
+T006234,fairweather,android,23.09,USD,refunded,,1
+T006235,eastgate,android,34.09,USD,settled,,0
+T006236,cascade-foods,ios,11.18,USD,settled,42,1
+T006237,belltower,ios,4424.0,USD,settled,28,0 d
+T006238,northwind,web,27.49,USD,refunded,72,1
+T006239,cascade-foods,phone,16.1,USD,refunded,76,1 d
+T006240,eastgate,ios,18.17,USD,settled,31,1
+T006241,fairweather,android,94.53,USD,settled,,3
+T006242,dunmore,ios,19.5,USD,settled,57,0
+T006243,greenline,android,24.35,USD,settled,,1
+T006244,fairweather,ios,64.89,USD,settled,75,1 d
+T006245,northwind,ios,81.49,USD,settled,55,0
+T006246,acme-parts,android,25.38,USD,settled,,0 d
+T006247,northwind,ios,184.72,USD,settled,46,0
+T006248,belltower,ios,5159.0,USD,settled,71,1
+T006249,eastgate,web,40.57,USD,settled,78,0
+T006250,fairweather,web,16.37,USD,settled,31,0
+T006251,acme-parts,android,7.53,USD,settled,,1 d
+T006252,cascade-foods,web,48.64,USD,settled,77,0 d
+T006253,belltower,web,876.0,USD,settled,65,1
+T006254,dunmore,web,83.79,USD,settled,58,0
+T006255,harborview,ios,13.87,USD,pending,21,0
+T006256,fairweather,ios,16.29,USD,settled,30,0
+T006257,northwind,ios,66.41,USD,settled,49,0
+T006258,cascade-foods,ios,73.25,USD,settled,71,0
+T006259,northwind,web,10.64,USD,settled,18,0
+T006260,dunmore,ios,14.17,USD,settled,65,1
+T006261,northwind,ios,3.58,USD,settled,22,0 d
+T006262,northwind,android,21.86,USD,settled,,1
+T006263,acme-parts,ios,15.09,USD,settled,42,0
+T006264,dunmore,android,52.14,USD,settled,,0
+T006265,fairweather,phone,14.34,USD,settled,74,0
+T006266,cascade-foods,ios,63.65,USD,chargeback,38,0
+T006267,dunmore,android,86.8,USD,settled,42,0
+T006268,northwind,ios,38.99,USD,refunded,72,0
+T006269,belltower,android,2083.0,USD,settled,,0
+T006270,eastgate,android,6.51,USD,settled,,1
+T006271,cascade-foods,ios,36.08,USD,settled,78,0 d
+T006272,cascade-foods,web,66.21,USD,settled,22,0 d
+T006273,cascade-foods,ios,39.37,USD,settled,21,0
+T006274,belltower,web,837.0,USD,settled,71,1
+T006275,fairweather,web,39.68,USD,pending,39,0
+T006276,dunmore,ios,78.87,USD,settled,63,0
+T006277,belltower,web,3243.0,USD,settled,61,1
+T006278,belltower,web,767.0,USD,settled,52,1 d
+T006279,cascade-foods,ios,77.11,USD,settled,75,0
+T006280,belltower,web,1593.0,USD,pending,35,0
+T006281,acme-parts,web,65.41,USD,settled,28,0
+T006282,dunmore,ios,43.18,USD,settled,70,0
+T006283,dunmore,web,14.07,USD,settled,57,1
+T006284,dunmore,ios,154.07,USD,settled,73,0
+T006285,fairweather,web,20.87,USD,settled,44,1 d
+T006286,greenline,ios,29.63,USD,settled,48,2
+T006287,acme-parts,web,40.0,USD,settled,70,1
+T006288,cascade-foods,ios,53.49,USD,settled,68,0
+T006289,dunmore,web,10.55,USD,pending,57,0
+T006290,belltower,phone,862.0,USD,settled,52,0 d
+T006291,acme-parts,ios,31.57,USD,settled,73,0
+T006292,greenline,ios,82.49,USD,settled,54,0
+T006293,fairweather,web,22.03,USD,settled,30,0
+T006294,acme-parts,android,13.39,USD,settled,,0 d
+T006295,acme-parts,ios,62.31,USD,settled,51,1
+T006296,eastgate,ios,11.03,USD,pending,67,0
+T006297,fairweather,ios,58.25,USD,settled,52,3
+T006298,fairweather,web,8.81,USD,settled,20,0
+T006299,belltower,ios,1063.0,USD,settled,39,0
+T006300,fairweather,web,17.79,USD,settled,62,0
+T006301,dunmore,ios,53.91,USD,refunded,61,0
+T006302,northwind,android,9.66,USD,settled,,0
+T006303,belltower,web,674.0,USD,settled,46,0
+T006304,northwind,android,23.97,USD,settled,,1 d
+T006305,harborview,ios,20.47,USD,settled,26,0 d
+T006306,northwind,android,6.36,USD,settled,,1 d
+T006307,harborview,web,1201.0,USD,settled,26,0
+T006308,cascade-foods,android,23.59,USD,settled,,0
+T006309,belltower,web,11102.0,USD,settled,27,2
+T006310,acme-parts,android,61.62,USD,settled,,0 d
+T006311,belltower,web,1238.0,USD,refunded,51,0
+T006312,eastgate,web,48.54,USD,settled,66,0
+T006313,belltower,android,5135.0,USD,settled,,0
+T006314,dunmore,ios,4.6,USD,settled,48,2 d
+T006315,belltower,web,15864.0,USD,settled,65,0
+T006316,belltower,web,6970.0,USD,settled,68,1
+T006317,northwind,web,13.91,USD,settled,18,2 d
+T006318,harborview,web,27.17,USD,settled,57,1
+T006319,fairweather,ios,93.24,USD,settled,47,0
+T006320,dunmore,ios,63.81,USD,pending,67,1
+T006321,greenline,ios,94.39,USD,settled,60,1 d
+T006322,northwind,web,33.67,USD,settled,54,0 d
+T006323,dunmore,android,29.89,USD,settled,,0 d
+T006324,harborview,ios,13.3,USD,settled,62,1 d
+T006325,belltower,web,769.0,USD,settled,37,0
+T006326,harborview,ios,2011.0,USD,settled,43,3
+T006327,belltower,ios,6787.0,USD,pending,65,1
+T006328,fairweather,ios,9.98,USD,pending,29,0
+T006329,dunmore,web,70.28,USD,settled,72,0
+T006330,belltower,ios,942.0,USD,settled,64,0 d
+T006331,cascade-foods,web,44.65,USD,refunded,38,0
+T006332,eastgate,android,46.07,USD,settled,,0
+T006333,greenline,web,18.87,USD,settled,65,0
+T006334,acme-parts,android,67.63,USD,settled,,0
+T006335,cascade-foods,web,17.05,USD,settled,70,1
+T006336,eastgate,ios,38.59,USD,settled,43,1 d
+T006337,greenline,ios,3.45,USD,settled,40,0 d
+T006338,cascade-foods,android,157.07,USD,chargeback,,0
+T006339,harborview,web,22.43,USD,pending,68,0 d
+T006340,belltower,android,1710.0,USD,pending,,0
+T006341,acme-parts,web,21.28,USD,settled,51,0
+T006342,cascade-foods,ios,44.89,USD,settled,36,1
+T006343,eastgate,ios,108.67,USD,settled,67,0
+T006344,greenline,web,42.5,USD,settled,56,0
+T006345,dunmore,ios,37.78,USD,settled,22,0 d
+T006346,harborview,web,70.4,USD,settled,49,0
+T006347,northwind,web,26.01,USD,settled,50,1
+T006348,belltower,ios,2408.0,USD,settled,32,0 d
+T006349,eastgate,web,25.68,USD,settled,46,1
+T006350,fairweather,android,11.65,USD,settled,,0
+T006351,eastgate,ios,28.23,USD,settled,57,0
+T006352,eastgate,ios,50.71,USD,settled,42,1
+T006353,acme-parts,android,56.24,USD,settled,,0
+T006354,acme-parts,ios,13.43,USD,settled,63,1 d
+T006355,belltower,web,1850.0,USD,settled,37,0
+T006356,northwind,android,22.73,USD,settled,,0 d
+T006357,cascade-foods,web,11.77,USD,settled,76,1 d
+T006358,northwind,ios,28.15,USD,settled,,1
+T006359,acme-parts,ios,16.56,USD,settled,49,0 d
+T006360,belltower,ios,817.0,USD,chargeback,40,0
+T006361,northwind,ios,43.92,USD,settled,24,0
+T006362,greenline,ios,24.24,USD,settled,19,0
+T006363,fairweather,ios,25.24,USD,settled,62,0
+T006364,acme-parts,android,75.57,USD,settled,57,1 d
+T006365,eastgate,web,52.46,USD,settled,39,0
+T006366,northwind,web,10.87,USD,settled,64,1
+T006367,northwind,ios,37.91,USD,pending,42,1
+T006368,acme-parts,web,20.11,USD,settled,67,1
+T006369,acme-parts,web,36.03,USD,pending,44,0
+T006370,belltower,android,1701.0,USD,settled,,0 d
+T006371,dunmore,ios,8.7,USD,pending,23,1 d
+T006372,belltower,ios,2019.0,USD,settled,45,1
+T006373,cascade-foods,ios,36.29,USD,settled,24,0 d
+T006374,fairweather,ios,43.56,USD,settled,78,2
+T006375,acme-parts,ios,4.48,USD,pending,44,2 d
+T006376,cascade-foods,ios,52.72,USD,settled,60,0
+T006377,cascade-foods,ios,26.39,USD,settled,49,0
+T006378,northwind,ios,126.43,USD,settled,54,1
+T006379,fairweather,ios,9.67,USD,chargeback,54,0
+T006380,harborview,web,34.21,USD,settled,35,0
+T006381,greenline,ios,17.02,USD,settled,36,0
+T006382,cascade-foods,web,6.05,USD,settled,30,1
+T006383,greenline,ios,27.64,USD,settled,51,1
+T006384,acme-parts,web,38.69,USD,settled,72,1
+T006385,acme-parts,phone,30.75,USD,pending,74,1 d
+T006386,harborview,ios,53.23,USD,settled,63,0 d
+T006387,acme-parts,ios,21.73,USD,settled,64,0
+T006388,dunmore,web,40.19,USD,pending,65,2
+T006389,northwind,ios,56.72,USD,settled,51,0
+T006390,harborview,web,3946.0,USD,pending,24,0
+T006391,greenline,android,71.82,USD,pending,,0
+T006392,dunmore,ios,9.52,USD,settled,26,1 d
+T006393,acme-parts,ios,34.83,USD,settled,26,0
+T006394,acme-parts,ios,25.0,USD,pending,41,2 d
+T006395,belltower,web,239.0,USD,pending,41,0
+T006396,belltower,web,4405.0,USD,settled,37,0 d
+T006397,eastgate,android,61.08,USD,settled,,0
+T006398,cascade-foods,android,49.77,USD,refunded,,0
+T006399,greenline,android,21.92,USD,settled,28,1 d
+T006400,fairweather,ios,10.24,USD,settled,53,1
+T006401,dunmore,ios,43.03,USD,settled,25,1
+T006402,northwind,web,12.6,USD,settled,67,1
+T006403,eastgate,ios,7.8,USD,settled,18,0
+T006404,fairweather,web,357.97,USD,pending,32,0 d
+T006405,northwind,ios,70.78,USD,settled,66,0
+T006406,greenline,android,5.38,USD,settled,,0
+T006407,belltower,ios,1845.0,USD,settled,20,0 d
+T006408,fairweather,web,13.39,USD,chargeback,31,1 d
+T006409,harborview,web,12717.0,USD,pending,67,0 d
+T006410,acme-parts,web,36.27,USD,settled,19,0 d
+T006411,eastgate,web,43.41,USD,settled,18,2
+T006412,northwind,web,40.09,USD,settled,58,1 d
+T006413,belltower,ios,2013.0,USD,pending,39,1 d
+T006414,fairweather,ios,18.03,USD,settled,44,0
+T006415,greenline,web,34.91,USD,settled,67,1 d
+T006416,fairweather,android,25.83,USD,settled,,1
+T006417,dunmore,ios,22.31,USD,settled,53,0 d
+T006418,greenline,web,15.16,USD,settled,73,0 d
+T006419,cascade-foods,android,25.0,USD,settled,,0
+T006420,cascade-foods,ios,16.63,USD,settled,24,0
+T006421,eastgate,android,42.66,USD,settled,,0
+T006422,fairweather,android,14.22,USD,settled,,0
+T006423,greenline,web,4.85,USD,settled,50,0
+T006424,fairweather,android,35.49,USD,settled,,0
+T006425,northwind,android,144.8,USD,settled,,0
+T006426,dunmore,ios,27.97,USD,settled,20,0
+T006427,northwind,ios,5.76,USD,settled,33,0
+T006428,greenline,web,21.37,USD,settled,59,0
+T006429,dunmore,android,30.41,USD,settled,,1
+T006430,greenline,web,124.49,USD,settled,23,0 d
+T006431,cascade-foods,android,15.94,USD,settled,,0
+T006432,fairweather,ios,32.91,USD,settled,21,2 d
+T006433,acme-parts,web,18.6,USD,pending,18,0
+T006434,fairweather,ios,52.4,USD,settled,48,0
+T006435,northwind,web,108.91,USD,settled,,0
+T006436,belltower,ios,1137.0,USD,settled,73,0
+T006437,eastgate,web,13.24,USD,settled,45,1
+T006438,harborview,web,98.7,USD,settled,67,0
+T006439,fairweather,web,14.35,USD,settled,41,0
+T006440,greenline,web,28.37,USD,settled,42,1
+T006441,belltower,web,1985.0,USD,settled,55,2
+T006442,greenline,web,84.56,USD,settled,34,0
+T006443,eastgate,web,138.23,USD,settled,26,2
+T006444,northwind,android,37.24,USD,settled,,2
+T006445,cascade-foods,ios,16.52,USD,settled,39,1 d
+T006446,eastgate,ios,20.95,USD,settled,78,3
+T006447,dunmore,web,106.32,USD,pending,51,2
+T006448,dunmore,web,99.08,USD,settled,50,0
+T006449,belltower,ios,2169.0,USD,settled,18,1 d
+T006450,harborview,web,63.27,USD,settled,23,0
+T006451,eastgate,web,30.36,USD,settled,63,0
+T006452,dunmore,phone,22.48,USD,settled,57,1
+T006453,cascade-foods,ios,10.0,USD,settled,45,0 d
+T006454,eastgate,ios,91.61,USD,settled,57,0
+T006455,northwind,android,14.38,USD,settled,,0
+T006456,northwind,web,79.27,USD,settled,47,0
+T006457,greenline,ios,12.68,USD,settled,62,1
+T006458,northwind,web,36.53,USD,settled,34,0
+T006459,greenline,android,59.36,USD,refunded,55,0
+T006460,eastgate,ios,26.98,USD,settled,57,1 d
+T006461,greenline,android,25.05,USD,pending,,0 d
+T006462,greenline,android,16.07,USD,settled,,1
+T006463,fairweather,android,29.37,USD,pending,,1 d
+T006464,harborview,web,18.54,USD,settled,37,2 d
+T006465,eastgate,android,10.84,USD,settled,,2 d
+T006466,acme-parts,android,10.88,USD,settled,50,0
+T006467,eastgate,android,7.96,USD,pending,,0
+T006468,dunmore,web,12.66,USD,settled,61,0
+T006469,northwind,web,26.98,USD,settled,24,0
+T006470,fairweather,web,54.93,USD,settled,62,1
+T006471,northwind,web,26.87,USD,settled,78,3
+T006472,northwind,ios,84.05,USD,settled,49,3 d
+T006473,cascade-foods,ios,14.72,USD,settled,70,1
+T006474,cascade-foods,ios,49.2,USD,settled,45,0 d
+T006475,northwind,web,13.97,USD,pending,45,1
+T006476,eastgate,web,18.86,USD,pending,36,1
+T006477,eastgate,ios,59.25,USD,settled,20,2
+T006478,fairweather,ios,33.41,USD,refunded,49,0 d
+T006479,greenline,web,31.09,USD,pending,64,0
+T006480,harborview,ios,22.43,USD,settled,26,0 d
+T006481,fairweather,web,12.29,USD,settled,60,0
+T006482,dunmore,web,7.07,USD,settled,45,1
+T006483,greenline,android,62.32,USD,settled,36,1 d
+T006484,harborview,android,18.42,USD,settled,70,2
+T006485,belltower,ios,3031.0,USD,settled,44,2
+T006486,eastgate,web,18.69,USD,pending,65,0
+T006487,acme-parts,android,10.27,USD,settled,,0
+T006488,eastgate,ios,17.18,USD,settled,64,0
+T006489,belltower,ios,8065.0,USD,settled,20,0
+T006490,northwind,web,181.77,USD,settled,63,0 d
+T006491,fairweather,android,38.49,USD,settled,,0
+T006492,greenline,web,23.4,USD,settled,31,0
+T006493,belltower,android,1792.0,USD,settled,,0 d
+T006494,dunmore,ios,13.98,USD,settled,63,1
+T006495,harborview,ios,41.41,USD,settled,26,1
+T006496,greenline,ios,6.05,USD,settled,20,0
+T006497,acme-parts,web,37.74,USD,settled,77,2
+T006498,harborview,android,3672.0,USD,settled,,1 d
+T006499,acme-parts,ios,27.66,USD,settled,70,0
+T006500,belltower,android,706.0,USD,settled,,2
+T006501,acme-parts,web,21.67,USD,settled,26,0
+T006502,northwind,android,25.98,USD,settled,,0
+T006503,northwind,web,92.41,USD,settled,43,2
+T006504,dunmore,ios,79.41,USD,settled,67,0
+T006505,eastgate,ios,6.67,USD,settled,41,1
+T006506,fairweather,web,6.63,USD,settled,73,0
+T006507,northwind,ios,14.9,USD,settled,51,0
+T006508,cascade-foods,ios,23.26,USD,chargeback,46,2
+T006509,fairweather,android,8.69,USD,settled,,1
+T006510,acme-parts,ios,69.22,USD,settled,58,0
+T006511,belltower,web,1389.0,USD,settled,24,0
+T006512,northwind,web,42.66,USD,settled,28,2
+T006513,acme-parts,web,63.55,USD,settled,67,1
+T006514,northwind,ios,27.87,USD,settled,46,1
+T006515,cascade-foods,ios,5.18,USD,settled,48,0
+T006516,fairweather,ios,40.35,USD,settled,70,1
+T006517,dunmore,web,25.25,USD,settled,70,0
+T006518,fairweather,ios,19.66,USD,settled,28,0 d
+T006519,eastgate,web,48.97,USD,settled,40,0 d
+T006520,eastgate,ios,16.87,USD,settled,35,0
+T006521,northwind,ios,27.57,USD,settled,43,0
+T006522,dunmore,web,5.28,USD,settled,76,3 d
+T006523,eastgate,android,45.25,USD,settled,,0 d
+T006524,harborview,android,17.35,USD,settled,,0 d
+T006525,dunmore,web,63.0,USD,pending,48,0
+T006526,cascade-foods,android,50.27,USD,chargeback,,1
+T006527,eastgate,ios,13.4,USD,chargeback,57,0
+T006528,acme-parts,ios,30.3,USD,settled,27,0
+T006529,greenline,ios,22.75,USD,settled,,1
+T006530,acme-parts,ios,62.34,USD,settled,26,0 d
+T006531,northwind,ios,8.64,USD,settled,68,2
+T006532,acme-parts,android,9.42,USD,settled,,0 d
+T006533,dunmore,ios,30.74,USD,settled,68,1 d
+T006534,harborview,web,18.46,USD,settled,47,0
+T006535,northwind,ios,121.94,USD,pending,19,1 d
+T006536,fairweather,ios,20.62,USD,pending,32,0 d
+T006537,cascade-foods,web,94.96,USD,settled,47,2 d
+T006538,greenline,android,97.19,USD,settled,62,0
+T006539,greenline,web,22.24,USD,settled,32,1
+T006540,belltower,ios,2946.0,USD,settled,48,2
+T006541,northwind,android,10.78,USD,settled,71,1
+T006542,acme-parts,ios,44.98,USD,pending,76,1
+T006543,eastgate,android,29.35,USD,settled,,0
+T006544,fairweather,web,96.16,USD,settled,58,0
+T006545,eastgate,web,56.57,USD,chargeback,18,0
+T006546,eastgate,android,18.14,USD,pending,,0
+T006547,eastgate,web,7.13,USD,settled,47,0 d
+T006548,harborview,web,18.03,USD,settled,55,0
+T006549,eastgate,android,40.8,USD,settled,,0
+T006550,dunmore,ios,18.14,USD,settled,21,1
+T006551,northwind,ios,51.46,USD,settled,71,1
+T006552,dunmore,android,84.81,USD,settled,27,1 d
+T006553,fairweather,web,20.17,USD,pending,40,0
+T006554,eastgate,web,5.3,USD,settled,33,0 d
+T006555,acme-parts,web,10.08,USD,settled,31,0
+T006556,dunmore,web,34.82,USD,settled,73,0
+T006557,acme-parts,web,9.51,USD,settled,50,2
+T006558,belltower,web,5147.0,USD,settled,37,0
+T006559,acme-parts,ios,77.92,USD,settled,,1 d
+T006560,belltower,ios,367.0,USD,settled,21,0
+T006561,cascade-foods,web,72.09,USD,settled,25,0
+T006562,greenline,web,23.42,USD,settled,45,0 d
+T006563,dunmore,ios,75.72,USD,pending,64,0 d
+T006564,eastgate,web,31.17,USD,settled,62,1
+T006565,acme-parts,web,63.16,USD,pending,31,0
+T006566,cascade-foods,web,29.74,USD,settled,78,1 d
+T006567,fairweather,ios,68.27,USD,settled,77,0
+T006568,belltower,android,3644.0,USD,settled,,0
+T006569,fairweather,ios,18.27,USD,settled,44,1
+T006570,eastgate,web,54.75,USD,settled,19,0
+T006571,belltower,android,6617.0,USD,settled,,0
+T006572,fairweather,ios,82.14,USD,settled,75,0
+T006573,acme-parts,ios,134.26,USD,settled,63,0 d
+T006574,eastgate,ios,117.12,USD,settled,69,0
+T006575,eastgate,web,34.15,USD,settled,21,0
+T006576,fairweather,ios,18.35,USD,settled,26,0
+T006577,dunmore,ios,11.43,USD,settled,28,0
+T006578,greenline,web,19.53,USD,settled,69,0
+T006579,acme-parts,ios,52.09,USD,settled,77,0
+T006580,cascade-foods,web,3.88,USD,settled,32,0
+T006581,dunmore,web,95.72,USD,settled,31,0
+T006582,northwind,android,42.35,USD,pending,,1
+T006583,cascade-foods,web,121.76,USD,settled,58,1
+T006584,northwind,web,63.12,USD,settled,63,1 d
+T006585,acme-parts,ios,48.97,USD,settled,72,0
+T006586,belltower,ios,4468.0,USD,settled,25,0
+T006587,fairweather,web,112.04,USD,settled,47,0
+T006588,dunmore,android,35.44,USD,refunded,,1
+T006589,northwind,web,67.85,USD,refunded,24,1
+T006590,cascade-foods,web,89.48,USD,settled,41,1
+T006591,eastgate,web,56.06,USD,settled,65,0
+T006592,eastgate,web,5.09,USD,refunded,76,0 d
+T006593,belltower,web,1590.0,USD,pending,47,0
+T006594,eastgate,phone,29.04,USD,settled,20,0
+T006595,eastgate,ios,11.84,USD,settled,44,0
+T006596,northwind,ios,70.84,USD,settled,20,1
+T006597,fairweather,ios,22.09,USD,settled,63,0
+T006598,belltower,web,1327.0,USD,settled,72,1
+T006599,cascade-foods,web,53.07,USD,pending,36,0
+T006600,dunmore,ios,63.19,USD,settled,44,0
+T006601,eastgate,web,48.4,USD,settled,38,0 d
+T006602,fairweather,web,22.72,USD,settled,61,1
+T006603,belltower,ios,1661.0,USD,settled,38,0
+T006604,cascade-foods,ios,46.27,USD,settled,22,2 d
+T006605,cascade-foods,ios,23.43,USD,settled,18,2 d
+T006606,harborview,web,30.37,USD,settled,43,2 d
+T006607,eastgate,web,29.46,USD,pending,63,0
+T006608,belltower,ios,3327.0,USD,settled,19,0
+T006609,belltower,ios,986.0,USD,settled,43,0
+T006610,greenline,phone,27.86,USD,settled,41,1
+T006611,acme-parts,ios,13.34,USD,pending,50,0 d
+T006612,dunmore,ios,13.43,USD,settled,29,0
+T006613,belltower,web,1755.0,USD,settled,23,0
+T006614,acme-parts,web,52.26,USD,pending,52,0
+T006615,belltower,android,3662.0,USD,settled,,0
+T006616,harborview,ios,7.09,USD,settled,77,0
+T006617,belltower,android,2676.0,USD,settled,,0
+T006618,northwind,web,88.23,USD,settled,22,1
+T006619,eastgate,web,129.43,USD,settled,27,0
+T006620,belltower,web,4900.0,USD,settled,30,1 d
+T006621,fairweather,android,32.12,USD,settled,,1
+T006622,dunmore,ios,18.34,USD,settled,44,0 d
+T006623,greenline,web,51.44,USD,settled,60,0
+T006624,greenline,web,139.68,USD,settled,34,0 d
+T006625,belltower,web,6066.0,USD,pending,57,0
+T006626,fairweather,web,17.87,USD,settled,55,0
+T006627,dunmore,android,12.53,USD,settled,,1 d
+T006628,belltower,web,2911.0,USD,settled,45,1
+T006629,northwind,android,10.18,USD,settled,45,0
+T006630,northwind,android,8.81,USD,settled,77,1
+T006631,acme-parts,web,47.53,USD,settled,76,0
+T006632,dunmore,web,28.18,USD,settled,53,0 d
+T006633,northwind,web,46.19,USD,settled,39,1 d
+T006634,belltower,android,5762.0,USD,settled,,1
+T006635,dunmore,ios,16.93,USD,settled,53,0 d
+T006636,harborview,web,5188.0,USD,pending,30,0
+T006637,eastgate,web,10.82,USD,settled,74,1
+T006638,eastgate,web,15.25,USD,settled,31,1
+T006639,acme-parts,ios,18.86,USD,settled,37,1
+T006640,acme-parts,ios,97.01,USD,settled,53,0
+T006641,greenline,ios,39.82,USD,settled,46,0 d
+T006642,eastgate,ios,52.61,USD,settled,46,1 d
+T006643,greenline,web,11.72,USD,settled,24,1
+T006644,eastgate,ios,17.38,USD,pending,34,1 d
+T006645,dunmore,android,69.62,USD,settled,,1 d
+T006646,belltower,android,803.0,USD,settled,,1 d
+T006647,fairweather,web,11.52,USD,settled,23,0
+T006648,cascade-foods,ios,108.66,USD,settled,67,0
+T006649,greenline,web,32.25,USD,settled,43,0 d
+T006650,cascade-foods,android,51.68,USD,settled,,0
+T006651,acme-parts,android,5.37,USD,settled,,0
+T006652,eastgate,ios,22.92,USD,settled,76,0 d
+T006653,belltower,web,2659.0,USD,settled,26,1 d
+T006654,belltower,android,3736.0,USD,settled,,0
+T006655,northwind,ios,25.82,USD,settled,28,0
+T006656,belltower,android,4104.0,USD,settled,,0
+T006657,dunmore,ios,21.1,USD,settled,50,1
+T006658,dunmore,android,29.11,USD,settled,,1
+T006659,greenline,ios,74.21,USD,settled,53,0
+T006660,acme-parts,web,85.05,USD,settled,77,3
+T006661,dunmore,web,14.79,USD,settled,75,3
+T006662,cascade-foods,ios,80.26,USD,settled,29,0 d
+T006663,fairweather,ios,14.65,USD,refunded,53,0 d
+T006664,fairweather,android,26.25,USD,settled,,1 d
+T006665,acme-parts,android,21.7,USD,refunded,24,1
+T006666,eastgate,phone,40.48,USD,settled,43,0
+T006667,harborview,web,29.68,USD,settled,59,0
+T006668,fairweather,ios,60.28,USD,settled,52,2
+T006669,dunmore,ios,11.95,USD,settled,76,0 d
+T006670,eastgate,web,66.26,USD,settled,78,0
+T006671,acme-parts,web,46.89,USD,settled,19,0
+T006672,dunmore,android,12.09,USD,pending,,1 d
+T006673,eastgate,ios,5.36,USD,settled,75,1 d
+T006674,greenline,ios,20.91,USD,pending,30,0
+T006675,cascade-foods,android,24.81,USD,settled,,0
+T006676,northwind,web,7.81,USD,settled,55,0
+T006677,fairweather,android,12.92,USD,settled,,2 d
+T006678,northwind,android,170.52,USD,settled,,0
+T006679,acme-parts,web,11.71,USD,settled,65,0 d
+T006680,northwind,web,16.73,USD,settled,55,0 d
+T006681,dunmore,android,94.95,USD,settled,,0
+T006682,dunmore,web,46.51,USD,settled,43,1
+T006683,fairweather,android,9.73,USD,settled,21,0
+T006684,cascade-foods,web,9.76,USD,pending,43,0 d
+T006685,fairweather,web,15.81,USD,settled,19,0 d
+T006686,belltower,android,6193.0,USD,settled,,0
+T006687,eastgate,android,72.56,USD,settled,,0 d
+T006688,eastgate,ios,26.78,USD,settled,61,1
+T006689,fairweather,ios,33.58,USD,settled,49,1
+T006690,greenline,web,54.84,USD,settled,69,0
+T006691,dunmore,web,67.44,USD,chargeback,25,0
+T006692,eastgate,ios,21.63,USD,pending,64,1
+T006693,northwind,web,175.37,USD,settled,29,1
+T006694,belltower,ios,6643.0,USD,settled,74,1
+T006695,acme-parts,web,26.28,USD,settled,35,0
+T006696,belltower,ios,2119.0,USD,settled,57,0
+T006697,greenline,ios,53.35,USD,settled,18,1
+T006698,harborview,ios,68.66,USD,settled,49,0
+T006699,cascade-foods,ios,343.29,USD,settled,58,2
+T006700,greenline,ios,59.99,USD,settled,34,0 d
+T006701,greenline,web,21.43,USD,settled,71,0 d
+T006702,fairweather,android,23.62,USD,settled,,0
+T006703,eastgate,android,17.11,USD,settled,,2
+T006704,greenline,android,22.76,USD,settled,,1 d
+T006705,greenline,ios,11.9,USD,settled,48,0 d
+T006706,dunmore,ios,15.71,USD,pending,77,1
+T006707,eastgate,android,14.98,USD,chargeback,36,0
+T006708,dunmore,ios,54.37,USD,settled,53,1
+T006709,northwind,android,32.3,USD,settled,,2
+T006710,belltower,web,5835.0,USD,settled,68,0
+T006711,greenline,ios,48.84,USD,settled,60,2
+T006712,northwind,android,36.31,USD,settled,,1
+T006713,harborview,ios,12.86,USD,settled,47,0 d
+T006714,acme-parts,ios,81.0,USD,settled,61,1
+T006715,dunmore,android,29.27,USD,pending,,1
+T006716,eastgate,android,165.18,USD,settled,,1
+T006717,cascade-foods,web,49.75,USD,settled,37,1 d
+T006718,cascade-foods,ios,61.59,USD,settled,44,0 d
+T006719,harborview,android,47.5,USD,settled,,0
+T006720,greenline,web,5.98,USD,settled,23,1
+T006721,greenline,ios,26.43,USD,settled,33,0 d
+T006722,belltower,web,5464.0,USD,pending,56,1 d
+T006723,dunmore,web,24.18,USD,settled,23,2 d
+T006724,harborview,web,1318.0,USD,pending,38,2
+T006725,belltower,android,2724.0,USD,pending,,2
+T006726,eastgate,web,24.48,USD,settled,25,0
+T006727,fairweather,ios,13.03,USD,settled,47,2
+T006728,fairweather,web,17.44,USD,settled,77,0
+T006729,cascade-foods,ios,28.49,USD,chargeback,48,1
+T006730,harborview,web,67.54,USD,settled,60,2 d
+T006731,acme-parts,ios,12.38,USD,settled,20,1
+T006732,dunmore,ios,25.12,USD,settled,27,0 d
+T006733,cascade-foods,android,49.94,USD,settled,,2 d
+T006734,belltower,ios,741.0,USD,settled,38,0 d
+T006735,dunmore,web,200.3,USD,settled,67,1 d
+T006736,northwind,android,144.78,USD,pending,,2
+T006737,cascade-foods,android,149.48,USD,settled,,0
+T006738,northwind,web,12.33,USD,settled,76,1 d
+T006739,greenline,web,8.57,USD,settled,20,0
+T006740,acme-parts,ios,10.48,USD,settled,51,2
+T006741,dunmore,web,56.34,USD,settled,28,3
+T006742,belltower,web,4549.0,USD,settled,48,0 d
+T006743,greenline,web,72.64,USD,settled,70,0
+T006744,greenline,web,93.49,USD,pending,22,0
+T006745,northwind,web,20.32,USD,settled,43,1 d
+T006746,fairweather,phone,8.11,USD,settled,70,1
+T006747,northwind,ios,31.61,USD,pending,57,1
+T006748,harborview,ios,24.41,USD,settled,58,0 d
+T006749,dunmore,ios,16.14,USD,settled,62,0
+T006750,eastgate,ios,9.7,USD,settled,,0
+T006751,acme-parts,android,133.19,USD,settled,,0
+T006752,acme-parts,android,83.1,USD,pending,,2
+T006753,northwind,web,20.86,USD,settled,22,0
+T006754,fairweather,ios,11.54,USD,settled,66,0
+T006755,dunmore,ios,23.78,USD,settled,21,1 d
+T006756,eastgate,ios,26.0,USD,settled,66,0 d
+T006757,dunmore,ios,30.61,USD,settled,39,1
+T006758,belltower,web,2051.0,USD,settled,31,1 d
+T006759,fairweather,ios,9.09,USD,refunded,54,1
+T006760,eastgate,web,8.46,USD,pending,73,1
+T006761,greenline,web,6.99,USD,settled,66,0
+T006762,acme-parts,android,56.73,USD,settled,,0 d
+T006763,cascade-foods,android,16.73,USD,settled,,0 d
+T006764,belltower,ios,1362.0,USD,settled,68,2
+T006765,belltower,android,3393.0,USD,settled,,0 d
+T006766,fairweather,android,62.63,USD,settled,,1
+T006767,northwind,ios,18.11,USD,settled,52,0 d
+T006768,northwind,web,13.0,USD,settled,46,0
+T006769,eastgate,ios,36.44,USD,settled,36,0 d
+T006770,eastgate,ios,54.89,USD,chargeback,27,0
+T006771,cascade-foods,ios,37.25,USD,settled,66,2 d
+T006772,acme-parts,ios,40.23,USD,settled,50,0
+T006773,belltower,ios,12196.0,USD,pending,60,1 d
+T006774,harborview,android,36.3,USD,settled,,1
+T006775,belltower,ios,1003.0,USD,settled,48,0
+T006776,northwind,android,8.27,USD,settled,,1
+T006777,eastgate,android,42.87,USD,settled,,1 d
+T006778,harborview,ios,7333.0,USD,pending,41,1
+T006779,acme-parts,web,32.01,USD,refunded,71,0 d
+T006780,fairweather,web,9.09,USD,settled,26,0
+T006781,fairweather,web,15.51,USD,settled,52,0
+T006782,acme-parts,ios,30.07,USD,settled,43,0
+T006783,fairweather,web,22.34,USD,settled,43,1 d
+T006784,acme-parts,ios,62.94,USD,settled,67,0
+T006785,northwind,web,61.79,USD,settled,28,0 d
+T006786,harborview,web,15.86,USD,settled,68,0 d
+T006787,cascade-foods,ios,24.99,USD,settled,58,0
+T006788,dunmore,android,25.34,USD,settled,,2 d
+T006789,dunmore,web,33.49,USD,pending,46,0
+T006790,fairweather,ios,5.13,USD,settled,37,0
+T006791,dunmore,web,89.62,USD,settled,19,0
+T006792,eastgate,android,11.94,USD,settled,,1
+T006793,fairweather,android,12.94,USD,settled,,3 d
+T006794,dunmore,web,18.33,USD,settled,41,1
+T006795,greenline,web,40.36,USD,settled,18,0 d
+T006796,harborview,android,43.96,USD,settled,,0 d
+T006797,cascade-foods,ios,89.57,USD,settled,37,0
+T006798,northwind,web,15.37,USD,settled,25,0 d
+T006799,dunmore,web,16.01,USD,settled,70,0
+T006800,harborview,ios,74.04,USD,settled,36,0
+T006801,cascade-foods,android,45.09,USD,settled,,2 d
+T006802,cascade-foods,ios,42.91,USD,settled,28,0 d
+T006803,northwind,ios,193.5,USD,settled,22,0 d
+T006804,northwind,ios,35.72,USD,settled,45,2
+T006805,dunmore,ios,10.34,USD,settled,45,0
+T006806,harborview,web,8.46,USD,settled,30,0 d
+T006807,belltower,web,2028.0,USD,settled,48,0
+T006808,belltower,web,2319.0,USD,pending,34,1 d
+T006809,northwind,ios,21.46,USD,settled,35,0 d
+T006810,dunmore,web,23.45,USD,settled,26,1
+T006811,harborview,ios,9.61,USD,settled,70,0
+T006812,acme-parts,web,28.18,USD,pending,43,1
+T006813,acme-parts,web,121.6,USD,settled,22,1 d
+T006814,northwind,web,58.2,USD,settled,27,0
+T006815,eastgate,web,46.27,USD,settled,33,2 d
+T006816,eastgate,web,26.15,USD,pending,41,1
+T006817,cascade-foods,android,21.99,USD,settled,,0 d
+T006818,eastgate,ios,25.44,USD,settled,44,0
+T006819,greenline,android,14.49,USD,settled,,0 d
+T006820,harborview,web,6.33,USD,pending,36,0 d
+T006821,greenline,web,96.82,USD,settled,55,0
+T006822,acme-parts,ios,16.18,USD,settled,45,3
+T006823,harborview,android,40.07,USD,pending,,1
+T006824,dunmore,ios,50.06,USD,settled,41,0 d
+T006825,northwind,web,92.99,USD,settled,46,0
+T006826,dunmore,web,85.34,USD,pending,50,0
+T006827,cascade-foods,web,12.29,USD,pending,66,0
+T006828,acme-parts,web,67.79,USD,settled,65,0
+T006829,cascade-foods,ios,23.75,USD,settled,74,1
+T006830,dunmore,ios,71.51,USD,settled,47,0
+T006831,greenline,ios,39.57,USD,settled,38,0 d
+T006832,greenline,web,23.68,USD,settled,23,0
+T006833,cascade-foods,web,11.91,USD,settled,60,0 d
+T006834,greenline,android,41.5,USD,settled,64,0
+T006835,acme-parts,android,49.57,USD,settled,,0 d
+T006836,fairweather,web,20.59,USD,settled,45,0
+T006837,greenline,ios,10.55,USD,settled,77,1
+T006838,northwind,web,80.21,USD,settled,23,0
+T006839,northwind,ios,28.88,USD,pending,76,1
+T006840,acme-parts,ios,44.85,USD,settled,69,1
+T006841,northwind,ios,58.83,USD,settled,37,0 d
+T006842,fairweather,ios,108.27,USD,settled,22,3
+T006843,belltower,android,4616.0,USD,pending,,0 d
+T006844,greenline,android,25.5,USD,settled,,0
+T006845,greenline,android,11.08,USD,settled,,1
+T006846,dunmore,web,26.89,USD,settled,25,0 d
+T006847,dunmore,web,46.55,USD,settled,56,0 d
+T006848,cascade-foods,ios,79.04,USD,refunded,34,0
+T006849,dunmore,android,38.17,USD,settled,58,0
+T006850,cascade-foods,android,31.53,USD,settled,,1
+T006851,belltower,web,2984.0,USD,settled,45,0
+T006852,fairweather,ios,113.81,USD,settled,54,0
+T006853,fairweather,ios,53.37,USD,settled,48,1
+T006854,fairweather,web,19.89,USD,settled,62,0
+T006855,eastgate,android,19.4,USD,settled,,1
+T006856,acme-parts,web,61.55,USD,settled,28,0 d
+T006857,acme-parts,web,4.74,USD,settled,43,2
+T006858,eastgate,android,21.75,USD,refunded,,0 d
+T006859,harborview,android,34.53,USD,settled,73,0
+T006860,harborview,android,86.48,USD,pending,,1
+T006861,belltower,ios,6398.0,USD,settled,53,1
+T006862,northwind,web,98.93,USD,chargeback,31,0
+T006863,greenline,web,31.88,USD,settled,29,1
+T006864,cascade-foods,web,21.01,USD,settled,18,1
+T006865,dunmore,ios,44.09,USD,settled,31,3
+T006866,northwind,ios,9.72,USD,pending,64,1
+T006867,cascade-foods,web,165.26,USD,settled,58,0
+T006868,northwind,android,50.04,USD,settled,,0 d
+T006869,acme-parts,ios,129.3,USD,settled,28,0
+T006870,northwind,android,25.05,USD,settled,,0
+T006871,eastgate,web,33.95,USD,settled,21,1
+T006872,belltower,web,10469.0,USD,settled,65,0 d
+T006873,dunmore,phone,24.76,USD,settled,66,0
+T006874,harborview,web,79.84,USD,settled,51,0
+T006875,eastgate,android,30.59,USD,settled,,0
+T006876,acme-parts,web,28.77,USD,settled,28,0
+T006877,northwind,web,40.61,USD,settled,39,2 d
+T006878,fairweather,web,11.13,USD,settled,64,0
+T006879,cascade-foods,web,35.66,USD,refunded,23,0 d
+T006880,acme-parts,ios,20.38,USD,settled,20,0
+T006881,acme-parts,ios,20.75,USD,settled,34,0
+T006882,cascade-foods,ios,112.98,USD,refunded,57,0
+T006883,dunmore,ios,32.48,USD,settled,39,1 d
+T006884,acme-parts,ios,23.55,USD,settled,75,0
+T006885,fairweather,android,29.88,USD,settled,,1
+T006886,cascade-foods,android,23.32,USD,pending,,2
+T006887,eastgate,web,21.56,USD,settled,62,1
+T006888,fairweather,ios,27.84,USD,pending,76,1
+T006889,belltower,ios,4140.0,USD,pending,77,1
+T006890,northwind,ios,16.41,USD,settled,70,0
+T006891,greenline,ios,28.27,USD,settled,74,1
+T006892,belltower,web,2612.0,USD,settled,18,0
+T006893,northwind,web,69.87,USD,settled,65,0
+T006894,eastgate,ios,38.23,USD,settled,69,0 d
+T006895,northwind,android,62.89,USD,settled,,3
+T006896,greenline,web,25.07,USD,settled,53,0 d
+T006897,greenline,web,31.28,USD,settled,20,1
+T006898,eastgate,web,10.02,USD,settled,43,1
+T006899,fairweather,web,10.28,USD,settled,50,1 d
+T006900,northwind,web,58.52,USD,settled,,0 d
+T006901,dunmore,web,8.91,USD,settled,41,0 d
+T006902,cascade-foods,web,43.38,USD,settled,28,0
+T006903,cascade-foods,web,9.31,USD,settled,28,0
+T006904,northwind,web,8.36,USD,settled,31,0
+T006905,northwind,web,10.78,USD,settled,78,0
+T006906,belltower,ios,7280.0,USD,settled,,2
+T006907,belltower,ios,5849.0,USD,settled,69,0
+T006908,belltower,android,8739.0,USD,settled,,0
+T006909,cascade-foods,web,16.48,USD,settled,34,0
+T006910,fairweather,android,14.08,USD,settled,,0
+T006911,greenline,ios,12.28,USD,chargeback,,1
+T006912,acme-parts,ios,20.91,USD,settled,45,1
+T006913,belltower,ios,1554.0,USD,settled,54,0
+T006914,greenline,web,74.77,USD,settled,31,0 d
+T006915,eastgate,web,14.28,USD,settled,36,0
+T006916,cascade-foods,android,24.51,USD,settled,,0
+T006917,northwind,android,68.25,USD,settled,,0
+T006918,dunmore,ios,10.62,USD,settled,49,1
+T006919,northwind,web,73.62,USD,pending,26,0
+T006920,acme-parts,android,131.3,USD,settled,,1
+T006921,greenline,android,155.75,USD,settled,,1
+T006922,fairweather,web,173.94,USD,settled,63,0
+T006923,fairweather,web,24.22,USD,settled,73,1
+T006924,cascade-foods,web,48.51,USD,settled,39,0 d
+T006925,northwind,ios,21.42,USD,chargeback,42,2
+T006926,acme-parts,ios,26.7,USD,settled,34,1 d
+T006927,fairweather,ios,20.35,USD,settled,41,0
+T006928,harborview,ios,33.77,USD,settled,75,0
+T006929,northwind,web,15.05,USD,pending,65,0
+T006930,dunmore,web,54.46,USD,settled,35,3
+T006931,eastgate,web,44.6,USD,settled,46,0
+T006932,harborview,android,25.98,USD,settled,,0
+T006933,greenline,web,42.45,USD,settled,26,1
+T006934,belltower,ios,1015.0,USD,settled,53,0
+T006935,fairweather,android,80.46,USD,settled,,0 d
+T006936,greenline,web,106.99,USD,settled,41,1 d
+T006937,northwind,web,44.8,USD,settled,36,2 d
+T006938,dunmore,ios,67.51,USD,settled,54,0
+T006939,fairweather,web,9.17,USD,settled,77,2
+T006940,fairweather,ios,26.93,USD,refunded,52,3
+T006941,northwind,web,15.28,USD,pending,20,0
+T006942,cascade-foods,web,47.22,USD,settled,28,0
+T006943,greenline,android,9.17,USD,refunded,,0
+T006944,northwind,ios,30.57,USD,pending,56,0
+T006945,northwind,web,17.27,USD,settled,19,1
+T006946,belltower,ios,3828.0,USD,settled,41,0
+T006947,fairweather,ios,22.03,USD,settled,56,0
+T006948,acme-parts,ios,44.51,USD,settled,67,0 d
+T006949,greenline,ios,18.77,USD,settled,48,0
+T006950,greenline,ios,89.12,USD,settled,41,0 d
+T006951,dunmore,web,85.56,USD,settled,21,0
+T006952,dunmore,ios,38.8,USD,settled,67,0
+T006953,belltower,web,4217.0,USD,settled,54,0
+T006954,fairweather,web,23.12,USD,pending,35,1 d
+T006955,cascade-foods,web,41.39,USD,settled,22,2 d
+T006956,acme-parts,web,49.97,USD,settled,71,0 d
+T006957,belltower,web,10821.0,USD,settled,21,0
+T006958,cascade-foods,ios,29.91,USD,refunded,18,0
+T006959,fairweather,android,7.52,USD,settled,,1
+T006960,belltower,android,3641.0,USD,settled,,0
+T006961,northwind,ios,75.41,USD,settled,66,0
+T006962,eastgate,web,18.83,USD,settled,57,0
+T006963,harborview,web,33.72,USD,settled,42,1
+T006964,greenline,ios,15.57,USD,settled,52,0
+T006965,dunmore,web,27.57,USD,settled,57,1
+T006966,greenline,ios,52.05,USD,pending,30,0
+T006967,cascade-foods,android,84.78,USD,settled,,0
+T006968,greenline,android,38.63,USD,settled,,1 d
+T006969,acme-parts,web,30.11,USD,settled,75,3 d
+T006970,cascade-foods,android,12.16,USD,settled,,2
+T006971,belltower,ios,2094.0,USD,settled,52,0
+T006972,dunmore,web,43.04,USD,pending,46,0 d
+T006973,acme-parts,web,29.13,USD,settled,64,0
+T006974,acme-parts,ios,17.41,USD,settled,63,0
+T006975,northwind,ios,6.56,USD,settled,50,1
+T006976,eastgate,android,26.26,USD,settled,43,0
+T006977,harborview,web,905.0,USD,settled,66,0
+T006978,cascade-foods,web,19.23,USD,settled,63,0
+T006979,harborview,android,66.2,USD,settled,,1 d
+T006980,fairweather,ios,33.9,USD,settled,70,1 d
+T006981,eastgate,web,18.18,USD,pending,57,2 d
+T006982,belltower,ios,1052.0,USD,settled,50,0 d
+T006983,eastgate,android,77.38,USD,pending,39,0
+T006984,northwind,android,19.06,USD,settled,27,0
+T006985,greenline,web,35.79,USD,pending,19,1
+T006986,acme-parts,web,137.56,USD,settled,36,1
+T006987,acme-parts,android,43.8,USD,settled,,2 d
+T006988,northwind,ios,11.21,USD,settled,34,0
+T006989,northwind,ios,5.06,USD,settled,77,1 d
+T006990,cascade-foods,ios,21.57,USD,settled,58,0
+T006991,acme-parts,android,81.64,USD,settled,,1
+T006992,acme-parts,web,12.18,USD,settled,37,0
+T006993,cascade-foods,web,30.78,USD,settled,72,0 d
+T006994,greenline,web,44.96,USD,pending,67,0
+T006995,eastgate,ios,16.94,USD,refunded,72,0
+T006996,cascade-foods,web,38.99,USD,settled,21,0
+T006997,eastgate,ios,28.24,USD,settled,21,0
+T006998,dunmore,ios,11.86,USD,pending,73,0 d
+T006999,northwind,ios,84.11,USD,settled,37,0
+T007000,belltower,ios,2213.0,USD,settled,65,0
+T007001,greenline,android,90.36,USD,settled,,2 d
+T007002,fairweather,phone,18.67,USD,settled,50,0 d
+T007003,acme-parts,web,30.59,USD,settled,56,0
+T007004,northwind,web,38.18,USD,settled,33,0
+T007005,harborview,web,21.14,USD,settled,19,1
+T007006,cascade-foods,ios,78.86,USD,pending,54,0
+T007007,cascade-foods,web,7.52,USD,settled,49,2
+T007008,acme-parts,web,21.42,USD,settled,69,2 d
+T007009,dunmore,web,8.58,USD,settled,53,0
+T007010,belltower,web,5809.0,USD,settled,30,0
+T007011,greenline,android,91.77,USD,pending,,0
+T007012,cascade-foods,ios,6.56,USD,settled,28,0
+T007013,greenline,ios,46.56,USD,settled,36,1
+T007014,acme-parts,ios,12.61,USD,settled,72,2
+T007015,eastgate,ios,68.58,USD,settled,57,0 d
+T007016,northwind,ios,13.47,USD,settled,21,0 d
+T007017,harborview,android,4201.0,USD,settled,,0
+T007018,fairweather,ios,22.15,USD,chargeback,29,1
+T007019,cascade-foods,android,30.57,USD,settled,26,0 d
+T007020,eastgate,ios,12.85,USD,settled,55,0 d
+T007021,acme-parts,android,53.45,USD,pending,,0
+T007022,fairweather,web,18.46,USD,settled,31,2 d
+T007023,belltower,ios,1266.0,USD,settled,74,0
+T007024,fairweather,web,25.1,USD,settled,56,0
+T007025,northwind,ios,33.83,USD,settled,27,1
+T007026,northwind,web,6.97,USD,settled,37,2 d
+T007027,greenline,web,62.96,USD,pending,73,1 d
+T007028,dunmore,web,23.42,USD,settled,33,0
+T007029,greenline,ios,26.72,USD,settled,47,2
+T007030,dunmore,android,19.0,USD,settled,,0
+T007031,greenline,ios,26.23,USD,settled,38,0
+T007032,cascade-foods,ios,62.56,USD,settled,56,0 d
+T007033,acme-parts,android,15.28,USD,settled,,1 d
+T007034,cascade-foods,ios,82.34,USD,settled,56,0 d
+T007035,greenline,ios,53.74,USD,pending,73,1
+T007036,belltower,android,2768.0,USD,settled,,0
+T007037,belltower,ios,2821.0,USD,settled,77,2 d
+T007038,dunmore,web,82.81,USD,settled,30,1
+T007039,fairweather,ios,39.11,USD,settled,40,2
+T007040,eastgate,ios,19.79,USD,settled,58,0
+T007041,cascade-foods,android,43.51,USD,settled,,1 d
+T007042,acme-parts,web,19.99,USD,pending,64,3 d
+T007043,cascade-foods,ios,30.32,USD,settled,34,0 d
+T007044,northwind,ios,10.9,USD,refunded,45,0
+T007045,acme-parts,web,82.32,USD,settled,68,0
+T007046,greenline,android,92.94,USD,settled,,2 d
+T007047,belltower,web,10849.0,USD,refunded,63,1
+T007048,greenline,ios,8.72,USD,settled,57,1 d
+T007049,belltower,ios,512.0,USD,settled,51,0
+T007050,harborview,ios,23.89,USD,settled,43,0
+T007051,northwind,phone,188.04,USD,settled,32,0 d
+T007052,northwind,web,43.7,USD,settled,41,0
+T007053,cascade-foods,web,21.65,USD,settled,59,0
+T007054,acme-parts,web,14.37,USD,settled,37,0 d
+T007055,belltower,ios,2104.0,USD,pending,39,1
+T007056,cascade-foods,web,24.25,USD,settled,40,1
+T007057,fairweather,android,24.84,USD,chargeback,42,0 d
+T007058,northwind,web,75.24,USD,chargeback,,0
+T007059,belltower,android,1255.0,USD,settled,,0 d
+T007060,acme-parts,web,126.01,USD,pending,51,1
+T007061,belltower,ios,2441.0,USD,settled,66,0
+T007062,acme-parts,ios,36.8,USD,chargeback,40,0
+T007063,belltower,android,4353.0,USD,settled,,1 d
+T007064,cascade-foods,android,25.12,USD,settled,69,0 d
+T007065,belltower,android,3614.0,USD,settled,,0
+T007066,dunmore,android,33.61,USD,pending,,2
+T007067,northwind,web,14.4,USD,settled,50,1
+T007068,northwind,web,43.8,USD,settled,42,2
+T007069,belltower,ios,18666.0,USD,settled,29,2 d
+T007070,eastgate,web,7.28,USD,settled,77,2
+T007071,greenline,web,86.65,USD,refunded,29,0
+T007072,acme-parts,web,155.34,USD,settled,52,1
+T007073,belltower,ios,2587.0,USD,settled,37,0
+T007074,cascade-foods,ios,8.37,USD,settled,46,1
+T007075,fairweather,ios,76.4,USD,settled,21,1
+T007076,eastgate,ios,13.07,USD,pending,74,0
+T007077,eastgate,web,34.28,USD,settled,26,0
+T007078,acme-parts,web,78.52,USD,settled,77,0 d
+T007079,eastgate,web,18.74,USD,settled,24,1
+T007080,belltower,ios,1269.0,USD,settled,22,0
+T007081,greenline,android,32.93,USD,settled,,1
+T007082,cascade-foods,ios,59.56,USD,settled,25,1
+T007083,greenline,ios,94.08,USD,settled,22,0
+T007084,acme-parts,web,34.85,USD,settled,75,1
+T007085,eastgate,web,11.67,USD,settled,29,0
+T007086,northwind,android,32.57,USD,settled,,0
+T007087,harborview,web,51.86,USD,settled,33,0
+T007088,eastgate,web,11.37,USD,settled,62,0
+T007089,acme-parts,phone,23.13,USD,settled,27,0
+T007090,harborview,ios,89.3,USD,settled,68,2
+T007091,acme-parts,android,28.14,USD,settled,,2
+T007092,greenline,android,38.63,USD,settled,,0
+T007093,northwind,ios,26.12,USD,settled,21,2
+T007094,acme-parts,android,26.89,USD,settled,,0
+T007095,eastgate,web,19.92,USD,settled,66,0 d
+T007096,dunmore,web,92.54,USD,chargeback,47,1
+T007097,harborview,ios,16.35,USD,settled,57,0
+T007098,belltower,web,1667.0,USD,settled,41,1
+T007099,fairweather,phone,53.76,USD,settled,26,0
+T007100,belltower,web,4798.0,USD,settled,54,1
+T007101,greenline,web,83.3,USD,settled,56,0
+T007102,greenline,web,64.01,USD,settled,66,1 d
+T007103,eastgate,android,15.7,USD,settled,,1
+T007104,northwind,web,34.93,USD,settled,78,3
+T007105,greenline,ios,6.93,USD,settled,64,1 d
+T007106,fairweather,ios,84.25,USD,chargeback,67,2
+T007107,eastgate,web,39.8,USD,pending,37,2
+T007108,northwind,ios,10.55,USD,settled,52,0
+T007109,eastgate,ios,31.9,USD,settled,29,1
+T007110,fairweather,web,24.59,USD,settled,74,1 d
+T007111,dunmore,ios,17.2,USD,pending,29,0
+T007112,cascade-foods,web,17.59,USD,settled,70,1 d
+T007113,eastgate,android,56.73,USD,pending,,2
+T007114,eastgate,web,26.66,USD,settled,28,0
+T007115,harborview,android,56.42,USD,pending,54,2 d
+T007116,dunmore,android,84.1,USD,refunded,,0 d
+T007117,acme-parts,web,40.22,USD,settled,29,1
+T007118,belltower,android,2569.0,USD,settled,,0 d
+T007119,belltower,android,10064.0,USD,settled,,0
+T007120,northwind,web,35.05,USD,settled,68,0
+T007121,eastgate,ios,112.98,USD,settled,34,0
+T007122,greenline,web,16.38,USD,settled,68,3
+T007123,northwind,web,70.74,USD,settled,23,1 d
+T007124,cascade-foods,android,96.34,USD,settled,,0
+T007125,belltower,android,1010.0,USD,settled,,0
+T007126,belltower,android,4547.0,USD,settled,,0
+T007127,cascade-foods,ios,101.91,USD,settled,49,2
+T007128,cascade-foods,web,17.88,USD,settled,55,2
+T007129,greenline,ios,24.43,USD,settled,31,0
+T007130,belltower,ios,678.0,USD,settled,66,1
+T007131,fairweather,web,9.23,USD,settled,70,1 d
+T007132,northwind,android,75.4,USD,settled,,1
+T007133,dunmore,web,42.05,USD,settled,70,0
+T007134,fairweather,android,19.3,USD,settled,,3
+T007135,greenline,ios,76.61,USD,settled,44,1 d
+T007136,harborview,web,18.78,USD,settled,34,0
+T007137,greenline,web,13.34,USD,refunded,41,0
+T007138,eastgate,web,111.69,USD,settled,24,0
+T007139,eastgate,ios,41.91,USD,settled,73,0 d
+T007140,eastgate,ios,287.06,USD,settled,76,0
+T007141,northwind,web,30.57,USD,settled,44,2
+T007142,northwind,web,50.75,USD,pending,41,1
+T007143,belltower,web,2461.0,USD,settled,,2 d
+T007144,cascade-foods,web,35.01,USD,settled,51,1
+T007145,cascade-foods,web,85.67,USD,settled,26,0
+T007146,dunmore,web,8.04,USD,settled,58,1
+T007147,fairweather,web,16.58,USD,settled,73,0 d
+T007148,northwind,web,90.77,USD,settled,38,0 d
+T007149,dunmore,ios,35.4,USD,settled,78,2
+T007150,cascade-foods,ios,42.07,USD,settled,61,1
+T007151,fairweather,ios,18.81,USD,settled,73,0
+T007152,acme-parts,android,17.25,USD,settled,,2 d
+T007153,cascade-foods,android,34.85,USD,settled,,2 d
+T007154,eastgate,ios,13.88,USD,settled,57,2
+T007155,dunmore,web,102.99,USD,settled,25,0
+T007156,greenline,ios,7.99,USD,settled,46,1
+T007157,fairweather,android,17.47,USD,chargeback,53,1
+T007158,eastgate,android,49.3,USD,pending,,0
+T007159,harborview,web,48.3,USD,settled,51,0
+T007160,acme-parts,ios,46.04,USD,settled,52,0
+T007161,dunmore,ios,22.05,USD,settled,29,0
+T007162,greenline,web,78.25,USD,settled,33,2 d
+T007163,dunmore,ios,19.87,USD,settled,55,0
+T007164,cascade-foods,ios,7.47,USD,settled,48,0
+T007165,dunmore,web,77.55,USD,settled,25,0 d
+T007166,fairweather,web,61.5,USD,settled,18,0
+T007167,greenline,web,122.89,USD,settled,42,0 d
+T007168,dunmore,web,50.51,USD,settled,26,0
+T007169,greenline,ios,28.76,USD,settled,26,0
+T007170,fairweather,web,9.01,USD,settled,36,2
+T007171,belltower,ios,3294.0,USD,settled,73,0
+T007172,cascade-foods,web,10.48,USD,settled,49,0
+T007173,belltower,android,1198.0,USD,settled,,1
+T007174,belltower,android,10807.0,USD,settled,68,0 d
+T007175,dunmore,ios,23.23,USD,settled,23,0
+T007176,greenline,android,36.61,USD,settled,,0 d
+T007177,northwind,android,35.95,USD,settled,22,1
+T007178,eastgate,web,23.68,USD,settled,19,1 d
+T007179,greenline,ios,41.05,USD,settled,40,1
+T007180,acme-parts,web,16.59,USD,settled,27,0 d
+T007181,dunmore,ios,26.09,USD,settled,55,0
+T007182,dunmore,web,9.64,USD,settled,74,0
+T007183,belltower,ios,16524.0,USD,settled,38,0
+T007184,northwind,android,22.13,USD,settled,49,0
+T007185,greenline,web,5.19,USD,settled,30,1
+T007186,belltower,ios,580.0,USD,settled,55,1
+T007187,northwind,android,28.84,USD,settled,,0
+T007188,eastgate,web,50.15,USD,settled,61,1
+T007189,acme-parts,ios,15.89,USD,settled,60,0
+T007190,greenline,web,104.32,USD,settled,61,2 d
+T007191,fairweather,web,9.57,USD,pending,41,0
+T007192,fairweather,web,39.24,USD,settled,55,0
+T007193,fairweather,ios,4.37,USD,settled,40,1
+T007194,eastgate,android,51.19,USD,pending,,1
+T007195,acme-parts,web,26.16,USD,settled,28,2
+T007196,eastgate,ios,13.38,USD,settled,38,1 d
+T007197,acme-parts,ios,18.85,USD,pending,72,0 d
+T007198,cascade-foods,ios,63.94,USD,settled,36,0 d
+T007199,cascade-foods,ios,141.63,USD,settled,41,1
+T007200,acme-parts,web,7.33,USD,pending,62,0
+T007201,northwind,ios,17.24,USD,settled,69,0
+T007202,northwind,android,9.91,USD,pending,,0
+T007203,northwind,android,32.1,USD,settled,,0
+T007204,dunmore,web,29.06,USD,settled,56,0
+T007205,northwind,ios,10.87,USD,settled,22,0
+T007206,belltower,web,3746.0,USD,settled,38,0
+T007207,dunmore,android,32.92,USD,pending,,3 d
+T007208,belltower,web,2116.0,USD,settled,56,2 d
+T007209,belltower,web,2588.0,USD,settled,69,1
+T007210,eastgate,ios,25.89,USD,settled,68,0
+T007211,dunmore,android,78.46,USD,settled,,0
+T007212,cascade-foods,ios,34.98,USD,settled,18,0
+T007213,belltower,web,4195.0,USD,settled,42,0
+T007214,dunmore,ios,46.15,USD,pending,43,0
+T007215,belltower,ios,3207.0,USD,settled,42,0
+T007216,eastgate,ios,7.18,USD,settled,68,0
+T007217,cascade-foods,ios,26.06,USD,settled,32,2 d
+T007218,harborview,ios,62.73,USD,settled,50,0
+T007219,acme-parts,ios,30.4,USD,settled,20,0
+T007220,eastgate,web,66.0,USD,pending,38,1 d
+T007221,cascade-foods,web,23.59,USD,settled,50,1 d
+T007222,northwind,web,99.78,USD,settled,59,1 d
+T007223,dunmore,ios,15.79,USD,settled,49,1
+T007224,acme-parts,ios,22.94,USD,settled,63,1
+T007225,fairweather,ios,62.61,USD,pending,41,0 d
+T007226,belltower,web,4475.0,USD,settled,48,1
+T007227,fairweather,web,33.34,USD,settled,44,0
+T007228,acme-parts,web,11.6,USD,settled,74,1
+T007229,greenline,web,7.58,USD,settled,23,1
+T007230,harborview,ios,29.13,USD,pending,35,0 d
+T007231,dunmore,web,30.52,USD,settled,25,0
+T007232,acme-parts,web,7.98,USD,settled,78,3
+T007233,belltower,web,2592.0,USD,settled,55,0
+T007234,harborview,web,21.41,USD,chargeback,50,0 d
+T007235,belltower,android,7021.0,USD,settled,,0
+T007236,northwind,web,18.02,USD,chargeback,62,0
+T007237,harborview,android,45.68,USD,settled,,1 d
+T007238,greenline,ios,6.33,USD,settled,28,0 d
+T007239,dunmore,android,24.62,USD,settled,,0
+T007240,greenline,ios,54.94,USD,pending,56,0
+T007241,northwind,ios,53.11,USD,settled,26,1
+T007242,northwind,ios,18.13,USD,settled,18,0
+T007243,fairweather,web,113.55,USD,refunded,23,0
+T007244,greenline,ios,40.23,USD,settled,37,0 d
+T007245,greenline,web,12.94,USD,settled,40,0
+T007246,belltower,ios,975.0,USD,settled,77,0 d
+T007247,dunmore,android,66.44,USD,settled,,0 d
+T007248,eastgate,web,22.09,USD,refunded,42,2
+T007249,fairweather,web,76.95,USD,settled,54,0
+T007250,eastgate,web,59.92,USD,settled,30,1
+T007251,greenline,ios,21.57,USD,settled,30,2
+T007252,northwind,web,152.12,USD,settled,46,0
+T007253,belltower,android,1866.0,USD,settled,,1
+T007254,fairweather,android,13.74,USD,pending,,2
+T007255,eastgate,ios,9.92,USD,settled,69,1 d
+T007256,cascade-foods,android,78.22,USD,settled,,1 d
+T007257,cascade-foods,web,9.89,USD,settled,65,1 d
+T007258,eastgate,web,49.15,USD,settled,46,0 d
+T007259,northwind,ios,76.01,USD,settled,55,0
+T007260,fairweather,ios,37.65,USD,settled,39,0
+T007261,fairweather,web,26.19,USD,settled,41,0 d
+T007262,fairweather,web,12.82,USD,settled,47,0
+T007263,dunmore,web,96.97,USD,refunded,52,0 d
+T007264,cascade-foods,ios,30.11,USD,settled,40,2
+T007265,northwind,web,80.16,USD,settled,68,1
+T007266,greenline,ios,6.34,USD,pending,50,0
+T007267,northwind,android,46.89,USD,pending,,0 d
+T007268,belltower,web,2420.0,USD,settled,,0
+T007269,eastgate,ios,249.66,USD,settled,45,0
+T007270,northwind,ios,16.84,USD,settled,31,1 d
+T007271,dunmore,ios,62.65,USD,settled,77,0
+T007272,cascade-foods,web,17.47,USD,settled,74,0 d
+T007273,belltower,ios,2539.0,USD,settled,34,1 d
+T007274,dunmore,ios,250.56,USD,settled,34,0 d
+T007275,cascade-foods,android,193.2,USD,settled,,2
+T007276,eastgate,ios,27.38,USD,settled,45,1
+T007277,cascade-foods,ios,35.55,USD,settled,26,0
+T007278,fairweather,web,48.59,USD,settled,63,0
+T007279,northwind,web,37.43,USD,settled,54,1
+T007280,dunmore,ios,48.58,USD,settled,63,0
+T007281,fairweather,web,28.51,USD,settled,54,0
+T007282,dunmore,android,74.97,USD,settled,,0 d
+T007283,acme-parts,ios,12.16,USD,settled,20,1
+T007284,greenline,web,16.09,USD,settled,31,0
+T007285,dunmore,ios,22.11,USD,settled,33,0 d
+T007286,belltower,ios,2694.0,USD,settled,28,1
+T007287,fairweather,web,20.07,USD,pending,48,0
+T007288,belltower,web,2275.0,USD,settled,75,0 d
+T007289,greenline,web,8.18,USD,settled,29,0 d
+T007290,cascade-foods,ios,16.58,USD,settled,55,3
+T007291,northwind,android,25.28,USD,settled,,2
+T007292,harborview,ios,22.23,USD,settled,56,0
+T007293,eastgate,android,20.0,USD,settled,,2
+T007294,eastgate,ios,37.4,USD,settled,75,1
+T007295,greenline,android,51.28,USD,settled,,0
+T007296,fairweather,ios,14.02,USD,pending,57,1
+T007297,greenline,ios,75.45,USD,settled,38,3
+T007298,eastgate,ios,16.61,USD,settled,41,2
+T007299,belltower,ios,1310.0,USD,settled,56,0
+T007300,greenline,ios,26.41,USD,settled,21,0
+T007301,fairweather,ios,22.86,USD,settled,77,0 d
+T007302,dunmore,web,13.22,USD,pending,36,0
+T007303,cascade-foods,ios,37.09,USD,settled,38,0 d
+T007304,eastgate,web,6.15,USD,settled,64,0
+T007305,dunmore,web,78.26,USD,settled,26,0
+T007306,northwind,ios,32.13,USD,settled,49,0
+T007307,dunmore,web,66.31,USD,settled,73,0
+T007308,dunmore,ios,131.65,USD,settled,33,0
+T007309,dunmore,web,31.76,USD,settled,32,0 d
+T007310,dunmore,web,32.0,USD,settled,67,1
+T007311,fairweather,web,46.17,USD,settled,31,0
+T007312,dunmore,web,34.08,USD,settled,27,0
+T007313,fairweather,ios,37.78,USD,settled,64,0
+T007314,fairweather,web,19.89,USD,settled,25,0
+T007315,northwind,android,38.84,USD,settled,,0
+T007316,acme-parts,ios,20.3,USD,settled,71,0
+T007317,eastgate,web,59.71,USD,settled,49,0
+T007318,acme-parts,ios,33.66,USD,settled,51,1
+T007319,harborview,ios,19.38,USD,settled,28,2
+T007320,fairweather,ios,72.95,USD,pending,40,0
+T007321,fairweather,ios,8.46,USD,settled,78,0
+T007322,northwind,android,17.03,USD,settled,,1 d
+T007323,northwind,ios,18.01,USD,settled,69,1
+T007324,dunmore,ios,15.52,USD,settled,65,3 d
+T007325,belltower,web,5295.0,USD,settled,56,1 d
+T007326,acme-parts,web,22.61,USD,settled,53,1
+T007327,fairweather,android,9.88,USD,settled,,0
+T007328,fairweather,web,66.64,USD,settled,19,0 d
+T007329,acme-parts,ios,16.46,USD,settled,56,0
+T007330,harborview,ios,20.89,USD,settled,43,1
+T007331,eastgate,ios,50.14,USD,settled,40,0
+T007332,eastgate,ios,72.19,USD,settled,28,0
+T007333,eastgate,ios,25.94,USD,settled,45,0
+T007334,belltower,web,1304.0,USD,settled,,0
+T007335,belltower,ios,14158.0,USD,settled,47,2
+T007336,greenline,ios,15.03,USD,settled,74,1 d
+T007337,cascade-foods,android,86.03,USD,settled,,2
+T007338,fairweather,web,27.08,USD,settled,70,0
+T007339,eastgate,ios,121.29,USD,settled,77,1
+T007340,cascade-foods,web,67.05,USD,pending,51,0
+T007341,cascade-foods,web,59.23,USD,settled,29,0
+T007342,harborview,ios,20.74,USD,settled,18,0
+T007343,dunmore,ios,4.86,USD,settled,49,1
+T007344,cascade-foods,ios,76.47,USD,settled,20,0 d
+T007345,eastgate,ios,36.56,USD,settled,62,0 d
+T007346,cascade-foods,phone,12.36,USD,settled,52,0
+T007347,harborview,web,21.19,USD,settled,42,1
+T007348,acme-parts,android,59.45,USD,settled,,1
+T007349,eastgate,android,119.7,USD,settled,,1
+T007350,fairweather,web,25.52,USD,settled,64,0 d
+T007351,dunmore,ios,32.63,USD,settled,38,1
+T007352,greenline,ios,7.06,USD,settled,57,0
+T007353,fairweather,web,19.18,USD,settled,26,0 d
+T007354,cascade-foods,web,31.33,USD,settled,46,0
+T007355,eastgate,web,43.13,USD,settled,57,0
+T007356,eastgate,ios,46.69,USD,settled,59,0
+T007357,greenline,ios,16.75,USD,settled,58,0
+T007358,cascade-foods,ios,6.83,USD,settled,71,0 d
+T007359,acme-parts,android,18.95,USD,settled,76,0
+T007360,acme-parts,android,16.22,USD,settled,18,1
+T007361,eastgate,ios,32.23,USD,settled,67,0 d
+T007362,harborview,android,94.84,USD,settled,67,0
+T007363,harborview,web,2443.0,USD,settled,78,1
+T007364,harborview,ios,52.16,USD,settled,75,1 d
+T007365,acme-parts,android,37.13,USD,settled,,0
+T007366,fairweather,android,58.92,USD,settled,,1
+T007367,greenline,ios,42.1,USD,settled,41,0
+T007368,acme-parts,ios,34.59,USD,pending,51,2
+T007369,dunmore,android,14.66,USD,settled,,1
+T007370,acme-parts,web,31.5,USD,settled,,0 d
+T007371,eastgate,web,31.25,USD,settled,68,0
+T007372,acme-parts,web,26.7,USD,settled,78,0
+T007373,dunmore,android,43.96,USD,pending,,0 d
+T007374,eastgate,android,98.78,USD,settled,,0
+T007375,belltower,ios,9848.0,USD,settled,30,0 d
+T007376,cascade-foods,ios,66.26,USD,settled,32,1 d
+T007377,belltower,web,3711.0,USD,settled,59,1 d
+T007378,eastgate,web,66.4,USD,settled,57,0
+T007379,greenline,ios,13.96,USD,settled,59,0
+T007380,northwind,web,50.25,USD,chargeback,42,0
+T007381,acme-parts,web,17.23,USD,settled,71,1 d
+T007382,northwind,ios,41.52,USD,settled,66,0
+T007383,greenline,android,17.21,USD,settled,,0
+T007384,dunmore,web,183.87,USD,settled,30,0
+T007385,acme-parts,web,10.28,USD,settled,78,1 d
+T007386,belltower,web,3357.0,USD,settled,32,3
+T007387,belltower,android,652.0,USD,settled,,0
+T007388,northwind,web,20.92,USD,pending,39,1 d
+T007389,acme-parts,web,7.01,USD,settled,67,1 d
+T007390,cascade-foods,ios,7.05,USD,settled,30,0
+T007391,greenline,web,78.63,USD,settled,70,1
+T007392,fairweather,web,10.56,USD,settled,66,0
+T007393,eastgate,web,58.62,USD,settled,21,2
+T007394,belltower,web,13017.0,USD,settled,41,1
+T007395,belltower,ios,5364.0,USD,settled,22,0
+T007396,acme-parts,web,35.84,USD,settled,75,0
+T007397,dunmore,ios,20.34,USD,settled,61,1
+T007398,belltower,web,3300.0,USD,settled,45,0
+T007399,acme-parts,web,74.54,USD,settled,64,0 d
+T007400,greenline,web,8.28,USD,pending,46,2
+T007401,dunmore,web,47.71,USD,chargeback,48,2 d
+T007402,dunmore,ios,11.34,USD,chargeback,75,1 d
+T007403,harborview,android,26.14,USD,refunded,,0
+T007404,belltower,android,7517.0,USD,settled,23,1
+T007405,eastgate,web,24.51,USD,pending,63,0 d
+T007406,fairweather,web,11.81,USD,settled,71,1
+T007407,northwind,web,33.42,USD,settled,69,1 d
+T007408,greenline,web,21.48,USD,settled,28,1
+T007409,belltower,web,4217.0,USD,settled,30,0
+T007410,dunmore,ios,60.05,USD,settled,54,3
+T007411,belltower,ios,3349.0,USD,settled,77,0
+T007412,belltower,android,1680.0,USD,settled,,0
+T007413,acme-parts,ios,45.37,USD,pending,52,0
+T007414,eastgate,web,37.43,USD,pending,40,0
+T007415,greenline,web,99.09,USD,settled,74,0
+T007416,harborview,ios,47.16,USD,settled,63,0 d
+T007417,eastgate,ios,29.51,USD,settled,34,1
+T007418,cascade-foods,ios,23.35,USD,pending,,0
+T007419,eastgate,android,23.38,USD,pending,,0
+T007420,greenline,ios,21.27,USD,settled,71,0
+T007421,eastgate,android,18.01,USD,pending,,0
+T007422,eastgate,ios,38.11,USD,settled,41,0
+T007423,fairweather,web,70.46,USD,settled,56,2 d
+T007424,northwind,ios,54.28,USD,settled,21,0
+T007425,fairweather,ios,62.59,USD,settled,29,0
+T007426,fairweather,ios,80.43,USD,pending,41,0
+T007427,northwind,web,102.23,USD,settled,62,3
+T007428,dunmore,web,10.85,USD,settled,37,0
+T007429,fairweather,web,6.7,USD,settled,24,1
+T007430,belltower,ios,18731.0,USD,settled,19,0 d
+T007431,eastgate,web,70.96,USD,pending,46,0
+T007432,eastgate,ios,69.01,USD,settled,76,1
+T007433,fairweather,web,92.08,USD,settled,34,0 d
+T007434,harborview,web,95.04,USD,settled,37,0
+T007435,acme-parts,android,69.48,USD,settled,58,0
+T007436,eastgate,android,115.66,USD,settled,,1
+T007437,greenline,web,64.14,USD,settled,44,0
+T007438,fairweather,web,169.68,USD,settled,21,1 d
+T007439,fairweather,web,123.83,USD,settled,27,0
+T007440,eastgate,web,30.32,USD,chargeback,54,0 d
+T007441,northwind,web,36.36,USD,settled,38,0
+T007442,acme-parts,ios,42.52,USD,settled,23,0
+T007443,dunmore,ios,27.64,USD,settled,28,1 d
+T007444,greenline,web,21.43,USD,settled,66,0
+T007445,belltower,android,5050.0,USD,settled,,1
+T007446,northwind,ios,12.93,USD,settled,70,2 d
+T007447,cascade-foods,ios,36.0,USD,settled,62,1 d
+T007448,greenline,android,10.02,USD,settled,,0
+T007449,greenline,android,37.73,USD,settled,,2 d
+T007450,greenline,web,38.01,USD,settled,35,1
+T007451,eastgate,ios,58.9,USD,settled,41,1
+T007452,cascade-foods,android,114.08,USD,settled,,2
+T007453,northwind,web,316.56,USD,settled,72,0 d
+T007454,dunmore,web,16.75,USD,settled,66,2
+T007455,northwind,web,42.16,USD,pending,45,1
+T007456,acme-parts,web,110.06,USD,settled,32,0
+T007457,cascade-foods,web,26.46,USD,settled,35,2
+T007458,acme-parts,ios,36.28,USD,settled,57,0
+T007459,eastgate,ios,56.97,USD,settled,74,0
+T007460,dunmore,web,5.18,USD,settled,39,0
+T007461,greenline,phone,24.82,USD,settled,26,0
+T007462,eastgate,web,83.66,USD,settled,47,0
+T007463,fairweather,android,55.09,USD,settled,20,0
+T007464,northwind,web,20.3,USD,settled,62,1 d
+T007465,eastgate,web,42.52,USD,settled,42,2
+T007466,harborview,web,21.62,USD,pending,54,0 d
+T007467,northwind,ios,42.31,USD,settled,34,1 d
+T007468,northwind,android,15.33,USD,chargeback,,0
+T007469,northwind,ios,8.61,USD,settled,,0 d
+T007470,acme-parts,web,18.41,USD,settled,29,0
+T007471,dunmore,web,110.58,USD,settled,59,0 d
+T007472,dunmore,ios,18.47,USD,settled,69,3
+T007473,harborview,ios,5664.0,USD,settled,19,2
+T007474,fairweather,web,108.52,USD,settled,53,1
+T007475,belltower,ios,5137.0,USD,settled,77,0
+T007476,greenline,android,39.19,USD,settled,,0
+T007477,acme-parts,web,7.11,USD,settled,19,1
+T007478,acme-parts,web,22.38,USD,pending,,0
+T007479,dunmore,ios,10.47,USD,settled,69,0
+T007480,cascade-foods,android,59.12,USD,settled,,0
+T007481,fairweather,ios,72.57,USD,settled,38,1
+T007482,cascade-foods,ios,57.81,USD,settled,36,1
+T007483,harborview,web,8.56,USD,settled,76,1 d
+T007484,northwind,ios,41.82,USD,settled,,0
+T007485,greenline,ios,9.02,USD,settled,18,0
+T007486,cascade-foods,ios,25.84,USD,chargeback,48,0 d
+T007487,cascade-foods,web,10.07,USD,settled,57,0
+T007488,cascade-foods,web,24.21,USD,settled,35,0
+T007489,acme-parts,ios,23.79,USD,settled,55,1
+T007490,fairweather,ios,23.72,USD,settled,18,0
+T007491,dunmore,web,25.9,USD,settled,51,1 d
+T007492,greenline,android,149.49,USD,settled,,1
+T007493,eastgate,android,10.17,USD,settled,,0
+T007494,harborview,web,4682.0,USD,settled,76,0
+T007495,harborview,ios,3013.0,USD,settled,23,0
+T007496,northwind,web,10.99,USD,settled,62,0
+T007497,cascade-foods,web,193.24,USD,pending,31,0
+T007498,belltower,android,1065.0,USD,pending,,0
+T007499,eastgate,web,55.64,USD,settled,30,0
+T007500,eastgate,ios,56.8,USD,settled,30,1 d
+T007501,acme-parts,ios,25.73,USD,settled,47,1 d
+T007502,dunmore,web,21.61,USD,pending,66,0
+T007503,eastgate,ios,20.61,USD,settled,35,1 d
+T007504,greenline,ios,11.45,USD,chargeback,42,0
+T007505,northwind,web,109.4,USD,settled,49,1
+T007506,eastgate,web,24.14,USD,settled,78,0
+T007507,cascade-foods,web,17.79,USD,settled,19,1 d
+T007508,cascade-foods,ios,16.46,USD,pending,77,1 d
+T007509,dunmore,android,29.53,USD,settled,,0
+T007510,acme-parts,web,27.23,USD,settled,49,0
+T007511,northwind,ios,15.4,USD,settled,46,0 d
+T007512,acme-parts,phone,39.26,USD,settled,38,0
+T007513,eastgate,ios,83.55,USD,settled,57,2 d
+T007514,acme-parts,ios,5.11,USD,settled,27,2
+T007515,acme-parts,android,19.6,USD,settled,,3
+T007516,cascade-foods,ios,20.74,USD,settled,54,0
+T007517,northwind,android,83.71,USD,settled,48,1
+T007518,belltower,web,5300.0,USD,settled,77,0
+T007519,eastgate,web,11.95,USD,settled,75,0
+T007520,fairweather,ios,13.84,USD,settled,73,0 d
+T007521,northwind,ios,48.73,USD,settled,30,2 d
+T007522,greenline,ios,7.63,USD,settled,22,0
+T007523,greenline,web,6.09,USD,settled,78,0
+T007524,northwind,web,23.23,USD,pending,78,0
+T007525,northwind,web,18.71,USD,settled,55,0 d
+T007526,harborview,web,11.81,USD,settled,32,2
+T007527,acme-parts,web,11.26,USD,settled,39,0
+T007528,cascade-foods,web,20.1,USD,settled,66,0
+T007529,harborview,android,42.66,USD,settled,,1 d
+T007530,dunmore,android,27.23,USD,settled,51,0
+T007531,acme-parts,ios,81.59,USD,settled,28,0
+T007532,dunmore,web,35.72,USD,settled,43,1
+T007533,acme-parts,ios,164.19,USD,refunded,60,0
+T007534,belltower,web,736.0,USD,settled,58,0
+T007535,dunmore,web,32.05,USD,settled,62,0
+T007536,northwind,ios,4.24,USD,settled,27,0
+T007537,dunmore,android,58.3,USD,refunded,38,0
+T007538,greenline,web,19.45,USD,settled,78,0 d
+T007539,fairweather,ios,42.85,USD,pending,55,0 d
+T007540,acme-parts,ios,13.72,USD,settled,65,2
+T007541,eastgate,web,24.47,USD,pending,31,1 d
+T007542,dunmore,android,111.58,USD,settled,,0
+T007543,acme-parts,ios,33.43,USD,settled,23,1
+T007544,northwind,ios,48.86,USD,settled,23,1
+T007545,belltower,ios,2219.0,USD,settled,23,1 d
+T007546,cascade-foods,web,38.78,USD,settled,68,0
+T007547,belltower,web,2274.0,USD,settled,18,0 d
+T007548,northwind,web,113.63,USD,settled,36,1 d
+T007549,dunmore,ios,36.44,USD,settled,48,0
+T007550,northwind,ios,8.77,USD,settled,23,0
+T007551,belltower,web,2646.0,USD,pending,67,1 d
+T007552,belltower,android,965.0,USD,settled,21,2
+T007553,harborview,web,8.55,USD,settled,28,2
+T007554,belltower,ios,4829.0,USD,settled,37,2 d
+T007555,harborview,android,35.16,USD,settled,,0
+T007556,dunmore,web,67.08,USD,settled,43,0
+T007557,acme-parts,web,32.95,USD,settled,21,0 d
+T007558,fairweather,web,9.59,USD,settled,64,1
+T007559,eastgate,web,19.43,USD,settled,27,1 d
+T007560,harborview,ios,12.03,USD,settled,32,1
+T007561,northwind,phone,32.43,USD,settled,19,0
+T007562,belltower,web,6023.0,USD,settled,52,1
+T007563,northwind,ios,42.65,USD,settled,29,1
+T007564,fairweather,ios,12.04,USD,settled,73,2 d
+T007565,acme-parts,web,24.64,USD,pending,25,1
+T007566,northwind,web,22.91,USD,settled,24,0 d
+T007567,belltower,web,3734.0,USD,settled,58,1
+T007568,northwind,ios,47.02,USD,pending,47,1
+T007569,acme-parts,ios,42.25,USD,pending,73,1
+T007570,dunmore,web,30.16,USD,settled,62,0
+T007571,acme-parts,android,18.54,USD,settled,,2
+T007572,cascade-foods,phone,15.54,USD,settled,72,0
+T007573,northwind,ios,32.84,USD,settled,73,0
+T007574,acme-parts,web,14.88,USD,settled,44,0
+T007575,cascade-foods,web,25.38,USD,settled,47,0
+T007576,greenline,ios,48.14,USD,settled,49,1
+T007577,fairweather,web,52.31,USD,settled,25,1
+T007578,fairweather,web,3.81,USD,settled,55,0
+T007579,cascade-foods,ios,23.81,USD,settled,24,0 d
+T007580,eastgate,web,59.97,USD,settled,45,1
+T007581,acme-parts,ios,47.87,USD,settled,56,1 d
+T007582,fairweather,web,6.62,USD,settled,53,0
+T007583,fairweather,android,34.66,USD,pending,,0
+T007584,cascade-foods,ios,11.0,USD,chargeback,64,0 d
+T007585,acme-parts,android,69.74,USD,settled,48,3
+T007586,northwind,ios,107.75,USD,settled,24,0
+T007587,fairweather,ios,86.75,USD,settled,22,0
+T007588,belltower,web,4907.0,USD,settled,39,1 d
+T007589,belltower,android,2026.0,USD,settled,50,0
+T007590,fairweather,android,34.38,USD,pending,,1
+T007591,acme-parts,ios,31.73,USD,settled,24,0
+T007592,dunmore,ios,12.61,USD,settled,56,0 d
+T007593,harborview,web,17.52,USD,settled,64,0
+T007594,eastgate,web,29.61,USD,settled,45,0 d
+T007595,acme-parts,web,21.53,USD,settled,31,0
+T007596,eastgate,android,48.89,USD,settled,,1
+T007597,northwind,web,25.06,USD,settled,45,0 d
+T007598,dunmore,ios,29.56,USD,refunded,62,0
+T007599,northwind,ios,38.53,USD,settled,71,1
+T007600,acme-parts,ios,22.17,USD,settled,48,0
+T007601,northwind,web,23.98,USD,settled,24,1
+T007602,northwind,web,54.47,USD,settled,18,1 d
+T007603,acme-parts,ios,93.88,USD,settled,29,1 d
+T007604,acme-parts,ios,69.63,USD,settled,76,1 d
+T007605,acme-parts,android,20.59,USD,pending,,0
+T007606,northwind,web,41.57,USD,settled,56,1 d
+T007607,greenline,web,58.26,USD,settled,59,2 d
+T007608,cascade-foods,web,9.0,USD,pending,66,0
+T007609,dunmore,web,8.38,USD,settled,62,0
+T007610,eastgate,web,12.9,USD,settled,73,2 d
+T007611,harborview,web,20.17,USD,settled,46,3
+T007612,acme-parts,web,32.59,USD,settled,26,0 d
+T007613,greenline,android,17.86,USD,settled,,0
+T007614,greenline,web,31.56,USD,settled,56,0
+T007615,northwind,web,40.35,USD,settled,34,0
+T007616,fairweather,web,30.64,USD,settled,72,1
+T007617,belltower,android,5821.0,USD,settled,75,3
+T007618,fairweather,android,45.46,USD,settled,33,0
+T007619,greenline,ios,33.43,USD,settled,18,1
+T007620,acme-parts,web,18.58,USD,settled,64,0 d
+T007621,greenline,web,17.76,USD,settled,73,0 d
+T007622,cascade-foods,android,22.9,USD,settled,,0
+T007623,fairweather,ios,77.33,USD,settled,72,0
+T007624,dunmore,web,14.04,USD,settled,65,1 d
+T007625,eastgate,web,10.47,USD,settled,29,1 d
+T007626,cascade-foods,web,49.68,USD,settled,31,1 d
+T007627,dunmore,ios,17.93,USD,settled,37,0
+T007628,cascade-foods,android,167.78,USD,settled,,1 d
+T007629,dunmore,web,50.78,USD,settled,60,0
+T007630,cascade-foods,web,15.97,USD,settled,43,0
+T007631,acme-parts,android,32.25,USD,settled,,0
+T007632,northwind,web,27.34,USD,settled,30,1
+T007633,dunmore,ios,15.1,USD,settled,18,2
+T007634,northwind,ios,27.12,USD,settled,,1
+T007635,eastgate,web,2.9,USD,settled,70,0 d
+T007636,fairweather,web,9.04,USD,settled,47,0
+T007637,dunmore,ios,41.79,USD,pending,71,2
+T007638,eastgate,web,12.92,USD,settled,54,0
+T007639,greenline,android,14.8,USD,refunded,70,0
+T007640,belltower,web,10613.0,USD,settled,78,2
+T007641,eastgate,android,58.48,USD,settled,,0
+T007642,acme-parts,ios,9.07,USD,settled,65,1
+T007643,cascade-foods,web,169.25,USD,settled,46,1
+T007644,fairweather,ios,51.28,USD,settled,36,0
+T007645,acme-parts,web,16.73,USD,settled,76,1 d
+T007646,dunmore,ios,33.76,USD,settled,30,0
+T007647,cascade-foods,android,16.21,USD,settled,,1 d
+T007648,harborview,ios,33.66,USD,settled,45,0
+T007649,acme-parts,web,25.07,USD,settled,74,1 d
+T007650,harborview,web,28.74,USD,settled,72,0
+T007651,acme-parts,web,72.64,USD,settled,71,1
+T007652,dunmore,ios,9.15,USD,settled,60,2
+T007653,northwind,ios,16.48,USD,refunded,,0
+T007654,cascade-foods,web,44.18,USD,settled,54,0
+T007655,dunmore,web,15.59,USD,pending,58,1 d
+T007656,greenline,ios,61.62,USD,settled,59,3
+T007657,dunmore,web,37.43,USD,pending,22,1 d
+T007658,belltower,ios,2421.0,USD,settled,65,0
+T007659,harborview,web,16.51,USD,settled,40,0
+T007660,belltower,ios,18769.0,USD,pending,,0
+T007661,greenline,android,37.17,USD,refunded,,0 d
+T007662,dunmore,ios,30.23,USD,settled,23,1
+T007663,eastgate,web,55.58,USD,settled,64,1
+T007664,fairweather,web,22.11,USD,pending,51,1 d
+T007665,dunmore,android,13.13,USD,settled,,0
+T007666,belltower,android,2099.0,USD,settled,18,1
+T007667,eastgate,android,17.29,USD,pending,42,2
+T007668,acme-parts,android,13.65,USD,settled,,0
+T007669,northwind,android,33.51,USD,settled,,0
+T007670,fairweather,ios,28.13,USD,settled,41,1
+T007671,cascade-foods,android,13.97,USD,settled,,0 d
+T007672,harborview,ios,47.87,USD,settled,50,0
+T007673,fairweather,android,57.58,USD,settled,,1 d
+T007674,harborview,web,10.33,USD,pending,29,0
+T007675,eastgate,ios,53.93,USD,pending,19,1
+T007676,dunmore,web,17.89,USD,settled,51,0
+T007677,eastgate,ios,21.43,USD,settled,68,1
+T007678,greenline,ios,71.75,USD,settled,42,1 d
+T007679,northwind,ios,37.72,USD,settled,52,1
+T007680,belltower,web,1566.0,USD,settled,65,0
+T007681,cascade-foods,ios,44.57,USD,settled,25,1 d
+T007682,fairweather,web,88.51,USD,settled,35,0 d
+T007683,acme-parts,web,37.09,USD,settled,77,2 d
+T007684,fairweather,android,9.49,USD,settled,,0
+T007685,harborview,ios,305.09,USD,pending,38,0
+T007686,northwind,ios,56.74,USD,settled,31,1
+T007687,dunmore,web,38.06,USD,settled,49,0
+T007688,northwind,web,18.8,USD,settled,35,0
+T007689,belltower,web,1766.0,USD,pending,40,0
+T007690,northwind,web,244.75,USD,settled,30,1
+T007691,cascade-foods,web,12.36,USD,settled,59,0 d
+T007692,belltower,web,2592.0,USD,settled,32,0
+T007693,cascade-foods,ios,35.1,USD,settled,51,0
+T007694,cascade-foods,android,23.7,USD,settled,,1
+T007695,eastgate,ios,55.05,USD,settled,69,1 d
+T007696,dunmore,web,44.42,USD,settled,78,2 d
+T007697,acme-parts,ios,29.63,USD,pending,67,0
+T007698,northwind,ios,129.34,USD,refunded,67,0
+T007699,acme-parts,android,23.73,USD,settled,,0 d
+T007700,cascade-foods,web,5.81,USD,settled,76,0 d
+T007701,greenline,web,62.26,USD,settled,20,1
+T007702,northwind,android,38.44,USD,settled,,0
+T007703,belltower,web,708.0,USD,settled,45,0 d
+T007704,greenline,web,17.6,USD,settled,57,0
+T007705,fairweather,web,19.2,USD,settled,66,3
+T007706,northwind,android,21.16,USD,settled,33,2
+T007707,greenline,ios,38.53,USD,settled,25,2 d
+T007708,greenline,web,22.39,USD,settled,21,0 d
+T007709,cascade-foods,android,62.29,USD,chargeback,,0 d
+T007710,fairweather,ios,16.59,USD,refunded,20,0 d
+T007711,eastgate,web,15.21,USD,settled,27,0 d
+T007712,belltower,android,6779.0,USD,pending,,3 d
+T007713,acme-parts,web,50.66,USD,pending,32,1
+T007714,dunmore,web,45.84,USD,settled,49,0
+T007715,acme-parts,web,10.2,USD,settled,53,0
+T007716,belltower,web,8205.0,USD,pending,24,0
+T007717,eastgate,ios,12.87,USD,settled,54,0
+T007718,cascade-foods,web,17.97,USD,settled,39,2
+T007719,northwind,web,76.08,USD,settled,69,0 d
+T007720,acme-parts,ios,127.39,USD,refunded,51,0
+T007721,cascade-foods,ios,66.62,USD,settled,30,0
+T007722,greenline,phone,31.79,USD,chargeback,39,1
+T007723,greenline,ios,16.08,USD,settled,45,0
+T007724,northwind,web,33.31,USD,settled,22,0
+T007725,greenline,web,7.55,USD,settled,54,2 d
+T007726,belltower,web,2637.0,USD,pending,34,0 d
+T007727,eastgate,android,33.76,USD,settled,,0 d
+T007728,dunmore,web,18.74,USD,pending,71,0 d
+T007729,dunmore,ios,40.13,USD,settled,25,0
+T007730,eastgate,web,10.87,USD,settled,45,1
+T007731,eastgate,ios,36.69,USD,pending,46,0 d
+T007732,greenline,ios,21.02,USD,settled,29,0
+T007733,dunmore,ios,38.68,USD,settled,57,0
+T007734,dunmore,ios,26.48,USD,settled,45,0
+T007735,belltower,web,6353.0,USD,settled,50,3 d
+T007736,northwind,web,24.75,USD,settled,49,1
+T007737,harborview,ios,31.54,USD,settled,29,1 d
+T007738,cascade-foods,web,5.6,USD,settled,46,0
+T007739,greenline,ios,34.41,USD,pending,25,0
+T007740,fairweather,web,31.38,USD,pending,74,1 d
+T007741,fairweather,web,8.08,USD,settled,52,0
+T007742,eastgate,android,12.91,USD,settled,,2 d
+T007743,eastgate,ios,51.93,USD,settled,21,0
+T007744,greenline,web,134.81,USD,settled,43,0
+T007745,cascade-foods,ios,16.8,USD,settled,73,0 d
+T007746,belltower,android,2713.0,USD,settled,,2
+T007747,cascade-foods,web,11.41,USD,settled,69,2
+T007748,greenline,web,145.82,USD,refunded,,0
+T007749,greenline,web,15.5,USD,settled,34,1
+T007750,harborview,android,400.0,USD,chargeback,,0
+T007751,northwind,web,19.54,USD,settled,56,0 d
+T007752,acme-parts,android,32.38,USD,settled,,0 d
+T007753,fairweather,phone,12.03,USD,settled,54,0
+T007754,dunmore,web,77.79,USD,pending,58,0 d
+T007755,dunmore,ios,65.06,USD,settled,68,1 d
+T007756,greenline,ios,20.8,USD,chargeback,70,0
+T007757,eastgate,android,20.48,USD,settled,76,1
+T007758,harborview,web,36.9,USD,settled,69,0
+T007759,belltower,ios,3214.0,USD,settled,46,0
+T007760,fairweather,phone,18.88,USD,settled,41,1 d
+T007761,cascade-foods,ios,33.24,USD,settled,,3
+T007762,fairweather,android,19.79,USD,settled,,1
+T007763,fairweather,android,31.53,USD,pending,41,0
+T007764,fairweather,android,23.68,USD,settled,,0 d
+T007765,greenline,web,17.25,USD,settled,69,0
+T007766,fairweather,web,56.98,USD,settled,41,1
+T007767,fairweather,ios,30.1,USD,settled,,0
+T007768,belltower,ios,3817.0,USD,refunded,21,0
+T007769,northwind,web,41.67,USD,settled,22,2 d
+T007770,cascade-foods,ios,31.2,USD,settled,21,0 d
+T007771,northwind,android,12.49,USD,settled,58,0 d
+T007772,northwind,web,27.2,USD,pending,75,0
+T007773,belltower,ios,929.0,USD,settled,28,0 d
+T007774,northwind,web,11.37,USD,pending,70,0
+T007775,cascade-foods,web,62.95,USD,settled,46,0
+T007776,dunmore,web,61.83,USD,settled,25,0
+T007777,acme-parts,web,95.28,USD,settled,48,1
+T007778,northwind,web,42.04,USD,settled,32,0
+T007779,greenline,ios,59.9,USD,pending,18,0
+T007780,dunmore,ios,100.55,USD,settled,44,1
+T007781,greenline,ios,22.93,USD,settled,30,1 d
+T007782,dunmore,web,99.91,USD,settled,75,0 d
+T007783,eastgate,web,55.36,USD,settled,64,1
+T007784,eastgate,web,37.43,USD,pending,49,0
+T007785,acme-parts,android,50.62,USD,settled,40,0
+T007786,northwind,web,8.25,USD,settled,69,0
+T007787,eastgate,web,34.41,USD,settled,63,0 d
+T007788,belltower,web,5424.0,USD,settled,74,1
+T007789,fairweather,ios,13.34,USD,settled,67,0
+T007790,cascade-foods,android,14.99,USD,settled,,0
+T007791,greenline,web,15.62,USD,settled,53,0
+T007792,greenline,ios,22.45,USD,settled,25,0
+T007793,harborview,web,91.94,USD,settled,46,0 d
+T007794,fairweather,ios,20.9,USD,pending,36,1
+T007795,northwind,ios,68.93,USD,settled,71,1
+T007796,belltower,web,11063.0,USD,settled,60,0
+T007797,northwind,android,44.8,USD,settled,,0
+T007798,dunmore,web,19.22,USD,settled,70,0
+T007799,eastgate,ios,31.16,USD,settled,43,0
+T007800,belltower,ios,2303.0,USD,pending,61,1 d
+T007801,greenline,ios,9.79,USD,settled,76,1
+T007802,fairweather,android,27.56,USD,settled,,0
+T007803,acme-parts,phone,13.79,USD,settled,51,1 d
+T007804,eastgate,ios,7.62,USD,settled,52,0
+T007805,belltower,android,2079.0,USD,settled,29,2 d
+T007806,dunmore,ios,20.23,USD,settled,69,0
+T007807,harborview,web,6458.0,USD,settled,21,0
+T007808,acme-parts,web,106.55,USD,pending,36,0 d
+T007809,acme-parts,web,35.3,USD,settled,,0
+T007810,cascade-foods,ios,37.44,USD,settled,37,0
+T007811,dunmore,android,29.71,USD,settled,,0
+T007812,cascade-foods,web,24.23,USD,settled,37,0
+T007813,dunmore,android,50.7,USD,refunded,,0
+T007814,belltower,android,6046.0,USD,pending,,0
+T007815,harborview,android,35.69,USD,settled,,0 d
+T007816,belltower,ios,7639.0,USD,settled,57,2
+T007817,harborview,ios,1700.0,USD,settled,78,0
+T007818,dunmore,web,10.4,USD,settled,51,0 d
+T007819,northwind,android,12.25,USD,settled,,0
+T007820,greenline,web,30.81,USD,settled,20,0
+T007821,acme-parts,ios,23.45,USD,settled,28,1
+T007822,northwind,ios,43.13,USD,settled,46,0
+T007823,belltower,android,10262.0,USD,settled,,0 d
+T007824,greenline,web,21.52,USD,settled,56,3
+T007825,eastgate,web,56.64,USD,pending,19,1
+T007826,greenline,web,17.26,USD,settled,48,3
+T007827,cascade-foods,ios,11.39,USD,pending,74,1
+T007828,fairweather,web,149.13,USD,settled,69,0
+T007829,northwind,ios,113.25,USD,settled,49,1 d
+T007830,belltower,ios,5361.0,USD,settled,55,0
+T007831,acme-parts,ios,5.8,USD,settled,74,0
+T007832,belltower,web,2138.0,USD,settled,18,0 d
+T007833,greenline,web,14.73,USD,settled,25,0 d
+T007834,eastgate,ios,46.25,USD,settled,24,0
+T007835,acme-parts,web,64.8,USD,settled,43,1
+T007836,belltower,web,2829.0,USD,settled,56,1 d
+T007837,belltower,ios,1916.0,USD,pending,51,0 d
+T007838,fairweather,web,548.5,USD,settled,76,2 d
+T007839,northwind,web,37.14,USD,settled,75,1
+T007840,greenline,ios,20.93,USD,pending,41,1
+T007841,acme-parts,ios,24.81,USD,settled,20,0
+T007842,greenline,android,49.46,USD,settled,,0
+T007843,harborview,web,8.93,USD,pending,,0
+T007844,eastgate,ios,63.93,USD,settled,20,0 d
+T007845,greenline,web,14.66,USD,settled,55,3
+T007846,eastgate,web,33.83,USD,settled,19,1
+T007847,belltower,web,6530.0,USD,settled,73,0
+T007848,northwind,android,44.09,USD,settled,,0
+T007849,cascade-foods,web,77.06,USD,settled,70,0 d
+T007850,harborview,ios,23.98,USD,settled,34,1 d
+T007851,northwind,ios,30.29,USD,settled,66,0
+T007852,fairweather,ios,39.38,USD,settled,39,0
+T007853,harborview,ios,63.59,USD,settled,56,2
+T007854,cascade-foods,web,81.98,USD,settled,35,1 d
+T007855,fairweather,ios,9.79,USD,settled,37,0 d
+T007856,fairweather,ios,16.26,USD,settled,77,1
+T007857,belltower,web,5355.0,USD,settled,61,1 d
+T007858,dunmore,web,132.09,USD,settled,59,0 d
+T007859,belltower,web,2624.0,USD,settled,63,0
+T007860,belltower,ios,1074.0,USD,settled,25,2
+T007861,cascade-foods,web,18.66,USD,settled,40,2
+T007862,eastgate,ios,71.17,USD,settled,52,1
+T007863,northwind,ios,53.09,USD,settled,23,0
+T007864,northwind,web,74.64,USD,settled,50,1
+T007865,belltower,web,855.0,USD,settled,41,0 d
+T007866,cascade-foods,ios,53.83,USD,pending,31,0
+T007867,dunmore,android,50.95,USD,settled,,0
+T007868,cascade-foods,android,20.79,USD,settled,,1
+T007869,fairweather,web,21.38,USD,settled,50,0
+T007870,belltower,android,1981.0,USD,settled,,1
+T007871,eastgate,web,66.85,USD,settled,39,1
+T007872,cascade-foods,web,27.65,USD,settled,73,0
+T007873,northwind,web,23.57,USD,settled,43,1 d
+T007874,dunmore,web,112.62,USD,settled,47,0
+T007875,greenline,ios,50.25,USD,settled,26,1
+T007876,northwind,ios,23.64,USD,settled,66,0 d
+T007877,eastgate,ios,39.9,USD,settled,53,0 d
+T007878,fairweather,ios,32.58,USD,settled,55,0
+T007879,eastgate,web,7.19,USD,settled,30,0 d
+T007880,greenline,web,44.68,USD,settled,18,0 d
+T007881,fairweather,android,19.98,USD,settled,,1 d
+T007882,harborview,phone,37.83,USD,settled,37,0 d
+T007883,eastgate,ios,39.96,USD,settled,21,1 d
+T007884,eastgate,ios,37.28,USD,pending,66,0
+T007885,eastgate,ios,37.15,USD,settled,48,0
+T007886,eastgate,ios,23.26,USD,settled,51,1
+T007887,cascade-foods,ios,106.33,USD,settled,41,0
+T007888,dunmore,ios,19.31,USD,pending,52,0
+T007889,cascade-foods,ios,30.03,USD,settled,72,0
+T007890,fairweather,ios,84.81,USD,refunded,38,0
+T007891,cascade-foods,ios,16.17,USD,settled,35,0
+T007892,belltower,ios,1496.0,USD,pending,27,1
+T007893,northwind,android,68.48,USD,settled,,1
+T007894,dunmore,android,56.92,USD,settled,,0
+T007895,cascade-foods,web,93.69,USD,settled,60,0
+T007896,cascade-foods,ios,60.09,USD,settled,56,0
+T007897,greenline,ios,50.69,USD,settled,55,0
+T007898,greenline,web,45.16,USD,settled,36,0
+T007899,fairweather,ios,13.0,USD,settled,40,2 d
+T007900,belltower,android,827.0,USD,settled,,0 d
+T007901,cascade-foods,web,14.96,USD,settled,22,1 d
+T007902,cascade-foods,ios,34.61,USD,settled,75,0
+T007903,acme-parts,ios,55.81,USD,settled,30,0
+T007904,harborview,web,1851.0,USD,settled,37,1
+T007905,acme-parts,ios,22.75,USD,settled,53,1
+T007906,eastgate,android,15.24,USD,settled,,0
+T007907,cascade-foods,web,16.96,USD,pending,51,1
+T007908,dunmore,web,16.98,USD,settled,27,1
+T007909,cascade-foods,android,16.4,USD,settled,,0
+T007910,northwind,android,28.07,USD,settled,,0 d
+T007911,dunmore,android,14.4,USD,settled,33,0
+T007912,cascade-foods,ios,17.91,USD,settled,53,0
+T007913,northwind,android,18.45,USD,pending,,0
+T007914,acme-parts,web,5.56,USD,settled,59,0
+T007915,greenline,ios,29.05,USD,pending,47,0 d
+T007916,dunmore,android,30.32,USD,settled,42,1
+T007917,cascade-foods,ios,43.59,USD,settled,38,1 d
+T007918,northwind,android,4.74,USD,pending,,0
+T007919,belltower,web,5927.0,USD,settled,61,0
+T007920,dunmore,web,23.46,USD,settled,36,0 d
+T007921,cascade-foods,web,211.71,USD,pending,76,2
+T007922,acme-parts,ios,106.52,USD,settled,55,1
+T007923,harborview,web,27.86,USD,settled,41,1
+T007924,cascade-foods,web,25.32,USD,pending,61,0
+T007925,greenline,android,22.37,USD,settled,,0
+T007926,belltower,web,2331.0,USD,settled,76,1
+T007927,belltower,web,3397.0,USD,settled,29,0
+T007928,acme-parts,android,9.97,USD,settled,,1
+T007929,greenline,ios,38.12,USD,pending,53,0
+T007930,fairweather,web,48.84,USD,settled,68,0
+T007931,cascade-foods,android,31.37,USD,settled,,1
+T007932,acme-parts,android,58.29,USD,settled,23,0
+T007933,greenline,web,24.31,USD,settled,72,0 d
+T007934,dunmore,web,28.91,USD,settled,61,0 d
+T007935,cascade-foods,web,30.06,USD,settled,30,0
+T007936,northwind,ios,10.17,USD,settled,52,0
+T007937,fairweather,phone,60.01,USD,settled,45,0
+T007938,fairweather,ios,42.13,USD,settled,70,0
+T007939,greenline,android,107.98,USD,settled,,0
+T007940,greenline,web,11.22,USD,settled,28,0
+T007941,cascade-foods,web,21.4,USD,settled,55,1 d
+T007942,eastgate,android,25.3,USD,chargeback,,0
+T007943,belltower,web,4274.0,USD,settled,66,1
+T007944,belltower,android,2764.0,USD,settled,,0
+T007945,belltower,web,2589.0,USD,settled,72,0 d
+T007946,eastgate,web,32.02,USD,settled,32,0
+T007947,belltower,ios,2931.0,USD,settled,60,3
+T007948,belltower,ios,766.0,USD,settled,53,1 d
+T007949,acme-parts,web,87.46,USD,settled,22,2
+T007950,greenline,ios,33.22,USD,settled,58,0 d
+T007951,acme-parts,web,26.41,USD,settled,41,0 d
+T007952,greenline,web,145.83,USD,pending,30,0
+T007953,northwind,web,74.27,USD,settled,31,1
+T007954,northwind,web,15.9,USD,settled,55,1
+T007955,cascade-foods,android,16.94,USD,settled,,1 d
+T007956,fairweather,web,51.36,USD,settled,25,0
+T007957,belltower,android,2592.0,USD,settled,,0 d
+T007958,greenline,android,27.27,USD,settled,,1
+T007959,cascade-foods,ios,7.25,USD,settled,75,0
+T007960,greenline,ios,151.07,USD,settled,60,1
+T007961,belltower,android,942.0,USD,settled,,1
+T007962,dunmore,ios,27.6,USD,settled,66,0 d
+T007963,dunmore,web,36.84,USD,pending,75,1 d
+T007964,cascade-foods,ios,74.62,USD,settled,45,1
+T007965,fairweather,android,172.05,USD,settled,,0
+T007966,eastgate,ios,76.73,USD,settled,65,1
+T007967,fairweather,android,26.23,USD,settled,,1
+T007968,cascade-foods,web,22.46,USD,settled,72,0 d
+T007969,greenline,web,45.05,USD,refunded,76,1 d
+T007970,cascade-foods,web,16.09,USD,settled,77,0
+T007971,acme-parts,web,18.07,USD,settled,28,2
+T007972,cascade-foods,ios,10.82,USD,settled,23,0
+T007973,dunmore,web,34.04,USD,chargeback,36,1 d
+T007974,dunmore,ios,20.26,USD,settled,26,3 d
+T007975,fairweather,web,11.68,USD,settled,19,0
+T007976,greenline,ios,84.6,USD,pending,18,0
+T007977,greenline,ios,19.67,USD,settled,44,0 d
+T007978,northwind,web,12.14,USD,settled,29,0
+T007979,acme-parts,android,38.91,USD,settled,,1
+T007980,cascade-foods,ios,8.68,USD,settled,32,1
+T007981,cascade-foods,android,44.82,USD,settled,,0
+T007982,northwind,web,38.69,USD,settled,66,0
+T007983,harborview,ios,106.81,USD,settled,21,2
+T007984,fairweather,ios,10.66,USD,settled,77,1
+T007985,northwind,android,11.97,USD,settled,,2
+T007986,cascade-foods,ios,28.81,USD,pending,18,0
+T007987,fairweather,web,51.32,USD,settled,74,0 d
+T007988,eastgate,ios,43.72,USD,settled,47,0
+T007989,greenline,android,14.08,USD,settled,,0
+T007990,dunmore,web,32.35,USD,settled,50,3
+T007991,eastgate,web,37.28,USD,settled,33,1
+T007992,belltower,web,2554.0,USD,settled,65,0
+T007993,fairweather,android,5.89,USD,settled,34,2 d
+T007994,eastgate,ios,17.34,USD,settled,35,0 d
+T007995,dunmore,android,33.52,USD,settled,,1
+T007996,belltower,android,1243.0,USD,settled,,1
+T007997,greenline,web,39.35,USD,refunded,23,1
+T007998,acme-parts,ios,33.36,USD,settled,59,2 d
+T007999,acme-parts,android,28.55,USD,settled,,1

@@ -1,0 +1,7 @@
+VERDICT: GREEN
+
+1. Pointer `references/why-controls-miss-seams.md`: all three parts present in "READ it when someone argues an existing control already covers a boundary, or that a fault there would have surfaced by now. Two claims with their verbatim quotes, fetch dates and limits." — RUN-vs-READ is explicit ("READ it"), WHEN is explicit ("when someone argues..."), WHAT is explicit ("Two claims with their verbatim quotes, fetch dates and limits."). No fault.
+
+2. Pointer `assets/seam-control-table.md`: WHEN is explicit ("at step 1"), WHAT is explicit ("The two table shapes and a definition of every column."), and RUN-vs-READ is resolved by "COPY it into your answer... and fill it as you go" plus the closing "Not reading material; it is the output format." This isn't literally "RUN" or "READ," but the file is neither executable code nor pure reference — it's a template to be copied — so naming the actual action (COPY) and explicitly ruling out READ satisfies the underlying intent of the check (telling the reader what to *do* with the file) rather than violating it. No fault.
+
+No sentence in either pointer omits WHAT, WHEN, or the action-to-take; both bullets are self-contained single pointers (the two-sentence wrap is line-length, not a second pointer).

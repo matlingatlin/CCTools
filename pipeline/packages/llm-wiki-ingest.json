@@ -1,0 +1,198 @@
+{
+  "_note": "Package for the FIRST v3 build (chain contract 3.0.0). The skill exists as a candidate at .claude/skills/llm-wiki-ingest; this build measures it against a bare baseline and the shape grader in the fixture. failure_kind is shape on purpose: the artefact is a page in a fixed schema, and check.py grades it without a judge.",
+  "id": "llm-wiki-ingest",
+  "origin": "existing-artifact",
+  "filled_by": "coordinator, from .claude/skills/llm-wiki-ingest/SKILL.md (candidate, authored 2026-09-02) and knowledge/notes/llm-wiki-pattern.md",
+  "incoming_artifact": ".claude/skills/llm-wiki-ingest",
+  "gap_kind": "missing",
+  "_gap_observed": "On 2026-09-02 the knowledge base's own lint found 9 errors and 51 warnings on 44 notes written without a shared ingest procedure: 6 dangling links, 2 notes with no sources block, 17 notes never registered in the index, 33 one-way links. Each is a step the ingest skipped. The gap is the missing procedure, and it shows in the files.",
+  "candidate_sentence": "Turns one verified source into one wiki page in the shared schema - raw kept, triaged against the page that owns the topic, every number quoted before it is written, claims graded, neighbours naming the page back, index and log rows, lint clean - and emits the page, the register rows and the log line.",
+  "unit_type": "skill",
+  "content_kind": "reference",
+  "verifiable": true,
+  "failure_kind": "shape",
+  "expected_failure": "Given a fetched source and an existing wiki, the baseline writes a new page beside the one that already owns the topic, states numbers without the quoted line, overwrites a contradicted value with the newer one, and leaves the index, source log and back-links untouched. PREDICTION, NOT OBSERVATION: the probe decides; this repository's own history is that expected_failure was refuted 4 of 4 times.",
+  "trigger_terms": [
+    "add this to the knowledge base",
+    "ingest this source",
+    "put this in the wiki",
+    "write a note from this page",
+    "update the note with this",
+    "karpathy llm wiki",
+    "raw wiki schema",
+    "record this finding",
+    "this contradicts the note"
+  ],
+  "budget": {
+    "max_agents": 4,
+    "max_paired_runs": 8
+  },
+  "threshold": "Across k >= 2 repeats: zero regressions on correctness, no more than 20 percent worse on tokens or tool calls, and at least one win on correctness or shape that survives every repeat. A clean baseline does not stop the build; a win on shape alone satisfies the clause.",
+  "sources": [
+    {
+      "source_id": "S1",
+      "url": "https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f",
+      "type": "page",
+      "title": "LLM Wiki",
+      "authors": "Andrej Karpathy",
+      "year": 2026,
+      "fetched": "2026-09-02",
+      "access": "open",
+      "read": "full",
+      "read_detail": "Read by the second session on 2026-09-02 and compiled into knowledge/notes/llm-wiki-pattern.md; quotes below are from that note's verbatim lines."
+    },
+    {
+      "source_id": "S2",
+      "url": "https://raw.githubusercontent.com/Astro-Han/karpathy-llm-wiki/main/SKILL.md",
+      "type": "repo",
+      "title": "karpathy-llm-wiki SKILL.md",
+      "authors": "Astro-Han and contributors",
+      "year": 2026,
+      "fetched": "2026-09-02",
+      "access": "open",
+      "read": "full"
+    },
+    {
+      "source_id": "S3",
+      "url": "https://github.com/Astro-Han/karpathy-llm-wiki",
+      "type": "repo",
+      "title": "karpathy-llm-wiki README",
+      "authors": "Astro-Han and contributors",
+      "year": 2026,
+      "fetched": "2026-09-02",
+      "access": "open",
+      "read": "partial"
+    },
+    {
+      "source_id": "S4",
+      "url": "https://github.com/kfchou/wiki-skills",
+      "type": "repo",
+      "title": "wiki-skills README",
+      "authors": "kfchou",
+      "year": 2026,
+      "fetched": "2026-09-02",
+      "access": "open",
+      "read": "partial"
+    },
+    {
+      "source_id": "S5",
+      "url": "https://github.com/toolboxmd/karpathy-wiki",
+      "type": "repo",
+      "title": "karpathy-wiki README",
+      "authors": "toolboxmd",
+      "year": 2026,
+      "fetched": "2026-09-02",
+      "access": "open",
+      "read": "partial"
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "C1",
+      "source_id": "S1",
+      "claim": "An ingest touches many pages, not one: the gist says a single source may touch 10 to 15 wiki pages.",
+      "locator": "gist body, ingest operation",
+      "quote": "a single source may touch 10–15 wiki pages",
+      "what_was_measured": null,
+      "effect_size": null,
+      "sample": null,
+      "limits": "the gist's own estimate for its author's wiki; no measurement published",
+      "verdict": "REPEATED",
+      "verified_by": "knowledge/notes/llm-wiki-pattern.md"
+    },
+    {
+      "claim_id": "C2",
+      "source_id": "S1",
+      "claim": "Lint is a named operation with five targets: contradictions, stale claims, orphan pages, missing cross-references, data gaps.",
+      "locator": "gist body, lint operation",
+      "quote": "health-check for contradictions, stale claims, orphan pages, missing cross-references, data gaps",
+      "what_was_measured": null,
+      "effect_size": null,
+      "sample": null,
+      "limits": "a design statement",
+      "verdict": "REPEATED",
+      "verified_by": "knowledge/notes/llm-wiki-pattern.md"
+    },
+    {
+      "claim_id": "C3",
+      "source_id": "S2",
+      "claim": "Numbers, dates and quotes are located in the raw file before they are written into a page.",
+      "locator": "SKILL.md, Compile step of the ingest workflow",
+      "quote": "Every number, date, and direct quote must be located in the raw file before it is written",
+      "what_was_measured": null,
+      "effect_size": null,
+      "sample": null,
+      "limits": "a rule, not a result",
+      "verdict": "REPEATED",
+      "verified_by": null
+    },
+    {
+      "claim_id": "C4",
+      "source_id": "S2",
+      "claim": "Lint is tiered: safe fixes applied, mechanical reports, judgement reports.",
+      "locator": "SKILL.md, Lint section",
+      "quote": "Safe Fixes (auto-fix): index consistency, internal link targets, Raw field references, See Also links",
+      "what_was_measured": null,
+      "effect_size": null,
+      "sample": null,
+      "limits": "the implementation's design",
+      "verdict": "REPEATED",
+      "verified_by": null
+    },
+    {
+      "claim_id": "C5",
+      "source_id": "S3",
+      "claim": "The implementation deliberately omits vector search and confidence scores because grep and read are more reliable at the wiki sizes it targets.",
+      "locator": "README, design boundaries",
+      "quote": "at 50K–100K tokens of curated wiki, grep and read are more reliable",
+      "what_was_measured": null,
+      "effect_size": null,
+      "sample": null,
+      "limits": "the authors' judgement; no comparison published",
+      "verdict": "REPEATED",
+      "verified_by": null
+    },
+    {
+      "claim_id": "C6",
+      "source_id": "S4",
+      "claim": "A pre-commit hook blocks pages with an unresolved contradiction flag or a structural problem.",
+      "locator": "README, hooks",
+      "quote": "an unresolved contradiction flag or a structural problem (missing frontmatter, a broken [[link]], or a slug collision)",
+      "what_was_measured": null,
+      "effect_size": null,
+      "sample": null,
+      "limits": "a mechanism; its effect on wiki quality is not measured",
+      "verdict": "REPEATED",
+      "verified_by": null
+    },
+    {
+      "claim_id": "C7",
+      "source_id": "S5",
+      "claim": "Tier-1 lint runs at every ingest over five structural checks.",
+      "locator": "README, lint",
+      "quote": "Tier-1 lint at every ingest: required frontmatter fields, link resolution, source existence, quality block ranges, type/path consistency",
+      "what_was_measured": null,
+      "effect_size": null,
+      "sample": null,
+      "limits": "a mechanism",
+      "verdict": "REPEATED",
+      "verified_by": null
+    }
+  ],
+  "representative_tasks": [
+    {
+      "task": "The wiki at pipeline/packages/fixtures/llm-wiki-ingest/wiki has a note that owns model prices. Ingest the source pipeline/packages/fixtures/llm-wiki-ingest/raw/2026-09-02-pricing-page.md into that wiki.",
+      "artifact_expected": "The owning note updated in place with a dated row per changed price and the new source in its frontmatter with a fetch date; the superseded price kept as history; no new page; a SOURCES row; a LOG line; the neighbour still naming the owner. Graded by fixture check.py T1."
+    },
+    {
+      "task": "Ingest pipeline/packages/fixtures/llm-wiki-ingest/raw/2026-09-02-gamma-model-card.md into the same wiki. Its parameter count differs from what the wiki holds.",
+      "artifact_expected": "Both values kept as their own dated rows with their sources, the note marked disputed at that fact, neither value overwritten; SOURCES and LOG rows. Graded by check.py T2."
+    },
+    {
+      "task": "Ingest pipeline/packages/fixtures/llm-wiki-ingest/raw/2026-09-02-blog-restating-caching.md into the same wiki.",
+      "artifact_expected": "No page changed and no page created; one LOG line saying no material with the URL. Graded by check.py T3."
+    }
+  ],
+  "contradictions_kept": [],
+  "_claims_note": "All seven claims are REPEATED: they are design rules and mechanisms, not measurements. The measurement this build produces is the first number; the fixture's check.py is the shape grader the contract names for failure_kind shape."
+}

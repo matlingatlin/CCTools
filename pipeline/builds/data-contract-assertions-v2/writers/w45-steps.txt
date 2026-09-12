@@ -1,0 +1,32 @@
+You are writing ONE section of a Claude Code skill's body: the STEPS. Nothing else — no frontmatter, no purpose, no when-to-use, no pointers section. Someone else adjudicates your draft and a separate reader checks it.
+
+READ THESE (paths — open them yourself, nothing is pasted):
+- /home/user/skills-repo/pipeline/builds/data-contract-assertions-v2/observed-failures.md — what eight baseline runs with no skill present actually did, quoted. THIS IS YOUR ONLY LICENCE TO WRITE A RULE.
+- /home/user/skills-repo/pipeline/builds/data-contract-assertions-v2/artifact/data-contract-assertions/references/threshold-evidence.md — the verified claim set bundled with this skill, with verbatim quotes.
+- /home/user/skills-repo/.claude/skills/data-contract-assertions/SKILL.md — the INCUMBENT's 190-line body. This is an EXTEND. Its method is the starting point.
+- /home/user/skills-repo/pipeline/builds/data-contract-assertions-v2/artifact/data-contract-assertions/_field-purpose-when.md — the purpose and when-to-use sections already written, so you do not repeat them.
+- /home/user/skills-repo/pipeline/contracts/skill.contract.json — the field with "id": "body.steps" and the one with "id": "body.pointers". Read every rule from the file.
+- /home/user/skills-repo/pipeline/packages/fixtures/data-contract-assertions-v2/ground_truth.json — DO NOT OPEN THIS FILE. It is the scoring key for the measurement and reading it would contaminate the build. Named here only so you do not open it by accident.
+
+WRITE TO: /home/user/skills-repo/pipeline/builds/data-contract-assertions-v2/artifact/data-contract-assertions/_field-steps.md
+
+THE ONE RULE THAT GOVERNS EVERYTHING YOU WRITE:
+**Only an OBSERVED failure may become a rule.** For every step you write, you must be able to name the observation in observed-failures.md, or the claim id in threshold-evidence.md, that it answers. Put that citation in the text, in parentheses, at the end of the step — e.g. "(OBS-1)" or "(C10)". A step with no citation is an opinion, and an opinion costs context on every single invocation of this skill. Delete it instead.
+
+This cuts BOTH ways and the harder direction is the incumbent's. The incumbent's body carries 190 lines of method written with ZERO references and ZERO sources. Anything in it you cannot ground in an observation or a claim does not survive into your draft. Do not carry a rule forward because it reads well.
+
+WHAT THE OBSERVATIONS SAY THE SKILL MUST DO — you must still read the file, this is orientation:
+- The baseline is CLEAN on segmented reasoning. It finds a defect confined to one segment unprompted, in every run. Do not write a step teaching it to do that as if it could not. If you keep such a step it must be justified as making a clean-but-uneven behaviour CONSISTENT, and you must say which runs varied.
+- OBS-1 is the real gap and it held in both runs: asked what threshold to use, the baseline supplied a number and dressed it as standard practice. The evidence base carries NO mapping from drift magnitude to expected harm. Your steps must make the skill refuse to invent one, and must say what a person should do INSTEAD — what the decision actually depends on. That "instead" must be concrete enough to act on; "use judgement" is not a step.
+- OBS-2: the split between differences that BLOCK and differences that WIDEN the contract is the decision the baseline does not make explicitly.
+
+HARD CONSTRAINTS:
+1. Every step ends in something CHECKABLE — a number, a named artefact, a file, a table row, a command. "Consider whether the drift matters" is not a step. "Write one line per dataset naming the consumer and what a bad batch costs them" is.
+2. You must NOT state a numeric threshold, band, cutoff or default anywhere — no 0.1, no 0.25, no "within 20 percent". The evidence carries none and OBS-1 is the failure of supplying one. If a step needs a bound, the step is to DERIVE the bound from named inputs and record how it was derived.
+3. Anything that must hold throughout the task is written as STANDING guidance, not as a one-time step. Claude Code does not re-read this file on later turns, so a rule written as step 4 stops applying at step 5.
+4. Do not duplicate any passage from threshold-evidence.md. Information lives in SKILL.md or in a reference, never both — a duplicated passage is a contract ERROR. Point at the reference instead.
+5. Include a pointers list: one line per bundled file saying WHAT is in it, WHEN to open it, and whether to READ or RUN it. The bundle is: references/threshold-evidence.md and evals/evals.json.
+6. Under 500 lines and under 5000 words for the whole body; yours is the largest part of it, so aim well under.
+7. If you use an "Important" or "Critical" heading, it goes BEFORE the step section.
+
+Output the file, then three lines: what you judged, what you cut from the incumbent and why, and what you were unsure about.

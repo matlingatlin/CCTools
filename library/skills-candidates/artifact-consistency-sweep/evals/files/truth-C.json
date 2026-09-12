@@ -1,0 +1,171 @@
+[
+ {
+  "id": "C1",
+  "level": "INSTANCE",
+  "where": "evals/files/check.py:54 (T3 branch)",
+  "anchor": "check.py",
+  "keywords": [
+   "byte-identical",
+   "fabricated",
+   "appending",
+   "resolves"
+  ],
+  "quote": "fixture = pathlib.Path(__file__).resolve().parent / \"wiki\" / \"notes\"",
+  "finding": "The T3 'byte-identical to the fixture' checks compare the wiki against ITSELF: the fixture path resolves to evals/files/wiki/notes, the same tree the T3 prompt says to 'Edit the wiki in place'. No pristine copy exists anywhere in the artefact. PROVED: appending a fabricated line ('Beta 5 is now $1') to notes/model-prices.md and adding the LOG/SOURCES rows scores T3 16/16 PASS, exit 0. The only sce",
+  "found_by": "review.5.2.whole.r2",
+  "scope": "grader-code"
+ },
+ {
+  "id": "C2",
+  "level": "CLASS",
+  "where": "SKILL.md step 2 (no material) vs steps 6 and 7",
+  "anchor": "step 2",
+  "keywords": [
+   "source-log",
+   "literally",
+   "material",
+   "numbered"
+  ],
+  "quote": "**no material** - no claim, no value, no newer date for any page: keep the raw, write the source-log row and the operation-log line, touch no page, stop.",
+  "finding": "Step 2's 'stop' contradicts the steps that follow it. Step 6 requires a source-log row 'also on no material' and an operation-log line 'in every branch' \u2014 i.e. work AFTER the stop \u2014 and step 7 requires lint + index rebuild and 'The fact and its lint pass land in one commit', which the no-material branch never reaches if 'stop' is taken literally. The numbered list is read as a sequence but is real",
+  "found_by": "review.5.2.whole.r2"
+ },
+ {
+  "id": "C3",
+  "level": "CLASS",
+  "where": "SKILL.md step 2, 'no newer date' clause",
+  "anchor": "step 2",
+  "keywords": [
+   "reasonably",
+   "precisely",
+   "restates",
+   "prevent"
+  ],
+  "quote": "**no material** - no claim, no value, no newer date for any page",
+  "finding": "The no-material test admits the failure the skill was built to prevent. The T3 blog is fetched 2026-09-02, newer than prompt-caching's 2026-08-20 source, and restates the same 0.1x/1.25x. Under 'no newer date for any page' an agent can reasonably triage it as an update and add a corroborating source \u2014 precisely the baseline behaviour rationale.md rules out ('A page's source list says what the page",
+  "found_by": "review.5.2.whole.r2"
+ },
+ {
+  "id": "C4",
+  "level": "CLASS",
+  "where": "SKILL.md step 5 (Cascade)",
+  "anchor": "step 5",
+  "keywords": [
+   "unresolved",
+   "neighbours",
+   "signature",
+   "sentence"
+  ],
+  "quote": "Every neighbour the page names gets one sentence saying why it matters to it, then the `related:` entry. No true sentence, no edge.",
+  "finding": "The step that carries the skill's signature behaviour does not say which file gets edited. 'Every neighbour the page names gets one sentence saying why it matters to it' has two unresolved 'it's and reads equally as 'the new page gets a sentence about each neighbour' \u2014 the opposite of the description's 'neighbours name it back' and of evals.md S4 ('each neighbour gains a sentence naming the new pa",
+  "found_by": "review.5.2.whole.r2"
+ },
+ {
+  "id": "C5",
+  "level": "CLASS",
+  "where": "SKILL.md step 2 (disputed branch) vs references/rationale.md",
+  "anchor": "step 2",
+  "keywords": [
+   "unverified",
+   "outdated",
+   "smaller",
+   "delta"
+  ],
+  "quote": "**disputed** - the source contradicts a claim a page holds: keep both values as dated claim rows with their sources, mark that row `disputed`, and set the page's `status: disputed` for as long as any row is.",
+  "finding": "rationale.md states its own contract \u2014 'a rule with nothing behind it does not belong in the body' \u2014 and the disputed branch has nothing behind it: no rationale entry, no source, and evals.md records S2/T2 as 'with 2/2, without 1/1 ... the baseline is clean here too' (no delta). Same for three smaller body rules with no rationale entry: the status enum verified/unverified/outdated, 'Every price, v",
+  "found_by": "review.5.2.whole.r2"
+ },
+ {
+  "id": "C6",
+  "level": "CLASS",
+  "where": "SKILL.md step 3",
+  "anchor": "step 3",
+  "keywords": [
+   "accordingly",
+   "silently",
+   "skipped",
+   "becomes"
+  ],
+  "quote": "**Locate every number, date and quote in the raw before writing it,** and grade it",
+  "finding": "Step 3 does not end in something checkable. 'Every number, date and quote' has no observable output for the ones judged not worth a row \u2014 the claims table shows what WAS written, never what was skipped \u2014 so 'every' can be silently satisfied by grading one figure. check.py accordingly checks a single row per task. Either bound it to a checkable set ('every number, date and quote that becomes a body",
+  "found_by": "review.5.2.whole.r2"
+ },
+ {
+  "id": "C7",
+  "level": "CLASS",
+  "where": "SKILL.md frontmatter description vs the body's 'Not this skill' paragraph",
+  "anchor": "description",
+  "keywords": [
+   "disciplined",
+   "portable",
+   "siblings",
+   "finding"
+  ],
+  "quote": "NOT summarising a text (deep-reading), NOT claims for a skill bundle (skill-knowledge), NOT agent memory (unified-memory), NOT docs broken by code (doc-claim-reconciliation); whole-wiki clean-up is the kb-curator agent.",
+  "finding": "No \u2014 the 'In this repo' section is not the only place naming this repository. The body is disciplined (it defers: 'the local names are under *In this repo*'), but the description names five repo-local units, so a portable copy of this skill routes against siblings that may not exist in the host repo. This is the one finding in tension with the repo's own description discipline (siblings must be di",
+  "found_by": "review.5.2.whole.r2"
+ },
+ {
+  "id": "C8",
+  "level": "INSTANCE",
+  "where": "evals/files/check.py:26 (T1 'no rival page')",
+  "anchor": "check.py",
+  "keywords": [
+   "catches",
+   "indexed",
+   "overall",
+   "reports"
+  ],
+  "quote": "check(\"no rival page\", not any(s not in (\"model-prices\",\"prompt-caching\",\"local-models\") and \"pric\" in s for s in notes), str(sorted(notes)))",
+  "finding": "The rival-page check only catches rivals whose filename contains 'pric'. PROVED: adding notes/beta-5-costs.md (a full rival page with the new prices, indexed, with SOURCES and LOG rows) leaves 'no rival page' PASSING. T1 still fails overall via the three model-prices checks, so the eval verdict survives, but the named check reports the opposite of the truth. Fix: assert the note set is unchanged, ",
+  "found_by": "review.5.2.whole.r2",
+  "scope": "grader-code"
+ },
+ {
+  "id": "C9",
+  "level": "INSTANCE",
+  "where": "evals/files/check.py:37 and :30-31 (T1)",
+  "anchor": "check.py",
+  "keywords": [
+   "cascade-related",
+   "non-regression",
+   "distinguished",
+   "assertion"
+  ],
+  "quote": "check(\"neighbour names owner back\", \"[[model-prices]]\" in notes.get(\"prompt-caching\",\"\"))",
+  "finding": "Two T1 checks pass on the untouched wiki (measured: 'old price kept as a dated superseded row' and 'neighbour names owner back' both PASS before any ingest). As non-regression checks that is correct, but it means the only cascade-related assertion in the whole grader is satisfied by the fixture as shipped, and 'kept' is not distinguished from 'never touched' \u2014 nothing requires the retained row to ",
+  "found_by": "review.5.2.whole.r2",
+  "scope": "grader-code"
+ },
+ {
+  "id": "C10",
+  "level": "INSTANCE",
+  "where": "evals/files/raw/*.md vs SKILL.md step 1",
+  "anchor": "step 1",
+  "keywords": [
+   "immutable",
+   "hand-lint",
+   "ingester",
+   "Harmless"
+  ],
+  "quote": "provenance (source, date, hash, size, which page it feeds) in the directory's manifest rather than inside the immutable file",
+  "finding": "The artefact's own raw fixtures carry provenance inside the immutable file (a 'source:'/'fetched:' header), the shape step 1 tells the ingester not to use. Harmless for inputs the skill did not write, but the fixtures teach the opposite of the step, and nothing in the three evals checks that a raw copy was kept at all \u2014 step 1 is ungraded, as are step 7's hand-lint log clause and the whole 'new pa",
+  "found_by": "review.5.2.whole.r2"
+ },
+ {
+  "id": "C11",
+  "level": "INSTANCE",
+  "where": "evals/files/check.py:9-11",
+  "anchor": "check.py",
+  "keywords": [
+   "unguarded",
+   "traceback",
+   "recording",
+   "breakage"
+  ],
+  "quote": "index = (wiki / \"INDEX.md\").read_text(encoding=\"utf-8\")",
+  "finding": "INDEX.md and SOURCES.md are read unguarded while LOG.md is guarded by .exists(); a run that deletes or fails to create INDEX.md crashes the grader with a traceback instead of recording a FAIL, which reads as harness breakage rather than a failed run.",
+  "found_by": "review.5.2.whole.r2",
+  "scope": "grader-code"
+ }
+]

@@ -1,0 +1,536 @@
+{
+ "content_kind": "reference",
+ "verifiable": true,
+ "bill_of_materials": [
+  {
+   "file": "evals/evals.json",
+   "kind": "evals",
+   "why": "the three prompts; expectations added after outputs",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-A/evals/evals.json",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-A/evals/files/raw/2026-09-02-blog-restating-caching.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-A/evals/files/raw/2026-09-02-gamma-model-card.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-A/evals/files/raw/2026-09-02-pricing-page.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-A/evals/files/wiki/INDEX.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-A/evals/files/wiki/LOG.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-A/evals/files/wiki/SOURCES.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-A/evals/files/wiki/notes/local-models.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-A/evals/files/wiki/notes/model-prices.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-A/evals/files/wiki/notes/prompt-caching.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-A/evals.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-B/evals/evals.json",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-B/evals/files/raw/2026-09-02-blog-restating-caching.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-B/evals/files/raw/2026-09-02-gamma-model-card.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-B/evals/files/raw/2026-09-02-pricing-page.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-B/evals/files/wiki/INDEX.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-B/evals/files/wiki/LOG.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-B/evals/files/wiki/SOURCES.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-B/evals/files/wiki/notes/local-models.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-B/evals/files/wiki/notes/model-prices.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-B/evals/files/wiki/notes/prompt-caching.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-B/evals.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-B/references/rationale.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-C/evals/evals.json",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-C/evals/files/raw/2026-09-02-blog-restating-caching.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-C/evals/files/raw/2026-09-02-gamma-model-card.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-C/evals/files/raw/2026-09-02-pricing-page.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-C/evals/files/wiki/INDEX.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-C/evals/files/wiki/LOG.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-C/evals/files/wiki/SOURCES.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-C/evals/files/wiki/notes/local-models.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-C/evals/files/wiki/notes/model-prices.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-C/evals/files/wiki/notes/prompt-caching.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-C/evals.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-C/references/rationale.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/check.py",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/truth-A.json",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/truth-B.json",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/truth-C.json",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "references/pair-vocabulary.md",
+   "kind": "references",
+   "why": "the six pair types with what a contradiction looks like in each, the row shape, the plan count",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-C/evals/files/check.py",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  }
+ ],
+ "bom_full": [
+  {
+   "file": "evals/evals.json",
+   "kind": "evals",
+   "why": "the three prompts; expectations added after outputs",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-A/SKILL.md",
+   "kind": "evals",
+   "why": "the three fixtures, their truth and the shape grader the eval prompts reference (2.4/2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-A/evals/evals.json",
+   "kind": "evals",
+   "why": "the three fixtures, their truth and the shape grader the eval prompts reference (2.4/2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-A/evals/files/raw/2026-09-02-blog-restating-caching.md",
+   "kind": "evals",
+   "why": "the three fixtures, their truth and the shape grader the eval prompts reference (2.4/2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-A/evals/files/raw/2026-09-02-gamma-model-card.md",
+   "kind": "evals",
+   "why": "the three fixtures, their truth and the shape grader the eval prompts reference (2.4/2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-A/evals/files/raw/2026-09-02-pricing-page.md",
+   "kind": "evals",
+   "why": "the three fixtures, their truth and the shape grader the eval prompts reference (2.4/2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-A/evals/files/wiki/INDEX.md",
+   "kind": "evals",
+   "why": "the three fixtures, their truth and the shape grader the eval prompts reference (2.4/2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-A/evals/files/wiki/LOG.md",
+   "kind": "evals",
+   "why": "the three fixtures, their truth and the shape grader the eval prompts reference (2.4/2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-A/evals/files/wiki/SOURCES.md",
+   "kind": "evals",
+   "why": "the three fixtures, their truth and the shape grader the eval prompts reference (2.4/2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-A/evals/files/wiki/notes/local-models.md",
+   "kind": "evals",
+   "why": "the three fixtures, their truth and the shape grader the eval prompts reference (2.4/2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-A/evals/files/wiki/notes/model-prices.md",
+   "kind": "evals",
+   "why": "the three fixtures, their truth and the shape grader the eval prompts reference (2.4/2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-A/evals/files/wiki/notes/prompt-caching.md",
+   "kind": "evals",
+   "why": "the three fixtures, their truth and the shape grader the eval prompts reference (2.4/2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-A/evals.md",
+   "kind": "evals",
+   "why": "the three fixtures, their truth and the shape grader the eval prompts reference (2.4/2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-B/SKILL.md",
+   "kind": "evals",
+   "why": "the three fixtures, their truth and the shape grader the eval prompts reference (2.4/2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-B/evals/evals.json",
+   "kind": "evals",
+   "why": "the three fixtures, their truth and the shape grader the eval prompts reference (2.4/2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-B/evals/files/raw/2026-09-02-blog-restating-caching.md",
+   "kind": "evals",
+   "why": "the three fixtures, their truth and the shape grader the eval prompts reference (2.4/2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-B/evals/files/raw/2026-09-02-gamma-model-card.md",
+   "kind": "evals",
+   "why": "the three fixtures, their truth and the shape grader the eval prompts reference (2.4/2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-B/evals/files/raw/2026-09-02-pricing-page.md",
+   "kind": "evals",
+   "why": "the three fixtures, their truth and the shape grader the eval prompts reference (2.4/2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-B/evals/files/wiki/INDEX.md",
+   "kind": "evals",
+   "why": "the three fixtures, their truth and the shape grader the eval prompts reference (2.4/2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-B/evals/files/wiki/LOG.md",
+   "kind": "evals",
+   "why": "the three fixtures, their truth and the shape grader the eval prompts reference (2.4/2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-B/evals/files/wiki/SOURCES.md",
+   "kind": "evals",
+   "why": "the three fixtures, their truth and the shape grader the eval prompts reference (2.4/2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-B/evals/files/wiki/notes/local-models.md",
+   "kind": "evals",
+   "why": "the three fixtures, their truth and the shape grader the eval prompts reference (2.4/2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-B/evals/files/wiki/notes/model-prices.md",
+   "kind": "evals",
+   "why": "the three fixtures, their truth and the shape grader the eval prompts reference (2.4/2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-B/evals/files/wiki/notes/prompt-caching.md",
+   "kind": "evals",
+   "why": "the three fixtures, their truth and the shape grader the eval prompts reference (2.4/2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-B/evals.md",
+   "kind": "evals",
+   "why": "the three fixtures, their truth and the shape grader the eval prompts reference (2.4/2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-B/references/rationale.md",
+   "kind": "evals",
+   "why": "the three fixtures, their truth and the shape grader the eval prompts reference (2.4/2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-C/SKILL.md",
+   "kind": "evals",
+   "why": "the three fixtures, their truth and the shape grader the eval prompts reference (2.4/2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-C/evals/evals.json",
+   "kind": "evals",
+   "why": "the three fixtures, their truth and the shape grader the eval prompts reference (2.4/2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-C/evals/files/raw/2026-09-02-blog-restating-caching.md",
+   "kind": "evals",
+   "why": "the three fixtures, their truth and the shape grader the eval prompts reference (2.4/2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-C/evals/files/raw/2026-09-02-gamma-model-card.md",
+   "kind": "evals",
+   "why": "the three fixtures, their truth and the shape grader the eval prompts reference (2.4/2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-C/evals/files/raw/2026-09-02-pricing-page.md",
+   "kind": "evals",
+   "why": "the three fixtures, their truth and the shape grader the eval prompts reference (2.4/2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-C/evals/files/wiki/INDEX.md",
+   "kind": "evals",
+   "why": "the three fixtures, their truth and the shape grader the eval prompts reference (2.4/2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-C/evals/files/wiki/LOG.md",
+   "kind": "evals",
+   "why": "the three fixtures, their truth and the shape grader the eval prompts reference (2.4/2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-C/evals/files/wiki/SOURCES.md",
+   "kind": "evals",
+   "why": "the three fixtures, their truth and the shape grader the eval prompts reference (2.4/2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-C/evals/files/wiki/notes/local-models.md",
+   "kind": "evals",
+   "why": "the three fixtures, their truth and the shape grader the eval prompts reference (2.4/2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-C/evals/files/wiki/notes/model-prices.md",
+   "kind": "evals",
+   "why": "the three fixtures, their truth and the shape grader the eval prompts reference (2.4/2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-C/evals/files/wiki/notes/prompt-caching.md",
+   "kind": "evals",
+   "why": "the three fixtures, their truth and the shape grader the eval prompts reference (2.4/2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-C/evals.md",
+   "kind": "evals",
+   "why": "the three fixtures, their truth and the shape grader the eval prompts reference (2.4/2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-C/references/rationale.md",
+   "kind": "evals",
+   "why": "the three fixtures, their truth and the shape grader the eval prompts reference (2.4/2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/check.py",
+   "kind": "evals",
+   "why": "the three fixtures, their truth and the shape grader the eval prompts reference (2.4/2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/truth-A.json",
+   "kind": "evals",
+   "why": "the three fixtures, their truth and the shape grader the eval prompts reference (2.4/2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/truth-B.json",
+   "kind": "evals",
+   "why": "the three fixtures, their truth and the shape grader the eval prompts reference (2.4/2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/truth-C.json",
+   "kind": "evals",
+   "why": "the three fixtures, their truth and the shape grader the eval prompts reference (2.4/2.5)",
+   "status": "exists"
+  },
+  {
+   "file": "references/pair-vocabulary.md",
+   "kind": "references",
+   "why": "the pair types a sweep enumerates and the row shape - decided after the probe shows which pairs the baseline skips",
+   "status": "needed"
+  },
+  {
+   "file": "assets/",
+   "kind": "assets",
+   "why": "not needed because the findings/matrix shape is a JSON schema stated in the body",
+   "status": "not needed"
+  },
+  {
+   "file": "scripts/",
+   "kind": "scripts",
+   "why": "not needed until 7.1 shows two or more runs writing the same enumeration helper",
+   "status": "not needed"
+  }
+ ]
+}

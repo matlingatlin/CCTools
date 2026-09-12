@@ -1,0 +1,76 @@
+{
+ "skill_name": "artifact-consistency-sweep",
+ "evals": [
+  {
+   "id": 1,
+   "prompt": "Review the whole skill artefact at evals/files/artifact-A (SKILL.md, references/, evals/) - the artefact as written before its first whole-artefact review. You cannot see how it was written. Find every place where two parts of the artefact contradict each other or where a step cannot be checked or is graded by nothing: steps against rules, steps against each other, steps against the eval expectations, the description against the body, bundled files against the bill of materials. Return the ledger, then a findings list (level CLASS or INSTANCE, where, finding, quotes as a list) and, for every numbered step, whether it ends in something checkable and which eval check grades it.",
+   "expected_output": "A findings list where every entry carries level, where, finding and a verbatim quote, plus a matrix with one row per numbered step (checkable? graded by which check?) and the Rules bullets cross-referenced. Graded by evals/files/check.py against evals/files/truth-A.json: recall over the findings three independent reviewers established for this text (including the ones the round's own reviewer missed), a precision proxy, and the matrix's completeness.",
+   "files": [
+    "evals/files/artifact-A",
+    "evals/files/truth-A.json",
+    "evals/files/check.py"
+   ],
+   "expectations": [
+    "findings are a structured JSON list (step 6)",
+    "recall over the known in-scope findings for this text >= 0.60 (grader-code rows excluded)",
+    "recall over CLASS findings >= 0.70",
+    "recall over the findings the round's own reviewer MISSED >= 0.50",
+    "at most 3x as many findings as known ones (step 5)",
+    "a step matrix row per numbered step with checkable and graded_by (step 4, step 6)",
+    "the Rules bullets are examined (step 2)",
+    "a ledger with plan and examined counts per pair type and the pair ids (steps 1, 6)",
+    "the ledger precedes the findings in the report (rule 1)",
+    "the step x rule plan count equals steps x rules for this artefact (step 1)",
+    "every finding carries a quotes list, none empty (steps 3, 6)",
+    "no two findings share the same quotes set (rule 3)"
+   ]
+  },
+  {
+   "id": 2,
+   "prompt": "Review the whole skill artefact at evals/files/artifact-B (SKILL.md, references/, evals/) - the same skill after its first rewrite (body halved, rationale moved to a reference). You cannot see how it was written. Find every place where two parts of the artefact contradict each other or where a step cannot be checked or is graded by nothing: steps against rules, steps against each other, steps against the eval expectations, the description against the body, bundled files against the bill of materials. Return the ledger, then a findings list (level CLASS or INSTANCE, where, finding, quotes as a list) and, for every numbered step, whether it ends in something checkable and which eval check grades it.",
+   "expected_output": "A findings list where every entry carries level, where, finding and a verbatim quote, plus a matrix with one row per numbered step (checkable? graded by which check?) and the Rules bullets cross-referenced. Graded by evals/files/check.py against evals/files/truth-B.json: recall over the findings three independent reviewers established for this text (including the ones the round's own reviewer missed), a precision proxy, and the matrix's completeness.",
+   "files": [
+    "evals/files/artifact-B",
+    "evals/files/truth-B.json",
+    "evals/files/check.py"
+   ],
+   "expectations": [
+    "findings are a structured JSON list (step 6)",
+    "recall over the known in-scope findings for this text >= 0.60 (grader-code rows excluded)",
+    "recall over CLASS findings >= 0.70",
+    "recall over the findings the round's own reviewer MISSED >= 0.50",
+    "at most 3x as many findings as known ones (step 5)",
+    "a step matrix row per numbered step with checkable and graded_by (step 4, step 6)",
+    "the Rules bullets are examined (step 2)",
+    "a ledger with plan and examined counts per pair type and the pair ids (steps 1, 6)",
+    "the ledger precedes the findings in the report (rule 1)",
+    "the step x rule plan count equals steps x rules for this artefact (step 1)",
+    "every finding carries a quotes list, none empty (steps 3, 6)",
+    "no two findings share the same quotes set (rule 3)"
+   ]
+  },
+  {
+   "id": 3,
+   "prompt": "Review the whole skill artefact at evals/files/artifact-C (SKILL.md, references/, evals/) - the same skill after its second rewrite. You cannot see how it was written. Find every place where two parts of the artefact contradict each other or where a step cannot be checked or is graded by nothing: steps against rules, steps against each other, steps against the eval expectations, the description against the body, bundled files against the bill of materials. Return the ledger, then a findings list (level CLASS or INSTANCE, where, finding, quotes as a list) and, for every numbered step, whether it ends in something checkable and which eval check grades it.",
+   "expected_output": "A findings list where every entry carries level, where, finding and a verbatim quote, plus a matrix with one row per numbered step (checkable? graded by which check?) and the Rules bullets cross-referenced. Graded by evals/files/check.py against evals/files/truth-C.json: recall over the findings three independent reviewers established for this text (including the ones the round's own reviewer missed), a precision proxy, and the matrix's completeness.",
+   "files": [
+    "evals/files/artifact-C",
+    "evals/files/truth-C.json",
+    "evals/files/check.py"
+   ],
+   "expectations": [
+    "findings are a structured JSON list (step 6)",
+    "recall over the known in-scope findings for this text >= 0.60 (grader-code rows excluded)",
+    "recall over CLASS findings >= 0.70",
+    "at most 3x as many findings as known ones (step 5)",
+    "a step matrix row per numbered step with checkable and graded_by (step 4, step 6)",
+    "the Rules bullets are examined (step 2)",
+    "a ledger with plan and examined counts per pair type and the pair ids (steps 1, 6)",
+    "the ledger precedes the findings in the report (rule 1)",
+    "the step x rule plan count equals steps x rules for this artefact (step 1)",
+    "every finding carries a quotes list, none empty (steps 3, 6)",
+    "no two findings share the same quotes set (rule 3)"
+   ]
+  }
+ ]
+}

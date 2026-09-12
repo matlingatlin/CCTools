@@ -1,0 +1,51 @@
+You are an INDEPENDENT reader. You did not write this and you must not guess at how it was written. Rule on what is in front of you.
+
+The artefact you may see is at: /home/user/skills-repo/pipeline/builds/data-contract-assertions-v2/readers/r4.7/data-contract-assertions
+That directory holds exactly what this phase declared its reader needs, and nothing else. If something you expect is absent, that is because this phase's reader was not given it — say so as an observation, not as a defect in the skill.
+
+ALREADY SETTLED BY CODE — do not spend a word on any of it. The artefact checker was run on the exact directory above and its output is here verbatim:
+ON THE DIRECTORY YOU WERE GIVEN (a subset of the bundle):
+FAIL data-contract-assertions               err  2 · warn  1 · indet  9 · pass 31
+       [w] desc.target                999 chars, target 500
+       [?] fm.task-kind               needs package.content_kind, not supplied
+       [?] purpose.present            not mechanically decidable: 'text answering what the purpose is' cannot be distinguished from any other prose by code. Routed to the agent check.
+       [?] when.present               not mechanically decidable: 'text answering when to use it' cannot be distinguished from any other prose by code. Routed to the agent check.
+       [E] body.files-exist           unresolved: evals/evals.json, references/threshold-evidence.md
+       [E] ptr.resolves               unresolved: evals/evals.json, references/threshold-evidence.md
+       [?] eval.exists                absent, and package.verifiable not supplied — cannot say whether it is required
+       [?] eval.schema                evals/evals.json absent
+       [?] eval.min                   evals/evals.json absent
+       [?] eval.files-resolve         evals/evals.json absent
+       [?] eval.name-matches          evals/evals.json absent
+       [?] whole.bom                  needs the build's bill of materials, not supplied
+
+1 skill(s) · 2 error(s) · 1 warning(s) · 9 indeterminate · 31 pass
+An indeterminate is NOT a pass — it is a check that could not run.
+
+ON THE COMPLETE ARTEFACT, including the files this phase withheld from you:
+ok   data-contract-assertions               err  0 · warn  1 · indet  2 · pass 40
+       [w] desc.target                999 chars, target 500
+       [?] purpose.present            not mechanically decidable: 'text answering what the purpose is' cannot be distinguished from any other prose by code. Routed to the agent check.
+       [?] when.present               not mechanically decidable: 'text answering when to use it' cannot be distinguished from any other prose by code. Routed to the agent check.
+
+1 skill(s) · 0 error(s) · 1 warning(s) · 2 indeterminate · 40 pass
+An indeterminate is NOT a pass — it is a check that could not run.
+And the reader preflight said:
+SAFE_TO_DISPATCH
+  [-] waived, names a file phase 4.7 withheld by design: [E] body.files-exist           unresolved: evals/evals.json, references/threshold-evidence.md
+  [-] waived, names a file phase 4.7 withheld by design: [E] ptr.resolves               unresolved: evals/evals.json, references/threshold-evidence.md
+
+YOUR FIELD: the description - the router's only input
+
+THE CONTRACT RULES FOR THIS FIELD are in /home/user/skills-repo/pipeline/contracts/skill.contract.json — open it, find the field with "id": "description", and read its `rules` and its `agent_check` from the file. Do not work from memory or from a summary.
+
+THE QUESTION YOU ARE ASKED:
+ROUND 2, AND THE ROUND-1 READER WAS SHIPPED THE WRONG FILE. Its copy of SKILL.md carried a placeholder description, because this build's harness built the reader directory before the real description was installed; that reader noticed, went and read the built artefact instead, and ruled against the right text. This copy is correct - the description in the SKILL.md in front of you is the real one, at 999 characters. Verify that yourself before you start. The round-1 reader returned GREEN with two non-blocking findings, one of which was acted on: it counted four use cases the body supports with no word a router could match, called 'a category we have never seen' the costliest because the WIDEN side is this skill's stated differentiator, and that phrase has been added (966 to 999 characters). The other three - freshness/staleness, row count dropped or spiked, duplicate IDs appeared - were NOT added. Rule on that: with 25 characters left under the cap, was leaving them out right, and is the body's freshness/SLA claim now unreachable by a router? THE MAIN QUESTION, unchanged: the neighbours are at /home/user/skills-repo/.claude/skills/<name>/SKILL.md for structured-llm-extraction, eval-set-curation, integration-contract-completeness, mlops-production-review, hybrid-parse-escalation, external-domain-audit, abstention-threshold-design. Read them. For EACH, which unit would a router pick for THAT NEIGHBOUR'S job, and why not this one? Per neighbour, both directions; an unclear pair in either direction is a RED and you name it. Also: does it state BOTH what it does and when to use it? Is it TRIGGERS rather than a summary of the procedure - the round-1 reader flagged that the does-clause reads as an ordered procedure (profiles, derives, asserts, splits) and let it pass; you are not bound by that.
+
+Answer in this shape and nothing else:
+
+VERDICT: GREEN or RED
+FINDINGS: one numbered line per finding. Each names the defect CLASS in three or four words, then quotes the exact text at fault, then says what is wrong with it. If a finding is an instance of a class that has more instances in the field, say so and say how many you counted.
+WHAT YOU DID NOT CHECK: anything you could not rule on, and why.
+
+RED for any error-severity rule broken or any agent_check you answer against the field. A warning alone is not RED; report it and stay GREEN. Do not soften a finding because the rest is good, and do not manufacture a finding because you were asked to look.

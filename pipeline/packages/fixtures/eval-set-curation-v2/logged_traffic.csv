@@ -1,0 +1,2001 @@
+id,query,slice,correct,in_fewshot_prompt
+q0970,the courier failed to lodge their credit memo despite the hold,simple_lookup,1,0
+q1248,the pharmacy failed to lodge a damaged pallet before the cutoff,simple_lookup,1,0
+q0279,the caterer under-reported our retention bond under protest,simple_lookup,1,0
+q0291,our printer failed to lodge the meter reading outside the agreed window,simple_lookup,0,0
+q0371,the glazier over-declared a lapsed guarantee on a provisional basis,simple_lookup,1,0
+q0196,my landlord cannot reconcile a damaged pallet in a foreign currency,simple_lookup,1,0
+q0487,our installer cannot locate the disposal record before the cutoff,simple_lookup,1,0
+q0661,our reseller is chasing a contested chargeback despite the hold,simple_lookup,1,0
+q1266,the caterer double-charged the salvage valuation through the wrong entity,simple_lookup,1,0
+q0652,the contractor is withholding their handling fee against the wrong ledger,simple_lookup,1,0
+q0874,our roofer has escalated their commission split ahead of the audit,simple_lookup,1,0
+q0982,a plumber cannot locate the reinstatement cost despite the hold,multi_hop,1,0
+q0814,our roofer silently merged a contested chargeback with no supporting note,simple_lookup,1,0
+q1245,my optician cannot locate their credit memo since the merger,multi_hop,0,0
+q1192,our roofer silently merged the tenancy schedule without a signature,simple_lookup,1,0
+q1809,our roofer mis-stated a contested chargeback since the merger,simple_lookup,1,0
+q1449,the caterer mis-stated their commission split on a provisional basis,simple_lookup,1,0
+q0468,our warehouse has disputed a returned consignment on the previous contract,simple_lookup,0,0
+q0054,when will the the trial refund arrive,simple_lookup,1,0
+q1059,our reseller wrongly flagged their audit trail under the old terms,simple_lookup,1,0
+q0779,my physio has disputed the warranty transfer outside the agreed window,multi_hop,1,0
+q0764,the auditor is chasing a contested chargeback through the wrong entity,simple_lookup,1,0
+q0976,the courier has disputed our excess waiver on a provisional basis,simple_lookup,1,0
+q1759,my dentist is chasing the meter reading under the old terms,simple_lookup,1,0
+q0662,the tenant cannot locate a contested chargeback outside the agreed window,multi_hop,1,0
+q0375,a supplier back-dated the warranty transfer outside the agreed window,simple_lookup,1,0
+q0101,change my billing address to basic,simple_lookup,1,0
+q0276,my optician never received the salvage valuation without a signature,simple_lookup,1,0
+q1090,the tenant mis-stated their handling fee outside the agreed window,multi_hop,0,0
+q0508,our installer wrongly flagged the tenancy schedule outside the agreed window,simple_lookup,1,0
+q1068,the courier cannot locate the reinstatement cost under protest,simple_lookup,1,0
+q1894,my accountant cannot reconcile the delivery manifest before the cutoff,simple_lookup,1,0
+q1159,the surveyor under-reported their credit memo outside the agreed window,ambiguous,0,0
+q0207,the caterer wants to amend our excess waiver on the previous contract,simple_lookup,1,0
+q0328,the notary under-reported a returned consignment ahead of the audit,simple_lookup,1,0
+q0704,the auditor double-charged a returned consignment on a provisional basis,simple_lookup,1,0
+q0526,my accountant under-reported a lapsed guarantee on the previous contract,simple_lookup,1,0
+q1295,the auditor quietly cancelled the tenancy schedule before the cutoff,simple_lookup,1,0
+q0166,my dentist under-reported the escrow balance for the second time,simple_lookup,1,0
+q0759,the auditor is withholding our freight surcharge through the wrong entity,simple_lookup,1,0
+q1404,the caterer double-charged the reinstatement cost since the merger,simple_lookup,1,0
+q1605,my physio has disputed their commission split despite the hold,multi_hop,0,0
+q1169,the notary wants to amend the delivery manifest before the cutoff,simple_lookup,1,0
+q1362,the surveyor keeps rejecting the demurrage claim on a provisional basis,simple_lookup,1,0
+q1428,the pharmacy is chasing the disposal record ahead of the audit,simple_lookup,1,0
+q1951,my optician cannot reconcile the warranty transfer with no supporting note,simple_lookup,1,0
+q0861,our installer silently merged their commission split for the second time,simple_lookup,1,0
+q0688,my accountant under-reported the delivery manifest under the old terms,simple_lookup,1,0
+q1317,our printer has escalated the salvage valuation before the cutoff,simple_lookup,1,0
+q0780,the notary failed to lodge the storage levy after the handover,simple_lookup,1,1
+q1131,the tenant cannot reconcile our quarterly return against the wrong ledger,simple_lookup,1,0
+q1564,the contractor under-reported our indemnity clause on the previous contract,simple_lookup,1,0
+q1227,our warehouse back-dated a contested chargeback outside the agreed window,simple_lookup,1,0
+q0793,the tenant over-declared the salvage valuation for the second time,simple_lookup,1,0
+q1792,the caterer never received the delivery manifest for the second time,simple_lookup,1,0
+q1847,our warehouse has disputed a duplicate remittance with no supporting note,simple_lookup,1,0
+q0506,a broker is withholding our quarterly return outside the agreed window,simple_lookup,1,0
+q1843,a locksmith has escalated a damaged pallet without a signature,simple_lookup,1,0
+q1669,our warehouse has disputed the customs entry in a foreign currency,simple_lookup,1,0
+q0027,how do i cancel the the legacy subscription,simple_lookup,1,0
+q1635,the courier cannot reconcile the demurrage claim through the wrong entity,simple_lookup,1,0
+q0112,change my billing address to the annual,simple_lookup,1,0
+q1790,the auditor has escalated the tenancy schedule despite the hold,simple_lookup,1,0
+q0990,the surveyor is chasing their audit trail in a foreign currency,simple_lookup,1,0
+q0107,change my billing address to the legacy,simple_lookup,1,0
+q0406,the tenant failed to lodge the disposal record for the second time,simple_lookup,1,0
+q0925,the notary silently merged the demurrage claim with no supporting note,simple_lookup,1,0
+q1287,my dentist has disputed the settlement note under protest,ambiguous,0,0
+q1789,our printer under-reported our indemnity clause on the previous contract,simple_lookup,1,0
+q1528,a plumber keeps rejecting the escrow balance after the handover,simple_lookup,1,0
+q1682,our printer is withholding our quarterly return for the second time,simple_lookup,1,0
+q1157,my physio failed to lodge a duplicate remittance under the old terms,simple_lookup,1,0
+q0079,reset the password for the pro,simple_lookup,1,0
+q0184,a broker refuses to release the delivery manifest with no supporting note,simple_lookup,1,0
+q1552,my physio keeps rejecting our drawdown request in a foreign currency,simple_lookup,0,0
+q0180,a plumber under-reported our drawdown request since the merger,simple_lookup,1,0
+q0450,my dentist wants to amend our retention bond despite the hold,simple_lookup,1,0
+q0718,my dentist never received their rebate accrual outside the agreed window,simple_lookup,1,0
+q1858,our reseller failed to lodge a lapsed guarantee against the wrong ledger,simple_lookup,1,0
+q0402,the glazier wrongly flagged our freight surcharge in a foreign currency,ambiguous,0,0
+q1084,our printer silently merged a contested chargeback under the old terms,simple_lookup,1,0
+q0678,the pharmacy under-reported the customs entry before the cutoff,simple_lookup,1,0
+q1288,the surveyor quietly cancelled the warranty transfer in a foreign currency,simple_lookup,1,0
+q1540,my landlord failed to lodge the tenancy schedule before the cutoff,simple_lookup,1,0
+q0495,a locksmith cannot reconcile their handling fee before the cutoff,simple_lookup,1,0
+q0129,our installer never received our drawdown request after the handover,simple_lookup,1,0
+q1342,our reseller over-declared their commission split without a signature,simple_lookup,1,0
+q0667,my dentist wants to amend the disposal record since the merger,simple_lookup,1,0
+q0891,the contractor cannot locate their credit memo with no supporting note,simple_lookup,1,0
+q1308,our printer cannot locate their commission split under protest,simple_lookup,1,0
+q1761,the caterer silently merged the settlement note for the second time,simple_lookup,0,0
+q1281,a locksmith double-charged a contested chargeback under the old terms,simple_lookup,1,0
+q0087,is the legacy covered by the warranty,simple_lookup,1,0
+q0818,the surveyor keeps rejecting a damaged pallet in a foreign currency,simple_lookup,1,0
+q0711,my accountant is withholding their commission split before the cutoff,simple_lookup,1,0
+q1258,our warehouse under-reported the tenancy schedule with no supporting note,simple_lookup,0,0
+q0803,the pharmacy never received the meter reading under protest,simple_lookup,0,0
+q0979,the glazier is chasing our indemnity clause without a signature,simple_lookup,1,0
+q0266,our reseller wrongly flagged our indemnity clause on the previous contract,multi_hop,1,0
+q0624,our installer over-declared our quarterly return against the wrong ledger,simple_lookup,1,0
+q0202,our reseller under-reported the demurrage claim since the merger,simple_lookup,1,0
+q0617,my landlord back-dated the warranty transfer with no supporting note,simple_lookup,1,0
+q1509,my dentist has escalated a returned consignment while the case is open,simple_lookup,0,0
+q0352,my physio mis-stated the reinstatement cost outside the agreed window,simple_lookup,1,0
+q1939,my optician double-charged the salvage valuation with no supporting note,multi_hop,0,0
+q1732,our printer is withholding the delivery manifest ahead of the audit,simple_lookup,1,0
+q0575,my physio keeps rejecting a returned consignment through the wrong entity,simple_lookup,1,0
+q1838,the courier over-declared their audit trail for the second time,ambiguous,1,0
+q1498,a plumber has disputed their commission split under protest,multi_hop,1,0
+q1050,our roofer mis-stated the storage levy outside the agreed window,simple_lookup,1,0
+q1502,a plumber under-reported the delivery manifest ahead of the audit,simple_lookup,0,0
+q0714,a supplier under-reported the meter reading in a foreign currency,simple_lookup,1,0
+q1563,the contractor has escalated a partial shipment while the case is open,simple_lookup,1,0
+q0931,the glazier under-reported the warranty transfer under the old terms,simple_lookup,1,0
+q0802,the courier under-reported the salvage valuation for the second time,simple_lookup,1,0
+q1445,our printer wrongly flagged the disposal record without a signature,simple_lookup,1,0
+q1878,the notary quietly cancelled their handling fee while the case is open,multi_hop,0,0
+q1553,our installer under-reported a partial shipment with no supporting note,simple_lookup,1,0
+q1615,my physio never received a contested chargeback with no supporting note,simple_lookup,1,0
+q1208,the surveyor silently merged our freight surcharge before the cutoff,simple_lookup,1,0
+q0742,the surveyor has disputed our drawdown request without a signature,simple_lookup,1,1
+q0416,my landlord double-charged a returned consignment for the second time,multi_hop,1,0
+q1441,a plumber double-charged their credit memo for the second time,simple_lookup,1,0
+q0769,my physio wrongly flagged the meter reading since the merger,simple_lookup,1,0
+q0447,the caterer refuses to release the customs entry on a provisional basis,simple_lookup,1,0
+q1901,my accountant cannot locate the salvage valuation after the handover,simple_lookup,1,0
+q0867,the courier back-dated their handling fee before the cutoff,simple_lookup,1,0
+q1962,the tenant silently merged a returned consignment without a signature,simple_lookup,1,0
+q0555,the notary has disputed their rebate accrual since the merger,multi_hop,1,0
+q0875,the glazier wants to amend the delivery manifest outside the agreed window,simple_lookup,1,0
+q0151,the caterer under-reported the meter reading after the handover,simple_lookup,1,0
+q1389,our printer wants to amend our excess waiver for the second time,simple_lookup,1,0
+q0738,a plumber wrongly flagged the customs entry ahead of the audit,simple_lookup,1,0
+q1161,my accountant failed to lodge the escrow balance without a signature,simple_lookup,1,0
+q1522,the notary is chasing the salvage valuation with no supporting note,simple_lookup,1,0
+q0325,the surveyor cannot reconcile our indemnity clause on the previous contract,simple_lookup,1,0
+q0336,the caterer over-declared a damaged pallet outside the agreed window,simple_lookup,1,0
+q0426,our reseller has disputed a duplicate remittance with no supporting note,simple_lookup,1,0
+q1788,the glazier silently merged the salvage valuation for the second time,simple_lookup,1,0
+q1645,the notary has escalated a damaged pallet on a provisional basis,simple_lookup,0,0
+q0782,the tenant silently merged their audit trail ahead of the audit,simple_lookup,0,0
+q1990,the courier has disputed their credit memo under the old terms,simple_lookup,1,0
+q1611,the auditor quietly cancelled the tenancy schedule without a signature,simple_lookup,1,0
+q1741,my dentist has escalated their commission split through the wrong entity,simple_lookup,1,0
+q0753,our roofer double-charged a damaged pallet outside the agreed window,simple_lookup,1,0
+q1518,our printer under-reported a partial shipment ahead of the audit,simple_lookup,1,0
+q1151,my landlord cannot reconcile the settlement note after the handover,simple_lookup,1,0
+q0535,our roofer back-dated the salvage valuation with no supporting note,simple_lookup,1,0
+q0381,the courier over-declared their handling fee with no supporting note,ambiguous,1,0
+q0395,our installer failed to lodge our excess waiver on a provisional basis,simple_lookup,1,0
+q1643,my landlord keeps rejecting our quarterly return without a signature,simple_lookup,1,0
+q0952,my optician is withholding the storage levy after the handover,simple_lookup,1,0
+q1768,our printer cannot locate our excess waiver outside the agreed window,multi_hop,1,0
+q1195,the surveyor is chasing the meter reading in a foreign currency,simple_lookup,1,0
+q1335,the pharmacy wrongly flagged their commission split in a foreign currency,simple_lookup,1,0
+q1127,the notary over-declared the demurrage claim under protest,simple_lookup,1,0
+q0696,the contractor quietly cancelled the delivery manifest despite the hold,simple_lookup,1,0
+q1634,a locksmith quietly cancelled their credit memo before the cutoff,simple_lookup,1,0
+q0957,a plumber under-reported the disposal record for the second time,simple_lookup,1,0
+q0026,how do i cancel the student subscription,simple_lookup,1,0
+q1246,my physio quietly cancelled the storage levy ahead of the audit,simple_lookup,1,0
+q1954,my physio silently merged their rebate accrual in a foreign currency,simple_lookup,1,0
+q0959,my landlord double-charged our excess waiver for the second time,simple_lookup,1,0
+q1482,the pharmacy double-charged their audit trail on the previous contract,simple_lookup,1,0
+q0731,our warehouse double-charged the storage levy ahead of the audit,simple_lookup,1,0
+q0710,the surveyor has escalated the warranty transfer under protest,simple_lookup,1,0
+q1765,the tenant back-dated a duplicate remittance after the handover,multi_hop,0,0
+q1096,our reseller over-declared their commission split through the wrong entity,multi_hop,1,0
+q1166,our installer has disputed their audit trail without a signature,simple_lookup,1,0
+q0978,our installer failed to lodge a partial shipment under protest,simple_lookup,1,0
+q0039,how do i cancel the the pro subscription,simple_lookup,1,0
+q0790,my landlord never received the customs entry against the wrong ledger,multi_hop,1,0
+q1138,the tenant silently merged the warranty transfer since the merger,adversarial,0,0
+q0189,a broker is withholding the meter reading in a foreign currency,simple_lookup,1,0
+q1205,our installer cannot reconcile the customs entry in a foreign currency,multi_hop,1,0
+q1175,the tenant mis-stated the storage levy without a signature,simple_lookup,1,0
+q1556,our installer has escalated a contested chargeback in a foreign currency,simple_lookup,1,0
+q1135,the surveyor refuses to release our indemnity clause despite the hold,simple_lookup,1,0
+q0944,the tenant is withholding the salvage valuation on the previous contract,simple_lookup,1,0
+q0154,our reseller double-charged the salvage valuation under the old terms,simple_lookup,1,0
+q1239,a broker is withholding the demurrage claim against the wrong ledger,simple_lookup,1,0
+q0241,the courier has disputed a damaged pallet without a signature,simple_lookup,1,0
+q1249,the surveyor refuses to release our indemnity clause under protest,simple_lookup,1,0
+q1609,the pharmacy silently merged the storage levy on the previous contract,simple_lookup,1,0
+q0717,our warehouse keeps rejecting the disposal record ahead of the audit,simple_lookup,1,0
+q1420,the glazier double-charged a duplicate remittance through the wrong entity,simple_lookup,1,0
+q1996,my accountant back-dated our excess waiver under protest,multi_hop,1,0
+q0705,a supplier failed to lodge the settlement note before the cutoff,simple_lookup,1,0
+q0386,a supplier silently merged a damaged pallet under protest,multi_hop,0,0
+q1748,the notary mis-stated the reinstatement cost while the case is open,simple_lookup,1,0
+q0644,our warehouse is withholding our freight surcharge without a signature,simple_lookup,1,0
+q1497,the caterer double-charged their audit trail outside the agreed window,simple_lookup,1,0
+q0289,the surveyor has disputed the tenancy schedule with no supporting note,multi_hop,1,0
+q0548,my optician has disputed our freight surcharge in a foreign currency,simple_lookup,1,0
+q0224,my optician has escalated their rebate accrual while the case is open,simple_lookup,1,0
+q0690,my dentist failed to lodge their rebate accrual on the previous contract,simple_lookup,1,0
+q0025,how do i cancel the family subscription,simple_lookup,1,0
+q0609,our warehouse cannot reconcile their credit memo while the case is open,ambiguous,1,0
+q1392,the glazier cannot reconcile a damaged pallet under protest,multi_hop,0,0
+q1465,the caterer mis-stated the escrow balance before the cutoff,multi_hop,1,0
+q1668,the surveyor cannot reconcile a contested chargeback after the handover,simple_lookup,1,0
+q1500,the courier never received our retention bond under protest,simple_lookup,1,0
+q1104,the glazier under-reported the storage levy before the cutoff,simple_lookup,1,0
+q0807,the tenant under-reported the demurrage claim despite the hold,simple_lookup,1,0
+q1583,our installer refuses to release a contested chargeback under protest,simple_lookup,1,0
+q0597,my accountant has escalated the demurrage claim in a foreign currency,simple_lookup,1,0
+q1545,our installer over-declared a lapsed guarantee while the case is open,simple_lookup,1,0
+q1460,my dentist wants to amend the customs entry in a foreign currency,simple_lookup,1,0
+q0649,our reseller is chasing the storage levy through the wrong entity,simple_lookup,1,0
+q1557,our roofer is withholding our excess waiver under protest,simple_lookup,1,0
+q1331,our reseller cannot reconcile the demurrage claim in a foreign currency,simple_lookup,1,0
+q1691,the surveyor failed to lodge our drawdown request outside the agreed window,simple_lookup,1,0
+q1268,my landlord over-declared our quarterly return against the wrong ledger,simple_lookup,1,0
+q0569,my landlord is withholding a damaged pallet outside the agreed window,simple_lookup,1,0
+q1852,the pharmacy double-charged the delivery manifest while the case is open,simple_lookup,1,0
+q0061,reset the password for basic,simple_lookup,1,0
+q0135,a plumber refuses to release the settlement note under the old terms,simple_lookup,1,0
+q0179,a broker is chasing their rebate accrual for the second time,simple_lookup,1,0
+q1446,our installer keeps rejecting our retention bond with no supporting note,simple_lookup,1,0
+q0051,when will the basic refund arrive,simple_lookup,1,0
+q1854,the contractor under-reported our quarterly return against the wrong ledger,simple_lookup,1,0
+q0307,our roofer over-declared the settlement note after the handover,simple_lookup,1,0
+q1368,the pharmacy cannot locate the warranty transfer before the cutoff,simple_lookup,1,0
+q0133,my optician wants to amend the warranty transfer despite the hold,simple_lookup,1,0
+q1698,the tenant wrongly flagged their credit memo without a signature,multi_hop,0,0
+q1352,my accountant refuses to release their credit memo after the handover,ambiguous,0,0
+q0197,my landlord refuses to release a lapsed guarantee under the old terms,simple_lookup,1,0
+q1582,the tenant is withholding their audit trail in a foreign currency,multi_hop,0,0
+q1884,our reseller is chasing a partial shipment against the wrong ledger,simple_lookup,1,0
+q1824,our roofer over-declared our freight surcharge with no supporting note,simple_lookup,1,0
+q1114,the contractor wrongly flagged a contested chargeback outside the agreed window,simple_lookup,1,0
+q1507,my optician quietly cancelled their handling fee without a signature,simple_lookup,1,0
+q1559,my dentist is chasing the settlement note for the second time,simple_lookup,1,0
+q1012,the contractor is chasing their handling fee with no supporting note,simple_lookup,1,0
+q1569,the courier back-dated the customs entry without a signature,simple_lookup,1,0
+q0370,my optician is withholding the customs entry in a foreign currency,simple_lookup,1,0
+q1232,the pharmacy quietly cancelled the disposal record on the previous contract,multi_hop,0,0
+q1787,a broker over-declared our freight surcharge for the second time,simple_lookup,1,0
+q0383,the pharmacy has escalated the disposal record before the cutoff,multi_hop,1,0
+q0178,the contractor has disputed the reinstatement cost for the second time,simple_lookup,1,0
+q1255,the tenant has escalated a partial shipment while the case is open,simple_lookup,1,0
+q1988,our warehouse wrongly flagged the tenancy schedule since the merger,simple_lookup,1,0
+q1432,a locksmith over-declared the demurrage claim ahead of the audit,simple_lookup,1,0
+q0216,our roofer cannot locate their commission split under protest,simple_lookup,1,0
+q0242,the auditor over-declared the tenancy schedule after the handover,simple_lookup,1,0
+q1749,a locksmith cannot reconcile their commission split in a foreign currency,simple_lookup,1,0
+q1332,our warehouse has disputed their credit memo for the second time,simple_lookup,1,0
+q1608,the caterer has disputed the salvage valuation in a foreign currency,simple_lookup,1,0
+q1882,my optician failed to lodge their rebate accrual after the handover,simple_lookup,1,0
+q0345,the tenant is chasing the delivery manifest on the previous contract,simple_lookup,1,0
+q1045,our warehouse keeps rejecting their rebate accrual through the wrong entity,simple_lookup,1,0
+q1487,our reseller keeps rejecting a contested chargeback on the previous contract,simple_lookup,1,0
+q1680,my accountant back-dated our indemnity clause under protest,multi_hop,0,0
+q1341,the glazier has disputed our drawdown request with no supporting note,simple_lookup,1,0
+q1433,the caterer keeps rejecting our retention bond without a signature,simple_lookup,1,0
+q0160,our reseller under-reported the salvage valuation with no supporting note,multi_hop,1,0
+q1504,the courier cannot reconcile their credit memo under the old terms,simple_lookup,1,0
+q1795,the glazier double-charged our drawdown request on a provisional basis,multi_hop,1,0
+q1106,the courier cannot reconcile the disposal record without a signature,multi_hop,1,0
+q0999,a broker has escalated their audit trail in a foreign currency,simple_lookup,1,0
+q1658,our roofer never received the settlement note with no supporting note,simple_lookup,1,0
+q1859,a broker has escalated the escrow balance on a provisional basis,simple_lookup,1,0
+q0257,my landlord has disputed the tenancy schedule in a foreign currency,simple_lookup,1,0
+q0123,my dentist has escalated a contested chargeback ahead of the audit,simple_lookup,1,0
+q0889,the auditor back-dated the delivery manifest outside the agreed window,simple_lookup,1,0
+q0847,my dentist cannot reconcile our freight surcharge outside the agreed window,simple_lookup,1,0
+q1687,our installer double-charged the reinstatement cost outside the agreed window,adversarial,1,0
+q1690,the contractor silently merged our retention bond with no supporting note,simple_lookup,1,0
+q0903,my optician over-declared our excess waiver after the handover,simple_lookup,1,0
+q0067,reset the password for the legacy,simple_lookup,1,0
+q0502,our reseller keeps rejecting our retention bond in a foreign currency,simple_lookup,1,0
+q0182,our roofer refuses to release a partial shipment without a signature,simple_lookup,1,0
+q1057,our roofer failed to lodge the meter reading against the wrong ledger,simple_lookup,1,0
+q0031,how do i cancel the basic subscription,simple_lookup,1,0
+q1340,my physio keeps rejecting the tenancy schedule outside the agreed window,simple_lookup,1,0
+q1681,our printer mis-stated the delivery manifest through the wrong entity,simple_lookup,1,0
+q1369,the courier double-charged their rebate accrual since the merger,simple_lookup,1,0
+q1421,my physio is withholding the disposal record ahead of the audit,simple_lookup,1,0
+q1853,a locksmith refuses to release the disposal record after the handover,simple_lookup,1,1
+q1380,a locksmith cannot locate our quarterly return on a provisional basis,simple_lookup,1,0
+q0878,the caterer cannot locate the salvage valuation in a foreign currency,simple_lookup,1,0
+q1276,a plumber mis-stated the delivery manifest since the merger,simple_lookup,1,0
+q1333,the courier mis-stated their commission split outside the agreed window,multi_hop,0,0
+q1103,a locksmith is withholding our quarterly return after the handover,multi_hop,1,0
+q1129,our installer cannot reconcile our retention bond through the wrong entity,simple_lookup,1,0
+q1490,the glazier quietly cancelled the demurrage claim before the cutoff,simple_lookup,1,0
+q0910,our roofer cannot locate a returned consignment in a foreign currency,multi_hop,0,0
+q1799,the surveyor over-declared the warranty transfer while the case is open,simple_lookup,1,0
+q0321,our printer keeps rejecting the delivery manifest with no supporting note,simple_lookup,1,0
+q1671,our roofer refuses to release their audit trail in a foreign currency,simple_lookup,1,0
+q0796,our reseller failed to lodge a partial shipment under protest,multi_hop,0,0
+q0490,the tenant is chasing a duplicate remittance while the case is open,simple_lookup,1,0
+q0840,our installer refuses to release the escrow balance under protest,simple_lookup,1,0
+q0376,the auditor wants to amend the salvage valuation with no supporting note,simple_lookup,1,0
+q0915,our roofer double-charged a partial shipment against the wrong ledger,simple_lookup,1,0
+q0280,my landlord over-declared a damaged pallet in a foreign currency,multi_hop,1,0
+q0971,my accountant has escalated the warranty transfer with no supporting note,simple_lookup,1,0
+q1826,my physio back-dated the delivery manifest ahead of the audit,simple_lookup,1,0
+q1091,my dentist is withholding our indemnity clause against the wrong ledger,simple_lookup,1,0
+q0322,our roofer quietly cancelled a partial shipment after the handover,simple_lookup,1,0
+q0250,the tenant quietly cancelled their audit trail in a foreign currency,simple_lookup,1,0
+q0142,my landlord is withholding the delivery manifest in a foreign currency,simple_lookup,1,0
+q1017,my dentist never received the warranty transfer outside the agreed window,simple_lookup,1,0
+q1970,my physio wrongly flagged the reinstatement cost since the merger,simple_lookup,1,0
+q0073,reset the password for my old,simple_lookup,1,0
+q0709,my optician cannot reconcile the delivery manifest on the previous contract,simple_lookup,1,0
+q0030,how do i cancel the premium subscription,simple_lookup,1,0
+q1144,the surveyor is withholding the demurrage claim through the wrong entity,multi_hop,1,0
+q0429,a supplier refuses to release the salvage valuation after the handover,simple_lookup,1,0
+q1823,the contractor back-dated our quarterly return with no supporting note,simple_lookup,1,0
+q1158,the courier silently merged their audit trail after the handover,simple_lookup,1,0
+q0205,the glazier under-reported the delivery manifest against the wrong ledger,multi_hop,1,0
+q0682,our roofer has disputed our drawdown request outside the agreed window,simple_lookup,1,0
+q1596,a broker is chasing a returned consignment in a foreign currency,simple_lookup,1,0
+q0364,the courier is withholding their commission split outside the agreed window,multi_hop,1,0
+q0436,the glazier has disputed the tenancy schedule in a foreign currency,multi_hop,1,0
+q0358,my accountant is chasing our excess waiver ahead of the audit,multi_hop,1,0
+q0088,is our team covered by the warranty,simple_lookup,0,0
+q1721,a locksmith double-charged the escrow balance in a foreign currency,simple_lookup,1,0
+q1581,our printer over-declared the delivery manifest despite the hold,simple_lookup,0,0
+q0828,my landlord back-dated our retention bond since the merger,simple_lookup,0,0
+q1499,the tenant mis-stated the meter reading after the handover,adversarial,0,0
+q1876,the pharmacy wrongly flagged the reinstatement cost since the merger,multi_hop,1,0
+q1141,the auditor double-charged our freight surcharge for the second time,simple_lookup,0,1
+q0209,the pharmacy is withholding our indemnity clause while the case is open,simple_lookup,1,0
+q0219,a broker refuses to release the demurrage claim for the second time,simple_lookup,1,0
+q0124,my landlord cannot reconcile the customs entry on a provisional basis,simple_lookup,1,0
+q1121,a plumber failed to lodge their credit memo in a foreign currency,simple_lookup,1,0
+q1336,the contractor wrongly flagged their credit memo through the wrong entity,simple_lookup,1,0
+q0849,our installer has disputed our indemnity clause for the second time,ambiguous,1,0
+q0770,my landlord wrongly flagged the warranty transfer against the wrong ledger,multi_hop,1,0
+q0851,a broker is chasing their rebate accrual through the wrong entity,simple_lookup,1,0
+q0153,my dentist under-reported a lapsed guarantee for the second time,simple_lookup,1,0
+q1475,our warehouse has disputed the demurrage claim while the case is open,simple_lookup,1,0
+q1791,the glazier under-reported our retention bond without a signature,multi_hop,1,0
+q1210,the caterer quietly cancelled the demurrage claim against the wrong ledger,multi_hop,1,0
+q0277,the tenant silently merged the tenancy schedule with no supporting note,simple_lookup,1,0
+q1041,my dentist has escalated the customs entry in a foreign currency,simple_lookup,1,0
+q1595,the caterer double-charged a lapsed guarantee with no supporting note,simple_lookup,1,0
+q1071,the tenant cannot locate a partial shipment outside the agreed window,multi_hop,0,0
+q1551,my accountant has escalated our drawdown request under the old terms,simple_lookup,1,0
+q1123,my physio has disputed the customs entry on a provisional basis,simple_lookup,1,0
+q0606,the surveyor is withholding a lapsed guarantee while the case is open,multi_hop,0,0
+q0527,a plumber wrongly flagged their commission split despite the hold,simple_lookup,1,0
+q0736,our warehouse double-charged our retention bond for the second time,simple_lookup,1,0
+q0484,the caterer failed to lodge the salvage valuation under protest,ambiguous,1,0
+q1348,my physio over-declared the customs entry before the cutoff,multi_hop,0,0
+q1632,a locksmith wants to amend the salvage valuation on a provisional basis,multi_hop,0,0
+q0615,our warehouse over-declared the storage levy ahead of the audit,multi_hop,1,0
+q1206,my landlord under-reported their credit memo on the previous contract,simple_lookup,1,0
+q1214,the glazier over-declared their credit memo outside the agreed window,simple_lookup,1,0
+q0550,my landlord failed to lodge a partial shipment with no supporting note,simple_lookup,1,0
+q0008,what is the our team balance on my account,simple_lookup,1,0
+q0385,the pharmacy double-charged their commission split despite the hold,simple_lookup,1,0
+q1359,the tenant under-reported a damaged pallet before the cutoff,simple_lookup,1,0
+q0396,our printer failed to lodge the tenancy schedule despite the hold,simple_lookup,1,0
+q1907,the contractor under-reported our freight surcharge before the cutoff,simple_lookup,1,0
+q0860,our warehouse is chasing their handling fee through the wrong entity,simple_lookup,1,0
+q0296,our roofer keeps rejecting the demurrage claim since the merger,simple_lookup,1,0
+q1073,my physio never received the settlement note under the old terms,simple_lookup,1,0
+q0074,reset the password for the trial,simple_lookup,1,0
+q1484,the contractor cannot reconcile a contested chargeback under protest,simple_lookup,1,0
+q1548,the glazier silently merged a damaged pallet outside the agreed window,ambiguous,0,0
+q0463,the surveyor under-reported our freight surcharge with no supporting note,simple_lookup,1,0
+q0980,my physio over-declared their rebate accrual since the merger,simple_lookup,1,0
+q0062,reset the password for the annual,simple_lookup,1,0
+q1033,my physio is withholding our quarterly return outside the agreed window,simple_lookup,1,0
+q0827,my landlord failed to lodge their handling fee before the cutoff,simple_lookup,1,0
+q0369,our warehouse failed to lodge the warranty transfer since the merger,simple_lookup,0,0
+q0170,the auditor is chasing our excess waiver outside the agreed window,simple_lookup,1,0
+q1631,the notary wants to amend our excess waiver against the wrong ledger,simple_lookup,1,0
+q1503,a broker has escalated their handling fee on a provisional basis,simple_lookup,1,0
+q1306,the glazier never received a damaged pallet ahead of the audit,simple_lookup,1,0
+q0789,the surveyor keeps rejecting the delivery manifest without a signature,simple_lookup,1,0
+q0564,the contractor cannot locate the meter reading under the old terms,simple_lookup,1,0
+q0547,a supplier is chasing our excess waiver without a signature,simple_lookup,1,0
+q1313,the contractor silently merged our retention bond before the cutoff,simple_lookup,1,0
+q1692,my optician quietly cancelled a duplicate remittance for the second time,simple_lookup,1,0
+q1259,the courier keeps rejecting the escrow balance against the wrong ledger,simple_lookup,1,0
+q0050,when will the premium refund arrive,simple_lookup,1,0
+q0579,my accountant refuses to release the delivery manifest since the merger,ambiguous,1,0
+q0329,our printer under-reported the salvage valuation against the wrong ledger,simple_lookup,1,0
+q0100,change my billing address to premium,simple_lookup,1,0
+q0102,change my billing address to the annual,simple_lookup,1,0
+q0134,the surveyor silently merged their rebate accrual on the previous contract,ambiguous,1,0
+q1844,our roofer refuses to release the demurrage claim despite the hold,simple_lookup,0,0
+q0457,our warehouse double-charged their credit memo since the merger,simple_lookup,1,0
+q0309,our reseller has escalated the demurrage claim outside the agreed window,simple_lookup,1,0
+q0964,my accountant under-reported our drawdown request with no supporting note,simple_lookup,1,0
+q0324,my accountant keeps rejecting their audit trail while the case is open,simple_lookup,1,0
+q1926,my optician is chasing our quarterly return on the previous contract,simple_lookup,1,0
+q0808,a supplier back-dated their credit memo under the old terms,simple_lookup,1,0
+q0282,our reseller wants to amend the tenancy schedule on the previous contract,simple_lookup,0,0
+q1063,a locksmith quietly cancelled the reinstatement cost against the wrong ledger,simple_lookup,1,0
+q0824,a supplier under-reported the escrow balance with no supporting note,simple_lookup,1,0
+q1604,the auditor over-declared the warranty transfer since the merger,simple_lookup,1,0
+q1039,the courier back-dated a partial shipment through the wrong entity,simple_lookup,1,0
+q0511,the caterer refuses to release the reinstatement cost against the wrong ledger,simple_lookup,1,0
+q1578,my optician keeps rejecting our retention bond under protest,simple_lookup,1,0
+q1555,my optician silently merged the escrow balance despite the hold,simple_lookup,1,0
+q1871,the courier has escalated our excess waiver for the second time,simple_lookup,1,0
+q1517,my landlord wrongly flagged a contested chargeback on a provisional basis,simple_lookup,1,0
+q1116,the auditor wrongly flagged their rebate accrual in a foreign currency,simple_lookup,1,0
+q0378,the surveyor has escalated their handling fee ahead of the audit,simple_lookup,1,0
+q0353,the caterer cannot locate their commission split under protest,simple_lookup,1,0
+q0556,a locksmith cannot locate the demurrage claim before the cutoff,simple_lookup,1,0
+q1537,the surveyor back-dated the escrow balance for the second time,simple_lookup,1,0
+q0488,the caterer back-dated their rebate accrual with no supporting note,simple_lookup,1,0
+q1702,my optician mis-stated their commission split before the cutoff,ambiguous,0,0
+q0267,my physio cannot locate the customs entry with no supporting note,simple_lookup,1,0
+q1081,a broker back-dated their audit trail in a foreign currency,simple_lookup,1,0
+q0553,our warehouse failed to lodge our retention bond against the wrong ledger,simple_lookup,1,0
+q1660,the glazier failed to lodge our drawdown request without a signature,simple_lookup,1,0
+q0703,the caterer cannot locate the storage levy outside the agreed window,simple_lookup,1,0
+q0914,a supplier silently merged our excess waiver under protest,simple_lookup,1,0
+q1594,the auditor wrongly flagged a damaged pallet in a foreign currency,simple_lookup,1,0
+q0587,our printer refuses to release the tenancy schedule while the case is open,simple_lookup,1,0
+q0400,the courier double-charged the customs entry ahead of the audit,simple_lookup,1,0
+q1347,the auditor under-reported the customs entry ahead of the audit,multi_hop,0,0
+q0489,our warehouse cannot reconcile the settlement note despite the hold,simple_lookup,1,0
+q1989,our printer double-charged a contested chargeback since the merger,simple_lookup,1,0
+q1893,my landlord wrongly flagged the tenancy schedule in a foreign currency,simple_lookup,1,0
+q0401,our printer double-charged our drawdown request under protest,simple_lookup,1,0
+q1798,a broker wrongly flagged the reinstatement cost while the case is open,simple_lookup,0,0
+q1264,a plumber double-charged the meter reading while the case is open,simple_lookup,1,0
+q0659,our reseller over-declared our indemnity clause through the wrong entity,simple_lookup,1,0
+q0268,the auditor is withholding the salvage valuation without a signature,simple_lookup,1,0
+q1298,the tenant refuses to release a partial shipment ahead of the audit,multi_hop,0,0
+q1450,our printer cannot locate a lapsed guarantee against the wrong ledger,simple_lookup,1,0
+q0901,a locksmith mis-stated the tenancy schedule before the cutoff,simple_lookup,1,0
+q0806,the glazier has disputed their handling fee in a foreign currency,simple_lookup,0,0
+q0899,my dentist double-charged the settlement note on the previous contract,simple_lookup,1,0
+q0427,a locksmith double-charged their rebate accrual on the previous contract,simple_lookup,1,0
+q0313,the tenant failed to lodge our drawdown request under the old terms,multi_hop,0,0
+q1252,the contractor over-declared their audit trail before the cutoff,multi_hop,0,0
+q0918,the caterer silently merged the salvage valuation against the wrong ledger,simple_lookup,1,0
+q1770,my physio has disputed our freight surcharge after the handover,simple_lookup,1,0
+q1628,the caterer back-dated the disposal record with no supporting note,simple_lookup,1,1
+q0934,a supplier wrongly flagged our indemnity clause for the second time,simple_lookup,1,0
+q0428,the surveyor refuses to release their rebate accrual under the old terms,simple_lookup,1,0
+q1442,my physio over-declared the delivery manifest without a signature,simple_lookup,1,0
+q1402,the surveyor refuses to release a contested chargeback before the cutoff,simple_lookup,1,0
+q0319,the contractor wants to amend their handling fee against the wrong ledger,multi_hop,1,0
+q0292,a locksmith wants to amend a returned consignment since the merger,simple_lookup,1,0
+q0435,our printer under-reported a lapsed guarantee despite the hold,multi_hop,1,0
+q0801,my dentist never received the reinstatement cost before the cutoff,simple_lookup,1,0
+q0270,my landlord silently merged the tenancy schedule through the wrong entity,simple_lookup,0,0
+q0809,our reseller cannot reconcile our freight surcharge on a provisional basis,simple_lookup,1,0
+q1318,our warehouse back-dated the disposal record on the previous contract,simple_lookup,1,0
+q1774,our roofer over-declared the delivery manifest without a signature,multi_hop,0,0
+q1425,a supplier wants to amend the storage levy in a foreign currency,simple_lookup,1,0
+q0991,our printer cannot locate the demurrage claim before the cutoff,simple_lookup,1,0
+q0664,the contractor cannot locate the salvage valuation while the case is open,simple_lookup,1,0
+q1760,the contractor keeps rejecting the reinstatement cost despite the hold,simple_lookup,1,0
+q1948,my accountant never received a damaged pallet through the wrong entity,simple_lookup,1,0
+q0747,the tenant under-reported our indemnity clause under protest,ambiguous,1,0
+q1675,a plumber under-reported our drawdown request on the previous contract,ambiguous,0,0
+q0630,a locksmith over-declared a returned consignment despite the hold,simple_lookup,1,0
+q1958,my dentist never received our quarterly return outside the agreed window,simple_lookup,1,0
+q1203,our roofer double-charged their audit trail without a signature,simple_lookup,1,0
+q1310,the pharmacy wrongly flagged our retention bond before the cutoff,simple_lookup,1,0
+q0618,the courier under-reported a damaged pallet after the handover,multi_hop,1,0
+q0592,the glazier back-dated our excess waiver on the previous contract,simple_lookup,1,0
+q0645,the tenant never received a contested chargeback with no supporting note,simple_lookup,1,0
+q1851,my physio under-reported their credit memo against the wrong ledger,simple_lookup,1,0
+q0825,our roofer over-declared their commission split against the wrong ledger,simple_lookup,1,0
+q0799,the glazier keeps rejecting their audit trail after the handover,simple_lookup,1,0
+q0420,my accountant under-reported their audit trail for the second time,simple_lookup,1,0
+q0728,our reseller has disputed a returned consignment against the wrong ledger,ambiguous,0,0
+q1292,the glazier keeps rejecting our drawdown request against the wrong ledger,simple_lookup,1,0
+q0281,the notary double-charged a damaged pallet in a foreign currency,adversarial,1,0
+q0721,my accountant wants to amend the storage levy before the cutoff,simple_lookup,1,0
+q0852,our reseller silently merged a damaged pallet after the handover,multi_hop,1,0
+q1256,the pharmacy quietly cancelled the delivery manifest despite the hold,simple_lookup,1,0
+q0415,the glazier has disputed their handling fee ahead of the audit,simple_lookup,1,0
+q1416,a broker silently merged their credit memo in a foreign currency,simple_lookup,1,0
+q0140,the caterer quietly cancelled the escrow balance before the cutoff,simple_lookup,1,0
+q1848,the notary is chasing the settlement note under the old terms,simple_lookup,1,0
+q0897,the contractor silently merged a partial shipment after the handover,simple_lookup,1,0
+q1412,the pharmacy has disputed the delivery manifest ahead of the audit,simple_lookup,1,0
+q0351,the auditor is chasing our freight surcharge before the cutoff,simple_lookup,1,0
+q1905,our roofer is chasing the settlement note despite the hold,simple_lookup,1,0
+q1840,the caterer quietly cancelled our excess waiver on a provisional basis,simple_lookup,1,0
+q1766,the contractor mis-stated a partial shipment while the case is open,ambiguous,1,0
+q0795,a plumber refuses to release our drawdown request before the cutoff,simple_lookup,1,0
+q1426,my landlord is chasing our retention bond before the cutoff,simple_lookup,1,0
+q0379,my dentist double-charged a contested chargeback ahead of the audit,simple_lookup,0,0
+q1929,the contractor is chasing a damaged pallet through the wrong entity,simple_lookup,1,0
+q1385,a supplier failed to lodge the storage levy after the handover,simple_lookup,1,0
+q1783,the surveyor wants to amend our drawdown request since the merger,simple_lookup,1,0
+q0120,my dentist back-dated our quarterly return against the wrong ledger,simple_lookup,1,0
+q1100,our reseller quietly cancelled the escrow balance on a provisional basis,multi_hop,0,0
+q1406,the notary failed to lodge their commission split while the case is open,simple_lookup,0,0
+q1474,my optician quietly cancelled our freight surcharge despite the hold,simple_lookup,1,0
+q0958,my landlord has escalated the tenancy schedule before the cutoff,multi_hop,0,0
+q0007,what is the the legacy balance on my account,simple_lookup,1,0
+q0732,our reseller never received the salvage valuation while the case is open,simple_lookup,1,0
+q1074,the pharmacy cannot reconcile the reinstatement cost while the case is open,simple_lookup,1,0
+q1186,my dentist is chasing their rebate accrual through the wrong entity,multi_hop,0,0
+q1606,the glazier has escalated the tenancy schedule against the wrong ledger,simple_lookup,1,0
+q1146,the pharmacy keeps rejecting our retention bond through the wrong entity,simple_lookup,1,0
+q0318,my dentist has escalated their audit trail without a signature,simple_lookup,1,0
+q1382,my landlord has disputed the disposal record through the wrong entity,simple_lookup,1,0
+q1885,the notary has disputed the disposal record despite the hold,simple_lookup,1,0
+q0660,the courier has escalated their audit trail before the cutoff,simple_lookup,1,0
+q1269,our roofer is chasing the disposal record through the wrong entity,multi_hop,0,0
+q0130,our installer has escalated their handling fee against the wrong ledger,simple_lookup,1,0
+q1219,our printer has escalated the customs entry outside the agreed window,multi_hop,0,0
+q0533,a broker mis-stated the delivery manifest outside the agreed window,multi_hop,0,0
+q0969,a broker wrongly flagged their credit memo through the wrong entity,simple_lookup,1,0
+q1364,the surveyor quietly cancelled our excess waiver with no supporting note,simple_lookup,1,0
+q1447,my dentist mis-stated our indemnity clause after the handover,simple_lookup,1,0
+q1463,the tenant under-reported a lapsed guarantee since the merger,simple_lookup,1,0
+q0311,the caterer mis-stated their commission split after the handover,simple_lookup,1,0
+q0316,our printer wants to amend a partial shipment on the previous contract,simple_lookup,1,0
+q1417,a plumber has disputed the reinstatement cost after the handover,ambiguous,1,0
+q1320,a broker double-charged our quarterly return while the case is open,simple_lookup,1,0
+q0797,our printer wrongly flagged the salvage valuation ahead of the audit,simple_lookup,1,0
+q0608,my accountant under-reported the settlement note on a provisional basis,simple_lookup,1,0
+q0229,our printer has disputed a contested chargeback without a signature,simple_lookup,1,0
+q1020,my optician over-declared the meter reading under the old terms,simple_lookup,1,0
+q0163,our printer under-reported their commission split under the old terms,simple_lookup,1,0
+q0831,our roofer never received the tenancy schedule with no supporting note,simple_lookup,1,0
+q0877,the caterer has escalated their audit trail ahead of the audit,simple_lookup,1,0
+q1130,my optician has disputed the salvage valuation on the previous contract,simple_lookup,1,0
+q0813,my dentist never received their credit memo for the second time,simple_lookup,1,0
+q1677,our printer has escalated the storage levy on a provisional basis,simple_lookup,1,0
+q0085,is family covered by the warranty,simple_lookup,1,0
+q0787,my dentist refuses to release the escrow balance ahead of the audit,multi_hop,0,0
+q1661,the auditor has disputed a contested chargeback without a signature,simple_lookup,1,0
+q0366,a plumber never received the delivery manifest while the case is open,simple_lookup,1,0
+q0159,a supplier mis-stated our retention bond after the handover,simple_lookup,1,0
+q0538,our reseller is chasing the reinstatement cost outside the agreed window,simple_lookup,1,0
+q1436,the surveyor cannot reconcile the reinstatement cost in a foreign currency,simple_lookup,1,0
+q1125,the contractor has disputed their commission split under protest,simple_lookup,1,0
+q1566,our printer double-charged the escrow balance under protest,multi_hop,0,0
+q1407,the courier failed to lodge the escrow balance ahead of the audit,simple_lookup,1,0
+q0946,the surveyor is chasing our retention bond outside the agreed window,simple_lookup,1,0
+q1861,my dentist keeps rejecting their audit trail through the wrong entity,simple_lookup,1,0
+q1649,our reseller never received a lapsed guarantee after the handover,simple_lookup,1,0
+q0350,the surveyor failed to lodge their rebate accrual without a signature,simple_lookup,1,0
+q0247,my landlord wants to amend the meter reading without a signature,simple_lookup,1,0
+q0467,the notary back-dated their credit memo despite the hold,simple_lookup,1,0
+q0961,the pharmacy cannot reconcile their commission split despite the hold,simple_lookup,1,0
+q1344,a supplier cannot locate the settlement note on a provisional basis,adversarial,0,0
+q0984,the courier is chasing the storage levy on a provisional basis,simple_lookup,1,0
+q0591,my optician never received a damaged pallet on a provisional basis,multi_hop,1,0
+q1391,the courier refuses to release our quarterly return under the old terms,simple_lookup,1,1
+q1753,a broker under-reported the demurrage claim ahead of the audit,simple_lookup,1,0
+q0912,our printer wants to amend a lapsed guarantee under protest,simple_lookup,1,0
+q0985,our printer refuses to release the reinstatement cost in a foreign currency,simple_lookup,1,0
+q0226,our printer keeps rejecting the escrow balance outside the agreed window,ambiguous,0,0
+q0983,a broker quietly cancelled the storage levy with no supporting note,simple_lookup,1,0
+q1396,a plumber back-dated the customs entry in a foreign currency,multi_hop,0,0
+q0873,the auditor under-reported our retention bond without a signature,simple_lookup,1,0
+q1455,my optician double-charged their credit memo outside the agreed window,simple_lookup,1,0
+q1284,a plumber cannot reconcile their rebate accrual under protest,simple_lookup,1,0
+q0706,the notary is withholding the delivery manifest in a foreign currency,simple_lookup,1,0
+q0111,change my billing address to basic,simple_lookup,1,0
+q0929,my landlord double-charged our retention bond after the handover,simple_lookup,1,0
+q0052,when will the the annual refund arrive,simple_lookup,1,0
+q0485,our roofer has escalated the customs entry before the cutoff,simple_lookup,1,0
+q0346,our installer wants to amend their commission split before the cutoff,simple_lookup,1,0
+q0907,the contractor mis-stated the demurrage claim despite the hold,simple_lookup,1,0
+q1684,a supplier cannot reconcile our indemnity clause outside the agreed window,simple_lookup,1,0
+q1366,the caterer cannot locate the tenancy schedule under protest,simple_lookup,1,0
+q0397,the notary cannot locate the escrow balance under protest,simple_lookup,1,0
+q1043,the pharmacy wants to amend a partial shipment in a foreign currency,simple_lookup,1,0
+q0939,our warehouse failed to lodge the customs entry with no supporting note,simple_lookup,1,0
+q1720,my landlord wrongly flagged their rebate accrual ahead of the audit,simple_lookup,1,0
+q1869,our installer never received the demurrage claim under the old terms,simple_lookup,1,0
+q0272,my optician is withholding a lapsed guarantee under protest,simple_lookup,1,1
+q0872,the pharmacy cannot reconcile our excess waiver ahead of the audit,simple_lookup,1,0
+q1303,my accountant double-charged their commission split against the wrong ledger,simple_lookup,1,0
+q1167,our roofer failed to lodge their handling fee outside the agreed window,adversarial,0,0
+q1841,our reseller never received the settlement note despite the hold,simple_lookup,1,0
+q0057,when will the the legacy refund arrive,simple_lookup,1,0
+q1944,my accountant mis-stated their commission split on a provisional basis,simple_lookup,1,0
+q1088,the notary is chasing the reinstatement cost since the merger,simple_lookup,1,0
+q1544,a broker mis-stated a partial shipment under the old terms,simple_lookup,1,0
+q1031,the surveyor double-charged their audit trail after the handover,simple_lookup,1,0
+q0360,my optician failed to lodge our drawdown request while the case is open,simple_lookup,1,0
+q0125,my optician mis-stated a returned consignment ahead of the audit,simple_lookup,1,0
+q1476,a locksmith over-declared our indemnity clause against the wrong ledger,multi_hop,1,0
+q0893,the pharmacy over-declared our drawdown request while the case is open,simple_lookup,1,0
+q1314,our installer back-dated a returned consignment for the second time,simple_lookup,1,0
+q0947,my optician cannot locate their audit trail ahead of the audit,simple_lookup,1,0
+q0919,my accountant keeps rejecting the disposal record on a provisional basis,simple_lookup,1,0
+q0098,is our team covered by the warranty,simple_lookup,1,0
+q0042,when will the the annual refund arrive,simple_lookup,1,0
+q0625,our reseller back-dated a duplicate remittance against the wrong ledger,simple_lookup,1,0
+q0637,a broker has escalated the demurrage claim under the old terms,simple_lookup,1,0
+q0089,is the pro covered by the warranty,simple_lookup,1,0
+q1828,my dentist cannot locate our quarterly return for the second time,simple_lookup,1,0
+q0363,my dentist has escalated a contested chargeback despite the hold,multi_hop,1,0
+q1992,our installer failed to lodge the demurrage claim while the case is open,simple_lookup,1,0
+q1013,the pharmacy quietly cancelled the demurrage claim ahead of the audit,simple_lookup,1,0
+q0261,my physio back-dated their credit memo on a provisional basis,multi_hop,1,0
+q0059,when will the the pro refund arrive,simple_lookup,1,0
+q0850,the surveyor cannot locate the salvage valuation against the wrong ledger,ambiguous,1,0
+q0103,change my billing address to my old,simple_lookup,1,0
+q1772,my optician mis-stated the disposal record outside the agreed window,adversarial,0,0
+q1836,the caterer quietly cancelled the reinstatement cost for the second time,simple_lookup,1,0
+q1253,a supplier is chasing their credit memo ahead of the audit,simple_lookup,1,0
+q1511,our installer has escalated a lapsed guarantee despite the hold,simple_lookup,1,0
+q1863,the glazier quietly cancelled the demurrage claim while the case is open,simple_lookup,1,0
+q0143,a broker cannot locate our drawdown request on the previous contract,multi_hop,1,0
+q0414,the auditor over-declared our drawdown request before the cutoff,simple_lookup,1,0
+q1022,our installer wants to amend their audit trail through the wrong entity,multi_hop,1,0
+q0070,reset the password for premium,simple_lookup,1,0
+q1786,our roofer quietly cancelled the warranty transfer against the wrong ledger,simple_lookup,1,0
+q1743,my physio cannot locate their audit trail against the wrong ledger,simple_lookup,1,0
+q0605,our warehouse is withholding the warranty transfer since the merger,simple_lookup,1,0
+q0391,our printer under-reported our freight surcharge after the handover,simple_lookup,1,0
+q1061,a supplier double-charged the storage levy on the previous contract,multi_hop,0,0
+q1891,my landlord has escalated the warranty transfer despite the hold,simple_lookup,1,0
+q1747,the auditor over-declared the escrow balance despite the hold,simple_lookup,1,0
+q0473,the auditor never received the delivery manifest under protest,multi_hop,0,0
+q0421,our warehouse wrongly flagged a lapsed guarantee against the wrong ledger,multi_hop,1,0
+q0549,the caterer is withholding their audit trail under protest,simple_lookup,1,0
+q0498,our printer under-reported a lapsed guarantee with no supporting note,simple_lookup,1,0
+q1881,the courier cannot reconcile the tenancy schedule before the cutoff,simple_lookup,1,0
+q1355,my dentist failed to lodge a contested chargeback under protest,simple_lookup,1,0
+q0966,our reseller over-declared their rebate accrual outside the agreed window,simple_lookup,1,0
+q1936,my physio cannot locate our drawdown request in a foreign currency,multi_hop,1,0
+q1494,our installer over-declared their audit trail on a provisional basis,simple_lookup,1,0
+q1530,my dentist quietly cancelled a lapsed guarantee under the old terms,multi_hop,0,0
+q0393,the contractor is chasing the salvage valuation on a provisional basis,simple_lookup,1,0
+q0541,the surveyor silently merged the delivery manifest after the handover,simple_lookup,1,0
+q1739,the caterer quietly cancelled a contested chargeback while the case is open,simple_lookup,1,0
+q0610,our installer never received the storage levy after the handover,simple_lookup,1,0
+q0060,reset the password for premium,simple_lookup,1,0
+q0066,reset the password for student,simple_lookup,1,0
+q1978,the surveyor never received the reinstatement cost since the merger,simple_lookup,1,0
+q0695,the notary keeps rejecting our freight surcharge despite the hold,simple_lookup,1,0
+q0033,how do i cancel the my old subscription,simple_lookup,1,0
+q1890,my accountant never received the meter reading after the handover,multi_hop,1,0
+q0500,the notary has disputed a partial shipment before the cutoff,simple_lookup,1,0
+q0445,the notary refuses to release the settlement note after the handover,simple_lookup,1,0
+q0518,the glazier is withholding the reinstatement cost through the wrong entity,simple_lookup,1,0
+q0481,the auditor wrongly flagged the warranty transfer on the previous contract,simple_lookup,1,0
+q0367,the contractor has escalated our freight surcharge with no supporting note,simple_lookup,1,0
+q1372,the contractor has escalated a partial shipment for the second time,ambiguous,0,0
+q0600,the surveyor quietly cancelled the customs entry under the old terms,simple_lookup,1,0
+q0115,change my billing address to family,simple_lookup,1,0
+q1781,a broker refuses to release our quarterly return since the merger,simple_lookup,1,0
+q0823,the contractor silently merged their rebate accrual in a foreign currency,multi_hop,1,0
+q1574,the surveyor refuses to release a returned consignment despite the hold,simple_lookup,1,0
+q1485,the surveyor quietly cancelled the warranty transfer under protest,simple_lookup,1,0
+q0545,a broker refuses to release a contested chargeback after the handover,simple_lookup,1,0
+q1163,my landlord cannot reconcile the reinstatement cost under protest,simple_lookup,1,0
+q0058,when will the our team refund arrive,simple_lookup,1,0
+q1454,my dentist cannot locate the salvage valuation through the wrong entity,multi_hop,1,0
+q0258,my optician is withholding their audit trail ahead of the audit,simple_lookup,1,0
+q0144,our reseller mis-stated the tenancy schedule against the wrong ledger,simple_lookup,1,0
+q0778,our roofer never received the settlement note in a foreign currency,simple_lookup,1,0
+q1241,the pharmacy double-charged their audit trail ahead of the audit,simple_lookup,1,0
+q0223,the glazier double-charged our quarterly return outside the agreed window,simple_lookup,1,0
+q1966,the tenant cannot reconcile the disposal record despite the hold,ambiguous,1,0
+q1002,the tenant wrongly flagged a contested chargeback despite the hold,simple_lookup,1,0
+q0836,the tenant refuses to release the customs entry without a signature,simple_lookup,1,0
+q1640,the tenant mis-stated the reinstatement cost on a provisional basis,multi_hop,1,0
+q1486,the glazier wants to amend the storage levy on the previous contract,simple_lookup,1,0
+q0853,the courier is chasing the reinstatement cost for the second time,simple_lookup,1,0
+q1892,the courier cannot reconcile the meter reading on a provisional basis,simple_lookup,1,0
+q0288,our printer cannot reconcile their credit memo in a foreign currency,simple_lookup,1,0
+q1618,the courier back-dated the customs entry outside the agreed window,simple_lookup,1,0
+q1727,my optician silently merged a partial shipment after the handover,multi_hop,0,0
+q1481,the tenant wants to amend our freight surcharge with no supporting note,simple_lookup,1,0
+q1685,a plumber never received our indemnity clause without a signature,simple_lookup,1,0
+q1370,the courier under-reported the settlement note against the wrong ledger,simple_lookup,1,0
+q0854,the caterer silently merged the salvage valuation outside the agreed window,simple_lookup,1,0
+q0094,is the trial covered by the warranty,simple_lookup,1,0
+q1126,the pharmacy quietly cancelled the settlement note for the second time,multi_hop,1,0
+q0552,the glazier silently merged a duplicate remittance on a provisional basis,simple_lookup,1,0
+q1991,our printer refuses to release our drawdown request for the second time,multi_hop,1,0
+q0131,a broker cannot reconcile our freight surcharge on a provisional basis,simple_lookup,1,0
+q0676,my physio double-charged their handling fee in a foreign currency,multi_hop,0,0
+q1580,our printer has disputed our freight surcharge on the previous contract,simple_lookup,1,0
+q0127,the caterer cannot locate our quarterly return after the handover,simple_lookup,1,0
+q0456,the notary has disputed the delivery manifest through the wrong entity,ambiguous,0,0
+q0557,our warehouse mis-stated a duplicate remittance for the second time,simple_lookup,1,0
+q0005,what is the family balance on my account,simple_lookup,1,0
+q0185,our warehouse keeps rejecting our indemnity clause before the cutoff,simple_lookup,0,0
+q0231,the caterer mis-stated the warranty transfer on a provisional basis,simple_lookup,1,0
+q1945,my physio over-declared the warranty transfer before the cutoff,multi_hop,1,0
+q0888,the notary never received the reinstatement cost outside the agreed window,multi_hop,0,0
+q0145,the glazier back-dated a duplicate remittance despite the hold,simple_lookup,1,1
+q0335,my accountant quietly cancelled their commission split despite the hold,simple_lookup,1,0
+q0244,the courier refuses to release the disposal record before the cutoff,simple_lookup,1,0
+q0021,how do i cancel the basic subscription,simple_lookup,0,0
+q1816,our roofer silently merged the customs entry under protest,simple_lookup,1,1
+q0047,when will the the legacy refund arrive,simple_lookup,1,0
+q1821,a locksmith is chasing a damaged pallet without a signature,simple_lookup,1,0
+q1562,a broker has escalated the tenancy schedule against the wrong ledger,simple_lookup,1,0
+q1919,the tenant is withholding our indemnity clause through the wrong entity,simple_lookup,1,0
+q1395,the contractor double-charged the settlement note since the merger,simple_lookup,1,0
+q1860,the surveyor failed to lodge the disposal record since the merger,multi_hop,1,0
+q0246,the tenant over-declared our quarterly return on a provisional basis,simple_lookup,1,0
+q1226,the tenant silently merged a returned consignment under the old terms,simple_lookup,1,0
+q1004,our warehouse refuses to release the meter reading under the old terms,simple_lookup,0,0
+q1796,the caterer cannot locate our freight surcharge on a provisional basis,multi_hop,1,0
+q0532,a broker double-charged a lapsed guarantee outside the agreed window,multi_hop,1,0
+q1637,the tenant failed to lodge our quarterly return despite the hold,simple_lookup,1,0
+q1683,the surveyor wrongly flagged our excess waiver under protest,simple_lookup,0,0
+q0838,our roofer back-dated our drawdown request while the case is open,simple_lookup,1,0
+q0680,my physio wrongly flagged the storage levy under the old terms,simple_lookup,1,0
+q0750,the caterer double-charged the tenancy schedule since the merger,multi_hop,1,0
+q1211,our printer never received the delivery manifest ahead of the audit,simple_lookup,1,0
+q1623,a locksmith under-reported their audit trail outside the agreed window,multi_hop,1,0
+q0001,what is the basic balance on my account,simple_lookup,1,1
+q1724,a plumber back-dated our drawdown request in a foreign currency,simple_lookup,1,1
+q0461,a supplier under-reported our drawdown request through the wrong entity,multi_hop,0,0
+q1524,the courier mis-stated the delivery manifest under protest,simple_lookup,1,0
+q0928,our installer wants to amend our drawdown request on the previous contract,simple_lookup,1,0
+q1070,our printer under-reported a contested chargeback while the case is open,multi_hop,1,0
+q1908,the glazier wants to amend our excess waiver despite the hold,simple_lookup,1,0
+q0995,the pharmacy is withholding their rebate accrual with no supporting note,simple_lookup,1,0
+q0812,my accountant has disputed our quarterly return under protest,simple_lookup,1,0
+q0534,the glazier double-charged our indemnity clause under the old terms,simple_lookup,1,0
+q0948,our printer cannot reconcile a contested chargeback on the previous contract,adversarial,0,0
+q1866,our installer quietly cancelled our indemnity clause under the old terms,multi_hop,1,0
+q0499,the contractor under-reported our excess waiver after the handover,simple_lookup,1,0
+q1080,our roofer failed to lodge the demurrage claim for the second time,simple_lookup,1,0
+q0655,a supplier is withholding a partial shipment without a signature,simple_lookup,1,0
+q1273,a plumber wants to amend the storage levy in a foreign currency,simple_lookup,0,0
+q1122,the contractor quietly cancelled a lapsed guarantee despite the hold,ambiguous,0,0
+q1467,our printer quietly cancelled the delivery manifest ahead of the audit,simple_lookup,1,0
+q1880,my optician quietly cancelled the salvage valuation since the merger,simple_lookup,1,0
+q0604,the auditor silently merged a duplicate remittance since the merger,ambiguous,1,0
+q0442,the auditor double-charged their rebate accrual before the cutoff,simple_lookup,1,0
+q1360,the contractor never received their handling fee with no supporting note,multi_hop,1,0
+q1042,my accountant wrongly flagged the salvage valuation under the old terms,simple_lookup,1,0
+q1956,our installer silently merged the escrow balance under protest,simple_lookup,1,0
+q1290,my dentist wrongly flagged a damaged pallet since the merger,simple_lookup,1,0
+q1776,a broker refuses to release their credit memo under the old terms,multi_hop,1,0
+q1048,my landlord silently merged their audit trail against the wrong ledger,multi_hop,0,0
+q0577,my dentist mis-stated their rebate accrual through the wrong entity,simple_lookup,1,0
+q1952,our installer failed to lodge the meter reading against the wrong ledger,ambiguous,0,0
+q1233,the courier is chasing our retention bond on the previous contract,simple_lookup,1,0
+q1771,our printer has escalated the delivery manifest after the handover,simple_lookup,1,0
+q1066,the glazier back-dated a duplicate remittance despite the hold,simple_lookup,1,0
+q1676,the notary back-dated the warranty transfer ahead of the audit,simple_lookup,1,0
+q1213,the notary quietly cancelled our indemnity clause after the handover,simple_lookup,1,0
+q1440,the surveyor over-declared a duplicate remittance while the case is open,simple_lookup,1,0
+q1862,our installer cannot locate a returned consignment ahead of the audit,simple_lookup,0,0
+q0357,a plumber cannot reconcile a contested chargeback after the handover,simple_lookup,1,0
+q1965,our printer refuses to release the settlement note on the previous contract,simple_lookup,1,0
+q0863,our roofer cannot locate the disposal record before the cutoff,simple_lookup,1,0
+q0113,change my billing address to my old,simple_lookup,1,0
+q0470,a plumber back-dated their handling fee in a foreign currency,simple_lookup,1,0
+q0349,our warehouse is chasing the customs entry while the case is open,multi_hop,0,0
+q1705,a broker has disputed the salvage valuation for the second time,simple_lookup,1,0
+q1570,the tenant mis-stated our retention bond in a foreign currency,simple_lookup,1,0
+q1285,our roofer is withholding the meter reading with no supporting note,simple_lookup,0,0
+q0580,my optician keeps rejecting a returned consignment ahead of the audit,simple_lookup,1,0
+q1189,the surveyor over-declared a partial shipment under protest,simple_lookup,1,0
+q0974,my dentist wants to amend their rebate accrual after the handover,multi_hop,1,0
+q1092,our reseller over-declared our indemnity clause under the old terms,simple_lookup,1,0
+q1055,our reseller double-charged their handling fee outside the agreed window,simple_lookup,1,0
+q0014,what is the the trial balance on my account,simple_lookup,0,0
+q0056,when will the student refund arrive,simple_lookup,1,0
+q1667,a supplier under-reported the warranty transfer after the handover,simple_lookup,1,0
+q1804,our warehouse double-charged the warranty transfer on a provisional basis,simple_lookup,1,0
+q0692,my dentist keeps rejecting their handling fee while the case is open,simple_lookup,1,0
+q0581,my dentist is withholding the escrow balance against the wrong ledger,simple_lookup,1,0
+q0829,a plumber wrongly flagged the demurrage claim under protest,simple_lookup,1,0
+q0380,the notary is withholding our excess waiver for the second time,simple_lookup,1,0
+q0213,our warehouse under-reported a damaged pallet before the cutoff,simple_lookup,1,0
+q1164,the auditor is chasing a returned consignment since the merger,simple_lookup,1,0
+q0892,the caterer double-charged their credit memo outside the agreed window,simple_lookup,1,0
+q1136,our warehouse mis-stated the reinstatement cost for the second time,multi_hop,0,0
+q0198,the caterer over-declared their credit memo ahead of the audit,simple_lookup,1,0
+q1987,our reseller is chasing our retention bond on a provisional basis,simple_lookup,1,0
+q1097,our roofer cannot reconcile the delivery manifest ahead of the audit,simple_lookup,1,0
+q1346,the auditor back-dated the reinstatement cost in a foreign currency,simple_lookup,1,0
+q1819,the courier over-declared a returned consignment outside the agreed window,simple_lookup,1,0
+q1568,the tenant cannot reconcile a lapsed guarantee in a foreign currency,simple_lookup,1,0
+q0193,the caterer under-reported their audit trail on the previous contract,simple_lookup,1,0
+q1935,the auditor double-charged the tenancy schedule after the handover,simple_lookup,1,0
+q1488,my landlord mis-stated a returned consignment in a foreign currency,simple_lookup,0,0
+q1198,the notary has escalated their commission split with no supporting note,adversarial,0,0
+q1716,the contractor failed to lodge their rebate accrual under the old terms,simple_lookup,1,0
+q1113,a plumber is chasing the delivery manifest while the case is open,simple_lookup,1,0
+q1302,the glazier cannot reconcile our indemnity clause ahead of the audit,simple_lookup,1,0
+q0256,the courier has disputed the storage levy under protest,simple_lookup,1,0
+q0117,change my billing address to the legacy,simple_lookup,1,0
+q1904,my physio wrongly flagged their credit memo under protest,simple_lookup,1,0
+q1165,my landlord cannot locate the settlement note under protest,simple_lookup,1,0
+q0106,change my billing address to student,simple_lookup,1,0
+q1379,the surveyor is withholding a partial shipment under protest,simple_lookup,0,0
+q1277,my accountant has escalated our drawdown request after the handover,simple_lookup,1,0
+q1160,my dentist is chasing a damaged pallet against the wrong ledger,multi_hop,1,0
+q0081,is basic covered by the warranty,simple_lookup,1,0
+q0016,what is the student balance on my account,simple_lookup,1,0
+q1657,my landlord never received a damaged pallet while the case is open,multi_hop,1,0
+q1877,the caterer silently merged the demurrage claim under the old terms,simple_lookup,1,0
+q0673,our roofer wrongly flagged the demurrage claim in a foreign currency,simple_lookup,1,0
+q0574,our installer is withholding the tenancy schedule without a signature,multi_hop,1,0
+q1806,our warehouse never received a partial shipment against the wrong ledger,simple_lookup,1,0
+q0305,the notary cannot locate our freight surcharge before the cutoff,ambiguous,0,0
+q1534,the caterer is withholding the demurrage claim in a foreign currency,simple_lookup,1,0
+q1913,the contractor failed to lodge our retention bond under the old terms,simple_lookup,1,0
+q1457,our roofer never received their handling fee outside the agreed window,simple_lookup,1,0
+q0171,the auditor has escalated the salvage valuation on the previous contract,simple_lookup,1,0
+q0259,a locksmith silently merged a damaged pallet on the previous contract,simple_lookup,1,0
+q0650,a supplier silently merged our freight surcharge for the second time,simple_lookup,1,0
+q0612,my dentist cannot locate the salvage valuation under the old terms,simple_lookup,1,0
+q1019,the auditor refuses to release the customs entry while the case is open,simple_lookup,0,0
+q0988,our roofer mis-stated the meter reading under the old terms,simple_lookup,1,0
+q1630,a plumber never received their commission split while the case is open,simple_lookup,1,0
+q0479,the surveyor keeps rejecting the settlement note under protest,simple_lookup,1,0
+q1531,my accountant cannot locate their handling fee after the handover,simple_lookup,1,0
+q1674,my optician failed to lodge the salvage valuation in a foreign currency,simple_lookup,1,0
+q0139,the courier failed to lodge the settlement note under the old terms,simple_lookup,1,0
+q1870,our reseller back-dated the salvage valuation with no supporting note,simple_lookup,1,0
+q1941,the surveyor double-charged a damaged pallet since the merger,simple_lookup,1,0
+q0158,our installer failed to lodge the tenancy schedule while the case is open,multi_hop,1,0
+q1726,the surveyor double-charged a duplicate remittance on the previous contract,simple_lookup,1,0
+q1856,our printer double-charged the demurrage claim outside the agreed window,simple_lookup,1,0
+q0477,my landlord is withholding the reinstatement cost in a foreign currency,simple_lookup,1,0
+q0228,my optician mis-stated their commission split ahead of the audit,multi_hop,1,0
+q1305,my dentist cannot locate the delivery manifest without a signature,simple_lookup,1,0
+q1659,the notary cannot reconcile the delivery manifest on the previous contract,multi_hop,0,0
+q0262,the tenant is chasing a lapsed guarantee for the second time,ambiguous,0,0
+q0194,the courier wrongly flagged our drawdown request under protest,simple_lookup,1,0
+q1644,a broker has disputed the disposal record despite the hold,simple_lookup,1,0
+q1280,my optician is chasing the storage levy without a signature,simple_lookup,1,0
+q0826,the auditor quietly cancelled our freight surcharge in a foreign currency,multi_hop,1,0
+q1099,my physio refuses to release a lapsed guarantee on a provisional basis,multi_hop,1,0
+q1620,our installer refuses to release our quarterly return outside the agreed window,simple_lookup,1,0
+q0822,my landlord over-declared a damaged pallet in a foreign currency,simple_lookup,1,1
+q1953,a locksmith has disputed their audit trail despite the hold,simple_lookup,1,0
+q0188,a locksmith over-declared our drawdown request on the previous contract,simple_lookup,1,0
+q0953,a locksmith mis-stated their audit trail through the wrong entity,ambiguous,0,0
+q1981,the pharmacy mis-stated their rebate accrual on a provisional basis,simple_lookup,1,0
+q1579,a plumber keeps rejecting the customs entry on a provisional basis,simple_lookup,1,0
+q0689,our printer back-dated the customs entry in a foreign currency,ambiguous,1,0
+q1607,the courier failed to lodge a contested chargeback under the old terms,simple_lookup,1,0
+q1177,a supplier has disputed their rebate accrual after the handover,simple_lookup,0,0
+q1079,the surveyor mis-stated the customs entry while the case is open,simple_lookup,1,0
+q1651,our reseller mis-stated the salvage valuation without a signature,simple_lookup,1,0
+q1087,my optician under-reported a partial shipment against the wrong ledger,simple_lookup,1,0
+q1738,the glazier double-charged the customs entry while the case is open,simple_lookup,1,0
+q1621,the contractor over-declared the salvage valuation under protest,simple_lookup,1,0
+q1201,our roofer back-dated their credit memo after the handover,multi_hop,1,0
+q1212,my accountant wrongly flagged their rebate accrual for the second time,simple_lookup,1,0
+q1850,my accountant under-reported the salvage valuation against the wrong ledger,multi_hop,1,0
+q1619,the tenant is chasing our retention bond through the wrong entity,simple_lookup,1,0
+q0156,my accountant wrongly flagged the delivery manifest after the handover,multi_hop,1,0
+q0702,a broker quietly cancelled their handling fee through the wrong entity,simple_lookup,1,0
+q0069,reset the password for the pro,simple_lookup,1,0
+q0633,a plumber mis-stated our quarterly return with no supporting note,multi_hop,0,0
+q1930,my landlord back-dated the meter reading under protest,simple_lookup,1,0
+q0114,change my billing address to the trial,simple_lookup,1,0
+q1480,my dentist mis-stated the escrow balance with no supporting note,simple_lookup,1,0
+q1065,a plumber quietly cancelled their commission split against the wrong ledger,simple_lookup,1,0
+q1078,our roofer quietly cancelled their commission split without a signature,simple_lookup,1,0
+q1983,the pharmacy cannot reconcile the delivery manifest under protest,simple_lookup,1,0
+q0048,when will the our team refund arrive,simple_lookup,1,0
+q1567,our printer over-declared their commission split with no supporting note,simple_lookup,1,0
+q1351,our installer over-declared the disposal record under the old terms,simple_lookup,1,0
+q1536,the notary back-dated a returned consignment through the wrong entity,simple_lookup,1,0
+q0562,our roofer wrongly flagged the salvage valuation under the old terms,simple_lookup,1,0
+q1888,our installer double-charged the warranty transfer while the case is open,multi_hop,1,0
+q1118,a plumber refuses to release the disposal record under protest,simple_lookup,1,0
+q1729,the glazier keeps rejecting their audit trail in a foreign currency,simple_lookup,1,0
+q1058,the courier wants to amend the salvage valuation under the old terms,simple_lookup,1,0
+q0452,the courier under-reported the customs entry on a provisional basis,simple_lookup,0,0
+q0602,the auditor is chasing their handling fee ahead of the audit,simple_lookup,1,0
+q0218,a broker over-declared the warranty transfer through the wrong entity,simple_lookup,1,0
+q0766,the notary never received our retention bond while the case is open,simple_lookup,1,0
+q0643,the contractor quietly cancelled our quarterly return on a provisional basis,simple_lookup,1,0
+q0200,a plumber quietly cancelled their handling fee against the wrong ledger,simple_lookup,1,0
+q1356,a broker over-declared the settlement note outside the agreed window,multi_hop,1,0
+q0236,our installer wrongly flagged our retention bond while the case is open,simple_lookup,1,0
+q0973,a broker back-dated the settlement note since the merger,simple_lookup,1,0
+q1757,our installer cannot locate the demurrage claim for the second time,simple_lookup,1,0
+q1155,a plumber cannot reconcile our retention bond without a signature,multi_hop,0,0
+q1943,the notary silently merged the storage levy before the cutoff,simple_lookup,1,0
+q0323,the notary keeps rejecting their rebate accrual outside the agreed window,simple_lookup,1,0
+q0295,our roofer has escalated our retention bond with no supporting note,simple_lookup,1,0
+q1052,the contractor cannot reconcile our freight surcharge through the wrong entity,simple_lookup,1,0
+q1762,my physio cannot locate our excess waiver in a foreign currency,simple_lookup,1,0
+q0199,the auditor cannot locate the meter reading while the case is open,simple_lookup,1,0
+q1458,the caterer is withholding the tenancy schedule while the case is open,simple_lookup,1,0
+q0212,our reseller cannot locate a returned consignment through the wrong entity,multi_hop,1,0
+q0905,our printer back-dated our excess waiver since the merger,simple_lookup,1,0
+q0862,the tenant cannot reconcile our drawdown request on the previous contract,ambiguous,1,0
+q0607,the auditor wants to amend the storage levy against the wrong ledger,multi_hop,0,0
+q0932,our warehouse quietly cancelled a contested chargeback against the wrong ledger,simple_lookup,1,0
+q1519,our printer cannot reconcile the tenancy schedule for the second time,simple_lookup,1,0
+q1398,a plumber has disputed a partial shipment against the wrong ledger,simple_lookup,1,0
+q1438,a locksmith back-dated the tenancy schedule outside the agreed window,simple_lookup,1,0
+q1535,the glazier mis-stated the meter reading in a foreign currency,simple_lookup,1,0
+q0638,my physio back-dated our freight surcharge in a foreign currency,simple_lookup,1,0
+q0729,my landlord refuses to release our quarterly return against the wrong ledger,simple_lookup,1,0
+q1072,my accountant has disputed the escrow balance despite the hold,simple_lookup,1,0
+q0902,a supplier refuses to release their handling fee on the previous contract,simple_lookup,1,0
+q1810,the caterer has disputed the demurrage claim before the cutoff,simple_lookup,1,0
+q0890,our warehouse cannot reconcile the disposal record in a foreign currency,simple_lookup,1,0
+q0837,the surveyor has escalated our indemnity clause in a foreign currency,simple_lookup,1,0
+q0254,our installer wrongly flagged the escrow balance while the case is open,simple_lookup,1,0
+q0697,the contractor double-charged their credit memo in a foreign currency,simple_lookup,1,0
+q1797,my dentist silently merged the delivery manifest without a signature,multi_hop,1,0
+q0377,the tenant quietly cancelled a lapsed guarantee before the cutoff,multi_hop,1,0
+q0020,how do i cancel the premium subscription,simple_lookup,1,0
+q1316,the courier quietly cancelled a contested chargeback against the wrong ledger,simple_lookup,1,0
+q1325,the surveyor never received their handling fee outside the agreed window,simple_lookup,1,0
+q0354,the surveyor double-charged a lapsed guarantee through the wrong entity,simple_lookup,1,0
+q0648,our reseller mis-stated a lapsed guarantee outside the agreed window,simple_lookup,0,0
+q1714,a supplier silently merged the reinstatement cost ahead of the audit,simple_lookup,1,0
+q0666,a supplier double-charged a duplicate remittance through the wrong entity,simple_lookup,1,0
+q0558,my dentist is chasing the customs entry against the wrong ledger,simple_lookup,1,0
+q0012,what is the the annual balance on my account,simple_lookup,1,0
+q0663,the glazier over-declared the customs entry while the case is open,simple_lookup,1,0
+q1403,my physio is chasing their credit memo under protest,multi_hop,1,0
+q0992,my accountant has escalated their audit trail for the second time,simple_lookup,1,0
+q1117,a locksmith under-reported their rebate accrual before the cutoff,simple_lookup,1,0
+q1035,my physio never received our drawdown request for the second time,simple_lookup,1,0
+q1543,my physio has escalated the escrow balance after the handover,simple_lookup,1,0
+q1062,my accountant mis-stated the salvage valuation without a signature,simple_lookup,1,0
+q0713,the tenant double-charged the tenancy schedule under the old terms,simple_lookup,1,0
+q0441,a locksmith over-declared the settlement note on a provisional basis,simple_lookup,1,0
+q0082,is the annual covered by the warranty,simple_lookup,1,0
+q1437,my dentist never received the reinstatement cost on the previous contract,ambiguous,0,0
+q1538,the notary wants to amend a duplicate remittance under the old terms,simple_lookup,1,0
+q1782,the notary silently merged the salvage valuation before the cutoff,simple_lookup,1,0
+q1722,our printer cannot locate our retention bond ahead of the audit,ambiguous,0,0
+q1756,my landlord failed to lodge their handling fee with no supporting note,simple_lookup,1,0
+q1200,the courier quietly cancelled their audit trail with no supporting note,simple_lookup,1,0
+q0092,is the annual covered by the warranty,simple_lookup,1,0
+q1409,our warehouse has escalated our retention bond under protest,multi_hop,1,0
+q1018,the surveyor back-dated the delivery manifest through the wrong entity,simple_lookup,1,0
+q0015,what is the family balance on my account,simple_lookup,1,0
+q0981,a broker has disputed a lapsed guarantee before the cutoff,simple_lookup,1,0
+q0504,our reseller silently merged our indemnity clause against the wrong ledger,simple_lookup,1,0
+q1666,a plumber is withholding the settlement note before the cutoff,simple_lookup,1,0
+q0038,how do i cancel the our team subscription,simple_lookup,1,0
+q0362,the notary silently merged the delivery manifest with no supporting note,simple_lookup,1,0
+q0004,what is the the trial balance on my account,simple_lookup,0,0
+q1834,my accountant never received the storage levy after the handover,multi_hop,1,0
+q0763,a locksmith has disputed their audit trail before the cutoff,simple_lookup,1,0
+q1321,our roofer failed to lodge the tenancy schedule despite the hold,simple_lookup,1,0
+q0024,how do i cancel the the trial subscription,simple_lookup,1,0
+q1754,our reseller is withholding our retention bond through the wrong entity,simple_lookup,1,0
+q0719,a broker mis-stated a lapsed guarantee under protest,simple_lookup,1,0
+q0598,my accountant keeps rejecting a returned consignment while the case is open,simple_lookup,1,0
+q1711,my physio is chasing the storage levy under the old terms,simple_lookup,1,0
+q1444,the glazier back-dated a contested chargeback under the old terms,multi_hop,1,0
+q0895,the notary quietly cancelled their credit memo after the handover,multi_hop,1,0
+q1143,the tenant has escalated our drawdown request against the wrong ledger,multi_hop,1,0
+q1139,the auditor is chasing our retention bond through the wrong entity,simple_lookup,1,0
+q0839,our reseller over-declared the customs entry before the cutoff,simple_lookup,1,0
+q1289,my optician has disputed our excess waiver after the handover,multi_hop,0,0
+q0339,the auditor silently merged the escrow balance after the handover,simple_lookup,1,0
+q1699,our printer silently merged the tenancy schedule against the wrong ledger,simple_lookup,1,0
+q0068,reset the password for our team,simple_lookup,1,0
+q0904,the auditor cannot reconcile the storage levy under protest,simple_lookup,1,0
+q0671,our installer has escalated our indemnity clause under protest,simple_lookup,1,0
+q1979,my accountant wrongly flagged the disposal record through the wrong entity,simple_lookup,1,0
+q1423,a broker never received the tenancy schedule outside the agreed window,multi_hop,1,0
+q0275,our printer under-reported the meter reading ahead of the audit,simple_lookup,1,0
+q1925,my accountant over-declared a duplicate remittance after the handover,simple_lookup,0,0
+q1613,the contractor has escalated the delivery manifest without a signature,multi_hop,1,0
+q0132,a locksmith silently merged our indemnity clause ahead of the audit,multi_hop,1,0
+q1525,a plumber wants to amend a partial shipment through the wrong entity,multi_hop,0,0
+q1955,a plumber is chasing the settlement note outside the agreed window,multi_hop,1,0
+q0217,the tenant wants to amend the meter reading through the wrong entity,simple_lookup,1,0
+q0611,my landlord quietly cancelled the delivery manifest through the wrong entity,simple_lookup,1,0
+q1921,the caterer is chasing a contested chargeback in a foreign currency,simple_lookup,1,0
+q0727,our printer never received the settlement note against the wrong ledger,simple_lookup,1,0
+q1153,the tenant never received a duplicate remittance since the merger,simple_lookup,1,0
+q1247,the notary refuses to release a lapsed guarantee outside the agreed window,simple_lookup,1,0
+q1822,the auditor wants to amend a returned consignment after the handover,simple_lookup,1,0
+q1489,our roofer wrongly flagged their handling fee through the wrong entity,ambiguous,1,0
+q1199,my landlord failed to lodge their credit memo without a signature,simple_lookup,1,0
+q1023,the surveyor under-reported a lapsed guarantee without a signature,simple_lookup,1,0
+q1777,our reseller cannot locate a damaged pallet against the wrong ledger,simple_lookup,1,0
+q1001,the contractor is withholding our drawdown request with no supporting note,simple_lookup,1,0
+q0737,my physio double-charged our excess waiver for the second time,ambiguous,0,0
+q0448,my accountant has escalated the settlement note on a provisional basis,simple_lookup,1,0
+q1000,our roofer back-dated their rebate accrual before the cutoff,simple_lookup,1,0
+q1188,my accountant refuses to release the warranty transfer with no supporting note,simple_lookup,1,0
+q0698,a supplier cannot reconcile a contested chargeback under protest,multi_hop,1,1
+q1827,the pharmacy cannot reconcile our indemnity clause outside the agreed window,multi_hop,1,0
+q1886,a plumber mis-stated our retention bond against the wrong ledger,adversarial,0,0
+q0399,a supplier quietly cancelled a damaged pallet against the wrong ledger,adversarial,1,0
+q0523,the caterer has escalated our indemnity clause with no supporting note,multi_hop,1,0
+q0744,a supplier silently merged the storage levy before the cutoff,simple_lookup,1,0
+q1244,a plumber quietly cancelled their rebate accrual outside the agreed window,multi_hop,1,0
+q1493,a supplier back-dated the delivery manifest in a foreign currency,simple_lookup,0,0
+q1491,my landlord mis-stated the delivery manifest despite the hold,ambiguous,0,0
+q0848,our warehouse is chasing the customs entry through the wrong entity,multi_hop,1,0
+q0422,our installer back-dated a partial shipment under protest,simple_lookup,1,0
+q0672,our roofer under-reported a partial shipment outside the agreed window,simple_lookup,1,0
+q0531,our reseller is chasing a contested chargeback with no supporting note,simple_lookup,1,0
+q1815,a broker over-declared their audit trail on a provisional basis,simple_lookup,1,0
+q0093,is my old covered by the warranty,simple_lookup,1,0
+q1947,our installer wrongly flagged the settlement note through the wrong entity,simple_lookup,0,0
+q0252,the caterer never received the demurrage claim under the old terms,simple_lookup,1,0
+q0232,the auditor refuses to release their credit memo with no supporting note,simple_lookup,1,0
+q1413,the tenant over-declared the tenancy schedule in a foreign currency,ambiguous,0,0
+q1168,my optician refuses to release the salvage valuation through the wrong entity,simple_lookup,1,0
+q0173,the notary has disputed the tenancy schedule under the old terms,simple_lookup,1,0
+q0585,the auditor quietly cancelled our drawdown request under the old terms,simple_lookup,1,0
+q1587,my physio is withholding their handling fee since the merger,simple_lookup,1,0
+q0693,our warehouse over-declared a lapsed guarantee against the wrong ledger,simple_lookup,1,0
+q1107,my physio back-dated our drawdown request after the handover,simple_lookup,1,0
+q0565,the glazier never received a contested chargeback on the previous contract,simple_lookup,1,0
+q1701,our installer over-declared our retention bond under the old terms,simple_lookup,1,1
+q1282,the contractor cannot locate their audit trail after the handover,simple_lookup,1,0
+q1299,my optician cannot reconcile the customs entry outside the agreed window,ambiguous,0,0
+q1980,my accountant keeps rejecting the escrow balance against the wrong ledger,simple_lookup,1,0
+q0453,the glazier keeps rejecting the meter reading since the merger,simple_lookup,1,0
+q1688,the pharmacy refuses to release the demurrage claim before the cutoff,simple_lookup,1,0
+q0730,the caterer back-dated the disposal record without a signature,simple_lookup,1,0
+q1411,the courier failed to lodge a duplicate remittance on a provisional basis,simple_lookup,1,0
+q1363,my physio silently merged the meter reading for the second time,simple_lookup,1,0
+q0894,our installer cannot locate the demurrage claim against the wrong ledger,ambiguous,1,0
+q1825,my landlord wrongly flagged a lapsed guarantee with no supporting note,multi_hop,0,0
+q1388,our printer has disputed the warranty transfer on a provisional basis,multi_hop,1,0
+q1322,my physio cannot locate their commission split for the second time,simple_lookup,1,0
+q1271,the pharmacy has disputed a partial shipment outside the agreed window,simple_lookup,1,0
+q0785,a plumber keeps rejecting a lapsed guarantee ahead of the audit,simple_lookup,1,0
+q1462,our installer back-dated our excess waiver before the cutoff,simple_lookup,1,0
+q0844,our roofer wrongly flagged the reinstatement cost on the previous contract,simple_lookup,1,0
+q0464,the pharmacy failed to lodge the meter reading through the wrong entity,simple_lookup,1,0
+q0544,my optician double-charged a lapsed guarantee ahead of the audit,simple_lookup,1,1
+q0234,our warehouse failed to lodge the storage levy before the cutoff,simple_lookup,1,0
+q0075,reset the password for family,simple_lookup,1,0
+q0459,my dentist has disputed a contested chargeback outside the agreed window,simple_lookup,1,0
+q0755,the surveyor under-reported our retention bond before the cutoff,simple_lookup,1,0
+q1629,a locksmith cannot locate our drawdown request without a signature,simple_lookup,1,0
+q0551,our installer has disputed a lapsed guarantee while the case is open,simple_lookup,1,0
+q1896,a plumber mis-stated our excess waiver without a signature,ambiguous,0,0
+q1845,our warehouse cannot locate our excess waiver after the handover,multi_hop,1,0
+q0930,the caterer quietly cancelled their audit trail through the wrong entity,simple_lookup,1,0
+q1179,our warehouse wrongly flagged the reinstatement cost for the second time,simple_lookup,1,0
+q0299,the glazier never received our retention bond before the cutoff,simple_lookup,1,0
+q0201,my landlord is chasing the tenancy schedule through the wrong entity,simple_lookup,1,0
+q1419,our warehouse silently merged the salvage valuation outside the agreed window,simple_lookup,1,0
+q0390,a plumber failed to lodge a lapsed guarantee despite the hold,simple_lookup,1,0
+q0751,our printer over-declared the delivery manifest under the old terms,simple_lookup,1,0
+q0249,a plumber refuses to release their audit trail despite the hold,simple_lookup,1,0
+q1626,my dentist has disputed a contested chargeback while the case is open,simple_lookup,0,0
+q0627,my physio has escalated a partial shipment in a foreign currency,simple_lookup,1,0
+q1267,our warehouse back-dated the storage levy while the case is open,multi_hop,0,0
+q1381,a supplier failed to lodge a lapsed guarantee ahead of the audit,simple_lookup,1,0
+q0214,our printer cannot reconcile a damaged pallet on a provisional basis,simple_lookup,1,0
+q0187,our printer has escalated our quarterly return against the wrong ledger,simple_lookup,1,0
+q0044,when will the the trial refund arrive,simple_lookup,0,0
+q1230,the caterer cannot locate our indemnity clause since the merger,multi_hop,1,0
+q0792,my landlord is withholding the disposal record with no supporting note,simple_lookup,1,0
+q0046,when will the student refund arrive,simple_lookup,1,0
+q1220,my optician has escalated the meter reading after the handover,simple_lookup,0,0
+q1056,the courier has escalated the storage levy with no supporting note,multi_hop,1,0
+q0595,the contractor under-reported their commission split while the case is open,simple_lookup,1,0
+q0455,our reseller is chasing a contested chargeback while the case is open,simple_lookup,0,0
+q1985,my physio has disputed the meter reading since the merger,simple_lookup,1,0
+q1585,the contractor mis-stated a duplicate remittance with no supporting note,simple_lookup,1,0
+q0921,the courier wants to amend a lapsed guarantee under the old terms,simple_lookup,1,0
+q1512,a broker failed to lodge a partial shipment while the case is open,simple_lookup,1,0
+q1961,our roofer over-declared their audit trail outside the agreed window,adversarial,0,0
+q0554,the caterer wrongly flagged the meter reading on the previous contract,simple_lookup,1,0
+q0588,our roofer back-dated their credit memo outside the agreed window,simple_lookup,1,0
+q1940,my landlord silently merged the storage levy for the second time,simple_lookup,1,0
+q1571,my optician is chasing a lapsed guarantee with no supporting note,simple_lookup,1,0
+q1647,a plumber cannot locate a partial shipment on the previous contract,simple_lookup,1,0
+q0496,the surveyor failed to lodge their rebate accrual for the second time,simple_lookup,1,0
+q0772,a locksmith silently merged the reinstatement cost after the handover,simple_lookup,1,0
+q0880,the pharmacy is chasing their rebate accrual after the handover,multi_hop,0,0
+q1010,my landlord has escalated the escrow balance on the previous contract,simple_lookup,1,0
+q0879,our reseller double-charged a contested chargeback for the second time,multi_hop,1,0
+q0300,the pharmacy mis-stated a damaged pallet while the case is open,simple_lookup,1,0
+q1236,my physio double-charged the warranty transfer while the case is open,simple_lookup,1,0
+q1758,the auditor is chasing a damaged pallet despite the hold,simple_lookup,1,0
+q1600,my landlord cannot locate the warranty transfer while the case is open,ambiguous,0,0
+q0670,the surveyor mis-stated a duplicate remittance while the case is open,simple_lookup,1,0
+q0576,my accountant double-charged our excess waiver with no supporting note,simple_lookup,1,0
+q0175,the pharmacy keeps rejecting our freight surcharge in a foreign currency,simple_lookup,1,0
+q0783,our reseller back-dated the tenancy schedule in a foreign currency,multi_hop,1,0
+q1468,a locksmith never received the delivery manifest for the second time,simple_lookup,1,0
+q1109,our roofer silently merged a partial shipment with no supporting note,simple_lookup,1,0
+q1973,our roofer wants to amend the meter reading in a foreign currency,multi_hop,1,0
+q0593,the pharmacy keeps rejecting a returned consignment under protest,multi_hop,1,0
+q1764,the glazier failed to lodge a lapsed guarantee after the handover,simple_lookup,1,0
+q0589,the glazier has disputed a duplicate remittance while the case is open,simple_lookup,1,0
+q0195,a broker has escalated their audit trail since the merger,simple_lookup,1,0
+q1124,the courier quietly cancelled the customs entry against the wrong ledger,simple_lookup,0,0
+q0439,our reseller under-reported the customs entry while the case is open,simple_lookup,1,0
+q1235,the pharmacy back-dated the customs entry on the previous contract,simple_lookup,1,0
+q1855,our warehouse over-declared our indemnity clause on a provisional basis,simple_lookup,1,0
+q0423,our roofer silently merged our retention bond without a signature,simple_lookup,1,0
+q0622,the glazier quietly cancelled a damaged pallet for the second time,simple_lookup,1,0
+q0774,my accountant has escalated a returned consignment ahead of the audit,simple_lookup,1,0
+q0811,my landlord keeps rejecting our drawdown request without a signature,simple_lookup,1,0
+q1218,the courier keeps rejecting the tenancy schedule in a foreign currency,simple_lookup,1,0
+q0685,the surveyor silently merged their handling fee with no supporting note,simple_lookup,1,0
+q1376,the glazier failed to lodge the storage levy on a provisional basis,simple_lookup,1,0
+q0748,our reseller failed to lodge our indemnity clause outside the agreed window,simple_lookup,1,0
+q0743,my dentist wrongly flagged a lapsed guarantee since the merger,simple_lookup,1,0
+q1679,our warehouse wants to amend the tenancy schedule against the wrong ledger,simple_lookup,1,0
+q0754,our reseller keeps rejecting their commission split after the handover,simple_lookup,1,0
+q1972,my accountant is chasing the meter reading through the wrong entity,simple_lookup,1,0
+q1627,my physio back-dated our quarterly return without a signature,simple_lookup,1,0
+q0002,what is the the annual balance on my account,simple_lookup,1,0
+q0109,change my billing address to the pro,simple_lookup,1,0
+q0820,our roofer refuses to release our freight surcharge on the previous contract,simple_lookup,1,0
+q0303,my optician quietly cancelled their rebate accrual without a signature,simple_lookup,1,0
+q1469,the auditor never received a duplicate remittance with no supporting note,simple_lookup,1,0
+q0679,our printer mis-stated the salvage valuation despite the hold,simple_lookup,1,0
+q0337,the auditor wrongly flagged their handling fee since the merger,simple_lookup,1,0
+q0561,our roofer failed to lodge the settlement note through the wrong entity,simple_lookup,1,0
+q1801,the caterer quietly cancelled a duplicate remittance in a foreign currency,multi_hop,0,0
+q1818,my optician double-charged the demurrage claim without a signature,simple_lookup,1,0
+q1178,our reseller silently merged their commission split with no supporting note,simple_lookup,1,0
+q1054,my landlord double-charged a partial shipment under protest,simple_lookup,1,0
+q0994,the contractor double-charged the disposal record with no supporting note,simple_lookup,1,0
+q1371,the caterer never received a partial shipment without a signature,simple_lookup,1,0
+q0868,a broker mis-stated our quarterly return before the cutoff,simple_lookup,1,0
+q1301,our roofer refuses to release the warranty transfer before the cutoff,simple_lookup,1,0
+q1326,the glazier quietly cancelled a partial shipment against the wrong ledger,simple_lookup,1,1
+q1719,a supplier mis-stated a lapsed guarantee for the second time,multi_hop,1,0
+q0621,the notary mis-stated our drawdown request with no supporting note,simple_lookup,1,0
+q1506,a plumber cannot reconcile the meter reading on the previous contract,simple_lookup,1,0
+q0962,my dentist wants to amend a contested chargeback on the previous contract,simple_lookup,1,0
+q1034,the caterer wrongly flagged our excess waiver on the previous contract,simple_lookup,1,0
+q1278,the courier has escalated our excess waiver outside the agreed window,simple_lookup,1,0
+q1132,the glazier cannot locate the meter reading despite the hold,simple_lookup,1,0
+q1686,a supplier refuses to release the reinstatement cost ahead of the audit,simple_lookup,1,0
+q0675,a plumber wrongly flagged their commission split against the wrong ledger,simple_lookup,1,0
+q1964,the contractor keeps rejecting a returned consignment with no supporting note,simple_lookup,1,0
+q0049,when will the the pro refund arrive,simple_lookup,1,0
+q0765,a plumber over-declared the warranty transfer with no supporting note,simple_lookup,1,0
+q1672,a broker keeps rejecting the settlement note after the handover,adversarial,1,0
+q1483,a supplier keeps rejecting their credit memo through the wrong entity,simple_lookup,0,0
+q1021,our installer cannot reconcile their commission split with no supporting note,multi_hop,0,0
+q1624,the auditor wrongly flagged our quarterly return under the old terms,simple_lookup,0,0
+q1459,my dentist has disputed our freight surcharge outside the agreed window,simple_lookup,1,0
+q1603,the contractor has disputed the demurrage claim outside the agreed window,simple_lookup,1,0
+q1147,the caterer over-declared a duplicate remittance through the wrong entity,simple_lookup,1,0
+q0373,the tenant is chasing our indemnity clause under protest,simple_lookup,1,0
+q0846,my accountant over-declared the settlement note on the previous contract,multi_hop,0,0
+q0507,a broker cannot reconcile the storage levy outside the agreed window,simple_lookup,1,0
+q1324,a broker cannot reconcile the settlement note ahead of the audit,multi_hop,1,0
+q0086,is student covered by the warranty,simple_lookup,1,0
+q1254,my landlord keeps rejecting the customs entry through the wrong entity,simple_lookup,1,0
+q1731,the caterer cannot locate our drawdown request while the case is open,simple_lookup,1,0
+q0211,the contractor mis-stated our indemnity clause on the previous contract,simple_lookup,1,0
+q0298,our roofer cannot locate our quarterly return on a provisional basis,ambiguous,1,0
+q1712,the auditor is chasing our excess waiver outside the agreed window,simple_lookup,1,0
+q1521,my physio has escalated a contested chargeback despite the hold,simple_lookup,1,0
+q1501,our warehouse has escalated the warranty transfer since the merger,multi_hop,0,0
+q1742,my landlord over-declared the settlement note under protest,simple_lookup,1,0
+q0041,when will the basic refund arrive,simple_lookup,1,0
+q0017,what is the the legacy balance on my account,simple_lookup,1,0
+q0097,is the legacy covered by the warranty,simple_lookup,1,0
+q1636,the notary has escalated the demurrage claim after the handover,simple_lookup,1,0
+q1228,my optician over-declared the settlement note since the merger,simple_lookup,1,0
+q0045,when will the family refund arrive,simple_lookup,1,0
+q0791,my optician is chasing their audit trail despite the hold,ambiguous,0,0
+q0034,how do i cancel the the trial subscription,simple_lookup,1,0
+q0356,a plumber cannot locate the tenancy schedule without a signature,simple_lookup,1,0
+q1703,the glazier is chasing the settlement note against the wrong ledger,simple_lookup,1,0
+q1576,the courier never received the warranty transfer with no supporting note,simple_lookup,1,0
+q0022,how do i cancel the the annual subscription,simple_lookup,1,0
+q0584,the notary refuses to release our excess waiver against the wrong ledger,simple_lookup,1,0
+q0950,our warehouse wants to amend their credit memo while the case is open,simple_lookup,1,0
+q1949,our installer under-reported their rebate accrual with no supporting note,simple_lookup,1,0
+q1185,our roofer mis-stated our quarterly return on the previous contract,simple_lookup,1,0
+q1312,the contractor keeps rejecting their handling fee under protest,simple_lookup,1,0
+q1093,the glazier under-reported their credit memo outside the agreed window,simple_lookup,1,0
+q0776,my accountant over-declared the disposal record under the old terms,simple_lookup,1,0
+q1183,our warehouse silently merged the meter reading outside the agreed window,simple_lookup,0,0
+q0560,the courier never received a returned consignment in a foreign currency,simple_lookup,1,0
+q0466,our warehouse cannot locate our excess waiver since the merger,multi_hop,1,0
+q0646,the notary cannot locate a returned consignment in a foreign currency,simple_lookup,1,0
+q1150,a supplier mis-stated the storage levy after the handover,multi_hop,1,0
+q1110,our warehouse over-declared their audit trail through the wrong entity,multi_hop,1,0
+q0162,my accountant refuses to release our quarterly return without a signature,simple_lookup,1,0
+q1900,my physio cannot locate their rebate accrual in a foreign currency,simple_lookup,0,0
+q1589,the contractor back-dated a duplicate remittance on a provisional basis,simple_lookup,1,0
+q1736,the auditor over-declared our indemnity clause without a signature,simple_lookup,1,0
+q1546,our roofer failed to lodge the delivery manifest against the wrong ledger,simple_lookup,1,0
+q0174,our reseller refuses to release a lapsed guarantee despite the hold,simple_lookup,1,0
+q1910,our reseller has escalated a duplicate remittance under the old terms,simple_lookup,1,0
+q1773,my landlord is chasing a partial shipment outside the agreed window,simple_lookup,1,0
+q1638,my physio has escalated the customs entry after the handover,simple_lookup,1,0
+q1414,the notary never received a partial shipment through the wrong entity,simple_lookup,1,0
+q0740,the caterer wants to amend the escrow balance after the handover,simple_lookup,1,0
+q1767,the notary double-charged the tenancy schedule against the wrong ledger,simple_lookup,1,0
+q0365,the glazier wants to amend the reinstatement cost ahead of the audit,simple_lookup,1,0
+q0746,the glazier has disputed our quarterly return while the case is open,simple_lookup,1,0
+q0845,the tenant wants to amend our indemnity clause against the wrong ledger,multi_hop,1,0
+q1923,the contractor wants to amend the disposal record for the second time,simple_lookup,1,0
+q1622,the auditor has disputed our quarterly return in a foreign currency,simple_lookup,1,0
+q0013,what is the my old balance on my account,simple_lookup,1,0
+q0573,a plumber double-charged a lapsed guarantee under protest,simple_lookup,1,0
+q1639,the glazier wants to amend a returned consignment without a signature,simple_lookup,1,0
+q0733,a plumber cannot locate the escrow balance ahead of the audit,simple_lookup,1,0
+q1513,a broker failed to lodge a returned consignment despite the hold,multi_hop,1,0
+q0040,when will the premium refund arrive,simple_lookup,1,0
+q0876,our installer over-declared our quarterly return ahead of the audit,multi_hop,1,0
+q0745,my dentist cannot locate a partial shipment on a provisional basis,multi_hop,0,0
+q0634,my landlord wants to amend the customs entry outside the agreed window,simple_lookup,1,0
+q0761,a plumber under-reported their credit memo before the cutoff,simple_lookup,1,0
+q0720,a locksmith refuses to release our drawdown request since the merger,multi_hop,1,0
+q1329,the glazier is withholding the meter reading without a signature,ambiguous,1,0
+q0338,the notary has disputed their audit trail despite the hold,simple_lookup,1,0
+q1793,my physio mis-stated their rebate accrual without a signature,multi_hop,1,0
+q0865,our roofer over-declared a damaged pallet against the wrong ledger,simple_lookup,1,0
+q1924,my landlord has escalated our drawdown request before the cutoff,simple_lookup,1,0
+q1105,our reseller under-reported a partial shipment since the merger,simple_lookup,1,0
+q0804,the notary back-dated their handling fee before the cutoff,simple_lookup,1,0
+q1027,the pharmacy is withholding their commission split while the case is open,simple_lookup,1,0
+q0065,reset the password for family,simple_lookup,1,0
+q1191,our warehouse failed to lodge the customs entry through the wrong entity,simple_lookup,1,0
+q0409,a locksmith quietly cancelled their audit trail with no supporting note,simple_lookup,1,0
+q1915,our warehouse is chasing the settlement note through the wrong entity,simple_lookup,1,0
+q0410,a supplier mis-stated a damaged pallet with no supporting note,multi_hop,0,0
+q1152,our printer is withholding the storage levy on a provisional basis,simple_lookup,1,0
+q1387,my landlord failed to lodge our quarterly return outside the agreed window,simple_lookup,1,0
+q0537,our installer never received their credit memo under protest,simple_lookup,1,0
+q1377,the contractor failed to lodge a damaged pallet with no supporting note,simple_lookup,1,0
+q0210,my optician refuses to release a partial shipment despite the hold,simple_lookup,1,0
+q1365,my optician failed to lodge the storage levy under the old terms,simple_lookup,1,0
+q1304,a plumber cannot locate the tenancy schedule despite the hold,simple_lookup,1,0
+q1250,my dentist cannot locate the settlement note outside the agreed window,ambiguous,1,0
+q0521,my optician cannot locate the meter reading on a provisional basis,ambiguous,1,0
+q0967,my optician over-declared a lapsed guarantee on a provisional basis,simple_lookup,1,0
+q1708,the notary failed to lodge our retention bond ahead of the audit,simple_lookup,1,0
+q0674,the surveyor refuses to release the tenancy schedule before the cutoff,simple_lookup,1,0
+q0528,my optician cannot reconcile a duplicate remittance outside the agreed window,simple_lookup,1,0
+q1584,a broker over-declared their handling fee while the case is open,multi_hop,1,0
+q0230,the notary cannot locate our retention bond on a provisional basis,simple_lookup,1,0
+q1648,the contractor failed to lodge a partial shipment under the old terms,simple_lookup,1,0
+q0542,the tenant never received the salvage valuation while the case is open,simple_lookup,1,0
+q1654,our roofer double-charged our retention bond in a foreign currency,simple_lookup,1,0
+q0669,the tenant refuses to release the meter reading under protest,simple_lookup,1,0
+q1817,the contractor silently merged the reinstatement cost for the second time,simple_lookup,1,0
+q1112,a broker keeps rejecting the escrow balance before the cutoff,simple_lookup,1,0
+q1971,the auditor has disputed a returned consignment since the merger,simple_lookup,1,0
+q0725,the notary wants to amend their credit memo since the merger,simple_lookup,1,0
+q1224,a locksmith has disputed the escrow balance without a signature,simple_lookup,1,0
+q0938,the glazier back-dated a partial shipment while the case is open,simple_lookup,1,0
+q1076,our roofer over-declared the demurrage claim since the merger,simple_lookup,1,0
+q1642,the notary has disputed the reinstatement cost through the wrong entity,simple_lookup,1,0
+q1750,the tenant wrongly flagged their credit memo on the previous contract,multi_hop,1,0
+q0687,my physio cannot locate their handling fee on a provisional basis,simple_lookup,0,0
+q1047,a supplier wrongly flagged our indemnity clause since the merger,ambiguous,1,0
+q1265,my optician cannot reconcile a lapsed guarantee outside the agreed window,simple_lookup,1,0
+q1670,the courier wants to amend a partial shipment under protest,simple_lookup,1,0
+q1353,my accountant over-declared a returned consignment against the wrong ledger,simple_lookup,1,0
+q0347,the contractor keeps rejecting a contested chargeback on the previous contract,simple_lookup,1,0
+q0071,reset the password for basic,simple_lookup,1,0
+q1963,a supplier silently merged a partial shipment against the wrong ledger,multi_hop,1,0
+q0658,my dentist has disputed the reinstatement cost despite the hold,simple_lookup,1,0
+q1182,my optician has disputed a lapsed guarantee through the wrong entity,multi_hop,1,0
+q0424,the glazier refuses to release our freight surcharge under the old terms,simple_lookup,1,0
+q1784,the auditor wants to amend our drawdown request on the previous contract,multi_hop,1,0
+q0707,the pharmacy wants to amend a contested chargeback for the second time,simple_lookup,1,0
+q1785,the courier has escalated the settlement note with no supporting note,simple_lookup,1,0
+q0524,our roofer is chasing a returned consignment without a signature,simple_lookup,0,0
+q0635,our warehouse is chasing our indemnity clause despite the hold,simple_lookup,1,0
+q0968,my landlord under-reported the storage levy under the old terms,simple_lookup,1,0
+q0446,our installer has disputed the salvage valuation on the previous contract,simple_lookup,1,0
+q0206,the courier mis-stated their audit trail for the second time,simple_lookup,1,0
+q1120,our installer double-charged the reinstatement cost on a provisional basis,simple_lookup,1,0
+q1240,the tenant has disputed the salvage valuation despite the hold,multi_hop,1,0
+q1393,the courier is withholding our drawdown request under the old terms,simple_lookup,1,0
+q1016,a plumber cannot locate a returned consignment despite the hold,simple_lookup,1,0
+q0613,a plumber over-declared their credit memo after the handover,simple_lookup,1,0
+q1728,my accountant cannot locate a lapsed guarantee for the second time,simple_lookup,1,0
+q1997,a plumber cannot reconcile the settlement note for the second time,multi_hop,1,0
+q0091,is basic covered by the warranty,simple_lookup,1,0
+q0512,a plumber back-dated a partial shipment on a provisional basis,simple_lookup,1,0
+q1339,the courier mis-stated a partial shipment after the handover,simple_lookup,1,0
+q0028,how do i cancel the our team subscription,simple_lookup,1,0
+q0122,my landlord has disputed the escrow balance in a foreign currency,simple_lookup,1,0
+q0906,my optician back-dated our indemnity clause against the wrong ledger,simple_lookup,1,1
+q1938,the auditor keeps rejecting the customs entry despite the hold,adversarial,0,0
+q0510,the glazier mis-stated the customs entry while the case is open,simple_lookup,1,0
+q1808,a broker never received a returned consignment under protest,ambiguous,1,0
+q1181,a locksmith refuses to release their commission split on a provisional basis,simple_lookup,1,0
+q1101,the notary quietly cancelled the demurrage claim against the wrong ledger,simple_lookup,0,0
+q1231,the courier mis-stated our retention bond on a provisional basis,simple_lookup,1,0
+q1453,the courier cannot reconcile the storage levy with no supporting note,simple_lookup,1,0
+q0514,my dentist has escalated the meter reading without a signature,simple_lookup,1,0
+q1875,the courier cannot locate their credit memo for the second time,multi_hop,0,0
+q0881,the caterer is chasing the escrow balance while the case is open,multi_hop,0,0
+q1820,the tenant has escalated our retention bond in a foreign currency,simple_lookup,1,0
+q0694,a plumber mis-stated a duplicate remittance in a foreign currency,ambiguous,0,0
+q1086,my dentist never received the reinstatement cost without a signature,simple_lookup,1,0
+q0590,a broker refuses to release the disposal record despite the hold,simple_lookup,1,0
+q0887,the courier is chasing their audit trail through the wrong entity,simple_lookup,1,0
+q1477,the notary quietly cancelled a damaged pallet under protest,simple_lookup,1,0
+q1323,my optician wants to amend the reinstatement cost outside the agreed window,simple_lookup,1,0
+q1386,the glazier mis-stated a damaged pallet ahead of the audit,simple_lookup,1,0
+q0519,my dentist over-declared a contested chargeback before the cutoff,simple_lookup,1,0
+q1778,a supplier never received the reinstatement cost after the handover,simple_lookup,1,0
+q1830,the courier has disputed our excess waiver under the old terms,simple_lookup,1,0
+q1653,my landlord never received our quarterly return against the wrong ledger,simple_lookup,1,0
+q1470,a locksmith wrongly flagged our excess waiver against the wrong ledger,simple_lookup,1,0
+q0653,our roofer has disputed the demurrage claim for the second time,simple_lookup,1,0
+q0631,the contractor failed to lodge their handling fee since the merger,simple_lookup,1,0
+q0951,the surveyor cannot locate a partial shipment for the second time,simple_lookup,1,0
+q1616,my physio is withholding our freight surcharge without a signature,simple_lookup,1,0
+q1549,the notary wrongly flagged the disposal record in a foreign currency,multi_hop,0,0
+q0941,the courier is chasing their audit trail since the merger,simple_lookup,1,0
+q0741,the tenant under-reported a damaged pallet with no supporting note,simple_lookup,1,0
+q0758,my dentist cannot locate their handling fee outside the agreed window,ambiguous,0,0
+q1291,my optician under-reported a lapsed guarantee through the wrong entity,simple_lookup,1,0
+q1145,the pharmacy over-declared our indemnity clause while the case is open,simple_lookup,1,0
+q1162,a supplier is chasing a contested chargeback since the merger,simple_lookup,1,0
+q1496,our roofer cannot locate a partial shipment before the cutoff,multi_hop,1,0
+q1673,a broker failed to lodge the reinstatement cost without a signature,multi_hop,0,0
+q1358,the auditor mis-stated the warranty transfer without a signature,simple_lookup,1,0
+q0494,my physio double-charged a damaged pallet ahead of the audit,simple_lookup,1,0
+q0136,a supplier refuses to release the reinstatement cost under protest,multi_hop,1,0
+q0582,my dentist quietly cancelled a returned consignment ahead of the audit,simple_lookup,1,0
+q0167,the courier is chasing the escrow balance under the old terms,simple_lookup,1,0
+q0927,a plumber over-declared their handling fee since the merger,simple_lookup,1,0
+q1874,a locksmith over-declared the storage levy under protest,simple_lookup,1,0
+q0314,our warehouse over-declared the settlement note without a signature,simple_lookup,1,0
+q1049,our warehouse quietly cancelled the customs entry before the cutoff,multi_hop,1,0
+q1565,my accountant has escalated the disposal record after the handover,simple_lookup,1,0
+q0083,is my old covered by the warranty,simple_lookup,1,0
+q0293,the contractor double-charged a partial shipment through the wrong entity,simple_lookup,1,0
+q0290,my optician double-charged the reinstatement cost without a signature,simple_lookup,0,0
+q0614,a plumber under-reported the demurrage claim against the wrong ledger,simple_lookup,1,0
+q0304,my physio has disputed a returned consignment before the cutoff,simple_lookup,1,0
+q0963,the caterer never received the salvage valuation after the handover,simple_lookup,1,1
+q0462,a locksmith under-reported our drawdown request before the cutoff,simple_lookup,1,0
+q0078,reset the password for our team,simple_lookup,1,0
+q1794,our warehouse is chasing their audit trail before the cutoff,simple_lookup,1,0
+q1903,the courier back-dated the settlement note ahead of the audit,simple_lookup,1,0
+q0235,the caterer never received the delivery manifest before the cutoff,simple_lookup,1,0
+q0520,the auditor over-declared their audit trail under protest,simple_lookup,0,0
+q0559,our roofer under-reported a damaged pallet without a signature,simple_lookup,1,0
+q0471,the tenant double-charged a returned consignment ahead of the audit,simple_lookup,1,0
+q0326,my physio is chasing our freight surcharge for the second time,adversarial,0,0
+q0269,my physio failed to lodge a lapsed guarantee with no supporting note,simple_lookup,1,0
+q1032,the pharmacy refuses to release our excess waiver in a foreign currency,simple_lookup,1,0
+q0712,our roofer has escalated the salvage valuation outside the agreed window,multi_hop,1,0
+q1960,the tenant refuses to release a returned consignment with no supporting note,simple_lookup,1,0
+q0186,the pharmacy mis-stated the salvage valuation for the second time,simple_lookup,0,0
+q1898,the caterer under-reported the customs entry through the wrong entity,simple_lookup,1,0
+q1279,my landlord quietly cancelled the disposal record through the wrong entity,simple_lookup,1,0
+q0937,the courier wants to amend our retention bond through the wrong entity,simple_lookup,1,0
+q0037,how do i cancel the the legacy subscription,simple_lookup,1,0
+q0458,the glazier quietly cancelled a damaged pallet without a signature,multi_hop,1,0
+q0767,a broker keeps rejecting a partial shipment despite the hold,simple_lookup,1,0
+q1098,my dentist under-reported the delivery manifest under the old terms,simple_lookup,1,0
+q1775,my dentist mis-stated their credit memo despite the hold,simple_lookup,0,0
+q0183,the auditor cannot locate our retention bond on a provisional basis,simple_lookup,1,0
+q0768,the auditor has disputed our retention bond ahead of the audit,simple_lookup,1,0
+q0945,my landlord cannot locate a returned consignment after the handover,simple_lookup,0,0
+q1696,the notary never received the meter reading against the wrong ledger,simple_lookup,1,0
+q1969,a plumber over-declared the demurrage claim ahead of the audit,simple_lookup,1,1
+q0503,my landlord mis-stated their commission split since the merger,simple_lookup,1,0
+q1737,our installer cannot reconcile our drawdown request before the cutoff,simple_lookup,1,0
+q1934,a supplier has disputed the escrow balance against the wrong ledger,multi_hop,1,0
+q0708,the surveyor is chasing our drawdown request despite the hold,simple_lookup,1,0
+q1577,our reseller silently merged the customs entry despite the hold,simple_lookup,1,0
+q0340,my dentist is withholding their commission split for the second time,multi_hop,1,0
+q0632,the tenant over-declared their rebate accrual outside the agreed window,simple_lookup,1,0
+q1315,the contractor mis-stated the reinstatement cost through the wrong entity,simple_lookup,1,0
+q1037,the surveyor keeps rejecting a partial shipment for the second time,simple_lookup,1,0
+q0681,the auditor silently merged the reinstatement cost outside the agreed window,simple_lookup,1,0
+q1755,my landlord silently merged a duplicate remittance through the wrong entity,simple_lookup,1,0
+q0636,my optician quietly cancelled the salvage valuation under the old terms,simple_lookup,1,0
+q1516,our roofer mis-stated our retention bond under protest,multi_hop,1,0
+q1695,our warehouse is withholding their handling fee under the old terms,simple_lookup,1,0
+q0954,the surveyor wrongly flagged a partial shipment in a foreign currency,simple_lookup,1,0
+q1542,the glazier cannot reconcile the demurrage claim before the cutoff,multi_hop,0,0
+q0302,the tenant has escalated our excess waiver through the wrong entity,simple_lookup,1,0
+q1237,a supplier double-charged the meter reading on a provisional basis,simple_lookup,1,0
+q0642,my accountant failed to lodge our drawdown request in a foreign currency,simple_lookup,1,0
+q0168,my dentist has escalated our freight surcharge under the old terms,simple_lookup,1,0
+q1069,my accountant has escalated our retention bond in a foreign currency,simple_lookup,1,0
+q1805,the contractor has disputed a returned consignment despite the hold,simple_lookup,1,0
+q1328,our warehouse wants to amend a duplicate remittance outside the agreed window,simple_lookup,0,0
+q1655,the glazier has disputed their rebate accrual in a foreign currency,simple_lookup,1,0
+q0997,the surveyor keeps rejecting our drawdown request since the merger,simple_lookup,1,0
+q1272,a broker never received a damaged pallet since the merger,simple_lookup,1,0
+q1715,our installer quietly cancelled the escrow balance under the old terms,simple_lookup,1,0
+q0691,my optician refuses to release the storage levy for the second time,ambiguous,1,0
+q0940,our printer never received their rebate accrual under protest,simple_lookup,1,0
+q1221,my accountant silently merged the escrow balance with no supporting note,multi_hop,0,0
+q1610,the surveyor cannot locate the warranty transfer outside the agreed window,simple_lookup,1,0
+q0099,is the pro covered by the warranty,simple_lookup,1,0
+q0398,the auditor mis-stated the storage levy while the case is open,simple_lookup,1,0
+q0583,my optician back-dated a partial shipment under protest,simple_lookup,1,0
+q1575,our roofer quietly cancelled the customs entry before the cutoff,simple_lookup,1,0
+q1102,my physio wants to amend our indemnity clause under protest,simple_lookup,1,0
+q0333,the notary quietly cancelled the settlement note under protest,simple_lookup,1,0
+q0956,the courier double-charged the storage levy outside the agreed window,simple_lookup,1,0
+q0248,the courier silently merged the salvage valuation since the merger,simple_lookup,1,0
+q0474,the caterer has disputed the reinstatement cost ahead of the audit,simple_lookup,1,0
+q1149,our installer has disputed the salvage valuation through the wrong entity,simple_lookup,1,0
+q1998,a locksmith under-reported a damaged pallet with no supporting note,simple_lookup,0,0
+q1418,a locksmith quietly cancelled our quarterly return on the previous contract,ambiguous,0,0
+q0647,a plumber back-dated their audit trail despite the hold,simple_lookup,1,0
+q0283,our installer has disputed our indemnity clause before the cutoff,simple_lookup,1,0
+q1510,a broker failed to lodge a lapsed guarantee for the second time,simple_lookup,1,1
+q0080,is premium covered by the warranty,simple_lookup,1,0
+q0522,the contractor has disputed the disposal record on the previous contract,multi_hop,1,0
+q1283,the surveyor refuses to release the demurrage claim against the wrong ledger,multi_hop,1,0
+q1529,my physio cannot reconcile the delivery manifest against the wrong ledger,simple_lookup,1,0
+q0586,the tenant is withholding the storage levy despite the hold,simple_lookup,1,0
+q1415,the notary cannot locate their rebate accrual on a provisional basis,simple_lookup,1,0
+q1260,my optician quietly cancelled the reinstatement cost on a provisional basis,simple_lookup,1,0
+q1558,the tenant is chasing a lapsed guarantee under the old terms,simple_lookup,1,0
+q0332,my accountant quietly cancelled the storage levy under protest,simple_lookup,1,1
+q0245,our warehouse keeps rejecting a duplicate remittance for the second time,multi_hop,1,0
+q0922,the contractor over-declared the salvage valuation since the merger,multi_hop,1,0
+q0926,our installer is chasing our quarterly return while the case is open,simple_lookup,1,0
+q0341,my accountant is withholding our freight surcharge through the wrong entity,simple_lookup,1,0
+q0942,my optician has escalated our indemnity clause for the second time,simple_lookup,1,0
+q0601,the contractor keeps rejecting our freight surcharge outside the agreed window,simple_lookup,1,0
+q1140,the courier never received the customs entry under the old terms,simple_lookup,1,0
+q1405,my physio silently merged our freight surcharge for the second time,simple_lookup,1,0
+q1984,the surveyor double-charged our quarterly return after the handover,simple_lookup,1,0
+q0238,my optician wants to amend our indemnity clause under protest,simple_lookup,1,0
+q0933,the pharmacy has disputed the reinstatement cost on the previous contract,simple_lookup,1,0
+q1527,a locksmith cannot locate a damaged pallet in a foreign currency,simple_lookup,1,0
+q1694,our warehouse under-reported the tenancy schedule since the merger,multi_hop,0,0
+q1833,my accountant over-declared the customs entry ahead of the audit,simple_lookup,1,0
+q1707,my accountant cannot locate the delivery manifest under the old terms,simple_lookup,1,0
+q0842,my physio refuses to release a lapsed guarantee ahead of the audit,simple_lookup,1,1
+q1612,our printer is withholding our freight surcharge on the previous contract,multi_hop,0,0
+q1829,the surveyor is withholding the salvage valuation on a provisional basis,simple_lookup,1,0
+q0006,what is the student balance on my account,simple_lookup,1,0
+q1865,the contractor cannot reconcile their handling fee in a foreign currency,multi_hop,0,0
+q1028,my accountant wants to amend their credit memo on a provisional basis,multi_hop,0,0
+q0121,our installer cannot locate their rebate accrual against the wrong ledger,ambiguous,1,0
+q1906,my physio under-reported their commission split on the previous contract,simple_lookup,1,0
+q0388,our reseller refuses to release our retention bond under protest,multi_hop,0,0
+q1222,the auditor cannot reconcile the delivery manifest despite the hold,simple_lookup,1,0
+q1003,a broker back-dated the delivery manifest despite the hold,simple_lookup,1,0
+q0716,a broker wants to amend a duplicate remittance before the cutoff,ambiguous,0,0
+q1842,my physio wrongly flagged the warranty transfer before the cutoff,simple_lookup,1,0
+q0578,my physio mis-stated our freight surcharge ahead of the audit,simple_lookup,1,0
+q0222,the glazier cannot locate a returned consignment while the case is open,multi_hop,1,0
+q1378,my optician failed to lodge their audit trail outside the agreed window,simple_lookup,1,0
+q1300,our printer back-dated a contested chargeback through the wrong entity,simple_lookup,1,0
+q0525,the auditor wants to amend the tenancy schedule before the cutoff,simple_lookup,1,0
+q1812,the auditor cannot locate their audit trail under protest,simple_lookup,1,0
+q0735,the pharmacy over-declared the reinstatement cost under the old terms,simple_lookup,1,0
+q0683,the notary has disputed the tenancy schedule against the wrong ledger,simple_lookup,1,0
+q0449,a broker failed to lodge our quarterly return without a signature,simple_lookup,1,0
+q0501,my landlord back-dated our indemnity clause after the handover,simple_lookup,0,0
+q1354,our printer under-reported our drawdown request before the cutoff,simple_lookup,1,0
+q0361,my dentist has disputed a contested chargeback against the wrong ledger,simple_lookup,1,0
+q0152,a plumber over-declared the warranty transfer ahead of the audit,simple_lookup,1,0
+q0505,our warehouse wrongly flagged the escrow balance through the wrong entity,simple_lookup,1,0
+q0221,my landlord is withholding the delivery manifest despite the hold,simple_lookup,1,0
+q1349,a plumber refuses to release a returned consignment without a signature,simple_lookup,0,0
+q0454,the glazier double-charged the warranty transfer on the previous contract,simple_lookup,1,0
+q0010,what is the premium balance on my account,simple_lookup,1,0
+q0220,the auditor wrongly flagged the escrow balance without a signature,simple_lookup,1,0
+q0858,a plumber keeps rejecting our excess waiver outside the agreed window,simple_lookup,1,0
+q0382,our reseller back-dated a partial shipment outside the agreed window,simple_lookup,1,0
+q0331,our printer cannot reconcile the disposal record ahead of the audit,simple_lookup,0,0
+q1207,our warehouse is withholding a lapsed guarantee with no supporting note,simple_lookup,1,0
+q0018,what is the our team balance on my account,simple_lookup,1,0
+q1384,my optician keeps rejecting the tenancy schedule without a signature,simple_lookup,1,0
+q0817,my landlord never received our indemnity clause without a signature,ambiguous,1,0
+q0886,the pharmacy back-dated our indemnity clause under protest,simple_lookup,1,0
+q0924,the contractor failed to lodge the demurrage claim in a foreign currency,simple_lookup,1,0
+q1931,my landlord wrongly flagged our freight surcharge against the wrong ledger,simple_lookup,1,0
+q1215,our printer over-declared their audit trail while the case is open,simple_lookup,1,0
+q1361,our printer wants to amend our retention bond while the case is open,multi_hop,1,0
+q1977,a broker cannot locate a returned consignment outside the agreed window,simple_lookup,1,0
+q1374,my dentist back-dated the salvage valuation before the cutoff,simple_lookup,1,0
+q1839,my optician under-reported our quarterly return against the wrong ledger,simple_lookup,1,0
+q0172,a supplier under-reported the escrow balance for the second time,multi_hop,1,0
+q0856,a locksmith under-reported the demurrage claim outside the agreed window,ambiguous,0,0
+q0656,the courier has disputed the settlement note while the case is open,simple_lookup,1,0
+q1077,our roofer cannot locate the escrow balance ahead of the audit,simple_lookup,1,0
+q0739,my optician cannot locate the delivery manifest through the wrong entity,multi_hop,1,0
+q0157,our warehouse back-dated their handling fee ahead of the audit,simple_lookup,1,0
+q0977,our warehouse wrongly flagged our freight surcharge before the cutoff,simple_lookup,1,0
+q0516,the surveyor never received the settlement note before the cutoff,simple_lookup,1,0
+q1044,my accountant failed to lodge the settlement note through the wrong entity,simple_lookup,1,0
+q0734,a plumber is chasing the disposal record without a signature,simple_lookup,1,0
+q0451,the auditor quietly cancelled the salvage valuation despite the hold,simple_lookup,1,0
+q1515,my optician under-reported the meter reading in a foreign currency,simple_lookup,1,0
+q1424,the pharmacy mis-stated a contested chargeback despite the hold,simple_lookup,1,0
+q1030,our roofer double-charged the escrow balance before the cutoff,multi_hop,1,0
+q0126,the contractor cannot locate a lapsed guarantee with no supporting note,simple_lookup,1,0
+q1909,my optician has escalated our indemnity clause under the old terms,multi_hop,1,0
+q0407,a locksmith cannot locate the storage levy despite the hold,simple_lookup,1,0
+q0821,my physio cannot locate their commission split after the handover,simple_lookup,1,1
+q1319,the caterer under-reported their commission split despite the hold,simple_lookup,1,0
+q1038,my dentist wrongly flagged their audit trail after the handover,simple_lookup,1,0
+q0866,the caterer never received their credit memo without a signature,multi_hop,1,0
+q0815,a supplier keeps rejecting a partial shipment ahead of the audit,simple_lookup,1,0
+q0149,a plumber mis-stated our retention bond on the previous contract,simple_lookup,1,0
+q1478,our printer wants to amend their credit memo since the merger,simple_lookup,1,0
+q1262,the surveyor wrongly flagged the delivery manifest against the wrong ledger,simple_lookup,1,0
+q1873,a broker wrongly flagged the disposal record despite the hold,multi_hop,1,0
+q0330,my physio quietly cancelled our excess waiver since the merger,multi_hop,1,0
+q0684,my accountant never received a lapsed guarantee before the cutoff,simple_lookup,1,0
+q0287,my physio wants to amend our retention bond before the cutoff,simple_lookup,1,0
+q0191,the caterer cannot locate the tenancy schedule on the previous contract,simple_lookup,1,0
+q0118,change my billing address to our team,simple_lookup,1,0
+q1740,the notary over-declared a partial shipment with no supporting note,simple_lookup,1,0
+q0596,the notary failed to lodge a partial shipment after the handover,simple_lookup,0,0
+q1466,my physio cannot reconcile our retention bond outside the agreed window,simple_lookup,1,0
+q0884,my optician cannot locate their rebate accrual through the wrong entity,simple_lookup,1,0
+q0009,what is the the pro balance on my account,simple_lookup,1,0
+q1202,the surveyor has disputed the salvage valuation on a provisional basis,simple_lookup,1,0
+q1541,our printer is withholding the warranty transfer before the cutoff,simple_lookup,1,0
+q1656,the auditor has disputed their credit memo ahead of the audit,simple_lookup,1,0
+q1633,a locksmith double-charged the storage levy with no supporting note,simple_lookup,1,0
+q0327,the auditor refuses to release their credit memo against the wrong ledger,simple_lookup,1,0
+q1452,the auditor keeps rejecting the delivery manifest outside the agreed window,simple_lookup,1,0
+q1399,our printer quietly cancelled a returned consignment without a signature,simple_lookup,1,0
+q1350,the caterer back-dated our retention bond on the previous contract,simple_lookup,1,0
+q1697,our roofer wants to amend our quarterly return with no supporting note,simple_lookup,1,0
+q1095,my dentist has escalated the customs entry on a provisional basis,simple_lookup,1,0
+q0870,our printer is chasing their rebate accrual while the case is open,adversarial,0,0
+q0491,our reseller has disputed a returned consignment in a foreign currency,simple_lookup,1,0
+q0215,the caterer keeps rejecting the tenancy schedule ahead of the audit,simple_lookup,1,0
+q1410,the auditor double-charged a contested chargeback through the wrong entity,multi_hop,0,0
+q1539,the contractor has disputed a lapsed guarantee under the old terms,simple_lookup,1,0
+q0568,the contractor is chasing their audit trail without a signature,multi_hop,1,0
+q0871,my accountant wants to amend their commission split in a foreign currency,simple_lookup,1,0
+q0418,the pharmacy cannot reconcile the delivery manifest against the wrong ledger,simple_lookup,1,0
+q0011,what is the basic balance on my account,simple_lookup,1,0
+q0253,our reseller cannot locate the escrow balance without a signature,simple_lookup,1,0
+q1597,the pharmacy is withholding their rebate accrual on the previous contract,simple_lookup,1,0
+q0536,a plumber cannot reconcile their rebate accrual ahead of the audit,simple_lookup,1,0
+q1641,a supplier keeps rejecting their handling fee against the wrong ledger,multi_hop,1,0
+q0306,my landlord double-charged the settlement note with no supporting note,multi_hop,0,0
+q0355,our reseller under-reported the settlement note on a provisional basis,simple_lookup,1,0
+q1664,my physio under-reported our quarterly return against the wrong ledger,simple_lookup,1,0
+q0960,the glazier wants to amend the salvage valuation before the cutoff,simple_lookup,1,0
+q1550,my landlord has disputed the settlement note with no supporting note,simple_lookup,1,0
+q0372,my dentist keeps rejecting a partial shipment since the merger,simple_lookup,1,0
+q0794,the courier cannot reconcile the reinstatement cost in a foreign currency,simple_lookup,1,0
+q0715,the pharmacy over-declared the salvage valuation while the case is open,ambiguous,0,0
+q1932,my dentist wants to amend the reinstatement cost before the cutoff,simple_lookup,1,0
+q1937,my optician never received our excess waiver outside the agreed window,simple_lookup,1,0
+q1832,the caterer cannot reconcile the settlement note after the handover,simple_lookup,1,0
+q1357,the pharmacy over-declared our freight surcharge through the wrong entity,simple_lookup,1,0
+q0677,a locksmith cannot locate the demurrage claim under protest,simple_lookup,1,0
+q1492,the auditor is withholding our freight surcharge before the cutoff,simple_lookup,1,0
+q1242,the glazier back-dated the storage levy for the second time,simple_lookup,1,0
+q1184,the notary is withholding our freight surcharge while the case is open,simple_lookup,0,0
+q0344,the courier has disputed their handling fee without a signature,simple_lookup,0,0
+q0996,the glazier is chasing a duplicate remittance under protest,simple_lookup,1,0
+q1598,the surveyor over-declared a damaged pallet outside the agreed window,simple_lookup,1,0
+q0237,the contractor is withholding their audit trail with no supporting note,simple_lookup,1,0
+q0308,the auditor cannot reconcile a lapsed guarantee in a foreign currency,simple_lookup,1,0
+q1307,our roofer cannot locate the disposal record while the case is open,simple_lookup,1,0
+q1733,the surveyor under-reported a contested chargeback ahead of the audit,simple_lookup,1,0
+q0483,our roofer back-dated the meter reading under protest,simple_lookup,1,0
+q1547,the pharmacy keeps rejecting the reinstatement cost since the merger,simple_lookup,1,0
+q0443,the pharmacy has escalated the storage levy despite the hold,simple_lookup,1,0
+q0408,a broker silently merged their credit memo despite the hold,simple_lookup,1,0
+q0430,the caterer has escalated our retention bond before the cutoff,simple_lookup,1,0
+q1083,a supplier quietly cancelled the meter reading for the second time,ambiguous,0,0
+q0830,my physio failed to lodge a partial shipment while the case is open,simple_lookup,1,0
+q1085,a locksmith mis-stated the storage levy with no supporting note,simple_lookup,1,0
+q1274,my landlord cannot locate our freight surcharge on a provisional basis,simple_lookup,1,0
+q0965,a supplier over-declared the warranty transfer before the cutoff,simple_lookup,1,0
+q0043,when will the my old refund arrive,simple_lookup,1,0
+q1554,the auditor silently merged a duplicate remittance through the wrong entity,simple_lookup,1,0
+q1187,the auditor back-dated the customs entry under the old terms,simple_lookup,1,0
+q0440,the caterer double-charged the disposal record on the previous contract,multi_hop,1,0
+q1520,the glazier wrongly flagged the settlement note without a signature,simple_lookup,1,0
+q0529,the courier cannot locate our drawdown request for the second time,simple_lookup,1,0
+q1769,my landlord keeps rejecting a partial shipment since the merger,simple_lookup,1,0
+q1225,a supplier has disputed our quarterly return after the handover,simple_lookup,1,0
+q1849,our reseller over-declared our freight surcharge on a provisional basis,ambiguous,0,0
+q0432,our warehouse over-declared our indemnity clause with no supporting note,simple_lookup,1,0
+q1693,our printer cannot locate their commission split while the case is open,simple_lookup,1,0
+q1846,our reseller mis-stated the settlement note after the handover,simple_lookup,1,0
+q0076,reset the password for student,simple_lookup,1,0
+q0784,a supplier quietly cancelled the customs entry without a signature,multi_hop,0,0
+q1216,the auditor double-charged the escrow balance after the handover,simple_lookup,1,0
+q1590,the notary has disputed the salvage valuation while the case is open,simple_lookup,1,0
+q1872,our installer wants to amend our indemnity clause for the second time,simple_lookup,1,0
+q0885,my accountant wrongly flagged their audit trail despite the hold,multi_hop,0,0
+q1261,my physio is chasing our freight surcharge with no supporting note,simple_lookup,1,0
+q0603,the courier wants to amend the disposal record under protest,multi_hop,0,0
+q1946,the caterer silently merged the escrow balance without a signature,simple_lookup,1,0
+q1060,the contractor wrongly flagged the reinstatement cost through the wrong entity,simple_lookup,1,0
+q0392,the glazier over-declared their handling fee outside the agreed window,simple_lookup,1,0
+q0620,a locksmith cannot locate the settlement note on the previous contract,simple_lookup,0,0
+q1663,our warehouse wants to amend their handling fee on a provisional basis,multi_hop,1,0
+q1879,the tenant back-dated our freight surcharge through the wrong entity,simple_lookup,1,0
+q1922,a locksmith silently merged the salvage valuation on the previous contract,simple_lookup,1,0
+q0404,a locksmith keeps rejecting their audit trail after the handover,simple_lookup,1,0
+q1572,the surveyor is withholding the customs entry since the merger,simple_lookup,1,0
+q1007,the surveyor is chasing their commission split after the handover,multi_hop,1,0
+q1814,the notary keeps rejecting the delivery manifest ahead of the audit,simple_lookup,1,1
+q1334,the courier has escalated the escrow balance through the wrong entity,simple_lookup,1,0
+q1689,the surveyor cannot reconcile the storage levy despite the hold,simple_lookup,1,0
+q1508,a locksmith has escalated a contested chargeback with no supporting note,multi_hop,0,0
+q1592,our installer quietly cancelled a returned consignment while the case is open,ambiguous,1,0
+q1257,the tenant cannot locate the customs entry through the wrong entity,ambiguous,0,0
+q0320,our warehouse is withholding a returned consignment outside the agreed window,simple_lookup,1,0
+q0343,the tenant has escalated a lapsed guarantee with no supporting note,simple_lookup,1,0
+q1917,the tenant never received their rebate accrual despite the hold,simple_lookup,1,0
+q0023,how do i cancel the my old subscription,simple_lookup,1,0
+q0843,a supplier under-reported the warranty transfer with no supporting note,simple_lookup,1,0
+q0749,our installer failed to lodge the salvage valuation for the second time,simple_lookup,1,0
+q1746,our installer has escalated the escrow balance in a foreign currency,simple_lookup,1,0
+q1251,the contractor has escalated our drawdown request under the old terms,simple_lookup,1,0
+q1646,the contractor has escalated a lapsed guarantee in a foreign currency,multi_hop,1,0
+q0913,my optician mis-stated our retention bond with no supporting note,simple_lookup,1,0
+q0916,our warehouse failed to lodge the disposal record through the wrong entity,simple_lookup,1,1
+q0147,our reseller quietly cancelled their commission split after the handover,simple_lookup,1,0
+q1345,the glazier is withholding a duplicate remittance on the previous contract,simple_lookup,1,0
+q0832,the glazier mis-stated the escrow balance through the wrong entity,simple_lookup,1,0
+q1194,the tenant is withholding our freight surcharge through the wrong entity,simple_lookup,1,0
+q1015,a supplier wrongly flagged the delivery manifest since the merger,simple_lookup,1,0
+q0063,reset the password for my old,simple_lookup,1,0
+q0834,the surveyor never received their credit memo for the second time,simple_lookup,1,0
+q0819,the surveyor is withholding the customs entry under protest,adversarial,1,0
+q1075,my optician is chasing the settlement note through the wrong entity,simple_lookup,0,0
+q1650,a plumber is withholding a damaged pallet while the case is open,simple_lookup,1,0
+q0911,our warehouse refuses to release the delivery manifest in a foreign currency,simple_lookup,1,0
+q0204,the caterer is withholding the escrow balance on the previous contract,simple_lookup,1,0
+q0472,my accountant is chasing the demurrage claim through the wrong entity,simple_lookup,1,0
+q1067,the pharmacy is withholding the demurrage claim through the wrong entity,simple_lookup,1,0
+q0810,a locksmith quietly cancelled the settlement note in a foreign currency,simple_lookup,1,0
+q1976,our roofer is withholding the storage levy despite the hold,simple_lookup,1,0
+q1723,the surveyor cannot locate our quarterly return without a signature,simple_lookup,0,0
+q0368,a broker under-reported the customs entry on the previous contract,simple_lookup,1,0
+q1036,the tenant mis-stated our freight surcharge on a provisional basis,simple_lookup,1,0
+q0417,the pharmacy wants to amend their credit memo before the cutoff,simple_lookup,1,0
+q0155,our warehouse wrongly flagged the storage levy under the old terms,multi_hop,1,0
+q0898,the tenant wrongly flagged their rebate accrual with no supporting note,simple_lookup,1,0
+q1745,a plumber keeps rejecting our retention bond while the case is open,multi_hop,0,0
+q1464,our roofer over-declared our quarterly return on the previous contract,ambiguous,0,0
+q0460,my accountant never received their audit trail before the cutoff,simple_lookup,1,0
+q1864,the courier wrongly flagged a partial shipment despite the hold,simple_lookup,1,0
+q0543,our warehouse never received their handling fee since the merger,simple_lookup,1,0
+q1154,the tenant double-charged the storage levy before the cutoff,simple_lookup,1,0
+q1889,the surveyor has escalated a contested chargeback despite the hold,simple_lookup,1,0
+q1430,our reseller is chasing the customs entry outside the agreed window,simple_lookup,1,0
+q1717,the surveyor mis-stated the demurrage claim after the handover,simple_lookup,1,0
+q0029,how do i cancel the the pro subscription,simple_lookup,1,0
+q0084,is the trial covered by the warranty,simple_lookup,1,0
+q1975,a locksmith silently merged a duplicate remittance after the handover,simple_lookup,1,0
+q1243,a plumber back-dated the reinstatement cost under protest,simple_lookup,1,0
+q1451,my accountant over-declared our retention bond while the case is open,simple_lookup,1,0
+q0777,the glazier wrongly flagged our freight surcharge ahead of the audit,simple_lookup,0,0
+q1330,a supplier double-charged the warranty transfer under the old terms,simple_lookup,1,0
+q1434,the surveyor double-charged a lapsed guarantee on the previous contract,multi_hop,1,0
+q0284,my accountant has escalated their handling fee through the wrong entity,multi_hop,1,0
+q1957,the auditor under-reported their handling fee under the old terms,simple_lookup,1,0
+q0760,my physio quietly cancelled their rebate accrual for the second time,simple_lookup,1,0
+q1835,the surveyor is chasing their audit trail on the previous contract,simple_lookup,1,0
+q0616,a locksmith under-reported their commission split before the cutoff,simple_lookup,1,0
+q1293,a broker has disputed the disposal record before the cutoff,simple_lookup,1,0
+q0530,the notary keeps rejecting the escrow balance against the wrong ledger,multi_hop,1,0
+q0920,a locksmith is withholding the meter reading despite the hold,simple_lookup,1,0
+q1831,my optician has disputed the tenancy schedule in a foreign currency,simple_lookup,1,0
+q1593,the glazier over-declared their audit trail despite the hold,simple_lookup,1,0
+q1005,the caterer never received a damaged pallet ahead of the audit,simple_lookup,1,0
+q0128,the contractor has escalated the disposal record under the old terms,adversarial,1,0
+q1128,our warehouse has escalated the escrow balance through the wrong entity,simple_lookup,1,0
+q1431,a plumber wrongly flagged a partial shipment ahead of the audit,simple_lookup,1,0
+q1588,the notary back-dated their credit memo with no supporting note,multi_hop,1,0
+q1857,the pharmacy over-declared the delivery manifest before the cutoff,simple_lookup,1,0
+q1439,our warehouse under-reported our indemnity clause since the merger,simple_lookup,1,0
+q1927,a locksmith wants to amend our drawdown request while the case is open,simple_lookup,1,1
+q1435,the notary quietly cancelled a duplicate remittance ahead of the audit,simple_lookup,1,0
+q1011,a plumber has escalated the warranty transfer on the previous contract,multi_hop,1,0
+q1180,my dentist wrongly flagged their credit memo without a signature,simple_lookup,1,0
+q1472,a plumber under-reported the storage levy outside the agreed window,simple_lookup,1,0
+q0434,our reseller refuses to release our indemnity clause on the previous contract,simple_lookup,1,0
+q0726,a broker silently merged the escrow balance through the wrong entity,adversarial,0,0
+q0917,the notary wrongly flagged the demurrage claim in a foreign currency,multi_hop,1,0
+q1986,a supplier silently merged a contested chargeback in a foreign currency,simple_lookup,1,0
+q1142,our warehouse quietly cancelled the meter reading outside the agreed window,simple_lookup,1,0
+q1148,our warehouse quietly cancelled a returned consignment ahead of the audit,simple_lookup,1,0
+q1367,our printer wants to amend a returned consignment through the wrong entity,simple_lookup,1,0
+q1009,my accountant wants to amend the settlement note while the case is open,simple_lookup,1,0
+q0640,the auditor wants to amend the delivery manifest since the merger,simple_lookup,1,0
+q1238,a broker keeps rejecting the settlement note for the second time,simple_lookup,1,0
+q0864,my optician under-reported their handling fee against the wrong ledger,simple_lookup,1,0
+q0072,reset the password for the annual,simple_lookup,1,0
+q0757,my optician wants to amend the delivery manifest since the merger,simple_lookup,1,0
+q0773,my accountant refuses to release a contested chargeback with no supporting note,multi_hop,1,0
+q1763,my optician under-reported the settlement note outside the agreed window,simple_lookup,0,0
+q0286,the auditor wrongly flagged their credit memo on a provisional basis,simple_lookup,1,0
+q0619,the glazier is chasing our freight surcharge against the wrong ledger,simple_lookup,1,0
+q0169,our installer wants to amend our excess waiver on the previous contract,simple_lookup,1,0
+q1995,our printer has disputed the demurrage claim on a provisional basis,simple_lookup,1,0
+q1533,our warehouse never received their credit memo after the handover,multi_hop,1,0
+q1800,our warehouse cannot reconcile our excess waiver on the previous contract,simple_lookup,1,0
+q0315,my dentist has escalated the reinstatement cost with no supporting note,simple_lookup,1,0
+q0882,my accountant keeps rejecting our excess waiver ahead of the audit,simple_lookup,1,0
+q0208,the surveyor is withholding the reinstatement cost under protest,simple_lookup,1,0
+q0116,change my billing address to student,simple_lookup,1,0
+q1119,our warehouse under-reported the delivery manifest outside the agreed window,simple_lookup,1,0
+q1223,the courier over-declared their rebate accrual on a provisional basis,simple_lookup,1,0
+q1108,the caterer quietly cancelled the reinstatement cost after the handover,simple_lookup,1,0
+q0570,a locksmith back-dated the disposal record with no supporting note,simple_lookup,1,1
+q0000,what is the premium balance on my account,simple_lookup,1,0
+q1911,the auditor cannot reconcile a damaged pallet with no supporting note,simple_lookup,1,0
+q1706,the auditor failed to lodge our retention bond after the handover,simple_lookup,1,0
+q1735,our installer has escalated a lapsed guarantee under the old terms,simple_lookup,1,0
+q1700,our reseller cannot reconcile the reinstatement cost under the old terms,simple_lookup,1,0
+q0567,a plumber cannot reconcile the escrow balance under the old terms,multi_hop,1,0
+q0425,a broker has disputed the salvage valuation since the merger,adversarial,1,0
+q1704,the pharmacy refuses to release a returned consignment after the handover,simple_lookup,1,0
+q0665,our roofer cannot reconcile the customs entry before the cutoff,multi_hop,0,0
+q0227,the caterer cannot locate the salvage valuation against the wrong ledger,simple_lookup,1,0
+q1311,the pharmacy never received the delivery manifest on the previous contract,simple_lookup,1,0
+q1014,a supplier is chasing their rebate accrual since the merger,simple_lookup,1,0
+q0177,the notary quietly cancelled the escrow balance since the merger,simple_lookup,1,0
+q0626,the auditor cannot locate our quarterly return after the handover,simple_lookup,1,0
+q0475,a locksmith double-charged the settlement note before the cutoff,simple_lookup,1,0
+q0798,our installer wrongly flagged a partial shipment through the wrong entity,simple_lookup,1,0
+q0623,my optician is chasing our freight surcharge against the wrong ledger,simple_lookup,1,0
+q1297,our installer mis-stated a contested chargeback under the old terms,simple_lookup,1,0
+q0433,the auditor keeps rejecting our indemnity clause after the handover,simple_lookup,1,0
+q1263,our reseller mis-stated the delivery manifest under protest,simple_lookup,1,0
+q0572,my landlord over-declared our excess waiver outside the agreed window,simple_lookup,1,0
+q0788,our printer has escalated our drawdown request for the second time,ambiguous,0,0
+q1327,our reseller back-dated their commission split for the second time,simple_lookup,1,0
+q0141,my dentist under-reported the storage levy through the wrong entity,simple_lookup,1,0
+q0137,a plumber has escalated the settlement note while the case is open,simple_lookup,1,0
+q0108,change my billing address to our team,simple_lookup,1,0
+q1803,our printer back-dated our quarterly return since the merger,simple_lookup,1,0
+q0019,what is the the pro balance on my account,simple_lookup,0,0
+q0686,the auditor mis-stated the customs entry through the wrong entity,simple_lookup,1,0
+q0181,the notary quietly cancelled the escrow balance while the case is open,simple_lookup,1,0
+q0119,change my billing address to the pro,simple_lookup,1,0
+q0651,my physio failed to lodge our retention bond against the wrong ledger,simple_lookup,1,0
+q0301,the auditor has escalated the warranty transfer for the second time,simple_lookup,1,0
+q1443,my landlord is withholding the warranty transfer on a provisional basis,simple_lookup,1,0
+q1111,the courier has escalated our freight surcharge on a provisional basis,simple_lookup,0,0
+q1172,my optician double-charged our quarterly return in a foreign currency,simple_lookup,1,0
+q0264,a plumber is chasing their handling fee before the cutoff,ambiguous,1,0
+q0096,is student covered by the warranty,simple_lookup,1,0
+q1625,a locksmith wants to amend the reinstatement cost without a signature,simple_lookup,1,0
+q0243,a supplier under-reported the delivery manifest outside the agreed window,simple_lookup,1,0
+q1174,a supplier has disputed our freight surcharge through the wrong entity,simple_lookup,1,0
+q0786,a broker mis-stated their handling fee through the wrong entity,multi_hop,1,0
+q0255,the pharmacy double-charged the escrow balance without a signature,simple_lookup,1,0
+q0437,my accountant wrongly flagged a partial shipment before the cutoff,simple_lookup,1,0
+q0148,my optician quietly cancelled the storage levy with no supporting note,multi_hop,1,0
+q0657,our installer quietly cancelled the demurrage claim outside the agreed window,simple_lookup,1,0
+q0855,our reseller silently merged the storage levy without a signature,simple_lookup,1,0
+q1156,the courier quietly cancelled the reinstatement cost under protest,multi_hop,1,0
+q0412,our roofer failed to lodge our retention bond for the second time,simple_lookup,1,0
+q0816,my landlord wants to amend our drawdown request through the wrong entity,simple_lookup,1,0
+q0539,my optician failed to lodge the meter reading without a signature,simple_lookup,0,0
+q1999,our roofer quietly cancelled a partial shipment through the wrong entity,simple_lookup,1,0
+q1899,the tenant failed to lodge their credit memo under the old terms,simple_lookup,1,0
+q1427,my physio wants to amend their commission split ahead of the audit,simple_lookup,1,0
+q0771,our reseller has disputed our retention bond for the second time,simple_lookup,1,0
+q1053,the contractor mis-stated the customs entry outside the agreed window,multi_hop,1,0
+q0998,the tenant wants to amend a contested chargeback after the handover,simple_lookup,1,0
+q0265,the glazier cannot locate their audit trail while the case is open,simple_lookup,1,0
+q1780,the contractor back-dated the delivery manifest in a foreign currency,simple_lookup,1,0
+q1375,my dentist never received the disposal record after the handover,simple_lookup,1,0
+q0077,reset the password for the legacy,simple_lookup,1,1
+q1933,my accountant refuses to release the meter reading under protest,multi_hop,1,0
+q1928,my accountant under-reported a contested chargeback outside the agreed window,simple_lookup,1,0
+q1171,a locksmith cannot reconcile the escrow balance for the second time,simple_lookup,1,0
+q0486,our printer has disputed the salvage valuation after the handover,simple_lookup,1,0
+q0310,the pharmacy has disputed the settlement note since the merger,simple_lookup,1,0
+q0668,the glazier under-reported our retention bond on a provisional basis,multi_hop,0,0
+q1811,our warehouse never received our indemnity clause for the second time,simple_lookup,1,0
+q1024,my optician is withholding the delivery manifest under the old terms,multi_hop,1,0
+q0775,the notary has disputed the warranty transfer through the wrong entity,simple_lookup,1,0
+q0722,the auditor quietly cancelled the escrow balance while the case is open,simple_lookup,1,0
+q1173,a broker back-dated a duplicate remittance while the case is open,multi_hop,1,0
+q0955,the surveyor never received the disposal record before the cutoff,multi_hop,1,0
+q1337,our reseller is withholding their credit memo under protest,simple_lookup,1,0
+q1532,my optician silently merged our retention bond on the previous contract,simple_lookup,1,0
+q1920,the tenant wants to amend a damaged pallet while the case is open,simple_lookup,0,0
+q0517,my landlord keeps rejecting our drawdown request through the wrong entity,multi_hop,1,0
+q0104,change my billing address to the trial,simple_lookup,1,0
+q0165,my accountant failed to lodge a damaged pallet in a foreign currency,simple_lookup,1,0
+q0294,our warehouse over-declared the tenancy schedule while the case is open,simple_lookup,1,0
+q0641,our printer refuses to release a partial shipment despite the hold,simple_lookup,1,0
+q1408,the auditor cannot reconcile a partial shipment for the second time,simple_lookup,1,0
+q0835,my physio cannot reconcile our indemnity clause with no supporting note,simple_lookup,1,0
+q1982,the tenant back-dated their handling fee without a signature,simple_lookup,1,0
+q0497,my physio silently merged the warranty transfer in a foreign currency,simple_lookup,1,0
+q1713,the courier refuses to release a partial shipment after the handover,simple_lookup,1,0
+q1456,the notary over-declared the demurrage claim through the wrong entity,simple_lookup,1,0
+q0273,the caterer quietly cancelled a duplicate remittance while the case is open,simple_lookup,1,0
+q0923,the surveyor is chasing a damaged pallet outside the agreed window,multi_hop,1,0
+q0908,my optician cannot locate the customs entry against the wrong ledger,simple_lookup,1,0
+q1401,our installer silently merged the delivery manifest despite the hold,simple_lookup,1,0
+q1526,a plumber wrongly flagged our retention bond before the cutoff,simple_lookup,0,0
+q0540,my physio is chasing the disposal record before the cutoff,simple_lookup,1,0
+q1523,our reseller wrongly flagged a returned consignment despite the hold,simple_lookup,1,0
+q0278,a locksmith never received the warranty transfer under protest,simple_lookup,1,0
+q0036,how do i cancel the student subscription,simple_lookup,1,0
+q0297,the tenant quietly cancelled their audit trail for the second time,simple_lookup,1,0
+q1422,my physio has escalated a contested chargeback after the handover,simple_lookup,1,0
+q0699,our roofer quietly cancelled the salvage valuation despite the hold,simple_lookup,1,0
+q1752,our warehouse never received the warranty transfer under protest,simple_lookup,1,0
+q1051,our roofer cannot reconcile our drawdown request on the previous contract,simple_lookup,1,0
+q0233,a supplier under-reported our excess waiver on the previous contract,multi_hop,1,0
+q0571,the glazier under-reported our indemnity clause after the handover,simple_lookup,1,0
+q0389,a supplier has disputed the customs entry for the second time,simple_lookup,1,0
+q1734,my accountant never received the warranty transfer since the merger,simple_lookup,1,0
+q1867,the surveyor is withholding our drawdown request on a provisional basis,multi_hop,1,0
+q0274,a supplier refuses to release the storage levy with no supporting note,simple_lookup,1,0
+q0909,the tenant back-dated the tenancy schedule in a foreign currency,simple_lookup,1,0
+q0986,a plumber over-declared the warranty transfer outside the agreed window,simple_lookup,1,0
+q0413,the tenant is withholding our drawdown request against the wrong ledger,simple_lookup,1,0
+q0431,a plumber double-charged our freight surcharge after the handover,simple_lookup,1,0
+q1918,the surveyor double-charged their commission split with no supporting note,simple_lookup,1,0
+q0190,my physio failed to lodge a returned consignment through the wrong entity,simple_lookup,1,0
+q1133,my optician has disputed our drawdown request since the merger,simple_lookup,1,0
+q0334,my physio cannot locate their rebate accrual since the merger,simple_lookup,1,0
+q1974,my landlord wants to amend the escrow balance under the old terms,simple_lookup,1,0
+q0312,my accountant wants to amend the reinstatement cost under protest,multi_hop,0,0
+q1868,the courier never received a damaged pallet on the previous contract,simple_lookup,1,0
+q1400,my optician wrongly flagged their commission split on a provisional basis,simple_lookup,1,0
+q1343,the surveyor keeps rejecting the settlement note without a signature,simple_lookup,1,0
+q0192,a supplier has disputed a returned consignment for the second time,simple_lookup,0,0
+q0972,the glazier wants to amend the delivery manifest despite the hold,simple_lookup,1,0
+q1779,the pharmacy cannot reconcile the salvage valuation outside the agreed window,simple_lookup,0,0
+q1495,the courier quietly cancelled our freight surcharge ahead of the audit,simple_lookup,1,0
+q0752,our reseller wants to amend the disposal record without a signature,simple_lookup,1,0
+q0599,my accountant refuses to release their audit trail under protest,simple_lookup,1,0
+q1026,a plumber wrongly flagged our drawdown request before the cutoff,simple_lookup,1,0
+q0935,my landlord has disputed the delivery manifest on the previous contract,simple_lookup,1,0
+q0317,the tenant refuses to release a partial shipment through the wrong entity,simple_lookup,1,0
+q1751,our roofer wrongly flagged the customs entry against the wrong ledger,multi_hop,1,0
+q1064,our warehouse is chasing a contested chargeback since the merger,simple_lookup,1,1
+q1338,my dentist refuses to release their handling fee with no supporting note,simple_lookup,1,0
+q1176,the tenant over-declared their audit trail before the cutoff,simple_lookup,1,0
+q0566,the auditor refuses to release our quarterly return without a signature,simple_lookup,1,0
+q0110,change my billing address to premium,simple_lookup,0,0
+q0492,a broker silently merged their handling fee on a provisional basis,multi_hop,0,0
+q0032,how do i cancel the the annual subscription,simple_lookup,1,0
+q1744,my optician over-declared their audit trail for the second time,simple_lookup,1,0
+q0285,the pharmacy under-reported the warranty transfer on the previous contract,simple_lookup,1,0
+q1137,a broker cannot locate the disposal record on the previous contract,simple_lookup,1,0
+q1837,the auditor back-dated the storage levy ahead of the audit,simple_lookup,1,0
+q0756,my accountant cannot reconcile our indemnity clause for the second time,simple_lookup,1,0
+q0833,my physio failed to lodge the demurrage claim outside the agreed window,simple_lookup,1,0
+q0003,what is the my old balance on my account,simple_lookup,1,0
+q0723,the auditor quietly cancelled the reinstatement cost without a signature,ambiguous,1,0
+q1229,our reseller refuses to release our excess waiver with no supporting note,simple_lookup,1,0
+q1730,our reseller is withholding their audit trail under the old terms,simple_lookup,1,0
+q1665,a plumber refuses to release the tenancy schedule since the merger,simple_lookup,1,0
+q1912,the surveyor failed to lodge the disposal record outside the agreed window,simple_lookup,1,1
+q1959,our warehouse refuses to release the storage levy on the previous contract,simple_lookup,1,0
+q0478,our warehouse wants to amend the storage levy ahead of the audit,simple_lookup,1,0
+q1710,our printer has escalated their credit memo under the old terms,multi_hop,0,0
+q1397,my dentist refuses to release the storage levy with no supporting note,simple_lookup,1,0
+q0146,a supplier is withholding our retention bond against the wrong ledger,simple_lookup,1,0
+q1505,our warehouse under-reported the demurrage claim without a signature,simple_lookup,1,0
+q1614,a supplier quietly cancelled the escrow balance without a signature,simple_lookup,0,0
+q0359,the tenant cannot locate the tenancy schedule despite the hold,simple_lookup,1,0
+q0225,a plumber back-dated our retention bond ahead of the audit,simple_lookup,1,0
+q1029,the tenant cannot locate a partial shipment while the case is open,simple_lookup,1,0
+q0509,the tenant back-dated a partial shipment outside the agreed window,simple_lookup,1,0
+q1196,a supplier is chasing our drawdown request ahead of the audit,simple_lookup,1,0
+q1040,our installer has escalated our excess waiver through the wrong entity,simple_lookup,0,0
+q0989,our installer mis-stated their credit memo with no supporting note,simple_lookup,1,0
+q0701,the pharmacy is chasing a damaged pallet against the wrong ledger,simple_lookup,1,0
+q0239,the contractor has disputed a lapsed guarantee without a signature,simple_lookup,1,0
+q1383,a locksmith wrongly flagged the delivery manifest through the wrong entity,simple_lookup,1,0
+q0949,our printer wants to amend the meter reading for the second time,simple_lookup,1,0
+q1094,a supplier double-charged the meter reading for the second time,simple_lookup,1,1
+q0883,the tenant is withholding a duplicate remittance under the old terms,simple_lookup,1,0
+q0762,a supplier wrongly flagged our quarterly return ahead of the audit,multi_hop,1,0
+q1234,the auditor failed to lodge our quarterly return against the wrong ledger,simple_lookup,1,0
+q0987,my dentist is withholding the storage levy under protest,simple_lookup,1,0
+q0943,the pharmacy wrongly flagged our drawdown request after the handover,multi_hop,0,0
+q1006,the notary never received a damaged pallet for the second time,multi_hop,1,0
+q0419,our installer double-charged our retention bond despite the hold,simple_lookup,1,0
+q1514,the pharmacy wants to amend our indemnity clause under protest,multi_hop,1,0
+q1294,the auditor is chasing the salvage valuation outside the agreed window,simple_lookup,1,0
+q0700,my accountant failed to lodge the customs entry with no supporting note,simple_lookup,1,0
+q1008,the surveyor back-dated our excess waiver under protest,simple_lookup,1,0
+q1479,the caterer silently merged a lapsed guarantee ahead of the audit,multi_hop,1,0
+q1204,a plumber is chasing a duplicate remittance despite the hold,multi_hop,1,0
+q0896,our installer over-declared their commission split against the wrong ledger,simple_lookup,1,0
+q1573,a broker silently merged the demurrage claim for the second time,simple_lookup,1,0
+q0628,the glazier has disputed the customs entry against the wrong ledger,simple_lookup,1,0
+q1914,the contractor back-dated the meter reading after the handover,simple_lookup,1,0
+q1561,the caterer back-dated a lapsed guarantee before the cutoff,simple_lookup,1,0
+q0513,the contractor keeps rejecting the meter reading on a provisional basis,simple_lookup,1,0
+q1586,my dentist never received their audit trail with no supporting note,simple_lookup,1,0
+q1373,my landlord has disputed a damaged pallet for the second time,simple_lookup,1,0
+q1560,our printer cannot reconcile the warranty transfer against the wrong ledger,simple_lookup,0,0
+q1115,the courier silently merged our quarterly return ahead of the audit,simple_lookup,1,0
+q0594,our installer cannot locate our freight surcharge against the wrong ledger,simple_lookup,1,0
+q0781,our warehouse silently merged a partial shipment for the second time,simple_lookup,1,0
+q0164,a broker keeps rejecting our excess waiver for the second time,ambiguous,1,1
+q0342,the notary quietly cancelled the delivery manifest under protest,simple_lookup,1,0
+q1429,the notary silently merged our indemnity clause despite the hold,simple_lookup,1,0
+q1883,the auditor is chasing the salvage valuation ahead of the audit,simple_lookup,1,0
+q1046,a locksmith is chasing the escrow balance despite the hold,simple_lookup,1,0
+q1968,my landlord double-charged the escrow balance after the handover,simple_lookup,1,0
+q1599,the pharmacy never received the disposal record under the old terms,simple_lookup,1,0
+q0515,my accountant under-reported their audit trail with no supporting note,simple_lookup,1,0
+q0629,my accountant failed to lodge the demurrage claim on a provisional basis,simple_lookup,1,0
+q1802,my physio cannot reconcile the delivery manifest while the case is open,simple_lookup,1,0
+q0374,a locksmith refuses to release a duplicate remittance under the old terms,simple_lookup,1,0
+q0493,our installer wants to amend a duplicate remittance outside the agreed window,simple_lookup,1,0
+q0444,the caterer cannot locate a returned consignment under the old terms,multi_hop,0,0
+q1170,the contractor over-declared the delivery manifest against the wrong ledger,simple_lookup,1,0
+q0476,our reseller wants to amend our quarterly return under the old terms,multi_hop,0,0
+q0411,the courier has disputed the storage levy on the previous contract,simple_lookup,1,0
+q0403,my physio refuses to release a lapsed guarantee despite the hold,simple_lookup,1,0
+q1390,the pharmacy over-declared a partial shipment ahead of the audit,simple_lookup,1,0
+q0348,our roofer cannot reconcile the escrow balance ahead of the audit,simple_lookup,1,0
+q0800,my dentist cannot reconcile the disposal record on the previous contract,simple_lookup,1,0
+q1394,the surveyor is chasing the escrow balance on a provisional basis,simple_lookup,1,0
+q1286,the tenant mis-stated the customs entry without a signature,adversarial,0,0
+q1448,my dentist has disputed their rebate accrual under protest,simple_lookup,1,0
+q1601,our roofer back-dated the demurrage claim under protest,simple_lookup,1,0
+q1296,a broker refuses to release the demurrage claim without a signature,multi_hop,1,0
+q0203,our roofer is withholding the customs entry before the cutoff,multi_hop,1,0
+q0654,my landlord under-reported the storage levy with no supporting note,simple_lookup,1,0
+q1197,the pharmacy back-dated a contested chargeback after the handover,multi_hop,1,1
+q1617,a supplier cannot locate the disposal record before the cutoff,multi_hop,0,0
+q0035,how do i cancel the family subscription,simple_lookup,1,0
+q0394,the glazier silently merged our quarterly return after the handover,simple_lookup,1,0
+q1807,the glazier is withholding their audit trail ahead of the audit,simple_lookup,0,0
+q1473,our installer cannot locate the meter reading without a signature,multi_hop,0,0
+q1471,a locksmith double-charged their commission split without a signature,multi_hop,0,0
+q1678,our installer has escalated our retention bond with no supporting note,simple_lookup,1,0
+q0240,a plumber under-reported the escrow balance while the case is open,multi_hop,1,0
+q1025,the pharmacy back-dated their handling fee while the case is open,simple_lookup,1,0
+q1652,our warehouse wants to amend the settlement note on a provisional basis,simple_lookup,0,0
+q0480,my landlord wrongly flagged our retention bond on the previous contract,simple_lookup,1,0
+q0563,the tenant is withholding our excess waiver while the case is open,ambiguous,1,0
+q0841,the tenant double-charged the meter reading ahead of the audit,simple_lookup,1,0
+q1993,the contractor quietly cancelled the demurrage claim with no supporting note,simple_lookup,1,0
+q1089,my landlord cannot reconcile our indemnity clause without a signature,simple_lookup,1,0
+q1942,our reseller cannot reconcile a duplicate remittance before the cutoff,simple_lookup,1,0
+q1270,the notary silently merged our retention bond under the old terms,simple_lookup,1,0
+q1895,my physio failed to lodge the meter reading outside the agreed window,simple_lookup,1,0
+q0105,change my billing address to family,simple_lookup,1,0
+q1134,the auditor mis-stated their credit memo after the handover,simple_lookup,1,1
+q0090,is premium covered by the warranty,simple_lookup,1,0
+q1591,our warehouse mis-stated a duplicate remittance without a signature,simple_lookup,0,0
+q0859,the caterer under-reported the settlement note on a provisional basis,simple_lookup,1,0
+q0639,the tenant double-charged the salvage valuation on the previous contract,simple_lookup,1,0
+q1275,our printer has disputed the demurrage claim under the old terms,simple_lookup,1,0
+q0384,the courier wants to amend the meter reading against the wrong ledger,simple_lookup,1,0
+q0405,our roofer refuses to release a partial shipment without a signature,simple_lookup,1,1
+q1602,our printer keeps rejecting the tenancy schedule through the wrong entity,simple_lookup,0,0
+q0053,when will the my old refund arrive,simple_lookup,1,0
+q0469,my optician back-dated the meter reading since the merger,simple_lookup,1,0
+q0176,a plumber is withholding their audit trail before the cutoff,simple_lookup,1,0
+q0064,reset the password for the trial,simple_lookup,1,0
+q1967,a broker has escalated a duplicate remittance under protest,simple_lookup,0,0
+q0438,the courier double-charged their audit trail under protest,multi_hop,1,0
+q0724,the pharmacy has disputed the warranty transfer despite the hold,simple_lookup,0,0
+q0263,our roofer never received the meter reading for the second time,simple_lookup,1,0
+q1082,the caterer is withholding the delivery manifest despite the hold,simple_lookup,1,0
+q1813,a supplier keeps rejecting the settlement note without a signature,simple_lookup,1,0
+q0936,the courier back-dated the demurrage claim under the old terms,simple_lookup,1,0
+q0150,the tenant keeps rejecting a partial shipment while the case is open,simple_lookup,1,0
+q0161,our reseller back-dated the customs entry without a signature,simple_lookup,1,0
+q0271,my dentist back-dated their rebate accrual while the case is open,simple_lookup,1,0
+q1718,the surveyor is withholding the customs entry on a provisional basis,simple_lookup,1,0
+q1902,the caterer has escalated the reinstatement cost under the old terms,simple_lookup,1,0
+q0465,the pharmacy quietly cancelled a contested chargeback on a provisional basis,simple_lookup,1,0
+q1662,the glazier is chasing our indemnity clause with no supporting note,simple_lookup,1,0
+q1916,the surveyor has disputed a duplicate remittance after the handover,simple_lookup,1,0
+q1309,my dentist never received a partial shipment for the second time,simple_lookup,1,0
+q0975,the notary has disputed a lapsed guarantee despite the hold,simple_lookup,1,0
+q1994,the notary wants to amend the salvage valuation ahead of the audit,simple_lookup,1,0
+q0095,is family covered by the warranty,simple_lookup,1,0
+q1709,our roofer mis-stated our quarterly return while the case is open,simple_lookup,1,0
+q0546,our installer keeps rejecting a partial shipment after the handover,simple_lookup,1,0
+q0260,my accountant has escalated their rebate accrual under the old terms,adversarial,0,0
+q0805,the auditor failed to lodge our indemnity clause in a foreign currency,simple_lookup,1,0
+q0482,my landlord has escalated the reinstatement cost before the cutoff,simple_lookup,1,0
+q0251,the caterer wants to amend the customs entry outside the agreed window,simple_lookup,1,0
+q0993,my optician back-dated the storage levy on the previous contract,simple_lookup,1,0
+q0857,our installer cannot reconcile the warranty transfer since the merger,simple_lookup,1,0
+q1897,the pharmacy is withholding the demurrage claim on the previous contract,simple_lookup,1,0
+q1193,my landlord is withholding the delivery manifest outside the agreed window,multi_hop,1,0
+q0055,when will the family refund arrive,simple_lookup,1,0
+q0138,my accountant under-reported their audit trail while the case is open,simple_lookup,1,0
+q1950,the notary under-reported the warranty transfer against the wrong ledger,simple_lookup,1,0
+q0900,my accountant silently merged our drawdown request under the old terms,simple_lookup,1,0
+q0869,a locksmith mis-stated the demurrage claim on the previous contract,simple_lookup,1,1
+q0387,the contractor back-dated a duplicate remittance through the wrong entity,simple_lookup,1,0
+q1190,my landlord keeps rejecting our retention bond on the previous contract,simple_lookup,1,0
+q1217,our printer under-reported their handling fee without a signature,multi_hop,1,1
+q1725,a broker double-charged the reinstatement cost despite the hold,simple_lookup,1,0
+q1209,my dentist has escalated the salvage valuation ahead of the audit,simple_lookup,1,0
+q1461,a supplier never received a damaged pallet through the wrong entity,multi_hop,1,0
+q1887,our roofer refuses to release the settlement note since the merger,simple_lookup,1,0

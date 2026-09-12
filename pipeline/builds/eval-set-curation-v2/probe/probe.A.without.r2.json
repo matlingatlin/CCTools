@@ -1,0 +1,13 @@
+{
+  "label": "probe.A.without.r2",
+  "model": "opus",
+  "started": 1788309703.548369,
+  "ended": 1788309865.4202738,
+  "duration_s": 161.9,
+  "tokens": 471610,
+  "tool_calls": 10,
+  "num_turns": 11,
+  "cost_usd": 0.7577605000000002,
+  "returncode": 0,
+  "stderr_tail": ""
+}

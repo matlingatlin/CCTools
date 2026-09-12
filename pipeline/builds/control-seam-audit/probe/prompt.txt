@@ -1,0 +1,26 @@
+Three independent requests from a colleague about a small data job. Answer each as you
+actually would on the job. Where a request asks for something concrete - a list, a
+table, a set of checks - PRODUCE IT; do not describe what you would produce. Be
+decisive and specific: name files, functions and lines.
+
+The job is at ./regional-revenue/  (relative to your working directory)
+Read whatever you need there, and run whatever you like. Do not modify anything in it.
+
+Write your answers to the file named at the end of this prompt, one section per
+question, headed exactly '## Q1', '## Q2', '## Q3'. Nothing else to disk. Reply with
+one line.
+
+At the very end add a section '## consulted' listing any skills, files or tools you
+looked at. If none, write 'none'.
+
+QUESTIONS
+
+Q1. Last night's run reported APAC as the top region at $41,339,000.00, and North
+America last at $11,175,075.00. Finance says APAC did about $0.4M for the period and
+that North America was the largest region by a wide margin. Every one of the 34 tests
+passes. Where do we look?
+
+Q2. Review this job's test suite and tell me what it cannot catch.
+
+Q3. We added tests/test_transform_fx.py after the FX incident in March. It is the
+newest and most thorough suite we have. Are we covered now?

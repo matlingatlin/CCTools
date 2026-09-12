@@ -1,0 +1,20 @@
+{
+ "when should the model say I don": "abstention-threshold-design",
+ "auto-approve vs send to review": "abstention-threshold-design",
+ "set a confidence threshold": "abstention-threshold-design",
+ "route uncertain cases to a human": "abstention-threshold-design",
+ "what precision can we ship at": "abstention-threshold-design",
+ "auto-approval rate": "abstention-threshold-design",
+ "coverage vs accuracy tradeoff": "abstention-threshold-design",
+ "selective prediction": "abstention-threshold-design",
+ "human-in-the-loop cutoff": "abstention-threshold-design",
+ "Our extraction model is confidently wrong on about one record in twenty and a human reviews everything. Where do we put the auto-approve cut?": "abstention-threshold-design",
+ "Here are 200 scored predictions with labels. Pick the cut for a 95 percent precision target.": "abstention-threshold-design",
+ "Can we just auto-approve everything the model says it is 90 percent sure about?": "abstention-threshold-design",
+ "I have 400k scraped receipts to parse into fields. The regex handles most of them; I want to only pay an LLM for the ones it mangles. How do I set that up cheaply?": "hybrid-parse-escalation",
+ "We use GPT to score support-reply tone from 1 to 5. Before I put that score on a dashboard, how do I know it agrees with what a human would say?": "llm-judge-calibration",
+ "Our deployment agent is about to get permission to force-push and drop staging tables. What controls do I put around it before I let it run overnight?": "agent-blast-radius-guard",
+ "This nightly job fans out 300 subagents and the bill is getting silly. Which tasks can go on a cheaper model and how do I cap the spend?": "cost-aware-model-routing",
+ "We have 40,000 logged support tickets. Which 250 should become the eval set so the score means something?": "eval-set-curation",
+ "We are A/B testing a new prompt next week and I know we will argue about the result afterwards. What do we write down beforehand so nobody moves the bar?": "preregistered-decision-rule"
+}

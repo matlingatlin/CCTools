@@ -1,0 +1,11 @@
+[   0.0] Nvidia just killed Claude Code because they launched a 55 billion parameter model that is free to use.
+[   5.4] And model is called Nemotron Ultra 3 and you can build landing pages,
+[   9.0] do financial analysis and prepare research summaries.
+[  11.6] Now there are two ways of using this for free.
+[  13.6] First one is the easy one in which you simply need to go to open code,
+[  17.1] switch the model to Nemotron 3 Ultra and you will be able to use it like any other model.
+[  21.6] I gave it a simple prompt and it built me a full 360 landing page.
+[  25.1] If you haven't installed open code yet, then the details are in the description.
+[  28.4] And if you want to use this for builds, you can go to open router,
+[  31.3] go to this link and generate the free API key.
+[  33.4] If you want to know the complete details around this comment Nvidia.

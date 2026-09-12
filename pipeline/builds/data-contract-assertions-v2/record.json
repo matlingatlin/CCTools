@@ -1,0 +1,31 @@
+{
+  "id": "data-contract-assertions-v2",
+  "opened": "2026-09-02T02:36:41+00:00",
+  "package": {
+    "path": "pipeline/packages/data-contract-assertions-v2.json",
+    "sha256": "ba22d516c12ea58dc77ada3c46f93eb1cdafc456ac7a1479098d546b3add82cc",
+    "candidate_sentence": "Derives a contract from a profile of data ALREADY ARRIVING and asserts it at the ingest boundary - so a silent unit change, a null-rate collapse or a type drift stops the batch, while legitimate evolution widens the contract instead of blocking it.",
+    "content_kind": "reference",
+    "verifiable": true,
+    "failure_kind": "shape",
+    "threshold": "contract default_rule verbatim; threshold_rule null is not accepted - see the note below",
+    "threshold_rule": "default",
+    "budget": {
+      "max_agents": 4,
+      "max_paired_runs": 8
+    },
+    "origin": "existing-artifact",
+    "filled_by": "coordinator, decomposing .claude/skills/data-contract-assertions (187-line body, 0 references, 0 URLs, 0 runnable evals)",
+    "gap_kind": "wrong-shaped",
+    "n_claims": 13,
+    "n_measured_claims": 11,
+    "n_sources": 9
+  },
+  "admission": {
+    "package_contract_version": "1.2.0",
+    "errors": 0,
+    "warnings": [],
+    "indeterminate": []
+  },
+  "note": "record.json is written once. Everything that happened is in events.jsonl."
+}

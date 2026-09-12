@@ -1,0 +1,192 @@
+The artefact under review is byte-identical to the mounted method, so this is a self-sweep. 242 pairs planned, 242 ruled, 0 unruled; 21 non-consistent pair rows + 1 `other` row; 12 findings (11 CLASS, 1 INSTANCE); all 6 steps checkable, none wholly ungraded. Full report attached and inline below (the ledger's `examined_pairs` id lists are elided here only for readability — they are complete in the attached file).
+
+```json
+{
+ "ledger": {
+  "part_counts": {
+   "steps": 6,
+   "rules": 13,
+   "rules_under_a_Rules_heading": 8,
+   "rules_counted_outside_a_Rules_heading": {
+    "R9 (intro, outside a Rules heading)": "What counts as a step, a rule, a clause, an expectation or a file, the seven pair types, the two row shapes and the plan-count formulas are in `references/pair-vocabulary.md`, which step 1 applies.",
+    "R10 (inside step 6, binds steps 1 and 3)": "Every examined count equals its plan count.",
+    "R11 (references/pair-vocabulary.md, file definition)": "The artefact's own top-level document is the thing under review, not a bundled file; it is not a file×BOM row.",
+    "R12 (references/pair-vocabulary.md, plan count)": "the seven counts are written after that first read and before any verdict",
+    "R13 (references/pair-vocabulary.md, rule definition)": "The ledger's rule count lists each sentence counted outside the heading by quote, so the count can be audited."
+   },
+   "description_clauses": 10,
+   "expectations": 53,
+   "distinct_expectations": 18,
+   "files_present": 4,
+   "files_present_note": "SKILL.md excluded: the top-level document is the thing under review, not a file x BOM row",
+   "bill_of_materials_rows": 43,
+   "paths_the_text_names": 14,
+   "instance_section_exists": true
+  },
+  "pair_types": {
+   "step x rule": {
+    "plan": 78, "examined": 78,
+    "examined_pairs": ["step x rule:S1xR1", "…", "step x rule:S6xR13"],
+    "non_consistent_rows": [
+     {"row": "step x rule:S6xR3", "left": "step 6", "right": "rule 3 (a sweep cut short)", "verdict": "contradiction",
+      "quotes": ["Every examined count equals its plan count.", "A sweep cut short (a budget, a timeout) names the unruled pairs in the ledger and marks the report incomplete; it is not a complete sweep"]},
+     {"row": "step x rule:S3xR7", "left": "step 3", "right": "rule 7 (no bill of materials supplied)", "verdict": "contradiction",
+      "quotes": ["a file nothing points at is quoted by its entry in the file listing", "No bill of materials supplied: the BOM-row count is 0 and the ledger says `no BOM supplied`; files present are still paired against the paths the text names, so an absent named path and a file nothing points at are still found.", "A file nothing points at, or a path named but absent, is quoted by the line that lists or names it (the directory listing line, or the sentence naming the path)", "A non-consistent verdict without its quoted line is not a finding"]}
+    ]
+   },
+   "step x step": {
+    "plan": 15, "examined": 15,
+    "examined_pairs": ["step x step:S1xS2", "…", "step x step:S5xS6"],
+    "non_consistent_rows": []
+   },
+   "step x check": {
+    "plan": 59, "examined": 59,
+    "examined_pairs": ["step x check:S1xEXPECTATION-SET", "…", "step x check:S6xEXPECTATION-SET", "step x check:e1.1xSTEP-SET", "…", "step x check:e3.17xSTEP-SET"],
+    "non_consistent_rows": [
+     {"row": "step x check:S2xEXPECTATION-SET", "left": "step 2", "right": "the 53 expectations", "verdict": "contradiction",
+      "quotes": ["A contradiction noticed while reading that fits no type gets a pair row of type `other`."]},
+     {"row": "step x check:S4xEXPECTATION-SET", "left": "step 4", "right": "the 53 expectations", "verdict": "contradiction",
+      "quotes": ["**Rule on every step row** by the reference's definition of checkable, and name the expectation that grades it or write ungraded; the row's quote is the closing sentence.", "An artefact with no test assertions has zero expectations; the step×check plan count is then the step count and every step row reads ungraded.", "S4 a runbook without expectations · not executed (no fixture; stated gap)"]},
+     {"row": "step x check:S5xEXPECTATION-SET", "left": "step 5", "right": "the 53 expectations", "verdict": "contradiction",
+      "quotes": ["An `other` row becomes a finding whose `where` is the reference's pair-type table."]},
+     {"row": "step x check:S6xEXPECTATION-SET", "left": "step 6", "right": "the 53 expectations", "verdict": "contradiction",
+      "quotes": ["the ledger (the part counts from step 1, with a quote for each rule counted outside a Rules heading; then per pair type: plan count, examined count, the examined pairs as `type:left×right`, the rows with a non-consistent verdict, and any `other` rows)", "No bill of materials supplied: the BOM-row count is 0 and the ledger says `no BOM supplied`; files present are still paired against the paths the text names, so an absent named path and a file nothing points at are still found.", "a ledger with plan and examined counts per pair type and the pair ids (steps 1, 6)"]},
+     {"row": "step x check:e1.14xSTEP-SET", "left": "eval 1 expectation 14", "right": "step 6", "verdict": "contradiction",
+      "quotes": ["when a pair type's examined count is under its plan count, the ledger states the shortfall (step 6)", "Every examined count equals its plan count."]},
+     {"row": "step x check:e2.14xSTEP-SET", "left": "eval 2 expectation 14", "right": "step 6", "verdict": "contradiction",
+      "quotes": ["when a pair type's examined count is under its plan count, the ledger states the shortfall (step 6)", "Every examined count equals its plan count."]},
+     {"row": "step x check:e3.14xSTEP-SET", "left": "eval 3 expectation 14", "right": "step 6", "verdict": "contradiction",
+      "quotes": ["when a pair type's examined count is under its plan count, the ledger states the shortfall (step 6)", "Every examined count equals its plan count."]}
+    ]
+   },
+   "description x body": {
+    "plan": 10, "examined": 10,
+    "examined_pairs": ["description x body:D1xBODY", "…", "description x body:D10xBODY"],
+    "non_consistent_rows": [
+     {"row": "description x body:D3xBODY", "left": "description clause 3", "right": "the reference's plan-count column", "verdict": "contradiction",
+      "quotes": ["Rules on every pair of one artefact's own parts", "This sweep enumerates the pairs first and rules on each", "each step against the set of expectations (which one grades it), and each expectation against the set of steps (which one produces it)", "steps + expectations (steps alone when the artefact has none: every step row then reads ungraded)", "every step against the 'In this repo' section", "each description clause against the body"]}
+    ]
+   },
+   "file x bill of materials": {
+    "plan": 61, "examined": 61,
+    "examined_pairs": ["file x bom:present:bom.jsonxBOM-SET+NAMED-SET", "…(4 present, 43 BOM rows, 14 named paths)…", "file x bom:named:evals/files/truth-C.jsonxPRESENT-SET+BOM-SET"],
+    "non_consistent_rows": [
+     {"row": "file x bom:present:evals.mdxBOM-SET+NAMED-SET", "left": "evals.md (file present)", "right": "the named-path set", "verdict": "contradiction",
+      "quotes": ["a file present in the bundle, a row of its bill of materials, or a path named by the artefact's top-level document, its bundled references and its test assertions (paths inside test fixtures belong to the fixture artefacts and are out of scope).", "`evals.md`, the measurement record, is the other bundled file that names this repository's paths."]},
+     {"row": "file x bom:present:bom.jsonxBOM-SET+NAMED-SET", "left": "bom.json (file present)", "right": "the 43 BOM rows", "verdict": "absent",
+      "quotes": ["dispatched through `pipeline/build/dispatch.py` with the artefact and `bom.json` as its declared inputs", "The artefact's own top-level document is the thing under review, not a bundled file; it is not a file×BOM row."]},
+     {"row": "file x bom:named:pipeline/build/dispatch.pyxPRESENT-SET+BOM-SET", "left": "pipeline/build/dispatch.py (path named by SKILL.md)", "right": "the 4 files present / 43 BOM rows", "verdict": "absent",
+      "quotes": ["dispatched through `pipeline/build/dispatch.py` with the artefact and `bom.json` as its declared inputs", "a file present in the bundle, a row of its bill of materials, or a path named by the artefact's top-level document, its bundled references and its test assertions (paths inside test fixtures belong to the fixture artefacts and are out of scope).", "a named path absent from the bundle; a file nothing points at"]},
+     {"row": "file x bom:named:pipeline/builds/llm-wiki-ingestxPRESENT-SET+BOM-SET", "left": "pipeline/builds/llm-wiki-ingest (path named by SKILL.md)", "right": "the 4 files present / 43 BOM rows / evals.md", "verdict": "absent",
+      "quotes": ["The three reviews the rules cite are `pipeline/builds/llm-wiki-ingest` (one skill, each review red at class level on a different set; six of the seven pair types occurred there)", "The ledger is the first part of the report - three reviews of one skill each reported findings and nothing about what they had examined, so a fourth could not tell a missed pair from a consistent one."]}
+    ],
+    "note": "41 of the 43 BOM rows point inside evals/files/ and were withheld by the caller; each was ruled consistent on its BOM status field and its reachability from evals/evals.json's `files` lists, with presence on disk not verifiable. No pair was left unruled."
+   },
+   "step x instance section": {
+    "plan": 6, "examined": 6,
+    "examined_pairs": ["step x instance:S1xIN-THIS-REPO", "…", "step x instance:S6xIN-THIS-REPO"],
+    "non_consistent_rows": [
+     {"row": "step x instance:S1xIN-THIS-REPO", "left": "step 1 (apply the reference's definitions)", "right": "the 'In this repo (one instance)' section", "verdict": "contradiction",
+      "quotes": ["Sources: the build record named under *In this repo* in SKILL.md (three whole-artefact reviews of one skill, read 2026-09-03) and a checker-design rule, one row per examined pair, from a sibling skill named in SKILL.md's instance section (read 2026-09-03).", "The checker-design rule the reference cites (one row per examined pair) is `validation-evidence`, a sibling in the Scio repository.", "What counts as a step, a rule, a clause, an expectation or a file, the seven pair types, the two row shapes and the plan-count formulas are in `references/pair-vocabulary.md`, which step 1 applies."]}
+    ]
+   },
+   "claim x rationale": {
+    "plan": 13, "examined": 13,
+    "examined_pairs": ["claim x rationale:R1xRATIONALE", "…", "claim x rationale:R13xRATIONALE"],
+    "non_consistent_rows": [
+     {"row": "claim x rationale:R9xRATIONALE", "left": "rule 9 (intro, counted outside the Rules heading)", "right": "its stated evidence", "verdict": "absent",
+      "quotes": ["What counts as a step, a rule, a clause, an expectation or a file, the seven pair types, the two row shapes and the plan-count formulas are in `references/pair-vocabulary.md`, which step 1 applies.", "a rule with no observed failure behind it; a rationale contradicting the rule it justifies"]},
+     {"row": "claim x rationale:R10xRATIONALE", "left": "rule 10 (inside step 6, counted outside the Rules heading)", "right": "its stated evidence", "verdict": "absent",
+      "quotes": ["Every examined count equals its plan count.", "a rule with no observed failure behind it; a rationale contradicting the rule it justifies"]},
+     {"row": "claim x rationale:R11xRATIONALE", "left": "rule 11 (reference, file definition)", "right": "its stated evidence", "verdict": "absent",
+      "quotes": ["The artefact's own top-level document is the thing under review, not a bundled file; it is not a file×BOM row.", "a rule with no observed failure behind it; a rationale contradicting the rule it justifies"]},
+     {"row": "claim x rationale:R12xRATIONALE", "left": "rule 12 (reference, plan count)", "right": "its stated evidence", "verdict": "absent",
+      "quotes": ["the seven counts are written after that first read and before any verdict", "a rule with no observed failure behind it; a rationale contradicting the rule it justifies"]},
+     {"row": "claim x rationale:R13xRATIONALE", "left": "rule 13 (reference, rule definition)", "right": "its stated evidence", "verdict": "absent",
+      "quotes": ["The ledger's rule count lists each sentence counted outside the heading by quote, so the count can be audited.", "a rule with no observed failure behind it; a rationale contradicting the rule it justifies"]}
+    ]
+   }
+  },
+  "other_rows": [
+   {"row": "other:evals.md 'Scenarios' x SKILL.md ## Rules bullet 6 / evals.json expectation 12",
+    "left": "evals.md, Scenarios, S5", "right": "SKILL.md rule 6 and the expectation that grades it", "verdict": "contradiction",
+    "quotes": ["S5 a defect reported twice · graded by the no-shared-quote check", "A defect reported twice is one finding carrying all its quotes", "no two findings share their whole quotes list (rule: a defect reported twice is one finding)"],
+    "why_no_type": "no pair type pairs a bundled record (bom.json kind 'record') against the steps and rules; the seven types reach evals.md only as a file, never as text"}
+  ],
+  "completeness": "every examined count equals its plan count; 242 of 242 planned pairs ruled, 0 unruled; 21 non-consistent pair rows + 1 other row"
+ },
+
+ "findings": [
+  {"level": "CLASS",
+   "where": "SKILL.md step 6, last sentence vs SKILL.md ## Rules bullet 3; evals/evals.json expectation 14 (all three evals); evals.md 'Third build (v3)'",
+   "finding": "Step 6 states without condition that every examined count equals its plan count, while rule 3 provides for a sweep cut short by a budget or a timeout that names its unruled pairs and marks the report incomplete. The two cannot both hold of one report: the report rule 3 describes is exactly the report step 6 forbids. The eval set encodes both sides - expectation 14 grades the disclosure of a shortfall and expectation 16 forbids a shortfall - so expectation 14 can only ever fire on a report expectation 16 fails, and the branch rule 3 legitimises is graded as a failure. The bundled record shows the method's own run landing in that branch: the v3 self-sweep ruled 181 of 228 planned pairs, named the shortfall and was nevertheless reported as a finished sweep with its findings 'all fixed before the reviewer', neither marked incomplete nor failing.",
+   "quotes": ["Every examined count equals its plan count.", "A sweep cut short (a budget, a timeout) names the unruled pairs in the ledger and marks the report incomplete; it is not a complete sweep", "when a pair type's examined count is under its plan count, the ledger states the shortfall (step 6)", "every pair type's examined count equals its plan count (step 6)", "Self-sweep r0: 228 pair rows planned, 181 ruled, the file x BOM shortfall named with its reason; 15 findings (11 CLASS); all fixed before the reviewer."]},
+
+  {"level": "CLASS",
+   "where": "SKILL.md description clause 3 and the intro, vs references/pair-vocabulary.md 'seven pair types', the step x check, description x body and step x instance section rows",
+   "finding": "The headline claim is that the sweep rules on every pair of the artefact's own parts, but three of the seven pair types do not enumerate pairs at all - they pair one item against a whole SET. step x check plans steps + expectations, not steps x expectations: on this artefact that is 59 rows where 318 step-expectation pairs exist. description x body plans one row per clause against the entire body, and step x instance section one row per step against the entire section. A contradiction between a particular step and a particular expectation (which one of the 53 grades it) is therefore never given a row of its own, so it can never be ruled on, while the ledger still reports examined == plan and the description still says every pair. This is the r2 defect recorded for step x step migrated to the types whose formula was not rewritten.",
+   "quotes": ["Rules on every pair of one artefact's own parts", "This sweep enumerates the pairs first and rules on each", "each step against the set of expectations (which one grades it), and each expectation against the set of steps (which one produces it)", "steps + expectations (steps alone when the artefact has none: every step row then reads ungraded)", "each description clause against the body", "every step against the 'In this repo' section"]},
+
+  {"level": "CLASS",
+   "where": "SKILL.md step 2 and step 5, references/pair-vocabulary.md Sources paragraph, vs evals/evals.json expectations (all three evals)",
+   "finding": "The `other` row is required by three separate places - step 2 creates it, step 5 turns it into a finding against the pair-type table, and the reference calls it the signal that the taxonomy is incomplete - and no expectation in any of the three evals mentions it. Expectation 13 requires a ledger row for each of the seven named types; nothing requires, permits or grades an `other` row. The one mechanism the artefact gives itself for discovering that its taxonomy is wrong is graded by nothing, so a run that silently drops every `other` row scores identically to one that reports them.",
+   "quotes": ["A contradiction noticed while reading that fits no type gets a pair row of type `other`.", "An `other` row becomes a finding whose `where` is the reference's pair-type table.", "the report carries it as a finding against this table, and whoever maintains the reference adds the type."]},
+
+  {"level": "CLASS",
+   "where": "references/pair-vocabulary.md rule definition and claim x rationale row, vs SKILL.md intro, step 6 and the reference's own binding sentences",
+   "finding": "The reference defines a rule to include any sentence outside a Rules heading that binds a step other than the one it stands in, and its claim x rationale row makes 'a rule with no observed failure behind it' a contradiction. The eight bullets under ## Rules each carry an observed failure; every rule the definition manufactures from elsewhere carries none. On this artefact that is at least five - the intro sentence that binds step 1 to the reference, step 6's 'Every examined count equals its plan count', and three binding sentences in the reference itself - so the artefact generates claim x rationale contradictions against itself by construction, and any artefact it is run on will do the same. Either the rule definition must exempt sentences it manufactures, or the claim x rationale test must apply only to rules under a Rules heading, which the first Rules bullet forbids.",
+   "quotes": ["plus any sentence outside such a heading that binds a step other than the one it stands in (a never, must or only about another step)", "a rule with no observed failure behind it; a rationale contradicting the rule it justifies", "What counts as a step, a rule, a clause, an expectation or a file, the seven pair types, the two row shapes and the plan-count formulas are in `references/pair-vocabulary.md`, which step 1 applies.", "Every examined count equals its plan count.", "The artefact's own top-level document is the thing under review, not a bundled file; it is not a file×BOM row.", "the seven counts are written after that first read and before any verdict", "The ledger's rule count lists each sentence counted outside the heading by quote, so the count can be audited."]},
+
+  {"level": "CLASS",
+   "where": "SKILL.md ## Rules bullets 5, 7 and 8, and step 3",
+   "finding": "With no bill of materials supplied, rule 7 promises that a file nothing points at is still found. Rule 8 says such a file is quoted by the line that lists or names it - the directory listing line, or the sentence naming the path - and step 3 says it is quoted by its entry in the file listing. In a bundle with no BOM there is no such line inside the artefact: the only entry that lists the file is a directory listing the reviewer produces, which is not part of the text under review, and by definition nothing in the text names the file (that is what makes it unpointed). Rule 5 then says a non-consistent verdict without its quoted line is not a finding. The three rules together make the one defect rule 7 exists to preserve unreportable, and expectation 15 grades exactly the quote that cannot be produced.",
+   "quotes": ["No bill of materials supplied: the BOM-row count is 0 and the ledger says `no BOM supplied`; files present are still paired against the paths the text names, so an absent named path and a file nothing points at are still found.", "A file nothing points at, or a path named but absent, is quoted by the line that lists or names it (the directory listing line, or the sentence naming the path)", "a file nothing points at is quoted by its entry in the file listing", "A non-consistent verdict without its quoted line is not a finding"]},
+
+  {"level": "CLASS",
+   "where": "references/pair-vocabulary.md Sources line vs SKILL.md 'In this repo (one instance)'",
+   "finding": "Both of the reference's sources are given as pointers into SKILL.md's instance section - the build record 'named under *In this repo*' and 'a sibling skill named in SKILL.md's instance section'. The instance section is the one part the repo convention says a copy replaces with its own. A port that follows that instruction leaves the reference's definitions, which step 1 is required to apply, with no evidence at all, and leaves the checker-design rule attributed to `validation-evidence` in a repository the ported bundle has no access to. The reference cites nothing a reader of the bundle alone can reach.",
+   "quotes": ["Sources: the build record named under *In this repo* in SKILL.md (three whole-artefact reviews of one skill, read 2026-09-03) and a checker-design rule, one row per examined pair, from a sibling skill named in SKILL.md's instance section (read 2026-09-03).", "The checker-design rule the reference cites (one row per examined pair) is `validation-evidence`, a sibling in the Scio repository.", "What counts as a step, a rule, a clause, an expectation or a file, the seven pair types, the two row shapes and the plan-count formulas are in `references/pair-vocabulary.md`, which step 1 applies."]},
+
+  {"level": "CLASS",
+   "where": "references/pair-vocabulary.md file definition vs SKILL.md 'In this repo (one instance)', last sentence",
+   "finding": "The file definition draws the named-path set from three sources only: the top-level document, the bundled references, and the test assertions. The instance section states in the same bundle that evals.md is the other bundled file that names this repository's paths. evals.md is a bundled record - the bill of materials gives it kind 'record', not references and not evals - so by the reference every path it names is invisible to file x bill of materials, while SKILL.md asserts those paths exist and matter. One part of the artefact says the record names paths; the other says paths named there are not counted.",
+   "quotes": ["a file present in the bundle, a row of its bill of materials, or a path named by the artefact's top-level document, its bundled references and its test assertions (paths inside test fixtures belong to the fixture artefacts and are out of scope).", "`evals.md`, the measurement record, is the other bundled file that names this repository's paths."]},
+
+  {"level": "CLASS",
+   "where": "references/pair-vocabulary.md file definition and file x bill of materials row, vs SKILL.md 'In this repo (one instance)' and bom.json",
+   "finding": "The named-path set has no exemption for host-repository paths, and the file x BOM row makes 'a named path absent from the bundle' a contradiction. The instance section names pipeline/build/dispatch.py, which is a host path that can never be in the bundle, so a correct sweep of this artefact must rule it absent - a finding about the portability seam being reported as a missing file. The same definition exempts only the top-level document from carrying a BOM row, so bom.json - present in the bundle, named by the instance section, and carrying no row for itself - must also be ruled non-consistent. Two verdicts the method is forced to emit describe nothing wrong with the artefact.",
+   "quotes": ["a file present in the bundle, a row of its bill of materials, or a path named by the artefact's top-level document, its bundled references and its test assertions (paths inside test fixtures belong to the fixture artefacts and are out of scope).", "a named path absent from the bundle; a file nothing points at", "dispatched through `pipeline/build/dispatch.py` with the artefact and `bom.json` as its declared inputs", "The artefact's own top-level document is the thing under review, not a bundled file; it is not a file×BOM row."]},
+
+  {"level": "CLASS",
+   "where": "SKILL.md step 6 (ledger contents) and ## Rules bullet 7, vs evals/evals.json expectations (all three evals)",
+   "finding": "Step 6 requires the ledger to carry a quote for each rule counted outside a Rules heading, and rule 7 requires it to say `no BOM supplied` when none was given. Neither is graded: expectation 8 grades only plan and examined counts per pair type and the pair ids, and no expectation anywhere mentions a bill of materials or a rule quote. The rule-quote requirement is the artefact's only defence against the rule count being reviewer-dependent - the failure rule 1 cites - and it is checked by nothing.",
+   "quotes": ["the ledger (the part counts from step 1, with a quote for each rule counted outside a Rules heading; then per pair type: plan count, examined count, the examined pairs as `type:left×right`, the rows with a non-consistent verdict, and any `other` rows)", "No bill of materials supplied: the BOM-row count is 0 and the ledger says `no BOM supplied`; files present are still paired against the paths the text names, so an absent named path and a file nothing points at are still found.", "a ledger with plan and examined counts per pair type and the pair ids (steps 1, 6)", "The ledger's rule count lists each sentence counted outside the heading by quote, so the count can be audited."]},
+
+  {"level": "CLASS",
+   "where": "SKILL.md step 4 and references/pair-vocabulary.md expectation definition, vs evals/evals.json and evals.md 'Scenarios'",
+   "finding": "The reference defines a whole branch for an artefact with no test assertions: the step x check plan count collapses to the step count and every step row reads ungraded. Step 4 carries the matching 'or write ungraded'. All three fixtures are skills with an evals.json, so no eval exercises the branch and no expectation grades it; the bundled record confirms it, listing the runbook-without-expectations scenario as not executed for want of a fixture. A documented branch of the method has never been run and cannot fail.",
+   "quotes": ["**Rule on every step row** by the reference's definition of checkable, and name the expectation that grades it or write ungraded; the row's quote is the closing sentence.", "An artefact with no test assertions has zero expectations; the step×check plan count is then the step count and every step row reads ungraded.", "S4 a runbook without expectations · not executed (no fixture; stated gap)"]},
+
+  {"level": "CLASS",
+   "where": "references/pair-vocabulary.md, 'seven pair types' table (the `where` step 5 assigns an `other` row)",
+   "finding": "A contradiction found in this bundle fits none of the seven types: evals.md, Scenarios, says S5 is 'graded by the no-shared-quote check', but no such rule survives in SKILL.md - rule 6 now reads that a defect reported twice is one finding carrying all its quotes, and the expectation grading it forbids only two findings sharing their whole quotes list. The record names a check the text no longer contains. No pair type reaches this: evals.md enters the taxonomy only as a file in file x bill of materials, never as text with claims in it, so a bundled record can contradict the steps and rules freely. The taxonomy needs a record x body type, or the file definition must treat a bundled record as it treats a bundled reference.",
+   "quotes": ["S5 a defect reported twice · graded by the no-shared-quote check", "A defect reported twice is one finding carrying all its quotes", "no two findings share their whole quotes list (rule: a defect reported twice is one finding)"]},
+
+  {"level": "INSTANCE",
+   "where": "SKILL.md 'In this repo (one instance)' vs evals.md",
+   "finding": "The instance section attributes the three reviews the rules cite to pipeline/builds/llm-wiki-ingest. That path appears nowhere in the bundled record, and evals.md documents a different three-review sequence as the one that produced these lessons - r0, r1 and r2 of this skill's own second build, each red at class level, whose open set is quoted verbatim in the record. Rule 2's evidence ('three reviews of one skill each reported findings and nothing about what they had examined') is therefore traceable to two different sequences depending on which bundled file a reader believes, and to a path the bundle cannot resolve.",
+   "quotes": ["The three reviews the rules cite are `pipeline/builds/llm-wiki-ingest` (one skill, each review red at class level on a different set; six of the seven pair types occurred there)", "The ledger is the first part of the report - three reviews of one skill each reported findings and nothing about what they had examined, so a fourth could not tell a missed pair from a consistent one.", "Self-sweep r0: 228 pair rows planned, 181 ruled, the file x BOM shortfall named with its reason; 15 findings (11 CLASS); all fixed before the reviewer."]}
+ ],
+
+ "matrix": [
+  {"step": 1, "checkable": true, "graded_by": "e1.8 / e2.8 / e3.8 (a ledger with plan and examined counts per pair type and the pair ids); also e*.10, e*.13", "quote": "The seven plan counts open the ledger."},
+  {"step": 2, "checkable": true, "graded_by": "e1.7 / e2.7 / e3.7 (rows referencing the artefact's rules exist) - partial: the `other` row this sentence creates is graded by no expectation", "quote": "A contradiction noticed while reading that fits no type gets a pair row of type `other`."},
+  {"step": 3, "checkable": true, "graded_by": "e1.11 / e2.11 / e3.11 (every finding carries a quotes list, none empty); also e*.15", "quote": "A contradiction quotes the two lines that disagree; an absent quotes the line that names the missing thing; a file nothing points at is quoted by its entry in the file listing."},
+  {"step": 4, "checkable": true, "graded_by": "e1.6 / e2.6 / e3.6 (a step matrix row per numbered step with checkable, graded_by and the closing sentence as quote) - partial: the ungraded branch is graded by no expectation", "quote": "**Rule on every step row** by the reference's definition of checkable, and name the expectation that grades it or write ungraded; the row's quote is the closing sentence."},
+  {"step": 5, "checkable": true, "graded_by": "e1.5 / e2.5 / e3.5 (at most 3x as many findings as known ones); also e*.12, e*.18 - partial: the `other`-row finding is graded by no expectation", "quote": "An `other` row becomes a finding whose `where` is the reference's pair-type table."},
+  {"step": 6, "checkable": true, "graded_by": "e1.1 / e2.1 / e3.1 (the report is one JSON object with ledger, findings and matrix); also e*.16, e*.17, e*.9 - partial: the rule-quote and `no BOM supplied` ledger elements are graded by no expectation", "quote": "Every examined count equals its plan count."}
+ ]
+}
+```
+
+Two judgement calls behind the numbers, since they move the plan counts: the rule count is 13 (8 bullets under `## Rules` plus 5 sentences the reference's own definition forces in from the intro, step 6 and the reference itself — each quoted in the ledger as step 6 requires), and the expectation count is 53 entries, not 18 distinct strings. The 41 BOM rows under `evals/files/` were withheld by you, so they are ruled on their BOM `status` and their reachability from `evals/evals.json`, with disk presence stated as unverifiable rather than reported as absent.

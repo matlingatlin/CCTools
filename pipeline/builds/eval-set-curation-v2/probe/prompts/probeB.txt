@@ -1,0 +1,10 @@
+You are helping a team that runs an AI support assistant. Answer both questions below. Work from the actual data file - read it, compute what you need. Give your reasoning and your concrete recommendation.
+
+FILE: /home/user/skills-repo/pipeline/builds/eval-set-curation-v2/fixture/logged_traffic.csv
+It has 2000 rows and the columns: id, query, slice, correct, in_fewshot_prompt.
+
+Q3. Before we freeze this file as an eval set, what has to be removed?
+
+Q4. How many examples do we need per slice before a per-slice score means anything?
+
+Answer both. Be concrete and specific about what you would actually do.

@@ -1,0 +1,33 @@
+{
+  "id": "artifact-consistency-sweep-v2",
+  "opened": "2026-09-03T11:49:04+00:00",
+  "mode": "v3",
+  "coordinator_tier": "fable",
+  "package": {
+    "path": "/home/user/skills-repo/pipeline/packages/artifact-consistency-sweep-v2.json",
+    "sha256": "beb9c19537006d5d4877f687e92df5b88a200286cd5e807c2d5870c3dcd66577",
+    "candidate_sentence": "Reviews a whole artefact for internal contradictions by enumerating every step-rule, step-step, step-check and description-body pair as a row and ruling on each, so that one review round reports every contradiction the text holds, and emits the findings list with quotes plus the step matrix of checkable and graded verdicts.",
+    "content_kind": "reference",
+    "verifiable": true,
+    "failure_kind": "shape",
+    "threshold": "Across k >= 2 repeats: zero regressions on correctness, no more than 20 percent worse on tokens or tool calls, and at least one win on correctness or shape that survives every repeat. A clean baseline does not stop the build; a win on shape alone satisfies the clause.",
+    "threshold_rule": null,
+    "budget": {
+      "max_agents": 4,
+      "max_paired_runs": 8
+    },
+    "origin": "existing-artifact",
+    "filled_by": "coordinator, from the first build (pipeline/builds/artifact-consistency-sweep: abandon at the loop cap, recall 0.64-1.00 vs 0.29-0.67) and its field trial",
+    "gap_kind": "missing",
+    "n_claims": 4,
+    "n_measured_claims": 2,
+    "n_sources": 4
+  },
+  "admission": {
+    "package_contract_version": "1.2.0",
+    "errors": 0,
+    "warnings": [],
+    "indeterminate": []
+  },
+  "note": "record.json is written once. Everything that happened is in events.jsonl."
+}

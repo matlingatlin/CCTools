@@ -1,0 +1,12 @@
+[   0.0] I literally just found the best GitHub repo for VibeCoder, so check this out.
+[   3.5] It's called Agent Skills and was designed by this dude, a former director at Google who used to work on Gemini.
+[   9.4] So what it does is actually pretty simple. Anyone can VibeCode a simple website or a simple app, right?
+[  14.4] But as soon as you want to build a real complex app for a real customer,
+[  17.7] you realize that your app is missing all of these things related to security, accessibility and more
+[  23.7] and your AI is only going to put them in there if you know the ass for them.
+[  27.1] This skill gives your AI the same coding workflows and principles that senior developers use at Google.
+[  33.0] I'm talking code simplification, testing pattern, security layers,
+[  37.3] and a bunch of other stuff you've probably never heard of.
+[  39.4] This has got to be one of the best skills for anyone VibeCoding,
+[  43.0] especially people who don't know how to really code.
+[  45.7] So if you want to try out the skill for yourself, comment the word code and I'll send you the link.

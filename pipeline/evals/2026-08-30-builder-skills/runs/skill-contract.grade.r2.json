@@ -1,0 +1,119 @@
+{
+ "per_question": [
+  {
+   "id": 1,
+   "rulings": [
+    {
+     "expectation": "the description is written last, after the body's scope is fixed",
+     "A": "met",
+     "A_evidence": "4.6 pointers for each bundled file, and no bundled file pointing at another -> 4.7 description, last, from the words a person types when they have the problem, read beside its nearest sibling",
+     "B": "met",
+     "B_evidence": "Third I derive the description from the finished body: third person, triggers-only ... if I write the description first the body drifts to match the sentence."
+    },
+    {
+     "expectation": "a bill of materials exists before any bundled file is written",
+     "A": "met",
+     "A_evidence": "the order is: 4.0 bill of materials (one row per planned file, every row classified `exists` / `needed` / `not needed because ...`, no blanks) -> 4.1 references and 4.2 assets",
+     "B": "not met",
+     "B_evidence": "No line addresses it. I looked for a bill of materials, manifest, file inventory, or any enumeration of planned bundled files classified before writing them; B's ordering is only 'First I read the field contract itself ... Second I write the BODY of the skill ... Third I derive the description ... Fourth I go field by field down the contract', with references/assets never mentioned."
+    },
+    {
+     "expectation": "the field rules are read from the contract file rather than recalled",
+     "A": "met",
+     "A_evidence": "the contract is the source and is read at the moment each field is written - a rule I recall rather than read is already drifted",
+     "B": "met",
+     "B_evidence": "First I read the field contract itself and list every required field and its constraint (name pattern, description length cap, allowed frontmatter keys), so I am checking against the actual text and not my memory of it."
+    }
+   ],
+   "expectation_critique": "Only the bill-of-materials expectation discriminates; the other two are close to free. The question says 'Work in whatever order you think best', which openly invites an ordering answer, so 'description last' is the cued response, and because the contract file was not attached, 'read the contract rather than recall it' is forced by the missing input rather than by method - both answers flag the absence unprompted. The set's larger gap: the question asked for a SKILL.md to be written, and neither answer contains one. Every expectation is about process, so an answer that describes an impeccable order and produces no artefact scores full marks. There is also no expectation covering whether the candidate sentence was actually used or discarded, which is the one substantive judgement the task poses."
+  },
+  {
+   "id": 2,
+   "rulings": [
+    {
+     "expectation": "each rule names the observation behind it",
+     "A": "unclear",
+     "A_evidence": "I would mark in my handoff which steps are backed by an observed failure and which are speculative - this labels steps as backed/speculative rather than naming the specific observation behind each rule; A never says the failure is quoted or the run identified, so the binding is asserted ('each one exists because the probe showed the behaviour is missing without it') but not made traceable.",
+     "B": "met",
+     "B_evidence": "I'd open the probe transcript, quote the two failures verbatim, and write one step per quote - each named with the run it came from"
+    },
+    {
+     "expectation": "no rule is included that the probe did not show failing",
+     "A": "met",
+     "A_evidence": "I would not pad the section with the generic migration-review checklist I could write from memory; unearned steps dilute the two that are evidence-backed",
+     "B": "met",
+     "B_evidence": "Anything else that wants into a migration-review steps section - index-build locking, backfill batch size, 'consider whether the change is backwards compatible' - stays out unless the probe actually showed it failing."
+    },
+    {
+     "expectation": "every step ends in something checkable",
+     "A": "met",
+     "A_evidence": "I would write each step in the imperative with the concrete check that would have caught the observed failure",
+     "B": "met",
+     "B_evidence": "each ending in something checkable: a file and line in the migration, a named artefact (the rollback script, the lock-timeout setting), a number, or a table row"
+    }
+   ],
+   "expectation_critique": "Expectations two and three are satisfied by stating the principle, not by obeying it, and both answers state it in almost the same words. The set therefore cannot catch the actual hazard visible here: the transcript was not attached, and A nonetheless supplies invented content for the two steps ('confirm the migration is reversible or state explicitly that it is not', 'check the table's row count and whether the change takes a blocking lock on it') - plausible generic migration advice presented as the probe-derived steps, which is exactly what expectation two exists to prevent, yet A passes it on the strength of a disclaimer sentence. An expectation that the answer refuse to draft steps without the transcript, or that no rule content appear that is not quoted from it, would separate the two answers; as written only the first expectation does any work."
+  },
+  {
+   "id": 3,
+   "rulings": [
+    {
+     "expectation": "runs the code check before asking whether it reads well",
+     "A": "met",
+     "A_evidence": "It doesn't reach the reader stage - code first, and the code checker is what decides this.",
+     "B": "unclear",
+     "B_evidence": "Then I measure the result rather than estimating it, and re-check that the trimmed version still fires on the trigger cases - the only measurement B names happens after the rewrite; B rejects readability on a recalled cap ('1,380 characters is over the 1,024-character cap the skill listing enforces') rather than by running a check first, and never names a checker or an ordering of check-before-reader."
+    },
+    {
+     "expectation": "does not accept the field on readability alone",
+     "A": "met",
+     "A_evidence": "'Reads well' is a judgement about a field that will be truncated in the listing, which is the wrong question asked in the wrong order",
+     "B": "met",
+     "B_evidence": "No. 'Reads well' is not the criterion - the description has a hard budget, and 1,380 characters is over the 1,024-character cap"
+    }
+   ],
+   "expectation_critique": "The second expectation is unfailable for any answer that knows the cap: the question hands over the number 1,380 and asks 'Ship it?', so refusing on length is the obvious move and both answers open with 'No.' The first expectation is the only discriminator but is ambiguously worded - it does not say whether reasoning from a character count counts as 'the code check' or whether a checker must actually be run, which is why B lands unclear rather than cleanly on one side. Missing entirely is the expectation that would have bitten here: both answers assert the 1,024 cap from memory, and neither proposes reading it out of the contract - the precise failure mode question 5 is built to test. As a set it measures whether the answer says 'length before readability', not whether the length rule itself was verified."
+  },
+  {
+   "id": 4,
+   "rulings": [
+    {
+     "expectation": "reads the sibling's description before writing",
+     "A": "met",
+     "A_evidence": "third the existing skill's description in full, verbatim, since that is the thing I must not collide with. So: read the sibling's description, list what it actually owns",
+     "B": "unclear",
+     "B_evidence": "I would not write it from the two names alone - I would read both skills' bodies first and find the discriminator - B reads the bodies before writing and later edits the sibling's description, but I looked for the sibling's description being read as the input, and B names only bodies; the description is touched as an output ('I would edit the sibling's description in the same change'), never as something read first."
+    },
+    {
+     "expectation": "states which unit owns which job, from both sides",
+     "A": "met",
+     "A_evidence": "Then the mutual router test, and it runs in both directions. Take the sibling's job as a user would type it and ask which of the two a router picks and why not this one; take the new skill's job and do the same.",
+     "B": "met",
+     "B_evidence": "And I would edit the sibling's description in the same change to point back the other way. A boundary asserted from only one end is not a boundary"
+    }
+   ],
+   "expectation_critique": "Both answers hit the second expectation with near-identical phrasing about a boundary asserted from only one end, which suggests it is testing possession of a stock idiom rather than a judgement - it is the strong expectation of the set, but it does not separate. The first is weak by construction: the question already tells the answer that two skills overlap, so 'read the other one first' is the cued opening move, and its wording ('description') is narrower than what a good answer might sensibly do (read the bodies), so it penalises depth. The set also never checks the deliverable: the question says 'Write the new one's description' and neither answer contains a description, only a procedure for arriving at one - nothing in the set can fail that."
+  },
+  {
+   "id": 5,
+   "rulings": [
+    {
+     "expectation": "does not restate rules from memory",
+     "A": "met",
+     "A_evidence": "No - I would not summarise it from memory, and I would say so rather than quietly producing a plausible summary.",
+     "B": "met",
+     "B_evidence": "No - that is the one thing the method forbids. Summarising field rules from memory is exactly how a rule drifts"
+    },
+    {
+     "expectation": "reads the contract at the moment the field is written",
+     "A": "not met",
+     "A_evidence": "So: I open the contract, quote the rules with their actual values, and hand back the summary with the file path so you can see where each rule came from - A reads the contract now, in order to answer this request. I looked for the read being tied to the moment each field is written (read-at-write-time rather than read-once-and-carry), and A instead offers a durability rule about commits: 'I will not let any work be committed against it until it is checked.'",
+     "B": "met",
+     "B_evidence": "the rules themselves come from the contract at write time."
+    }
+   ],
+   "expectation_critique": "The first expectation is close to unfailable: the question is a transparent trap ('from memory so we can move fast') and any refusal, however thin, satisfies it - both answers open with 'No'. The second is the real discriminator but is phrased for a situation the question does not contain: nothing is being written here, so it rewards uttering the phrase 'at write time' over demonstrating it, and it marks A down for a read that is arguably the correct response to the actual request. What the set does not measure is the thing at stake - whether the answer leaks any specific remembered rule value while refusing. Both answers happen to avoid that, but the same answers cheerfully recalled the 1,024 cap in question 3, so the set is not detecting the behaviour it is named after."
+  }
+ ],
+ "overall": "Across the five questions the two answers agree far more than they differ: both refuse question 5, both refuse question 3, both assert two-sided boundaries in question 4, and both flag the missing inputs in question 1. The rulings separate them at four points. A carries the bill of materials (Q1), the explicit check-before-reader ordering (Q3), and the verbatim read of the sibling's description (Q4). B carries per-rule traceability to a named run (Q2) and the read-at-write-time formulation (Q5). Neither answer produces the artefact its question asked for in Q1 or Q4 - both deliver a procedure instead - and no expectation in either set can detect that. The expectation sets are the weaker half of this eval. Of the twelve expectations, roughly half are satisfied by reciting a principle rather than obeying it, and several are cued directly by the question's own wording (Q1's 'whatever order you think best' invites an ordering answer; Q3 hands over the offending number; Q5 flags itself as a trap). The clearest structural blind spot: nothing tests whether a remembered value was asserted as fact, so both answers state the 1,024 cap from memory in Q3 while both are scored as exemplary on 'does not restate rules from memory' in Q5, and nothing tests whether invented content was passed off as evidence-derived, so A's fabricated migration checks in Q2 survive under an expectation written to forbid exactly that. Adding a per-question expectation of the form 'the answer produces the requested artefact' and 'no factual value appears that was not read from a named source' would make this set measure something a good answer could fail."
+}

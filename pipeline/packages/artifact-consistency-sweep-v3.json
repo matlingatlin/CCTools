@@ -1,0 +1,148 @@
+{
+ "_note": "Third build of the sweep (second iteration): contract 3.1.1; the r2 open set of the second build fixed; NEW - a self-sweep (the candidate run on its own bundle) before each reviewer round, to test the reading that the loop needs the sweep before the reviewer. The incumbent is the second build's final text (d73eb06). Probe rows carried over from the second build and re-graded: same baseline, same fixtures, same tier.",
+ "id": "artifact-consistency-sweep-v3",
+ "origin": "existing-artifact",
+ "filled_by": "coordinator, from the second build (pipeline/builds/artifact-consistency-sweep-v2: abandon, unconverged at review, 7/9/11 class findings on three rewrites) and its r2 open set",
+ "gap_kind": "missing",
+ "_gap_observed": "llm-wiki-ingest build, 2026-09-02/03: review r0 15 findings (6 CLASS), r1 13 (6 CLASS), r2 11 (6 CLASS), each on a rewritten text; of r2's class findings, at least two ('stop' vs steps 6-7; 'no newer date') were present verbatim in the text r1 reviewed and r1 did not report them. The convergence rule stopped a fourth review; the shipped skill is marked unconverged-at-review. Cross-round check in the fixtures: 4 findings present in an earlier text and reported only later. Second build: the candidate lifted recall but no test cleared every check twice; the field trial named four gaps in the method (rule defined by heading, missing BOM, unpointed-file quote, step x instance-section) and a miscount (six counts, seven things); the arm prompt dictated an output shape and cost the ledger check.",
+ "candidate_sentence": "Reviews a whole artefact for internal contradictions by enumerating every step-rule, step-step, step-check and description-body pair as a row and ruling on each, so that one review round reports every contradiction the text holds, and emits the findings list with quotes plus the step matrix of checkable and graded verdicts.",
+ "unit_type": "skill",
+ "content_kind": "reference",
+ "verifiable": true,
+ "failure_kind": "shape",
+ "expected_failure": "OBSERVED in the second build: the bare baseline (no dictated shape) reaches recall 0.64-1.00 but emits no ledger (0 of 6), no complete step matrix in 2 of 6, and exceeds the precision proxy in 2 of 6. The candidate's own text was red at class level in three successive reviews. The incumbent arm is the second build's final text.",
+ "trigger_terms": [
+  "review the whole skill",
+  "does the body contradict the rules",
+  "which step is graded by nothing",
+  "whole-artefact review",
+  "consistency sweep",
+  "steps vs rules vs evals",
+  "did the review miss anything",
+  "review before the arms run",
+  "find every contradiction in one pass",
+  "unconverged review"
+ ],
+ "budget": {
+  "max_agents": 4,
+  "max_paired_runs": 8
+ },
+ "threshold": "Across k >= 2 repeats: zero regressions on correctness, no more than 20 percent worse on tokens or tool calls, and at least one win on correctness or shape that survives every repeat. A clean baseline does not stop the build; a win on shape alone satisfies the clause.",
+ "sources": [
+  {
+   "source_id": "S1",
+   "url": "https://github.com/matlingatlin/skills-repo/blob/main/pipeline/builds/llm-wiki-ingest/events.jsonl",
+   "type": "repo",
+   "title": "llm-wiki-ingest build record - review events 5.2 (r0, r1, r2)",
+   "authors": "this repository",
+   "year": 2026,
+   "fetched": "2026-09-03",
+   "access": "local",
+   "read": "full"
+  },
+  {
+   "source_id": "S2",
+   "url": "https://github.com/matlingatlin/skills-repo/blob/main/pipeline/builds/llm-wiki-ingest/runs/review.5.2.whole.r2.md",
+   "type": "repo",
+   "title": "the round-2 review output",
+   "authors": "an external reviewer run (opus)",
+   "year": 2026,
+   "fetched": "2026-09-03",
+   "access": "local",
+   "read": "full"
+  },
+  {
+   "source_id": "S3",
+   "url": "https://github.com/matlingatlin/Scio/blob/claude/app-builder-architecture-rc7hdk/.claude/skills/validation-evidence/SKILL.md",
+   "type": "repo",
+   "title": "validation-evidence (Scio) - the one-row-per-examined-pair rule",
+   "authors": "Scio",
+   "year": 2026,
+   "fetched": "2026-09-03",
+   "access": "local",
+   "read": "partial"
+  },
+  {
+   "source_id": "S4",
+   "url": "https://github.com/matlingatlin/skills-repo/blob/main/knowledge/notes/anthropic-skill-authoring-contract.md",
+   "type": "page",
+   "title": "Anthropic's skill authoring contract - who runs the test, who writes the assertions",
+   "authors": "knowledge base, from code.claude.com",
+   "year": 2026,
+   "fetched": "2026-09-03",
+   "access": "local",
+   "read": "partial"
+  }
+ ],
+ "claims": [
+  {
+   "claim_id": "C1",
+   "source_id": "S1",
+   "claim": "Three whole-artefact reviews of one artefact each reported a different set of class-level findings: 15/6, 13/6, 11/6 (findings/CLASS).",
+   "locator": "events with function review_artifact, phases 5.2 at 22:30:08, loop 1 and loop 2",
+   "quote": "RED with CLASS findings: (1) step 2 'no material ... s",
+   "what_was_measured": "finding counts per review round",
+   "effect_size": "6 class findings per round on three rewrites",
+   "sample": "3 review runs, 1 artefact",
+   "limits": "one artefact, one reviewer prompt, one model tier",
+   "verdict": "MEASURED",
+   "verified_by": "pipeline/builds/llm-wiki-ingest/runs/review.5.2.whole*.md"
+  },
+  {
+   "claim_id": "C2",
+   "source_id": "S2",
+   "claim": "A class-level contradiction reported in round 2 was present verbatim in the text round 1 reviewed and passed over.",
+   "locator": "findings[1] where 'SKILL.md step 2 (no material) vs steps 6 and 7', quote field",
+   "quote": "**no material** - no claim, no value, no newer date for any page: keep the raw, write the source-log row and the operation-log line, touch no page, stop.",
+   "what_was_measured": "presence of the quoted line in the round-1 text (git b7d546b) and absence of the finding in the round-1 review",
+   "effect_size": "2 of 5 round-2 class findings",
+   "sample": "1 artefact, 2 rounds",
+   "limits": "the round-1 reviewer may have judged it instance-level and not reported it; the record has no such note",
+   "verdict": "MEASURED",
+   "verified_by": "pipeline/packages/fixtures/artifact-consistency-sweep/truth-B.json (rows marked missed_in)"
+  },
+  {
+   "claim_id": "C3",
+   "source_id": "S3",
+   "claim": "A checker that returns one row per examined pair lets 'found nothing' be told apart from 'did not examine'.",
+   "locator": "description and section 2",
+   "quote": "Make a checker return what it examined, so that \"found nothing\" can never be mistaken for \"did not run\".",
+   "what_was_measured": null,
+   "effect_size": null,
+   "sample": null,
+   "limits": "a design rule for checkers; applied here to a review, which its author did not test",
+   "verdict": "REPEATED",
+   "verified_by": null
+  },
+  {
+   "claim_id": "C4",
+   "source_id": "S4",
+   "claim": "Anthropic's own guidance gives a grader two jobs: grade the outputs and critique the evals themselves.",
+   "locator": "section 'Who runs the test, and who writes the assertions'",
+   "quote": "You have two jobs: grade the outputs, and critique the evals themselves. A passing grade on a weak assertion is worse than useless \u2014 it creates false confidence.",
+   "what_was_measured": null,
+   "effect_size": null,
+   "sample": null,
+   "limits": "guidance, not a measurement",
+   "verdict": "REPEATED",
+   "verified_by": null
+  }
+ ],
+ "representative_tasks": [
+  {
+   "task": "Review the whole skill artefact at pipeline/packages/fixtures/artifact-consistency-sweep/artifact-A (SKILL.md, references/, evals/) - the artefact as written before its first whole-artefact review. You cannot see how it was written. Find every place where two parts of the artefact contradict each other or where a step cannot be checked or is graded by nothing: steps against rules, steps against each other, steps against the eval expectations, the description against the body, bundled files against the bill of materials. Return a findings list (level CLASS or INSTANCE, where, finding, verbatim quote) and, for every numbered step, whether it ends in something checkable and which eval check grades it.",
+   "artifact_expected": "A findings list where every entry carries level, where, finding and a verbatim quote, plus a matrix with one row per numbered step (checkable? graded by which check?) and the Rules bullets cross-referenced. Graded by pipeline/packages/fixtures/artifact-consistency-sweep/check.py against pipeline/packages/fixtures/artifact-consistency-sweep/truth-A.json: recall over the findings three independent reviewers established for this text (including the ones the round's own reviewer missed), a precision proxy, and the matrix's completeness."
+  },
+  {
+   "task": "Review the whole skill artefact at pipeline/packages/fixtures/artifact-consistency-sweep/artifact-B (SKILL.md, references/, evals/) - the same skill after its first rewrite (body halved, rationale moved to a reference). You cannot see how it was written. Find every place where two parts of the artefact contradict each other or where a step cannot be checked or is graded by nothing: steps against rules, steps against each other, steps against the eval expectations, the description against the body, bundled files against the bill of materials. Return a findings list (level CLASS or INSTANCE, where, finding, verbatim quote) and, for every numbered step, whether it ends in something checkable and which eval check grades it.",
+   "artifact_expected": "A findings list where every entry carries level, where, finding and a verbatim quote, plus a matrix with one row per numbered step (checkable? graded by which check?) and the Rules bullets cross-referenced. Graded by pipeline/packages/fixtures/artifact-consistency-sweep/check.py against pipeline/packages/fixtures/artifact-consistency-sweep/truth-B.json: recall over the findings three independent reviewers established for this text (including the ones the round's own reviewer missed), a precision proxy, and the matrix's completeness."
+  },
+  {
+   "task": "Review the whole skill artefact at pipeline/packages/fixtures/artifact-consistency-sweep/artifact-C (SKILL.md, references/, evals/) - the same skill after its second rewrite. You cannot see how it was written. Find every place where two parts of the artefact contradict each other or where a step cannot be checked or is graded by nothing: steps against rules, steps against each other, steps against the eval expectations, the description against the body, bundled files against the bill of materials. Return a findings list (level CLASS or INSTANCE, where, finding, verbatim quote) and, for every numbered step, whether it ends in something checkable and which eval check grades it.",
+   "artifact_expected": "A findings list where every entry carries level, where, finding and a verbatim quote, plus a matrix with one row per numbered step (checkable? graded by which check?) and the Rules bullets cross-referenced. Graded by pipeline/packages/fixtures/artifact-consistency-sweep/check.py against pipeline/packages/fixtures/artifact-consistency-sweep/truth-C.json: recall over the findings three independent reviewers established for this text (including the ones the round's own reviewer missed), a precision proxy, and the matrix's completeness."
+  }
+ ],
+ "contradictions_kept": [],
+ "_claims_note": "C1 and C2 are measured in this repository's own ledger and fixtures; C3 and C4 are the two design rules the method rests on. The baseline is not a hypothesis: it is the three review runs already in the record.",
+ "incoming_artifact": ".claude/skills/artifact-consistency-sweep"
+}

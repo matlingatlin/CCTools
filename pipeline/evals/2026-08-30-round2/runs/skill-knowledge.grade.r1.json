@@ -1,0 +1,147 @@
+{
+ "per_question": [
+  {
+   "id": 1,
+   "rulings": [
+    {
+     "expectation": "produces an actual claim row with named fields, not advice about how to make one",
+     "A": "met",
+     "A_evidence": "\"Row appended to the claim set:\" followed by a fenced row with named fields: \"id:            C-014\", \"claim:\", \"source:\", \"quote:\", \"verdict:       REPEATED\".",
+     "B": "met",
+     "B_evidence": "\"### Claim row\" table: \"| claim | Adding a linting step to CI approximately halves code review time. |\" with \"| source id | S-lint-ci-blog |\", \"| quote | ... |\", \"| verdict | repeated |\"."
+    },
+    {
+     "expectation": "the quote field contains the sentence verbatim",
+     "A": "met",
+     "A_evidence": "\"quote:         \\\"In our experience, teams that add a linting step to CI cut review time roughly in half.\\\"\" (wrapped across two lines in the row, otherwise word-for-word).",
+     "B": "met",
+     "B_evidence": "\"| quote | \\\"In our experience, teams that add a linting step to CI cut review time roughly in half.\\\" |\""
+    },
+    {
+     "expectation": "the verdict is repeated, not measured",
+     "A": "met",
+     "A_evidence": "\"verdict:       REPEATED\" (and in the preamble: \"It goes in as a **REPEATED** claim, not a measured one\").",
+     "B": "met",
+     "B_evidence": "\"| verdict | repeated |\" (and \"It goes in as **repeated**, not measured\")."
+    },
+    {
+     "expectation": "the reason given is that no measurement or sample was reported, not that a blog is a weak source",
+     "A": "met",
+     "A_evidence": "\"evidence:      anecdotal; no sample size, no baseline, no definition of \\\"review time\\\", no control for confounders\" — the reason is the missing measurement. (The row also carries \"source type:   vendor/practitioner blog post (self-reported, not peer reviewed)\" as a descriptor, but the verdict is not justified on it.)",
+     "B": "met",
+     "B_evidence": "\"There is no dependent variable, no sample, no baseline and no window, so nothing can be recorded in the measured fields. A figure does not promote a row.\""
+    }
+   ],
+   "expectation_critique": "Weak set: the question already hands over the verbatim sentence and says 'add this to the claim set', so 'produces a row' and 'quote is verbatim' are close to free — any answer that copies the given sentence into a field passes both, including one that then mislabels the verdict. The verdict expectation is the only one with real teeth. Expectation 4 is also lenient: an answer may name the blog's weakness AND the missing measurement and still pass, since it only requires the measurement reason to be present, not that source-genre reasoning be absent. Nothing in the set tests what the question actually risks — that 'roughly in half' is later hardened into '50%', that 'how reached' and 'how much read' be kept apart, or that fetch date and locator be stamped. Both answers volunteer those; the set gives no credit and would not catch an answer that omitted them."
+  },
+  {
+   "id": 2,
+   "rulings": [
+    {
+     "expectation": "checks the two failures separately rather than assessing coverage in general",
+     "A": "met",
+     "A_evidence": "\"### Step 1 — coverage table (fill against the nine, one row per observed failure)\" with a row each for \"F1: agent did not check whether the migration held a lock past the request timeout\" and \"F2: agent did not name which service read the renamed table\".",
+     "B": "not met",
+     "B_evidence": "The only check against existing knowledge is organised per existing claim, not per failure: \"**2. The nine proposal-stage claims get re-graded against the probe.** ... For each of the nine, one of three outcomes\". The two failures are written up separately as new rows (\"id:            C-010\" / \"id:            C-011\") but neither is checked against the nine. I looked for a per-failure coverage check and found none."
+    },
+    {
+     "expectation": "gives a per-failure covered or not-covered outcome",
+     "A": "unclear",
+     "A_evidence": "The column exists per failure but the outcome is left unfilled: \"| claim ids that speak to lock duration / statement timeouts / blocking DDL → *(list or \\\"none\\\")* | fetch / **skip** |\". A per-failure covered/not-covered slot is produced; no covered/not-covered verdict is actually returned (the nine claims were not supplied to the answer).",
+     "B": "not met",
+     "B_evidence": "No covered/not-covered outcome for either failure appears; the closest is \"- **untouched** — the probe never exercised it → it stays *proposed*\", which grades an existing claim, not a failure's coverage. I looked for 'F1 covered / not covered' and found nothing."
+    },
+    {
+     "expectation": "states that the skip and its reason are recorded even when nothing is fetched",
+     "A": "met",
+     "A_evidence": "\"A skipped fetch and a fetch nobody thought of leave the same trace unless the skip is written down. Both rows land in the record regardless of outcome.\"",
+     "B": "not met",
+     "B_evidence": "Nothing about skipping or logging a no-fetch decision appears; the answer opens \"We write both failures down **now**, as claims, in the same turn we learned them\" and never reaches a fetch/skip decision. I looked for a statement that a decision not to fetch is recorded with its reason."
+    }
+   ],
+   "expectation_critique": "The question asks the open 'what do we do about knowledge?', but the set silently assumes one answer shape — a coverage check of the two failures against the nine claims — and scores only that. Expectations 1 and 2 are near-duplicates: 2 entails 1, so an answer is effectively measured twice on the same move. Expectation 2 is also unsatisfiable as stated: the nine claims are never shown, so no answer can return a real covered/not-covered verdict, and the best available response (a per-failure table with the decision left to be filled) is indistinguishable from a template. Conversely, nothing in the set rewards or requires the other obviously correct move — recording the two observed failures themselves as claims before the transcript is lost, keeping observed and proposed provenance apart, and stating n=1 as n=1 — so an answer can do all of that and score zero. Expectation 3 is the only one that could not be passed by an empty scaffold."
+  },
+  {
+   "id": 3,
+   "rulings": [
+    {
+     "expectation": "the produced row keeps how the source was reached separate from how much was read",
+     "A": "not met",
+     "A_evidence": "The row has a citation field and a read-extent field but no separate 'how reached' field: \"source:        <Authors>, \\\"<Title>\\\", <Venue/Journal>, <Year>. DOI <doi>. URL <url>.\" and \"locator:       ABSTRACT ONLY — abstract, sentence <n>. Full text paywalled\". I looked for a field recording the route to the source (search / citation / referral) distinct from how much of it was read; the citation is not that.",
+     "B": "met",
+     "B_evidence": "Two distinct fields in the source row: \"| how reached | found via search / citation *(fill exactly)* |\" and \"| how much read | **abstract only — paywalled, full text not obtained** |\"."
+    },
+    {
+     "expectation": "does not assign a measured verdict from an abstract",
+     "A": "met",
+     "A_evidence": "\"verdict:       UNVERIFIED (abstract-only; upgradeable to MEASURED on full-text read)\"",
+     "B": "met",
+     "B_evidence": "\"| verdict | **repeated** |\" (and \"The row can be written, but not as **measured**\")."
+    },
+    {
+     "expectation": "names what would be needed to upgrade it",
+     "A": "met",
+     "A_evidence": "\"next action:   attempt full text — preprint/arXiv/institutional repository, author copy, or library access. If obtained, re-verify the percentage against the results section and either upgrade this row or record the discrepancy.\"",
+     "B": "met",
+     "B_evidence": "\"| expires if | the full text is obtained (then re-verdict: measured if methods and sample check out, or not supported if they do not), or a correction/retraction is issued |\""
+    }
+   ],
+   "expectation_critique": "The strongest of the five sets: expectation 1 discriminated (one row carries the two fields separately, the other folds provenance into a citation plus a locator), and expectation 2 is genuinely failable — an abstract stating an effect 'clearly with a percentage' is exactly the bait for a measured verdict. Expectation 3 is the soft one: 'get the full text' is the obvious next line and almost any competent answer emits it, so it discriminates little. The set also leaves the question's real trap unmeasured — whether the percentage is barred from setting a threshold or being restated as established, and whether a verbatim quote from the abstract is required before the row enters. Both answers address that unprompted; a worse answer that skipped it would still score 3/3 on expectations 2 and 3."
+  },
+  {
+   "id": 4,
+   "rulings": [
+    {
+     "expectation": "keeps both numbers as their own rows",
+     "A": "not met",
+     "A_evidence": "Explicitly the opposite structure: \"**1. Collapse to one row per claim, with the conflict on the row.**\" — one row (\"id:            C-007\") with both figures nested as sub-entries \"[S1] ... Figure: 15%.\" / \"[S2] ... Figure: 40%.\". Both numbers survive with their own locators, methods and fetch dates, but not as their own rows.",
+     "B": "met",
+     "B_evidence": "\"- **Contradiction kept as its own two rows**, cross-referenced by a pair tag, so a reader meets both.\" — and the table shows rows #1 (15%) and #2 (40%) tagged \"contradiction pair X\"."
+    },
+    {
+     "expectation": "does not pick one on credibility grounds without a stated basis",
+     "A": "met",
+     "A_evidence": "\"Do not average them. Do not pick the one that suits us. Do not quietly drop one.\" and \"verdict:       DISPUTED — do not cite a single figure.\"",
+     "B": "met",
+     "B_evidence": "\"Cleaning up means merging true duplicates and sorting by verdict — it does not mean picking a side, averaging to ~27%, or writing \\\"15–40%\\\".\""
+    },
+    {
+     "expectation": "says why a collapsed contradiction cannot be detected afterwards",
+     "A": "not met",
+     "A_evidence": "The nearest line is about a change note, not about undetectability: \"**3. Say what changed.** A short note at the top of the file: what was merged, what was demoted, and that C-007 is now disputed — so the next reader does not re-discover the conflict and \\\"fix\\\" it by averaging.\" I looked for a statement that once one side is dropped the file gives no trace that a conflict ever existed; it is not there.",
+     "B": "met",
+     "B_evidence": "\"Collapsing a contradiction is the one edit nobody can detect afterwards, because the losing row is simply gone.\""
+    }
+   ],
+   "expectation_critique": "Expectation 1 measures a file format rather than the property that matters. The property is that both numbers, with their own locators and scopes, survive and are visible to the next reader; 'as their own rows' fails an answer that achieves exactly that under one disputed claim heading, which is a defensible schema and arguably harder to average away. Expectation 2 is close to unfailable: 'do not just pick one' is the reflex answer to this question, and as worded it would also pass an answer that DID pick a side while offering any stated basis, however thin. Expectation 3 is the discriminating one. The set misses what both answers independently flagged as the first thing to check — that 15 and 40 are very likely different denominators, populations or windows, i.e. not a contradiction at all — and it does not require the resolved-when / expiry condition that keeps a disputed pair from sitting unresolved forever."
+  },
+  {
+   "id": 5,
+   "rulings": [
+    {
+     "expectation": "routes verification to a reader who did not gather the sources",
+     "A": "not met",
+     "A_evidence": "All three gates are self-checks by the gatherer: \"Not yet — three checks first, and they take minutes.\" ... \"**2. Is each verdict backed by a locator, not a recollection?**\". The only mention of another party is post hoc: \"the bundle carries a one-line header saying who verified it and on what date\". I looked for the gatherer's own pass being disqualified and the row handed to an independent reader; it is not there.",
+     "B": "met",
+     "B_evidence": "\"You gathered these, so your pass over them is not verification — it is the gatherer checking their own gathering, which is the one thing the step exists to prevent.\""
+    },
+    {
+     "expectation": "names what that reader is given and what they are NOT given",
+     "A": "not met",
+     "A_evidence": "No independent reader is briefed at all; the closest is a requirement on the rows themselves — \"For every row I want the specific thing that was checked: page/section/sentence for a document, `file:line` for code\". I looked for an explicit include/exclude list for a verifier's packet.",
+     "B": "met",
+     "B_evidence": "\"**Hand the verifier the claim row and the source. Nothing else.** Not your reasoning, not the skill the claims were gathered for, not which way you expect it to go, not the failure the claim is meant to answer. Any of those tells them which answer is wanted.\""
+    },
+    {
+     "expectation": "lists the verdicts that reader may return",
+     "A": "not met",
+     "A_evidence": "The requirement is asserted but the vocabulary is never enumerated: \"the verdicts use one fixed vocabulary rather than free text\". I looked for the actual list of permitted return values.",
+     "B": "met",
+     "B_evidence": "\"**They return one of five per row:** supported · not supported · not in the source · source unreachable · not checkable.\""
+    }
+   ],
+   "expectation_critique": "Sharply discriminating but structurally single-issue: expectations 2 and 3 are both conditional on 1 — an answer that never routes to an independent reader fails all three automatically, so one missed move is scored as three misses and the set reports a 3-0 gap where the underlying difference is one. Nothing here is trivially satisfiable, which is the set's strength, but its coverage is narrow: it gives no credit for the other real bundling gates (a locator behind every verdict rather than a recollection, unresolved-vs-checked-and-unconfirmed labelled rather than dropped, negative verdicts retained through the bundle, source type and fetch date surviving), all of which one answer raises and the set cannot see. An answer could also pass all three by merely describing the routing without any pre-flight discipline."
+  }
+ ],
+ "overall": "Sixteen rulings across five questions; every ruling is anchored to a quoted line, and one is 'unclear' where an answer produced the required structure but not the required outcome (question 2, expectation 2 — the nine claims were never shown to either answer, so no real covered/not-covered verdict was obtainable). Questions 1 and 3 separated the answers only on one expectation or none; questions 2, 4 and 5 separated them on most. Note on the sets themselves: all five encode one specific house method (claim rows with named fields, a repeated/measured verdict vocabulary, provenance split into how-reached vs how-much-read, an independent verifier), and they score conformity to that shape rather than the underlying property. This shows up three ways. (a) Format-over-property: Q4 expectation 1 fails an answer that preserves both disputed figures with their own locators, methods and fetch dates under one flagged 'DISPUTED' claim, purely because they are sub-entries rather than sibling rows. (b) Redundancy: Q2 expectations 1-2 and Q5 expectations 1-3 are chains — failing the first guarantees failing the rest, so a single missed move is counted two or three times and the reported gap overstates the difference. (c) Free passes: Q1 hands over the verbatim sentence and then asks whether a row contains it verbatim; Q4 expectation 2 ('does not pick one on credibility grounds without a stated basis') is the reflex answer and, as worded, would also pass an answer that picked a side with a thin stated basis. Across all five sets, the recurring blind spot is that nothing checks whether a number is barred from becoming a threshold or a headline figure downstream, whether every row carries a verbatim quote and a fetch date, or whether an expiry/re-check condition exists — behaviours several answers supplied unprompted and would not have been penalised for omitting. Per the instructions, no ruling or comment here treats A or B as a persistent identity across questions."
+}

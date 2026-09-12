@@ -1,0 +1,34 @@
+{
+ "bill_of_materials": [
+  {
+   "file": "assets/threshold-decision-record.md",
+   "kind": "asset",
+   "why": "bundled file, listed from the adopted skill's directory for this calibration",
+   "status": "exists"
+  },
+  {
+   "file": "evals/evals.json",
+   "kind": "evals",
+   "why": "bundled file, listed from the adopted skill's directory for this calibration",
+   "status": "exists"
+  },
+  {
+   "file": "evals/scored_predictions.csv",
+   "kind": "evals",
+   "why": "bundled file, listed from the adopted skill's directory for this calibration",
+   "status": "exists"
+  },
+  {
+   "file": "evals/selfreported_confidence.csv",
+   "kind": "evals",
+   "why": "bundled file, listed from the adopted skill's directory for this calibration",
+   "status": "exists"
+  },
+  {
+   "file": "references/uncertainty-signal-evidence.md",
+   "kind": "reference",
+   "why": "bundled file, listed from the adopted skill's directory for this calibration",
+   "status": "exists"
+  }
+ ]
+}

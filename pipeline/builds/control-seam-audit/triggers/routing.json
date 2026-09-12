@@ -1,0 +1,20 @@
+{
+  "all the tests pass but the result is wrong": "control-seam-audit",
+  "between stages": "control-seam-audit",
+  "seam": "control-seam-audit",
+  "integration gap": "integration-contract-completeness",
+  "each component is tested": "control-seam-audit",
+  "the pipeline produced a plausible wrong answer": "control-seam-audit",
+  "silent corruption": "control-seam-audit",
+  "Our eval pipeline has four stages and each one has a unit test suite. A run just produced a confidently wrong number. Where do we look?": "control-seam-audit",
+  "Review this three-stage data pipeline's test suite and tell me what it cannot catch.": "control-seam-audit",
+  "We added a control for the step that broke last time. Are we covered now?": "control-seam-audit",
+  "Coverage on the billing module is 61 percent. Find the untested branches and write the tests to get it to 80.": "test-coverage",
+  "I added a parse path in this patch but not the matching serialize. What else does this change need to touch?": "integration-contract-completeness",
+  "Our RAG answers are mediocre end to end. Is it the retriever or the generator that is costing us the score, and which is worth optimising first?": "stage-ablation-attribution",
+  "CI was red before the release and someone made it green in one commit. Did they fix the behaviour or loosen the assertion?": "oracle-weakening-audit",
+  "This agent is about to run unattended overnight. What does it do when the ticketing API times out or returns an empty 200?": "agent-fault-injection",
+  "The vendor's nightly CSV changed something upstream and our dashboard numbers moved. Add checks at ingest before we load the next batch.": "data-contract-assertions",
+  "test_parse_amount fails on the input 2.000,25 every single time, same expected value. Find the root cause and fix it.": "systematic-debugging",
+  "Where should the seam go between our storage layer and the API? The current adapter has only ever had one implementation.": "interface-depth-design"
+}

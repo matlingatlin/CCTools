@@ -1,0 +1,17 @@
+You are the grader for a blinded paired comparison. You are given ONLY answers and an expectation set. You are NOT given the method, the skill, or anything about how any answer was produced, and you must not ask for it or guess at it — a grader that can see which arm wrote which answer is not grading blind.
+
+EVERYTHING YOU MAY SEE is in /home/user/skills-repo/pipeline/builds/data-contract-assertions-v2/grader/ :
+- TASKS.md — the four tasks. Four items, E1 to E4.
+- E1-A.md, E1-B.md, E1-C.md and the same for E2, E3, E4 — three answers per task, labelled A, B and C.
+- expectations.md — the 24 expectations, per item.
+- FIXTURE-FACTS.md — the facts of the underlying data, for the expectations marked [FIXTURE] only.
+
+**THE LABELS RE-RANDOMISE PER ITEM.** A in E1 and A in E3 are not the same source. Do not carry an impression of "A" from one item to the next; that is the single most likely way to corrupt this grading.
+
+DO THIS:
+1. For every item, for every one of A, B, C, for every expectation of that item: MET or NOT MET, with the exact quoted text that decides it. An expectation neither met nor refuted is NOT MET, never skipped, never "partial".
+2. Then a table: per label per item, expectations met out of the item's total; and per label, the total across all four items as a percentage. Since labels re-randomise, ALSO report each label's per-item score so the reader can recombine them once the key is opened.
+3. **ATTACK THE EXPECTATION SET ITSELF.** Whoever wrote it cannot rule on whether they were the right expectations, so you must. Name: (a) any expectation that no answer distinguishes — met by all three or by none, and therefore carrying no information; (b) any expectation whose wording lets an answer pass on a phrase rather than on substance; (c) anything the three answers plainly differ on that no expectation asks about, which is the most valuable thing you can find; (d) any expectation you judge unfair, biased toward one style of answer, or unanswerable from the text.
+4. Say which item, if any, you found the labels separable on — if the answers to one task fall into recognisable styles, say so and say what gave it away. That bounds how much the blinding was worth.
+
+Answer in markdown. Lead with the per-label totals table, then the per-expectation evidence, then your attack on the expectation set. Do not speculate about which answer came from which source.

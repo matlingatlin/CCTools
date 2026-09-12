@@ -1,0 +1,7 @@
+{
+  "name": "skills-repo",
+  "version": "0.1.0",
+  "description": "A self-improving talent factory: skills, agents and commands, with a knowledge base and the checks that keep both honest.",
+  "author": { "name": "matlingatlin" },
+  "experimental": { "evals": "evals" }
+}

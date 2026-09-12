@@ -1,0 +1,17 @@
+Three independent requests from a colleague. Answer each as you actually would on the job:
+do the thing, produce what is asked for. Be concrete. Where a task asks for a prompt, a file
+or a test, WRITE IT.
+
+Write your answers to the file named at the end of this prompt, one section per task, headed
+exactly '## T1', '## T2', '## T3'. Nothing else to disk. Reply with one line.
+
+TASKS
+
+T1. We changed the summariser prompt. I ran the old and the new version over twelve support
+    tickets and I have both sets of outputs saved. Get them scored so we know which is better.
+
+T2. The reviewer went through all six pairs and answer B came out ahead in five of them.
+    Write up the conclusion for the team.
+
+T3. We have a small script that maps the anonymised answer labels back to which version
+    produced them, before we tally the results. What should its tests cover?

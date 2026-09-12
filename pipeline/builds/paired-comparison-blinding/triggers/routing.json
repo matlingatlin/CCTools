@@ -1,0 +1,18 @@
+{
+  "blind the grader": "paired-comparison-blinding",
+  "A/B": "paired-comparison-blinding",
+  "which arm produced": "paired-comparison-blinding",
+  "paired comparison": "paired-comparison-blinding",
+  "position bias": "paired-comparison-blinding",
+  "the judge can tell": "paired-comparison-blinding",
+  "unblind": "paired-comparison-blinding",
+  "randomise the order": "paired-comparison-blinding",
+  "with and without arm": "paired-comparison-blinding",
+  "I have twelve outputs, six from the arm with the new skill and six without. Set up the grading so one agent scores them all.": "paired-comparison-blinding",
+  "The grader came back saying answer A was consistently stronger across all five questions. Write up the result.": "paired-comparison-blinding",
+  "Write the check that proves our un-blinding step maps the labels back correctly.": "paired-comparison-blinding",
+  "I need my LLM judge's scores to agree with human labels before I trust them": "llm-judge-calibration",
+  "the suite went green but I think someone loosened the assertions": "oracle-weakening-audit",
+  "which of our 88 skills owns the job of writing eval prompts": "capability-routing-table",
+  "prove this new skill beats baseline before we ship it": "skill-measure"
+}

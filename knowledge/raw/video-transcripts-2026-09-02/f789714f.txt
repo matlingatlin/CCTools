@@ -1,0 +1,19 @@
+[   0.0] How do I stop burning through my clogged usage limits so fast?
+[   3.1] So I was lighting tokens on fire before I made this one little change.
+[   8.0] So I was essentially going through my entire 20X Max plan that I paid $200 a month for,
+[  13.2] every four or five days.
+[  14.3] So I'd get locked up, essentially.
+[  16.3] And the difference that was made was I started using Jay Van Cleef's ICM architecture.
+[  21.6] I read his paper, which is absolutely brilliant.
+[  24.7] And then I implemented his repo and just basically had it go through my entire file system with
+[  32.2] Claude and I organized the hell out of it.
+[  34.8] And now my token cost reduction has gone like a fifth or like a sixth or some crazy number.
+[  41.9] Like I'm now not even getting anywhere near what I was supposed to be at before.
+[  46.8] And the reason is everything is, all of the files on my computer are way more, they're
+[  53.3] way better organized.
+[  54.8] So when Claude is working through my file structure, instead of pulling in all of these files and all the context,
+[  60.8] it's finding the exact filing context that it needs versus pulling all of them in.
+[  65.4] So I'm saving so much tokens.
+[  67.6] So that's how you save it. ICM architecture.
+[  70.1] Look that up on the internet.
+[  71.3] Jake's a genius.

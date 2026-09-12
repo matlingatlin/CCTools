@@ -1,0 +1,30 @@
+{
+  "generated": "2026-08-27",
+  "by": "research-scout (wave 1)",
+  "domains_core": ["ai-agents", "llm-context-tokens", "claude-code", "nlp-rag", "software-eng-tooling", "data-infra", "prompt-engineering"],
+  "domains_bonus": ["cognition", "linguistics", "design", "decision-science"],
+  "terms": [
+    {"term": "agentic workflows orchestration", "kind": "academic", "domain": "ai-agents"},
+    {"term": "multi-agent systems coordination", "kind": "academic", "domain": "ai-agents"},
+    {"term": "LLM tool use function calling", "kind": "academic", "domain": "ai-agents"},
+    {"term": "agent evaluation benchmark harness", "kind": "academic", "domain": "ai-agents"},
+    {"term": "agent memory knowledge graph", "kind": "academic", "domain": "ai-agents"},
+    {"term": "best AI agent frameworks 2026", "kind": "top-n", "domain": "ai-agents"},
+    {"term": "why do agents loop and burn tokens", "kind": "symptom", "domain": "ai-agents"},
+    {"term": "context window management long context", "kind": "academic", "domain": "llm-context-tokens"},
+    {"term": "prompt caching token cost reduction", "kind": "practitioner", "domain": "llm-context-tokens"},
+    {"term": "context engineering for agents", "kind": "practitioner", "domain": "llm-context-tokens"},
+    {"term": "top claude code skills", "kind": "top-n", "domain": "claude-code"},
+    {"term": "awesome claude code hooks subagents plugins", "kind": "top-n", "domain": "claude-code"},
+    {"term": "claude code best practices workflows", "kind": "practitioner", "domain": "claude-code"},
+    {"term": "MCP server patterns model context protocol", "kind": "academic", "domain": "claude-code"},
+    {"term": "retrieval augmented generation reranking", "kind": "academic", "domain": "nlp-rag"},
+    {"term": "embeddings evaluation retrieval quality", "kind": "academic", "domain": "nlp-rag"},
+    {"term": "structured output JSON schema LLM", "kind": "academic", "domain": "prompt-engineering"},
+    {"term": "prompt optimization DSPy", "kind": "academic", "domain": "prompt-engineering"},
+    {"term": "AI coding agent benchmark SWE-bench", "kind": "academic", "domain": "software-eng-tooling"},
+    {"term": "codebase knowledge graph AST retrieval", "kind": "practitioner", "domain": "software-eng-tooling"},
+    {"term": "vector database vs graph database agent memory", "kind": "practitioner", "domain": "data-infra"},
+    {"term": "LLM eval methodology reliability pass@k", "kind": "academic", "domain": "nlp-rag"}
+  ]
+}

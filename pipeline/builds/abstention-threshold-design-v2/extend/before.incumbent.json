@@ -1,0 +1,6 @@
+{
+ "unit": "abstention-threshold-design",
+ "source": ".claude/skills/abstention-threshold-design/evals.md",
+ "note": "evals.md holds 11 authored scenarios, each ending 'PASS. Beats baseline.' Read as written, they are a tester's JUDGEMENT of the likely output of an agent with and without the method - the file's own Method section says so: 'judge the likely output of a capable agent WITHOUT the talent against the output WITH its method applied.' No run was executed, no output was captured, and there is no evals/evals.json. Entering those 11 rows here as result=pass would enter a prediction as a measurement. scenarios is therefore empty, which is the true state.",
+ "scenarios": []
+}

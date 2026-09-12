@@ -1,0 +1,21 @@
+{
+ "the numbers look wrong but nothing errored": "data-contract-assertions",
+ "upstream changed something and nobody told us": "data-contract-assertions",
+ "a column silently changed units": "data-contract-assertions",
+ "half the rows are null today": "data-contract-assertions",
+ "derive a data contract from a sample": "data-contract-assertions",
+ "set a drift threshold": "data-contract-assertions",
+ "our alerts are so noisy we muted them": "data-contract-assertions",
+ "fail the pipeline or quarantine the batch": "data-contract-assertions",
+ "A vendor feed lands daily. Yesterday's batch is at pipeline/packages/fixtures/data-contract-assertions-v2/reference.csv and today's at pipeline/packages/fixtures/data-contract-assertions-v2/current.csv. Derive a contract from the first and say what today's batch does to it.": "data-contract-assertions",
+ "Something is wrong with the amount column in pipeline/packages/fixtures/data-contract-assertions-v2/current.csv but the column-level statistics look fine. Find it.": "data-contract-assertions",
+ "We want to alert on drift in pipeline/packages/fixtures/data-contract-assertions-v2/current.csv. What threshold should we use?": "data-contract-assertions",
+ "Write the assertions we should run on every batch of this feed, given pipeline/packages/fixtures/data-contract-assertions-v2/reference.csv as the profile.": "data-contract-assertions",
+ "Our extraction call returns JSON that sometimes does not match the Pydantic schema we declared. I want the validator error fed back and the call retried until it conforms.": "structured-llm-extraction",
+ "We have 40,000 logged support tickets and need to pick the 200 that become the eval set, without three near-duplicates of the same templated ticket eating the slots.": "eval-set-curation",
+ "This patch adds a parse path for the new wire format but no matching serializer. Did we cover the other half of the contract, and the async variant?": "integration-contract-completeness",
+ "Review this PR before we promote the model: it changes the feature engineering and the serving endpoint, and I want train-serve skew and the promotion gate checked.": "mlops-production-review",
+ "We parse two million receipts a night and paying an LLM per record is too expensive. I want a regex pass first and only the low-confidence rejects escalated.": "hybrid-parse-escalation",
+ "Audit our S3 client against the published API specification and tell me which conformance cases the test suite is missing.": "external-domain-audit",
+ "Our classifier is confidently wrong on about one case in twenty. Where do we set the cut so the auto-approved slice holds the precision we promised, and what coverage does that cost?": "abstention-threshold-design"
+}

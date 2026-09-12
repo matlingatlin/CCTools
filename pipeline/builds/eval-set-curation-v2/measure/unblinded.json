@@ -1,0 +1,96 @@
+{
+ "key": {
+  "R01": "without.r1b",
+  "R02": "with.r1",
+  "R03": "incumbent.r1b",
+  "R04": "without.r2",
+  "R05": "with.r2",
+  "R06": "incumbent.r2"
+ },
+ "rows": [
+  {
+   "arm": "without.r1b",
+   "grader": "r1",
+   "score": 7.0,
+   "of": 17,
+   "rate": 0.4117647058823529
+  },
+  {
+   "arm": "without.r1b",
+   "grader": "r2",
+   "score": 7.0,
+   "of": 17,
+   "rate": 0.4117647058823529
+  },
+  {
+   "arm": "with.r1",
+   "grader": "r1",
+   "score": 18.5,
+   "of": 19,
+   "rate": 0.9736842105263158
+  },
+  {
+   "arm": "with.r1",
+   "grader": "r2",
+   "score": 18.5,
+   "of": 19,
+   "rate": 0.9736842105263158
+  },
+  {
+   "arm": "incumbent.r1b",
+   "grader": "r1",
+   "score": 12.0,
+   "of": 18,
+   "rate": 0.6666666666666666
+  },
+  {
+   "arm": "incumbent.r1b",
+   "grader": "r2",
+   "score": 12.0,
+   "of": 18,
+   "rate": 0.6666666666666666
+  },
+  {
+   "arm": "without.r2",
+   "grader": "r1",
+   "score": 9.0,
+   "of": 17,
+   "rate": 0.5294117647058824
+  },
+  {
+   "arm": "without.r2",
+   "grader": "r2",
+   "score": 9.0,
+   "of": 17,
+   "rate": 0.5294117647058824
+  },
+  {
+   "arm": "with.r2",
+   "grader": "r1",
+   "score": 16.5,
+   "of": 18,
+   "rate": 0.9166666666666666
+  },
+  {
+   "arm": "with.r2",
+   "grader": "r2",
+   "score": 16.0,
+   "of": 18,
+   "rate": 0.8888888888888888
+  },
+  {
+   "arm": "incumbent.r2",
+   "grader": "r1",
+   "score": 12.0,
+   "of": 18,
+   "rate": 0.6666666666666666
+  },
+  {
+   "arm": "incumbent.r2",
+   "grader": "r2",
+   "score": 12.0,
+   "of": 18,
+   "rate": 0.6666666666666666
+  }
+ ]
+}

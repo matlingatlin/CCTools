@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NestJS and TypeScript 7 (tsgo): what works, what doesn't, and the setup to use now</title>
+<meta name="description" content="Decorators and emitDecoratorMetadata do compile under tsgo. The blocker is that TypeScript 7.0 ships no compiler API, and nest build is an API consumer. Type-check with tsgo, build with 6.x.">
+<link rel="canonical" href="https://fernforge.github.io/devnotes/nestjs-typescript-7/">
+<!-- fernforge:head -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="fernforge">
+<meta property="og:title" content="NestJS and TypeScript 7 (tsgo): what works, what doesn't, and the setup to use now">
+<meta property="og:description" content="Decorators and emitDecoratorMetadata do compile under tsgo. The blocker is that TypeScript 7.0 ships no compiler API, and nest build is an API consumer. Type-check with tsgo, build with 6.x.">
+<meta property="og:url" content="https://fernforge.github.io/devnotes/nestjs-typescript-7/">
+<meta property="og:image" content="https://fernforge.github.io/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="fernforge">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="NestJS and TypeScript 7 (tsgo): what works, what doesn't, and the setup to use now">
+<meta name="twitter:description" content="Decorators and emitDecoratorMetadata do compile under tsgo. The blocker is that TypeScript 7.0 ships no compiler API, and nest build is an API consumer. Type-check with tsgo, build with 6.x.">
+<meta name="twitter:image" content="https://fernforge.github.io/og-image.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://fernforge.github.io/#organization",
+      "name": "fernforge",
+      "url": "https://fernforge.github.io/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://fernforge.github.io/fernforge-logo-512.png",
+        "width": 512,
+        "height": 512
+      },
+      "description": "A small shop building developer tools, including Alchemy and mcp-conform.",
+      "sameAs": [
+        "https://github.com/fernforge",
+        "https://www.npmjs.com/org/fernforge"
+      ]
+    },
+    {
+      "@type": "TechArticle",
+      "@id": "https://fernforge.github.io/devnotes/nestjs-typescript-7/#article",
+      "headline": "NestJS and TypeScript 7 (tsgo): what works, what doesn't, and the setup to use now",
+      "description": "Decorators and emitDecoratorMetadata do compile under tsgo. The blocker is that TypeScript 7.0 ships no compiler API, and nest build is an API consumer. Type-check with tsgo, build with 6.x.",
+      "url": "https://fernforge.github.io/devnotes/nestjs-typescript-7/",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://fernforge.github.io/devnotes/nestjs-typescript-7/"
+      },
+      "author": {
+        "@id": "https://fernforge.github.io/#organization"
+      },
+      "publisher": {
+        "@id": "https://fernforge.github.io/#organization"
+      },
+      "image": "https://fernforge.github.io/og-image.png",
+      "isPartOf": {
+        "@id": "https://fernforge.github.io/devnotes/#blog"
+      },
+      "inLanguage": "en",
+      "datePublished": "2026-07-21",
+      "dateModified": "2026-07-21"
+    }
+  ]
+}
+</script>
+<!-- /fernforge:head -->
+<style>
+:root{color-scheme:light dark;--bg:#ffffff;--fg:#1b1f24;--muted:#5b6573;--border:rgba(20,24,31,.12);--card:#ffffff;--card-hover:#f6f8fb;--accent:#2d6a4f;--accent-ink:#ffffff;--accent-weak:rgba(45,106,79,.1);--code-bg:rgba(20,24,31,.06);--header-bg:rgba(255,255,255,.85);--maxw:46rem;--radius:12px}
+@media(prefers-color-scheme:dark){:root{--bg:#0f1216;--fg:#e6e9ed;--muted:#98a2b0;--border:rgba(255,255,255,.13);--card:#161a20;--card-hover:#1b2027;--accent:#67d0a0;--accent-ink:#0f1216;--accent-weak:rgba(103,208,160,.15);--code-bg:rgba(255,255,255,.08);--header-bg:rgba(15,18,22,.85)}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--fg);background:var(--bg)}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:5px}
+.topbar{position:sticky;top:0;z-index:10;background:var(--header-bg);backdrop-filter:saturate(150%) blur(10px);-webkit-backdrop-filter:saturate(150%) blur(10px);border-bottom:1px solid var(--border)}
+.bar{max-width:var(--maxw);margin:0 auto;padding:.7rem 1.25rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.brand{display:inline-flex;align-items:center;gap:.5rem;font-weight:700;font-size:1.05rem;letter-spacing:-.02em;color:var(--fg);text-decoration:none}
+.brand svg{display:block}
+.brand .lg{stroke:var(--accent);fill:none}
+nav.pages{margin-left:auto;display:flex;flex-wrap:wrap;gap:.1rem}
+nav.pages a{color:var(--muted);text-decoration:none;font-size:.9rem;padding:.3rem .55rem;border-radius:7px;white-space:nowrap}
+nav.pages a:hover{color:var(--fg);background:var(--accent-weak)}
+nav.pages a[aria-current=page]{color:var(--accent);font-weight:600}
+main{max-width:var(--maxw);margin:0 auto;padding:2.4rem 1.25rem 3rem}
+h1{font-size:1.7rem;line-height:1.25;margin:0 0 1rem;letter-spacing:-.015em}
+h2{font-size:1.2rem;margin:2.2rem 0 .6rem;letter-spacing:-.01em}
+p,li{margin:.7rem 0}
+.lead{font-size:1.1rem}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.9em;background:var(--code-bg);padding:.1em .35em;border-radius:5px}
+pre{background:var(--code-bg);padding:1rem;border-radius:10px;overflow-x:auto;font-size:.85rem;line-height:1.5;border:1px solid var(--border)}
+pre code{background:none;padding:0}
+.src{color:var(--muted);font-size:.85rem;margin-top:3rem;border-top:1px solid var(--border);padding-top:1rem}
+.hero{margin:.4rem 0 2.4rem}
+.hero h1{font-size:2.1rem;margin:0}
+.hero p{color:var(--muted);font-size:1.12rem;margin:.5rem 0 0;max-width:32rem}
+.cards{list-style:none;padding:0;margin:0;display:grid;gap:1rem}
+.cards li{margin:0}
+.card{display:block;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.15rem 1.3rem;box-shadow:0 1px 2px rgba(20,24,31,.05);transition:border-color .15s,background .15s,transform .15s,box-shadow .15s}
+.card:hover{background:var(--card-hover);border-color:var(--accent);transform:translateY(-2px);box-shadow:0 8px 24px rgba(20,24,31,.09)}
+.card h2{font-size:1.06rem;margin:0 0 .35rem;color:var(--fg);letter-spacing:-.01em;line-height:1.35}
+.card p{margin:0;color:var(--muted);font-size:.95rem;line-height:1.55}
+.card .go{display:inline-block;margin-top:.75rem;color:var(--accent);font-size:.85rem;font-weight:600}
+footer{max-width:var(--maxw);margin:0 auto;padding:1.5rem 1.25rem 3rem;border-top:1px solid var(--border);color:var(--muted);font-size:.85rem;display:flex;gap:1rem;flex-wrap:wrap;justify-content:space-between}
+footer a{color:var(--muted)}
+footer a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+<header class="topbar">
+<div class="bar">
+<a class="brand" href="../" aria-label="devnotes home">
+<svg class="lg" width="22" height="26" viewBox="0 0 100 100" aria-hidden="true" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M50 90 Q68 50 52 10"/><path d="M53 78 Q44 65 36 63"/><path d="M53 78 Q62 65 70 63"/><path d="M57 55 Q49 44 42 43"/><path d="M57 55 Q65 44 72 43"/><path d="M57 33 Q51 25 46 24"/><path d="M57 33 Q63 25 68 24"/></svg>
+<span>devnotes</span>
+</a>
+<nav class="pages" aria-label="Notes">
+<a href="../">Home</a>
+</nav>
+</div>
+</header>
+<main>
+<h1>Does NestJS work with TypeScript 7 (tsgo)?</h1>
+
+<p class="lead">Partly, and the part that fails is not the one people expect. The Go compiler does handle <code>experimentalDecorators</code> and <code>emitDecoratorMetadata</code>, so the <code>design:paramtypes</code> metadata Nest's injector reads at boot is still emitted. What stops a clean cutover is that 7.0 ships no programmatic compiler API, and <code>nest build</code> is a program that imports <code>typescript</code> and calls <code>createProgram()</code> and <code>program.emit()</code> with its own transformers. So TypeScript 7 will type-check a Nest app today, several times faster. <code>nest build</code> will not run on it, and neither will the Swagger and GraphQL CLI plugins, ts-jest, ts-loader, or type-aware ESLint rules. The setup that works right now is 7.0 for checking and 6.x for building, installed side by side. One naming note first, because it trips people up: in the stable 7.0 release the binary is <code>tsc</code>. <code>tsgo</code> was the preview name and now only exists in the <code>@typescript/native-preview</code> nightlies.</p>
+
+<h2>Do decorators and emitDecoratorMetadata work under tsgo?</h2>
+<p>Yes. Emit support for both legacy flags landed in the native port in <a href="https://github.com/microsoft/typescript-go/pull/2343">microsoft/typescript-go#2343</a>, merged 2025-12-12, and has been getting fixes since: symbol-named decorated methods (#2446, March 2026) and <code>design:type</code> metadata for <code>bigint</code> on pre-ES2020 targets (#4106, June 2026). The port emits the same <code>__decorate</code>, <code>__metadata</code> and <code>__param</code> helpers <code>tsc</code> does, which is exactly what <code>reflect-metadata</code> and Nest's DI container read.</p>
+<p>If you hit a post saying decorators don't compile in the native port, check its date. The TypeScript team's own December 2025 progress note said downlevel emit went "as far back as the <code>es2021</code> target, and with no support for compiling decorators", and that line was written around the time the PR merged. It's stale.</p>
+<p>One thing worth being honest about: nobody has published a byte-for-byte diff of the two compilers' metadata output across a real Nest app with entities, guards and custom param decorators. Build both, boot the app, run the e2e suite. DI failures from missing metadata are loud, so this check is cheap.</p>
+
+<h2>Why can't nest build use tsgo?</h2>
+<p>Because the Go compiler is a CLI, and <code>nest build</code> wants a library. The Nest CLI loads the <code>typescript</code> package and drives it directly:</p>
+<pre><code>// @nestjs/cli, lib/compiler/compiler.ts
+const createProgram = tsBinary.createIncrementalProgram || tsBinary.createProgram;
+const program = createProgram.call(ts, { rootNames, projectReferences, options });
+const emitResult = program.emit(undefined, undefined, undefined, undefined, {
+  before, after, afterDeclarations,   // &lt;- CLI plugins hook in here
+});</code></pre>
+<p>None of those exist in 7.0. The release post is blunt about it: "TypeScript 7.0 is here, it does not ship with an API," with a new and different API expected in 7.1.</p>
+<p>There's a second-order trap. The CLI's TypeScript loader resolves from <code>process.cwd()</code> first, so it picks up whatever <code>typescript</code> your project has installed in preference to its own bundled copy. Install 7.0 into a Nest project and <code>nest build</code> doesn't report a type error, it fails reaching for a function that isn't there. As of <code>@nestjs/cli</code> 11.0.24 the supported builders are <code>tsc</code>, <code>swc</code> and <code>webpack</code>; there is no <code>tsgo</code> builder, and the request for one is <a href="https://github.com/nestjs/nest/issues/15620">nestjs/nest#15620</a>.</p>
+
+<h2>Which Nest plugins and dev dependencies break?</h2>
+<p>Anything that reads your AST. The Swagger and GraphQL CLI plugins are ordinary TypeScript transformers, and they take a <code>ts.Program</code>:</p>
+<pre><code>// @nestjs/swagger, lib/plugin/compiler-plugin.ts
+export const before = (options?: Record&lt;string, any&gt;, program?: ts.Program) =&gt; ...</code></pre>
+<p>Those plugins are why your DTOs get <code>@ApiProperty</code> for free. Without a compiler API there is nowhere for them to run, so this isn't a version bump you can wait out per-package.</p>
+<p>Then check devDependencies. A stock <code>nest new</code> project ships four more API consumers before you add anything: <code>ts-jest</code>, <code>ts-loader</code>, <code>ts-node</code> and <code>typescript-eslint</code>. That covers your test transform, webpack builds, seed scripts and lint. Swapping the test transform to <code>@swc/jest</code> removes one of them and is a good idea regardless of TypeScript 7, since ts-jest type-checks every test file on every run.</p>
+
+<h2>What in a NestJS tsconfig is now a hard error?</h2>
+<p><code>baseUrl</code> is the one that catches Nest projects, because the CLI generated it. The warning has been showing up since TypeScript 6.0 (<a href="https://github.com/nestjs/nest/issues/15883">nestjs/nest#15883</a>, opened 2025-11-05), and in 7.0 it stops being a warning. The fix is not <code>ignoreDeprecations</code>, which is itself gone: delete <code>baseUrl</code> and rewrite <code>paths</code> as relative to the tsconfig's own directory.</p>
+<pre><code>{
+  "compilerOptions": {
+    "baseUrl": "./",                       // remove
+    "paths": { "@app/*": ["src/*"] }       // becomes "./src/*"
+  }
+}</code></pre>
+<p>Also removed in 7.0 and worth grepping across a monorepo's base tsconfig, not just the root one: <code>moduleResolution</code> of <code>node</code> or <code>node10</code> (use <code>nodenext</code> or <code>bundler</code>), <code>module</code> of <code>amd</code>, <code>umd</code>, <code>systemjs</code> or <code>none</code>, <code>target: es5</code>, and <code>downlevelIteration</code>. Projects generated by Nest 11 are mostly clear already, since the starter moved to <code>nodenext</code> and <code>ES2023</code>; anything older carries the old defaults. A single pass that reports both the dead tsconfig flags and the Compiler-API consumers in your dependency tree: <code>npx <a href="https://github.com/fernforge/tsgo-ready">tsgo-ready</a></code>.</p>
+
+<h2>What's the setup that works today?</h2>
+<p>Two compilers, each doing the job it can do. For a Nest project the direction of the swap is forced: the package literally named <code>typescript</code> has to stay on 6.x, because that's the one <code>nest build</code>, ts-jest, ts-loader and typescript-eslint resolve and import. TypeScript publishes a compatibility package for exactly this, and the alias is the team's own recommendation:</p>
+<pre><code>{
+  "devDependencies": {
+    "typescript": "npm:@typescript/typescript6@^6.0.2"
+  },
+  "scripts": {
+    "typecheck": "npx -y -p typescript@7 tsc --noEmit -p tsconfig.build.json",
+    "build": "nest build",
+    "test": "jest"
+  }
+}</code></pre>
+<p>Running the 7.0 checker through <code>npx -p</code> keeps it out of <code>node_modules/typescript</code>, which is the whole point; installing it there is what breaks the build. Put <code>typecheck</code> in CI where the speed pays off and leave everything else on 6.x. If what you actually want is faster builds rather than faster checks, <code>nest build -b swc</code> already exists and already works, at the cost of no type-checking during the build. Pair it with the check above and you have both.</p>
+
+<h2>What's still unresolved</h2>
+<p>Three things, and pretending otherwise would be guessing:</p>
+<ul>
+<li>NestJS has not published a position or a timeline on tsgo support. Issue #15620 exists; a <code>-b tsgo</code> builder does not.</li>
+<li>The 7.1 API is described as new and different. Whether the Nest CLI's <code>before</code>/<code>after</code>/<code>afterDeclarations</code> transformer hooks map onto it cleanly, and how much of the Swagger plugin has to be rewritten, is unknown until it ships.</li>
+<li>The CLI is already sensitive to compiler-version changes. <a href="https://github.com/nestjs/nest-cli/issues/3312">nest-cli#3312</a> (April 2026) had <code>nest build</code> exit 0 and write zero files on TypeScript 6 with <code>incremental: true</code>. Whatever your compiler version, confirm <code>dist/</code> actually contains files before you trust a green build.</li>
+</ul>
+
+<p class="src">Notes from <a href="https://github.com/fernforge">fernforge</a>, which maintains <a href="https://github.com/fernforge/tsgo-ready">tsgo-ready</a>. Checked 2026-07-20 against the TypeScript 7.0 release announcement (2026-07-08), microsoft/typescript-go PR #2343 (merged 2025-12-12), and the published source of <code>@nestjs/cli</code> 11.0.24.</p>
+</main>
+<footer>
+<span>Built by <a href="https://github.com/fernforge">fernforge</a>.</span>
+<a href="../">devnotes home</a>
+</footer>
+</body>
+</html>

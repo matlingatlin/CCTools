@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+    <title>Fast tests for slow services: why you should use verified fakes</title>
+    <link href="//gmpg.org/xfn/11" rel="profile">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    <!-- Enable responsiveness on mobile devices-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS -->
+    <link rel="stylesheet" href="/public/css/main.css">
+    <!-- Icons -->
+  <link rel="icon" type="text/png" href="/assets/icon.png">
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/atom.xml">
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Fast tests for slow services: why you should use verified fakes" />
+<meta name="author" content="Itamar Turner-Trauring" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Sometimes your Python tests need to talk to something slow and not under your control. Learn how to write fast and realistic tests, without resorting to mocks." />
+<meta property="og:description" content="Sometimes your Python tests need to talk to something slow and not under your control. Learn how to write fast and realistic tests, without resorting to mocks." />
+<link rel="canonical" href="https://pythonspeed.com/articles/verified-fakes/" />
+<meta property="og:url" content="https://pythonspeed.com/articles/verified-fakes/" />
+<meta property="og:site_name" content="Python⇒Speed" />
+<meta property="og:image" content="https://pythonspeed.com/assets/titles/verified-fakes.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-01-11T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://pythonspeed.com/assets/titles/verified-fakes.png" />
+<meta property="twitter:title" content="Fast tests for slow services: why you should use verified fakes" />
+<meta name="twitter:site" content="@itamarst" />
+<meta name="twitter:creator" content="@itamarst" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Itamar Turner-Trauring","url":"mailto:itamar@pythonspeed.com"},"dateModified":"2021-10-01T15:00:09+00:00","datePublished":"2019-01-11T00:00:00+00:00","description":"Sometimes your Python tests need to talk to something slow and not under your control. Learn how to write fast and realistic tests, without resorting to mocks.","headline":"Fast tests for slow services: why you should use verified fakes","image":"https://pythonspeed.com/assets/titles/verified-fakes.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://pythonspeed.com/articles/verified-fakes/"},"url":"https://pythonspeed.com/articles/verified-fakes/"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+
+
+    <body>
+        <header class="topbar" style="padding: 0.5em 0em; margin: 0em;">
+    <nav role="navigation" class="container">
+        <div style="display: flex; width: 100%; flex-direction: row; justify-content: flex-start; font-size: 95%; flex-wrap: wrap;">
+            <div style="flex: auto;">
+                <strong><a href="/">Python⇒Speed</a></strong><br>
+                ─ <a href="/about/" >About</a><br>
+                ─ <a href="mailto:itamar@pythonspeed.com">Contact</a>
+            </div>
+            <div style="flex: auto;">
+                <strong>Articles</strong><br>
+                ─ <a href="/datascience/" >Faster data science</a><br>
+                ─ <a href="/climatecrisis/" >Climate crisis</a><br>
+                ─ <a href="/docker/" >Docker packaging</a><br>
+            </div>
+            <div style="flex: auto;"><strong>Products</strong><br>
+                ─ <a href="/products/datascience/" >Faster data science</a><br>
+                ─ <a href="/products/docker/" >Docker packaging</a><br>
+            </div>
+        </div>
+        <div style="padding-top: 10px; min-height: 4em; align-items: center;">
+            <link href="/_pagefind/pagefind-component-ui.css" rel="stylesheet">
+            <script src="/_pagefind/pagefind-component-ui.js" type="text/javascript"></script>
+            <pagefind-config bundle-path="/_pagefind/"></pagefind-config>
+            <pagefind-searchbox></pagefind-searchbox>
+        </div>
+    </nav>
+</header>
+
+<main class="main">
+    <div class="content container">
+    
+
+<div class="post" role="main" itemscope itemtype="http://schema.org/BlogPosting">
+  <h1 class="post-title" role="heading" itemprop="headline">Fast tests for slow services: why you should use verified fakes</h1>
+  <p class="post-date-and-author">by <span rel="author"><a href="mailto:itamar@pythonspeed.com">Itamar Turner-Trauring</a></span><br>Last updated 01 Oct 2021, originally created 11 Jan 2019</p>
+  <div itemprop="articleBody">
+      <p>Let’s say your code talks to some slow or expensive external service—the Twitter API, say.
+When it comes time to write tests you face a dilemma:</p>
+
+<ul>
+  <li>One the one hand, talking to the real API would make your tests slow, hard to run, and flaky.</li>
+  <li>On the other hand, if you use a fake or mock test double, how do you know that your code will actually work in the real world?
+After all, the fake is—fake.
+Your code isn’t talking to the real thing.</li>
+</ul>
+
+<p><strong>You want correctness <em>and</em> speed: the confidence that if your tests pass, your code will run in production, as well as the ability to have a fast and robust test suite.</strong></p>
+
+<p>The solution is a special kind of test double: a <em>verified</em> fake.
+Unlike regular test doubles, where you swap out the real thing for some random object, with verified fakes you actually prove the test double has the same behavior as the real thing.</p>
+
+<p>In this article I’ll cover:</p>
+
+<ul>
+  <li>A quick intro to test doubles in general.</li>
+  <li>How to write a verified fake, and why it’s different.</li>
+  <li>The limitations of verified fakes, and when you should use them.</li>
+</ul>
+
+<!-- TEASER_END -->
+
+<h2 id="testing-with-test-doubles">Testing with test doubles</h2>
+
+<p>Before looking at Verified Fakes, let’s take a quick look at why test doubles are useful.
+Let’s say you have a <code class="language-plaintext highlighter-rouge">MessageService</code> class you want to test, and it uses <code class="language-plaintext highlighter-rouge">TwitterClient</code>.</p>
+
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">MessageService</code> → <code class="language-plaintext highlighter-rouge">TwitterClient</code></p>
+</blockquote>
+
+<p>You could write tests like this:</p>
+
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">Tests</code> → <code class="language-plaintext highlighter-rouge">MessageService</code> → <code class="language-plaintext highlighter-rouge">TwitterClient</code></p>
+</blockquote>
+
+<p>But then your tests will end up talking to the real Twitter API.
+So instead, you create a <code class="language-plaintext highlighter-rouge">FakeTwitterClient</code> and use it in your tests:</p>
+
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">Tests</code> → <code class="language-plaintext highlighter-rouge">MessageService</code> → <code class="language-plaintext highlighter-rouge">FakeTwitterClient</code></p>
+</blockquote>
+
+<p>Now your tests can prove <code class="language-plaintext highlighter-rouge">MessageService</code> works without have to talk to the Twitter API.</p>
+
+<p>There’s only one problem: you’re assuming that <code class="language-plaintext highlighter-rouge">TwitterClient</code> and <code class="language-plaintext highlighter-rouge">FakeTwitterClient</code> behave the same, without any evidence to suggest that.
+Yes, there are tools like the <code class="language-plaintext highlighter-rouge">mock</code> library in Python that make this a little easier, but at best those make sure you’re matching the function signature.</p>
+
+<p>What they don’t do is validate anything about behavior.</p>
+
+<h3 id="from-fakes-to-verified-fakes">From fakes to verified fakes</h3>
+
+<p>In order to make <code class="language-plaintext highlighter-rouge">FakeTwitterClient</code> into a <em>verified</em> fake, a fake you can trust, you need to write an additional set of tests that run against both <code class="language-plaintext highlighter-rouge">TwitterClient</code> and <code class="language-plaintext highlighter-rouge">FakeTwitterClient</code>.
+These tests validate some sort of contract or interface that you expect both implementations to adhere to.</p>
+
+<p>Running the same tests against both implementations ensures both versions behave the same way:</p>
+
+<blockquote>
+  <p><code class="language-plaintext highlighter-rouge">TwitterContractTests</code> → <code class="language-plaintext highlighter-rouge">TwitterClient</code></p>
+
+  <p><code class="language-plaintext highlighter-rouge">TwitterContractTests</code> → <code class="language-plaintext highlighter-rouge">FakeTwitterClient</code></p>
+</blockquote>
+
+<h2 id="a-worked-out-example">A worked out example</h2>
+
+<p>Let’s say <code class="language-plaintext highlighter-rouge">TwitterClient</code> looks like this:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">TwitterClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sh">"""</span><span class="s">A client for the Twitter API.</span><span class="sh">"""</span>
+    <span class="k">def</span> <span class="nf">tweet</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">Tweet a message for the user.</span><span class="sh">"""</span>
+        <span class="c1"># ... implementation ...
+</span>        
+    <span class="k">def</span> <span class="nf">list_tweets</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">Return a list of the user</span><span class="sh">'</span><span class="s">s tweets.</span><span class="sh">"""</span>
+        <span class="c1"># ... implementation ...
+</span></code></pre></div></div>
+
+<p>This client provides a behavioral guarantees, a contract of sorts: if a message is tweeted it will show up in the list of tweets.
+You can encode this contract into a test:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">test_tweet_listed</span><span class="p">(</span><span class="n">client</span><span class="p">):</span>
+    <span class="sh">"</span><span class="s">A tweeted messages shows up in the list of messages.</span><span class="sh">"</span>
+    <span class="n">message</span> <span class="o">=</span> <span class="nf">generate_random_message</span><span class="p">()</span>
+    <span class="n">client</span><span class="p">.</span><span class="nf">tweet</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">client</span><span class="p">.</span><span class="nf">list_tweets</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>You want <code class="language-plaintext highlighter-rouge">FakeTwitterClient</code> to provide the same guarantee, so that when you can confidently use it as a drop-in replacement for <code class="language-plaintext highlighter-rouge">TwitterClient</code>.
+So you implement a <code class="language-plaintext highlighter-rouge">FakeTwitterClient</code> that implements this contract:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">FakeTwitterClient</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="sh">"""</span><span class="s">A fake client.</span><span class="sh">"""</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">messages</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">tweet</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">message</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">Tweet a message for the user.</span><span class="sh">"""</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">messages</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">list_tweets</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="sh">"""</span><span class="s">Return a list of the user</span><span class="sh">'</span><span class="s">s tweets.</span><span class="sh">"""</span>
+        <span class="k">return</span> <span class="n">self</span><span class="p">.</span><span class="n">messages</span>
+</code></pre></div></div>
+
+<p><strong>And here’s the important bit: you want to run <code class="language-plaintext highlighter-rouge">test_tweet_listed</code> twice.</strong>
+Once against the real client and once against the fake client, to ensure they both provide the same behavior.</p>
+
+<p>The version of <code class="language-plaintext highlighter-rouge">test_tweet_listed</code> that runs against <code class="language-plaintext highlighter-rouge">FakeTwitterClient</code> is just another fast in-memory test, so it can be run anywhere by anyone.</p>
+
+<p>The version that will run against the real client will need to use a real Twitter login (presumably a test account of some sort).
+This means it will be slow and not something you want developers running regularly.
+The contract verification test for <code class="language-plaintext highlighter-rouge">TwitterClient</code> could therefore be configured to only run on the CI server once a night, or when the relevant code changes.</p>
+
+<p>Once you have <code class="language-plaintext highlighter-rouge">test_tweet_listed</code> running against both classes you have some guarantee that <code class="language-plaintext highlighter-rouge">TwitterClient</code> and <code class="language-plaintext highlighter-rouge">FakeTwitterClient</code> behave the same way.
+And that means you can trust that the tests for <code class="language-plaintext highlighter-rouge">MessageService</code> are valid tests even though they rely on <code class="language-plaintext highlighter-rouge">FakeTwitterClient</code> and not the real thing.</p>
+
+<h2 id="the-limits-of-verified-fakes">The limits of verified fakes</h2>
+
+<p><code class="language-plaintext highlighter-rouge">TwitterClient</code> may produce errors in some cases, e.g. if a message is too long it might throw a <code class="language-plaintext highlighter-rouge">InvalidMessageException</code>.
+This sort of error can easily be implemented in <code class="language-plaintext highlighter-rouge">FakeTwitterClient</code> and verified by the contract tests.</p>
+
+<p>Some errors cannot be verified by a contract test, however.
+For example, if the Twitter API server has a bug it might return an error that results in an exception being raised by <code class="language-plaintext highlighter-rouge">TwitterClient</code>.
+Or, a network error may result in a <code class="language-plaintext highlighter-rouge">socket.error</code> exception.</p>
+
+<p>The problem with these errors is that they are difficult or impossible to trigger reliably in your contract verification tests.
+If you can’t trigger an edge case in your contract verification tests, then you don’t have a verified fake for that edge case.</p>
+
+<p>The best you can do, if you want to trigger these errors in <code class="language-plaintext highlighter-rouge">MessageService</code> tests, is to just go the regular test double route and have an unverified fake or mock.</p>
+
+<h2 id="when-should-you-use-a-verified-fake">When should you use a verified fake?</h2>
+
+<p>A verified fake gives you more assurance that your tests are testing what you think you’re testing, since the test double has been verified to act like the real thing.
+On the other hand, this requires more work, since you have to create an additional set of contract verification tests.</p>
+
+<p>That means verified fakes make sense when the following conditions apply:</p>
+
+<ol>
+  <li><strong>The API you want to fake is slow and/or expensive to setup.</strong>
+Otherwise, why not use the real thing?</li>
+  <li><strong>The API you want to fake is frequently used by test code.</strong>
+If it’s only used once, maybe it’s better to just use the real thing.</li>
+  <li><strong>The cost of uncaught bugs is high.</strong>
+If bugs aren’t expensive, it may not be worth the extra effort to write the extra contract tests.</li>
+</ol>
+
+<p>Next time you’re about to write a fake, consider whether this is a good place for verified fakes.
+With a little bit of work you’ll end up with tests that are fast <em>and</em> correct.</p>
+
+  </div>
+  
+  
+  <!-- <span style="font-size: 200%;">
+<ul class="share-buttons" aria-hidden="true">
+  <li><a href="https://twitter.com/intent/tweet?source=https%3A%2F%2Fpythonspeed.com&text=:%20https%3A%2F%2Fpythonspeed.com" target="_blank" title="Tweet" onclick="window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(document.title) + ':%20' + encodeURIComponent(document.URL)); return false;"><span class="icon-twitter-square"></span></a></li>
+  <li><a href="https://www.reddit.com/submit?url=https%3A%2F%2Fpythonspeed.com&title=" target="_blank" title="Submit to Reddit" onclick="window.open('http://www.reddit.com/submit?url=' + encodeURIComponent(document.URL) + '&title=' +  encodeURIComponent(document.title)); return false;"><span class="icon-reddit-square"></span></a></li>
+  <li><a href="#" class="hn-linkbutton" target="_blank" title="Discuss on Hacker News"><span class="icon-hacker-news fa-2x"></span></a></li>
+  <li><a href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fpythonspeed.com" target="_blank" title="Share on Facebook" onclick="window.open('https://www.facebook.com/sharer.php?u=' + encodeURIComponent(document.URL); return false;"><span class="icon-facebook-square"></span></a></li>
+</ul></span> -->
+
+  
+  <blockquote>
+<div id="subscriber_cta" style="display: none;">
+    
+    <h3>Python code too slow? You can get faster results 5 different ways</h3>
+<p>From parallelism to compiled code and beyond, there are multiple different ways to speed up your Python code. Apply them all, and your code will be even faster! Learn more about the <em><a href="/products/practicesperformance/">Practices of Performance</a></em>.</p>
+
+    
+</div>
+<div id="normal_cta" style="display: none;">
+    
+    <h3>Is your Python code too slow, or using too much memory?</h3>
+<p>You can get faster results, save time, and save money, often with fairly small tweaks. Take a few minutes every week to learn practical Python tools and techniques, from Python performance to reducing memory usage, by signing up for my weekly newsletter.</p>
+<script async data-uid="26e64401b5" src="https://hyphenated-enterprises-llc-2.ck.page/26e64401b5/index.js"></script>
+
+    
+</div>
+</blockquote>
+
+</div>
+
+
+    </div>
+</main>
+<footer class="bottombar">
+    <nav class="container">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/atom.xml">RSS Feed</a></li>
+            <li><a rel="me" href="https://hachyderm.io/@itamarst">Mastodon</a></li>
+            <li><a href="/privacypolicy/">Privacy policy</a></li>
+            <li><a href="/terms/">Terms &amp; Conditions</a></li>
+    </ul>
+        </nav>
+    <div class="container" role="contentinfo">&copy; 2026 Hyphenated Enterprises LLC. All rights reserved.</div>
+</footer>
+
+
+        <link rel="stylesheet" href="/public/css/katex-swap.min.css">
+        <script type="text/javascript" src="/public/js/local.js"></script>
+          <script>
+           var cta = "testing";
+           var elem = null;
+           if (showSubscriberCTA(cta)) {
+               elem = document.querySelector("#subscriber_cta");
+           } else {
+               elem = document.querySelector("#normal_cta");
+           }
+           if (elem !== null) {
+               elem.style.display = "";
+           }
+          </script>
+          <script async type="text/javascript">
+           var _paq = window._paq = window._paq || [];
+           /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+           _paq.push(['trackPageView']);
+           _paq.push(['enableLinkTracking']);
+           (function() {
+               var u="https://hyphenated.matomo.cloud/";
+               _paq.push(['setTrackerUrl', u+'matomo.php']);
+               _paq.push(['setSiteId', '1']);
+               var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+               g.async=true; g.src='//cdn.matomo.cloud/hyphenated.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g,s);
+           })();
+          </script>
+  </body>
+</html>

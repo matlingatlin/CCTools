@@ -1,0 +1,375 @@
+{
+  "_doc": "Self-playing-piano shared state. Committed so it survives container reclaim. Coordinator (main session) is the ONLY writer that commits; track agents return data.",
+  "updated": "2026-08-28",
+  "tracks": {
+    "T1_factory": {
+      "desc": "eval + adopt/build factory talents. catalog.json (decision field) is the source of truth after the ECC re-audit.",
+      "resolved_by_reaudit": "The old hand-shortlist of ~50 is resolved in catalog.json: 21 adopted, 27 adapt (9/12 clusters already covered), rejects for unsafe (deep-research/exa-search/strategic-compact/delivery-gate/gateguard/skill-comply/agent-eval/ck/continuous-learning-v2/autonomous-agent-harness), orch-*/team-*/plan-orchestrate/ralphinho/blueprint/dynamic-workflow-mode/gan/continuous-agent-loop covered by existing talents.",
+      "built_this_session": [
+        "prompt-refinement",
+        "agent-surface-security-audit",
+        "cost-aware-model-routing",
+        "decision-council",
+        "agent-blast-radius-guard"
+      ],
+      "build_on_demand": [
+        {
+          "name": "behavioral-spec-mining",
+          "from": "spec-miner",
+          "when": "reverse-engineering a brownfield repo"
+        },
+        {
+          "name": "measured-optimization-loop",
+          "from": "benchmark-optimization-loop",
+          "when": "a perf/optimization task"
+        },
+        {
+          "name": "style-inheritance",
+          "from": "inherit-legacy-style",
+          "when": "working in a legacy repo with implicit conventions"
+        },
+        {
+          "name": "hybrid-parse-escalation",
+          "from": "regex-vs-llm-structured-text",
+          "when": "a structured-text parsing task"
+        },
+        {
+          "name": "mlops-production-review",
+          "from": "mle-reviewer",
+          "when": "reviewing production ML code"
+        }
+      ]
+    },
+    "T2_graphify": {
+      "desc": "graphify pilot + full feature eval",
+      "status": "COMPLETE — adopted as graphify-harvest talent (code-only, god-nodes/affected/global cross-repo graph, callflow/obsidian exports); full --help surface audited. EXCLUDED from further loop work.",
+      "excluded": true
+    },
+    "T3_scout": {
+      "desc": "generate search terms + sources + entities (feeds T4)",
+      "terms_done": [
+        "wave1-core-batch"
+      ],
+      "sources_emitted": 16
+    },
+    "T4_harvester": {
+      "desc": "consume T3 sources, harvest research, deposit to research/ (feeds T1 build_candidates)",
+      "queue_sources": [
+        {
+          "type": "profile",
+          "ref": "hamelsmu (Hamel Husain)",
+          "why": "error-analysis-driven eval design — what to measure from failure taxonomy"
+        },
+        {
+          "type": "papers",
+          "ref": "arXiv 2025 verifier-guided self-improvement for agents",
+          "why": "verifier-gated reflection loops that converge"
+        },
+        {
+          "type": "papers",
+          "ref": "arxiv cs.AI: agentic workflows / agent memory / tool use (last 12 mo)",
+          "why": "methods"
+        },
+        {
+          "type": "papers",
+          "ref": "semantic-scholar: LLM eval methodology pass@k reliability",
+          "why": "eval methods"
+        },
+        {
+          "type": "profile",
+          "ref": "simonwillison.net + github.com/simonw",
+          "why": "practical LLM tooling"
+        },
+        {
+          "type": "github",
+          "ref": "affaan-m/everything-claude-code",
+          "why": "aggregator; dedup vs ECC on harvest"
+        },
+        {
+          "type": "github",
+          "ref": "punkpeye/awesome-mcp-servers",
+          "why": "curated MCP list"
+        },
+        {
+          "type": "web-top-n",
+          "ref": "google: top claude code skills 2026",
+          "why": "curated skill lists"
+        },
+        {
+          "type": "web-top-n",
+          "ref": "google: best AI agent frameworks 2026",
+          "why": "framework landscape"
+        },
+        {
+          "type": "github",
+          "ref": "hesreallyhim/awesome-claude-code",
+          "why": "canonical curated list (36.8k)"
+        },
+        {
+          "type": "github",
+          "ref": "wong2/awesome-mcp-servers",
+          "why": "MCP catalog"
+        }
+      ],
+      "done_sources": [
+        "github:Aider-AI/aider",
+        "github:anthropics/skills",
+        "github:dottxt-ai/outlines",
+        "github:getzep/graphiti",
+        "github:hamelsmu",
+        "github:jxnl/instructor",
+        "github:modelcontextprotocol/servers",
+        "github:outlines-dev/outlines",
+        "github:promptfoo/promptfoo",
+        "github:pydantic/pydantic-ai",
+        "github:rohitg00/awesome-claude-code-toolkit",
+        "github:simonw/llm",
+        "github:stanfordnlp/dspy",
+        "web-top-n:top-10-claude-code-skills",
+        "github:mattpocock/skills",
+        "github:addyosmani/agent-skills"
+      ],
+      "_ordering": "LESSONS-driven: primary repos + papers + profiles first; awesome-lists/web-top-n sunk to bottom (yield 0.00)"
+    },
+    "T5_curator": {
+      "desc": "library-curator: periodically test + improve the adopted tier (database 2). Runs every ~3 waves or when health degrades.",
+      "cadence": "every ~3 harvest/build waves",
+      "last_pass": null,
+      "backlog": "~39 adopted talents still lack evals.md (write on curation passes)",
+      "schedule": "cron 0 3,7,11,15,19,23 * * * (every 4h offset +3h, ~1h, soft-stop)"
+    },
+    "sources": [
+      {
+        "repo": "kepano/obsidian-skills",
+        "type": "github-practitioner",
+        "why": "Practitioner skills for agent+CLI+open-format workflows. Rank 34.",
+        "priority": 2
+      },
+      {
+        "repo": "headroomlabs-ai/headroom",
+        "type": "github-practitioner",
+        "why": "Compress tool outputs/logs/RAG chunks BEFORE they reach the LLM — adjacent to our context-budget but upstream of it (transport-layer compression vs budget accounting). Check whether it is a real method or a tool. NB rank 21 and 38 are two different owners with identical descriptions — dedup before harvesting.",
+        "priority": 2
+      },
+      {
+        "repo": "multica-ai/andrej-karpathy-skills",
+        "type": "github-practitioner",
+        "why": "A CLAUDE.md derived from Karpathy's observed LLM coding pitfalls — a failure-mode catalogue, which is the seam error-analysis-taxonomy came from. Rank 4.",
+        "priority": 2
+      },
+      {
+        "repo": "DietrichGebert/ponytail",
+        "type": "github-practitioner",
+        "why": "'Think like the laziest senior dev — the best code is the code you never wrote.' A subtract-first discipline; we hold that idea only inside loop-design-check step 0. Rank 10.",
+        "priority": 3
+      },
+      {
+        "repo": "agenthatch/agenthatch",
+        "type": "github-practitioner",
+        "priority": 2,
+        "why": "Compiles SKILL.md with BUILD-TIME schema validation. That is a method we lack: we validate frontmatter by reading, not by a gate that fails the build. Directly relevant to talent-deploy and writing-skills."
+      },
+      {
+        "repo": "claude-plugins-official/ralph-loop",
+        "type": "github-vendor",
+        "priority": 3,
+        "why": "'Iterative development loops'. Worth ONE look for a specific reason: our own loop-design-check names the 'Ralph-Wiggum loop' (spinning in place, burning tokens) as the anti-pattern damping exists to prevent. Either this encodes the damped version and we learn something, or it is the anti-pattern shipped as a plugin and that is worth knowing too."
+      }
+    ]
+  },
+  "build_candidates": {
+    "queue": [
+      {
+        "name": "accessibility-conformance-audit",
+        "priority": 1,
+        "job": "Audit a UI against WCAG 2.2 AA and report which criteria were MACHINE-checked, which were HUMAN-checked, and which remain UNVERIFIED, so 'accessible' is never claimed on the strength of a green scanner.",
+        "nearest": "app-design (Scio) lists Contrast, Focus visibility and Queryable role as deterministic gate checks and already contains the sentence 'the automatable share passed -- never accessible'. That sentence is an ASSERTION WITH NO PROCEDURE BEHIND IT. Distinct on trigger: app-design fires when deciding a visual system or writing tokens, BEFORE the UI exists; this fires on 'is this accessible / fix the a11y bugs / we need WCAG sign-off', AFTER it exists, per success criterion -- including criteria no token set can reach (keyboard operability, focus order, live-region announcements, reflow at 320px, 200% zoom).",
+        "source": "github.com/testland/qa plugins/qa-accessibility (MIT, no hooks dir -- verified 404): wcag-keyboard-navigation, aria-authoring-patterns, screen-reader-test-author, a11y-violation-gate (ratchet on NEW violations against a checked-in baseline -- no analogue in either library). Method backing: W3C WCAG 2.2, ARIA APG.",
+        "scenario_sketch": "A React card grid built on <div onClick>. 'Make this accessible, we ship Thursday.' Baseline adds role=button, tabindex=0, aria-label, runs axe, sees green, reports 'WCAG 2.2 AA compliant'. Three defects: role=button promises Enter/Space activation the div never implements (SC 2.1.1, CREATED by the ARIA); axe cannot detect it so green is not evidence; and a conformance claim is a legal statement issued on partial coverage.",
+        "security_note": "qa-accessibility ships no hooks and no install scripts -- procedural text only, clean. But its skills invoke npx axe-core / pa11y / Lighthouse: EXTERNAL CLI at run time. Adopt the procedural half (SC tables, APG substitutions, announcement scripts, ratchet design) as inert text; anything executable is sandboxed or documented-not-auto-run.",
+        "COORDINATOR_CORRECTION": "The scout justified this with 'WebAIM Million 2025: 57 errors with ARIA vs 27 without'. I checked the primary source: the current report says 59.1 vs 42, and 95.9% of home pages have detected WCAG failures. The DIRECTION holds; the magnitude does not (2.1x becomes 1.41x). Any skill built from this MUST carry the current figures, name the edition, and state the confound WebAIM itself notes -- ARIA-heavy pages are more complex pages, so this is correlation, not evidence that adding ARIA causes failures. Do not repeat 57/27."
+      },
+      {
+        "name": "interaction-state-matrix",
+        "priority": 2,
+        "job": "Before building an interactive element, enumerate its states as a cross-product against MODALITY -- every state x {visual, screen reader, keyboard, touch} -- and require each cell filled or explicitly waived.",
+        "nearest": "app-design section 4 ('the states that are always missing': Empty/Loading/Error/Partial) is four states in ONE modality, scoped to lists/forms/fetches, firing on screen review. This adds the second dimension and fires on building/reviewing ONE interactive component. Section 4 cannot ask what a screen reader announces on entering the error state -- it has no modality column.",
+        "source": "github.com/Owl-Listener/designpowers skills/interaction-design/SKILL.md STEP 1 ONLY. Steps 2-5 are already held: app-design 4a owns motion admission, frontend-design owns error-copy format.",
+        "scenario_sketch": "'Add a delete-account confirmation dialog.' Baseline gives a good modal -- focus ring, trap, Escape closes -- and swaps the button to a spinner on submit. A screen-reader user hears NOTHING for the 3s round trip (no aria-busy, no live region), then the dialog unmounts and focus resets to <body>: dumped at the top of the document, with no announcement of whether the account was deleted. The matrix makes it unmissable -- Loading x ScreenReader and Success x Keyboard are empty cells, and an empty cell is a defect rather than an omission nobody looked for.",
+        "security_note": "DO NOT INSTALL the designpowers plugin. Scout reports its plugin.json wires a SessionStart hook to hooks/run-hook.cmd, a bash trampoline (exec \"$SCRIPT_DIR/$1\") running an arbitrary file from its hooks dir by argument, unconditionally on every startup/clear/compact; plus a self-mandating router skill and a write to ~/.designpowers/. Gate 4 rejects the PACKAGE. The interaction-design SKILL.md text is inert: read it, extract the matrix, cite it, never wire the plugin. Coordinator note: I did not independently verify the hook; the action it implies (do not install) is the conservative one either way.",
+        "COORDINATOR_NOTE": "Scout's own caveat, kept: candidates 1 and 2 overlap on screen-reader behaviour of states. Boundary to hold is enumerate-BEFORE (2) vs audit-AFTER (1). If that cannot be written as a clean negative trigger in BOTH descriptions, ship candidate 1 only and fold the matrix into it as a section."
+      },
+      {
+        "name": "flow-reentry-completeness",
+        "priority": 3,
+        "job": "For a multi-screen flow, enumerate entry x interruption axes (first visit, refresh mid-flow, Back after submit, second visit to a consumed link, expired session, already-completed, concurrent tab) and mark each handled or deliberately-unhandled-with-a-reason.",
+        "nearest": "integration-contract-completeness -- and this is the problem, not just the neighbour. Its METHOD is the same: enumerate the axes a change implies, classify covered/missing/deliberately-narrow, refuse 'not needed' as a reason. Distinct on trigger (it fires on a patch touching one side of a code contract; this on a flow spec or wizard build, before any patch) and on axis vocabulary. At method level it may be the SAME skill pointed at a different artifact.",
+        "source": "METHOD-ONLY AND THIN. Scout found no adoptable prior art and said so. Closest fragment is designpowers cognitive-accessibility step 3, as principles not enumeration. The rest of the field is blog-shaped -- arguments, no measurements.",
+        "scenario_sketch": "'Build the 4-step onboarding wizard.' Baseline delivers 4 screens, per-field validation, a success screen -- genuinely good on the happy path. Not done and not mentioned: refresh at step 3 with state in useState returns the user to step 1 with everything retyped; Back after submit re-POSTs and duplicates the record; opening the emailed invite link a second time, after it is consumed, renders blank instead of 'you're already set up'. All three are invisible in review because the happy path demos perfectly.",
+        "security_note": "none -- read-only method, no tooling, no network.",
+        "COORDINATOR_NOTE": "Scout ranked this third and said the right outcome may be to EXTEND integration-contract-completeness with a UI-flow axis set rather than author a new unit. Test the dedup at METHOD level before authoring. Cheaper win and a better one."
+      },
+      {
+        "name": "transaction-boundary-design",
+        "priority": 1,
+        "job": "Place a transaction's boundary at the business invariant it protects, keep external side effects and network calls outside it, and pick the concurrency-control mechanism that actually covers the race.",
+        "nearest": "idempotent-action-design fires on 'this ran TWICE' -- one logical action, sequentially, across a retry or crash; its answer is an idempotency key, which does NOTHING for write skew, because the two requests are different actions with different keys that jointly violate an invariant. This fires on 'two of these ran AT THE SAME TIME' -- two concurrent actors, neither retrying, both correct in isolation. expand-contract-migration fires when two CODE VERSIONS run at once; pg-aiguide's postgres-database-migration fires on DDL locking a table during deploy. None fires on steady-state application code.",
+        "source": "github.com/JetBrains/skills transaction-consistency-designer (upstream per its own frontmatter: github.com/Kotlin/kotlin-backend-agent-skills). ADOPTABLE-WITH-GENERALIZATION: method is already right (start from the invariant; one transaction = one consistency boundary; never hold a DB connection across a network call; outbox/post-commit for messages; optimistic vs unique-constraint vs pessimistic chosen by contention AND correctness; deadlock/serialization-failure retry at a chosen outer layer). ~1/3 is Spring surface which becomes the 'In Spring (one instance)' appendix.",
+        "scenario_sketch": "'A booking cannot overlap an existing booking for the same room.' Asked to make it concurrency-safe, a capable baseline writes SELECT ... WHERE room=? AND range && ? FOR UPDATE, then INSERT. FOR UPDATE locks the rows it MATCHED -- and it matched none. Two concurrent requests both see 'no conflict', both insert, the invariant is gone, and no error appears anywhere. The correct answers are a different shape entirely: exclusion constraint, predicate-covering unique index, advisory lock on the room key, or SERIALIZABLE plus a 40001 retry loop. The baseline's answer LOOKS like the textbook answer and is silently inert.",
+        "security_note": "Source is markdown only -- no allowed-tools, scripts, hooks, network calls or installs. JetBrains/skills is a vendor mirror; verify the named Kotlin upstream exists before crediting it (the scout could not fetch it: session GitHub MCP is repo-scoped and raw.githubusercontent 403s on API paths). Clean under gate 4 as read-and-rewrite; do NOT copy the file.",
+        "generality_risk": "LOW. Method is engine-agnostic. One thing to write carefully: isolation-level SEMANTICS DIFFER BY ENGINE -- Postgres REPEATABLE READ is snapshot isolation and permits write skew; MySQL InnoDB uses gap locks; the SQL standard says something else again. Present that variance AS THE REASON TO CHECK YOUR ENGINE rather than picking one. That is what keeps it portable and is also the highest-value content.",
+        "COORDINATOR_VERIFIED": "Dedup basis confirmed independently: enumerated all 10 pg-aiguide skills via the MCP. ZERO cover transactions, isolation or lock contention; the nearest, postgres-database-migration, covers DDL locks only. The gap is real.",
+        "EVALS_MUST_TEST": "Scout's own caveat, and it is the load-bearing claim: when concurrency is NAMED in the prompt a strong baseline often gets the network-call-inside-the-transaction case right. The value is triggering on an UN-FLAGGED read-then-write during ordinary feature work. The adversarial scenarios must therefore be feature requests that never mention concurrency at all, with a planted read-then-write."
+      },
+      {
+        "name": "experiment-analysis-validity",
+        "priority": 2,
+        "job": "Check that an experiment's MEASUREMENT is valid before its result is believed -- randomization unit vs analysis unit, variance for ratio and count metrics, peeking, multiple comparisons, interference.",
+        "nearest": "preregistered-decision-rule -- the real dedup risk, stated plainly: its description already lists 'an A/B test' as a trigger. Distinct on trigger: that one fires BEFORE the result and governs SOCIAL validity (who agreed to what bar, so the bar cannot move); its failure mode is a human moving goalposts. This fires ON THE NUMBERS and governs STATISTICAL validity. A perfectly preregistered experiment, honoured to the letter, can still be wrong by an order of magnitude if users were randomized and sessions were analyzed -- preregistration cannot detect that, and nothing in either library can.",
+        "source": "github.com/FerroxLabs/wayland .../skills/data-analysis/ab-test-design/SKILL.md (653 lines, Apache-2.0 asserted, metadata.author foundry-skills). Scout pulled the RAW file and grep-verified rather than trusting a summary: unit-of-analysis mismatch (L55, L383), design effect n*(1+(m-1)*ICC) (L161), delta method for ratio metrics with the variance formula (L64), peeking inflation with named alternatives mSPRT / O'Brien-Fleming (L379), guardrails-are-not-hypothesis-tests (L387), SUTVA / marketplace interference (L435), CUPED (L452).",
+        "scenario_sketch": "'Variant B converted 3.5% vs control 3.2% over 48,000 sessions -- is it significant?' Users were randomized; sessions were logged. A capable baseline runs a two-proportion z-test on the 48,000 sessions and reports p about 0.02, ship it. Sessions from the same user are correlated, so the standard error is deflated by roughly sqrt(1+(m-1)*rho) and the honest p can be several times larger -- the result null. The arithmetic is flawless and the answer is wrong, because it accepted the denominator it was handed.",
+        "security_note": "Markdown only -- no scripts, allowed-tools, hooks, installs or network. BUT PROVENANCE IS WEAK: foundry-skills has no reachable canonical repo (searched, zero results) and both copies are vendored inside unrelated applications; the Apache-2.0 claim is asserted in frontmatter and not verifiable against a real project. Treat as ANONYMOUS CONTENT: read-and-rewrite, never copy, and independently verify every checkable numeric claim (peeking rates, delta-method variance, design-effect formula) against Kohavi/Deng or a stats text. Do not launder unattributed text into the library under a licence header we cannot substantiate.",
+        "generality_risk": "NONE -- experiment validity is method, not project wiring.",
+        "CONDITIONS": "(a) the description must carve the boundary against preregistered-decision-rule EXPLICITLY IN BOTH DIRECTIONS or they will mis-trigger -- both say 'A/B test'. (b) scope this to ANALYSIS validity and let preregistered-decision-rule keep DECISION governance. (c) do NOT adopt the whole 62-skill data-analysis cluster: most is persona- and tool-shaped (data-storyteller, pandas-power-user, jupyter-workflow-master) and falls in the LESSONS bucket of libraries-not-methods.",
+        "NOTE": "Scout's most valuable single finding: the sibling skills in that library are comparably substantive (hypothesis-testing 469 lines, statistical-analyst 470, eda-framework 489, regression-guide 413), so the whole classical-DS gap may be closable by ADOPTION rather than authoring -- the cheapest talent in the queue if it holds up."
+      }
+    ],
+    "resolved": [
+      {
+        "name": "analyze-prompt",
+        "verdict": "covered by prompt-refinement"
+      },
+      {
+        "name": "manage-skills",
+        "verdict": "covered by skill-stocktake"
+      },
+      {
+        "name": "claude-memory-kit",
+        "verdict": "covered by unified-memory"
+      },
+      {
+        "name": "deep-dive",
+        "verdict": "covered by deep-reading"
+      },
+      {
+        "name": "skill-description-optimizer",
+        "verdict": "BUILT (parallel wave 8)"
+      }
+    ],
+    "_desc": "new skills/tools research suggests building — consumed by T1",
+    "notes": [
+      "skill-description-optimizer: executes wave-reflect 'sharpen' flag (from anthropics/skill-creator method). eval-harness: add variance analysis (repeat-N)."
+    ],
+    "deferred": [
+      "concise-schema-extract",
+      "content-addressed-fragments",
+      "record-replay-http-testing",
+      {
+        "name": "expert-elicitation-questionnaire",
+        "deferred": "2026-08-28",
+        "why": "Clears the gate on paper (portable, distinct trigger, nothing close in 71) but is ~one inversion plus a template — the harvesting agent flagged it as thinnest and offered it as the cut. Coordinator agrees: our library is at 71 and this harvest already ran 8pct vs a 1pct baseline. Revisit if 'the answer lives in a specific human who is not here' becomes a recurring job."
+      }
+    ],
+    "done": [
+      "llm-judge-calibration",
+      "error-analysis-taxonomy",
+      "synthetic-eval-data-generation",
+      "llm-call-ledger",
+      "external-domain-audit",
+      "integration-contract-completeness",
+      "metric-driven-prompt-optimization",
+      "source-grounded-implementation",
+      "expand-contract-migration",
+      "interface-depth-design",
+      "steering-doc-pruning",
+      "concession-audit",
+      "oracle-weakening-audit",
+      "inherited-context-drift-audit",
+      "preregistered-decision-rule",
+      {
+        "name": "semantic-duplicate-sweep",
+        "priority": 2,
+        "job": "Find functions that serve the same INTENT under different names and implementations - the signature failure of agent-written code - and consolidate onto one survivor with callers redirected.",
+        "nearest": "repo-map ranks files for context packing and never compares two functions' purpose; graphify-harvest builds a structural code graph, not intent-equivalence; skill-scout is reuse-first for SKILLS, not code.",
+        "source": "github.com/obra/superpowers-lab skills/finding-duplicate-functions (canonical key distinct from obra/superpowers, absent from all five registers - verified)",
+        "scenario_sketch": "DISCIPLINE. Six weeks of agent-written code leaves formatCurrency, toMoneyString, priceLabel, renderAmount - three rounding behaviours, one wrong on negatives. Every PR was locally correct. Baseline told to 'clean up utils' consolidates none, because the names share no tokens.",
+        "security_note": "Source ships shell/prompt scripts and fans out subagents - real LLM spend. Adopt the METHOD; do not vendor or run its scripts.",
+        "built_wave": 29,
+        "built_ts": "2026-08-28"
+      },
+      {
+        "name": "budget-cut-triage",
+        "priority": 2,
+        "job": "When the remaining budget - wall clock, tokens, quota, money - will not cover the plan, decide IN ADVANCE what to drop so the delivered subset is coherent and shippable, and stop at that boundary instead of being killed mid-item.",
+        "nearest": "cost-aware-model-routing lowers unit cost and caps spend but never chooses what to abandon; writing-plans orders by dependency, which is not a cut order; loop-design-check defines a stop condition, not a coherent remainder. COORDINATOR RULING vs the wave-20 rejection of llm-cost-slo-budget: that was SETTING AND TRACKING a budget; this is a planning act performed when the budget is already lost. Distinct on trigger.",
+        "source": "sre.google/workbook/error-budget-policy (pre-agreed consequence, signed off before it is needed, so the call is not made under pressure)",
+        "scenario_sketch": "PRESSURE. Forty minutes of quota against a ten-item plan. Agent starts at item 1, is killed mid-item 6, leaving a half-applied migration and no coherent boundary. Our own STATUS log has an instance: an 8h throttle cost an overnight wave outright.",
+        "built_wave": 29,
+        "built_ts": "2026-08-28"
+      },
+      {
+        "name": "capability-routing-table",
+        "priority": 2,
+        "job": "For a library of N overlapping capabilities, derive the job-to-owner routing table and PROVE it with negative triggers: for each capability, the requests that must NOT route to it and where they go instead.",
+        "nearest": "skill-description-optimizer fixes ONE description reactively when two named siblings fight over a prompt; skill-stocktake inventories and grades but emits no routing artifact and runs no trigger tests. COORDINATOR RULING: collides on trigger with skill-stocktake's 'which overlap' phrasing, so the boundary MUST be written into BOTH descriptions - one-ended disambiguation is a defect this library recorded today.",
+        "source": "pipeline/calibration/RESULT.md - routing is an UNTESTED STRUCTURAL ARGUMENT, not a measured discriminator: it rests on one negative-trigger miss (n=1). It is worth building because a baseline cannot know a private library's talent names -- an information asymmetry, not an empirical regularity -- but the author must NOT write 'measured' or 'proven' anywhere. See RESULT-pressure.md for what happened to the n=1 claim standing next to it in the same sentence.",
+        "scenario_sketch": "ROUTING. 'Our vendor feed changed silently and half the rows are null today.' Three capabilities plausibly claim it; the wrong one fires and does competent work on the wrong framing. Nobody notices for a week. A baseline cannot resolve this - it does not know the library.",
+        "built_wave": 29,
+        "built_ts": "2026-08-28"
+      },
+      {
+        "name": "memory-provenance-separation",
+        "priority": 3,
+        "job": "Keep what a user ASSERTED distinct from what the system OBSERVED in durable agent memory, with an as-of stamp, so a claim written once does not become a permanent fact.",
+        "nearest": "unified-memory saves and retrieves durable state and treats a retrieved row as true, with nothing distinguishing its origin; llm-call-ledger records calls, not knowledge provenance.",
+        "source": "arXiv 2607.01071 MemSyco-Bench",
+        "scenario_sketch": "DISCIPLINE ACROSS TIME. Session 3: user says 'we're on Postgres 14'. Session 40: agent avoids a PG15 feature the cluster has had for a year and defends it by citing memory. The retrieval worked perfectly, which is why the failure is invisible.",
+        "built_wave": 29,
+        "built_ts": "2026-08-28"
+      },
+      {
+        "name": "doc-claim-reconciliation",
+        "priority": 3,
+        "job": "Given a merged diff, extract the falsifiable CLAIMS it changed, locate every document still asserting the old behaviour, and gate completion on reconciling them.",
+        "nearest": "update-codemaps regenerates generated architecture maps, not prose claims across README/runbooks/ADRs; steering-doc-pruning removes what a steering file has not earned but does not detect what became FALSE; verification-before-completion checks the work, not the docs about it.",
+        "source": "garrytan/gstack /document-release - HONESTY FLAG from the scout: read at README level only, deep-read before building",
+        "scenario_sketch": "PRESSURE. A PR renames the auth callback path and flips a retry default 3 to 0. README, on-call runbook and ADR-0007 all state the old behaviour. Under 'ship it, docs later' the agent updates only the file it touched. Six weeks on, someone pages at 3am following a runbook that is precisely wrong.",
+        "built_wave": 29,
+        "built_ts": "2026-08-28"
+      }
+    ]
+  },
+  "seen": {
+    "repos": [
+      "Aider-AI/aider",
+      "affaan-m/ECC",
+      "anthropics/skills",
+      "dottxt-ai/outlines",
+      "getzep/graphiti",
+      "hamelsmu",
+      "jxnl/instructor",
+      "modelcontextprotocol/servers",
+      "obra/superpowers",
+      "outlines-dev/outlines",
+      "promptfoo/promptfoo",
+      "pydantic/pydantic-ai",
+      "rohitg00/awesome-claude-code-toolkit",
+      "simonw/llm",
+      "stanfordnlp/dspy"
+    ],
+    "papers": [],
+    "urls": [
+      "google:top-10-claude-code-skills-2026"
+    ]
+  },
+  "ready_to_loop": {
+    "skills_valid": "41/41 have name+description",
+    "next_job": "T4 harvest next source (anthropics/skills) OR T3 scout more terms — piano picks per ROUTING",
+    "graphify": "excluded (complete)"
+  },
+  "schedules": {
+    "piano_build_harvest": "cron 0 0,4,8,12,16,20 * * * (every 4h, ~3h bounded, soft-stop, no chain) — trig_0183XDrrdiG2tbJpR5gaZdpu",
+    "library_curator": "cron 0 3,7,11,15,19,23 * * * (every 4h, offset +3h, ~1h bounded, soft-stop) — trig_01Dzv51oW2RuJ7umwi6sw3VW",
+    "tiling": "piano 3h then curator 1h fill the 4h window without overlap; both self-bound to session, git-state stateless between runs"
+  }
+}

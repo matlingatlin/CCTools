@@ -1,0 +1,71 @@
+[
+ {
+  "ok": true,
+  "status": "ok",
+  "label": "calib.review.eval-set-curation",
+  "arm": null,
+  "tier": "opus",
+  "model_served": [
+   "claude-haiku-4-5-20251001",
+   "claude-opus-5"
+  ],
+  "cwd": "/home/user/skills-repo/pipeline/calibration/reviewer-2026-09-03/runs/run-8c7e6d1e3625",
+  "output": "/home/user/skills-repo/pipeline/calibration/reviewer-2026-09-03/runs/calib.review.eval-set-curation.md",
+  "tokens": 690658,
+  "tool_calls": 10,
+  "duration_ms": 267745,
+  "duration_api_ms": 263586,
+  "arm_leak": false,
+  "stderr_tail": "",
+  "cached": false,
+  "memo_key": "36eaaf5ba976f3398c24d3cd",
+  "rate_limited": false,
+  "rate_limit_retries": 0
+ },
+ {
+  "ok": true,
+  "status": "ok",
+  "label": "calib.review.skill-measure",
+  "arm": null,
+  "tier": "opus",
+  "model_served": [
+   "claude-haiku-4-5-20251001",
+   "claude-opus-5"
+  ],
+  "cwd": "/home/user/skills-repo/pipeline/calibration/reviewer-2026-09-03/runs/run-fdbf5b2f8a3d",
+  "output": "/home/user/skills-repo/pipeline/calibration/reviewer-2026-09-03/runs/calib.review.skill-measure.md",
+  "tokens": 390997,
+  "tool_calls": 7,
+  "duration_ms": 127406,
+  "duration_api_ms": 123794,
+  "arm_leak": false,
+  "stderr_tail": "",
+  "cached": false,
+  "memo_key": "367f39872fa56235ed1f5230",
+  "rate_limited": false,
+  "rate_limit_retries": 0
+ },
+ {
+  "ok": true,
+  "status": "ok",
+  "label": "calib.review.abstention-threshold-design",
+  "arm": null,
+  "tier": "opus",
+  "model_served": [
+   "claude-haiku-4-5-20251001",
+   "claude-opus-5"
+  ],
+  "cwd": "/home/user/skills-repo/pipeline/calibration/reviewer-2026-09-03/runs/run-99bbfc79dc3b",
+  "output": "/home/user/skills-repo/pipeline/calibration/reviewer-2026-09-03/runs/calib.review.abstention-threshold-design.md",
+  "tokens": 606422,
+  "tool_calls": 9,
+  "duration_ms": 233697,
+  "duration_api_ms": 228906,
+  "arm_leak": false,
+  "stderr_tail": "",
+  "cached": false,
+  "memo_key": "3c3b0d371485f52ffec1c581",
+  "rate_limited": false,
+  "rate_limit_retries": 0
+ }
+]

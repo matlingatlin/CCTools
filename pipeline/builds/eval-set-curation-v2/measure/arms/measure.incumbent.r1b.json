@@ -1,0 +1,13 @@
+{
+  "label": "measure.incumbent.r1b",
+  "model": "opus",
+  "started": 1788313125.191177,
+  "ended": 1788313316.595118,
+  "duration_s": 191.4,
+  "tokens": 393451,
+  "tool_calls": 10,
+  "num_turns": 11,
+  "cost_usd": 0.835639,
+  "returncode": 0,
+  "stderr_tail": ""
+}

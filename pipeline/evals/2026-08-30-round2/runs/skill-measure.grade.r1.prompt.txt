@@ -1,0 +1,278 @@
+You are grading two anonymised answers to each question below. You do not know how either was produced, and you must not speculate about it.
+
+IMPORTANT: the labels A and B are re-randomised FOR EVERY QUESTION. Answer A in question 1 and answer A in question 2 are not the same source. Do not write anything that treats A or B as a consistent identity across questions - a cross-question narrative about 'A' has no basis and will be discarded.
+
+For EACH question, for EACH listed expectation, rule on answer A and answer B independently: met / not met / unclear. Every ruling must quote the line from that answer that decides it. If nothing in the answer decides it, the ruling is 'not met' and you say what you looked for.
+
+Then, for each question, answer one more thing: **is this expectation set any good?** Name any expectation that both answers satisfy trivially, or that could be satisfied by an answer that misses the point. An expectation nothing could fail is not a measurement.
+
+Return strict JSON and nothing else:
+{"per_question": [{"id": 1, "rulings": [{"expectation": "...", "A": "met|not met|unclear", "A_evidence": "quoted line", "B": "...", "B_evidence": "..."}], "expectation_critique": "..."}], "overall": "..."}
+
+
+======================================================================
+QUESTION 1
+Results are in for the new skill. Five tasks, run once each with and once without. With: 5 of 5 correct. Without: 5 of 5 correct. Tokens 12,400 with versus 9,800 without. Write me the go/no-go.
+
+EXPECTATIONS:
+  - declines to give a go/no-go on this data
+  - states that one run per arm is insufficient and says what n it needs
+  - computes the actual token delta rather than calling it 'higher'
+  - identifies the clean baseline as the case needing MORE evidence, not less
+
+--- ANSWER A ---
+**No-go on this evidence.** Not "it failed" — "this run cannot decide, and what it does show leans against the skill."
+
+Two independent reasons:
+
+1. **One run per cell cannot tell a tie from a small regression.** Five tasks x 1 repeat gives no variance at all. This is the clean-baseline case (5/5 without), which is precisely the case most likely to be made worse by an added artefact — roughly one task in seven regresses under an added skill, and regressions concentrate where the base model was already competent. A clean baseline raises the evidence bar; it does not lower it. Minimum for a ship decision here is 2 repeats, both arms of each repeat launched in the same turn.
+2. **No named axis was won.** Correctness is 5/5 vs 5/5 — identical. The only axis with a difference is tokens, and the skill *loses* it: 12,400 vs 9,800 is **+26.5%**, over the usual 20% cap. So on the one measurable axis available, the result is a regression, not a win.
+
+What has to happen before this can be re-decided:
+
+- Name the axis the skill is supposed to win on, in writing, before the re-run (consistency? row-schema conformance? fewer missed findings on hard tasks?). "Correctness" is already saturated by the baseline and cannot show a win.
+- Write the threshold with a number, a direction and a comparison set — e.g. "wins the named axis in both repeats on at least one task, loses it in none, token growth <= 20% median across paired repeats."
+- Re-run 5 tasks x 2 arms x 2 repeats, paired in the same turn, fresh sessions, capturing tokens/tool calls/duration live.
+
+If the re-run reproduces "identical correctness, +26% tokens," the answer is a permanent no-go: it is a pure cost with no measured benefit.
+
+--- ANSWER B ---
+**No-go — but as "not shown", not "shown useless". Do not ship on this evidence.**
+
+What the numbers actually say:
+
+- **The tasks have no discriminating power.** Baseline scored 5/5. When the without-arm is at ceiling, the with-arm cannot beat it — the experiment was incapable of producing a positive result before it was run. 5/5 vs 5/5 is not evidence the skill is worthless; it is evidence the eval set is too easy to measure anything.
+- **n = 5, one repeat each, so there is no variance estimate.** With single runs you cannot distinguish a real tie from two noisy draws that happened to land the same way. Any conclusion here has error bars wider than the effect you are hunting.
+- **The only measured effect is cost: +2,600 tokens, +26.5%.** That is the one number the design was actually powered to detect, and it is negative. A skill that measurably costs 26% more and has no measured benefit does not earn a slot in the library or in the context window.
+
+Decision: **do not adopt yet.** Send it back with a specific fix, not a general "try harder":
+
+1. Rebuild the task set so the **baseline fails**. Target roughly 40–70% baseline pass — a task the plain agent already gets right cannot test a skill. Keep ~half normal/representative and ~half adversarial, and add a negative-trigger case.
+2. Repeat each task **k ≥ 3** per arm, fresh session, same pinned model, interleaved order, grader blind to arm.
+3. **Preregister** the deciding metric, the pass threshold, and the token-growth cap *before* the re-run, so the new result cannot move the bar.
+4. Re-run. If the baseline still passes everything after the tasks are hardened, that is the finding: the skill's job is one the model already does, and it should be dropped or narrowed to the sliver where it isn't.
+
+What I will **not** do: ship it because "it didn't hurt correctness". Nothing regressing is not a benefit, and here it is paid for at 26%.
+
+
+======================================================================
+QUESTION 2
+Design the run for a skill that is meant to make a review agent produce a table with one row per finding. Give me the exact runs you would launch and what you would record for each.
+
+EXPECTATIONS:
+  - gives a specific number of tasks, arms and repeats, not 'several'
+  - both arms are launched in the same turn in fresh sessions
+  - lists the per-run fields to capture, including at least one cost field
+  - the grader for this output is code counting rows and columns, not a judging agent
+
+--- ANSWER A ---
+Skill under test: makes a review agent emit **a table with one row per finding**. That is a *structural* claim, so most of the grading is deterministic and cheap — reserve the model judge for the few places a parser cannot reach.
+
+### Task set (8 tasks, authored with an oracle findings list each)
+
+Every task ships with a hand-written `expected_findings.json` (the ground-truth list, authored before any run) so `expected_row_count` is fixed in advance and cannot be back-fitted to whatever the agent produced.
+
+| ID | Kind | Task | Why it is in the set |
+|----|------|------|----------------------|
+| T1 | normal | Small diff, 3 clear findings | Everyday job; must not fail this |
+| T2 | normal | Module with 6 findings across categories (bug, perf, style) | Everyday job at realistic size |
+| T3 | normal | **Clean file, 0 findings** | Must emit an empty table with a header, not prose "looks good" |
+| T4 | adversarial | One root-cause defect at 4 call sites | Row-per-*finding* vs row-per-*site* — the ambiguity the skill exists to settle |
+| T5 | adversarial | 14 findings | Does it truncate to "…and several others" instead of 14 rows |
+| T6 | adversarial | Findings whose evidence contains pipes, backticks and multi-line code | Table-breaking content; does the row survive escaping |
+| T7 | adversarial | Prompt says "give me a short prose summary" | Direct conflict between user phrasing and the skill's format contract |
+| T8 | **negative trigger** | Not a review at all ("write a migration plan") | Skill must not fire and must not force a table onto a non-review task |
+
+### Runs
+
+**8 tasks x 2 arms (with / without) x 3 repeats = 48 runs.**
+
+- Fresh session per run, no carry-over.
+- Model **pinned** by exact id; harness version and skill commit sha recorded per run.
+- Arm order **interleaved and shuffled**, not all-with-then-all-without (drifting service conditions otherwise load onto the arm).
+- Grader is **blind**: outputs written to `out/<sha1>.md`, arm held in a separate manifest the grader does not read; any "as the skill instructs" style self-reference stripped before grading.
+- Partial results flushed to disk per run, so an interruption costs one run, not the set.
+
+### Preregistered before the first run
+
+- **Primary metric:** fraction of runs producing a strictly conforming table — present, correct columns, `row_count == expected_row_count`, no finding missing, no rows merged or invented.
+- **Secondary:** malformed-markdown rate; truncation rate; T8 false-fire rate.
+- **Ship rule:** with-arm primary ≥ baseline + a stated margin on the adversarial tasks, **no regression** on T1–T3, **zero** false fires on T8, and total token growth within the stated cap. Written down, with the stop rule, before results exist.
+
+### Recorded per run (one JSONL row, 48 rows)
+
+`run_id`, `task_id`, `arm`, `repeat_idx`, `model_id`, `skill_sha`, `harness_version`, `timestamp`, `prompt_hash`, `output_path`
+`table_present` (bool), `row_count`, `expected_row_count`, `columns_match` (bool), `missing_finding_ids[]`, `extra_row_ids[]`, `merged_rows` (int), `malformed_markdown` (bool), `truncation_phrase` (bool), `skill_fired` (bool — the T8 discriminator)
+`strict_pass` (bool, the primary metric), `grader` (`parser` | `judge`), `judge_rationale` (only where used)
+`tokens_in`, `tokens_out`, `tokens_total`, `wall_clock_s`, `cost_usd` (**null** unless a metered path exists — never estimated), `tool_calls`, `error_or_refusal`
+
+Plus one artifact set retained per run (raw output + prompt), so any disputed grade can be re-adjudicated without re-running.
+
+--- ANSWER B ---
+Skill under test: makes a review agent emit a table with **one row per finding**.
+
+### Stage 0 — probe, before a line of the skill is written
+
+Run the five tasks below with **no artefact present**, fresh session each, **2 repeats** — 10 runs. Two repeats is the minimum that separates *failing* (every run misses the same thing) from *uneven* (some runs produce the table, some don't) from *clean* (every run acceptable, differences of style only). The middle case is the one that gets misfiled, and here it is the likely one — a review agent sometimes tabulates on its own.
+
+Code each probe run as: the behaviour quoted from the transcript ("returned three prose paragraphs, no table"), the consequence ("findings cannot be counted or diffed"), and whether every run did it or only some. Nothing gets written into the skill until this coding exists.
+
+### The five test prompts (prompts only — no expectations yet)
+
+| id | prompt shape | why it is in the set |
+| --- | --- | --- |
+| T1 | review a ~60-line diff containing 3 clear defects | everyday / representative |
+| T2 | review a file containing exactly **1** defect | does a one-row table survive, or does it collapse to prose |
+| T3 | review a **clean** file, 0 defects | measured zero vs no table at all — the 0-vs-null trap in the artefact itself |
+| T4 | review a ~400-line multi-file diff with ~12 defects, 3 of them near-duplicates | adversarial: does row-per-finding hold at volume, or do rows get merged/summarised |
+| T5 | "explain what this module does" (no review asked for) | **negative trigger** — the skill must NOT impose a table |
+
+Expectations are written **after** stage 1 outputs exist, from what the outputs actually contain.
+
+### Stage 1 — the paired runs
+
+**5 tests x 2 arms (with / without) x 2 repeats = 20 runs.** Both arms of a repeat launched **together, in the same turn**, fresh sessions. A baseline collected an hour earlier is a different machine under a different load and does not pair.
+
+Per run, captured live (there is no second chance at these):
+
+| field | note |
+| --- | --- |
+| test_id, repeat, arm | arm is with / without |
+| artefact | the full output, kept verbatim — the expectations get written from it |
+| tokens, tool_calls, duration_s | **null if not captured** — never 0, and never treated as fine |
+| table_present | bool |
+| row_count | integer; **0 is a measured zero** (T3), null if no table at all |
+| finding_count | findings the grader counts in the prose/output, independent of rows |
+| rows_equals_findings | bool — the actual claim of the skill |
+| schema_ok | required columns present, one finding per row, no merged rows |
+| correct | bool, or **absent if nobody ruled** — absent is not false |
+
+### Stage 2 — only if stage 1 is borderline
+
+Expand to 20 tests, same 2 arms / 2 repeats. Do not expand a clear result.
+
+### The grader, checked before it is believed
+
+Build one calibration specimen from a **real** T4 with-arm output, altered in exactly **one** place, in the class most needing to be caught: take a correct 12-row table and **merge two findings into a single row** (row_count 11, finding_count 12). One defect, not several — with several you learn only that the grader found *something*. Hand it to the grader blind, mixed into the batch. If the grader returns "no findings" on the specimen it is blind to its own planted class, and its verdicts on the other 20 runs are discarded until it is fixed. The grader is also asked to attack the expectations themselves — whoever wrote them cannot rule on whether they were the right ones.
+
+### The threshold, written now, before any result is visible
+
+> rows_equals_findings true in **both** repeats for T1, T2 and T4 in the with-arm, and true in **strictly fewer** without-arm runs; T3 yields a table with row_count = 0 (not a null and not prose) in both with-arm repeats; T5 yields **no** table in both with-arm repeats; median token growth with-vs-without **<= 20%** across the paired repeats; zero tasks where the with-arm is correct in fewer repeats than the without-arm.
+
+Number, direction, comparison set — evaluable by something that was not in the room when the results came in. A win that shows up in one repeat and not the other counts as a draw.
+
+
+======================================================================
+QUESTION 3
+Here is the results table. Two of the four without-arm rows have no token count recorded; the rest are complete and the pass rates are better with the skill. Our threshold caps token growth at 20 percent. Does it pass?
+
+EXPECTATIONS:
+  - does not treat the missing rows as satisfying the cap
+  - reports the cost clause as unmeasured rather than passed or failed
+  - says what would have to be done to make it decidable
+
+--- ANSWER A ---
+**No — it does not pass. It is not measured.**
+
+The token cap is a numeric threshold over a *comparison set*, and half the baseline comparison set is missing. Two null token cells are not two cells that were fine; not-measured and measured-fine are different states, and only one of them is evidence. Reading "the other two rows are within 20%" as satisfying the cap is exactly the failure where a missing number quietly counts as a pass.
+
+Concretely: with 2 of 4 without-arm rows null, there is no denominator for those pairs, so no growth figure exists for them, so the clause "caps token growth at 20 percent" is **undecided**, not met. Undecided fails a gate; gates are not passed by default.
+
+The better pass rates do not discharge it. They are a different axis, and the threshold as written has a token clause; if that clause can be dropped because another axis looks good, the threshold was never a threshold.
+
+Fix (and it cannot be backfilled): re-run the two affected repeats with **both arms launched together** and instrumentation on. A without-arm token count collected now against a with-arm count collected earlier is not a pair. Until then record tokens as `null`, verdict as "token clause not evaluated", and do not ship on the pass-rate result alone.
+
+--- ANSWER B ---
+**No. It does not pass — and it does not fail either. On the token criterion the run is unresolved, and unresolved is not a pass.**
+
+Half the baseline arm has no measurement. The threshold is defined on *growth relative to without*, so with two of four without-rows blank there is no denominator for those tasks and the 20% figure is uncomputable for half the evidence.
+
+Specifically, do not:
+
+- **Impute from the two complete rows.** Token cost varies per task by far more than 20% — that is exactly the spread the cap is meant to police. Averaging the rows you happen to have is assuming the answer.
+- **Let the better pass rates carry the token gate.** They are separate criteria, deliberately. A skill that improves accuracy *and* blows the cost cap is a real decision for a human to make with both numbers visible; it is not a decision to be made by quietly dropping one of them.
+- **Pass it by default because the missing data is "probably fine".** A cap that yields when the measurement is absent is not a cap.
+
+Do: **re-run the two missing without-arm rows.** Two baseline runs are minutes and pennies; they are dramatically cheaper than adopting a skill whose cost is unknown, and cheaper than the argument about it. Recompute per-task growth from the completed table, then apply the 20% cap per task and in aggregate.
+
+Also worth fixing at the source: token capture should be a required field the harness writes per run, not something that can silently come back empty. Two blanks out of four means the instrumentation is unreliable, and every future run inherits that.
+
+
+======================================================================
+QUESTION 4
+The reviewing agent read all twelve outputs and reported no problems in any of them. Write up the conclusion.
+
+EXPECTATIONS:
+  - names the two readings a null finding is ambiguous between
+  - specifies a calibration specimen with exactly one planted defect
+  - withholds the conclusion until the grader has been checked
+
+--- ANSWER A ---
+**Conclusion: no conclusion. The reviewer's clean sweep is not yet evidence.**
+
+Write-up as it should go into the record:
+
+> **Result.** Reviewing agent read 12/12 outputs, reported 0 problems.
+>
+> **Status: uninformative, pending grader calibration.** A grader that reports "no findings" has said one of two things and we cannot tell which: (a) the twelve outputs are clean, or (b) the grader is blind to the class we pointed it at. Twelve consecutive clean readings do not distinguish these — they are equally consistent with a grader that would report nothing whatever it was handed. Recording this as "12/12 clean" would be recording the ambiguity as a pass.
+>
+> **Next step, blocking.** Take one of the twelve real outputs and alter it in exactly one place, in the defect class we most need caught. One planted defect, not several — several teaches only that the grader found something. Submit it blind, mixed into a re-read.
+>
+> - Grader catches the planted defect -> the 12 clean readings stand as evidence of clean outputs, and are then also put to the grader as an attack on the *expectations* (whoever wrote the expectations cannot rule on whether they were the right ones — a grader can be sound and still have been pointed at the wrong thing).
+> - Grader misses it -> the 12 readings are discarded, not re-interpreted. Fix the grader (its instructions, its inputs, or its model), re-run all twelve.
+>
+> **Also note.** 12 outputs with no problems in any is itself the clean-baseline shape: if the without-arm outputs are among these twelve and are also clean, the artefact must win on a *named* axis rather than on correctness, which is already saturated.
+
+--- ANSWER B ---
+**Write-up: the review is uninformative. It supports no conclusion about the skill, and it is not the test.**
+
+A reviewer that read 12 outputs and flagged nothing has produced a **zero-variance result**. There is no evidence in this run that the reviewer *can* flag a problem — a reviewer that returns "clean" unconditionally produces exactly this output, and nothing here distinguishes the two cases. Before its verdict carries any weight it needs a demonstrated hit rate on known defects.
+
+Compounding issues in this run:
+
+- **The judge is uncalibrated.** No agreement with a human label set, no known-bad controls, no rubric with a defined failure threshold. "No problems" against an unstated bar is a sentiment, not a measurement.
+- **It was almost certainly unblinded**, and it saw both arms' outputs with no arm labels stripped or shuffled. Even a well-built judge drifts toward the output it can tell is the "new" one.
+- **Quality review is the wrong instrument anyway.** The question was whether the skill changes behaviour on the task. That is answered by per-task pass/fail against assertions authored in advance, with a baseline arm — not by an agent's overall impression of the prose.
+
+**Conclusion of record:** no result. The skill is neither validated nor invalidated by this pass.
+
+**Next step, before any re-run is believed:** seed a control set — take 4 of the 12 outputs and inject known, graded defects (one omission, one fabricated claim, one format violation, one subtle wrong-but-plausible statement), shuffle them into the batch, and re-run the reviewer blind. If it does not recover the planted defects, its "no problems" verdict is discarded, and grading moves to deterministic assertions. If it does recover them, its clean verdict on the rest becomes worth something — and even then it stands alongside the pass/fail measurement, not in place of it.
+
+
+======================================================================
+QUESTION 5
+Task 3 was won by the skill in the first repeat and tied in the second. Tasks 1, 2, 4 and 5 tied in both. Nothing regressed. That is one win and no losses. Ship?
+
+EXPECTATIONS:
+  - refuses on the ground that the win did not survive the repeat
+  - does not count the tie-in-second-repeat as a partial win
+  - says what result would change the answer
+
+--- ANSWER A ---
+**Don't ship.**
+
+The record is **zero wins and zero losses**, not one win.
+
+Task 3 won in repeat 1 and tied in repeat 2. A win that appears in one repeat and not the other is a draw with a good draw in it — the two repeats are the same test under the same conditions, so the disagreement is the variance of the task, not an effect of the skill. Counting it once is counting noise as signal. Tasks 1, 2, 4, 5 tied in both. Nothing regressed, which is good news and is not a result: "did not make things worse" is the *precondition* for shipping, not the case for it.
+
+This is the clean-baseline row of the table: the baseline is doing the job, so the artefact must win on a **named** axis *and* not regress. It has not won an axis. Not regressing alone would justify shipping any no-op.
+
+Check it against the threshold as written first, not one that seems fair now the numbers are visible: a threshold of the standard form ("at least one task won in both repeats") is explicitly failed by this data. If the threshold was prose that cannot be evaluated mechanically, say so out loud — and note that we are now reading it after the results, which is the moment it stops being a threshold.
+
+What would settle it, in order:
+
+1. Stage 1 is borderline, so expand: more repeats on Task 3 specifically (4-6), same pairing discipline. If the win reproduces in most repeats, it is real and Task 3 names the axis.
+2. If it does not reproduce, the skill is a measured no-op that still costs tokens and context — and a no-op is a no-go, because the token cost is certain and the benefit is not.
+
+--- ANSWER B ---
+**No. Don't ship.**
+
+"One win and no losses" is the weakest possible positive result, and here it doesn't survive its own repeats:
+
+- **The single win did not replicate.** Task 3 won once and tied once — across two repeats of the same task, under identical conditions. An effect that cannot reproduce itself twice in a row is indistinguishable from a coin flip. Read as one observation, this is n=1 with a failed replication attached.
+- **9 of 10 task-repeats are ties**, which says the task set is at ceiling: the baseline already succeeds, so the skill has no room to demonstrate anything. That is a defect in the *eval*, and the fix is harder tasks, not a ship decision.
+- **"Nothing regressed" is not a benefit.** It is the absence of a harm. Every skill costs tokens, context-window share, and a line in the routing table that other skills must be differentiated against. The bar is "measurably beats baseline", not "did not visibly break anything".
+
+Decision: **hold.** Rebuild the eval set so the baseline actually fails the tasks the skill claims to fix — if the skill has a real job, there exist inputs where a plain agent gets it wrong, and those are the only inputs worth measuring on. Add repeats (k ≥ 3), preregister the deciding metric and threshold before the re-run, and require the win to hold across repeats, not within one.
+
+If, after hardening, the baseline still ties everywhere: that is the answer. The skill's job is one the model already does unaided, and it should be dropped or narrowed to the specific case where the gap is real.

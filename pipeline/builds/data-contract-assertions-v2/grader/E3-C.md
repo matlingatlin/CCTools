@@ -1,0 +1,45 @@
+## Short answer: mostly, you don't need one
+
+I profiled `current.csv` against `reference.csv` (4000 rows each). Seven differences. **Four of them don't need a drift threshold at all** — they violate things the producer is already committed to, so they're exact assertions with no number to pick. **Three of them shouldn't fire at all** — they're legitimate additions that should widen the contract, not block the batch.
+
+**BLOCK: 4 · WIDEN: 3.** Two counts, not one "7 failures" tally.
+
+### The four BLOCK differences
+
+| # | What | Threshold needed? |
+|---|---|---|
+| D1 | `settled_days`: 1184/4000 rows now carry a ` d` suffix (`"1 d"`), 0 in reference. Type break — `CAST(... AS INT)` drops 29.6% of rows | **No** — regex |
+| D2 | `amount` at `belltower`: median 32.75 → **2726.50**, 98.9% ≥500, **100% whole numbers** — a cents/dollars scale change under an unchanged `USD` label | **No** — declared unit |
+| D3 | `customer_age` nulls on `channel=android`: 1.61% → **83.12%**. Other three channels unmoved (1.4–1.8%) | Noise band, derived |
+| D7 | `harborview`: 38/240 rows whole-number, median 2875, max 12717 — **contested, see below** | Noise band, derived |
+
+### The three WIDEN differences — these ratify, they don't refuse
+
+- **`harborview`**, a new merchant (n=240) → written into the allowed set
+- **`chargeback`**, a new status (n=90, spread evenly across all 9 merchants) → written into the allowed set
+- **channel mix shift** (web .517→.417, ios .261→.369), no category added or dropped → observe-only
+
+After the amendments the WIDEN count drops 2→0 and the BLOCK count is unchanged. Blocking a payments batch because the feed learned the word "chargeback" is the failure this split exists to prevent.
+
+### The one place I did derive numbers, and how
+
+Both are **noise** bounds — they license "this batch is unusual," nothing about harm:
+
+- **Null rate**: 2000 bootstrap resamples of the reference null indicator, per segment size. p99.5 = 0.0187 at n=4000, 0.0250 at n≈800, 0.0483 at n≈83 — the *same* rate needs a 2.6× looser band at phone volume, which is why it's per-segment-n and not one number. Android observed 0.8312 = **33× the bound**.
+- **Cents guard**: `amount ≥500 AND integral` occurs **0 times in 4000** reference rows. Rule of three gives an upper 95% bound of 3/4000 = 0.00075. Belltower is 1318× over.
+
+Both fire on margins of 33–1318×, so they'd gate under any bound derivable from this reference by any method. That is the only reason they gate.
+
+### Three things I could not derive, and won't fake
+
+- **No harm bound exists here.** That needs an independent downstream signal that moves — a control total that reconciles, a bill, a labelled outcome. Neither CSV contains one. Nothing in this contract licenses "past here something downstream is wrong."
+- **Chargeback rate: `NOT DERIVED — owner: payments risk.`** It's the first batch containing the value; a bound from the firing batch alone just restates the batch. Non-gating.
+- **`NOT BACKTESTED — history: one reference batch, no timestamp column.`** I can't count firings, so I can't check them against a capacity bound (also not derivable — that's a staffing fact). The two banded checks are held observe-only for routine operation.
+
+### One finding I'm deliberately not stating narrowly
+
+The cents signature separates belltower and harborview from the other seven merchants and from all 4000 reference rows cleanly — but **it does not separate belltower from harborview** (0.9886 vs 0.1458; both far above the bound). For belltower the defect reading is the only one the data supports. For harborview **both readings stay open**: its 202 fractional rows are an ordinary retail distribution inside the reference envelope, 3 of the 38 whole rows are below 500, and there's no harborview history at all. Against that, those 38 rows divided by 100 give median 28.75 — exactly the platform's retail shape. Tightening to a median-ratio test *does* split them (83.3× vs 1.17×), but only because harborview's suspect rows are a 15.8% minority, which is the regime where this class of test is known to go near-blind. That's a producer question, not a statistic. I held the 38 rows, not the merchant.
+
+Also worth knowing: on a 50/50 held-out split of the reference, the obvious auto-derived `amount` min/max envelope covered only **0.9950** — it would have failed 0.5% of a clean batch. It's not in the gating set for that reason. A profiler-generated suite is a draft, not a contract.
+
+**Files:** `contract.md` (ledger, split, provenance, held-out coverage), `assert_contract.py`, `assertion_results.csv`. The runner exits non-zero on BLOCK only, and fires 0 times on `reference.csv`.

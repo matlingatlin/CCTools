@@ -1,0 +1,264 @@
+{
+  "artefact": "./artifact-C  (llm-wiki-ingest, second rewrite)",
+  "examined": {
+    "files_read_in_full": [
+      "SKILL.md (69 lines: frontmatter, When to use, 7 numbered steps, 3 rules, In this repo)",
+      "references/rationale.md (43 lines)",
+      "evals.md (53 lines: header verdict, Method, S1-S6, Not executed, Failure triage)",
+      "evals/evals.json (3 evals, 23 expectation strings)",
+      "evals/files/check.py (63 lines, the actual grader: common block + T1/T2/T3 blocks)",
+      "evals/files/wiki/{INDEX.md,LOG.md,SOURCES.md}",
+      "evals/files/wiki/notes/{model-prices.md,prompt-caching.md,local-models.md}",
+      "evals/files/raw/{2026-09-02-pricing-page.md,2026-09-02-gamma-model-card.md,2026-09-02-blog-restating-caching.md}"
+    ],
+    "pair_classes_swept": [
+      "step -> rule (7 steps x 3 rules = 21 pairs)",
+      "step -> step (7 steps, 21 ordered pairs, incl. branch reachability from step 2's four dispositions)",
+      "step -> eval check (7 steps x 3 executed tasks + 6 evals.md scenarios)",
+      "evals.md scenario -> evals.json expectation -> check.py assertion (3 executed chains, S1/S2/S5)",
+      "description -> body (each description clause traced to a step or section)",
+      "body -> rationale.md (each step traced to its stated observed failure)",
+      "bundled files -> bill of materials (SKILL.md names references/rationale.md only; evals.md names the grader)",
+      "fixture state -> rule (does the fixture the evals require satisfy the rules the skill asserts)",
+      "check assertion -> untouched fixture (does the check already pass before any work is done)"
+    ],
+    "checks_run": [
+      "measured description length = 650 chars (under the 1024 cap) - PASS, no finding",
+      "re-executed check.py's T1 beta_old and neighbour predicates against the UNTOUCHED fixture: both already True",
+      "resolved check.py's T3 fixture path against the eval prompt's wiki path: identical",
+      "enumerated no-rival regex coverage over candidate rival stems"
+    ],
+    "pairs_examined_and_found_CONSISTENT": [
+      "step 2 'no material' branch <-> rationale.md's no-material paragraph <-> evals.md S5 <-> evals.json id 3 <-> check.py T3 LOG/SOURCES/no-new-note assertions: the source-log row and operation-log line survive the 'touch no page' branch in all four, and the raw is kept. This chain agrees end to end.",
+      "step 4 frontmatter key list (title, sources, status, tags, related) <-> check.py line 20 schema check <-> all three fixture notes: exact match on all five keys.",
+      "description clause list (raw kept / triage 4-way / quote before write / claim verdicts / neighbours name it back / index and log rows / lint) <-> steps 1-7: every clause has a step.",
+      "description's 'NOT' siblings (deep-reading, skill-knowledge, unified-memory, doc-claim-reconciliation, kb-curator) <-> SKILL.md 'Not this skill' paragraph <-> 'In this repo' local names: all five appear in all three places, same boundaries.",
+      "step 1's 'A transcript or frame text is the raw for a video or image' <-> evals.md S3 input: consistent.",
+      "rule 'The raw is never edited' <-> step 1 'never edited': consistent (though ungraded - see F13)."
+    ]
+  },
+
+  "findings": [
+    {
+      "id": "F1",
+      "level": "INSTANCE",
+      "where": "evals/files/check.py:50-57 (task T3) vs evals/evals.json id 3 prompt",
+      "finding": "The headline check of the only scenario that beats baseline can never fail. check.py computes the 'before' hash from `pathlib.Path(__file__).resolve().parent / 'wiki' / 'notes'` = evals/files/wiki/notes, which is the exact directory the eval prompt tells the agent to edit ('The wiki at evals/files/wiki ... Edit the wiki in place'). Verified by resolving both paths: identical. The 'before' bytes are therefore read AFTER the mutation, so `before == after` is a tautology. S5/T3 is the single measured win in the whole eval record, and its central assertion is graded by nothing. (The sibling T3 checks - no new note, LOG, SOURCES - are real.) The dict `ref = {\"model-prices\": \"MP\", ...}` is also dead: its values are never used.",
+      "quote": "fixture = pathlib.Path(__file__).resolve().parent / \"wiki\" / \"notes\"\n        before = hashlib.sha256((fixture / f\"{stem}.md\").read_bytes()).hexdigest() if (fixture / f\"{stem}.md\").exists() else None\n        after = hashlib.sha256(notes.get(stem, \"\").encode(\"utf-8\")).hexdigest()\n        check(f\"{stem} byte-identical to the fixture\", before == after)\n--- against ---\n\"prompt\": \"The wiki at evals/files/wiki has notes/, INDEX.md, SOURCES.md and LOG.md. Ingest the source evals/files/raw/2026-09-02-blog-restating-caching.md into it. Edit the wiki in place and list the files you changed.\""
+    },
+    {
+      "id": "F2",
+      "level": "CLASS",
+      "where": "SKILL.md:28-34 (step 2) vs evals/files/raw/2026-09-02-pricing-page.md and 2026-09-02-gamma-model-card.md",
+      "finding": "The four dispositions are declared mutually exclusive ('into exactly one') but are not, and both fixtures the evals actually run break the exclusivity. (a) The gamma card contradicts 744B AND carries two facts the note does not hold ('Active parameters: 40B', 'Context: 1M tokens') - it is simultaneously `disputed` and `update`. (b) The pricing page updates model-prices AND merely restates what prompt-caching already holds - one source, two pages, two dispositions ('update' and 'no material'), while step 2 admits only one per source and step 6 admits one operation-log line per source. The rule is contradicted by the very sources chosen to test it, and check.py grades only the single word ('update' / 'disputed' / 'no material') in LOG, so the collision is invisible to the grader.",
+      "quote": "2. **Search, then triage into exactly one.** ... **update** - a page owns it: extend it, never a rival. **disputed** - the source contradicts a claim a page holds ...\n--- against the fixture ---\n\"Total parameters: 753B. Active parameters: 40B. Context: 1M tokens.\"\n\"Beta 5: $2.00 per million input tokens, $10.00 per million output tokens.\\nCache reads are billed at 10% of the input price; cache writes at 125%.\""
+    },
+    {
+      "id": "F3",
+      "level": "CLASS",
+      "where": "SKILL.md:35-38 (step 3) and :43 (step 4) vs check.py:32-33, 42-43",
+      "finding": "Universal quantifiers in the steps are graded by existential checks. Step 3 requires EVERY number, date and quote to be located and graded; check.py requires ONE claims row in T1 and TWO in T2. Step 4 requires EVERY price, version, limit, count and date in the body to carry an as-of date; no check tests any of it. Concretely: the pricing raw's Alpha 5 prices and its 10%/125% multipliers, and the card's '40B' and '1M tokens', can all be dropped silently and every check still passes. There is no way, from the file state, to observe the difference between 'graded every number' and 'graded the one the check names'.",
+      "quote": "3. **Locate every number, date and quote in the raw before writing it,** and grade it\n\"Every price, version, limit, count and date in the body carries its as-of date.\"\n--- against ---\nclaim_rows = [l for l in mp.splitlines() if l.strip().startswith(\"|\") and re.search(r\"MEASURED|REPEATED|DERIVED\", l) and (\"$2.00 per million input tokens\" in l or \"$10.00 per million output tokens\" in l)]"
+    },
+    {
+      "id": "F4",
+      "level": "CLASS",
+      "where": "check.py:31 and :37 vs evals/files/wiki/notes/{model-prices,prompt-caching}.md",
+      "finding": "Two T1 checks already pass against the untouched fixture, so they grade no positive step obligation - re-executed both predicates and both return True before any work is done. (a) 'old price kept as a dated superseded row' matches the fixture line verbatim; it detects an overwrite regression but never tests the evals.json expectation's word 'superseded', which nothing marks or checks. (b) 'neighbour names owner back' - prompt-caching already contains [[model-prices]] in both its body and its `related:`. Step 5's actual requirement (a NEW sentence saying why the neighbour matters, then the edge) is therefore graded by nothing; this check only detects deletion.",
+      "quote": "beta_old = [l for l in mp.splitlines() if \"Beta 5\" in l and \"$3\" in l and \"$15\" in l and \"2026-08-20\" in l]\ncheck(\"old price kept as a dated superseded row (Beta 5, $3, $15, 2026-08-20 on one line)\", bool(beta_old))\ncheck(\"neighbour names owner back\", \"[[model-prices]]\" in notes.get(\"prompt-caching\",\"\"))\n--- fixture, unmodified ---\n\"| Beta 5 | $3 | $15 | 2026-08-20 |\"\n\"Cache reads cost 0.1x of the input price in [[model-prices]]; writes 1.25x.\""
+    },
+    {
+      "id": "F5",
+      "level": "INSTANCE",
+      "where": "evals.md:6 vs evals/evals.json (files arrays) and evals/files/check.py:1-4",
+      "finding": "The evals document names a grader that is not in the bundle and does not name the grader that is. evals.md declares the observable criterion for EVERY scenario to be `knowledge/kb.py lint --json`; no kb.py exists anywhere in the artefact and the eval wiki has no lint script. The real grader, evals/files/check.py, is listed in each eval's `files` array but is never described in evals.md, and no eval states how to invoke it - check.py's usage requires a positional task argument `T1|T2|T3`, while evals.json identifies its evals as 1, 2, 3. The S1->T1 / S2->T2 / S5->T3 mapping exists only in evals.md prose.",
+      "quote": "The observable criterion for every scenario is the state of the files, checked by `python3 knowledge/kb.py lint --json` and by reading the note.\n--- against ---\n\"\"\"Shape grader for the llm-wiki-ingest tasks. Run over the wiki AFTER the ingest. ... Usage: python3 check.py <wiki_dir> <task: T1|T2|T3>\"\"\""
+    },
+    {
+      "id": "F6",
+      "level": "INSTANCE",
+      "where": "SKILL.md:43 (step 4 rule) vs evals/evals.json id 3 + check.py T3 + evals/files/wiki/notes/prompt-caching.md",
+      "finding": "A rule the body asserts is violated by the file state an eval requires. Step 4 demands every price, limit and count in the body carry its as-of date. The fixture note prompt-caching states 0.1x and 1.25x with no as-of date at all - and eval id 3 requires that note to remain byte-identical, i.e. the eval requires the skill to LEAVE a rule-violating page in place and grades it green for doing so. The same applies to local-models' '245 GB at 2-bit'. Nothing in step 2's 'no material' branch reconciles 'touch no page' with 'every date' - the branch simply exits before the rule can be honoured.",
+      "quote": "\"Every price, version, limit, count and date in the body carries its as-of date.\"\n--- against the fixture the eval freezes ---\n\"Cache reads cost 0.1x of the input price in [[model-prices]]; writes 1.25x.\"\n\"model-prices, prompt-caching and local-models are byte-identical to the fixture\""
+    },
+    {
+      "id": "F7",
+      "level": "INSTANCE",
+      "where": "SKILL.md:39-43 (step 4 body schema) vs check.py:18-24 and all three fixture notes",
+      "finding": "Step 4 mandates four body sections; check.py grades only the frontmatter and never looks for any of them, and no fixture note has any of them. There is no `## Claims` heading, no 'what it means here', no 'what is open' in model-prices, prompt-caching or local-models. check.py's claim-row predicates only require a line beginning with `|` - a pipe row anywhere in the file satisfies them, including inside the existing price table. The body half of the schema is unchecked and uninstantiated.",
+      "quote": "Body: what it is; a `## Claims` table with one row per claim - claim | source | locator | verbatim quote | verdict; what it means here; what is open.\n--- against ---\nrows_ = [l for l in lm.splitlines() if l.strip().startswith(\"|\")]"
+    },
+    {
+      "id": "F8",
+      "level": "INSTANCE",
+      "where": "SKILL.md:23-27 (step 1) vs references/rationale.md:10-13 vs the whole evals/ tree",
+      "finding": "Step 1's manifest obligation is graded by nothing and cannot be, as the bundle is arranged. It requires provenance - source, date, hash, size, which page it feeds - in the raw directory's manifest. evals/files/raw/ has no MANIFEST.md, no eval expectation mentions one, and check.py never opens the raw directory. rationale.md dates this clause to 'the field trial of 2026-09-03', which is AFTER the eval run evals.md records ('the first v3 build'), so the eval record structurally cannot cover it. The clause is also undefined in the 'no material' branch, where the manifest's 'which page it feeds' has no answer.",
+      "quote": "with URL or path and fetch date. Where the wiki keeps a `raw/` directory: fetch date in the file name, and provenance (source, date, hash, size, which page it feeds) in the directory's manifest\n--- against ---\n\"the field trial of 2026-09-03 added a `raw/MANIFEST.md` (source, fetch date, hash, size, which note it feeds)\"\n\"**Last eval:** 2026-09-02/03, the first v3 build\""
+    },
+    {
+      "id": "F9",
+      "level": "INSTANCE",
+      "where": "SKILL.md:49-51 (step 7) vs evals/files/wiki (no lint script) and check.py (no such assertion)",
+      "finding": "Step 7 has three obligations and none of them ends in something any check can observe. (a) 'rebuild the search index' - the eval wiki has no search index and no rebuild command; nothing is checked. (b) 'The fact and its lint pass land in one commit' - no eval performs a commit; the prompts say 'Edit the wiki in place and list the files you changed'. (c) The fallback clause is the one that is actually ACTIVE in every eval, since the eval wiki has no lint script - it requires the log line to say the hand checks were done, and check.py's LOG assertions look only for a source token and a disposition word. Step 7 is the least checkable step in the artefact. Separately, its hand-check list includes 'orphans', and check.py implements dangling links and index membership but never orphans - local-models is an orphan in the fixture (`related: []`, nothing links to it) and eval id 3 freezes it that way.",
+      "quote": "7. **Lint, then rebuild the search index;** fix what the lint names before committing. The fact and its lint pass land in one commit. No lint script in this wiki? Check dangling links, unlisted pages and orphans by hand and say so in the log line.\n--- against ---\ncheck(\"LOG line names the source and the disposition\", \"pricing-2026-09\" in log and re.search(r\"update\", log, re.I) is not None)"
+    },
+    {
+      "id": "F10",
+      "level": "CLASS",
+      "where": "SKILL.md:28-34 (step 2) vs :44-48 (steps 5, 6) vs :49-51 (step 7)",
+      "finding": "Step 2 contains a branch that both performs later steps' work and exits before the remaining steps can run, and nothing reconciles the two orderings. The 'disputed' branch writes claim rows and sets status - the work steps 3 and 4 define. The 'no material' branch writes the source-log row and operation-log line - step 6's work - and then says 'stop', making steps 3, 4, 5, 6 and 7 unreachable. But that branch has still changed files (the raw, the source log, the operation log), so step 7's 'fix what the lint names before committing' and rationale.md's 'A verified fact and its lint pass land together' are asserted for a path that can never reach them. Reading the steps in order and reading them as branches give different procedures.",
+      "quote": "**no material** - no claim, no value, no newer date for any page: keep the raw, write the source-log row and the operation-log line, touch no page, stop.\n--- against ---\n6. **Register.** ... a row per consulted source in the source log (also on no material); one operation-log line naming the disposition, the source URL and the pages touched, in every branch.\n7. **Lint, then rebuild the search index;** fix what the lint names before committing."
+    },
+    {
+      "id": "F11",
+      "level": "INSTANCE",
+      "where": "SKILL.md:39-41 (step 4 status enum) vs steps 1-7 and check.py",
+      "finding": "Two of the four declared status values are assigned by no step and tested by no check. `disputed` is defined by a cross-reference to step 2 and graded in T2; `verified` is the fixture default. Nothing anywhere says when a page becomes `unverified` or `outdated` - not a step, not a rule, not rationale.md, not an eval. T1 is the natural case for `outdated` (Beta 5's 2026-08-20 price is superseded) and neither evals.json nor check.py mentions status at all for T1.",
+      "quote": "`status` - `verified` / `unverified` / `disputed` (step 2) / `outdated`;"
+    },
+    {
+      "id": "F12",
+      "level": "INSTANCE",
+      "where": "evals.md:12 (S1 pass criterion) vs evals/evals.json id 1 expectations vs check.py T1",
+      "finding": "Three clauses of S1's stated pass criterion are graded by nothing, and one is graded contrary to what it says. 'lint reports 0 errors' - no lint (see F5). 'INDEX unchanged' - check.py only asserts every note IS in INDEX, never that INDEX was not added to. 'SOURCES +1 row' - check.py only asserts a substring is present, never the row count. And S1 demands the verdict MEASURED specifically, while check.py accepts any of the three verdict words; the two documents grade different things, and step 3's own definition ('MEASURED (the source measured it)') does not obviously fit a vendor price list, which asserts rather than measures.",
+      "quote": "- **Pass criterion:** the owning note gains a dated row with the verbatim line and MEASURED; no new note is created; lint reports 0 errors; INDEX unchanged, SOURCES +1 row.\n--- against ---\nre.search(r\"MEASURED|REPEATED|DERIVED\", l)\ncheck(\"SOURCES row\", \"pricing-2026-09\" in sources)"
+    },
+    {
+      "id": "F13",
+      "level": "INSTANCE",
+      "where": "SKILL.md:53-57 (Rules) vs steps 1-7 and check.py",
+      "finding": "Of the three rules, one is implemented by no step and checked by nothing, and one is contradicted by a step. 'the wiki is never the only copy of a fact' names no artefact, no action and no observable - no step produces a second copy and no check looks for one; it is the only rule with no line in rationale.md, which itself declares 'a rule with nothing behind it does not belong in the body'. And the no-external-code rule collides with step 1: computing the manifest's `hash` and `size` requires a command that is not the wiki's query, lint or index command. 'The raw is never edited' is consistent with step 1 but is graded by nothing - check.py never opens evals/files/raw/ and so cannot detect an edited raw.",
+      "quote": "- The raw is never edited; the wiki is never the only copy of a fact.\n- This skill installs nothing and fetches no external code. It runs the wiki's own query, lint and index commands, and nothing else.\n--- against ---\nprovenance (source, date, hash, size, which page it feeds) in the directory's manifest\n--- and rationale.md's own bar ---\n\"a rule with nothing behind it does not belong in the body.\""
+    },
+    {
+      "id": "F14",
+      "level": "INSTANCE",
+      "where": "SKILL.md:16 (When to use) vs Steps 1-7",
+      "finding": "The body advertises a trigger for which there is no procedure. 'a compiled summary page is written back' appears once, in When to use, and then nowhere - no step covers a page that is generated from other pages rather than from a raw source, and steps 1, 3 and 6 all presuppose an external source with bytes, a URL or path, and a fetch date, which a compiled summary has none of. The description has the same gap in a second place: it lists 'measurement' as an ingestable source type, and step 1 offers no way to keep the raw of a measurement you produced yourself. Neither case has an eval.",
+      "quote": "- An existing page gains a source, or a compiled summary page is written back.\n--- description ---\n\"Use when a fetched page, paper, repo, transcript or measurement is about to become a note\"\n--- against ---\n1. **Keep the raw.** Save the source bytes where the wiki can re-read them, never edited, with URL or path and fetch date."
+    },
+    {
+      "id": "F15",
+      "level": "INSTANCE",
+      "where": "evals.md:3 vs :10, :17, :37",
+      "finding": "The eval header's own method parameters contradict the per-scenario numbers it reports. The header declares 'three arms, k=2'; the scenario lines name four arms (with, without, probe, incumbent) and every one of them runs the without arm at k=1, not k=2 - 'without 1/1' in S1 and S2, 'without 0/1' in S5. S5's summary line then aggregates the three baseline arms as '0/5 baseline runs', which is 1+2+2 and only reconciles if 'without' is a baseline arm - in which case the arm count is four, not three. The declared design and the reported execution cannot both be right.",
+      "quote": "the first v3 build (`pipeline/builds/llm-wiki-ingest`, three arms, k=2, code grader, blinded, preregistered rule)\n--- against ---\nEXECUTED as T1: with 2/2, without 1/1, probe 2/2, incumbent 2/2\nEXECUTED as T3: with 2/2; without 0/1, probe 0/2, incumbent 0/2\n**Result:** PASS. Beats baseline (0/5 baseline runs vs 2/2 with)"
+    },
+    {
+      "id": "F16",
+      "level": "INSTANCE",
+      "where": "evals.md:6 vs :10, :17, :22, :37, :41",
+      "finding": "The scenario type labels and the results invert the document's own stated convention. Method says the 'Beats baseline' verdict belongs only where the baseline plausibly fails. S2 is labelled a trap - the category designed for a baseline failure - and returned 'PASS (no delta; baseline clean)'. S5 is labelled normal and is the sole beats-baseline win. Additionally each of S1 and S2 states a predicted Baseline behaviour that the measured result then contradicts on the same card, with no reconciliation: the predicted failure did not occur and the prediction was left standing.",
+      "quote": "PASS on normal scenarios, \"PASS. Beats baseline.\" only where the baseline plausibly fails.\n--- against ---\n### S2 — a source that contradicts a page · trap\n- **Baseline:** overwrites with the newer number, or averages, or ignores the conflict.\n- **Result:** PASS (no delta; baseline clean)\n### S5 — no material · normal ... **Result:** PASS. Beats baseline"
+    },
+    {
+      "id": "F17",
+      "level": "INSTANCE",
+      "where": "evals.md:46 vs :49",
+      "finding": "S6's own two lines disagree about whether it is graded. Its Result is 'pending', and seven lines later the same document says its claim is carried by a trigger matrix reporting concrete numbers (recall 11/12, mis-fire 0/4, sibling reached 4/4). Either it is ungraded or it is graded by that matrix; both are asserted. The matrix itself is in no bundled file - the artefact contains no trigger matrix, so the numbers cannot be traced to anything the reader can open.",
+      "quote": "### S6 — a claim to bundle into a skill · negative-trigger ... - **Result:** pending\n--- against ---\nS6's claim is carried by the trigger matrix instead (recall 11/12, mis-fire 0/4, sibling reached 4/4)."
+    },
+    {
+      "id": "F18",
+      "level": "INSTANCE",
+      "where": "check.py:26 vs SKILL.md:29-30 (step 2, update branch)",
+      "finding": "The check for the rule 'extend it, never a rival' is narrower than the rule and misses most rivals. It only flags a new note whose stem contains the literal substring 'pric'. Enumerated: a rival named 'pricing-2026-09' or 'beta-5-prices' is caught; 'gamma-7', 'new-note' or 'model-costs-sept' is not. A rival page is caught incidentally only if the agent also fails to list it in INDEX. The check name asserts more than the predicate tests.",
+      "quote": "check(\"no rival page\", not any(s not in (\"model-prices\",\"prompt-caching\",\"local-models\") and \"pric\" in s for s in notes), str(sorted(notes)))\n--- against ---\n**update** - a page owns it: extend it, never a rival."
+    },
+    {
+      "id": "F19",
+      "level": "INSTANCE",
+      "where": "SKILL.md:47-48 (step 6) vs check.py T1/T2/T3 LOG assertions",
+      "finding": "Step 6 requires the operation-log line to name three things; the grader checks two and drops the third in all three tasks. 'the pages touched' is never asserted anywhere - a log line naming only the source and the disposition passes T1, T2 and T3. Step 6 also names a register that no eval exercises: 'A row in the hand-written map of contents for a new page'. None of the three evals creates a new page (update, disputed, no material), so check.py's index assertion only ever re-confirms the three fixture notes. The new-page branch of step 6 is graded by nothing that runs.",
+      "quote": "6. **Register.** A row in the hand-written map of contents for a new page; a row per consulted source in the source log (also on no material); one operation-log line naming the disposition, the source URL and the pages touched, in every branch.\n--- against ---\ncheck(\"LOG line names the card and the disposition\", \"gamma-7-model-card\" in log and re.search(r\"disputed\", log, re.I) is not None)"
+    },
+    {
+      "id": "F20",
+      "level": "INSTANCE",
+      "where": "evals.md:26 (S3) vs SKILL.md:39-40 (step 4) and :49-51 (step 7)",
+      "finding": "S3's pass criterion asserts two behaviours the body does not support. It requires the note's source to be 'a `note:` entry' with no URL, while step 4 defines a source entry as 'url or path, fetched, note' - note is a field within an entry that must have a url or path, not an entry type. And it requires 'lint reports the note-only source as INFO, not ERROR', which presumes a lint with severity levels; no lint exists in the bundle at all (F5) and step 7 describes lint output only as 'what the lint names'. S3 is graded by nothing, so the mismatch has never been forced.",
+      "quote": "- **Pass criterion:** the transcript text is saved as the raw; the note's source is a `note:` entry stating that; lint reports the note-only source as INFO, not ERROR; claims from it are REPEATED, not MEASURED.\n--- against ---\nFrontmatter: `title`; `sources` (url or path, fetched, note); `status`"
+    },
+    {
+      "id": "F21",
+      "level": "INSTANCE",
+      "where": "SKILL.md:59-68 (In this repo) vs :44-51 (steps 6, 7)",
+      "finding": "The instance section names paths and conventions that no step accounts for, and omits the file for the register step 6 needs most. `intake/` is named in the raw sentence and appears in no step, no rule and no rationale line - the reader cannot tell what enters it or when. The claims contract's null-vs-zero convention is stated only here, while step 3's verdict vocabulary is MEASURED/REPEATED/DERIVED with no null or zero case anywhere. And step 6 requires an operation log in every branch; the three files listed for registering are INDEX.md, SOURCES.md and pipeline/STATUS.md, none of which is presented as the operation log, while the eval fixture uses a fourth name, LOG.md.",
+      "quote": "Wiki `knowledge/notes/`, raw `knowledge/raw/` (`MANIFEST.md`) and `intake/`; schema = this file + `CLAUDE.md`'s same-turn rule + `pipeline/contracts/claims.contract.json`, whose convention is `null` for not-measured and `0` only for a measured zero. ... register in `knowledge/INDEX.md`, `knowledge/sources/SOURCES.md`, `pipeline/STATUS.md`;"
+    },
+    {
+      "id": "F22",
+      "level": "INSTANCE",
+      "where": "evals.md:3 and :10-49 vs the artefact under review",
+      "finding": "The eval record grades a previous version of the artefact and says so. It is dated to 'the first v3 build' and repeatedly reasons about 'the first build's probes' and what 'the whole-artefact review caught', while the artefact under review is the second rewrite. Step 1's manifest clause (F8) postdates it. So the verdict line's 'Status stays candidate' and its token/quality clauses describe a body of text that is no longer the body of text in SKILL.md, and no scenario has been re-executed against the current steps.",
+      "quote": "**Last eval:** 2026-09-02/03, the first v3 build (`pipeline/builds/llm-wiki-ingest`, three arms, k=2, code grader, blinded, preregistered rule) · **Verdict:** ITERATE\n--- and ---\n- **No material means no page is touched.** Observed 2026-09-02 in the first build's probes"
+    }
+  ],
+
+  "step_matrix": [
+    {
+      "step": 1,
+      "name": "Keep the raw.",
+      "ends_in_something_checkable": "PARTLY — 'the source bytes exist, unedited, with a fetch date' is observable in principle, but in every eval the raw file is supplied already on disk and is never written by the agent, so the step has nothing to produce. The manifest clause (source, date, hash, size, page fed) is fully observable and fully absent.",
+      "graded_by": "NOTHING. check.py never opens evals/files/raw/; no expectation in evals.json id 1/2/3 mentions the raw, a manifest, or that the raw is unedited.",
+      "findings": ["F8", "F13"]
+    },
+    {
+      "step": 2,
+      "name": "Search, then triage into exactly one.",
+      "ends_in_something_checkable": "PARTLY — the disposition word and the disputed status are observable. 'Query the wiki's own index' is an unobservable internal act. 'exactly one' is not decidable, because the categories overlap on the fixtures. 'status: disputed for as long as any row is' has no clearing condition anyone can check.",
+      "graded_by": "check.py T1 'LOG line names the source and the disposition' (re.search 'update'); T2 'LOG line names the card and the disposition' (re.search 'disputed') + 'page status disputed' (^status:\\s*disputed) + 'disputed marker on a row'; T3 'LOG says no material and names the source' + 'no new note' + 'SOURCES row for the consulted source'. The update branch's 'never a rival' is graded only by the substring-'pric' check (F18). The search itself: NOTHING.",
+      "findings": ["F2", "F10", "F18"]
+    },
+    {
+      "step": 3,
+      "name": "Locate every number, date and quote in the raw before writing it, and grade it.",
+      "ends_in_something_checkable": "PARTLY — a claims row bearing a verbatim quote and a verdict word is observable. The quantifier 'every' is not graded, and 'before writing it' is an ordering claim that leaves no trace in the file state.",
+      "graded_by": "check.py T1 'a claims-table row carries the verbatim raw quote AND a verdict word on the same line' (one row only); T2 'a claims row carries 753B, the card's verbatim line and a verdict word' and 'a claims row carries 744B and a verdict word'. Which of MEASURED/REPEATED/DERIVED is correct is graded by NOTHING — the regex accepts all three, contradicting evals.md S1's demand for MEASURED.",
+      "findings": ["F3", "F12"]
+    },
+    {
+      "step": 4,
+      "name": "Write the page in the schema.",
+      "ends_in_something_checkable": "PARTLY — the frontmatter half is fully checkable and fully checked. The body half (what it is / ## Claims table / what it means here / what is open) is checkable and unchecked. The per-value as-of-date rule is checkable and unchecked, and is violated by fixture state an eval freezes. Two of the four status values are assigned by no step at all.",
+      "graded_by": "check.py common block 'schema:{stem}' — asserts title, status, tags, related, sources on every note. Body sections: NOTHING. As-of dates: NOTHING. status values unverified/outdated: NOTHING.",
+      "findings": ["F6", "F7", "F11"]
+    },
+    {
+      "step": 5,
+      "name": "Cascade.",
+      "ends_in_something_checkable": "YES in principle — 'neighbour X's file contains a sentence naming the new page, and a related: entry' is a fact about the files.",
+      "graded_by": "NOTHING that can fail. The one nominally related check, T1 'neighbour names owner back', already passes against the untouched fixture (re-executed: True), so it detects deletion, not cascade. The 'one sentence saying why it matters' half is checked nowhere. evals.md S4, the scenario written for this step, is 'pending'.",
+      "findings": ["F4"]
+    },
+    {
+      "step": 6,
+      "name": "Register.",
+      "ends_in_something_checkable": "YES — all three registers are files. The three sub-obligations are unevenly covered: source log yes, operation log partly, map-of-contents-for-a-new-page not exercised.",
+      "graded_by": "check.py 'SOURCES row' in T1/T2/T3; 'LOG line names the source and the disposition' in T1/T2 and 'LOG says no material and names the source' in T3; common-block 'index:{stem}'. 'the pages touched' in the log line: NOTHING. The new-page INDEX row: no eval creates a page, so it is graded by nothing that runs.",
+      "findings": ["F19", "F21"]
+    },
+    {
+      "step": 7,
+      "name": "Lint, then rebuild the search index; fix what the lint names before committing.",
+      "ends_in_something_checkable": "MOSTLY NO — this is the least checkable step. 'rebuild the search index' has no index and no command in the eval wiki. 'land in one commit' is unobservable because no eval commits. The fallback clause is the branch actually active in every eval (no lint script exists) and its requirement — say so in the log line — leaves a trace nothing looks for.",
+      "graded_by": "PARTIAL and only by proxy. check.py's common block stands in for two of the lint's named concerns: 'link:{stem}->{target}' (dangling links) and 'index:{stem}' (unlisted pages). 'orphans' is not implemented, and local-models is an orphan the fixture keeps. The rebuild, the commit, and the log-line admission are graded by NOTHING.",
+      "findings": ["F9"]
+    }
+  ],
+
+  "summary": {
+    "findings_total": 22,
+    "class_level": 4,
+    "instance_level": 18,
+    "steps_ending_in_something_fully_checkable": 0,
+    "steps_graded_by_nothing": [1, 5],
+    "steps_graded_only_in_part": [2, 3, 4, 6, 7],
+    "checks_that_cannot_fail": [
+      "T3 'byte-identical to the fixture' x3 — tautological, and it is the assertion behind the artefact's only measured win (F1)",
+      "T1 'old price kept as a dated superseded row' — true before any work (F4)",
+      "T1 'neighbour names owner back' — true before any work (F4)"
+    ],
+    "most_load_bearing": "F1 — the single scenario the artefact cites as beating baseline (S5/T3, '0/5 baseline runs vs 2/2 with') rests on a check whose 'before' and 'after' are read from the same path, so it passes whatever the agent does to those notes."
+  }
+}

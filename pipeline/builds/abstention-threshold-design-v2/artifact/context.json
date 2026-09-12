@@ -1,0 +1,31 @@
+{
+ "content_kind": "reference",
+ "verifiable": true,
+ "bill_of_materials": [
+  {
+   "file": "references/uncertainty-signal-evidence.md",
+   "kind": "reference",
+   "why": "The 11 verified claims with their verbatim quotes, locators, fetch dates and expiry conditions. It exists because F3 - 4 of 4 probe runs thresholded a score without checking it separates - is a failure of BELIEF about what a confidence number means, and belief is not moved by an instruction. C9's constant-100-percent-confidence result and C8's AUROC 62.7 are the rows that make the separation check non-negotiable, and they have to be readable with their sources or they are just another assertion. Kept OUT of SKILL.md: numbers this specific go stale and SKILL.md is loaded whether or not they are needed."
+  },
+  {
+   "file": "assets/threshold-decision-record.md",
+   "kind": "asset",
+   "why": "The output shape, as field names and order with nothing filled in. Each of the four observed failures has a structural home in it and they are named here so the mapping can be checked: F1 -> section 4's 'Rejected in favour of it ... would have surrendered n points of coverage'; F2 -> section 1's owner and agreed-on columns; F3 -> section 2's AUROC and monotonicity table with its stop clause; F4 -> section 0, ADDED at rewrite 2 on the reader's finding that F4 had no home and the generic preamble was not one. Section 0 makes the absence of a holdout a filled-in field rather than a silence, and sections 2 and 3 carry explicit stop clauses that forbid a band where a table belongs. Rewrite 3 adds a locator and an n/date-range/sampling line to section 0 after a reader found the yes/no was a bare self-report, and states in the template itself what the section cannot do: no template can force the yes to be true, only make a false one a specific written claim with a locator someone else can open."
+  },
+  {
+   "file": "evals/evals.json",
+   "kind": "evals",
+   "why": "package.verifiable is true, so eval.exists makes this an error if absent. Four evals from the four measured prompts. Failure-to-eval mapping, restated at rewrite 4 after a reader found the previous wording did not reconcile - it said E1 carried BOTH F4 and F2 and then gave E2 a 'second half of F2' that was F1's content. F2 splits, and here is the split: E1 (no files[] - a cut requested where no distribution was supplied) carries F4, and carries the FIRST half of F2, which is that the target and the coverage floor are named and attributed before any data exists - the exact point at which all four baseline runs asserted a target in their own voice. E2 (the separating fixture) carries F1 - the highest-coverage row meeting the target, and the coverage surrendered by any stricter cut priced - and the SECOND half of F2, which is that the floor named in E1 is what the chosen cut is checked against rather than being dropped once numbers appear. E3 (the round-number refusal) is the regression guard: the baseline passes it 4 of 4 and the skill may not lose it. E4 (the chance-level fixture) carries F3, and is the case whose correct outcome is NO cut."
+  },
+  {
+   "file": "evals/scored_predictions.csv",
+   "kind": "eval fixture",
+   "why": "200 scored, labelled rows with a separating signal (AUROC 0.8887) whose max-coverage cut at 95 percent precision is a non-round 0.506. Referenced from evals.json files[], which eval.files-resolve requires to resolve under the skill root."
+  },
+  {
+   "file": "evals/selfreported_confidence.csv",
+   "kind": "eval fixture",
+   "why": "200 rows of LLM self-reported confidence with AUROC 0.4825 and no cut reaching the target at any coverage. The eval whose correct outcome is NO cut - the case F3 says the baseline cannot currently produce."
+  }
+ ]
+}

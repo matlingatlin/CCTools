@@ -1,0 +1,23 @@
+[   0.0] Here are five secret codes for Claude code
+[   2.2] that you need to know about.
+[   3.2] Number one is L99.
+[   4.8] Just put this before the prompt
+[   6.1] and Claude's gonna give you a real committed answer.
+[   8.2] Number two is forward slash ghost.
+[  10.0] Put this before your prompt
+[  11.2] and Claude's gonna strip out all the AI slops
+[  13.4] so your writing actually sounds like a human.
+[  15.3] Number three is OODA.
+[  17.0] Add this to your prompt
+[  17.8] and Claude's gonna analyze your situation
+[  19.8] using a military decision framework.
+[  22.0] What to observe, what to focus on
+[  23.8] and to decide what actions to take.
+[  25.7] Number four is scaffold.
+[  27.0] You put this before any prompt
+[  28.3] and Claude's gonna break down a full action plan.
+[  31.0] And number five is ultra thing.
+[  32.6] This one's excellent.
+[  33.6] You can put this before your prompt
+[  35.1] and Claude's gonna go into maximal reasoning mode
+[  37.4] and think 10 times deeper before giving you an answer.

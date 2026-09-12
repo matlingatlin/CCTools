@@ -1,0 +1,31 @@
+{
+  "id": "abstention-threshold-design-v2",
+  "opened": "2026-09-01T21:43:11+00:00",
+  "package": {
+    "path": "pipeline/packages/abstention-threshold-design-v2.json",
+    "sha256": "dd6aa0da253981a3fc8c1766621612673916f04c587cc5b658b39e34debcb4b2",
+    "candidate_sentence": "Sets the confidence cut at which an AI feature declines instead of answering, and produces the coverage and precision the chosen threshold buys.",
+    "content_kind": "reference",
+    "verifiable": true,
+    "failure_kind": "shape",
+    "threshold": "Across k >= 2 repeats: zero regressions on correctness, no more than 20 percent worse on tokens or tool calls, and at least one test where the skill wins with the win surviving the repeat.",
+    "threshold_rule": null,
+    "budget": {
+      "max_agents": 2,
+      "max_paired_runs": 8
+    },
+    "origin": "existing-artifact",
+    "filled_by": "coordinator, decomposing .claude/skills/abstention-threshold-design (128-line body, 0 references, 0 evals, 0 URLs)",
+    "gap_kind": "wrong-shaped",
+    "n_claims": 11,
+    "n_measured_claims": 8,
+    "n_sources": 5
+  },
+  "admission": {
+    "package_contract_version": "1.2.0",
+    "errors": 0,
+    "warnings": [],
+    "indeterminate": []
+  },
+  "note": "record.json is written once. Everything that happened is in events.jsonl."
+}

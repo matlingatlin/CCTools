@@ -1,0 +1,377 @@
+You are grading two anonymised answers to each question below. You do not know how either was produced, and you must not speculate about it.
+
+IMPORTANT: the labels A and B are re-randomised FOR EVERY QUESTION. Answer A in question 1 and answer A in question 2 are not the same source. Do not write anything that treats A or B as a consistent identity across questions - a cross-question narrative about 'A' has no basis and will be discarded.
+
+For EACH question, for EACH listed expectation, rule on answer A and answer B independently: met / not met / unclear. Every ruling must quote the line from that answer that decides it. If nothing in the answer decides it, the ruling is 'not met' and you say what you looked for.
+
+Then, for each question, answer one more thing: **is this expectation set any good?** Name any expectation that both answers satisfy trivially, or that could be satisfied by an answer that misses the point. An expectation nothing could fail is not a measurement.
+
+Return strict JSON and nothing else:
+{"per_question": [{"id": 1, "rulings": [{"expectation": "...", "A": "met|not met|unclear", "A_evidence": "quoted line", "B": "...", "B_evidence": "..."}], "expectation_critique": "..."}], "overall": "..."}
+
+
+======================================================================
+QUESTION 1
+Scope sentence: 'Reviews a Terraform plan and produces a written go/no-go naming each resource that will be destroyed.' Probe transcript, two runs, both without any skill present. Run A listed all 14 changed resources and said 'looks fine'. Run B listed them and flagged one replacement, then said 'should be safe'. Neither named the two resources marked for destruction, and neither produced a verdict line. Give me the SKILL.md for this. I want the actual file contents.
+
+EXPECTATIONS:
+  - the answer contains an actual SKILL.md with YAML frontmatter and a body, not a description of one
+  - the frontmatter carries a name and a description field
+  - every rule in the steps traces to the missed destruction or the missing verdict line; no rule about Terraform practice in general appears
+  - a bill of materials, or an explicit statement that no bundled files are needed and why, appears before or alongside the file
+
+--- ANSWER A ---
+Working in the method's order (4.0 BOM → 4.1/4.2 bundled → 4.3 name → 4.4/4.5/4.6 body → 4.7 description → 4.8 frontmatter).
+
+**One flag before the file.** The method says the field rules are read from the contract *at the moment the field is written*, never from memory. I was instructed not to open the contract or the code checker for this exercise, so every field below is written against the method's ordering and evidence rules only. Nothing here has been through `skill_contract.py`. Treat the artefact as **written, not checked** — by rule 2 ("a red field never proceeds") it is not eligible to proceed until the checker has run on the whole file.
+
+### 4.0 Bill of materials
+
+| File | Kind | Why needed | Status |
+| --- | --- | --- | --- |
+| `terraform-plan-destroy-review/SKILL.md` | skill body | the method itself | needed — written below |
+| `references/plan-json-fields.md` | reference | the body asserts the shape of `terraform show -json` (`resource_changes[].change.actions`, `replace_paths`); that is an external claim and needs a verbatim quote + fetch date | **needed, NOT WRITTEN** — I have not fetched the Terraform docs in this run, so I cannot date the quote. This is a task, not an improvisation: the body below is written so it *asserts* the field names at runtime (step 2 fails loudly if they are absent) rather than trusting them silently. |
+| `assets/verdict-template.md` | asset | the skill emits a fixed-shape report; a template with slots is what makes the output checkable | needed — written below |
+| `scripts/` | executable | — | not needed because the extraction is one `jq` filter that belongs in the step, and a script would hide the assertion the step depends on |
+| `references/terraform-best-practices.md` | reference | — | not needed because no probe run failed on module structure, provider versions, backends or drift. There is no observation behind it, so it would be context cost with nothing failing without it. |
+
+Back-check at the end (both directions): planned-and-missing = `references/plan-json-fields.md` (open task, above). Appeared-unplanned = none.
+
+### 4.1/4.2 bundled knowledge
+
+`references/` is deliberately empty pending the dated fetch above. `assets/verdict-template.md`:
+
+```markdown
+# Plan review — <plan file> — <date>
+
+Plan counts as reported by terraform: <A> to add, <C> to change, <D> to destroy.
+Resource changes parsed from JSON: <N>.  Reconciles: <yes/no>
+
+## Will be destroyed (actions == ["delete"])
+| # | address | type | replaced by nothing / superseded by | data at risk (y/n/unknown) |
+
+## Will be replaced (actions == ["delete","create"] or ["create","delete"])
+| # | address | type | order | what forced replacement (replace_paths) | downtime window |
+
+## Everything else
+<A> created, <C> updated in place — not enumerated here.
+
+VERDICT: GO
+VERDICT: NO-GO — <one clause naming the resource that decides it>
+(delete whichever line does not apply; exactly one must remain)
+```
+
+### 4.3 name
+
+`terraform-plan-destroy-review` — directory `terraform-plan-destroy-review/`, matching. Nothing reserved.
+
+### The file
+
+```markdown
+---
+name: terraform-plan-destroy-review
+description: Use when a Terraform plan must be reviewed before apply and someone needs to know what will be DESTROYED — triggers on "review this plan", "is it safe to apply", "will this delete anything", "what does -/+ mean", "plan says N to destroy", "forces replacement", "sign off on this apply", "go/no-go on this plan". Parses terraform show -json, enumerates every resource change carrying a delete action by full address, separates outright destroy from replacement and create-before-destroy, reconciles the count against Terraform's own summary, and ends in one mandatory VERDICT: GO / NO-GO line. NOT for authoring or refactoring modules, NOT for state drift, provider upgrades, backend or workspace configuration, NOT for cost estimation, NOT for reviewing application source (use code-security-review).
+---
+
+# Terraform plan review: what gets destroyed, and a verdict
+
+## What this is
+
+A Terraform plan is reviewed and a written go/no-go is produced that names, by full
+resource address, every resource the plan will destroy.
+
+## When to use it
+
+Use it when someone hands you plan output — text or JSON — and asks whether it is safe
+to apply, or asks you to sign off on an apply.
+
+Recognise the problem by what a plan review looks like when it goes wrong: the reviewer
+lists all the changed resources, says something reassuring, and never names the
+resources that are going away. Both probe runs did exactly that (run A: 14 resources
+listed, "looks fine"; run B: same list, one replacement flagged, "should be safe").
+Two resources were marked for destruction in both plans. Neither run named them.
+
+## Steps
+
+Every step ends in an artefact or a number you can point at.
+
+1. **Get the machine-readable plan.** `terraform show -json <planfile> > plan.json`.
+   If you were given only rendered text and cannot re-run `show`, say so and stop:
+   the rest of this method reads fields that the rendered output does not carry.
+   Checkable: `plan.json` exists and parses.
+
+2. **Extract every change carrying a delete.**
+   `jq '[.resource_changes[] | select(.change.actions | index("delete"))]' plan.json`
+   If `.resource_changes` is absent or the filter errors, stop and report the plan-JSON
+   shape you actually got — do not fall back to reading the rendered diff.
+   Checkable: a JSON array of length N, and N is written down.
+
+3. **Split the array into destroy vs replace.** `actions == ["delete"]` is a destroy.
+   `["delete","create"]` is a replacement, and `["create","delete"]` is a replacement
+   with create_before_destroy — the resource still dies, and the ordering changes the
+   downtime story, so the two are not one category.
+   Why the split is a rule: run B flagged "one replacement" and stopped there, which
+   left both true destroys unnamed and left the reader unable to tell a rebuild from a
+   deletion.
+   Checkable: each of the N entries is in exactly one of the two lists.
+
+4. **Fill the tables in `assets/verdict-template.md`, one row per entry, no blank
+   cells.** Full address, type, and for replacements the `replace_paths` entry that
+   forced it. If data-at-risk is unknowable from the plan, write `unknown` — the word
+   `unknown` is an allowed answer; an empty cell is not.
+   Checkable: row count equals N.
+
+5. **Reconcile against Terraform's own summary.** The plan's "X to add, Y to change,
+   Z to destroy" must agree with what you parsed; Z must equal the destroy count plus
+   the replace count. If it does not, the plan you read is not the plan they are about
+   to apply — stop and say so.
+   Why the rule: run A listed 14 changed resources and drew a conclusion without ever
+   checking its list against the plan's own totals, which is how two destroys stayed
+   invisible inside a correct-looking list of 14.
+   Checkable: the "Reconciles: yes/no" line is filled.
+
+6. **Write exactly one verdict line**, in this form and as the last line of the report:
+   `VERDICT: GO` or `VERDICT: NO-GO — <one clause naming the resource that decides it>`.
+   Why the rule: neither probe run produced a verdict at all. "Looks fine" (run A) and
+   "should be safe" (run B) are not verdicts — they carry no address, and a reader
+   cannot act on them or be held to them. If N > 0 and no human has confirmed the
+   destroys are intended, the verdict is NO-GO.
+   Checkable: the report's last line matches `^VERDICT: (GO|NO-GO — .+)$`, and there
+   is exactly one such line in the file.
+
+## Pointers
+
+- `assets/verdict-template.md` — the report shape, with the two tables and the verdict
+  line. Open it at step 4, before writing any prose, and fill the slots in place.
+```
+
+### 4.8 frontmatter policy
+
+Content kind is a technique the model should reach for unprompted when plan output appears, so it stays model-invocable — no `disable-model-invocation`. I have asserted only `name` and `description`; which fields survive packaging is the contract's call and must be confirmed by the checker, not by me.
+
+**Per-field record (owed to `fields.jsonl`):** every row's `code_red` is currently `unrun`, not `0`. Do not let that be read later as a clean pass.
+
+--- ANSWER B ---
+The probe says the baseline already *lists* changes competently and already *reads* the plan. What it does not do is (a) separate destroys/replaces from the rest of the noise, and (b) commit to a verdict. So the skill must be narrow: extraction of the destructive subset + a mandatory verdict line. Everything else is padding that will make it mis-trigger.
+
+`.claude/skills/terraform-plan-gate/SKILL.md`:
+
+````markdown
+---
+name: terraform-plan-gate
+description: Use when reviewing a Terraform/OpenTofu plan before apply — terraform plan output, tfplan, plan JSON, a plan posted in a PR or CI log, "is this plan safe to apply", "what does this destroy", "review this plan", "can I apply this". Extracts every resource that will be DESTROYED or REPLACED, names each one, and ends with a required GO / NO-GO / GO-WITH-CONDITIONS verdict line. Not for authoring or refactoring Terraform code, not for state-drift investigation, not for module or provider-version review.
+---
+
+# Terraform plan gate
+
+A plan review is not a summary. It is a decision with a named blast radius. A review that
+does not name every destroyed resource and does not end in a verdict has not been done.
+
+## Inputs
+
+Work from machine-readable output when it exists. If you were given only pasted human
+output, say so in the report — the counts below are then read, not parsed.
+
+- `terraform show -json tfplan > plan.json` (preferred), or
+- `terraform plan -no-color` text.
+
+## Procedure
+
+**1. Parse the destructive subset first — before reading anything else.**
+
+From `plan.json`, classify every element of `.resource_changes[]` by its
+`.change.actions` array:
+
+| `actions` | Class |
+|---|---|
+| `["no-op"]` | ignore |
+| `["read"]` | ignore |
+| `["create"]` | create |
+| `["update"]` | update |
+| `["delete"]` | **DESTROY** |
+| `["delete","create"]` | **REPLACE** (destroy-then-create) |
+| `["create","delete"]` | **REPLACE** (create-then-destroy) |
+
+```bash
+jq -r '.resource_changes[]
+       | select(.change.actions | index("delete"))
+       | [(.change.actions|join("+")), .address, (.change.before.id // "-")]
+       | @tsv' plan.json
+```
+
+Also check `.output_changes` for removed outputs, and note any `moved`/`removed` blocks or
+`-target` / `-replace` flags in the invoking command — a plan produced with `-target` is a
+partial plan and must be flagged as such.
+
+For text output, count the `# … will be destroyed` and `# … must be replaced` headers and
+reconcile against the `Plan: X to add, Y to change, Z to destroy` line. **If your named list
+is shorter than Z, you have missed resources — go back.** Do not report until the two agree.
+
+**2. Grade each destroy/replace for recoverability.** For every entry from step 1, state in
+one clause what is lost and whether it comes back:
+
+- **Stateful / irrecoverable** — databases, disks/volumes, buckets and their objects, PVs,
+  secret/KMS material, snapshots, stateful sets. Check `prevent_destroy`, deletion protection,
+  final-snapshot settings, and `skip_final_snapshot = true` in particular.
+- **Externally-referenced** — anything whose identity others depend on: DNS records, load
+  balancer/IP addresses, ARNs and IDs consumed outside this state, IAM roles/policies.
+- **Disruptive but recoverable** — instances, tasks, nodes: replaced with downtime.
+- **Cheap** — null resources, local files, tags-only churn.
+
+For each replacement, name the attribute that forces it — from `.change.replace_paths` in
+JSON, or the `# forces replacement` marker in text. A replacement whose trigger you cannot
+name is an unexplained replacement and is by itself grounds for NO-GO.
+
+**3. Sanity-check the context.** Workspace/backend actually selected; the plan file is the
+one that will be applied (a re-plan at apply time is a different plan); no unexplained
+provider or module version movement.
+
+**4. Write the report.** Required shape, in this order:
+
+```
+## Plan review — <workspace/env>, <plan source>
+
+Counts: N to add, N to change, N to destroy   (parsed from plan.json | read from text)
+
+### Will be DESTROYED (N)
+- <address> — <what is lost> — <recoverable? how>
+### Will be REPLACED (N)
+- <address> — forced by <attribute> — <downtime / data impact>
+### Other changes (N add, N update)
+- one line, grouped; no per-resource detail unless it bears on the destroys
+
+### Conditions / unknowns
+- <anything you could not determine, each as an explicit unknown>
+
+VERDICT: GO | GO-WITH-CONDITIONS | NO-GO — <one sentence of reason>
+```
+
+## Rules
+
+- **The verdict line is mandatory and is the last line.** Exactly one of `GO`,
+  `GO-WITH-CONDITIONS`, `NO-GO`. "Looks fine", "should be safe", "seems reasonable" are not
+  verdicts and must not appear anywhere in the report.
+- **Every destroy and every replace is named individually, by full resource address.** A
+  count without addresses is a failed review. Never write "some resources are replaced".
+- **Zero destroys is a finding, not a silence.** Write `### Will be DESTROYED (0)` explicitly
+  so the reader can tell the section was checked rather than skipped.
+- **Default to NO-GO** when: an irrecoverable resource is destroyed without a stated backup
+  or snapshot; a replacement's forcing attribute cannot be named; the plan is stale, partial
+  (`-target`), or from a different workspace than the apply will use; or the counts do not
+  reconcile.
+- **GO-WITH-CONDITIONS must list the conditions as checkable actions** ("take an RDS snapshot
+  first", "lower the DNS TTL 24h ahead"), not as advice.
+- Report unknowns as unknowns. `(known after apply)` on a destroy target's dependants is not
+  evidence of safety.
+
+## In this repo (one instance)
+
+Nothing repo-specific. If your CI posts plans as PR comments, point the skill at the JSON
+artifact rather than the comment text — text-only reviews cannot reconcile counts reliably.
+````
+
+
+======================================================================
+QUESTION 2
+Here is the description I wrote for that skill: 'This skill helps with Terraform. It is a comprehensive and thorough guide to reviewing infrastructure-as-code changes, covering plan output, state drift, provider versions, module structure, variable precedence, workspace selection, remote backends, and general best practices for keeping your infrastructure safe and maintainable across teams and environments.' Good to go?
+
+EXPECTATIONS:
+  - rejects the description
+  - names that it describes the topic rather than when to invoke it
+  - any character limit it cites is attributed to a source it read, not stated bare
+  - it proposes a replacement description, not only a critique
+
+--- ANSWER A ---
+No. Rewrite it.
+
+Three faults, in order of cost:
+
+1. **It describes the topic, not the trigger.** "This skill helps with Terraform" and "comprehensive and thorough guide" tell the selector nothing about *when* to load it. Descriptions are matched against a request; write triggers ("Use when reviewing a terraform plan before apply…", "what does this destroy", "is this safe to apply") and the literal artifacts a user will paste (`terraform plan`, `tfplan`, `plan.json`, OpenTofu).
+2. **It over-claims by a mile.** The body does one job: name destroys/replaces and issue a verdict. The description promises state drift, provider versions, module structure, variable precedence, workspace selection, remote backends and general best practice. Every one of those is a false trigger — it will load on "which provider version should I pin?" and then be no help. Description and body must claim the same scope; when they disagree, the description is the bug.
+3. **No negative boundary.** Say what it is *not* for, so the neighbours are visible: not authoring Terraform, not drift investigation, not module/provider-version review.
+
+Also: drop "This skill helps with" (wasted tokens, first-person-ish), drop the adjectives — "comprehensive and thorough" is not a trigger word, and it costs you keyword room inside the character cap that the real triggers need.
+
+Use the description from the Q1 frontmatter.
+
+--- ANSWER B ---
+No.
+
+Six things wrong, in the order the method would catch them:
+
+1. **It was written first.** It reads as a statement of intent for the skill you meant to build, not the router input for the body in Q1. That is the named failure mode in the method, and it is the root of the other five.
+2. **It promises scope the body does not have** — state drift, provider versions, module structure, variable precedence, workspaces, remote backends. The body reviews a plan for destroys. Every one of those phrases is a request this skill will now win and then fail.
+3. **Solution vocabulary, not symptom vocabulary.** "Infrastructure-as-code changes", "best practices", "maintainable" are words someone types when they already have the answer. The person with the problem types "will this delete my database", "what does `-/+` mean", "plan says 2 to destroy".
+4. **It does not say what the skill actually produces.** The destroy enumeration and the mandatory verdict line — the only two things that distinguish it from a generic reviewer — are absent.
+5. **No "Use when", no negative triggers.** Nothing tells a router where the boundary is, so no neighbour can be differentiated from it in either direction.
+6. **Filler occupies the budget.** "Comprehensive and thorough", "helps with", "across teams and environments" cost characters and route nothing.
+
+Use the description in Q1's frontmatter instead. And note the same caveat: neither of us has run the checker over it, so "good to go" is not a judgement either of us is entitled to make by eye — the length rule in particular is a code question, not a reading question.
+
+
+======================================================================
+QUESTION 3
+I have the body drafted and I have the description drafted. Both look right to me. What do you do next?
+
+EXPECTATIONS:
+  - runs a mechanical or code check before any judgement about how it reads
+  - treats the pre-drafted description as suspect because the body's scope may have moved
+  - names the specific check or file it would run, not 'validate it'
+
+--- ANSWER A ---
+Not read them again. "Both look right to me" is the reading that measures worst, because you wrote them.
+
+In order:
+
+1. **Run the code checker on the whole artefact, not on the field you last touched.** Cross-field rules only become checkable once every field exists. Anything red is fixed and the checker is re-run before a reader ever sees it — there is no point spending a reader on a description that is over the cap.
+2. **Then hand each field out separately** to a reader who did not write it, with the field and the contract rule and nothing else. Body → "would a reader who has this problem recognise it here in one line?" and "is every rule traceable to a named observation, and does every step end in something checkable?" Description → "which unit would a router pick for the neighbour's job, and why not this one?" Do not give them your reasoning; a critique of your own reasoning measures worse than no critique.
+3. **Read the description beside its nearest sibling specifically** — for this skill, whatever else in the library claims plan/diff/change review or pre-ship gating. Ask it in both directions. If either direction is unclear, one of the two descriptions is wrong, and it is not automatically the new one.
+4. **Back-check the bill of materials both ways.** Planned files that never appeared (here: `references/plan-json-fields.md` — still an open task), and files that appeared unplanned.
+5. **Record the per-field result** — which code rules went red, which reader questions went red, how many rewrites each field took. Skipping this is silent: you lose the only signal that says which field of this method costs the most rework.
+
+And one ordering point: if step 2 or 3 moves the body's scope, the description was written against a scope that no longer exists and is redrafted, not patched. That is the whole reason it is last.
+
+--- ANSWER B ---
+Neither of those is the thing that tells you it works, so: **test it before it goes anywhere near a commit.**
+
+Concretely, next actions in order:
+
+1. **Write the evals first, from the probe.** You already have the exact failure that justifies the skill — Runs A and B named zero of the two destroys and produced no verdict. That is scenario #1, and it is the one the baseline must fail.
+2. **Build a blend of scenarios, not just traps.** Roughly half everyday: a plan with one clean destroy, a plan with a forced replacement, an adds-and-updates-only plan (must emit `DESTROYED (0)` and `GO`). Roughly half adversarial: a destroy buried at position 40 of 60; a `create+delete` ordering variant; a plan where `Plan: … 3 to destroy` disagrees with the visible blocks; a `-target` partial plan; `skip_final_snapshot = true` on an RDS destroy; pasted text with no JSON. Plus a **negative trigger**: "bump the AWS provider to 5.x across these modules" — the skill must *not* fire.
+3. **Run baseline vs with-skill on every scenario.** Same prompts, same inputs, skill absent then present. Grade on the two contract points that the probe showed missing: every destroy/replace named by full address, and a verdict line present as the last line. Persist as `.claude/skills/terraform-plan-gate/evals.md` with the per-scenario result table.
+4. **Read the deltas, then fix the file.** If baseline passes a scenario, that scenario is not evidence for the skill — replace it. If with-skill fails one, the body is under-specified, not the eval.
+5. Only then: document and commit. Untested is not done, and "both look right to me" is exactly the state in which a skill that never fires, or fires on everything, feels finished.
+
+
+======================================================================
+QUESTION 4
+We're short on time. What goes in the description field?
+
+EXPECTATIONS:
+  - does not state field rules as remembered fact
+  - names the artefact it would read the rule out of
+  - no numeric limit is asserted without naming where it was read
+
+--- ANSWER A ---
+Nothing goes in it yet — and being short on time does not change that.
+
+The description is last because it needs three inputs that do not exist earlier: the finished body's actual scope, the trigger vocabulary, and the neighbours it must not collide with. Writing it early under time pressure does not save the work, it moves it: you get a description of the skill you meant to build, and you pay for it on every future request that mis-routes, forever, silently. The unwritten skill costs one task; the mis-routed one costs every task that should have found it.
+
+So the cheapest correct move, if you have ten minutes:
+
+- Freeze the body first. Then write the description from it in one pass — symptoms, error strings, tool names, and the two things this skill uniquely emits (the destroy enumeration, the verdict line) — plus the explicit NOTs.
+- Run the code checker. Seconds, and it settles length and format without a human.
+- Do the one neighbour comparison, both directions. Skip the wider reader pass if you must; do not skip this one.
+
+If you cannot even do that, ship the skill with the body and leave the description as the blocking task, rather than filling it with a guess. A red field never proceeds — and under time pressure the description is the field most likely to be red and least likely to be noticed.
+
+--- ANSWER B ---
+Short on time is not a reason to write the field badly — the description is the *only* part of the skill that runs on every request, and a wrong one costs you the skill entirely (it never loads, or it loads constantly). It is also thirty seconds of work. Paste this:
+
+```yaml
+description: Use when reviewing a Terraform/OpenTofu plan before apply — terraform plan output, tfplan, plan JSON, a plan posted in a PR or CI log, "is this plan safe to apply", "what does this destroy", "review this plan", "can I apply this". Extracts every resource that will be DESTROYED or REPLACED, names each one, and ends with a required GO / NO-GO / GO-WITH-CONDITIONS verdict line. Not for authoring or refactoring Terraform code, not for state-drift investigation, not for module or provider-version review.
+```
+
+The four parts, if you need to write your own under pressure: **Use when** + the concrete situation; the literal words and artifacts a user will type; what it produces; **Not for** + the two or three nearest neighbours. Third person, triggers only, under the character cap, no adjectives.
+
+What you may not skip to save time is the testing (Q3). A description can be sharpened later from mis-fires you observe; an untested body ships a wrong verdict on a live apply.

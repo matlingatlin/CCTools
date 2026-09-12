@@ -1,0 +1,263 @@
+{
+ "bill_of_materials": [
+  {
+   "file": "evals/evals.json",
+   "kind": "evals",
+   "why": "the three prompts; expectations added after outputs",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-A/evals/evals.json",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-A/evals/files/raw/2026-09-02-blog-restating-caching.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-A/evals/files/raw/2026-09-02-gamma-model-card.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-A/evals/files/raw/2026-09-02-pricing-page.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-A/evals/files/wiki/INDEX.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-A/evals/files/wiki/LOG.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-A/evals/files/wiki/SOURCES.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-A/evals/files/wiki/notes/local-models.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-A/evals/files/wiki/notes/model-prices.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-A/evals/files/wiki/notes/prompt-caching.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-A/evals.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-B/evals/evals.json",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-B/evals/files/raw/2026-09-02-blog-restating-caching.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-B/evals/files/raw/2026-09-02-gamma-model-card.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-B/evals/files/raw/2026-09-02-pricing-page.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-B/evals/files/wiki/INDEX.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-B/evals/files/wiki/LOG.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-B/evals/files/wiki/SOURCES.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-B/evals/files/wiki/notes/local-models.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-B/evals/files/wiki/notes/model-prices.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-B/evals/files/wiki/notes/prompt-caching.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-B/evals.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-B/references/rationale.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-C/evals/evals.json",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-C/evals/files/raw/2026-09-02-blog-restating-caching.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-C/evals/files/raw/2026-09-02-gamma-model-card.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-C/evals/files/raw/2026-09-02-pricing-page.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-C/evals/files/wiki/INDEX.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-C/evals/files/wiki/LOG.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-C/evals/files/wiki/SOURCES.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-C/evals/files/wiki/notes/local-models.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-C/evals/files/wiki/notes/model-prices.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-C/evals/files/wiki/notes/prompt-caching.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-C/evals.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-C/references/rationale.md",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/check.py",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/truth-A.json",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/truth-B.json",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/truth-C.json",
+   "kind": "evals",
+   "why": "a fixture artefact, its truth file or the grader that evals/evals.json's prompts and expectations name",
+   "status": "exists"
+  },
+  {
+   "file": "references/pair-vocabulary.md",
+   "kind": "references",
+   "why": "what counts as a step, rule, clause, expectation, file; the seven pair types with plan-count formula and what a contradiction looks like in each; the two row shapes; the plan count and the ledger",
+   "status": "exists"
+  },
+  {
+   "file": "evals/files/artifact-C/evals/files/check.py",
+   "kind": "evals",
+   "why": "part of fixture C: the round-2 text bundled its own grader, and the fixture keeps it because the reviewed artefact included it (its absence from an earlier copy made both T3 probes report a planted defect nobody planted)",
+   "status": "exists"
+  },
+  {
+   "file": "evals.md",
+   "kind": "record",
+   "why": "the first build's measurement record (ABANDON at the loop cap), kept as history; the second build appends",
+   "status": "exists"
+  }
+ ],
+ "note": "The three fixture artefacts each carry their own SKILL.md (and artifact-B/C a references/rationale.md): they are the artefacts under review, not bundled files of this skill, and skill_contract.py does not count a nested SKILL.md as bundled, so they carry no row. Artifact-A bundles no references/."
+}

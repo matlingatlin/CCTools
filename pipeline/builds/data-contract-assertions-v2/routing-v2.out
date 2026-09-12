@@ -1,0 +1,25 @@
+```json
+{
+  "1": "data-contract-assertions",
+  "2": "data-contract-assertions",
+  "3": "data-contract-assertions",
+  "4": "data-contract-assertions",
+  "5": "data-contract-assertions",
+  "6": "data-contract-assertions",
+  "7": "data-contract-assertions",
+  "8": "data-contract-assertions",
+  "9": "data-contract-assertions",
+  "10": "data-contract-assertions",
+  "11": "data-contract-assertions",
+  "12": "data-contract-assertions",
+  "13": "structured-llm-extraction",
+  "14": "eval-set-curation",
+  "15": "integration-contract-completeness",
+  "16": "mlops-production-review",
+  "17": "hybrid-parse-escalation",
+  "18": "external-domain-audit",
+  "19": "abstention-threshold-design"
+}
+```
+
+Written to `routing_raw.json`.

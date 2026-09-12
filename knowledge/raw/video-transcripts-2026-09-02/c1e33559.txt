@@ -1,0 +1,14 @@
+[   0.0] This repo is number one trending on GitHub right now,
+[   2.9] and it already has over 60,000 stars.
+[   5.2] It's a free page where developers collect every shortcut
+[   8.3] for getting more out of their AI tools.
+[  10.3] Three things inside worth knowing,
+[  12.5] even if you've never opened GitHub before.
+[  14.4] One, ready-made instructions you hand your AI.
+[  17.0] So it does a task your way every single time.
+[  20.0] Two, shortcuts that chain multiple AI steps together.
+[  23.2] So you stop repeating yourself.
+[  24.8] Three, a running list of what the top AI builders
+[  27.6] are doing right now, and it's updated every single day.
+[  30.8] And none of it costs anything.
+[  32.6] Comment, repo, and I'll send you the link.

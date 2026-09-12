@@ -1,0 +1,64 @@
+{
+  "skill_name": "abstention-threshold-design",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Our invoice-extraction model is confidently wrong on about one record in twenty, and right now a human reviews every record. Where do we put the auto-approve cut? We have roughly 4,000 records a day and an AP team of six. Tell us what to do.",
+      "expected_output": "the answer does not state what coverage the system will auto-approve at, in any form, including a range or a band",
+      "expectations": [
+        "E1 states that no scored, labelled holdout was supplied and that a cut cannot be derived without one",
+        "E2 gives NO coverage figure or band for what the system will achieve (a MINIMUM acceptable coverage proposed as a floor to be agreed is not this, and is allowed)",
+        "E3 either names the person or role who must agree the precision target, or explicitly marks its own proposed target as unagreed",
+        "E4 names a minimum acceptable coverage - a floor - distinct from the precision target",
+        "E5 requires the confidence signal to be checked for separation (AUROC, rank correlation, or bucket/decile accuracy) before any cut is trusted",
+        "E6 names what has to be pulled to build the holdout"
+      ],
+      "role": "Targets F4 and the first half of F2. No distribution is supplied, so the correct answer names what to pull and who owns the two numbers, and states NO cut, NO coverage and NO band. All four baseline runs answered with a guessed coverage band.",
+      "ground_truth": "a threshold question with NO score distribution attached"
+    },
+    {
+      "id": 2,
+      "prompt": "The attached file has 200 rows: id, score (the model's confidence, 0-1) and correct (1 if the prediction was right, 0 if wrong). Pick the cut for a 95 percent precision target and tell us what it buys.",
+      "files": [
+        "evals/scored_predictions.csv"
+      ],
+      "expected_output": "the RECOMMENDED cut is score >= 0.506, or a value within one answered case of it (0.503 to 0.510). A cut recommended above 0.510 is not correct, however well argued",
+      "expectations": [
+        "E1 reports AUROC or an explicit bucket/decile separation check for the score BEFORE choosing a cut",
+        "E2 recommends the cut score >= 0.506, within one answered case (0.503 to 0.510)",
+        "E3 states coverage and precision together for the recommended cut - 55.5 percent and 95.5 percent, or the equivalent counts",
+        "E4 states the answered n behind the precision figure",
+        "E5 if any stricter cut is discussed or recommended, prices it - coverage points or cases surrendered against precision points gained"
+      ],
+      "role": "Targets F1. The signal separates (AUROC 0.8887) and the max-coverage cut meeting 95 percent is score >= 0.506: 111 answered, 106 correct, 55.5 percent coverage. Three of four baseline runs chose a stricter cut and priced nothing.",
+      "ground_truth": "a 200-row fixture whose score separates (AUROC 0.8887); the maximum-coverage cut meeting 95 percent precision is score >= 0.506, giving 111 answered of 200, 106 correct, 95.50 percent precision, 55.5 percent coverage"
+    },
+    {
+      "id": 3,
+      "prompt": "Can we just auto-approve everything the model says it is 90 percent sure about? Yes or no, and why.",
+      "expected_output": "the answer is no, and the reason turns on whether the stated confidence is known to equal accuracy, not on 90 percent being too low a bar",
+      "expectations": [
+        "E1 answers no",
+        "E2 gives the calibration reason - a stated confidence is not known to equal the true rate of being right until it is checked against outcomes",
+        "E3 does not rest the refusal solely on 90 percent being too low a number for this domain"
+      ],
+      "role": "REGRESSION GUARD, not a target. The baseline already passes this 4 of 4, refusing on calibration grounds rather than on the number being too low. It is here because a rebuild that loses a behaviour the incumbent-era baseline already had is a regression nobody would otherwise notice. Expected to pass in BOTH arms.",
+      "ground_truth": "can we auto-approve everything the model says it is 90 percent sure about"
+    },
+    {
+      "id": 4,
+      "prompt": "The attached file has 200 rows: id, stated_confidence (the LLM's own stated 0-1 confidence in its answer) and correct. Product wants to auto-send every answer above a confidence cut and route the rest to support. Give us the cut.",
+      "files": [
+        "evals/selfreported_confidence.csv"
+      ],
+      "expected_output": "the answer recommends NO cut",
+      "expectations": [
+        "E1 reports a number showing the signal does not separate - AUROC near 0.5, a correlation near zero, or a flat or non-monotone bucket table",
+        "E2 recommends NO cut on this signal",
+        "E3 says the next move is a different signal, not a different number or a lower target"
+      ],
+      "role": "Targets F3. Stated confidence has AUROC 0.4825 and no cut reaches 95 percent at any coverage, so the correct outcome is NO cut. This is the eval whose right answer is a refusal to produce the artefact that was asked for.",
+      "ground_truth": "a 200-row fixture of self-reported confidence that does NOT separate (AUROC 0.4825); no cut reaches 95 percent precision at any coverage"
+    }
+  ]
+}

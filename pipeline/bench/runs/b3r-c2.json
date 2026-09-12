@@ -1,0 +1,184 @@
+{
+  "batch": "b3r",
+  "concurrency": 2,
+  "n": 8,
+  "started": "2026-09-01T23:42:13.718950+00:00",
+  "ended": "2026-09-01T23:43:12.723423+00:00",
+  "wall_clock_s": 59.004,
+  "loadavg_at_start": 0.436,
+  "loadavg_at_end": 1.534,
+  "cores": 4,
+  "target": "pipeline/validate/staleness.py",
+  "model_requested": "claude-opus-5",
+  "run_timeout_s": 300,
+  "runs": [
+    {
+      "idx": 0,
+      "started": "2026-09-01T23:42:13.721049+00:00",
+      "scratch": "/tmp/bench-0-9twq98gv",
+      "status": "ok",
+      "duration_ms": 12931,
+      "tokens": 102067,
+      "num_turns": 3,
+      "model": "claude-opus-5",
+      "ended": "2026-09-01T23:42:26.651804+00:00",
+      "exit_code": 0,
+      "models": [
+        "claude-haiku-4-5-20251001",
+        "claude-opus-5"
+      ],
+      "cost_usd": 0.1634155,
+      "duration_api_ms": 9103,
+      "ttft_ms": 2309,
+      "api_error_status": null,
+      "answer": "FUNCTIONS: 2\nLINES: 90\nVERDICT: It scans `references/*.md` files for embedded dates and reports each one's age and whether an expiry condition was written, deliberately refusing to turn age into a pass/fail verdict while flagging entirely undated files as the one real defect (nonzero exit)."
+    },
+    {
+      "idx": 1,
+      "started": "2026-09-01T23:42:13.721208+00:00",
+      "scratch": "/tmp/bench-1-7buxuh0d",
+      "status": "ok",
+      "duration_ms": 14567,
+      "tokens": 102130,
+      "num_turns": 3,
+      "model": "claude-opus-5",
+      "ended": "2026-09-01T23:42:28.288705+00:00",
+      "exit_code": 0,
+      "models": [
+        "claude-haiku-4-5-20251001",
+        "claude-opus-5"
+      ],
+      "cost_usd": 0.166867,
+      "duration_api_ms": 11204,
+      "ttft_ms": 2423,
+      "api_error_status": null,
+      "answer": "FUNCTIONS: 2\nLINES: 90\nVERDICT: It scans `references/*.md` files under a skills root and reports each one's embedded date ages and whether an expiry condition is stated, deliberately not judging age itself, while flagging as a defect (nonzero exit) any reference with no date at all."
+    },
+    {
+      "idx": 2,
+      "started": "2026-09-01T23:42:26.652627+00:00",
+      "scratch": "/tmp/bench-2-f6_8vvog",
+      "status": "ok",
+      "duration_ms": 13198,
+      "tokens": 102007,
+      "num_turns": 3,
+      "model": "claude-opus-5",
+      "ended": "2026-09-01T23:42:39.850727+00:00",
+      "exit_code": 0,
+      "models": [
+        "claude-haiku-4-5-20251001",
+        "claude-opus-5"
+      ],
+      "cost_usd": 0.163792,
+      "duration_api_ms": 9706,
+      "ttft_ms": 2230,
+      "api_error_status": null,
+      "answer": "FUNCTIONS: 2\nLINES: 90\nVERDICT: It decides that only a reference file with no date at all is a defect, reporting age and expiry conditions for dated files without ever converting age itself into a pass/fail verdict."
+    },
+    {
+      "idx": 3,
+      "started": "2026-09-01T23:42:28.289603+00:00",
+      "scratch": "/tmp/bench-3-natqo38v",
+      "status": "ok",
+      "duration_ms": 15629,
+      "tokens": 102335,
+      "num_turns": 3,
+      "model": "claude-opus-5",
+      "ended": "2026-09-01T23:42:43.918877+00:00",
+      "exit_code": 0,
+      "models": [
+        "claude-haiku-4-5-20251001",
+        "claude-opus-5"
+      ],
+      "cost_usd": 0.170382,
+      "duration_api_ms": 12402,
+      "ttft_ms": 2207,
+      "api_error_status": null,
+      "answer": "FUNCTIONS: 2\nLINES: 90\nVERDICT: It decides that a reference file with no date at all is a defect, while merely being old is only reported as age plus any written expiry condition, never converted into a pass/fail verdict."
+    },
+    {
+      "idx": 4,
+      "started": "2026-09-01T23:42:39.851457+00:00",
+      "scratch": "/tmp/bench-4-hbz10he7",
+      "status": "ok",
+      "duration_ms": 12329,
+      "tokens": 102005,
+      "num_turns": 3,
+      "model": "claude-opus-5",
+      "ended": "2026-09-01T23:42:52.180323+00:00",
+      "exit_code": 0,
+      "models": [
+        "claude-haiku-4-5-20251001",
+        "claude-opus-5"
+      ],
+      "cost_usd": 0.16380099999999997,
+      "duration_api_ms": 9214,
+      "ttft_ms": 2252,
+      "api_error_status": null,
+      "answer": "FUNCTIONS: 2\nLINES: 90\nVERDICT: It reports the age and any written expiry condition of dated reference files without converting age into a pass/fail verdict, and flags reference files with no date at all as defects since their staleness can never be checked."
+    },
+    {
+      "idx": 5,
+      "started": "2026-09-01T23:42:43.920062+00:00",
+      "scratch": "/tmp/bench-5-yz3kdz9f",
+      "status": "ok",
+      "duration_ms": 15552,
+      "tokens": 102189,
+      "num_turns": 3,
+      "model": "claude-opus-5",
+      "ended": "2026-09-01T23:42:59.472074+00:00",
+      "exit_code": 0,
+      "models": [
+        "claude-haiku-4-5-20251001",
+        "claude-opus-5"
+      ],
+      "cost_usd": 0.168194,
+      "duration_api_ms": 12416,
+      "ttft_ms": 2686,
+      "api_error_status": null,
+      "answer": "FUNCTIONS: 2\nLINES: 90\nVERDICT: It decides that a reference file with no date at all is a defect, while merely being old is only reported as age plus any written expiry condition, never converted into a pass/fail verdict."
+    },
+    {
+      "idx": 6,
+      "started": "2026-09-01T23:42:52.181047+00:00",
+      "scratch": "/tmp/bench-6-9rc9146b",
+      "status": "ok",
+      "duration_ms": 14494,
+      "tokens": 102274,
+      "num_turns": 3,
+      "model": "claude-opus-5",
+      "ended": "2026-09-01T23:43:06.674668+00:00",
+      "exit_code": 0,
+      "models": [
+        "claude-haiku-4-5-20251001",
+        "claude-opus-5"
+      ],
+      "cost_usd": 0.1685905,
+      "duration_api_ms": 11679,
+      "ttft_ms": 2133,
+      "api_error_status": null,
+      "answer": "FUNCTIONS: 2\nLINES: 90\nVERDICT: It scans `references/*.md` files for embedded dates and reports each one's age and whether an expiry condition is written, treating only the total absence of a date as a defect rather than converting age itself into a pass/fail verdict."
+    },
+    {
+      "idx": 7,
+      "started": "2026-09-01T23:42:59.472875+00:00",
+      "scratch": "/tmp/bench-7-qnh89al2",
+      "status": "ok",
+      "duration_ms": 13250,
+      "tokens": 101985,
+      "num_turns": 3,
+      "model": "claude-opus-5",
+      "ended": "2026-09-01T23:43:12.722514+00:00",
+      "exit_code": 0,
+      "models": [
+        "claude-haiku-4-5-20251001",
+        "claude-opus-5"
+      ],
+      "cost_usd": 0.16337999999999997,
+      "duration_api_ms": 9672,
+      "ttft_ms": 2298,
+      "api_error_status": null,
+      "answer": "FUNCTIONS: 2\nLINES: 90\nVERDICT: It decides that undated reference files are a defect\u2014reporting each dated file's age and whether an expiry condition was written, while refusing to treat age itself as a failure."
+    }
+  ]
+}

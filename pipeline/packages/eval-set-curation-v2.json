@@ -1,0 +1,351 @@
+{
+  "_note": "PATH 2: an existing skill decomposed into a package. Its body supplies the SCOPE, the VOCABULARY and the TRIGGERS; it supplies no evidence, because it carries none. The claims below were fetched for the rebuild and none came from the incoming artefact.",
+  "id": "eval-set-curation-v2",
+  "origin": "existing-artifact",
+  "filled_by": "coordinator, decomposing .claude/skills/eval-set-curation (161-line body, 0 references, 0 URLs, 0 executed evals)",
+  "incoming_artifact": ".claude/skills/eval-set-curation/SKILL.md",
+  "gap_kind": "wrong-shaped",
+  "_gap_observed": "The description is 1453 characters (per skill_contract.py, which is the authority; a hand count gave 1455 and the difference is whitespace normalisation) against a listing cap of 1024. The router therefore sees it cut MID-WORD at 'llm-eval-harness f|or a shipped app's CI gate', and five of its six NOT-clauses are gone: the boundaries against error-analysis-taxonomy, llm-judge-calibration, metric-driven-prompt-optimization and rag-pipeline-reviewer never reach the router at all. This is measured against the cap in pipeline/CONSTANTS.md and reproducible with skill_contract.py, which reports desc.max as an ERROR.",
+  "candidate_sentence": "Chooses WHICH examples from existing production data become the eval set - stratifying so rare slices can be measured at all, removing near-duplicates that let one case count many times, excluding examples that leaked into the prompt, and freezing a holdout - and reports what each choice costs.",
+  "unit_type": "skill",
+  "content_kind": "reference",
+  "verifiable": true,
+  "failure_kind": "shape",
+  "expected_failure": "Asked which 200 of 2000 logged cases to evaluate on, the baseline samples at random or by convenience, reports a single headline accuracy, and does not check whether the rare slices it cares about received enough examples to measure. PREDICTION, NOT OBSERVATION: this project's expected_failure has now been refuted in 3 of 3 builds, every time because it was written from the solution's point of view rather than from what a baseline actually does. Treat it as the hypothesis the probe is there to test, and record the refutation if it comes.",
+  "trigger_terms": [
+    "we have 40k logs, which 200 do I evaluate on",
+    "is my eval set representative",
+    "stratified sample across slices",
+    "dedupe the eval set",
+    "near-duplicate test cases",
+    "test-set contamination",
+    "frozen holdout",
+    "per-slice accuracy"
+  ],
+  "budget": {
+    "max_agents": 4,
+    "max_paired_runs": 8
+  },
+  "threshold": "Across k >= 2 repeats: zero regressions on correctness, no more than 20 percent worse on tokens or tool calls, and at least one win on correctness or shape that survives every repeat. A clean baseline does not stop the build; a win on shape alone satisfies the clause.",
+  "sources": [
+    {
+      "source_id": "S1",
+      "url": "https://arxiv.org/pdf/2406.10229",
+      "type": "paper",
+      "title": "Quantifying Variance in Evaluation Benchmarks",
+      "authors": "Madaan, Singh, Schaeffer, Poulton, Koyejo, Stenetorp, Narang, Hupkes",
+      "year": 2024,
+      "fetched": "2026-09-02",
+      "access": "open",
+      "read": "full",
+      "read_detail": "PDF fetched and text-extracted; Table 1 read column by column, and footnote 4 read to establish the CI column is a half-width."
+    },
+    {
+      "source_id": "S2",
+      "url": "https://arxiv.org/pdf/2411.00640",
+      "type": "paper",
+      "title": "Adding Error Bars to Evals: A Statistical Approach to Language Model Evaluations",
+      "authors": "Evan Miller (Anthropic)",
+      "year": 2024,
+      "fetched": "2026-09-02",
+      "access": "open",
+      "read": "full",
+      "read_detail": "PDF fetched and text-extracted; Table 4 and the sample-size worked example read in place, including the author's own labelling of the parameters as fictional."
+    },
+    {
+      "source_id": "S3",
+      "url": "https://arxiv.org/pdf/2107.06499",
+      "type": "paper",
+      "title": "Deduplicating Training Data Makes Language Models Better",
+      "authors": "Lee, Ippolito, Nystrom, Zhang, Eck, Callison-Burch, Carlini",
+      "year": 2022,
+      "fetched": "2026-09-02",
+      "access": "open",
+      "read": "full",
+      "read_detail": "PDF fetched and text-extracted; Table 2 (train/valid overlap) and the perplexity table read directly, plus the NearDup method description."
+    },
+    {
+      "source_id": "S4",
+      "url": "https://arxiv.org/pdf/2311.04850",
+      "type": "paper",
+      "title": "Rethinking Benchmark and Contamination for Language Models with Rephrased Samples",
+      "authors": "Yang, Chiang, Zheng, Gonzalez, Stoica",
+      "year": 2023,
+      "fetched": "2026-09-02",
+      "access": "open",
+      "read": "full",
+      "read_detail": "PDF fetched and text-extracted; the detector F1 table read cell by cell across three MMLU subjects and three conditions."
+    },
+    {
+      "source_id": "S5",
+      "url": "https://dickbrus.github.io/SpatialSamplingwithR/STSI.html",
+      "type": "book",
+      "title": "Chapter 4, Stratified simple random sampling - Spatial Sampling with R",
+      "authors": "Dick Brus",
+      "year": 2022,
+      "fetched": "2026-09-02",
+      "access": "open",
+      "read": "full",
+      "read_detail": "Chapter read in full; the precision condition is attributed by the author to Lohr 1999, which was NOT itself fetched - hence REPEATED."
+    },
+    {
+      "source_id": "S6",
+      "url": "https://arxiv.org/html/2411.03923v1",
+      "type": "paper",
+      "title": "ConTAM: Evaluating Data Contamination Metrics through their Impact on Benchmark Results",
+      "authors": "not recorded by the gatherer",
+      "year": 2024,
+      "fetched": "2026-09-02",
+      "access": "open",
+      "read": "full",
+      "read_detail": "HTML rendering fetched and read in full. NOTE carried forward from the gatherer: the title as listed on the HTML page should be confirmed against the abs page before this source is cited anywhere outside this build."
+    },
+    {
+      "source_id": "S7",
+      "url": "https://arxiv.org/pdf/1506.02629v2",
+      "type": "paper",
+      "title": "Generalization in Adaptive Data Analysis and Holdout Reuse",
+      "authors": "Dwork, Feldman, Hardt, Pitassi, Reingold, Roth",
+      "year": 2015,
+      "fetched": "2026-09-02",
+      "access": "open",
+      "read": "full",
+      "read_detail": "PDF fetched and text-extracted; the synthetic no-signal experiment read in place. Quote normalised for PDF ligatures and rejoined line breaks only."
+    },
+    {
+      "source_id": "S8",
+      "url": "https://arxiv.org/abs/1902.10811v2",
+      "type": "paper",
+      "title": "Do ImageNet Classifiers Generalize to ImageNet?",
+      "authors": "Recht, Roelofs, Schmidt, Shankar",
+      "year": 2019,
+      "fetched": "2026-09-02",
+      "access": "open",
+      "read": "full",
+      "read_detail": "Abstract and Section 5.1 (Adaptivity Gap) read; the authors' own caveat about a constant uniform drop was read in the same section."
+    },
+    {
+      "source_id": "S9",
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2019/file/ee39e503b6bedf0c98c388b7e8589aca-Paper.pdf",
+      "type": "paper",
+      "title": "A Meta-Analysis of Overfitting in Machine Learning",
+      "authors": "Roelofs, Fridovich-Keil, Miller, Shankar, Hardt, Recht, Schmidt",
+      "year": 2019,
+      "fetched": "2026-09-02",
+      "access": "open",
+      "read": "full",
+      "read_detail": "PDF fetched and text-extracted; the 120-competition survey and the authors' hedges read in place."
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "C1",
+      "source_id": "S1",
+      "claim": "A 95 percent confidence interval on benchmark accuracy widens steeply as the set shrinks: measured half-widths are 8.30 accuracy points at n=100, 3.98 at n=164, 2.74 at n=1165 and 0.72 at n=14042.",
+      "locator": "Table 1, columns Benchmark / Size / 95% CI; footnote 4 for the half-width definition",
+      "quote": "AGIEval 2546 20 23.44 0.77 1.63 0.37 0.29\nARC-C3 1165 25 39.71 0.80 2.74 0.88 0.91\nBig Bench (Hard) 6511 0 29.10 0.87 1.07 0.77 -\nCOPA 100 50 78.80 2.15 8.30 0.56 0.90\nGSM8k 1319 0 4.10 0.41 0.87 0.74 0.30\nHellaswag 10042 25 70.08 0.21 0.93 0.99 0.99\nHumanEval 164 0 11.89 1.11 3.98 0.79 0.98\nMATH 5000 0 1.52 0.23 0.28 0.52 -\nMMLU 14042 25 25.86 0.57 0.72 0.09 0.15",
+      "what_was_measured": "Bootstrapped 95 percent confidence interval half-width on benchmark accuracy, per benchmark.",
+      "effect_size": "8.30 points at n=100 (COPA) down to 0.72 at n=14042 (MMLU).",
+      "sample": "210 checkpoints of ten 7B models the authors trained.",
+      "limits": "Width depends on the accuracy p as well as n - GSM8k has n=1319 and a half-width of only 0.87 because its accuracy sits near the floor at 4.10. No n=200 or n=500 row. No Wilson interval and NO CLUSTER ADJUSTMENT, so these are the narrowest-case numbers.",
+      "verdict": "MEASURED",
+      "verified_by": "dispatched claim-gatherer, quotes matched against raw fetched text with a script rather than a summariser; the gatherer reports the WebFetch summariser paraphrased at least one quote it checked"
+    },
+    {
+      "claim_id": "C2",
+      "source_id": "S2",
+      "claim": "When eval items arrive in related groups, the correct clustered standard error was measured at up to 3.05 times the naive i.i.d. standard error on real evals.",
+      "locator": "Table 4, Clustered and naive standard errors",
+      "quote": "SEclustered SEC.L.T. Ratio\nDROP (1.34) (0.44) 3.05\nRACE-H (0.51%) (0.46%) 1.10\nMGSM (1.62%) (0.86%) 1.88",
+      "what_was_measured": "Ratio of a cluster-adjusted standard error to a naive Bernoulli standard error, on the same data.",
+      "effect_size": "3.05x on DROP, 1.88x on MGSM, 1.10x on RACE-H.",
+      "sample": "Three evals (DROP, RACE-H, MGSM) with Anthropic models whose identities are withheld.",
+      "limits": "The 3.05x is specific to DROP's cluster structure, not a general multiplier - RACE-H was 1.10. Not established for production-log data (multiple turns per user, multiple tickets per customer); it establishes only that ignoring clustering makes intervals too narrow when clustering exists.",
+      "verdict": "MEASURED",
+      "verified_by": "dispatched claim-gatherer, quotes matched against raw fetched text with a script rather than a summariser; the gatherer reports the WebFetch summariser paraphrased at least one quote it checked"
+    },
+    {
+      "claim_id": "C3",
+      "source_id": "S2",
+      "claim": "Detecting a 3-point absolute difference between two models at 80 percent power and alpha 0.05 works out to about 969 independent questions, which the author generalises to a floor of roughly 1,000 - computed from variance parameters he explicitly calls fictional.",
+      "locator": "Worked example following Equation 9",
+      "quote": "Suppose we wish to detect an absolute difference of \u03b4 = 0.03 at least 80% of the time (\u03b2 = 0.20) with a false-positive rate of 5% ( \u03b1 = 0.05). Then the eval will need to contain at least\nn = (z0.025 +z0.20)2(1/9)/(0.03)2\u2248 969\nindependent questions. Although these parameters are fictional, they are reasonable, and suggest that new evals should contain at least 1,000 questions in order to have good signaling ability.",
+      "what_was_measured": null,
+      "effect_size": null,
+      "sample": null,
+      "limits": "An analytic calculation, not an empirical result. It also assumes a PAIRED analysis and INDEPENDENT questions - with clustering (C2) the required n is larger, and the cluster-adjusted forms are in an appendix.",
+      "verdict": "DERIVED",
+      "verified_by": "dispatched claim-gatherer, quotes matched against raw fetched text with a script rather than a summariser; the gatherer reports the WebFetch summariser paraphrased at least one quote it checked",
+      "assumes": "omega^2 = 1/9 and sigma_A^2 = sigma_B^2 = 0, parameters the author labels fictional in the same sentence; independence between questions; a paired design."
+    },
+    {
+      "claim_id": "C4",
+      "source_id": "S3",
+      "claim": "Held-out sets carry substantial near-duplicate leakage from their own training corpora: 4.6 percent of the C4 validation set and 14.4 percent of the RealNews validation set have an approximate duplicate in the corresponding training set.",
+      "locator": "Section on train/validation overlap, Table 2",
+      "quote": "Both deduplication methods identify overlap between the train set and the validation set (Table 2). For example, 4.6% of the C4 validation set and 14.4% of the RealNews validation set examples had an approximate duplicate in their respective training sets. Such duplication is problematic since it could cause evaluation metrics to be unfairly inflated for models that are better at memorizing their train sets.",
+      "what_was_measured": "Fraction of validation examples with an approximate duplicate in the training set.",
+      "effect_size": "4.6 percent (C4), 14.4 percent (RealNews).",
+      "sample": "Two English web/news corpora, detector NearDup = MinHash with edit similarity above 0.8.",
+      "limits": "Whole-example similarity, not semantic equivalence. Not a general contamination rate and does not transfer to a curated production eval set. A third figure in the same paper (13.2 percent for LM1B) is REPEATED from Radford et al. 2019, not measured here.",
+      "verdict": "MEASURED",
+      "verified_by": "dispatched claim-gatherer, quotes matched against raw fetched text with a script rather than a summariser; the gatherer reports the WebFetch summariser paraphrased at least one quote it checked"
+    },
+    {
+      "claim_id": "C5",
+      "source_id": "S3",
+      "claim": "Near-duplicated eval examples measurably inflate the reported number: Transformer-XL scores 21.77 perplexity on the full LM1B validation set, 10.11 on the near-duplicated subset and 23.58 on the unique subset.",
+      "locator": "Perplexity table, Orig / Dups / Unique columns",
+      "quote": "Model Dataset Orig Dups Unique\nTransformer-XL LM1B 21.77 10.11 23.58\nGROVER-Base RealNews 15.44 13.77 15.73\nGROVER-XL RealNews 9.15 7.68 9.45",
+      "what_was_measured": "Perplexity on the full validation set versus its duplicated and unique subsets.",
+      "effect_size": "Transformer-XL: 10.11 on duplicates against 23.58 on unique - the leaked slice looks roughly twice as good. GROVER-Base: 13.77 against 15.73, a much smaller gap.",
+      "sample": "Three publicly released models across two corpora.",
+      "limits": "The metric is PERPLEXITY, not accuracy or pass@k, so this does not establish how many accuracy points deduplication moves a task score. Effect size varies a lot by model and corpus. The authors caution that a different choice of duplicate thresholds could change the results.",
+      "verdict": "MEASURED",
+      "verified_by": "dispatched claim-gatherer, quotes matched against raw fetched text with a script rather than a summariser; the gatherer reports the WebFetch summariser paraphrased at least one quote it checked"
+    },
+    {
+      "claim_id": "C6",
+      "source_id": "S4",
+      "claim": "N-gram overlap detection scores F1 = 0.0 on every rephrased or translated near-duplicate tested, while embedding similarity is erratic across slices (F1 from 0.111 to 0.985), so the cheap detectors catch verbatim duplicates and miss meaning-preserving ones.",
+      "locator": "Detector F1 table, three MMLU subjects x three conditions",
+      "quote": "Random 0.500 0.500 0.500 0.500 0.500 0.500 0.500 0.500 0.500\n10-gram 0.926 0 0 1 0 0 0.816 0 0\nEmb (Multi-QA BERT) 0.990 0.985 0.179 0.995 0.985 0.020 0.980 0.805 0\nEmb (Multilingual BERT) 0.939 0.934 0.939 1 0.985 1 0.990 0.111 0.985\nLLM Decontaminator 1 0.960 0.990 1 0.940 0.950 1 0.970 0.980",
+      "what_was_measured": "Detection F1 for verbatim, rephrased-English and rephrased-Chinese near-duplicates.",
+      "effect_size": "10-gram overlap: F1 0.816-0.926 on verbatim, 0.0 on every rephrased condition. Embeddings: 0.111 to 0.985 depending on subject and encoder.",
+      "sample": "200 constructed prompt pairs per cell (100 random, 100 rephrased), a synthetic detection benchmark.",
+      "limits": "MinHash itself was NOT evaluated - extending this to MinHash is an inference from the shared n-gram basis, not a measured result. Two encoders, fixed thresholds. The same paper documents why one embedding threshold cannot serve: at 0.8 Abstract Algebra is caught but Sociology is missed; at 0.4 Abstract Algebra floods with false positives.",
+      "verdict": "MEASURED",
+      "verified_by": "dispatched claim-gatherer, quotes matched against raw fetched text with a script rather than a summariser; the gatherer reports the WebFetch summariser paraphrased at least one quote it checked"
+    },
+    {
+      "claim_id": "C7",
+      "source_id": "S5",
+      "claim": "Stratified sampling with proportional allocation beats simple random sampling only when the weighted between-stratum sum of squares exceeds the within-stratum sum of squares - so it pays exactly when the slices differ, and yields nothing when they do not.",
+      "locator": "Chapter 4, Stratified simple random sampling",
+      "quote": "Stratified simple random sampling with proportional allocation (Section 4.3) is more precise than simple random sampling when the sum of squares of the stratum means is larger than the sum of squares within strata (Lohr 1999)",
+      "what_was_measured": null,
+      "effect_size": null,
+      "sample": null,
+      "limits": "A result about estimating a POPULATION MEAN more precisely. It does not by itself justify stratifying to get reliable PER-SLICE numbers, which is a different goal (a guaranteed n per slice) with a different justification. The chapter's own measured gain is modest and domain-specific: a stratification effect of 1.310 on soil organic matter. Attributed to Lohr 1999, which was not fetched.",
+      "verdict": "REPEATED",
+      "verified_by": "dispatched claim-gatherer, quotes matched against raw fetched text with a script rather than a summariser; the gatherer reports the WebFetch summariser paraphrased at least one quote it checked"
+    },
+    {
+      "claim_id": "C8",
+      "source_id": "S6",
+      "claim": "Contamination inflated Llama-1 65B's scores by 18 points on HumanEval and 25 points on Big Bench Hard, with three further benchmarks inflated by 10 points or more.",
+      "locator": "Estimated performance gain (EPG) results",
+      "quote": "For the largest Llama model, both HumanEval and Big Bench Hard have an estimated increase in performance of more than 15% (18% and 25%, respectively).",
+      "what_was_measured": "Estimated performance gain: full benchmark score minus the score on the metric-defined clean subset.",
+      "effect_size": "18 points (HumanEval) and 25 points (Big Bench Hard) for Llama-1 65B; 2 to 8 points for the smaller Pythia models.",
+      "sample": "Seven models across two families (Llama 1, Pythia) whose pre-training corpora are inspectable.",
+      "limits": "EPG is an estimate under a chosen n-gram metric and threshold, not a counterfactual against an uncontaminated model, so it can absorb difficulty differences between the clean and contaminated subsets. Scale- and corpus-specific; does not transfer to closed models or modern training mixes.",
+      "verdict": "MEASURED",
+      "verified_by": "dispatched claim-gatherer, quotes matched against raw fetched text with a script rather than a summariser; the gatherer reports the WebFetch summariser paraphrased at least one quote it checked"
+    },
+    {
+      "claim_id": "C9",
+      "source_id": "S6",
+      "claim": "Contamination of public benchmarks is the common case rather than the exception: for 8 of 13 widely used benchmarks, on average more than half of all samples were flagged contaminated against the Llama 1 pre-training corpus.",
+      "locator": "Contamination prevalence results",
+      "quote": "For 8 of the 13 datasets that we considered, on average more than 50% of the samples are marked contaminated for the Llama 1 pre-training corpus.",
+      "what_was_measured": "Share of benchmark samples flagged contaminated against an inspectable pre-training corpus.",
+      "effect_size": "More than 50 percent flagged, on average, for 8 of 13 datasets.",
+      "sample": "13 widely used benchmarks against the Llama 1 pre-training corpus.",
+      "limits": "Flagging is metric- and threshold-dependent, with thresholds chosen per pair to maximise z-score. High flagged share does not mean high impact: the same paper reports datasets where around 50 percent was detected with no meaningful performance effect. Says nothing about rates in private or production-derived eval sets.",
+      "verdict": "MEASURED",
+      "verified_by": "dispatched claim-gatherer, quotes matched against raw fetched text with a script rather than a summariser; the gatherer reports the WebFetch summariser paraphrased at least one quote it checked"
+    },
+    {
+      "claim_id": "C10",
+      "source_id": "S7",
+      "claim": "Naive adaptive reuse of a holdout can report a completely spurious result: on synthetic data with a true 50 percent ceiling, a standard reused holdout reported over 63 percent accuracy at k=500 selected variables.",
+      "locator": "The synthetic no-signal experiment",
+      "quote": "We chose n = 10,000, d = 10,000 and varied the number of selected variables k. In this scenario no classifier can achieve true accuracy better than 50%. Nevertheless, reusing a standard holdout results in reported accuracy of over 63% for k = 500 on both the training set and the holdout set (the standard deviation of the error is less than 0.5%).",
+      "what_was_measured": "Reported accuracy on a reused holdout against a known true ceiling.",
+      "effect_size": "Over 63 percent reported against a 50 percent ceiling, standard deviation under 0.5 percent.",
+      "sample": "Synthetic Gaussian data, n=10,000, d=10,000, averaged over 100 executions, with a deliberately adaptive variable-selection analyst.",
+      "limits": "A worst case by construction. It does NOT establish that this magnitude occurs in ordinary workflows, nor give a safe reuse count for an unprotected holdout.",
+      "verdict": "MEASURED",
+      "verified_by": "dispatched claim-gatherer, quotes matched against raw fetched text with a script rather than a summariser; the gatherer reports the WebFetch summariser paraphrased at least one quote it checked"
+    },
+    {
+      "claim_id": "C11",
+      "source_id": "S8",
+      "claim": "On CIFAR-10 and ImageNet, roughly a decade of competitive test-set reuse produced no diminishing returns - the slope from original to new test accuracy is greater than 1, the opposite of the overfitting signature.",
+      "locator": "Section 5.1, Adaptivity Gap",
+      "quote": "On both datasets, the slope of the linear fit is greater than 1, i.e., each point of accuracy improvement on the original test set translates to more than 1% on the new test set. This is the opposite of the standard overfitting scenario. So at least on CIFAR-10 and ImageNet, multiple years of competitive test set adaptivity did not lead to diminishing accuracy numbers.",
+      "what_was_measured": "Slope of the linear fit from original-test accuracy to accuracy on a freshly collected replica test set.",
+      "effect_size": "Slope greater than 1 on both datasets.",
+      "sample": "Two image-classification benchmarks and the models published against them over roughly a decade.",
+      "limits": "The authors state in the same section that this rules out only the most dangerous form: a uniform constant drop from reuse is NOT excluded, and testing for it would need a truly i.i.d. held-back set they did not have.",
+      "verdict": "MEASURED",
+      "verified_by": "dispatched claim-gatherer, quotes matched against raw fetched text with a script rather than a summariser; the gatherer reports the WebFetch summariser paraphrased at least one quote it checked"
+    },
+    {
+      "claim_id": "C12",
+      "source_id": "S9",
+      "claim": "A meta-analysis of 120 Kaggle competitions found little to no adaptive overfitting, with effect sizes typically under 1 percent classification accuracy, despite up to 35,000 submissions.",
+      "locator": "Abstract and the competition survey",
+      "quote": "We surveyed 120 competitions on Kaggle covering a wide range of classification tasks but found little to no signs of adaptive overfitting.",
+      "what_was_measured": "Difference between public-leaderboard and private-test accuracy across competitions.",
+      "effect_size": "Typically under 1 percentage point.",
+      "sample": "120 Kaggle classification competitions.",
+      "limits": "Classification only; regression left as future work. The authors flag that outlier competitions with non-i.i.d. splits or small test sets DO show overfitting, and that sharpening the analysis reveals more signs at smaller effect sizes. Kaggle rate-limits submissions and never reveals the private split, so this measures a protected regime, not an internal set scored on every commit.",
+      "verdict": "MEASURED",
+      "verified_by": "dispatched claim-gatherer, quotes matched against raw fetched text with a script rather than a summariser; the gatherer reports the WebFetch summariser paraphrased at least one quote it checked"
+    },
+    {
+      "claim_id": "C13",
+      "source_id": "S4",
+      "claim": "Training on rephrased test items reaches high benchmark scores while remaining invisible to n-gram decontamination: a Llama-2-13B trained on a rephrased MMLU test set reached 85.9 on MMLU undetected by n-gram overlap.",
+      "locator": "Abstract and the rephrased-training results",
+      "quote": "After rephrasing MMLU test cases, a Llama-2-13B trained on a rephrased test set can reach 85.9 accuracy on MMLU while being undetectable by n-gram overlap.",
+      "what_was_measured": "Benchmark accuracy achieved by a model trained on rephrased test items, and whether n-gram decontamination flags it.",
+      "effect_size": "85.9 on MMLU, undetected.",
+      "sample": "One model (Llama-2-13B), one benchmark (MMLU), deliberately constructed.",
+      "limits": "A deliberately constructed worst case, so it proves a decontamination method CAN be defeated, not how often naturally occurring contamination is rephrased. Does not establish that the authors' own LLM-based decontaminator is sufficient at scale.",
+      "verdict": "MEASURED",
+      "verified_by": "dispatched claim-gatherer, quotes matched against raw fetched text with a script rather than a summariser; the gatherer reports the WebFetch summariser paraphrased at least one quote it checked"
+    }
+  ],
+  "representative_tasks": [
+    {
+      "task": "We have 2000 logged support queries at pipeline/packages/fixtures/eval-set-curation-v2/logged_traffic.csv with a slice column and a correct column. Pick the 200 that become our eval set, and tell us what the choice costs.",
+      "artifact_expected": "A selection rule, not a number: stratification across the four slices with a stated minimum per slice, and an explicit statement that the rare slice cannot be measured from a proportional sample. Ground truth in ground_truth.json - adversarial is 22 of 2000, so a proportional 200 yields about 2 examples."
+    },
+    {
+      "task": "Someone reports 88.75 percent accuracy on pipeline/packages/fixtures/eval-set-curation-v2/logged_traffic.csv and wants to ship on it. Is that number trustworthy?",
+      "artifact_expected": "The headline is dominated by the 82 percent simple_lookup slice, whose accuracy is 0.947, while adversarial sits at 0.318. A per-slice breakdown, not a single number, and a statement of what the aggregate hides."
+    },
+    {
+      "task": "Before we freeze pipeline/packages/fixtures/eval-set-curation-v2/logged_traffic.csv as an eval set, what has to be removed?",
+      "artifact_expected": "Both exclusions, found rather than guessed: the near-duplicate clusters (6 templated clusters, 120 rows) and the rows already present in the few-shot prompt (37 rows, flagged in the in_fewshot_prompt column). Removing one and not the other is a partial answer."
+    },
+    {
+      "task": "How many examples do we need per slice on pipeline/packages/fixtures/eval-set-curation-v2/logged_traffic.csv before a per-slice score means anything?",
+      "artifact_expected": "An interval, not a rule of thumb: at n=100 the measured 95 percent CI half-width is 8.3 accuracy points, so a slice with 22 rows cannot support a per-slice claim at all. A cited number beats an invented threshold."
+    }
+  ],
+  "contradictions_kept": [
+    {
+      "topic": "Does holdout reuse actually cause overfitting?",
+      "a": "C10: a reused holdout reported over 63 percent on data with a 50 percent ceiling.",
+      "b": "C11 and C12: a decade of CIFAR/ImageNet reuse showed no diminishing returns, and 120 Kaggle competitions showed little to no adaptive overfitting.",
+      "status": "NOT RESOLVED. The gap is regime, not fact: A is worst-case, synthetic and adversarial; B is observational on rate-limited platforms with hidden private splits. Any step that cites one must name which regime it assumes."
+    },
+    {
+      "topic": "Are 100 curated examples enough?",
+      "a": "tinyBenchmarks reports about 2 percent average error from 100 curated examples per scenario.",
+      "b": "The S1 authors re-tested exactly those 100 points and found ARC-C overestimated by 7 percent, with seed variance rising from 0.80 to 1.86.",
+      "status": "NOT RESOLVED. The two measure different populations - reproducing a full benchmark score across public LLMs, versus variance across training seeds. Both agree the tiny set drifts the mean upward."
+    },
+    {
+      "topic": "Does stratification reliably help?",
+      "a": "The usual argument: stratify so rare slices are represented.",
+      "b": "C7: the precision gain requires between-stratum variance to exceed within-stratum variance, and the source's own measured gain was only 1.310x.",
+      "status": "COMPATIBLE once the goals are separated - guaranteed slice representation is always achieved by stratifying; a smaller variance on the OVERALL mean is conditional. A skill must not promise the second while arguing for the first."
+    }
+  ],
+  "_claims_note": "None of these came from the incoming artefact - it has no references and no URLs. Fetched by three dispatched gatherers on 2026-09-02. One claim carries the DERIVED verdict, which did not exist in the claims contract until this package needed it: a gatherer met a figure computed from parameters its own author calls fictional and refused to label it MEASURED."
+}

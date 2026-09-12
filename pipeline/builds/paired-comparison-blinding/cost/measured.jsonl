@@ -1,0 +1,8 @@
+{"phase":"2.1 probe round A","arm":"without","repeat":1,"tokens":67683,"tool_calls":2,"duration_ms":113348}
+{"phase":"2.1 probe round A","arm":"without","repeat":2,"tokens":64271,"tool_calls":2,"duration_ms":66095}
+{"phase":"2.1 probe round B","arm":"without","repeat":2,"tokens":63443,"tool_calls":2,"duration_ms":65231}
+{"phase":"2.1 probe round B","arm":"without","repeat":1,"tokens":63558,"tool_calls":2,"duration_ms":67811}
+{"phase":"6.1","arm":"with","repeat":1,"tokens":71689,"tool_calls":2,"duration_ms":58783}
+{"phase":"6.1","arm":"without","repeat":1,"tokens":63745,"tool_calls":2,"duration_ms":68829}
+{"phase":"6.1","arm":"with","repeat":2,"tokens":69023,"tool_calls":2,"duration_ms":56824}
+{"phase":"6.1","arm":"without","repeat":2,"tokens":60593,"tool_calls":2,"duration_ms":56268,"note":"re-run after the original agent died before emitting usage"}

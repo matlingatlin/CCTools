@@ -1,0 +1,22 @@
+You are writing ONE bundled reference file for a Claude Code skill. You are the writer; someone else adjudicates and a separate reader checks it. Write the file, then stop.
+
+READ THESE (paths, not pasted — open them yourself):
+- /home/user/skills-repo/pipeline/packages/data-contract-assertions-v2.json — the build package. Its `claims` array (13 rows), `sources` array (9 rows) and `contradictions_kept` array (3 rows) are your ONLY source material.
+- /home/user/skills-repo/pipeline/contracts/skill.contract.json — find the field with "id": "bundle.references" and obey every rule listed there. Read them from the file; do not work from a summary.
+
+WRITE TO: /home/user/skills-repo/pipeline/builds/data-contract-assertions-v2/artifact/data-contract-assertions/references/threshold-evidence.md
+
+WHAT THE FILE IS FOR. The skill this belongs to derives a contract from a profile of an ARRIVING dataset and asserts it at the ingest boundary. The one question its user always asks and the literature cannot answer is "what threshold should I use". This file is the evidence behind that answer, and its spine is a NEGATIVE finding: no primary source publishes a mapping from drift magnitude to expected harm. Read `contradictions_kept[2]` — that is the finding. The file must make a reader who wanted a number understand why the number does not exist, and must NOT supply a substitute number of your own invention.
+
+HARD CONSTRAINTS:
+1. Every claim you carry gets its VERBATIM quote, copied byte-for-byte out of the package's `quote` field. Do not paraphrase, do not trim, do not fix punctuation. A quote that does not match the package's string exactly will be caught by a script and the file will come back.
+2. Every source carries its fetch date (the package's `fetched` field) and its type. Two sources are VENDOR MATERIAL (S8, S9) and must be labelled as such where they are used — their `read_detail` says why.
+3. Carry each claim's `limits` field. A claim's limits are the part a later reader most needs and the part most often dropped.
+4. Carry each claim's verdict (MEASURED or REPEATED) beside it.
+5. All three `contradictions_kept` rows appear, UNRESOLVED, with both sides. Do not pick a winner. Contradiction 1 (over- vs under-alerting) and contradiction 2 (how small a corruption is detectable) bound what any threshold advice can claim.
+6. Give the file a table of contents. Keep it under 300 lines.
+7. Add, per source, an EXPIRY CONDITION: one line saying what would make that row untrue. This is a house requirement for fetched knowledge — it goes stale and nothing at run time will say so.
+8. Do NOT write instructions, steps, or advice. This is evidence, not method. The method lives in SKILL.md, which you are not writing, and a passage duplicated between the two is a contract ERROR.
+9. Do not invent a threshold, a band, a cutoff, or a rule of thumb. If you find yourself writing "typically 0.1" or "a common band is", stop — that is the exact failure this file exists to prevent.
+
+Output the file and a two-line note saying what you judged and what you were unsure about. Nothing else.

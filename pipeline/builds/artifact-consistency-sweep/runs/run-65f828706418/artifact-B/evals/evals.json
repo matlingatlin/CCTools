@@ -1,0 +1,68 @@
+{
+ "skill_name": "llm-wiki-ingest",
+ "evals": [
+  {
+   "id": 1,
+   "prompt": "The wiki at evals/files/wiki has notes/, INDEX.md, SOURCES.md and LOG.md. Ingest the source evals/files/raw/2026-09-02-pricing-page.md into it. Edit the wiki in place and list the files you changed.",
+   "expected_output": "The owning note (model-prices) is updated in place: a dated row per changed price, the superseded price kept, the new source with its fetch date in frontmatter; no new page; a SOURCES row and a LOG line; the neighbour still names the owner.",
+   "files": [
+    "evals/files/wiki",
+    "evals/files/raw/2026-09-02-pricing-page.md"
+   ],
+   "expectations": [
+    "every note keeps title/status/tags/related/sources frontmatter",
+    "no dangling [[link]]",
+    "every note is listed in INDEX.md",
+    "check.py T1: no rival page",
+    "check.py T1: beta price updated with date ['| Beta 5 | $3 | $15 | 2026-08-20 |']",
+    "check.py T1: quote from the raw on the page",
+    "check.py T1: verdict word per claim",
+    "check.py T1: old price kept as history or superseded row",
+    "check.py T1: new source in note frontmatter with fetch date",
+    "check.py T1: SOURCES row",
+    "check.py T1: LOG row",
+    "check.py T1: neighbour names owner back"
+   ]
+  },
+  {
+   "id": 2,
+   "prompt": "The wiki at evals/files/wiki has notes/, INDEX.md, SOURCES.md and LOG.md. Ingest the source evals/files/raw/2026-09-02-gamma-model-card.md into it. Edit the wiki in place and list the files you changed.",
+   "expected_output": "Both parameter counts kept as their own dated rows with their sources, the note marked disputed at that fact, neither value overwritten; SOURCES and LOG rows.",
+   "files": [
+    "evals/files/wiki",
+    "evals/files/raw/2026-09-02-gamma-model-card.md"
+   ],
+   "expectations": [
+    "every note keeps title/status/tags/related/sources frontmatter",
+    "no dangling [[link]]",
+    "every note is listed in INDEX.md",
+    "check.py T2: both values present",
+    "check.py T2: disputed marker",
+    "check.py T2: both sources dated",
+    "check.py T2: quote from the card on the page",
+    "check.py T2: verdict word per claim",
+    "check.py T2: model card in frontmatter sources",
+    "check.py T2: SOURCES row",
+    "check.py T2: LOG row"
+   ]
+  },
+  {
+   "id": 3,
+   "prompt": "The wiki at evals/files/wiki has notes/, INDEX.md, SOURCES.md and LOG.md. Ingest the source evals/files/raw/2026-09-02-blog-restating-caching.md into it. Edit the wiki in place and list the files you changed.",
+   "expected_output": "No page changed and no page created; one LOG line saying no material with the source URL.",
+   "files": [
+    "evals/files/wiki",
+    "evals/files/raw/2026-09-02-blog-restating-caching.md"
+   ],
+   "expectations": [
+    "every note keeps title/status/tags/related/sources frontmatter",
+    "no dangling [[link]]",
+    "every note is listed in INDEX.md",
+    "check.py T3: prompt-caching unchanged",
+    "check.py T3: no new note",
+    "check.py T3: LOG says no material",
+    "check.py T3: SOURCES row for the consulted source"
+   ]
+  }
+ ]
+}

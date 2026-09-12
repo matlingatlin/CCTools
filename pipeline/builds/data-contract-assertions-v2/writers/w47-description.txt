@@ -1,0 +1,22 @@
+You are writing ONE field: the `description` in a Claude Code skill's YAML frontmatter. Nothing else. Someone else adjudicates and a separate reader checks it.
+
+READ THESE (paths):
+- /home/user/skills-repo/pipeline/builds/data-contract-assertions-v2/artifact/data-contract-assertions/SKILL.md — the FINISHED body. The description is written last, from the body's actual scope.
+- /home/user/skills-repo/pipeline/packages/data-contract-assertions-v2.json — `trigger_terms`.
+- /home/user/skills-repo/pipeline/contracts/skill.contract.json — the field with "id": "description". Read every rule there.
+
+WRITE TO: /home/user/skills-repo/pipeline/builds/data-contract-assertions-v2/artifact/data-contract-assertions/_field-description.txt — the description STRING ONLY, one paragraph, no YAML key, no quotes around it, no markdown.
+
+THE DEFECT YOU ARE REPAIRING. This skill already exists and its description is 1446 characters against a hard cap of 1024. `skill_contract.py` reports desc.max as an ERROR. The router therefore sees it TRUNCATED, and the NOT-clauses at its end — the ones that stop it stealing a sibling's job — never arrive. That is the entire reason this build exists.
+
+HARD CONSTRAINTS:
+1. **1024 characters maximum, and this is the whole point.** Count it. Do not land at 1030 and shave. Compute the distance to the cap and cross it once. Aim for 850-980 so the count is not in doubt.
+2. No `<` or `>` anywhere — the frontmatter enters a system prompt and angle brackets are a security rule.
+3. Third person, one paragraph.
+4. Triggers, not a summary of the procedure. Use the words a person types WHEN THEY HAVE THE PROBLEM — symptoms and error strings, not the vocabulary of the solution. The package's trigger_terms are the raw material; pick the ones that earn their characters and drop the rest. Something must be dropped: the incumbent's list is what made it 1446.
+5. NOT-clauses naming the siblings that own adjacent work. These are the clauses currently being truncated away, so they must survive your budget, not be the first thing cut. The siblings and what each owns: structured-llm-extraction (validating a MODEL'S OUTPUT against a declared schema), eval-set-curation (choosing which production examples become an eval set), integration-contract-completeness (a CODE contract's mirror sides in a patch), mlops-production-review (training/serving code in a diff), hybrid-parse-escalation (cheap bulk field parsing). Fit as many as the budget allows, nearest sibling first.
+6. State BOTH what it does and when to use it.
+
+Before you finish: put your description beside each sibling above and ask which unit a router would pick for THAT sibling's job. If the answer is unclear in either direction, one of the two descriptions is wrong and yours is the one you can fix.
+
+Output the exact character count of what you wrote, then two lines: what you judged, what you were unsure about.

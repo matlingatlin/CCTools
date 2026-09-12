@@ -1,0 +1,19 @@
+You are amending a bundled reference file you (or a writer like you) already wrote. It is at:
+/home/user/skills-repo/pipeline/builds/data-contract-assertions-v2/artifact/data-contract-assertions/references/threshold-evidence.md
+
+It is GOOD and it is INCOMPLETE, and the incompleteness is a decision that has been overruled. Read it first, then amend it in place. Do not rewrite what is already right.
+
+THE FINDING. The draft carries 9 of the package's 13 claims and drops C1, C2, C4 and C5 as "off-topic for a threshold-evidence file". That reasoning is sound about the file's TITLE and wrong about the file's JOB. The skill this belongs to has a second obligation the title does not name: deciding which differences in an arriving batch must BLOCK it and which must WIDEN the contract instead. C1 and C2 are the entire evidence base for the widen side, and without them the skill's central split is unsourced:
+  - C1 says schema change is the NORMAL state of a production feed, not an incident.
+  - C2 says the anomalies that actually fire are dominated by structural surprises - new columns, out-of-domain categorical values, missing columns - which is precisely the population a widen-or-block decision is made over, and it carries the fixed-given-fired rates.
+  - C4 is the cost of NOT having a boundary check, which is the only evidence for why the assertion belongs at ingest rather than downstream.
+  - C5 is a defect class the data cannot show at all, which bounds what this method can claim to catch.
+
+DO THIS:
+1. Read /home/user/skills-repo/pipeline/packages/data-contract-assertions-v2.json and add C1, C2, C4 and C5, in the same shape as the claims already there: verbatim quote copied BYTE-FOR-BYTE from the package's `quote` field, the claim id, the verdict, the effect size, the sample, and the `limits`. A script byte-matches every quote against the package, so a paraphrase or a trimmed quote will fail.
+2. They need a home. Add one section for the question they answer - schema change as the normal state, and what actually fires at a boundary - and put it BEFORE the existing threshold sections, because it is the prior question. Update the table of contents.
+3. Widen the file's opening paragraph so it says the file covers both questions, not only the threshold one. Keep "The central finding" exactly as it is; it is right.
+4. Do not touch the nine claims already there, the sources section, the expiry conditions, or the three contradictions.
+5. Everything else still binds: no invented threshold, band or cutoff of your own; no instructions or steps; every source keeps its fetch date; the file stays under 300 lines with a working table of contents.
+
+Output the file, then two lines: what you added and where, and anything you had to change that was not on this list.

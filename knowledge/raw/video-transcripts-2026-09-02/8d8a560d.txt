@@ -1,0 +1,11 @@
+[   0.0] One harness took opus 5 from 30% to 95% on the ARK AGI 3 scale.
+[   5.8] So we just got the best self-improving harness out there.
+[   9.0] Extremely token efficient and it makes your AIs much better.
+[  12.5] Which tells you the differences making your AIs more efficient is the way it scaffolds.
+[  16.4] The harness that operates your AI makes it a lot better.
+[  19.3] The difference is the model didn't just get better but the way it scaffolds.
+[  22.7] This harness does something completely different.
+[  24.6] While it's running it could rewrite its own prompts, memory, and its tasks.
+[  28.4] And modifies its own harness for self-improvement.
+[  31.0] This is one of the most revolutionary things that we have currently.
+[  33.7] So remember, it's not the way your LLMs improve but it's also the way your harness operates them.

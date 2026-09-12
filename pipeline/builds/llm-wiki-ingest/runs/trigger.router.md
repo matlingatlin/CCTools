@@ -1,0 +1,18 @@
+{
+  "add this to the knowledge base": "llm-wiki-ingest",
+  "ingest this source": "llm-wiki-ingest",
+  "put this in the wiki": "llm-wiki-ingest",
+  "write a note from this page": "llm-wiki-ingest",
+  "update the note with this": "llm-wiki-ingest",
+  "karpathy llm wiki": "llm-wiki-ingest",
+  "raw wiki schema": "llm-wiki-ingest",
+  "record this finding": null,
+  "this contradicts the note": "llm-wiki-ingest",
+  "The wiki at pipeline/packages/fixtures/llm-wiki-ingest/wiki has a note that owns model prices. Ingest the source pipeline/packages/fixtures/llm-wiki-ingest/raw/2026-09-02-pricing-page.md into that wiki.": "llm-wiki-ingest",
+  "Ingest pipeline/packages/fixtures/llm-wiki-ingest/raw/2026-09-02-gamma-model-card.md into the same wiki. Its parameter count differs from what the wiki holds.": "llm-wiki-ingest",
+  "Ingest pipeline/packages/fixtures/llm-wiki-ingest/raw/2026-09-02-blog-restating-caching.md into the same wiki.": "llm-wiki-ingest",
+  "gather the claims and quotes we need to bundle into the eval-set-curation skill's references file": "skill-knowledge",
+  "save my current task state so the next agent can resume where I stopped": "unified-memory",
+  "the PR renamed the endpoint, which docs still say the old path": "doc-claim-reconciliation",
+  "audit every skill in .claude/skills for stale evals and overlapping descriptions": "library-curator"
+}

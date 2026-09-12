@@ -1,0 +1,25 @@
+[   0.0] Obsidian versus orbit agents. Let's break it down. So obsidian is a very popular tool right now
+[   6.1] It lets you sort of see a knowledge graph of all of your information on your AI and also the files on your computer
+[  13.2] Mainly and essentially a file sort of aggregator that creates a nice graph from all of your MD files on your disk
+[  21.0] Orbit agents is totally different. It's a real-time
+[  25.3] Cloud-based updating system that connects to your cloud or codex agents and it updates every single
+[  32.9] Conclusion that the AI makes in all of your chats and your agents chats
+[  37.5] So what happens is that you are 24 7 continuously
+[  42.3] syncing with orbit agents vault and the agents and the different features we have over there so that we can create our own
+[  49.8] data classification systems our own graph and
+[  53.6] Essentially be your business knowledge hub that evolves over time and what is enables us to do is that now you can create
+[  62.0] documentation files outputs conclusions and research which you can
+[  66.2] Create as a source of truth for you or for your business that your AI agents and you yourself can be using and referencing
+[  73.7] Earlier one of the bad things about obsidian is that it treats all the knowledge equally while in orbit agents
+[  80.5] We classify knowledge based on authority and so we will automatically see what is the authoritative knowledge that is the most
+[  88.0] Primarily important thing to use further in the future on top of all of that
+[  93.2] When we see that some knowledge is contradicting what we earlier said the agent classification system will mark a
+[ 101.9] Disrepancy and now you will get the option to update the documentation material
+[ 106.3] So that you never poison the agents and so that their graph don't continue to grow when it doesn't really have to continue
+[ 113.6] What this enables for is a much leaner model a model where you're actually saving tokens more than obsidian because you're not simply
+[ 121.5] Updating everything to the graph and treating it equally
+[ 124.7] No, you have a classification and you have some knowledge
+[ 127.8] which is more important than others and you analyze for
+[ 131.1] Disrepancies and inconsistencies so that your knowledge have has one source of truth and that's the difference between
+[ 137.8] orbit agents and obsidian if you want to try orbit agents right now
+[ 142.6] Comment orbit below and I'll give you one month premium for free to get started

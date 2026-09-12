@@ -1,0 +1,14 @@
+{
+ "n": 12,
+ "misses": 2,
+ "miss_ids": [
+  "P03",
+  "P05"
+ ],
+ "debatable": [
+  "P09",
+  "P11"
+ ],
+ "sensitivity_upper": 4,
+ "round1_adversarial_rate": 0.08333333333333333
+}

@@ -1,0 +1,27 @@
+[   0.0] This is insane.
+[   0.9] In case you missed it, Google has open-sourced
+[   2.8] over 100 skills that you can plug straight into Cloud Code.
+[   5.8] It's called agent skills,
+[   7.3] and it has over 18,000 stars, completely free.
+[   9.6] One command on Cloud Code and they're in,
+[  11.2] and it's the same exact thing with Codex.
+[  12.6] Now here's the thing,
+[  13.5] a lot of these are infrastructure-related skills,
+[  15.1] which is great if you're building on Google,
+[  16.6] but the rest of the skills actually matter
+[  18.1] because they're useful for everyday workflows.
+[  19.8] Now if you run ads,
+[  20.6] there's literally a Google MCP skill in there,
+[  22.5] so you can hook up Cloud to Google Ads.
+[  24.4] You can literally point Cloud straight at your ad account
+[  26.4] and ask what's broken, look at analytics,
+[  28.5] and improve your Google ads.
+[  29.6] And if you're building anything online using AI,
+[  31.5] whether it's SaaS or websites,
+[  32.8] it has a Google Analytics skill as well.
+[  34.7] Now if you want the link for this,
+[  35.8] comment repo down below,
+[  37.4] and I'll send you my list along with the GitHub link.
+[  39.2] And make sure to follow me here.
+[  40.4] I'm gonna teach you a lot more
+[  41.3] about Cloud, AI agents, and open-source projects.

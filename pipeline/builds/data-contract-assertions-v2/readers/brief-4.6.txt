@@ -1,0 +1,41 @@
+You are an INDEPENDENT reader. You did not write this and you must not guess at how it was written. Rule on what is in front of you.
+
+The artefact you may see is at: /home/user/skills-repo/pipeline/builds/data-contract-assertions-v2/readers/r4.6/data-contract-assertions
+That directory holds exactly what this phase declared its reader needs, and nothing else. If something you expect is absent, that is because this phase's reader was not given it — say so as an observation, not as a defect in the skill.
+
+ALREADY SETTLED BY CODE — do not spend a word on any of it. The artefact checker was run on the exact directory above and its output is here verbatim:
+ON THE DIRECTORY YOU WERE GIVEN (a subset of the bundle):
+ok   data-contract-assertions               err  0 · warn  0 · indet  4 · pass 39
+       [?] fm.task-kind               needs package.content_kind, not supplied
+       [?] purpose.present            not mechanically decidable: 'text answering what the purpose is' cannot be distinguished from any other prose by code. Routed to the agent check.
+       [?] when.present               not mechanically decidable: 'text answering when to use it' cannot be distinguished from any other prose by code. Routed to the agent check.
+       [?] whole.bom                  needs the build's bill of materials, not supplied
+
+1 skill(s) · 0 error(s) · 0 warning(s) · 4 indeterminate · 39 pass
+An indeterminate is NOT a pass — it is a check that could not run.
+
+ON THE COMPLETE ARTEFACT, including the files this phase withheld from you:
+ok   data-contract-assertions               err  0 · warn  1 · indet  2 · pass 40
+       [w] desc.target                966 chars, target 500
+       [?] purpose.present            not mechanically decidable: 'text answering what the purpose is' cannot be distinguished from any other prose by code. Routed to the agent check.
+       [?] when.present               not mechanically decidable: 'text answering when to use it' cannot be distinguished from any other prose by code. Routed to the agent check.
+
+1 skill(s) · 0 error(s) · 1 warning(s) · 2 indeterminate · 40 pass
+An indeterminate is NOT a pass — it is a check that could not run.
+And the reader preflight said:
+SAFE_TO_DISPATCH
+
+YOUR FIELD: the pointers - the body's list of bundled files
+
+THE CONTRACT RULES FOR THIS FIELD are in /home/user/skills-repo/pipeline/contracts/skill.contract.json — open it, find the field with "id": "body.pointers", and read its `rules` and its `agent_check` from the file. Do not work from memory or from a summary.
+
+THE QUESTION YOU ARE ASKED:
+Does each pointer say WHAT the file contains, WHEN to open it, and whether to RUN it or READ it (Anthropic's own contrast: 'Run analyze_form.py to extract fields' versus 'See analyze_form.py for the extraction algorithm')? Does every file under references/ have a pointer? Does any bundled file link to another bundled file - that is an ERROR, because a nested reference is previewed rather than read and the information goes silently incomplete? You have the bill of materials at /home/user/skills-repo/pipeline/builds/data-contract-assertions-v2/bom.json: check it in BOTH directions - planned files that never appeared, and files that appeared unplanned.
+
+Answer in this shape and nothing else:
+
+VERDICT: GREEN or RED
+FINDINGS: one numbered line per finding. Each names the defect CLASS in three or four words, then quotes the exact text at fault, then says what is wrong with it. If a finding is an instance of a class that has more instances in the field, say so and say how many you counted.
+WHAT YOU DID NOT CHECK: anything you could not rule on, and why.
+
+RED for any error-severity rule broken or any agent_check you answer against the field. A warning alone is not RED; report it and stay GREEN. Do not soften a finding because the rest is good, and do not manufacture a finding because you were asked to look.

@@ -1,0 +1,302 @@
+{
+  "contract_version": "1.3.0",
+  "unit": "build-package",
+  "authority": "house",
+  "written": "2026-08-30",
+  "note": "What the skill-builder must receive before it may start. Read by pipeline/validate/package_contract.py. This contract is OURS - Anthropic says nothing about a build package - so every rule carries a reason rather than a citation. The reason is always the same shape: which step of the chain would otherwise improvise.",
+  "principle": "The package carries INPUTS, never OUTPUTS. No field of the finished skill arrives pre-written. The line is not formatted versus raw: the package carries what a run cannot produce, and the builder writes what only a run can settle.",
+  "see": "pipeline/SKILL-BUILDER-SPEC.md",
+  "rules": [
+    {
+      "id": "pkg.id.present",
+      "check": "code",
+      "severity": "error",
+      "rule": "id is a non-empty string",
+      "reason": "one id is shared by every downstream artefact - the draft, the evals, the build record. Without it they cannot be joined."
+    },
+    {
+      "id": "pkg.id.kebab",
+      "check": "code",
+      "severity": "error",
+      "rule": "id matches ^[a-z0-9]+(-[a-z0-9]+)*$",
+      "reason": "the id becomes the skill's directory name, which the skill contract requires to be kebab-case."
+    },
+    {
+      "id": "pkg.sentence.present",
+      "check": "code",
+      "severity": "error",
+      "rule": "candidate_sentence is a non-empty string",
+      "reason": "it IS the scope. A topic is not a scope: a sweep of 'databases' for a skill that only reviews migrations is effort spent mostly outside the need."
+    },
+    {
+      "id": "pkg.sentence.single",
+      "check": "code",
+      "severity": "warn",
+      "rule": "candidate_sentence is one sentence and at least 8 words",
+      "reason": "a scope that needs a paragraph has not been decided yet; a scope of four words has not been stated."
+    },
+    {
+      "id": "pkg.unit_type",
+      "check": "code",
+      "severity": "error",
+      "rule": "unit_type == 'skill'",
+      "reason": "this builder makes skills. Any other unit type reached the wrong builder and must be routed, not coerced."
+    },
+    {
+      "id": "pkg.content_kind",
+      "check": "code",
+      "severity": "error",
+      "rule": "content_kind is one of reference, task",
+      "reason": "Anthropic's taxonomy. It decides the invocation policy - task content gets disable-model-invocation."
+    },
+    {
+      "id": "pkg.verifiable",
+      "check": "code",
+      "severity": "error",
+      "rule": "verifiable is a boolean",
+      "reason": "decides whether evals are authored at all. skill-creator: skills with objectively verifiable outputs benefit from test cases; subjective ones often do not."
+    },
+    {
+      "id": "pkg.failure_kind",
+      "check": "code",
+      "severity": "error",
+      "rule": "failure_kind is one of knowledge, shape, discipline",
+      "reason": "decides which test form applies, and whether we can test it at all."
+    },
+    {
+      "id": "pkg.failure_kind.not_discipline",
+      "check": "code",
+      "severity": "error",
+      "rule": "failure_kind != 'discipline'",
+      "reason": "REFUSAL, not a defect in the package. Two preregistered rounds in this repo found no scenario class that discriminates for pressure-discipline: technique traps 1 of 12, pressure 2 of 12. A discipline skill cannot be shown to work, and shipping one on a green suite would ship an unmeasured claim. Lift this rule when a test that discriminates exists, not before."
+    },
+    {
+      "id": "pkg.sources.present",
+      "check": "code",
+      "severity": "error",
+      "rule": "sources is a non-empty list",
+      "reason": "a claim with no source is a memory."
+    },
+    {
+      "id": "pkg.sources.fields",
+      "check": "code",
+      "severity": "error",
+      "rule": "every source has source_id, url, fetched, access, read",
+      "reason": "access and read separate 'we found it' from 'we opened it'. A source reached only as an abstract cannot carry a MEASURED claim."
+    },
+    {
+      "id": "pkg.sources.fetched_iso",
+      "check": "code",
+      "severity": "error",
+      "rule": "every source fetched is an ISO date YYYY-MM-DD",
+      "reason": "bundled knowledge goes stale and Anthropic documents no deprecation story for it. The date is what makes staleness detectable later."
+    },
+    {
+      "id": "pkg.sources.ids_unique",
+      "check": "code",
+      "severity": "error",
+      "rule": "source_id values are unique",
+      "reason": "claims join to sources by this id; a duplicate makes the join ambiguous and silently wrong."
+    },
+    {
+      "id": "pkg.claims.present",
+      "check": "code",
+      "severity": "error",
+      "rule": "claims is a non-empty list",
+      "reason": "the claim set is what the body's steps and the reference files are built from."
+    },
+    {
+      "id": "pkg.claims.rows_not_prose",
+      "check": "code",
+      "severity": "error",
+      "rule": "every claim is an object with a claim field, not a string",
+      "reason": "prose cannot be verified row by row. A paragraph hides which sentence carries the finding."
+    },
+    {
+      "id": "pkg.claims.quote",
+      "check": "code",
+      "severity": "error",
+      "rule": "every claim has a non-empty quote",
+      "reason": "THE gate. Without a verbatim line a finding is indistinguishable from a reconstruction. This project has already shipped a figure attributed to a real study that stated the opposite of what the study measured, and it drifted in the direction that flattered the argument."
+    },
+    {
+      "id": "pkg.claims.source_resolves",
+      "check": "code",
+      "severity": "error",
+      "rule": "every claim source_id appears in sources",
+      "reason": "a dangling source_id is a claim nobody can go back and check."
+    },
+    {
+      "id": "pkg.claims.locator",
+      "check": "code",
+      "severity": "error",
+      "rule": "every claim has a non-empty locator",
+      "reason": "'whole document' is an acceptable locator and is itself a finding; an absent one means nobody recorded where they looked."
+    },
+    {
+      "id": "pkg.claims.verdict",
+      "check": "code",
+      "severity": "error",
+      "rule": "every claim verdict is MEASURED or REPEATED",
+      "reason": "the two are not strong and weak. They are 'a study with numbers exists and it was read' and 'widely asserted, no measurement found'. A widely repeated claim is not upgraded by being widely repeated."
+    },
+    {
+      "id": "pkg.claims.measured_needs_evidence",
+      "check": "code",
+      "severity": "error",
+      "rule": "a MEASURED claim carries what_was_measured and at least one of effect_size or sample",
+      "reason": "MEASURED without a dependent variable and a number is a verdict asserted, not established."
+    },
+    {
+      "id": "pkg.expected_failure",
+      "check": "code",
+      "severity": "error",
+      "rule": "expected_failure is a non-empty string",
+      "reason": "the gap probe tests a hypothesis. Without one there is nothing to compare the observed failures against, and the probe degenerates into looking for something interesting. MEASURED 2026-09-01: refuted in 2 of 2 builds. Both packages predicted a baseline that would not do the thing the skill does - which is a prediction written from the SOLUTION's point of view, and the baseline knew the solution. Write it from what a transcript would show instead: name the behaviour you would SEE, not the knowledge you assume is absent."
+    },
+    {
+      "id": "pkg.trigger_terms",
+      "check": "code",
+      "severity": "error",
+      "rule": "trigger_terms is a list of at least 3 non-empty strings",
+      "reason": "the description's when-clause is written from these. Absent, it gets written from imagination, and a description that guesses the user's vocabulary does not fire."
+    },
+    {
+      "id": "pkg.tasks.min",
+      "check": "code",
+      "severity": "error",
+      "rule": "representative_tasks has at least 2 entries",
+      "reason": "used by BOTH the gap probe and the evals. One task cannot separate a systematic failure from a bad draw."
+    },
+    {
+      "id": "pkg.tasks.fields",
+      "check": "code",
+      "severity": "error",
+      "rule": "every task has a non-empty task and artifact_expected",
+      "reason": "a task with no expected artefact cannot be scored, so the probe collects impressions rather than failures."
+    },
+    {
+      "id": "pkg.tasks.kinds",
+      "check": "code",
+      "severity": "error",
+      "rule": "every task carries fixture_kind (the sort of artefact it runs on) and the tasks span at least two kinds; one kind is a warning only with one_kind_reason",
+      "reason": "three builds of one skill (2026-09-03) each ended with the reviewer saying the fixtures are versions of one artefact, so the modes the text claims and no fixture exercises are graded by nothing. Refused at admission, that costs a sentence; found at the third review, it cost three builds."
+    },
+    {
+      "id": "pkg.budget",
+      "check": "code",
+      "severity": "error",
+      "rule": "budget has integer max_agents and max_paired_runs",
+      "reason": "the run is bounded before it starts. W_MAX_AGENTS is global and shared; an unbounded fan-out does not add throughput, it contends."
+    },
+    {
+      "id": "pkg.threshold",
+      "check": "code",
+      "severity": "error",
+      "rule": "threshold is a non-empty string",
+      "reason": "the decision rule must exist before any measurement. Written afterwards, the result moves the bar - which is exactly what happened in this repo when a conclusion was drawn on n=1 and four documents were rewritten on it."
+    },
+    {
+      "id": "pkg.origin",
+      "check": "code",
+      "severity": "error",
+      "rule": "origin is one of harvest, existing-artifact, agent-request, library-defect, human-request",
+      "reason": "the builder does not branch on it. The ledger does: without it nobody can ever ask which source shape yields skills that survive, and that question cannot be reconstructed after the fact."
+    },
+    {
+      "id": "pkg.origin.filled_by",
+      "check": "code",
+      "severity": "error",
+      "rule": "filled_by is a non-empty string naming who or what completed this package",
+      "reason": "an origin says where the material came from; filled_by says who did the work. When a package turns out to be thin, those are different fixes."
+    },
+    {
+      "id": "pkg.gap_kind",
+      "check": "code",
+      "severity": "error",
+      "rule": "gap_kind is one of missing, wrong-shaped, improvable",
+      "reason": "expected_failure could previously only say 'this breaks'. A brain proposing a skill to make a WORKING agent sharper had to invent a failure that does not exist - which is the habit behind both refuted hypotheses so far. improvable makes the honest case sayable."
+    },
+    {
+      "id": "pkg.claims.not_from_artifact",
+      "check": "code",
+      "severity": "error",
+      "rule": "when origin is existing-artifact, no claim may cite that artefact as its source",
+      "reason": "a finished skill is not evidence. It is a hypothesis someone already wrote down, with the same standing as a candidate_sentence. Letting it cite itself would satisfy the quote gate with its own assertions, which is the exact substitution the gate exists to prevent. Its content belongs in candidate_sentence, trigger_terms and representative_tasks."
+    }
+  ],
+  "agent_checks": [
+    {
+      "on": "candidate_sentence",
+      "ask": "Does it name BOTH what the skill does and what it PRODUCES? A sentence that names only the topic is not a scope."
+    },
+    {
+      "on": "expected_failure",
+      "ask": "Is this falsifiable by a run - would you recognise it if you saw it in a transcript? 'The output is worse' is not."
+    },
+    {
+      "on": "trigger_terms",
+      "ask": "Are these the words a person types when they HAVE the problem - symptoms, error strings, tool names - or the vocabulary of the solution?"
+    },
+    {
+      "on": "representative_tasks",
+      "ask": "Are these realistic, or constructed so the skill wins? An invented task flatters."
+    },
+    {
+      "on": "claims",
+      "ask": "Does each quote actually carry the claim beside it, or is it adjacent text? Verifying that properly is primary-source-verification's job; this is a smell test."
+    },
+    {
+      "on": "threshold",
+      "ask": "Could this rule be satisfied by a result that does not show improvement? If yes it is not a threshold."
+    },
+    {
+      "on": "expected_failure",
+      "ask": "Is this written from the SOLUTION's point of view - 'the baseline does not do X', where X is what the skill does? That form has been refuted in 2 of 2 builds here, because a capable baseline usually does know X. Rewrite it as what a transcript would show: which step is skipped, which artefact is not produced, which distinction is not drawn."
+    },
+    {
+      "on": "gap_kind",
+      "ask": "If this says missing or wrong-shaped, is there really something broken - or was a failure invented because the form demanded one? improvable is not a weaker answer."
+    },
+    {
+      "on": "origin",
+      "ask": "Does the origin match where the EVIDENCE came from, or where the idea came from? A brain that fetched sources before proposing is harvest-backed; one that proposed from what it already believed is not."
+    }
+  ],
+  "corrections": [
+    {
+      "date": "2026-09-01",
+      "trigger": "Two completed builds, two refuted expected_failure hypotheses.",
+      "finding": "Both were written as an absence of the skill's own content. A capable baseline holds most of that content, so the prediction fails and the probe returns clean - which then reads as 'no gap' when the real gap was elsewhere. In both builds the actual gap turned out to be SHAPE: the baseline knew the material and did not produce the artefact.",
+      "rules_changed": [
+        "pkg.expected_failure"
+      ],
+      "method": "recorded against the rule and as an agent check, so the next package is asked the question at authoring time rather than after the probe refutes it"
+    },
+    {
+      "date": "2026-09-03",
+      "trigger": "artifact-consistency-sweep, three builds: abandon at the loop cap, then twice unconverged at review. In every final review at least one class-level finding was that all three fixtures are versions of one skill.",
+      "finding": "The package contract accepted three tasks on one artefact without asking what kind of artefact each ran on. Nothing before the reviewer could see that two pair types and one branch of the method would never be exercised.",
+      "change": "pkg.tasks.kinds (1.3.0): fixture_kind per task, at least two kinds, or a stated one_kind_reason (warning). Packages admitted under 1.2.0 keep their records; a re-admission of one fails until the field is added."
+    }
+  ],
+  "origins": {
+    "note": "Three paths fill this one contract. The builder never treats them differently - it asks only whether the fields hold. The field exists so the LEDGER can, later, answer which source shape yields skills that survive.",
+    "harvest": "found material - the net, a repo, a paper. Strong on claims, blind on the gap.",
+    "existing-artifact": "a finished skill arrived, ours or foreign. Strongest artefact, weakest warrant: its own content is a hypothesis someone wrote down, not evidence.",
+    "agent-request": "a brain building an agent decided a job needs covering. It has the job and the tasks; it has no sources unless it went and got them.",
+    "library-defect": "one of our own skills failed its evals, or a defect family recurred. The only origin whose gap comes with a frequency.",
+    "human-request": "a person asked for it. Supplies the least and needs the most work before admission."
+  },
+  "measurement": {
+    "note": "Fields recorded so the ledger can answer questions no single build can.",
+    "questions": [
+      "which origin yields skills that SHIP, and which yield skills that survive later re-testing",
+      "does a package with sourced claims do better than one without - n_claims and n_measured against the verdict",
+      "how often does the probe REFUTE the hypothesis, per origin. Refuted 2 of 2 so far, both agent-authored",
+      "which win axis each origin wins on. If one origin only ever wins on shape, that is a fact about the origin",
+      "cost per origin, so an expensive source shape can be dropped on evidence rather than on feeling"
+    ],
+    "recorded_at": "0.2 into the build record header, 2.3 for the probe outcome, 8.2 into builds.jsonl"
+  }
+}

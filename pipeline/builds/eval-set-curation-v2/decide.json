@@ -1,0 +1,46 @@
+{
+  "verdict": "iterate",
+  "rule": {
+    "min_repeats": 2,
+    "cost_tolerance": 0.2,
+    "cost_axes": [
+      "tokens",
+      "tool_calls"
+    ],
+    "require_win": true,
+    "win_must_survive": true,
+    "win_axes": [
+      "correctness",
+      "shape"
+    ],
+    "max_repair_loops": 3
+  },
+  "clauses": [
+    {
+      "clause": "repeats",
+      "verdict": "pass",
+      "detail": "min 2 paired repeats per test"
+    },
+    {
+      "clause": "no_regression",
+      "verdict": "pass",
+      "detail": "none"
+    },
+    {
+      "clause": "cost:tokens",
+      "verdict": "fail",
+      "detail": "1018144.5 vs 553752.5 = 1.84x (cap 1.20x)"
+    },
+    {
+      "clause": "cost:tool_calls",
+      "verdict": "fail",
+      "detail": "16.0 vs 11.5 = 1.39x (cap 1.20x)"
+    },
+    {
+      "clause": "win",
+      "verdict": "pass",
+      "detail": "won: Q1 (correctness), Q4 (shape)"
+    }
+  ],
+  "prereg": "pipeline/prereg/2026-09-02-eval-set-curation-v2-threshold.md"
+}

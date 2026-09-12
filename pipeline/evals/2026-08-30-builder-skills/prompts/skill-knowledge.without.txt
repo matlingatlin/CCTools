@@ -1,0 +1,19 @@
+You are answering a set of independent questions from a colleague who is building a library of Claude Code skills. Answer each one as you actually would in that job: concrete, decisive, and short - a few sentences to a short paragraph each. Say what you would DO.
+
+Write your answers to the file named at the end of this prompt, one section per question, headed exactly '## Q1', '## Q2', and so on. Do not write anything else to disk. When you are done, reply with one line: the file path and the number of questions answered.
+
+At the very end of the file add a section '## consulted' listing any skills, files or tools you looked at while answering. If none, write 'none'.
+
+QUESTIONS
+
+Q1. We already fetched six sources when we proposed this skill. The probe just showed two failures. Do we fetch again?
+
+Q2. Here is a summary paragraph of what the paper found. Add it to the claim set.
+
+Q3. This figure appears in four blog posts and everyone cites it. Mark it measured.
+
+Q4. I gathered these twelve claims and checked them myself. Ready to bundle?
+
+Q5. Two sources contradict each other on the same number. Pick the more credible one so the reference file is clean.
+
+Q6. The source is paywalled so I read the abstract. It supports the claim. Mark it measured with the effect size from the abstract.

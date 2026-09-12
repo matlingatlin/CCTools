@@ -1,0 +1,99 @@
+You are grading two anonymised answers to each question below. You do not know how either was produced, and you must not speculate about it.
+
+For EACH question, for EACH listed expectation, rule on answer A and answer B independently: met / not met / unclear. Every ruling must quote the line from that answer that decides it. If nothing in the answer decides it, the ruling is 'not met' and you say what you looked for.
+
+Then, for each question, answer one more thing: **is this expectation set any good?** Name any expectation that both answers satisfy trivially, or that could be satisfied by an answer that misses the point. An expectation nothing could fail is not a measurement.
+
+Return strict JSON and nothing else:
+{"per_question": [{"id": 1, "rulings": [{"expectation": "...", "A": "met|not met|unclear", "A_evidence": "quoted line", "B": "...", "B_evidence": "..."}], "expectation_critique": "..."}], "overall": "..."}
+
+
+======================================================================
+QUESTION 1
+Here is a field contract and a candidate sentence for a new skill. Write the skill's SKILL.md. Work in whatever order you think best.
+
+EXPECTATIONS:
+  - the description is written last, after the body's scope is fixed
+  - a bill of materials exists before any bundled file is written
+  - the field rules are read from the contract file rather than recalled
+
+--- ANSWER A ---
+I do not write it top to bottom, and I do not start from the candidate sentence's topic. Order: (4.0) bill of materials first — one row per planned file, each marked `exists` / `needed` / `not needed because …`, no blank rows, because a gap found now is a task and the same gap found mid-write is an improvisation; (4.1/4.2) any references and assets next, since the body has to point at them — every reference claim carries its source and fetch date, every asset carries named slots to fill; (4.3) name, which the contract decides (reserved words, directory match); (4.4) "what this is / when to use it", written from the candidate sentence and the observed failures; (4.5) the steps; (4.6) pointers to each bundled file (what is in it, when to open it — and no bundled file pointing at another bundled file); (4.7) description, last; (4.8) frontmatter policy from the content kind.
+
+Two things I do at every field rather than once at the end. First, I read the rule for that field out of the contract file at the moment I write it — I never quote it from memory, so the code checker and I are reading the same sentence. Second, after each field I run the code checker over the whole artefact (not just the new field — cross-field rules only become checkable once the field exists), then hand the field plus its contract rule, and nothing else, to a reader who did not write it. Red never proceeds: I fix it before the next field, because everything written after a red field was written against something that is about to change. I log per field which code rules went red, which reader questions went red, and the rewrite count.
+
+Concretely, before I can start I need the two inputs the method assumes and this brief has not attached: the contract file itself (I will not reconstruct its rules) and the probe findings / observed failures the body and steps must be traceable to. Give me those and I write it in the order above; without the observed failures I can produce a name and a bill of materials but the steps section would be opinion.
+
+--- ANSWER B ---
+The contract and the candidate sentence aren't actually attached to this prompt, so first thing I do is ask you to paste both — I won't invent a field list and write a plausible-looking SKILL.md against it. Second: I wouldn't work "in whatever order I think best", because the order is the one part of this that isn't free. I write the body first (steps, checks, worked example), then derive the description from the finished body, then validate field-by-field against the contract as a last pass — a checklist, ticking each required field present / correctly typed / within limits, with anything missing listed rather than quietly filled in. Writing the description first bakes in a promise the body then has to chase, and it is the field most likely to blow a length cap. The candidate sentence gets treated as a draft trigger, not as the description: I check it is third-person, "Use when…", keyword-rich, and carries negative triggers, and rewrite it if not.
+
+
+======================================================================
+QUESTION 2
+Draft the steps section for a skill about reviewing database migrations. You have a probe transcript showing two observed failures.
+
+EXPECTATIONS:
+  - each rule names the observation behind it
+  - no rule is included that the probe did not show failing
+  - every step ends in something checkable
+
+--- ANSWER A ---
+Steps get written from the two observed failures outward, not from a generic "review a migration" checklist. Each step names the failure it prevents and ends in an observable check the reviewer can actually run (read the lock mode this statement takes; confirm the backfill is batched and resumable; confirm the old column is still written until reads have moved). I do not pad the list to seven steps with plausible migration wisdom — unobserved steps are guesses and they dilute the two that are evidenced. If the coverage feels thin, the fix is more probes, not more invention: I'd say plainly that two failures is a thin base, run further probes on the classes we haven't touched (destructive DDL, data-loss-on-rollback, index creation blocking writes), and add steps as failures are actually observed. I'd also flag that a live schema change with two code versions deployed at once is its own method (expand → dual-write → backfill → switch reads → contract) and reference it rather than half-inlining it.
+
+--- ANSWER B ---
+Two observed failures means at most two rules. I write exactly the steps those two transcript entries force, each one quoting the observation it came from and naming the run — e.g. "run <id>: the reviewer approved a migration adding a NOT NULL column with no default to a table with existing rows; the deploy failed on backfill" becomes a step that reads the migration for every added constraint and records, per constraint, the row count of the target table and whether a default or backfill exists. Each step ends in something checkable: a number, a file and line, a named artefact, or a table row. "Consider whether the migration is safe" is not a step; "list every added column with NOT NULL and no default, with the target table's row count beside it — empty list or explicit backfill required to pass" is.
+
+Everything else that wants to go in — lock duration, index concurrency, rollback scripts, review checklists I know are good practice — stays out unless the transcript shows it failing. It is free to write and expensive to carry: it occupies context on every invocation and cannot be measured, because nothing was failing without it. The test is mechanical, applied per rule: name the run. If I cannot, the rule does not go in, and the honest output here is a two-step steps section plus a note that the probe was thin and further steps wait on further observations.
+
+
+======================================================================
+QUESTION 3
+This skill's description is 1,380 characters and reads well. Ship it?
+
+EXPECTATIONS:
+  - runs the code check before asking whether it reads well
+  - does not accept the field on readability alone
+
+--- ANSWER A ---
+No. Length is a hard constraint, not a style preference: descriptions are capped at 1024 characters in this library, and the skill listing shares roughly 1% of the context window across every talent — so 1,380 characters is over the cap and gets truncated, which silently drops whatever sits at the end (usually the negative triggers, the most load-bearing part). "Reads well" is the wrong test; the description is machine-read for routing, not prose. I'd cut it to triggers-only third-person text under the cap: drop any sentence describing what the skill does internally, keep the "Use when…" phrasings a user would actually type, keep the NOT-for clauses naming the sibling skills. Then re-check the count before shipping.
+
+--- ANSWER B ---
+No. Reads-well is the wrong check to have run first, and it is the second check regardless. I run the code checker against the contract's length rule before any reader sees it — there is no point asking whether a 1,380-character description reads well if the cap is below that. I read the cap out of the contract file rather than asserting one from memory; in this library the pinned cap is 1,024, so 1,380 is red on its face and a red field never proceeds. It is also not merely a formatting failure: an over-cap description gets truncated or rejected by the thing that routes on it, so the part that "reads well" may be the part nobody sees.
+
+So: rewrite to fit, from the trigger vocabulary rather than by trimming adjectives off the end, re-run the checker, then hand it to the independent reader with the router question. Ship after both are green, not before.
+
+
+======================================================================
+QUESTION 4
+Two skills in this library both mention reviewing schema changes. Write the new one's description.
+
+EXPECTATIONS:
+  - reads the sibling's description before writing
+  - states which unit owns which job, from both sides
+
+--- ANSWER A ---
+I wouldn't write only the new one. Overlap is symmetric, so a boundary asserted from one end still mis-fires from the other — I'd edit both descriptions in the same change so each names the other explicitly. The new one's description leads with the requests only it should catch, then carries an explicit exclusion pointing at the sibling by name and saying which requests go there instead, with the discriminator stated in the words a user would use — not "schema changes" (both match that) but the thing that actually splits them, e.g. reviewing a migration script in a PR before merge, versus sequencing a live schema change across two deployed code versions. Then I'd sanity-check it with a handful of negative triggers: phrasings that must NOT route here, and confirm they route to the sibling.
+
+--- ANSWER B ---
+I do not write it yet, and I do not write it from my own skill's intent. The description is the last field for a reason: it needs the finished body's actual scope, the trigger vocabulary, and — exactly the situation here — the neighbour's description in front of me. So step one is to pull the existing skill's description verbatim and read what job it actually claims, not what I remember it claiming.
+
+Then I write mine from the words a person types when they *have* the problem — symptoms, error strings, tool names, the failure as it appears ("migration locked the table", "ALTER on a live table", the specific error text from the probe) — not the vocabulary of the solution ("reviews schema changes"), which is precisely the phrasing both skills already share and the reason they collide.
+
+Then the two-way router test: put the two descriptions side by side and ask, for each one's job, which unit a router would pick and why not the other. If the answer is unclear in either direction, one of the two descriptions is wrong — and it may be the incumbent's, so I am prepared to propose an edit there too rather than contorting the new one around it. I add an explicit negative boundary naming the sibling, and I make the sibling name back, since one-sided boundaries are what parallel authoring produces. Finally the code checker (cap, required fields), then a fresh reader who did not write either.
+
+
+======================================================================
+QUESTION 5
+Summarise this skill's field rules for me from memory so we can move fast.
+
+EXPECTATIONS:
+  - does not restate rules from memory
+  - reads the contract at the moment the field is written
+
+--- ANSWER A ---
+I won't, and not to be difficult — a summary from memory is the one artefact this method explicitly forbids. Rules held as data only pay off if the code checker and the writer are reading the same sentence; a rule I recite is a rule that has already drifted, and the drift is silent, so we would move fast into rework at whichever field it bit. The failure mode is specific: the fields written after a wrongly-remembered rule were all written against something that changes when the checker finally reads the real one.
+
+What I will do instead, and it is faster than it sounds: open the contract file and read the rule for the field we are on, at the moment we write it — one field's rules, not the whole file. If what you want is speed, the thing to hand me is the contract path; if what you want is orientation, I can give you the *order* and the inputs each field needs (that is the method, and it is legitimately held in this document) — but the field rules themselves come off disk, per field, every time.
+
+--- ANSWER B ---
+I'd rather not, and it costs about thirty seconds to do it properly. Summarising field rules from memory is exactly where I'd hand you a rule that is stale, from a different repo's conventions, or subtly wrong on a number — a cap, a required field, an allowed status value — and a wrong number stated confidently is worse than a slow answer because you'll build on it. Moving fast here means reading the file and quoting the rules as they actually stand, dated, rather than reciting a plausible version. Tell me the path (or let me find it) and I'll give you the summary with each rule attributed to the line it came from; anything I can't find, I'll mark as not present rather than filling the gap.

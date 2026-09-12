@@ -1,0 +1,19 @@
+{
+  "review the whole skill": "artifact-consistency-sweep",
+  "does the body contradict the rules": "artifact-consistency-sweep",
+  "which step is graded by nothing": "artifact-consistency-sweep",
+  "whole-artefact review": "artifact-consistency-sweep",
+  "consistency sweep": "artifact-consistency-sweep",
+  "steps vs rules vs evals": "artifact-consistency-sweep",
+  "did the review miss anything": "artifact-consistency-sweep",
+  "review before the arms run": null,
+  "find every contradiction in one pass": "artifact-consistency-sweep",
+  "unconverged review": "artifact-consistency-sweep",
+  "Review the whole skill artefact at pipeline/packages/fixtures/artifact-consistency-sweep/artifact-A (SKILL.md, references/, evals/) - the artefact as written before its first whole-artefact review. You cannot see how it was written. Find every place where two parts of the artefact contradict each other or where a step cannot be checked or is graded by nothing: steps against rules, steps against each other, steps against the eval expectations, the description against the body, bundled files against the bill of materials. Return a findings list (level CLASS or INSTANCE, where, finding, verbatim quote) and, for every numbered step, whether it ends in something checkable and which eval check grades it.": "artifact-consistency-sweep",
+  "Review the whole skill artefact at pipeline/packages/fixtures/artifact-consistency-sweep/artifact-B (SKILL.md, references/, evals/) - the same skill after its first rewrite (body halved, rationale moved to a reference). You cannot see how it was written. Find every place where two parts of the artefact contradict each other or where a step cannot be checked or is graded by nothing: steps against rules, steps against each other, steps against the eval expectations, the description against the body, bundled files against the bill of materials. Return a findings list (level CLASS or INSTANCE, where, finding, verbatim quote) and, for every numbered step, whether it ends in something checkable and which eval check grades it.": "artifact-consistency-sweep",
+  "Review the whole skill artefact at pipeline/packages/fixtures/artifact-consistency-sweep/artifact-C (SKILL.md, references/, evals/) - the same skill after its second rewrite. You cannot see how it was written. Find every place where two parts of the artefact contradict each other or where a step cannot be checked or is graded by nothing: steps against rules, steps against each other, steps against the eval expectations, the description against the body, bundled files against the bill of materials. Return a findings list (level CLASS or INSTANCE, where, finding, verbatim quote) and, for every numbered step, whether it ends in something checkable and which eval check grades it.": "artifact-consistency-sweep",
+  "run two independent adversarial reviewers on this draft until both pass": "santa-method",
+  "I added the streaming parse path, does the patch need the non-streaming one too": "integration-contract-completeness",
+  "the suite went green after we widened the tolerance, was the check weakened": "oracle-weakening-audit",
+  "the reviewer left twelve comments on my PR, which do I act on": "receiving-code-review"
+}

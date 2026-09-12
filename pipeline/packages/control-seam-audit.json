@@ -1,0 +1,89 @@
+{
+  "_note": "Build package for the skill-builder AGENT to execute unaided. Sources are this repo's own artefacts from 2026-08-30/09-01; every quote is copied verbatim from the file named in its locator.",
+  "id": "control-seam-audit",
+  "candidate_sentence": "Audits a multi-stage pipeline for defects that live BETWEEN stages, and produces a per-seam table naming which control would catch a fault introduced there.",
+  "unit_type": "skill",
+  "content_kind": "reference",
+  "verifiable": true,
+  "failure_kind": "knowledge",
+  "sources": [
+    {
+      "source_id": "L1",
+      "type": "repo",
+      "url": "file://pipeline/evals/2026-08-30-round2/RESULTS-skill-knowledge.md",
+      "title": "Harness defects found while grading the artefact question (this repo)",
+      "authors": "this repo",
+      "year": 2026,
+      "fetched": "2026-08-30",
+      "access": "local",
+      "read": "full"
+    },
+    {
+      "source_id": "L2",
+      "type": "repo",
+      "url": "file://pipeline/evals/harness/selftest_score.py",
+      "title": "Un-blinding controls, written before the harness was used on real data",
+      "authors": "this repo",
+      "year": 2026,
+      "fetched": "2026-08-30",
+      "access": "local",
+      "read": "full"
+    }
+  ],
+  "claims": [
+    {
+      "claim": "A control proves the thing it watches and nothing else: a suite written specifically to prevent an inverted conclusion passed throughout a run in which the harness did invert one, because the inversion happened one stage upstream of what it watched.",
+      "source_id": "L1",
+      "locator": "section 'Harness defects found while grading the artefact question', closing paragraph",
+      "quote": "The controls that existed did not catch it: `selftest_score.py` guards the *un-blinding* against exactly this failure mode, and it passed throughout, because the inversion happened one stage upstream of what it watches.",
+      "what_was_measured": "whether an existing control detected a defect in an adjacent stage",
+      "effect_size": "1 of 1 controls passed while the pipeline produced an inverted result",
+      "sample": "one harness, three bugs, all in the stage the control did not watch",
+      "limits": "a single incident in one pipeline; it establishes that the gap can occur, not how often",
+      "verdict": "MEASURED",
+      "verified_by": "pipeline/evals/2026-08-30-round2/RESULTS-skill-knowledge.md"
+    },
+    {
+      "claim": "The dangerous seam is the one where a fault inverts the result rather than breaking it: the run completes, the numbers look plausible, and nothing downstream can detect the error.",
+      "source_id": "L2",
+      "locator": "module docstring",
+      "quote": "If A and B are mapped back the wrong way the run still completes, the numbers still look plausible, and the losing arm is reported as the winner. Nothing downstream can detect it.",
+      "verdict": "REPEATED",
+      "limits": "this is the design rationale written into a control, not an independent measurement",
+      "verified_by": "pipeline/evals/harness/selftest_score.py"
+    }
+  ],
+  "expected_failure": "Asked to check whether a multi-stage pipeline is adequately controlled, the baseline inventories the controls that exist and reports coverage per stage, without asking what happens to data BETWEEN stages or which faults would pass every existing control.",
+  "trigger_terms": [
+    "all the tests pass but the result is wrong",
+    "between stages",
+    "seam",
+    "integration gap",
+    "each component is tested",
+    "the pipeline produced a plausible wrong answer",
+    "silent corruption"
+  ],
+  "representative_tasks": [
+    {
+      "task": "Our eval pipeline has four stages and each one has a unit test suite. A run just produced a confidently wrong number. Where do we look?",
+      "artifact_expected": "A per-seam table naming, for each boundary between stages, which existing control would catch a fault introduced there - and which would not."
+    },
+    {
+      "task": "Review this three-stage data pipeline's test suite and tell me what it cannot catch.",
+      "artifact_expected": "A list of faults that would pass every existing control, each tied to the seam it enters at."
+    },
+    {
+      "task": "We added a control for the step that broke last time. Are we covered now?",
+      "artifact_expected": "An answer that distinguishes the stage now watched from the seams still unwatched, rather than treating one added control as coverage."
+    }
+  ],
+  "budget": {
+    "max_agents": 2,
+    "max_paired_runs": 8
+  },
+  "threshold": "Across k >= 2 repeats: zero regressions on correctness, no more than 20 percent worse on tokens or tool calls, and at least one test where the skill wins with the win surviving the repeat.",
+  "origin": "harvest",
+  "filled_by": "coordinator: two local repo artefacts, both quoted verbatim with locators",
+  "gap_kind": "missing",
+  "_origin_note": "added 2026-09-01 when the field was introduced. The origin is a fact about the input and is known; the builds.jsonl rows are NOT backfilled, because what a row recorded at emit time is not something to revise later."
+}

@@ -1,0 +1,19 @@
+You are repairing a skill's STEPS section. An independent reader returned RED. The file is at:
+/home/user/skills-repo/pipeline/builds/data-contract-assertions-v2/fields/_field-steps.md
+Its evidence base is /home/user/skills-repo/pipeline/builds/data-contract-assertions-v2/observed-failures.md (the observations OBS-1/2/3) and /home/user/skills-repo/pipeline/builds/data-contract-assertions-v2/artifact/data-contract-assertions/references/threshold-evidence.md (the claims C1-C13). Read both.
+
+FINDING 1 - RED - an untraceable rule. Step 4 requires an amendment to carry "reason, approver, effective date". The cited claims C1, C2 and C10 say nothing about amendment metadata, and no observation says an unapproved or undated amendment caused a failure. **"approver" is traceable to nothing in the bundle.** It also has no fallback: a solo analyst with no approver cannot close the checklist row and the step gives them no sanctioned way to say so, while Step 5 and Step 6 both supply exactly that kind of escape hatch (observe-only, and NOT DERIVED - owner).
+Fix it, and then SWEEP THE CLASS rather than only this instance. The class is "an element of a rule that the cited claim or observation does not actually carry". Go through all nine steps and the standing rules, take each parenthesised citation in turn, open what it cites, and ask whether the cited row carries the rule the citation is attached to. Cut or re-ground anything that does not. Report how many citations you checked and how many you changed.
+The reader explicitly ruled that the field LISTS in Step 6 (provenance fields) and Step 9 (emitted row fields) are NOT instances - they are the mechanism that makes OBS-1 and OBS-2 checkable, and no observation could dictate a field name. Do not cut those.
+
+FINDING 2 - RED - a standing rule trapped inside a numbered step. Step 3 ends "Do not report a defect as segment-exclusive when the data supports a second reading. (OBS-3)". That governs how a finding is STATED, and statements continue after step 9 - a follow-up turn ("so it is just that one merchant?") is exactly where OBS-3's failure recurs, and by then the numbered sequence has stopped. The standing block currently says "These four hold for the whole task" and is a closed set of four in which OBS-1 gets two rules, OBS-2 gets one and OBS-3 gets none. Promote it: add a fifth standing rule carrying OBS-3, fix the word "four", and leave Step 3's operational detail where it is without restating the standing rule verbatim - a passage duplicated between two places is the drift this repo has a rule against.
+
+FINDING 3 - WARN, fix it anyway, it is cheap. Step 8 says "Backtest the proposed contract over the historical batches". The when-to-use section admits a case with only "a prior batch, a sample, or a reference table". With one prior batch the backtest is degenerate and the step names no fallback and no way to record that it was not run - unlike Step 7, whose "Split the reference" works on a single sample. Give it the same treatment: say what to do and what to record when there is no history to backtest over.
+
+EVERYTHING ELSE STILL BINDS AND THE READER CLEARED IT - do not disturb it:
+- Zero numerals other than step numbers and claim/observation ids. No band, cutoff, ratio, percentage or sigma anywhere.
+- No step teaches profiling, per-column typing or per-segment comparison. Eight baseline runs did all three unprompted; teaching them is unearned context on every invocation.
+- Every step ends in a checkable artefact. Keep that true of anything you rewrite.
+- The Task Progress checklist block stays, and stays consistent with the steps after your edits.
+- Keep the Bundled files pointer list exactly as it is.
+Do not restructure. This is a targeted repair.

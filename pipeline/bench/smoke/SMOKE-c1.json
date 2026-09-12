@@ -1,0 +1,37 @@
+{
+  "batch": "SMOKE",
+  "concurrency": 1,
+  "n": 1,
+  "started": "2026-09-01T23:08:00.106437+00:00",
+  "ended": "2026-09-01T23:08:15.285393+00:00",
+  "wall_clock_s": 15.179,
+  "loadavg_at_start": 0.375,
+  "loadavg_at_end": 0.292,
+  "cores": 4,
+  "target": "pipeline/validate/staleness.py",
+  "model_requested": "claude-opus-5",
+  "run_timeout_s": 300,
+  "runs": [
+    {
+      "idx": 0,
+      "started": "2026-09-01T23:08:00.107676+00:00",
+      "scratch": "/tmp/bench-0-k_khztgc",
+      "status": "ok",
+      "duration_ms": 15177,
+      "tokens": 102182,
+      "num_turns": 3,
+      "model": "claude-opus-5",
+      "ended": "2026-09-01T23:08:15.284688+00:00",
+      "exit_code": 0,
+      "models": [
+        "claude-haiku-4-5-20251001",
+        "claude-opus-5"
+      ],
+      "cost_usd": 0.16778649999999998,
+      "duration_api_ms": 11917,
+      "ttft_ms": 1904,
+      "api_error_status": null,
+      "answer": "FUNCTIONS: 2\nLINES: 90\nVERDICT: It scans `references/*.md` files for embedded dates, reporting each file's age and whether an expiry condition is written, while deliberately refusing to turn age into a pass/fail verdict \u2014 the only thing it flags as a defect (and exits 1 for) is a reference with no d"
+    }
+  ]
+}

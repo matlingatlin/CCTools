@@ -1,0 +1,46 @@
+{
+  "verdict": "ship",
+  "rule": {
+    "min_repeats": 2,
+    "cost_tolerance": 0.2,
+    "cost_axes": [
+      "tokens",
+      "tool_calls"
+    ],
+    "require_win": true,
+    "win_must_survive": true,
+    "win_axes": [
+      "correctness",
+      "shape"
+    ],
+    "max_repair_loops": 3
+  },
+  "clauses": [
+    {
+      "clause": "repeats",
+      "verdict": "pass",
+      "detail": "min 2 paired repeats per test"
+    },
+    {
+      "clause": "no_regression",
+      "verdict": "pass",
+      "detail": "none"
+    },
+    {
+      "clause": "cost:tokens",
+      "verdict": "pass",
+      "detail": "353517.0 vs 307545.5 = 1.15x (cap 1.20x)"
+    },
+    {
+      "clause": "cost:tool_calls",
+      "verdict": "pass",
+      "detail": "5.5 vs 5.0 = 1.10x (cap 1.20x)"
+    },
+    {
+      "clause": "win",
+      "verdict": "pass",
+      "detail": "won: Q1 (correctness), Q2 (correctness)"
+    }
+  ],
+  "reason": "every clause of the preregistered rule holds (the preregistered prose is the contract's default rule verbatim)"
+}

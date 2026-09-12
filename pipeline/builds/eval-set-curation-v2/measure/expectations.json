@@ -1,0 +1,143 @@
+{
+  "_how_this_was_written": "TWO HALVES, WRITTEN AT DIFFERENT TIMES AND FOR DIFFERENT REASONS. The FC* expectations were written at phase 6.1 while the arms were still running and before any arm output existed - every one is computed from the fixture, which is the exception the chain contract grants. The J* expectations were written at 6.2, AFTER the six outputs were blinded and relabelled under a fresh seed, FROM those blinded copies, with key/key.json unopened. The author therefore had the benefit of seeing real answers - without which an expectation set does not discriminate, and 27 percent of the last build's carried a verdict - and did not have the ability to know which arm an expectation would favour.",
+  "_what_the_author_could_still_infer": "Honest bound. The six blinded answers fall into a behavioural pair and a group of four, and the pair is obvious from the text. The author does NOT know whether that pair is the with-arm, the incumbent-arm, or one of each - the incumbent also teaches a per-slice floor and a logged holdout - and did not open the key to find out. What blinding cannot remove here is that the expectations were written by someone who has read this skill; that is why half two of the grader's brief asks it to attack the expectation set as well as the answers.",
+  "fixture_computed": [
+    {
+      "id": "FC1",
+      "question": "Q3",
+      "carries": "F1",
+      "expectation": "The answer treats the 1880 placeholder rows as a near-duplicate FAMILY, not as 1880 unique rows. Any of these counts as meeting it: reporting them as one family per slice; reporting a distinct-string count near 64 after normalisation; or saying explicitly that normalising the case number and hash collapses them.",
+      "computed_from": "distinct strings after normalising 8-hex tokens and digits = 64; 4 of those cover 1880 rows",
+      "meets_it_partially": "finds the 60 exact-duplicate pairs among the 120 real-text rows and stops there - this is what 3 of 4 probe runs did",
+      "third_defensible_answer_admitted_now_not_later": "A run may argue that the placeholder rows are each their OWN cluster because there is no text to compare - probe.A.without.r1 did exactly that in the curate.py it wrote, with the comment 'Opaque placeholder rows have no usable text -> each is its own cluster'. That is a reasoned position, not the failure F1 describes, and it MEETS this expectation provided the reasoning is stated. What does NOT meet it is passing over the 1880 rows in silence. This clause is added at phase 6.1, from a PROBE transcript, BEFORE any arm output was read and before the blinding - recorded here so that admitting it later could not be mistaken for loosening the expectation to fit an answer."
+    },
+    {
+      "id": "FC2",
+      "question": "Q3",
+      "carries": "F1 / contamination regression guard",
+      "expectation": "All 37 rows with in_fewshot_prompt=1 are named and removed, not down-weighted.",
+      "computed_from": "37 rows carry the flag"
+    },
+    {
+      "id": "FC3",
+      "question": "Q3",
+      "carries": "F1",
+      "expectation": "TWO de-duplication numbers are reported separately - a distinct-string count and a distinct-cluster/family count - rather than one number standing for both.",
+      "computed_from": "the two numbers genuinely differ on this fixture: 1940 raw distinct strings, 64 after normalisation"
+    },
+    {
+      "id": "FC4",
+      "question": "Q4",
+      "carries": "F3",
+      "expectation": "The reporting floor is derived from a stated tolerance (a half-width the team can act on, or a difference the gate must detect), not asserted as a round number. A floor with a citation but no tolerance does NOT meet this.",
+      "computed_from": "not a number - this is the one judgement-shaped expectation in this file, and it is here rather than in the post-blinding set because it is the literal text of the skill's step 2 and could be written from the artefact alone"
+    },
+    {
+      "id": "FC5",
+      "question": "Q4",
+      "carries": "F3",
+      "expectation": "The per-slice interval is computed, and the adversarial slice at n=22 is stated to be unusable for a per-slice claim. The measured Wilson 95% half-widths are 1.1 points (simple_lookup, n=1647), 5.6 (multi_hop, n=264), 11.6 (ambiguous, n=67) and 18.2 (adversarial, n=22). An answer whose adversarial half-width is not within 2 points of 18.2 has computed it wrongly.",
+      "computed_from": "fixture_facts.json wilson95",
+      "note": "the probe showed 4 of 4 baseline runs already do this, so this is a REGRESSION GUARD and not a discriminator"
+    },
+    {
+      "id": "FC6",
+      "question": "Q2",
+      "carries": "regression guard",
+      "expectation": "The 88.75 percent headline is refused as a ship signal, and the per-slice breakdown is given: 0.9472 / 0.6705 / 0.4627 / 0.3182. Bonus, not required: naming the macro-average of the four slices, which is 0.5997.",
+      "computed_from": "fixture_facts.json",
+      "note": "the probe showed 4 of 4 baseline runs already do this. The skill MAY NOT LOSE IT."
+    },
+    {
+      "id": "FC7",
+      "question": "Q1",
+      "carries": "F3 / stratification regression guard",
+      "expectation": "A proportional 200-row sample is stated or shown to give about 2 adversarial rows, and the allocation is not proportional.",
+      "computed_from": "22/2000 * 200 = 2.2"
+    },
+    {
+      "id": "FC8",
+      "question": "Q1",
+      "carries": "F2",
+      "expectation": "A holdout is produced AND something is said about what seals it - stored separately, opened only to confirm, looks logged. A pool of unused rows described as usable as a dev set does NOT meet this.",
+      "computed_from": "not a fixture number; included here because it is the literal text of step 3 and no arm output can move it"
+    }
+  ],
+  "judged_from_blinded_copies": [
+    {
+      "id": "J1",
+      "carries": "F1",
+      "question": "Q2 or Q3",
+      "expectation": "Reports TWO de-duplication figures as two separate numbers - a distinct-STRING count after exact match, and a distinct-CLUSTER count after near-duplicate collapse - rather than one number standing for both.",
+      "not_met_by": "reporting only the exact-duplicate count, however correct that count is"
+    },
+    {
+      "id": "J2",
+      "carries": "F1",
+      "question": "Q3",
+      "expectation": "States what was normalised before exact match AND what was deliberately NOT normalised, with the reason. The reason must be the right one: normalising the varying slot of a templated family collapses it in the wrong step and makes the two counts come out equal and clean while the family is intact.",
+      "why_this_one": "this is the single named route by which a correct-looking answer defeats F1, and it is the hardest thing in the set to produce by accident"
+    },
+    {
+      "id": "J3",
+      "carries": "F1",
+      "question": "any",
+      "expectation": "Identifies the templated family as a small number of INTENTS - six, or six plus one per placeholder slice - rather than as 60 or 120 rows, and states the over-weighting factor it implies.",
+      "partial": "noticing the block is unusual without collapsing it to intents"
+    },
+    {
+      "id": "J4",
+      "carries": "F3",
+      "question": "Q4",
+      "expectation": "The per-slice floor is the arithmetic output of a chain that is stated in full: the DECISION the floor gates, a named TOLERANCE, the INVERSION with its p, and an OWNER. A floor asserted as a round number, or supported only by a table of interval widths, does not meet this however well the table is computed.",
+      "not_met_by": "'floor of 30' or 'n<30 is an anecdote, 100 is a gate, 300 for fine-grained' - correct advice, no origin"
+    },
+    {
+      "id": "J5",
+      "carries": "F3",
+      "question": "Q4",
+      "expectation": "States WHEN p was fixed relative to the first score, and does not quietly invert at an observed p as though that were free.",
+      "why_this_one": "two floors can differ on nothing but when p was read, and without this both look compliant. An answer that fixes p at 0.5 and SAYS why, and an answer that inverts at observed p and FLAGS that this is optimistic, both meet it. An answer that inverts at observed p silently does not."
+    },
+    {
+      "id": "J6",
+      "carries": "F2",
+      "question": "Q1 or Q4",
+      "expectation": "Either names a concrete enforcement mechanism for the holdout - something other than a filename or an intention - or writes UNSEALED. A pool described as stored separately and opened once per release, with nothing said about what enforces that, does NOT meet this.",
+      "why_this_one": "F2 is exactly the gap between an intention and a mechanism"
+    },
+    {
+      "id": "J7",
+      "carries": "F2",
+      "question": "Q1 or Q4",
+      "expectation": "If a look budget is given, it is presented as a POLICY someone owns rather than as an evidence-based number, and the reason is given: the strongest result on holdout reuse is a synthetic worst case that supplies no safe reuse count."
+    },
+    {
+      "id": "J8",
+      "carries": "the 5.2 ordering finding",
+      "question": "any",
+      "expectation": "States the order the operations run in and that the order changes the numbers - contamination before clustering, collapse before the floor, reweighting against the ORIGINAL population shares."
+    },
+    {
+      "id": "J9",
+      "carries": "the DERIVED discipline",
+      "question": "Q4",
+      "expectation": "If the roughly-1,000-question floor is mentioned at all, its DERIVED status travels with it - that its variance parameters are called fictional by its own author - and it is not used as evidence. NOT APPLICABLE if the answer never mentions it.",
+      "note": "an answer that never raises it is not penalised; this catches the answer that cites it as a finding"
+    },
+    {
+      "id": "J10",
+      "carries": "claim discipline",
+      "question": "Q4",
+      "expectation": "States that the intervals are naive - no cluster adjustment - and does NOT carry a clustering multiplier from public evals into a production-log recommendation. An answer that says 'multiply by 3' fails this; an answer that says the true interval is wider by an amount nothing measured meets it.",
+      "note": "NOT APPLICABLE if clustering is never raised"
+    },
+    {
+      "id": "J11",
+      "carries": "regression guard, expected to be met by all six",
+      "question": "Q3",
+      "expectation": "Raises the 1880 placeholder rows as a problem for freezing the file.",
+      "why_it_is_here": "the probe showed 4 of 4 baseline runs found this. If any arm loses it, that is a regression the skill caused, and this expectation is the only thing that would catch it."
+    }
+  ]
+}

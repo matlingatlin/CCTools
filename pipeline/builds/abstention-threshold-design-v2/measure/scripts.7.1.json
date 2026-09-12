@@ -1,0 +1,15 @@
+{
+  "runs_examined": [
+    "incumbent.r1.md",
+    "incumbent.r2.md",
+    "with.r1.md",
+    "with.r2.md",
+    "without.r1.md",
+    "without.r2.md"
+  ],
+  "min_runs": 2,
+  "blocks_seen": 21,
+  "candidates": [],
+  "finding": "NO helper was written by 2 or more runs. That is a finding about the method, not an empty result: nothing here is scaffolding the method requires.",
+  "next": "A candidate is a proposal to REVIEW, never to bundle. A bundled script is executable code that ships with the skill: run it through the skill contract's script rules (no network, no credentials, no installers, documented constants) and then past a reader who did not write it."
+}

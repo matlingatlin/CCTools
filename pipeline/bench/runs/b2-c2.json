@@ -1,0 +1,184 @@
+{
+  "batch": "b2",
+  "concurrency": 2,
+  "n": 8,
+  "started": "2026-09-01T23:32:36.733065+00:00",
+  "ended": "2026-09-01T23:33:36.035258+00:00",
+  "wall_clock_s": 59.302,
+  "loadavg_at_start": 0.481,
+  "loadavg_at_end": 0.992,
+  "cores": 4,
+  "target": "pipeline/validate/staleness.py",
+  "model_requested": "claude-opus-5",
+  "run_timeout_s": 300,
+  "runs": [
+    {
+      "idx": 0,
+      "started": "2026-09-01T23:32:36.735052+00:00",
+      "scratch": "/tmp/bench-0-fe3csuxr",
+      "status": "ok",
+      "duration_ms": 13899,
+      "tokens": 102206,
+      "num_turns": 3,
+      "model": "claude-opus-5",
+      "ended": "2026-09-01T23:32:50.633895+00:00",
+      "exit_code": 0,
+      "models": [
+        "claude-haiku-4-5-20251001",
+        "claude-opus-5"
+      ],
+      "cost_usd": 0.16654999999999998,
+      "duration_api_ms": 10553,
+      "ttft_ms": 2665,
+      "api_error_status": null,
+      "answer": "FUNCTIONS: 2\nLINES: 90\nVERDICT: It scans `references/*.md` files for dates and reports their age plus any written expiry condition without turning age into a pass/fail judgment, while flagging as an actual defect (exit code 1) any reference with no date at all, since its staleness can never be check"
+    },
+    {
+      "idx": 1,
+      "started": "2026-09-01T23:32:36.735519+00:00",
+      "scratch": "/tmp/bench-1-5xayfhko",
+      "status": "ok",
+      "duration_ms": 13268,
+      "tokens": 102002,
+      "num_turns": 3,
+      "model": "claude-opus-5",
+      "ended": "2026-09-01T23:32:50.003991+00:00",
+      "exit_code": 0,
+      "models": [
+        "claude-haiku-4-5-20251001",
+        "claude-opus-5"
+      ],
+      "cost_usd": 0.16380499999999998,
+      "duration_api_ms": 9806,
+      "ttft_ms": 2382,
+      "api_error_status": null,
+      "answer": "FUNCTIONS: 2\nLINES: 90\nVERDICT: It scans `references/*.md` files for embedded dates and reports each one's age and whether an expiry condition is stated, deliberately refusing to turn age into a pass/fail verdict while flagging entirely undated references as the only real defect."
+    },
+    {
+      "idx": 2,
+      "started": "2026-09-01T23:32:50.004806+00:00",
+      "scratch": "/tmp/bench-2-z671j_ds",
+      "status": "ok",
+      "duration_ms": 15010,
+      "tokens": 102282,
+      "num_turns": 3,
+      "model": "claude-opus-5",
+      "ended": "2026-09-01T23:33:05.015149+00:00",
+      "exit_code": 0,
+      "models": [
+        "claude-haiku-4-5-20251001",
+        "claude-opus-5"
+      ],
+      "cost_usd": 0.1687905,
+      "duration_api_ms": 11800,
+      "ttft_ms": 2358,
+      "api_error_status": null,
+      "answer": "FUNCTIONS: 2\nLINES: 90\nVERDICT: It decides that a reference file's age is only ever reported (alongside any written expiry condition), never turned into a pass/fail verdict, while a reference with no date at all is flagged as an actual defect and drives a nonzero exit code."
+    },
+    {
+      "idx": 3,
+      "started": "2026-09-01T23:32:50.637474+00:00",
+      "scratch": "/tmp/bench-3-oqb5j46d",
+      "status": "ok",
+      "duration_ms": 12718,
+      "tokens": 102041,
+      "num_turns": 3,
+      "model": "claude-opus-5",
+      "ended": "2026-09-01T23:33:03.355186+00:00",
+      "exit_code": 0,
+      "models": [
+        "claude-haiku-4-5-20251001",
+        "claude-opus-5"
+      ],
+      "cost_usd": 0.16242499999999999,
+      "duration_api_ms": 9187,
+      "ttft_ms": 2474,
+      "api_error_status": null,
+      "answer": "FUNCTIONS: 2\nLINES: 90\nVERDICT: It scans `references/*.md` files for dates and reports their age plus whether an expiry condition is written, treating only a reference with no date at all as an actual defect (nonzero exit)."
+    },
+    {
+      "idx": 4,
+      "started": "2026-09-01T23:33:03.355779+00:00",
+      "scratch": "/tmp/bench-4-ew6__zh7",
+      "status": "ok",
+      "duration_ms": 18988,
+      "tokens": 102481,
+      "num_turns": 3,
+      "model": "claude-opus-5",
+      "ended": "2026-09-01T23:33:22.343981+00:00",
+      "exit_code": 0,
+      "models": [
+        "claude-haiku-4-5-20251001",
+        "claude-opus-5"
+      ],
+      "cost_usd": 0.175558,
+      "duration_api_ms": 16131,
+      "ttft_ms": 2387,
+      "api_error_status": null,
+      "answer": "FUNCTIONS: 2\nLINES: 90\nVERDICT: It reports the age (and whether an expiry condition is written) of dated `references/*.md` files without turning age into a pass/fail judgment, treating only a reference with no date at all as a defect \u2014 the sole condition that makes it exit nonzero."
+    },
+    {
+      "idx": 5,
+      "started": "2026-09-01T23:33:05.015968+00:00",
+      "scratch": "/tmp/bench-5-27_209ve",
+      "status": "ok",
+      "duration_ms": 15498,
+      "tokens": 102159,
+      "num_turns": 3,
+      "model": "claude-opus-5",
+      "ended": "2026-09-01T23:33:20.513758+00:00",
+      "exit_code": 0,
+      "models": [
+        "claude-haiku-4-5-20251001",
+        "claude-opus-5"
+      ],
+      "cost_usd": 0.1672805,
+      "duration_api_ms": 12459,
+      "ttft_ms": 1720,
+      "api_error_status": null,
+      "answer": "FUNCTIONS: 2\nLINES: 90\nVERDICT: It scans `references/*.md` files for embedded dates and reports each one's age and whether an expiry condition is written, deliberately refusing to turn age into a pass/fail verdict while flagging entirely undated references as the one real defect (nonzero exit)."
+    },
+    {
+      "idx": 6,
+      "started": "2026-09-01T23:33:20.514472+00:00",
+      "scratch": "/tmp/bench-6-cul_e16h",
+      "status": "ok",
+      "duration_ms": 14252,
+      "tokens": 102164,
+      "num_turns": 3,
+      "model": "claude-opus-5",
+      "ended": "2026-09-01T23:33:34.766274+00:00",
+      "exit_code": 0,
+      "models": [
+        "claude-haiku-4-5-20251001",
+        "claude-opus-5"
+      ],
+      "cost_usd": 0.16718349999999998,
+      "duration_api_ms": 10946,
+      "ttft_ms": 1776,
+      "api_error_status": null,
+      "answer": "FUNCTIONS: 2\nLINES: 90\nVERDICT: It scans `references/*.md` files under a skills root, reporting each file's oldest/newest embedded date, its age in days, and whether an expiry condition is written, while flagging as an actual defect (exit code 1) only files that carry no date at all \u2014 deliberately r"
+    },
+    {
+      "idx": 7,
+      "started": "2026-09-01T23:33:22.344694+00:00",
+      "scratch": "/tmp/bench-7-hdwastze",
+      "status": "ok",
+      "duration_ms": 13690,
+      "tokens": 102042,
+      "num_turns": 3,
+      "model": "claude-opus-5",
+      "ended": "2026-09-01T23:33:36.034601+00:00",
+      "exit_code": 0,
+      "models": [
+        "claude-haiku-4-5-20251001",
+        "claude-opus-5"
+      ],
+      "cost_usd": 0.16486900000000002,
+      "duration_api_ms": 10525,
+      "ttft_ms": 2327,
+      "api_error_status": null,
+      "answer": "FUNCTIONS: 2\nLINES: 90\nVERDICT: It scans `references/*.md` files under a skills root and reports each one's embedded date ages and whether an expiry condition was written, deliberately refusing to turn age into a pass/fail verdict while flagging files with no date at all as the only real defect (and"
+    }
+  ]
+}

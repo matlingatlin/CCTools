@@ -1,0 +1,312 @@
+{
+  "contract_version": "1.3.0",
+  "results": [
+    {
+      "skill": "abstention-threshold-design",
+      "path": "/home/user/skills-repo/pipeline/builds/abstention-threshold-design-v2/artifact/abstention-threshold-design",
+      "rows": [
+        {
+          "id": "dir.skillmd",
+          "field": "directory",
+          "severity": "error",
+          "verdict": "PASS",
+          "detail": "SKILL.md"
+        },
+        {
+          "id": "dir.kebab",
+          "field": "directory",
+          "severity": "error",
+          "verdict": "PASS",
+          "detail": "abstention-threshold-design"
+        },
+        {
+          "id": "dir.no-readme",
+          "field": "directory",
+          "severity": "error",
+          "verdict": "PASS",
+          "detail": "none"
+        },
+        {
+          "id": "dir.bundled-known",
+          "field": "directory",
+          "severity": "warn",
+          "verdict": "PASS",
+          "detail": ""
+        },
+        {
+          "id": "name.pattern",
+          "field": "name",
+          "severity": "error",
+          "verdict": "PASS",
+          "detail": "abstention-threshold-design"
+        },
+        {
+          "id": "name.matches-dir",
+          "field": "name",
+          "severity": "error",
+          "verdict": "PASS",
+          "detail": "abstention-threshold-design"
+        },
+        {
+          "id": "name.reserved",
+          "field": "name",
+          "severity": "error",
+          "verdict": "PASS",
+          "detail": ""
+        },
+        {
+          "id": "name.max",
+          "field": "name",
+          "severity": "error",
+          "verdict": "PASS",
+          "detail": "27"
+        },
+        {
+          "id": "desc.present",
+          "field": "description",
+          "severity": "error",
+          "verdict": "PASS",
+          "detail": ""
+        },
+        {
+          "id": "desc.max",
+          "field": "description",
+          "severity": "error",
+          "verdict": "PASS",
+          "detail": "1006 chars"
+        },
+        {
+          "id": "desc.no-angle-brackets",
+          "field": "description",
+          "severity": "error",
+          "verdict": "PASS",
+          "detail": ""
+        },
+        {
+          "id": "desc.target",
+          "field": "description",
+          "severity": "warn",
+          "verdict": "FAIL",
+          "detail": "1006 chars, target 500"
+        },
+        {
+          "id": "fm.parses",
+          "field": "frontmatter-policy",
+          "severity": "error",
+          "verdict": "PASS",
+          "detail": "2 field(s)"
+        },
+        {
+          "id": "fm.task-kind",
+          "field": "frontmatter-policy",
+          "severity": "warn",
+          "verdict": "PASS",
+          "detail": "content_kind=reference"
+        },
+        {
+          "id": "fm.script-needs-tools",
+          "field": "frontmatter-policy",
+          "severity": "warn",
+          "verdict": "PASS",
+          "detail": "no scripts/"
+        },
+        {
+          "id": "fm.portable-fields",
+          "field": "frontmatter-policy",
+          "severity": "warn",
+          "verdict": "PASS",
+          "detail": ""
+        },
+        {
+          "id": "purpose.present",
+          "field": "body.purpose",
+          "severity": "error",
+          "verdict": "INDETERMINATE",
+          "detail": "not mechanically decidable: 'text answering what the purpose is' cannot be distinguished from any other prose by code. Routed to the agent check."
+        },
+        {
+          "id": "when.present",
+          "field": "body.when",
+          "severity": "error",
+          "verdict": "INDETERMINATE",
+          "detail": "not mechanically decidable: 'text answering when to use it' cannot be distinguished from any other prose by code. Routed to the agent check."
+        },
+        {
+          "id": "body.max-lines",
+          "field": "body.steps",
+          "severity": "warn",
+          "verdict": "PASS",
+          "detail": "304 lines"
+        },
+        {
+          "id": "body.max-words",
+          "field": "body.steps",
+          "severity": "warn",
+          "verdict": "PASS",
+          "detail": "3002 words"
+        },
+        {
+          "id": "body.files-exist",
+          "field": "body.steps",
+          "severity": "error",
+          "verdict": "PASS",
+          "detail": ""
+        },
+        {
+          "id": "body.critical-first",
+          "field": "body.steps",
+          "severity": "warn",
+          "verdict": "PASS",
+          "detail": ""
+        },
+        {
+          "id": "ptr.every-file",
+          "field": "body.pointers",
+          "severity": "warn",
+          "verdict": "PASS",
+          "detail": ""
+        },
+        {
+          "id": "ptr.resolves",
+          "field": "body.pointers",
+          "severity": "error",
+          "verdict": "PASS",
+          "detail": ""
+        },
+        {
+          "id": "ptr.one-level",
+          "field": "body.pointers",
+          "severity": "error",
+          "verdict": "PASS",
+          "detail": ""
+        },
+        {
+          "id": "ref.descriptive-name",
+          "field": "bundle.references",
+          "severity": "error",
+          "verdict": "PASS",
+          "detail": ""
+        },
+        {
+          "id": "ref.toc-warn",
+          "field": "bundle.references",
+          "severity": "warn",
+          "verdict": "PASS",
+          "detail": ""
+        },
+        {
+          "id": "ref.toc-error",
+          "field": "bundle.references",
+          "severity": "error",
+          "verdict": "PASS",
+          "detail": ""
+        },
+        {
+          "id": "ref.grep-patterns",
+          "field": "bundle.references",
+          "severity": "warn",
+          "verdict": "PASS",
+          "detail": "no reference file over 10k words"
+        },
+        {
+          "id": "ref.no-duplication",
+          "field": "bundle.references",
+          "severity": "error",
+          "verdict": "PASS",
+          "detail": ""
+        },
+        {
+          "id": "ref.dated",
+          "field": "bundle.references",
+          "severity": "error",
+          "verdict": "PASS",
+          "detail": ""
+        },
+        {
+          "id": "asset.has-fields",
+          "field": "bundle.assets",
+          "severity": "error",
+          "verdict": "PASS",
+          "detail": ""
+        },
+        {
+          "id": "script.documented-constants",
+          "field": "bundle.scripts",
+          "severity": "error",
+          "verdict": "PASS",
+          "detail": "no scripts/"
+        },
+        {
+          "id": "script.no-network",
+          "field": "bundle.scripts",
+          "severity": "error",
+          "verdict": "PASS",
+          "detail": "no scripts/"
+        },
+        {
+          "id": "script.no-credentials",
+          "field": "bundle.scripts",
+          "severity": "error",
+          "verdict": "PASS",
+          "detail": "no scripts/"
+        },
+        {
+          "id": "script.no-installs",
+          "field": "bundle.scripts",
+          "severity": "error",
+          "verdict": "PASS",
+          "detail": "no scripts/"
+        },
+        {
+          "id": "eval.exists",
+          "field": "evals",
+          "severity": "error",
+          "verdict": "PASS",
+          "detail": "present"
+        },
+        {
+          "id": "eval.schema",
+          "field": "evals",
+          "severity": "error",
+          "verdict": "PASS",
+          "detail": ""
+        },
+        {
+          "id": "eval.min",
+          "field": "evals",
+          "severity": "error",
+          "verdict": "PASS",
+          "detail": "4"
+        },
+        {
+          "id": "eval.files-resolve",
+          "field": "evals",
+          "severity": "error",
+          "verdict": "PASS",
+          "detail": ""
+        },
+        {
+          "id": "eval.name-matches",
+          "field": "evals",
+          "severity": "error",
+          "verdict": "PASS",
+          "detail": ""
+        },
+        {
+          "id": "whole.bom",
+          "field": "whole",
+          "severity": "error",
+          "verdict": "PASS",
+          "detail": "5 planned, all present"
+        },
+        {
+          "id": "whole.no-orphans",
+          "field": "whole",
+          "severity": "error",
+          "verdict": "PASS",
+          "detail": ""
+        }
+      ]
+    }
+  ]
+}

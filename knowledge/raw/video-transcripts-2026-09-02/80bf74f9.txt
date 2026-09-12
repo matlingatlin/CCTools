@@ -1,0 +1,14 @@
+[   0.0] I just found a skill that kills your mouse and keyboard.
+[   2.9] It's called TARS,
+[   3.8] and it's basically a multimodal AI agent
+[   6.1] that controls your computer.
+[   7.5] This has so many use cases,
+[   9.6] especially for tedious tasks like booking hotels.
+[  12.2] Not only that, it will scrape the web,
+[  14.2] take the information,
+[  15.3] and transform that data into visual graphics.
+[  17.8] Here are a couple of the core features,
+[  19.3] including a hybrid browser agent.
+[  21.4] You can even add your own LLM to it.
+[  23.6] Generally, this is amazing,
+[  24.8] so just call an agent and I'll send it over.

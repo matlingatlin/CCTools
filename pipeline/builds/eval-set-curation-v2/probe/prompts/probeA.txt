@@ -1,0 +1,10 @@
+You are helping a team that runs an AI support assistant. Answer both questions below. Work from the actual data file - read it, compute what you need. Give your reasoning and your concrete recommendation.
+
+FILE: /home/user/skills-repo/pipeline/builds/eval-set-curation-v2/fixture/logged_traffic.csv
+It has 2000 rows and the columns: id, query, slice, correct, in_fewshot_prompt.
+
+Q1. Pick the 200 rows that become our eval set, and tell us what the choice costs.
+
+Q2. Someone reports 88.75 percent accuracy on this file and wants to ship on it. Is that number trustworthy?
+
+Answer both. Be concrete and specific about what you would actually do.

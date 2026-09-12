@@ -1,0 +1,33 @@
+{
+  "id": "artifact-consistency-sweep",
+  "opened": "2026-09-03T07:12:58+00:00",
+  "mode": "v3",
+  "coordinator_tier": "fable",
+  "package": {
+    "path": "/home/user/skills-repo/pipeline/packages/artifact-consistency-sweep.json",
+    "sha256": "be118e74c48ea1241dc9be67adfab7fa93d6e016891503c952800e140f1b7b3e",
+    "candidate_sentence": "Reviews a whole artefact for internal contradictions by enumerating every step-rule, step-step, step-check and description-body pair as a row and ruling on each, so that one review round reports every contradiction the text holds, and emits the findings list with quotes plus the step matrix of checkable and graded verdicts.",
+    "content_kind": "reference",
+    "verifiable": true,
+    "failure_kind": "shape",
+    "threshold": "Across k >= 2 repeats: zero regressions on correctness, no more than 20 percent worse on tokens or tool calls, and at least one win on correctness or shape that survives every repeat. A clean baseline does not stop the build; a win on shape alone satisfies the clause.",
+    "threshold_rule": null,
+    "budget": {
+      "max_agents": 4,
+      "max_paired_runs": 8
+    },
+    "origin": "library-defect",
+    "filled_by": "coordinator, from pipeline/builds/llm-wiki-ingest (three review runs, their findings JSON, and the three texts they reviewed, recovered from git)",
+    "gap_kind": "missing",
+    "n_claims": 4,
+    "n_measured_claims": 2,
+    "n_sources": 4
+  },
+  "admission": {
+    "package_contract_version": "1.2.0",
+    "errors": 0,
+    "warnings": [],
+    "indeterminate": []
+  },
+  "note": "record.json is written once. Everything that happened is in events.jsonl."
+}

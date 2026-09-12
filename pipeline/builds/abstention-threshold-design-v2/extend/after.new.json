@@ -1,0 +1,46 @@
+{
+ "unit": "abstention-threshold-design",
+ "arm": "with",
+ "scenarios": [
+  {
+   "scenario": "Q1.r1",
+   "result": "pass",
+   "shape_ok": true
+  },
+  {
+   "scenario": "Q2.r1",
+   "result": "pass",
+   "shape_ok": true
+  },
+  {
+   "scenario": "Q3.r1",
+   "result": "pass",
+   "shape_ok": true
+  },
+  {
+   "scenario": "Q4.r1",
+   "result": "pass",
+   "shape_ok": true
+  },
+  {
+   "scenario": "Q1.r2",
+   "result": "pass",
+   "shape_ok": false
+  },
+  {
+   "scenario": "Q2.r2",
+   "result": "pass",
+   "shape_ok": true
+  },
+  {
+   "scenario": "Q3.r2",
+   "result": "pass",
+   "shape_ok": true
+  },
+  {
+   "scenario": "Q4.r2",
+   "result": "pass",
+   "shape_ok": true
+  }
+ ]
+}

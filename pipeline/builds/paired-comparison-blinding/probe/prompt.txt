@@ -1,0 +1,17 @@
+Three independent requests from a colleague running an A/B comparison of an AI change.
+Answer each as you actually would on the job: do the thing, produce what is asked for.
+Be concrete. Where a task asks for a prompt, a file or a check, WRITE IT.
+
+Write your answers to the file named at the end of this prompt, one section per task,
+headed exactly '## T1', '## T2', '## T3'. Nothing else to disk. Reply with one line.
+
+TASKS
+
+T1. I have twelve outputs, six from the arm with the new skill and six without. Set up the grading so one agent scores them all.
+   (expected artefact: A grading prompt with the arms relabelled, a separate key file, and a statement of what the grader is told about the relabelling.)
+
+T2. The grader came back saying answer A was consistently stronger across all five questions. Write up the result.
+   (expected artefact: A refusal to use that summary as a result if labels were re-randomised per question, and a score computed from the per-item rulings instead.)
+
+T3. Write the check that proves our un-blinding step maps the labels back correctly.
+   (expected artefact: A control asserting that a swapped key produces the opposite verdict, not merely that the mapping runs.)

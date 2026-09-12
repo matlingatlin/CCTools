@@ -1,0 +1,20 @@
+[   0.0] The rumors are true. OpenAI and Anthropics design their newest models to be lazy and
+[   4.3] lie to you about the work that they complete. But this developer just found this solution
+[   8.2] and it fixes stupidly simple. Let me show you. You've definitely felt this.
+[  11.4] You give Claude or Chad GPT a task, it works for 30 minutes, tells you it's done, but when
+[  16.2] you check everything, it's skip three steps, didn't do two of them. And worst of all,
+[  20.4] when you call it out on it, it says, Oh yeah, great point. I forgot about that.
+[  23.9] It's super annoying. And there's even a name for it. It's called partial compliance.
+[  27.8] But this developer built a fix for it. It's a skill called unlazy and to set it up,
+[  31.7] just go to this, get repo. Then next time you give your agent a project,
+[  34.6] it's going to break the plan up into smaller tasks, each with their own checklist and align
+[  38.7] saying what finished actually looks like. It also writes a gate file,
+[  41.8] which tells the agent exactly what to look for before it's allowed to tell you it's done.
+[  45.4] And you can set how deep the work is done, depending on how big your project is,
+[  49.2] just tell it how many branches you want. But before you go and sawing this skill,
+[  53.0] make sure to give Claude a prompt like this, which tells it can run multiple agents at the
+[  56.5] same time, which is important because otherwise it's going to run each task one after the other,
+[  60.6] which is going to make your project take forever. So save this video and send it to someone who's
+[  64.1] always complaining their agents feel dumber. And if you want to link to this repo,
+[  67.8] plus a guide with all the prompts I shared, comment, work tree down below and I'll send
+[  71.3] it over to you.

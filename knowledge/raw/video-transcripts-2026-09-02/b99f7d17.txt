@@ -1,0 +1,30 @@
+[   0.0] The CEO of Y Combinator just made all those crazy Obsidian Brains pointless by building
+[   3.6] an AI brand that actually thinks for you instead of just storing all your notes, and it fixes
+[   7.2] the reason why your AI still feels dumb.
+[   9.0] Plus, he gave it all away for free.
+[  10.5] Let me show you.
+[  11.5] Here's the thing nobody tells you about Obsidian Brains.
+[  13.4] They're really just a graveyard.
+[  14.5] You end up dumping all your notes in there and hoarding everything but actually understanding
+[  17.9] nothing.
+[  18.9] Then when you need to find something, your agents have to dig through hundreds of
+[  21.2] old files and burn thousands of tokens just to connect the dots themselves.
+[  24.8] But Gary Tan, the CEO of Y Combinator, fixed this by building a second brain
+[  27.8] for his agents, and he made the whole thing for you.
+[  30.2] To install it, just go to this link, and what makes it different from an Obsidian Brain
+[  33.6] is that it actually understands what's in your brain.
+[  35.7] You can ask it anything and it reads all the notes and writes back one clear answer
+[  39.3] with sources, not just a pile of files.
+[  41.1] It also connects all the dots for you.
+[  43.5] Every note gets auto-linked to the people and projects it touches, so it already knows
+[  46.9] you and your whole life and how everything fits together.
+[  49.1] It also gets smarter on its own, and every night it cleans itself up and fills in
+[  52.4] all its own gaps so you wake up to a smarter, sharper brain than when you left it
+[  55.8] the night before.
+[  56.8] That's the biggest difference.
+[  57.8] Obsidian just stores your notes, whereas this one actually thinks, and you can connect it
+[  60.9] to any agent you use, like Claude, Codex, Hermes, or even OpenClaw.
+[  65.0] So save this video and send it to someone who's always bragging and showing off their
+[  67.6] AI brain.
+[  68.6] And if you want the full guide on how to set this up, plus a link to the Git repo,
+[  72.2] just comment and memory down below and I'll send it over to you.

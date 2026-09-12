@@ -1,0 +1,19 @@
+[
+ "review the whole skill",
+ "does the body contradict the rules",
+ "which step is graded by nothing",
+ "whole-artefact review",
+ "consistency sweep",
+ "steps vs rules vs evals",
+ "did the review miss anything",
+ "review before the arms run",
+ "find every contradiction in one pass",
+ "unconverged review",
+ "Review the whole skill artefact at pipeline/packages/fixtures/artifact-consistency-sweep/artifact-A (SKILL.md, references/, evals/) - the artefact as written before its first whole-artefact review. You cannot see how it was written. Find every place where two parts of the artefact contradict each other or where a step cannot be checked or is graded by nothing: steps against rules, steps against each other, steps against the eval expectations, the description against the body, bundled files against the bill of materials. Return a findings list (level CLASS or INSTANCE, where, finding, verbatim quote) and, for every numbered step, whether it ends in something checkable and which eval check grades it.",
+ "Review the whole skill artefact at pipeline/packages/fixtures/artifact-consistency-sweep/artifact-B (SKILL.md, references/, evals/) - the same skill after its first rewrite (body halved, rationale moved to a reference). You cannot see how it was written. Find every place where two parts of the artefact contradict each other or where a step cannot be checked or is graded by nothing: steps against rules, steps against each other, steps against the eval expectations, the description against the body, bundled files against the bill of materials. Return a findings list (level CLASS or INSTANCE, where, finding, verbatim quote) and, for every numbered step, whether it ends in something checkable and which eval check grades it.",
+ "Review the whole skill artefact at pipeline/packages/fixtures/artifact-consistency-sweep/artifact-C (SKILL.md, references/, evals/) - the same skill after its second rewrite. You cannot see how it was written. Find every place where two parts of the artefact contradict each other or where a step cannot be checked or is graded by nothing: steps against rules, steps against each other, steps against the eval expectations, the description against the body, bundled files against the bill of materials. Return a findings list (level CLASS or INSTANCE, where, finding, verbatim quote) and, for every numbered step, whether it ends in something checkable and which eval check grades it.",
+ "run two independent adversarial reviewers on this draft until both pass",
+ "I added the streaming parse path, does the patch need the non-streaming one too",
+ "the suite went green after we widened the tolerance, was the check weakened",
+ "the reviewer left twelve comments on my PR, which do I act on"
+]

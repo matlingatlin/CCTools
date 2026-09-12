@@ -1,0 +1,685 @@
+{
+  "contract_version": "4.0.0",
+  "unit": "build-chain",
+  "authority": "house",
+  "written": "2026-09-01",
+  "note": "Every phase of the skill-builder chain, declared. Read by pipeline/build/record.py's chain_gate() and enforced by decide.py. This contract exists because of one observed failure: in the chain's first real run, phase 3.1 left NO event - not a run, not a skip - and nothing noticed. The question had been answered implicitly and the record could not tell that from never having been asked. A phase that leaves no trace is now a stop, not a silence.",
+  "principle": "A phase may run, or it may be skipped WITH A REASON. It may not be absent. The two contracts already gate a rule with no implementation; this gates a phase with no event, which is the same defect one level up.",
+  "phases": [
+    {
+      "id": "0.1",
+      "fn": "admit_package",
+      "v": 1,
+      "kind": "code",
+      "skippable": false
+    },
+    {
+      "id": "0.2",
+      "fn": "open_build_record",
+      "v": 1,
+      "kind": "code",
+      "skippable": false
+    },
+    {
+      "id": "1.1",
+      "fn": "scout_library",
+      "v": 1,
+      "kind": "model",
+      "skippable": false
+    },
+    {
+      "id": "1.2",
+      "fn": "read_siblings",
+      "v": 1,
+      "kind": "model",
+      "skippable": false
+    },
+    {
+      "id": "2.1",
+      "fn": "probe_gap",
+      "v": 1,
+      "kind": "dispatch",
+      "skippable": false
+    },
+    {
+      "id": "2.2",
+      "fn": "code_failures",
+      "v": 1,
+      "kind": "model",
+      "skippable": false
+    },
+    {
+      "id": "2.3",
+      "fn": "gap_verdict",
+      "v": 1,
+      "kind": "code",
+      "skippable": false
+    },
+    {
+      "id": "2.4",
+      "fn": "write_eval_prompts",
+      "v": 1,
+      "kind": "model",
+      "skippable": false
+    },
+    {
+      "id": "2.5",
+      "fn": "write_eval_fixtures",
+      "v": 1,
+      "kind": "model",
+      "skippable": true,
+      "skip_when": "no representative task needs an input file"
+    },
+    {
+      "id": "3.1",
+      "fn": "coverage_check",
+      "v": 1,
+      "kind": "model",
+      "skippable": false,
+      "note": "NEVER skippable. This is the phase whose absence created this contract."
+    },
+    {
+      "id": "3.2",
+      "fn": "ask",
+      "v": 1,
+      "kind": "model",
+      "skippable": true,
+      "skip_when": "3.1 found every observed failure covered by the package's claims",
+      "note": "gated by pipeline/validate/claims_contract.py"
+    },
+    {
+      "id": "3.3",
+      "fn": "gather",
+      "v": 1,
+      "kind": "dispatch",
+      "skippable": true,
+      "skip_when": "3.2 was skipped",
+      "note": "gated by pipeline/validate/claims_contract.py"
+    },
+    {
+      "id": "3.4",
+      "fn": "verify_claims",
+      "v": 1,
+      "kind": "external",
+      "skippable": true,
+      "skip_when": "3.3 gathered nothing",
+      "note": "gated by pipeline/validate/claims_contract.py"
+    },
+    {
+      "id": "3.5",
+      "fn": "reconcile",
+      "v": 1,
+      "kind": "model",
+      "skippable": true,
+      "skip_when": "3.3 gathered nothing",
+      "note": "gated by pipeline/validate/claims_contract.py"
+    },
+    {
+      "id": "4.0",
+      "fn": "plan_bundle",
+      "v": 1,
+      "kind": "model",
+      "skippable": false,
+      "inputs": [
+        "bom"
+      ],
+      "inputs_why": "plans the bundle; there is no SKILL.md yet to read"
+    },
+    {
+      "id": "4.1",
+      "fn": "write_references",
+      "v": 1,
+      "kind": "model",
+      "skippable": true,
+      "skip_when": "the bill of materials classifies references as not needed, with a reason",
+      "batch_with": "references+assets",
+      "inputs": [
+        "skill_md",
+        "references",
+        "assets"
+      ],
+      "inputs_why": "batched group: bundled material judged on its own terms, with the body for context"
+    },
+    {
+      "id": "4.2",
+      "fn": "write_assets",
+      "v": 1,
+      "kind": "model",
+      "skippable": true,
+      "skip_when": "the bill of materials classifies assets as not needed, with a reason",
+      "batch_with": "references+assets",
+      "inputs": [
+        "skill_md",
+        "references",
+        "assets"
+      ],
+      "inputs_why": "same batched reader as 4.1"
+    },
+    {
+      "id": "4.3",
+      "fn": "write_name",
+      "v": 1,
+      "kind": "model",
+      "skippable": false,
+      "batch_with": "name+frontmatter",
+      "inputs": [
+        "skill_md"
+      ],
+      "inputs_why": "the name is decided by the contract and the body; the bundle says nothing about it"
+    },
+    {
+      "id": "4.4",
+      "fn": "write_what_and_when",
+      "v": 1,
+      "kind": "model",
+      "skippable": false,
+      "inputs": [
+        "skill_md"
+      ],
+      "inputs_why": "purpose and trigger live in the body alone"
+    },
+    {
+      "id": "4.5",
+      "fn": "write_steps",
+      "v": 1,
+      "kind": "model",
+      "skippable": false,
+      "never_batch": true,
+      "inputs": [
+        "skill_md",
+        "references"
+      ],
+      "inputs_why": "steps may only cite observed failures and claims, so the claims must be visible"
+    },
+    {
+      "id": "4.6",
+      "fn": "write_pointers",
+      "v": 1,
+      "kind": "model",
+      "skippable": false,
+      "inputs": [
+        "skill_md",
+        "references",
+        "assets",
+        "evals",
+        "bom"
+      ],
+      "inputs_why": "the only field whose job IS the whole bundle: every pointer must resolve"
+    },
+    {
+      "id": "4.7",
+      "fn": "write_description",
+      "v": 1,
+      "kind": "model",
+      "skippable": false,
+      "never_batch": true,
+      "inputs": [
+        "skill_md",
+        "siblings"
+      ],
+      "inputs_why": "the description is judged against its neighbours, not against the bundle"
+    },
+    {
+      "id": "4.8",
+      "fn": "write_frontmatter",
+      "v": 1,
+      "kind": "model",
+      "skippable": false,
+      "batch_with": "name+frontmatter",
+      "inputs": [
+        "skill_md"
+      ],
+      "inputs_why": "same batched reader as 4.3"
+    },
+    {
+      "id": "5.1",
+      "fn": "validate_artifact",
+      "v": 1,
+      "kind": "code",
+      "skippable": false
+    },
+    {
+      "id": "5.2",
+      "fn": "review_artifact",
+      "v": 1,
+      "kind": "external",
+      "skippable": false,
+      "inputs": [
+        "skill_md",
+        "references",
+        "assets",
+        "evals",
+        "bom"
+      ],
+      "inputs_why": "sees the artefact entire, which is what a field-local reader cannot"
+    },
+    {
+      "id": "6.1",
+      "fn": "run_paired",
+      "v": 1,
+      "kind": "dispatch",
+      "skippable": false
+    },
+    {
+      "id": "6.2",
+      "fn": "write_expectations",
+      "v": 1,
+      "kind": "model",
+      "skippable": false
+    },
+    {
+      "id": "6.3",
+      "fn": "calibrate_judge",
+      "v": 1,
+      "kind": "dispatch",
+      "skippable": true,
+      "skip_when": "the grader is CODE, so there is no judgement to calibrate. Never on failure_kind alone: a shape failure graded by a MODEL still needs the model calibrated.",
+      "note": "code: pipeline/build/calibrate.py",
+      "skip_requires": "the build states, in the skip reason, what the grader is",
+      "corrected": "2026-09-02. Was 'failure_kind is shape, where the grader is code and cannot be blind'. The subordinate clause carried the real condition and the main clause carried the test, so a build with failure_kind shape and a MODEL grader skipped on a premise that did not hold. It said so in its own skip reason and skipped anyway, because the clause let it. The build before it ran this phase and its planted defect came back CAUGHT, which is what the skip cost: the only evidence that the grader can see anything at all.",
+      "why_it_matters": "An uncalibrated grader that reports everything met is indistinguishable from a grader that cannot see. This phase is the only check that the measurement's instrument works."
+    },
+    {
+      "id": "6.4",
+      "fn": "grade",
+      "v": 1,
+      "kind": "external",
+      "skippable": false,
+      "inputs": [],
+      "inputs_why": "THE GRADER SEES NO ARTEFACT AT ALL - only blinded answers. Handing it the skill would tell it which arm wrote what, and the blinding is the measurement."
+    },
+    {
+      "id": "6.5",
+      "fn": "test_triggers",
+      "v": 1,
+      "kind": "dispatch",
+      "skippable": true,
+      "skip_when": "the unit carries disable-model-invocation and is only ever called by name",
+      "note": "code: pipeline/build/triggers.py"
+    },
+    {
+      "id": "7.1",
+      "fn": "extract_scripts",
+      "v": 1,
+      "kind": "model",
+      "skippable": true,
+      "skip_when": "no helper was written by more than one run",
+      "note": "code: pipeline/build/extract_scripts.py. Nothing found is a finding, not an empty result."
+    },
+    {
+      "id": "7.2",
+      "fn": "triage_failure",
+      "v": 1,
+      "kind": "model",
+      "skippable": true,
+      "skip_when": "nothing went red at 5.2, 6.4 or 6.5"
+    },
+    {
+      "id": "8.1",
+      "fn": "decide",
+      "v": 1,
+      "kind": "code",
+      "skippable": false
+    },
+    {
+      "id": "8.2",
+      "fn": "emit",
+      "v": 1,
+      "kind": "code",
+      "skippable": false
+    },
+    {
+      "id": "9.1",
+      "fn": "deploy",
+      "v": 1,
+      "kind": "code",
+      "skippable": true,
+      "skip_when": "the verdict is iterate or abandon - there is nothing to deploy"
+    },
+    {
+      "id": "7.1b",
+      "fn": "write_script",
+      "v": 1,
+      "kind": "model",
+      "skippable": true,
+      "skip_when": "7.1 found no repeated helper"
+    },
+    {
+      "id": "7.1c",
+      "fn": "audit_script",
+      "v": 1,
+      "kind": "external",
+      "skippable": true,
+      "skip_when": "no script is being bundled",
+      "note": "NEVER skippable once a script exists. A bundled script is executable code that ships."
+    },
+    {
+      "id": "1.1b",
+      "fn": "extend_gate",
+      "v": 1,
+      "kind": "code",
+      "skippable": true,
+      "skip_when": "scout_library returned author, not extend",
+      "note": "code: pipeline/build/extend_gate.py. On an extend, the incumbent's own evals must still pass."
+    },
+    {
+      "id": "6.6",
+      "fn": "field_trial",
+      "v": 1,
+      "kind": "dispatch",
+      "skippable": true,
+      "skip_when": "no realistic instance of the job exists outside the eval set, stated as such",
+      "note": "One run of the skill on a REAL instance of its job - a real repo, a real document, a real dataset - not an eval question and not a planted fixture. Both builds so far measured only on material written for the measurement. Both agents flagged it themselves: 'whether the baseline is clean on a REAL pipeline rather than a planted fixture'. It is scored as a REPORT, not a pass: what the skill did, what it missed, what the instance had that the eval set did not."
+    }
+  ],
+  "batching": {
+    "note": "Measured on the first agent-run: 7 separate field-check sessions at about 48k tokens each, and roughly 30 of the run's 55 minutes went to the coordinator's own turns rather than to waiting on subagents. These groups may share ONE external check.",
+    "why_these": "A field may share a reader when the reader does not need the whole artefact in view to rule on it. Name and frontmatter are decided by the contract, not by judgement. References and assets are bundled material judged on their own terms.",
+    "groups": [
+      {
+        "fields": [
+          "name",
+          "frontmatter"
+        ],
+        "reason": "both contract-decided; a reader adds nothing a rule does not already settle"
+      },
+      {
+        "fields": [
+          "references",
+          "assets"
+        ],
+        "reason": "independent bundled material; neither is evidence about the other"
+      }
+    ],
+    "never_batched": {
+      "fields": [
+        "body_steps",
+        "description"
+      ],
+      "reason": "The two that carry the measurement. Steps is where only observed failures may become rules, and description is the router's only input. A reader splitting attention across either of these is the saving that costs the thing being bought."
+    },
+    "mandatory": true,
+    "observed_2026_09_01": "The rule existed in this contract and the agent did not use it: name, frontmatter, references and assets each got their own reader. An optional efficiency rule is one that does not happen. It is now a requirement with a stated escape.",
+    "rule": "The listed groups are dispatched as ONE reader per group. Splitting a group is allowed only when the group's own preflight is red for more than one field in different ways, and the split is recorded with that reason. never_batched is absolute and has no escape.",
+    "convention": true,
+    "why_no_gate": "Dispatch has no script hook, so nothing can refuse a second reader for a batched group at the moment it is launched. The reader labels in the cost ledger make a violation auditable afterwards, and the last build's labels show the rule was in the contract and not used - which is exactly why it is now marked mandatory in the rule text rather than left as advice."
+  },
+  "prompt_cost": {
+    "note": "Measured: 82 percent of the first agent-run's 3.58M tokens sat in six probe and arm runs, 420k to 570k each, because the fixture and the method were pasted inline into every one.",
+    "rule": "Give a dispatched run a PATH to any fixture or corpus it must read, not the text. Four runs over the same fixture pay for it four times inline, and the prompt cache cannot help with what changes position in every prompt. Paste only what the run must not be able to look up - the method body in the with-arm, and nothing in the without-arm.",
+    "convention": true,
+    "why_no_gate": "The rule is about what a dispatched prompt CONTAINS - a path rather than a pasted corpus - and the prompt is not an artefact on disk after the run. The token count on the cost row is a proxy and a poor one, since a large legitimate prompt and a pasted fixture look alike. Held by the agent instruction; the 82-percent measurement behind it is the argument."
+  },
+  "changelog_1_4_0": {
+    "from": "1.3.0",
+    "landed": "2026-09-01, mid-build",
+    "honesty_note": "This version landed WHILE abstention-threshold-design-v2 was executing, at roughly phase 6.x. Phases in that build before the change ran under 1.3.0 and phases after it may have run under 1.4.0. Recorded here rather than left to be inferred: any later analysis of that build must not treat it as a single-version run. Git history plus the event timestamps recover which phase saw which version.",
+    "why": "Five changes, every one of them from a defect observed in a real run today rather than from a principle. Four are cost cuts that must not cost safety; the fifth closes a blinding hole."
+  },
+  "convergence": {
+    "observed": "A reference field went 7 rounds in one build and the steps field went 3 in another, with the third steps round costing 757k tokens on its own. Seven rounds on one field is not diligence; it is a disagreement that is not converging, and each further round buys less than the last.",
+    "rule": "A field gets at most 3 check rounds. The 4th is not attempted. On the 3rd round closing still red, the field is marked unconverged, the standing disagreement is written down in the field's own words, and it is escalated to the whole-artefact review - which sees the artefact entire and can rule on what a field-local reader could not.",
+    "max_rounds_per_field": 3,
+    "on_exhaustion": "mark unconverged, record the disagreement verbatim, escalate to 5.2",
+    "not_a_licence": "Unconverged is NOT a pass. It is a red carried forward with its reason attached. A build that ships with an unconverged field says so in its report, and the field is named.",
+    "authority": "receiving-code-review - when review rounds stop converging, stop and raise it",
+    "sweep_the_class": {
+      "observed": "Measured on the references field of abstention-threshold-design-v2 with pipeline/queries/round_convergence.py: 6 rounds, and four terms - unmarked, directive, expiry, figure - recur across three or more of them. The reader named a different INSTANCE each round and the author fixed that instance; the class was never swept. Round durations went 80, 132, 139, 140, 193, 280, 313 seconds - the last round took 3.9 times the first, so the process got slower as it went, which is the opposite of converging.",
+      "rule": "When a finding in round N names the same CLASS as one in round N-1 - the same defect type on a different instance - stop answering the instance. Sweep every instance of that class across the whole field in one pass, state in the round note that a class sweep was done and what it covered, and only then re-read. A second round on the same class without a sweep is a wasted round by construction, because the reader will find the next instance.",
+      "why_it_is_not_the_reader_s_job": "A field reader sees one artefact once and reports what it finds. It is not asked to enumerate every instance of a pattern, and asking it to would make each round more expensive rather than fewer. The sweep belongs to the author, between rounds.",
+      "tool": "python3 pipeline/queries/round_convergence.py --build <id>",
+      "verdicts": {
+        "converging": "findings fall AND rounds do not restate each other - carry on",
+        "recurring-class": "sweep the class before the next round",
+        "churn": "findings are not falling and each round raises new ground - the field is probably underspecified; fix the brief, not the text",
+        "indeterminate": "fewer than two rounds of findings - never a pass"
+      },
+      "also_watch": "A numeric code-check creeping toward its cap in ever-smaller steps is the same habit: the description ran 1076, 1068, 1050, 1035, 1030, 1028 against a cap of 1024 - five rounds to move 48 characters when it was 52 over from the start. Compute the distance to the threshold and cross it once.",
+      "convention": true,
+      "why_no_gate": "round_convergence.py can DETECT that a class recurred, and does. It cannot require the author to have swept it: a sweep leaves no artefact distinguishable from an ordinary rewrite, and a self-reported 'I swept the class' is a claim, not evidence. Held by the agent instruction and by the detector's verdict being read between rounds."
+    },
+    "enforced_by": "pipeline/build/record.py",
+    "enforcement_note": "record.round_gate() reads the reader labels off the cost ledger and names any field over the cap. Post-hoc, because dispatch has no hook that could refuse a fourth round before it starts - the most a gate can do here is make the overrun impossible to miss afterwards."
+  },
+  "preflight": {
+    "observed": "A steps reader was handed SKILL.md copied ALONE into a scratch directory and correctly reported that references/ and assets/ did not exist - a true finding about the harness, not the skill. It cost a full reader round, and every other finding in that round was made against a partial artefact and had to be discarded.",
+    "rule": "Before ANY reader is dispatched, run the artefact checker on the EXACT directory the reader will be given - not on the build's copy, not on the source tree. Attach its output to the reader's brief.",
+    "why_the_exact_directory": "This is the whole point. A checker run on the real artefact would have passed while the reader saw a mutilated one. Run against what the reader sees, a harness that truncates the bundle fails BEFORE a reader is paid to discover it.",
+    "second_effect": "A reader that arrives already knowing what code settled does not spend its judgement on char counts and file existence. Mechanically-decidable findings from a reader are a signal the preflight was skipped.",
+    "blocking": true,
+    "enforced_by": "pipeline/validate/reader_preflight.py"
+  },
+  "model_routing": {
+    "observed": "cost-aware-model-routing was not invoked once across three builds, while field readers ran at 136k to 757k tokens each on the heaviest tier - including for checks that a script settles in milliseconds.",
+    "rule": "Work is routed by what deciding it actually requires. A question a script can settle is settled by the script and never dispatched at all. A dispatched check that needs reading but not deep reasoning may run on a cheaper tier, and the tier is recorded per run alongside its result.",
+    "never_routed_down": {
+      "targets": [
+        "the probe",
+        "the four paired arm runs",
+        "the whole-artefact review",
+        "every grader",
+        "the description reader"
+      ],
+      "reason": "These four produce the measurement or decide the artefact. Cutting their cost changes what is being measured, which is not a saving - it is a different experiment wearing the same name. The tier for these is fixed and any change to it invalidates comparison with earlier builds."
+    },
+    "record": "the model tier for every dispatched run is written to the cost ledger, never inferred",
+    "enforced_by": "pipeline/build/record.py",
+    "enforcement_note": "cost_gate() requires a tier on every dispatched run and routing_gate() checks that the protected runs did not span more than one. Until cost_row took a tier argument this rule was impossible for any caller to obey, which is worse than unenforced."
+  },
+  "blinding_order": {
+    "observed": "In abstention-threshold-design-v2 the expectation set recorded that it was written 'after all six arm outputs were read, and from them' - and the outputs it was written from were the files named with.r1.md, without.r1.md and incumbent.r1.md. The author therefore knew which arm produced which answer while deciding what would count as success.",
+    "why_it_is_not_already_solved": "Writing expectations from observed outputs is deliberate and stays: expectations written blind to any output do not discriminate - 27 percent of them carried a verdict in the measured build, the rest were met by both arms every time. The fault is not that outputs were read. It is that they were read WITH THEIR ARM LABELS ON.",
+    "rule": "Blinding happens BEFORE the expectation set is written, not after. Expectations are written from the blinded copies, under their per-item labels, with the key withheld. The author keeps the benefit of having seen real outputs and loses the ability to know which arm an expectation would favour.",
+    "phase_order": [
+      "6.1 run the arms",
+      "6.1b blind the outputs and withhold the key",
+      "6.2 write expectations from the blinded copies",
+      "6.3 calibrate the grader",
+      "6.4 grade blind",
+      "6.5 un-blind against the control"
+    ],
+    "exception": "An expectation whose correct answer is computed from a fixture rather than judged - a cut score, a count, a rate - may be written from the fixture at any time, because no arm's output can move it. Q2 of that build is the example: score >= 0.506 comes from the data, not from anyone's answer.",
+    "content_tells": "Blinding by label does not blind by prose. In that build the with-arm said 'the method' 4 times, the incumbent 3, the bare arm 0 - so a grader could separate skill-armed from bare. Note it and bound it rather than claiming blinding is total: it did NOT separate the with-arm from the incumbent, which was the comparison that decided the build.",
+    "convention": true,
+    "why_no_gate": "The rule is about the ORDER two files were authored in - blinded copies before the expectation set. Nothing in the finished artefacts distinguishes an expectation written from a blinded copy from one written from a labelled one; file timestamps are trivially wrong on a copy. Held by the agent instruction and by the expectation set stating which it read."
+  },
+  "reader_inputs": {
+    "observed": "The preflight gate added on 2026-09-01 requires every bill-of-materials entry to be present in the directory a reader is given, and rejects anything not in the BOM. It was built to stop a reader being handed a truncated bundle, and the effect is that EVERY reader is handed the MAXIMUM: a reader ruling on the name and frontmatter received the references, the assets, the evals and two CSV fixtures it has no use for.",
+    "rule": "Each dispatching phase declares `inputs` - the smallest set its reader needs to rule. The preflight checks BOTH directions against that set: a required input missing is a stop, and an input present that the phase did not ask for is also a stop. Completeness is relative to what this reader must judge, not to the bundle.",
+    "vocabulary": {
+      "skill_md": "SKILL.md itself",
+      "references": "everything under references/",
+      "assets": "everything under assets/",
+      "evals": "everything under evals/",
+      "bom": "the bill of materials, passed alongside rather than inside the directory",
+      "siblings": "neighbouring units' descriptions - not files in this bundle"
+    },
+    "why_both_directions": "Too little and the reader reports the harness instead of the artefact, which cost a full round. Too much and every extra file is context the reader pays for on a judgement it was not asked to make - and in one case, 6.4, it would destroy the measurement outright: a grader that can see the skill can tell which arm wrote which answer.",
+    "enforced_by": "pipeline/validate/reader_preflight.py"
+  },
+  "coordinator_time": {
+    "observed": "Measured on the build of 2026-09-01: 95.1 minutes of wall clock, of which about 33.5 were not inside any dispatched run. Over the 20 runs that carried a window, 28.8 percent of the span was claimed by no ledger at all. For comparison, everything concurrency could ever recover from that build was 4.1 minutes - 3.4 from raising the cap from 2 to 4, and 0.7 from refilling slots instead of dispatching in waves. The coordinator's own time is the larger cost by a factor of eight, and nothing recorded it.",
+    "rule": "Every span between dispatched runs is recorded as a coordinator turn with a KIND: authoring, code_check, reading_verdict, planning or waiting. Only `waiting` is waste; the rest is the work. A build whose unaccounted span exceeds 10 percent has not measured itself, and the gate says so rather than assuming the gap was idle.",
+    "why_the_kind_matters": "An unrecorded turn and an idle minute look identical from outside, and only one of them is a problem. Reported as a single block, the 33.5 minutes invite cutting the coordinator's thinking - which is where the artefact is actually written. Split by kind, the question becomes answerable: how much of it was waiting on a run with an empty queue, and that is the only part worth attacking.",
+    "never_infer": "Unaccounted span is reported as unaccounted. It is not folded into waiting and not folded into work. Calling it either would be inventing a measurement, which is the same fault as a measured zero standing in for an absent one.",
+    "enforced_by": "pipeline/build/record.py",
+    "enforcement_note": "record.coordinator_turn() refuses an unknown kind; record.timeline() reports the split with unaccounted named separately; record.coordinator_gate() fails a build with no coordinator ledger, with more than 10 percent unaccounted, or with dispatched runs missing their window."
+  },
+  "dispatch": {
+    "observed": "Build 3 (data-contract-assertions-v2, 2026-09-02) ran 36 arm runs for 12 valid observations. Every contamination lived in shell written for that build: a working directory shared between runs, so a later run read an earlier run's answer; the arm's name in the run's path, so six of twelve answers carried it into text the blinding then relabelled; the method directory mounted for every arm, so the bare baseline read the skill's own evidence. No gate saw any of them - a human reading output did. The same scripts never captured the usage payload, so the cost clauses of that build had no tokens to judge.",
+    "rule": "Every dispatched run - probe, arm, reader, reviewer, grader - goes through pipeline/build/dispatch.py. It gives each run a fresh directory whose name carries no arm string; mounts the method for arm=with only and refuses it for any other arm; copies a reader's declared inputs IN rather than mounting the tree; writes the usage payload into the cost row with the tier and the window; and flags a run whose own text names its arm. A run dispatched any other way is not a measurement, and its row is not admissible.",
+    "enforced_by": "pipeline/build/dispatch.py",
+    "what_the_module_cannot_do": "It makes the contaminations inexpressible THROUGH it. It cannot stop a build from going round it - dispatch has no script hook - so the audit that it was used is the cost ledger: every row dispatch.py writes carries tokens and a tier, and record.cost_gate() fails a row that has neither. A row a human wrote by hand says so with a note beginning hand:.",
+    "controls": "pipeline/build/selftest_dispatch.py reconstructs each of the three contaminations as a positive control, and checks token capture, the no_usage status, the arm-leak flag, error propagation and the input copy."
+  },
+  "modes": {
+    "observed": "Reviewed 2026-09-02 over three builds (pipeline/REVIEW-2026-09-02-skill-builder.md). The full chain's dispatch floor is 28.3 minutes at infinite agents - probe 5.0, whole-artefact review 4.4, longest arm run 7.3, grading 6.5, triggers 0.3, each block waiting on its longest run - and the coordinator's own authoring is 56 percent of a clean 79-minute build. Ten minutes is not reachable by concurrency. It is reachable only by measuring less, and measuring less must be a declared state of the build, not a quiet omission.",
+    "rule": "A build runs in exactly one mode, named at open and written into record.json. full is the chain as declared and the only mode that can ship. fast skips the phases listed under it at open - each with a skip event naming the mode and the reason here - writes the fields with the code checker only (the whole-artefact review at 5.2 is its one external read), runs the with-arm only, grades with one uncalibrated grader, and can never ship: its best verdict is fast_pass, which says the artefact passed its own checks and its own tests, not that it beat anything. A fast build is for iterating on a skill. A ship decision needs a full build, and decide.py refuses ship in fast mode whatever the rows contain. v3 (contract 3.0.0) is the full chain's EVIDENCE in a different ORDER: every phase is owed, no phase is skipped at open, the arms, the blinding, the calibrated grader and the preregistered threshold are unchanged, and it can ship. What v3 changes is who writes and what overlaps what: the probes are dispatched at open before orientation; all fields are authored in one coordinator turn from the coded failure list, in the contract's order, with the code checker run on the whole artefact after each write and no per-field reader; the two never_batched reads (the description reader and the whole-artefact review) are the only external reads before measurement; fan-out A dispatches the review, the description reader and the paired arms in the same turn; fan-out B dispatches calibration, the graders and the trigger matrix in the same turn. Each fan-out carries a revert rule under `fanout`, and record.fanout_gate() makes a skipped revert visible. Since 4.0.0 the default mode is candidate; promote is the only mode that ships and it runs on an existing candidate.",
+    "full": {
+      "skips": {},
+      "verdicts": [
+        "ship",
+        "iterate",
+        "abandon",
+        "undecidable"
+      ]
+    },
+    "fast": {
+      "skips": {
+        "2.1": "no baseline is run, so there is nothing to probe",
+        "2.2": "no probe output to code",
+        "2.3": "no probe, no gap verdict - the artefact is written from the package's claims alone, which is why fast cannot ship",
+        "3.1": "coverage is of OBSERVED failures, and none were observed",
+        "3.2": "the fetch answers a gap the probe showed; no probe ran",
+        "3.3": "the fetch answers a gap the probe showed; no probe ran",
+        "3.4": "nothing gathered, nothing to verify",
+        "3.5": "nothing gathered, nothing to reconcile",
+        "6.3": "one grader, uncalibrated - a known weakening, and part of why fast cannot ship",
+        "6.6": "the field trial is a ship-path check",
+        "7.1": "script extraction is a ship-path concern",
+        "7.1b": "script extraction is a ship-path concern",
+        "7.1c": "no script is bundled in fast",
+        "9.1": "fast cannot ship, so there is nothing to deploy"
+      },
+      "field_readers": "none - fields are code-checked as written and read once, whole, at 5.2",
+      "arms": [
+        "with"
+      ],
+      "repeats": "MIN_ITERS_FOR_VERDICT, in parallel, so they cost tokens and not wall clock",
+      "overlap": "5.2 and the with-arm runs are dispatched in the same turn: the arms use the artefact as it stands, and a red review costs a rerun of three runs rather than the 4.4 minutes every clean build would otherwise wait",
+      "verdicts": [
+        "fast_pass",
+        "iterate",
+        "undecidable"
+      ],
+      "estimate": "DERIVED, not measured: orient 2 + authoring without reader rounds 10-15 + max(review 4.4, arm 7.3) + expectations 2 + grading 6.5, about 25-30 minutes. Replace this line with the first measured fast build."
+    },
+    "enforced_by": [
+      "pipeline/build/record.py",
+      "pipeline/build/decide.py"
+    ],
+    "enforcement_note": "record.open_build_record(mode=...) refuses an undeclared mode, writes the mode into the header, and files the mode's skip events itself so they cannot be forgotten. decide.py reads the header's mode and never returns ship for fast.",
+    "v3": {
+      "skips": {},
+      "verdicts": [
+        "ship",
+        "iterate",
+        "abandon",
+        "undecidable"
+      ],
+      "order": "0.1, 0.2, then 2.1 dispatched immediately; 1.1, 1.2, 4.0, 2.4, 2.5 while the probes run; 2.2, 2.3, 3.x when they return; 4.1-4.8 in ONE coordinator turn; 5.1 in a loop until green; fan-out A = {4.7 reader, 5.2 review} in one turn; 6.1 arms ONLY after 5.2 is not red at class level (a red review is a rewrite, then 5.1 and 5.2 again, at most three reviews); 6.2 from the blinded copies; fan-out B = {6.3, 6.4, 6.5}; 7.x, 8.x, 9.1 as declared",
+      "field_readers": "none - the code checker runs on the whole artefact after each field is written and a red field is rewritten before the next; the description reader (4.7, never_batched) and the whole-artefact review (5.2) are the external reads. Reader runs per build: at most 2 before measurement.",
+      "authoring": "4.1 to 4.8 written in one coordinator turn from the coded failure list (2.2) and the bill of materials (4.0), in the contract's order, description last. fields.jsonl still gets one row per field: red_code from the checker, red_agent [] with the note 'no field reader in v3', rewrites counted.",
+      "arms": [
+        "with",
+        "without - one per test in the arms' turn, for the cost clauses",
+        "incumbent when one exists",
+        "the probe's rows stand in as further without repeats for correctness (runs_paid_twice)"
+      ],
+      "repeats": "from the probe's outcome (acceptance.repeats_by_probe): 1 when the baseline failed every task, otherwise MIN_ITERS_FOR_VERDICT; all launched in the same turn through dispatch_many with stagger_s so the first run warms the shared prefix, refilled at W_MAX_AGENTS, rate-limit retries recorded",
+      "coordinator_tier": "recorded at open with --coordinator-tier, never inferred; the measurement tier for probe, arms, review, graders and the description reader stays the fixed tier of never_routed_down so builds remain comparable",
+      "estimate": "DERIVED from eval-set-curation-v2's own run lengths, not measured: dispatched critical path probe 5.0 (overlapped) -> fan-out A max(7.3, 4.4) -> fan-out B max(6.5, 1.8, 0.3) = about 19 minutes; coordinator four fat turns instead of twenty-one. 35-40 minutes against 79.4. Replace this line with the first measured v3 build; the preregistered numbers are in pipeline/REVIEW-2026-09-02-skill-builder-rethink.md section 5.",
+      "parked": "a `candidate` library status that lands the artefact after fan-out A's review and lets the measurement finish detached (rethink section 4). Parked 2026-09-02 because the skill contract refuses non-portable frontmatter and unplanned files, so a status needs a home the contract admits (talents.jsonl plus the capability map) before the loader can respect it.",
+      "graders": "one grader per test item, at least two graders per item, in parallel - the 6.5-minute single grader over every item becomes the longest item",
+      "review_before_arms": "Measured 2026-09-02/03 over two builds: 5 of 6 whole-artefact reviews were red at class level, so the arms dispatched beside the review measured a text that was rewritten every time - two wasted waves in the first build, three in the second (about 5M tokens each). The preregistered revert condition (two class-level findings in three builds) is met; the review now precedes the arms. fanout_gate stays: if arms ever run before a red review, the rerun rule still applies.",
+      "max_reviews": 3,
+      "on_review_cap": "Three whole-artefact reviews red at class level, each on a rewritten text, end the build: no arm runs (review_before_arms), decide.py returns abandon with the reason 'unconverged at review', the candidate stays unadopted and the last review's findings are recorded verbatim in its evals.md. Measured 2026-09-03 (artifact-consistency-sweep-v2): 7, 9 and 11 class-level findings on three successive rewrites.",
+      "superseded": "4.0.0: split into candidate (authoring, one advisory review) and promote (measurement). Kept so the records that ran under it (llm-wiki-ingest, artifact-consistency-sweep, -v2, -v3) stay interpretable; do not open new builds in it."
+    },
+    "candidate": {
+      "default": true,
+      "skips": {
+        "6.1": "measured at promotion, not at authoring (4.0.0: a candidate is filled, checked and reviewed once; the paired measurement is the promote mode's job)",
+        "6.2": "no arm outputs at authoring",
+        "6.3": "no grader run at authoring",
+        "6.4": "nothing graded at authoring",
+        "6.5": "the trigger matrix runs at promotion, on the text that will be routed",
+        "6.6": "no field trial before the measurement",
+        "7.1": "nothing to extract before the measurement",
+        "7.1b": "no script before the measurement",
+        "7.1c": "no script before the measurement",
+        "1.1b": "an extend is decided at promotion",
+        "9.1": "a candidate is not deployed; it lives in .claude/skills-candidates, which the loader does not read"
+      },
+      "verdicts": [
+        "candidate",
+        "abandon",
+        "undecidable"
+      ],
+      "order": "0.1, 0.2, then 2.1 dispatched immediately (k=1, at most 2 tasks); 1.1, 1.2, 4.0, 2.4, 2.5 while the probes run; 2.2, 2.3, 3.x when they return; 4.1-4.8 in ONE coordinator turn; 5.1 until green; ONE fan-out A = {4.7 reader, 5.2 review}; the review's findings are ONE rewrite, then 5.1 again; 8.1 decide -> candidate; 8.2 emit. No arms, no cap, no third round.",
+      "review": "advisory. Measured 2026-09-03 (pipeline/calibration/reviewer-2026-09-03): the whole-artefact reviewer was red at class level on 3 of 3 adopted, in-use skills and on 12 of 12 build reviews - it finds true defects in every text, so it cannot be the gate that ends a build. Its findings feed one rewrite and the build's defect ledger; the decision is code (5.1) plus, at promotion, the measurement.",
+      "artefact_dir": ".claude/skills-candidates/<id> - not on the loader's path, so a candidate can never trigger. Promotion (9.1 of promote mode) moves it to .claude/skills/<id>.",
+      "estimate": "authoring + code check + one probe wave (parallel) + one reader/review round + one rewrite: about 10-15 minutes wall clock and under 2M tokens for a skill whose runs take 3-5 minutes. Replace with the first measured candidate build."
+    },
+    "promote": {
+      "skips": {
+        "1.1": "done at the candidate build",
+        "1.2": "done at the candidate build",
+        "2.4": "the evals exist from the candidate build; expectations are rewritten at 6.2 from the blinded outputs",
+        "2.5": "fixtures exist from the candidate build",
+        "3.1": "covered at the candidate build",
+        "3.2": "covered at the candidate build",
+        "3.3": "covered at the candidate build",
+        "3.4": "covered at the candidate build",
+        "3.5": "covered at the candidate build",
+        "4.0": "the bundle exists",
+        "4.1": "written at the candidate build",
+        "4.2": "written at the candidate build",
+        "4.3": "written at the candidate build",
+        "4.4": "written at the candidate build",
+        "4.5": "written at the candidate build",
+        "4.6": "written at the candidate build",
+        "4.7": "written at the candidate build",
+        "4.8": "written at the candidate build",
+        "5.2": "reviewed at the candidate build; a promote build measures the text as it stands"
+      },
+      "verdicts": [
+        "ship",
+        "iterate",
+        "abandon",
+        "undecidable"
+      ],
+      "order": "0.1, 0.2; 2.1 (probe rows may be carried over from the candidate record with reused_from when prompt, fixtures, tier and effort are unchanged), 2.2, 2.3; 5.1; 6.1 arms with x1 and without x1 per task (k from acceptance.repeats_by_probe; probe rows are the other without repeats; incumbent only when the package names one); 6.2 from the blinded copies; fan-out B = {6.3, 6.4, 6.5}; 6.6 when the package names a field-trial artefact; 7.x; 8.1 decide; 9.1 deploy = move .claude/skills-candidates/<id> to .claude/skills/<id> and run talent-deploy.",
+      "budget": "dispatch refuses a 6.1 run once the record holds budget.max_paired_runs of them (the package's own number); the coordinator cannot exceed it by planning. Found 2026-09-03: a plan of 15 arm runs against a package budget of 8, and nothing in code said no.",
+      "estimate": "2 tasks x 2 arms + graders + triggers: 6-8 runs, about 15-25 minutes at four agents, 1-3M tokens for a skill whose runs take 3-5 minutes; heavy skills (the sweep: 5-11 minutes a run) cost proportionally more and that is the skill's weight, not the builder's."
+    }
+  },
+  "changelog_2_0_0": {
+    "from": "1.9.0",
+    "landed": "2026-09-02, between builds",
+    "why": "Two additions, both from the review of 2026-09-02, and no new gate on the coordinator. dispatch: the one component the review found missing - a stable harness, so the three contaminations of build 3 cannot recur and every run carries tokens. modes: the answer to the ten-minute question, made an explicit state of the build rather than a quiet omission of phases. Phases and rule blocks from 1.9.0 are unchanged; the agent file that reads them was cut, not the contract, because the agent file is what costs context every turn and the contract is read once.",
+    "major_because": "A build record now carries a mode, and a verdict vocabulary gained fast_pass. Records opened under 1.x have no mode and are read as full."
+  },
+  "fanout": {
+    "observed": "eval-set-curation-v2 (2026-09-02): the whole-artefact review (4.4 min), the arms (7.3), the grader (6.5) and calibration (1.8) ran one after another because the contract orders 5.2 before 6.1 and 6.3 before 6.4. Nothing in either ordering needs the earlier result as INPUT: the arms need the artefact, which exists before the review; the graders need blinded outputs and expectations, which exist before calibration returns. The orderings exist so that a bad review or a blind grader cannot be quietly ignored.",
+    "rule": "In v3 (since 3.1.0) fan-out A is the description reader and the whole-artefact review; the arms follow a review that is not red at class level. The earlier shape - arms beside the review - was measured and reverted, see modes.v3.review_before_arms. If arms are dispatched beside a review anyway, and calibration, the graders and the trigger matrix in one turn (fan-out B). The orderings' purpose is kept by two revert rules, each recorded as an event field the gate reads. A: if the 5.2 event carries class_finding=true (a finding that changes steps or description at the level of a class, not an instance), the artefact is rewritten once and a run_paired event with rerun=true must follow the review; arms measured on the pre-review artefact are then void. B: if the 6.3 event carries caught=false, every grade event before it is void and a grade event with fresh_grader=true must follow. A speculation whose revert did not happen is not a saving; it is a measurement of a stale artefact or a blind grader wearing the name of the real one. Since 3.1.1 a red review that no arm ever followed is not a missed revert - under review_before_arms it is the build ending at modes.v3.max_reviews - and arms that ran after a red review with neither rerun=true nor a green review between are flagged instead.",
+    "revert_cost": "A: one arm wave (about 5M tokens on eval-set-curation-v2). B: one grader. Both are recorded, so after three v3 builds the ledger says whether the speculation pays; the preregistered revert-to-serial condition is two class-level review findings in three builds.",
+    "enforced_by": "pipeline/build/record.py",
+    "enforcement_note": "record.fanout_gate() reads the events: a review with class_finding=true and no later run_paired with rerun=true, or a calibration with caught=false and no later grade with fresh_grader=true, is a violation; decide.py returns undecidable on any violation, because the rows it would otherwise judge were produced against the wrong artefact or by an unverified grader. Post-hoc, like every gate here: dispatch has no hook."
+  },
+  "changelog_3_0_0": {
+    "from": "2.0.0",
+    "landed": "2026-09-02, between builds",
+    "why": "The review of 2026-09-02 measured a clean build at 79.4 minutes with 72 of them the coordinator's own turns and 16 reader runs on one skill; pipeline/queries/job_class_cost.py put readers at 38 percent of dispatched minutes and arms at 61 percent of tokens. v3 keeps every piece of evidence and changes the order: probes at open, one authoring turn, no per-field readers, two fan-outs with revert rules that record.fanout_gate() audits. full is kept as the previous shape so the two can be run on the same package. No phase was added, none removed, no verdict rule changed.",
+    "not_done": "the candidate status (modes.v3.parked).",
+    "same_day": "runs_paid_twice block; dispatch.py memo, effort, stagger and rate-limit retry; decide.py probe rows and k-from-probe; per-item graders in v3."
+  },
+  "runs_paid_twice": {
+    "observed": "eval-set-curation-v2 ran 4 probe runs and 4 without-arm runs on the same prompts, same fixture, same tier, fresh sessions both times; across five builds arms were 44 percent of tokens and probes 24. The default acceptance rule demanded k >= 2 on every build while the spec's phase-2 table said one run suffices when the baseline fails. An iterate round re-ran every probe and every without-arm although only the with-arm had changed.",
+    "rule": "Three things, each declared where decide.py or dispatch.py reads it. (1) Probe rows are the without-arm's correctness repeats (skill contract acceptance.probe_rows_for_correctness); one without-run per test is still dispatched in the arms' turn and only its rows feed the cost clauses. (2) min_repeats follows the probe's outcome (acceptance.repeats_by_probe): fails -> 1, anything else -> MIN_ITERS_FOR_VERDICT. (3) dispatch(memo=True) replays a run whose key - prompt, model id, arm, effort, every input byte, the method bytes - was run before under this build root; the row says cached=true and is never a measurement of load. A changed skill misses the memo by construction.",
+    "not_a_licence": "probe_never_gates still holds: no probe outcome stops a build. The fail-fast idea in the rethink's section 9 was checked against it and KEPT as the existing rule - a clean baseline raises the bar, it does not end the build.",
+    "enforced_by": "pipeline/build/decide.py",
+    "enforcement_note": "decide.rows_of tags probe rows source=probe and evaluate() excludes them from every cost clause; decide.resolve_repeats reads the 2.3 event. dispatch.py writes cached=true on a replayed row, so job_class_cost.py and any load analysis can drop it."
+  },
+  "changelog_3_1_0": {
+    "from": "3.0.0",
+    "landed": "2026-09-03, between builds",
+    "why": "review before arms: the fan-out speculation lost 5 of 6 times across two builds (rethink sections 11-12); the preregistered revert condition was met. Nothing else changed.",
+    "measured": "llm-wiki-ingest: reviews r0/r1/r2 red (4, 5, 5 CLASS); artifact-consistency-sweep: r0/r1/r2 red (10, 12, 7 CLASS)."
+  },
+  "changelog_4_0_0": {
+    "date": "2026-09-03",
+    "what": "Two modes replace v3: candidate (fill, code-check, one advisory review, one rewrite, verdict candidate) and promote (probe, arms, graders, triggers, decide, deploy). The review is a critic, not a gate. The package budget max_paired_runs is enforced in dispatch. Coordinator turns are derived from the run windows in cost/measured.jsonl, never estimated. decide.py writes its own 8.1 event. A run that dies with no output and no stderr is retried once by dispatch_many. Candidates live in .claude/skills-candidates and never auto-load.",
+    "why": "Four builds measured: the field contract and code check were green in minutes every time; the reviewer was red at class level 15 of 15 times including on 3 adopted skills; the arms were 75 percent of the one build that reached them. The expensive parts decided everything and the cheap part decided nothing - the proportions were wrong, and the standing rule 'test before commit' was being read as 'measure before writing'. It now reads 'measure before adoption'."
+  }
+}

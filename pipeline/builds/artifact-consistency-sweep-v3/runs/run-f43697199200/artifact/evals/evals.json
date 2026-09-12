@@ -1,0 +1,92 @@
+{
+ "skill_name": "artifact-consistency-sweep",
+ "evals": [
+  {
+   "id": 1,
+   "prompt": "Review the whole skill artefact at evals/files/artifact-A (SKILL.md, evals/; it bundles no references/) - the artefact as written before its first whole-artefact review. You cannot see how it was written. Find every place where two parts of the artefact contradict each other or where a step cannot be checked or is graded by nothing. Report each finding with its level, where it is, what it is and the lines it quotes, and say what you examined as well as what you found.",
+   "expected_output": "A ledger with a row per pair type (seven), then a findings list where every entry carries level, where, finding and a verbatim quote, plus a matrix with one row per numbered step (checkable? graded by which check? the closing sentence as its quote) and the Rules bullets cross-referenced. Graded by evals/files/check.py against evals/files/truth-A.json: recall over the findings three independent reviewers established for this text (including the ones the round's own reviewer missed), a precision proxy, and the matrix's completeness.",
+   "files": [
+    "evals/files/artifact-A",
+    "evals/files/truth-A.json",
+    "evals/files/check.py"
+   ],
+   "expectations": [
+    "findings are a structured JSON list (step 6)",
+    "recall over the known in-scope findings for this text >= 0.60 (grader-code rows excluded)",
+    "recall over CLASS findings >= 0.70",
+    "recall over the findings the round's own reviewer MISSED >= 0.50",
+    "at most 3x as many findings as known ones (step 5)",
+    "a step matrix row per numbered step with checkable, graded_by and the closing sentence as quote (step 4, step 6)",
+    "rows referencing the artefact's rules exist (steps 2-3)",
+    "a ledger with plan and examined counts per pair type and the pair ids (steps 1, 6)",
+    "the ledger precedes the findings in the report (rule: the ledger is the first part of the report)",
+    "the ledger's step x rule plan count is at least steps x Rules bullets for this artefact (step 1)",
+    "every finding carries a quotes list, none empty (steps 3, 6)",
+    "no two findings share their whole quotes list (rule: a defect reported twice is one finding)",
+    "the ledger carries a row for each of the seven pair types (step 1, step 6)",
+    "when a pair type's examined count is under its plan count, the ledger states the shortfall (step 6)",
+    "a finding about an absent or unpointed file quotes a line that names the path (step 3, rule: quoted by the line that names it)",
+    "every pair type's examined count equals its plan count, or the ledger names the unruled pairs (step 6, rule)",
+    "the report order is ledger, then findings, then the step matrix (step 6)"
+   ]
+  },
+  {
+   "id": 2,
+   "prompt": "Review the whole skill artefact at evals/files/artifact-B (SKILL.md, references/, evals/) - the same skill after its first rewrite (body halved, rationale moved to a reference). You cannot see how it was written. Find every place where two parts of the artefact contradict each other or where a step cannot be checked or is graded by nothing. Report each finding with its level, where it is, what it is and the lines it quotes, and say what you examined as well as what you found.",
+   "expected_output": "A ledger with a row per pair type (seven), then a findings list where every entry carries level, where, finding and a verbatim quote, plus a matrix with one row per numbered step (checkable? graded by which check? the closing sentence as its quote) and the Rules bullets cross-referenced. Graded by evals/files/check.py against evals/files/truth-B.json: recall over the findings three independent reviewers established for this text (including the ones the round's own reviewer missed), a precision proxy, and the matrix's completeness.",
+   "files": [
+    "evals/files/artifact-B",
+    "evals/files/truth-B.json",
+    "evals/files/check.py"
+   ],
+   "expectations": [
+    "findings are a structured JSON list (step 6)",
+    "recall over the known in-scope findings for this text >= 0.60 (grader-code rows excluded)",
+    "recall over CLASS findings >= 0.70",
+    "recall over the findings the round's own reviewer MISSED >= 0.50",
+    "at most 3x as many findings as known ones (step 5)",
+    "a step matrix row per numbered step with checkable, graded_by and the closing sentence as quote (step 4, step 6)",
+    "rows referencing the artefact's rules exist (steps 2-3)",
+    "a ledger with plan and examined counts per pair type and the pair ids (steps 1, 6)",
+    "the ledger precedes the findings in the report (rule: the ledger is the first part of the report)",
+    "the ledger's step x rule plan count is at least steps x Rules bullets for this artefact (step 1)",
+    "every finding carries a quotes list, none empty (steps 3, 6)",
+    "no two findings share their whole quotes list (rule: a defect reported twice is one finding)",
+    "the ledger carries a row for each of the seven pair types (step 1, step 6)",
+    "when a pair type's examined count is under its plan count, the ledger states the shortfall (step 6)",
+    "a finding about an absent or unpointed file quotes a line that names the path (step 3, rule: quoted by the line that names it)",
+    "every pair type's examined count equals its plan count, or the ledger names the unruled pairs (step 6, rule)",
+    "the report order is ledger, then findings, then the step matrix (step 6)"
+   ]
+  },
+  {
+   "id": 3,
+   "prompt": "Review the whole skill artefact at evals/files/artifact-C (SKILL.md, references/, evals/) - the same skill after its second rewrite. You cannot see how it was written. Find every place where two parts of the artefact contradict each other or where a step cannot be checked or is graded by nothing. Report each finding with its level, where it is, what it is and the lines it quotes, and say what you examined as well as what you found.",
+   "expected_output": "A ledger with a row per pair type (seven), then a findings list where every entry carries level, where, finding and a verbatim quote, plus a matrix with one row per numbered step (checkable? graded by which check? the closing sentence as its quote) and the Rules bullets cross-referenced. Graded by evals/files/check.py against evals/files/truth-C.json: recall over the findings three independent reviewers established for this text, a precision proxy, and the matrix's completeness.",
+   "files": [
+    "evals/files/artifact-C",
+    "evals/files/truth-C.json",
+    "evals/files/check.py"
+   ],
+   "expectations": [
+    "findings are a structured JSON list (step 6)",
+    "recall over the known in-scope findings for this text >= 0.60 (grader-code rows excluded)",
+    "recall over CLASS findings >= 0.70",
+    "at most 3x as many findings as known ones (step 5)",
+    "a step matrix row per numbered step with checkable, graded_by and the closing sentence as quote (step 4, step 6)",
+    "rows referencing the artefact's rules exist (steps 2-3)",
+    "a ledger with plan and examined counts per pair type and the pair ids (steps 1, 6)",
+    "the ledger precedes the findings in the report (rule: the ledger is the first part of the report)",
+    "the ledger's step x rule plan count is at least steps x Rules bullets for this artefact (step 1)",
+    "every finding carries a quotes list, none empty (steps 3, 6)",
+    "no two findings share their whole quotes list (rule: a defect reported twice is one finding)",
+    "the ledger carries a row for each of the seven pair types (step 1, step 6)",
+    "when a pair type's examined count is under its plan count, the ledger states the shortfall (step 6)",
+    "a finding about an absent or unpointed file quotes a line that names the path (step 3, rule: quoted by the line that names it)",
+    "every pair type's examined count equals its plan count, or the ledger names the unruled pairs (step 6, rule)",
+    "the report order is ledger, then findings, then the step matrix (step 6)"
+   ],
+   "note": "no MISSED-rows expectation for this text: nothing reported by a later review was present in this text and unreported by its own"
+  }
+ ]
+}

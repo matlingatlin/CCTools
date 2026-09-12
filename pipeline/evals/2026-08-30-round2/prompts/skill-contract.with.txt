@@ -1,0 +1,142 @@
+You are answering a set of independent questions from a colleague who is building a library of Claude Code skills. Answer each one as you actually would in that job. Where a question asks you to produce something - a file, a row, a run plan - PRODUCE IT; do not describe what you would produce. Where it asks a judgement, be decisive and short.
+
+Write your answers to the file named at the end of this prompt, one section per question, headed exactly '## Q1', '## Q2', and so on. Do not write anything else to disk. When you are done, reply with one line: the file path and the number of questions answered.
+
+At the very end of the file add a section '## consulted' listing any skills, files or tools you looked at while answering. If none, write 'none'.
+
+You have been given the following method to work from. Use it.
+
+=== METHOD ===
+# Writing a skill field by field
+
+A skill is not written top to bottom. Each field depends on fields that come later in
+the file and earlier in the work, so writing them in file order means guessing at
+things you are about to decide.
+
+Two rules govern the whole phase:
+
+1. **A field is written, then checked by code, then checked by a reader who cannot see
+   how it was written.** Code first — there is no point asking anyone whether a
+   1,400-character description reads well when the cap is 1,024.
+2. **A red field never proceeds.** Fixing it later means the fields written after it
+   were written against something that changed.
+
+## Important — the contract is the source, this file is the method
+
+Never restate a field's rules here or in your head. Read them from the contract file
+at the moment you write the field. A rule quoted from memory is a rule that has
+already drifted, and the whole point of holding rules as data is that the code checker
+and the writer are reading the same sentence.
+
+What this file governs is the *order*, the *inputs*, and the *evidence* each field
+needs — none of which the contract states.
+
+## Steps
+
+**4.0 · The bill of materials, before any file exists.** One row per planned file:
+what kind it is, why it is needed, and one of `exists` / `needed` / `not needed
+because …`. No row may be blank. Nothing proceeds with an unclassified row: a gap
+found here is a task, and the same gap found halfway through writing is an
+improvisation. Check it in both directions at the end — planned files that never
+appeared, and files that appeared unplanned.
+
+**4.1 references, 4.2 assets.** Bundled knowledge is written before the body, because
+the body points at it and cannot point at what is not decided. Every claim carries its
+source and the date it was fetched; bundled knowledge goes stale and nothing in the
+runtime will tell you when. Assets carry fields to fill in — a template with no slots
+is prose.
+
+**4.3 name.** Constrained enough that the contract decides it. Reserved words and the
+directory match are checkable; nothing here is a judgement call.
+
+**4.4 body: what this is, and when to use it.** Written from the candidate sentence and
+the observed failures, not from the topic.
+
+**4.5 body: the steps.** *Only observed failures may become rules.* A rule with no
+observation behind it is an opinion, and it costs context on every invocation. If you
+cannot name the run where the failure happened, the rule does not go in. Every step
+ends in something checkable — a number, a file and line, a named artefact, a table
+row. "Consider whether…" is not a step.
+
+**4.6 pointers.** Every bundled file the reader is meant to open gets a pointer in the
+body saying what is in it and when to open it. A bundled file must not point at
+another bundled file: a nested reference is previewed rather than read, so the
+information goes silently incomplete.
+
+**4.7 description — last, and for a reason.** It needs three things that do not exist
+earlier: the finished body's actual scope, the trigger vocabulary, and the descriptions
+of the neighbouring skills it must not collide with. Write it from the words a person
+types when they *have* the problem — symptoms, error strings, tool names — not the
+vocabulary of the solution. Then read it beside its nearest sibling and ask which one a
+router would pick for each other's job; if the answer is unclear either way, one of the
+two descriptions is wrong.
+
+**4.8 frontmatter policy.** The invocation policy follows from what kind of content the
+skill carries, and only the contract decides which fields survive packaging.
+
+## After each field
+
+Run the code checker on the whole artefact, not just the field — a field can only break
+rules that span fields once it exists. Then hand the field, the contract rule, and
+nothing else to a reader who did not write it. Record for each field which code rules
+went red, which reader questions went red, and how many rewrites it took. That record
+is what tells you later which field costs the most rework, and therefore which part of
+this method to fix.
+
+See `references/field-writing.md` for the per-field inputs and the reader's question
+for each one.
+
+## In this repo (one instance)
+
+The contract is `pipeline/contracts/skill.contract.json`; the code checker is
+`pipeline/validate/skill_contract.py`; the per-field record goes to
+`pipeline/ledgers/fields.jsonl` through `pipeline/build/record.py`.
+
+=== BUNDLED REFERENCE ===
+--- field-writing.md ---
+# Per-field inputs and the reader's question
+
+Written 2026-08-30. This table is the part of phase 4 that changes least; the rules
+themselves live in the contract file and are read from there at write time, never
+copied here.
+
+Each row: what must already exist before the field can be written, and the single
+question handed to the independent reader afterwards. The reader gets the field, the
+contract rule and nothing else — they must not be able to see how it was produced,
+because a critique of your own reasoning measures worse than no critique at all.
+
+| Field | Must already exist | The reader is asked |
+| --- | --- | --- |
+| bill of materials | the scope sentence, the probe's findings | Is any row unclassified, or classified with a reason that is not a reason? |
+| references | the claim set, each with a verbatim quote | Does each quote carry the claim beside it, or is it adjacent text? |
+| assets | the shape of the output the skill emits | Could someone fill this in without asking what a field means? |
+| name | the directory it will live in | — decided by the contract |
+| what and when | the scope sentence, the observed failures | Would a reader who has this problem recognise it here in one line? |
+| the steps | the observed failures, quoted | Is every rule traceable to a named observation? Does every step end in something checkable? |
+| pointers | the finished bundled files | Does each pointer say what is inside and when to open it? |
+| description | the finished body, the trigger vocabulary, the neighbours | Which unit would a router pick for the neighbour's job, and why not this one? |
+| frontmatter | the content kind | — decided by the contract |
+
+## Two failure modes worth naming
+
+**Writing the description first.** It is the field most often drafted at the start
+because it feels like a summary of intent. It is not: it is a router's only input, and
+it can only be written once the scope has stopped moving. A description written first
+describes the skill somebody meant to build.
+
+**Rules with no observation.** The steps section attracts general good advice, which is
+free to write and expensive to carry — it occupies context on every single invocation
+and it cannot be measured, because nothing was failing without it. The test is
+mechanical: name the run.
+
+=== END ===
+
+QUESTIONS
+
+Q1. Scope sentence: 'Reviews a Terraform plan and produces a written go/no-go naming each resource that will be destroyed.' Probe transcript, two runs, both without any skill present. Run A listed all 14 changed resources and said 'looks fine'. Run B listed them and flagged one replacement, then said 'should be safe'. Neither named the two resources marked for destruction, and neither produced a verdict line. Give me the SKILL.md for this. I want the actual file contents.
+
+Q2. Here is the description I wrote for that skill: 'This skill helps with Terraform. It is a comprehensive and thorough guide to reviewing infrastructure-as-code changes, covering plan output, state drift, provider versions, module structure, variable precedence, workspace selection, remote backends, and general best practices for keeping your infrastructure safe and maintainable across teams and environments.' Good to go?
+
+Q3. I have the body drafted and I have the description drafted. Both look right to me. What do you do next?
+
+Q4. We're short on time. What goes in the description field?

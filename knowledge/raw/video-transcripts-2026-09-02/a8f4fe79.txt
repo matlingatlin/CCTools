@@ -1,0 +1,5 @@
+[   0.0] There's a system prompt leak for Fable 5. This is huge guys. This ended up breaking within one hour.
+[   6.8] If you guys don't know, system prompts are essentially how the thought of the LLM operates.
+[  11.8] Not just the instruction later, but the actual blueprint of Fable 5.1.
+[  15.8] How guardrails are, jailbreak comes easier, competitors now have this.
+[  20.0] It's very interesting. So if you guys do want this, comment down below Fable and I'll send

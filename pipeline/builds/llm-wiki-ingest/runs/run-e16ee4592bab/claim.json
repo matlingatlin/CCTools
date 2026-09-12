@@ -1,0 +1,8 @@
+{
+ "claim_id": "C8",
+ "source": "Astro-Han/karpathy-llm-wiki SKILL.md (fetched 2026-09-02)",
+ "claim": "A source that adds no knowledge beyond what the wiki holds is triaged 'No material': the raw file is kept, the ingest is logged, and no page is edited or created.",
+ "locator": "Triage section, the fourth disposition",
+ "quote": "No material \u2014 adds no knowledge beyond what the wiki already holds. Keep the raw file, log it (see Post-Ingest), and stop. Do not force an article out of a thin source.",
+ "verdict": "REPEATED"
+}

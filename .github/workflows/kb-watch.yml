@@ -1,0 +1,28 @@
+# The watcher had the same defect its own review diagnosed in the lint: nothing ran it. It was
+# excluded from `kb-check` on purpose — that job is offline and must stay dependency- and
+# network-free — which left it a convention again. This is its trigger.
+#
+# A failing run is not a defect in the repository. It means a source moved and the notes citing
+# it are owed a re-read (llm-wiki-ingest, update branch). Unreachable rows do NOT fail the job:
+# a rate limit is not evidence of anything, which is why watch.py separates the two.
+name: kb watch
+
+on:
+  schedule:
+    - cron: '17 6 * * 1'   # Mondays 06:17 UTC. Weekly, because the measured rate of real change
+                           # is days, not hours, and a noisy watcher is one nobody reads.
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Has any watched source changed since we read it?
+        run: python3 knowledge/watch.py

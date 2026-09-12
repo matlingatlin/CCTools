@@ -1,0 +1,9 @@
+[   0.0] Someone just built the most powerful Claw tool on the planet.
+[   3.2] One agent works in a line, but a swarm of agents can work in parallel.
+[   7.3] It's called Clawed Flow and has around 55,000 stars on GitHub and is fully open sourced.
+[  12.7] Instead of one chat doing everything, you spend up specialists at the same time.
+[  16.8] One agent plans the work, one writes the code, one runs the tests, and one checks security.
+[  21.7] And the best part is that they share a memory layer, meaning what one agent learns the next run is going to already know.
+[  27.6] With this tool, you stop driving a single conversation and you start running an organization from your terminal.
+[  32.7] The same Clawed subscription, but a lot more throughput.
+[  35.5] Comment, swarm, and I'll send you the link to the repo.

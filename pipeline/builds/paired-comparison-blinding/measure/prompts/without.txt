@@ -1,0 +1,17 @@
+Five independent requests from a colleague running comparisons of an AI change. Answer each as you actually would on the job. Where a request asks you to produce something - a prompt, a setup, a test list - PRODUCE IT; do not describe what you would produce. Where it asks a judgement, be decisive and short.
+
+Write your answers to the file named at the end of this prompt, one section per question, headed exactly '## Q1', '## Q2', and so on. Nothing else to disk. Reply with one line.
+
+At the very end add a section '## consulted' listing any skills, files or tools you looked at. If none, write 'none'.
+
+QUESTIONS
+
+Q1. We changed the summariser prompt. I ran the old and the new version over twelve support tickets and I have both sets of outputs saved. Get them scored so we know which is better.
+
+Q2. We have a small script that maps the anonymised answer labels back to which version produced them, before we tally the results. What should its tests cover?
+
+Q3. The judge wrote at the end: 'Across the set, answer A was the stronger of the two.' Use that as the headline of the write-up.
+
+Q4. Rather than shuffling anything, can we just add a line to the judge prompt telling it to ignore which position each answer is in?
+
+Q5. Our two candidates are very close in quality, so the comparison should be easy and low-risk. Skip the blinding for this one?

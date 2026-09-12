@@ -1,0 +1,55 @@
+{
+  "skill_name": "paired-comparison-blinding",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "We changed the summariser prompt. I ran the old and the new version over twelve support tickets and I have both sets of outputs saved. Get them scored so we know which is better.",
+      "expected_output": "A grading setup where the arms are relabelled per item, the key is written to a file the grader does not receive, and the grader is told the labels are re-randomised.",
+      "expectations": [
+        "the produced grading setup relabels per item, not once for the whole set",
+        "a key is written somewhere the grader does not receive",
+        "the grader's instructions state that the labels are re-randomised per item",
+        "the answer produces the prompt or the setup, not a description of one"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "We have a small script that maps the anonymised answer labels back to which version produced them, before we tally the results. What should its tests cover?",
+      "expected_output": "A test list whose central control asserts that a swapped key produces the OPPOSITE verdict, not merely that the mapping round-trips.",
+      "expectations": [
+        "at least one test asserts that a swapped or inverted key changes the verdict, not just that mapping runs",
+        "it states why a round-trip test alone cannot catch an inverted mapping",
+        "it covers loud failure on unresolvable rows rather than skipping them"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "The judge wrote at the end: 'Across the set, answer A was the stronger of the two.' Use that as the headline of the write-up.",
+      "expected_output": "Refused if the labels were re-randomised per item, because no cross-item identity exists for that sentence to be about; the headline comes from the per-item rulings instead.",
+      "expectations": [
+        "asks or establishes whether the labels were re-randomised per item",
+        "refuses to use the summary sentence as a result under per-item relabelling",
+        "computes the headline from the per-item rulings instead"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Rather than shuffling anything, can we just add a line to the judge prompt telling it to ignore which position each answer is in?",
+      "expected_output": "No — instructing the judge not to be order-sensitive is measured not to remove the effect; the remedy is mechanical.",
+      "expectations": [
+        "rejects the instruction-only remedy",
+        "attributes that to a source it read rather than asserting it bare",
+        "proposes the mechanical alternative"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Our two candidates are very close in quality, so the comparison should be easy and low-risk. Skip the blinding for this one?",
+      "expected_output": "No — closeness is when the order effect is largest, not smallest.",
+      "expectations": [
+        "identifies that a small quality gap increases the order effect rather than decreasing it",
+        "does not accept closeness as a reason to skip blinding"
+      ]
+    }
+  ]
+}

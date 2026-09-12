@@ -1,0 +1,1 @@
+{"label": "probe.B.without.r1", "tokens": 181057, "tool_calls": 3, "started": 1788299739.9327538, "ended": 1788299797.4789214, "rc": 0, "is_error": false, "subtype": "success", "num_turns": 4}

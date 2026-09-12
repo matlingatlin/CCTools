@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scio — Logo Sketches</title>
+<style>
+  :root {
+    --bg: #f7f6f3;
+    --surface: #ffffff;
+    --ink: #16150f;
+    --muted: #6d6a5e;
+    --line: #d9d5c9;
+    --accent: #b4581f;
+    --accent-soft: #e8d9c8;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #12120f;
+      --surface: #1b1a16;
+      --ink: #f2efe6;
+      --muted: #9a9587;
+      --line: #33322b;
+      --accent: #e08a44;
+      --accent-soft: #3a2c1e;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #12120f;
+    --surface: #1b1a16;
+    --ink: #f2efe6;
+    --muted: #9a9587;
+    --line: #33322b;
+    --accent: #e08a44;
+    --accent-soft: #3a2c1e;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 48px 24px 96px; }
+
+  header h1 {
+    font-size: clamp(1.9rem, 4vw, 2.6rem);
+    letter-spacing: -0.02em;
+    margin: 0 0 8px;
+  }
+  header p { color: var(--muted); margin: 0 0 4px; max-width: 62ch; }
+
+  section { margin-top: 56px; }
+  h2 {
+    font-size: 1.05rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 4px;
+    font-weight: 600;
+  }
+  h3 { font-size: 1.3rem; letter-spacing: -0.01em; margin: 0 0 6px; }
+  p.note { color: var(--muted); max-width: 68ch; margin: 0 0 20px; }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 28px;
+    margin-bottom: 24px;
+  }
+  .stage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    flex-wrap: wrap;
+    padding: 20px 0 26px;
+  }
+
+  svg { display: block; }
+  .fill-surface { fill: var(--surface); }
+  .fill-ink { fill: var(--ink); }
+  .fill-accent { fill: var(--accent); }
+  .fill-none { fill: none; }
+  .stroke-ink { stroke: var(--ink); }
+  .stroke-accent { stroke: var(--accent); }
+
+  /* ---- motion ---- */
+  @keyframes spin  { to { transform: rotate(360deg); } }
+  @keyframes pump  { 0%,100% { transform: translateY(0); } 50% { transform: translateY(14px); } }
+    @keyframes glance { 0%,100% { transform: translateX(0); } 30% { transform: translateX(-4px); } 65% { transform: translateX(4px); } }
+  @keyframes settle { 0% { transform: scale(1); } 40% { transform: scale(1.045); } 100% { transform: scale(1); } }
+
+  .rotor  { transform-origin: 100px 100px; animation: spin 9s linear infinite; }
+  .piston { animation: pump 1.6s ease-in-out infinite; }
+  .piston.b { animation-delay: 0.53s; }
+  .piston.c { animation-delay: 1.06s; }
+  .pupils { animation: glance 5s ease-in-out infinite; }
+
+  /* state machine — the mark animates to say what the system is doing */
+  [data-state="idle"]     .rotor { animation: none; }
+  [data-state="idle"]     .pupils { animation: none; }
+  [data-state="listening"] .rotor { animation: none; }
+  [data-state="listening"] .pupils { animation: glance 3.2s ease-in-out infinite; }
+  [data-state="thinking"] .rotor { animation-duration: 14s; }
+  [data-state="building"] .rotor { animation-duration: 2.2s; }
+  [data-state="building"] .piston { animation-duration: 0.75s; }
+  [data-state="done"]     .rotor { animation: none; }
+  [data-state="done"]     .mark { animation: settle 900ms ease-out 1; }
+  [data-state="done"]     .teeth { stroke: var(--accent); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rotor, .piston, .pupils, .mark { animation: none !important; }
+  }
+
+  /* ---- controls ---- */
+  .states { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+  button {
+    font: inherit;
+    font-size: 0.9rem;
+    padding: 7px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--muted);
+    cursor: pointer;
+  }
+  button[aria-pressed="true"] {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+    color: var(--ink);
+  }
+
+  .wordmark {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    font-size: 54px;
+    font-weight: 620;
+    letter-spacing: -0.03em;
+  }
+  .wordmark svg { margin: 0 -2px; }
+
+  table { border-collapse: collapse; width: 100%; font-size: 0.95rem; }
+  th, td { text-align: left; padding: 9px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.06em; }
+  td:first-child { white-space: nowrap; font-weight: 600; }
+  .scroll { overflow-x: auto; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>Scio — three sketches</h1>
+  <p>Two directions were on the table: an owl in the <em>O</em>, or a working factory with turning
+  wheels. The third sketch is the argument that they are the same drawing.</p>
+</header>
+
+<!-- ============ 1 · OWL ============ -->
+<section>
+  <h2>Direction 1</h2>
+  <h3>The owl in the O</h3>
+  <p class="note">The literal reading of <em>scio</em> — “I know”. The <em>O</em> is a face: two
+  eyes, a beak, two tufts. It is quiet, it reads at 16&nbsp;px, and it says knowledge and nothing
+  else. The cost is that it says nothing about building, and every second AI company has an animal.</p>
+
+  <div class="card">
+    <div class="stage">
+      <div class="wordmark">
+        <span>SCI</span>
+        <svg width="66" height="66" viewBox="0 0 200 200" role="img" aria-label="Scio owl mark">
+          <circle cx="100" cy="100" r="84" class="fill-none stroke-ink" stroke-width="13"/>
+          <!-- tufts -->
+          <path d="M62 40 L78 26 L84 48 Z" class="fill-ink"/>
+          <path d="M138 40 L122 26 L116 48 Z" class="fill-ink"/>
+          <!-- eyes -->
+          <g>
+            <circle cx="76" cy="92" r="21" class="fill-none stroke-ink" stroke-width="9"/>
+            <circle cx="124" cy="92" r="21" class="fill-none stroke-ink" stroke-width="9"/>
+            <g class="pupils">
+              <circle cx="76" cy="92" r="8.5" class="fill-ink"/>
+              <circle cx="124" cy="92" r="8.5" class="fill-ink"/>
+            </g>
+          </g>
+          <!-- beak -->
+          <path d="M100 104 L92 126 L108 126 Z" class="fill-accent"/>
+        </svg>
+      </div>
+    </div>
+    <p class="note" style="margin:0">Moving part: the pupils. Nothing else. An owl that spins is a cartoon.</p>
+  </div>
+</section>
+
+<!-- ============ 2 · FACTORY ============ -->
+<section>
+  <h2>Direction 2</h2>
+  <h3>The working factory</h3>
+  <p class="note">A gear train and two cylinders, actually turning. It says <em>this thing builds</em>,
+  which is the promise. The cost is that a gear is the most-used icon in software, and mechanical
+  detail disappears below about 32&nbsp;px.</p>
+
+  <div class="card" data-state="building">
+    <div class="stage">
+      <svg width="200" height="200" viewBox="0 0 200 200" role="img" aria-label="Scio factory mark">
+        <!-- cylinders -->
+        <g>
+          <rect x="16" y="118" width="26" height="52" rx="5" class="fill-none stroke-ink" stroke-width="7"/>
+          <g class="piston">
+            <rect x="24" y="86" width="10" height="34" rx="4" class="fill-ink"/>
+            <rect x="16" y="78" width="26" height="12" rx="4" class="fill-accent"/>
+          </g>
+          <rect x="158" y="118" width="26" height="52" rx="5" class="fill-none stroke-ink" stroke-width="7"/>
+          <g class="piston b">
+            <rect x="166" y="86" width="10" height="34" rx="4" class="fill-ink"/>
+            <rect x="158" y="78" width="26" height="12" rx="4" class="fill-accent"/>
+          </g>
+        </g>
+        <!-- big gear -->
+        <g class="rotor">
+          <circle cx="100" cy="100" r="70" class="fill-none stroke-ink teeth"
+                  stroke-width="18" stroke-dasharray="20 16.64"/>
+          <circle cx="100" cy="100" r="52" class="fill-none stroke-ink" stroke-width="9"/>
+          <path d="M100 56 V144 M62 78 L138 122 M62 122 L138 78" class="stroke-ink" stroke-width="7" stroke-linecap="round"/>
+        </g>
+        <!-- hub -->
+        <circle cx="100" cy="100" r="17" class="fill-accent"/>
+      </svg>
+    </div>
+    <p class="note" style="margin:0">Moving parts: one gear and two cylinders, out of phase. (The earlier caption claimed a gear train; the file has one gear, and the second “gear” was a circle rotating about its own centre — a visual no-op. Claim removed rather than kept.)</p>
+  </div>
+</section>
+
+<!-- ============ 3 · SYNTHESIS ============ -->
+<section>
+  <h2>Direction 3 — the recommendation</h2>
+  <h3>The gear is the O, and the owl is inside it</h3>
+  <p class="note">A gear seen head-on <strong>is</strong> an O. So the two directions were never a
+  choice. The teeth turn; the face does not. That is the product in one drawing: the machinery
+  works, and the thing that knows sits still and watches. Drop the teeth below 24&nbsp;px and the
+  owl survives alone as a favicon.</p>
+
+  <div class="card" id="demo" data-state="building">
+    <div class="stage">
+      <svg width="200" height="200" viewBox="0 0 200 200" role="img" aria-label="Scio mark">
+        <g class="mark">
+          <g class="rotor">
+            <circle cx="100" cy="100" r="84" class="fill-none stroke-ink teeth"
+                    stroke-width="17" stroke-dasharray="22 22.0"/>
+          </g>
+          <circle cx="100" cy="100" r="68" class="fill-none stroke-ink" stroke-width="9"/>
+          <path d="M64 46 L80 32 L86 54 Z" class="fill-ink"/>
+          <path d="M136 46 L120 32 L114 54 Z" class="fill-ink"/>
+          <circle cx="78" cy="96" r="19" class="fill-none stroke-ink" stroke-width="8"/>
+          <circle cx="122" cy="96" r="19" class="fill-none stroke-ink" stroke-width="8"/>
+          <g class="pupils">
+            <circle cx="78" cy="96" r="7.5" class="fill-ink"/>
+            <circle cx="122" cy="96" r="7.5" class="fill-ink"/>
+          </g>
+          <path d="M100 106 L93 126 L107 126 Z" class="fill-accent"/>
+        </g>
+      </svg>
+
+      <div class="wordmark">
+        <span>SCI</span>
+        <svg width="58" height="58" viewBox="0 0 200 200" aria-hidden="true">
+          <g class="rotor">
+            <circle cx="100" cy="100" r="84" class="fill-none stroke-ink teeth"
+                    stroke-width="17" stroke-dasharray="22 22.0"/>
+          </g>
+          <circle cx="100" cy="100" r="68" class="fill-none stroke-ink" stroke-width="9"/>
+          <circle cx="78" cy="96" r="19" class="fill-none stroke-ink" stroke-width="8"/>
+          <circle cx="122" cy="96" r="19" class="fill-none stroke-ink" stroke-width="8"/>
+          <g class="pupils">
+            <circle cx="78" cy="96" r="7.5" class="fill-ink"/>
+            <circle cx="122" cy="96" r="7.5" class="fill-ink"/>
+          </g>
+          <path d="M100 106 L93 126 L107 126 Z" class="fill-accent"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="states" role="group" aria-label="System state">
+      <button data-set="idle">idle</button>
+      <button data-set="listening">listening</button>
+      <button data-set="thinking">thinking</button>
+      <button data-set="building" aria-pressed="true">building</button>
+      <button data-set="done">done</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE ARGUMENT ============ -->
+<section>
+  <h2>The part that matters more than the drawing</h2>
+  <h3>Animation should mean something, or it should not run</h3>
+  <p class="note">A logo that spins forever is decoration, and decoration is what everyone else
+  ships. If the mark turns only when work is happening, it becomes the cheapest honest signal in
+  the product — and this system’s whole diagnosed failure is that it computes honest signals and
+  drops them before anyone sees them. Press the buttons above.</p>
+
+  <div class="card scroll">
+    <table>
+      <thead><tr><th>State</th><th>Motion</th><th>What it tells the user</th></tr></thead>
+      <tbody>
+        <tr><td>idle</td><td>still</td><td>nothing is running, nothing is being spent</td></tr>
+        <tr><td>listening</td><td>eyes glance, teeth still</td><td>intake is open — your turn</td></tr>
+        <tr><td>thinking</td><td>slow turn</td><td>a model call is in flight</td></tr>
+        <tr><td>building</td><td>fast turn</td><td>packages are being generated; money is moving</td></tr>
+        <tr><td>done</td><td>one settle, teeth go accent</td><td>build finished — and it stops, so the stop is visible</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="note">Everything above is drawn in SVG paths with no external asset, so the mark is a
+  component the product can drive from build state, not an image file. Colours read from the
+  design tokens rather than being baked in — which is the same contract
+  <code>.claude/skills/app-design</code> asks every generated app to keep.</p>
+</section>
+
+<p class="note" style="margin-top:48px">Sketches, not a decided identity. No ADR yet — per
+<code>CLAUDE.md</code>, propose, do not assume.</p>
+
+</div>
+
+<script>
+  (function () {
+    var demo = document.getElementById('demo');
+    if (!demo) return;
+    var buttons = demo.querySelectorAll('button[data-set]');
+    buttons.forEach(function (b) {
+      b.addEventListener('click', function () {
+        buttons.forEach(function (o) { o.setAttribute('aria-pressed', 'false'); });
+        b.setAttribute('aria-pressed', 'true');
+        // re-trigger one-shot animations by remounting the state
+        demo.removeAttribute('data-state');
+        void demo.offsetWidth;
+        demo.setAttribute('data-state', b.dataset.set);
+      });
+    });
+  })();
+</script>
+</body>
+</html>

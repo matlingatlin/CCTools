@@ -1,0 +1,302 @@
+---
+name: abstention-threshold-design
+description: Use when an AI feature must sometimes DECLINE rather than answer wrong and the cut has to be decided - what auto-ships, what goes to a human or a queue. Produces the cut, the precision it holds and the coverage it costs, against a precision target and a coverage floor agreed first. Triggers on 'when should the model say I don't know', 'auto-approve vs send to review', 'set a confidence threshold', 'route uncertain cases to a human', 'what precision can we ship at', 'auto-approval rate', 'coverage vs accuracy tradeoff', 'abstain / defer / decline on uncertainty', 'flag low-confidence outputs', 'human-in-the-loop cutoff', 'the model is confidently wrong'. NOT parse-failure escalation for cost (hybrid-parse-escalation), NOT judge-vs-human validation (llm-judge-calibration), NOT destructive actions, gated on consequence (agent-blast-radius-guard), NOT model tier on price (cost-aware-model-routing), NOT eval-set choice (eval-set-curation), NOT preregistering a metric (preregistered-decision-rule)
+---
+
+# Abstention threshold design
+
+Set the confidence cut at which a feature declines instead of answering, and report the
+coverage and the precision that cut buys. The output is a filled decision record, not a
+recommendation in prose: two numbers agreed before the data is read, a signal shown to
+separate right from wrong, a sweep computed on a named holdout, the highest-coverage cut that
+meets the target, and a named owner for everything below it.
+
+A threshold quoted without its coverage is not a result. Neither is a coverage figure with no
+distribution behind it.
+
+## When to use this
+
+- Someone asks where the auto-approve cut goes, or proposes a number and cannot say what it buys.
+- Being wrong costs more than being silent, and a human review queue exists or is being proposed.
+- A stated confidence is about to be trusted: "auto-send everything the model is 90% sure about."
+- Quality complaints and "too much manual review" are being reported at the same time.
+- A model, prompt, retrieval index or traffic mix changed under a threshold that was set once.
+
+Observable test: there is a score, or there could be one, and someone has to draw a line on it.
+
+**Not this skill.** Escalating malformed records in a bulk deterministic parse to save
+per-record cost - `hybrid-parse-escalation`. Checking whether a judge's scores agree with
+humans - `llm-judge-calibration`; that validates the scorer, this thresholds a score already
+trusted. Gating destructive or outward-facing actions, which turn on consequence at any
+confidence - `agent-blast-radius-guard`. Choosing which logged examples become the holdout -
+`eval-set-curation`, or `synthetic-eval-data-generation` when there is no traffic yet.
+
+## Important - the two failures that survive a careful answer
+
+Both were measured on this task, in four runs with no skill loaded, and both look like
+competence while they happen.
+
+**A cushion above the target is a cost nobody wrote down.** Three of four runs computed the
+sweep correctly and then chose a stricter cut than the target required, surrendering 2.5, 4.5
+and 8.5 points of coverage on the same data. None of the three said what that coverage was
+worth, because none had a coverage floor to weigh it against. Sampling noise is a real argument
+for a cushion. It is an argument to be had against a floor and a volume.
+
+**A number can be derived correctly from a signal nobody validated.** Four of four runs
+thresholded the score without once checking that it separates right from wrong. On a good
+signal this costs nothing and is invisible. On a flat one the identical procedure abstains on
+a random subset: full coverage loss, zero precision gain, and every number in the write-up
+still internally consistent. Step 4 is what makes steps 5 and 6 mean anything.
+
+## Steps
+
+```
+Task Progress
+- [ ] 0. Distribution in hand, or not
+- [ ] 1. Target and floor, fixed and attributed
+- [ ] 2. Candidate signals, plural
+- [ ] 3. Holdout named
+- [ ] 4. Separation measured  <- gate
+- [ ] 5. Sweep computed
+- [ ] 6. Cut chosen, cushion priced
+- [ ] 7. Abstained path owned
+- [ ] 8. Slices checked
+- [ ] 9. Re-validation armed
+```
+
+Fill `assets/threshold-decision-record.md` as you go. A step is done when its slot in the
+record holds a number or a name, not when it has been thought about.
+
+### Step 0 - Is there anything to threshold?
+
+Name the scored, labelled holdout: a locator someone else can open, its n, its date range,
+how it was sampled, who labelled it.
+
+**If there is none, stop at step 1 and say so.** Deliver sections 0, 1 and 5 of the record,
+name what has to be pulled and who pulls it, and state no cut, no coverage and no band. This
+is the rule with the most weight: asked a threshold question with no data attached, all four
+baseline runs answered with a coverage band anyway - "something like 40-55% of volume",
+"probably the top 30-50%", "~55-65%" - four mutually inconsistent guesses, each then carried
+into a staffing calculation that inherited it. A range is not a hedge. It is the same
+unfounded claim with error bars drawn on.
+
+Produces: a locator, or a written statement that there is none.
+
+### Step 1 - Fix both numbers before reading any score, and attribute each
+
+Two numbers, each with the person or role who agreed it and the date:
+
+- the precision or quality target **on the answered segment**;
+- the **minimum acceptable coverage** - the answer rate below which the feature is not worth
+  shipping.
+
+A target with no floor beside it always resolves to "abstain more", which is how a feature
+quietly becomes a manual process. Argue the pair here, while both are open: 95% at 90%
+coverage often serves users better than 99% at 40%. Once agreed it is binding - step 6 does
+not trade precision away to buy coverage, and a cut that misses the target escalates rather
+than settling.
+
+Neither number is yours to pick. Four of four baseline runs asserted the target in their own
+voice ("I'd argue for 99%+", "Target <=1% error rate") with nobody named. If no owner is
+available, write the number down as *proposed by you, unagreed*, and carry that label forward
+into the record and into whatever ships.
+
+Produces: two values, two names, two dates in section 1 of the record.
+
+### Step 2 - List candidate signals, plural, then test two or three
+
+Self-consistency spread across k samples; a judge or verifier score; retrieval margin (top-1
+minus top-2 similarity); validator or schema failure count; ensemble or cross-model
+disagreement; distance from the training distribution; the model's own logprob; the model's
+verbalized confidence.
+
+Test more than one, and the reason is measured rather than tidy: in the comparison held in
+`references/uncertainty-signal-evidence.md`, swapping the signal while leaving the target and
+the model alone moved coverage by nearly eight points. Which signal you threshold is worth
+points of coverage, not decimals. Two or three candidates is a budget, not a finding - it is
+what fits before step 4 stops being run at all.
+
+The model's own stated confidence is a candidate, never a default.
+
+Produces: a named list, with 2-3 carried into step 4 and the rest recorded as untested in
+section 2 of the record.
+
+### Step 3 - Name the holdout
+
+Real cases with ground-truth correct or incorrect, sampled from actual traffic including the
+hard slices. Never tune the cut on data used to build or prompt the system.
+
+**How many is set by the claim you have to make, not by a round number.** The figure that has
+to survive scrutiny is precision on the ANSWERED segment, so what matters is how many cases
+land above the cut, not how many you started with - at 50% coverage a 400-case holdout
+supports its precision claim on 200. Ask what interval you need around the target and size for
+that: distinguishing 95% from 92% on a handful of answered cases is not something any sample
+size argument can rescue, and step 5 makes you state the n so this is visible rather than
+implied. The sources behind this skill calibrate on thousands to tens of thousands of cases;
+if you have hundreds, the threshold is a starting point with a stated interval, not a constant.
+
+Sampling is its own job - `eval-set-curation` when there is traffic to choose from,
+`synthetic-eval-data-generation` when there is none.
+
+Produces: section 0 of the record, filled, with the answered n it will support at the expected
+coverage.
+
+### Step 4 - Measure separation. This is the gate
+
+Per candidate signal, on the holdout:
+
+- bucket by score decile and report observed accuracy per bucket;
+- compute AUROC, or a rank correlation, against the correct/incorrect label.
+
+AUROC ranks the candidates. It does not decide the gate, and this is the trap in an
+otherwise-followed step: "clearly above chance" is not a decidable phrase, and a signal at
+AUROC 0.56 can be written up as passing while carrying almost nothing to threshold on. The
+outcome is F3's - coverage surrendered for no precision gained - one step further downstream,
+now with a validation section in the write-up.
+
+**The decidable form of the gate is the target itself.** Does any cut on this signal reach the
+precision target on the holdout, with enough answered cases behind it to support the claim?
+
+- **No cut reaches the target at any coverage** - the signal cannot carry this target. Report
+  the best row it did reach, its n, and the AUROC, and return to step 2 with a different
+  signal. Do not soften this into a lower cut, a wider band, or a target nobody agreed.
+- **A cut reaches it, and bucket accuracy rises with the score rather than being flat or
+  inverting** - usable. Record the AUROC, the crossing row and its n, and go on.
+- **A cut reaches it but bucket accuracy is flat or inverts** - the crossing is an artefact of
+  where the boundary fell. Say so, and treat it as the first case.
+
+A signal can look excellent on calibration and still carry nothing: a model that answers "100%
+confident" to everything scores near-perfect calibration error and separates nothing at all.
+There is no threshold on a constant. The measured cases are in the reference file; the rule is
+that calibration and separation are two questions and only the second one licenses a cut.
+
+Produces: an AUROC and a bucket table per candidate, in section 2 of the record.
+
+### Step 5 - Sweep
+
+Move the cut across the score range. At each point record: the cut, coverage, the answered n,
+precision on the answered segment, and the abstained volume per day or per week in absolute
+cases. Eight to ten rows for the shape of the curve - **plus the boundary sampled exactly.**
+
+The row that decides step 6 is the one where precision crosses the target, and a coarse grid
+walks past it: eight evenly spaced cuts can leave the true maximum-coverage cut sitting between
+two of them, never sampled, and step 6 then picks the best row on the grid while every box is
+ticked. Sweep the answered set one case at a time in the region where precision is within a
+point or two of the target, and report the exact cut where it crosses. On a holdout of a few
+hundred this is a sort and a running total, not a cost.
+
+State the n behind each precision figure. Precision on 11 answered cases and precision on 111
+are different kinds of claim, and the sweep is what stakeholders review instead of intuition.
+
+Produces: the table in section 3 of the record.
+
+### Step 6 - Take the highest-coverage cut that meets the target, and price anything stricter
+
+Among rows meeting the precision target, take the one with the **highest coverage**, then
+check it against the floor from step 1.
+
+A stricter cut is allowed and costs something. Put the price in the record: points of
+coverage and cases per period surrendered, for points of precision gained.
+
+If no row satisfies both numbers, say so and choose explicitly, on the record, with the owners
+from step 1: relax a target, improve the model or the signal
+(`measured-optimization-loop`), or do not ship this autonomously. Quietly honouring the
+precision target and eating the coverage loss is the most common failure here.
+
+Produces: one cut, its coverage, its precision, its answered n, and the priced alternative.
+
+### Step 7 - Give the abstained path an owner
+
+For everything below the cut, name the receiver - person, team, queue, safer fallback, or a
+degraded "unverified" answer. State its capacity per period against the abstained volume from
+step 5, the latency the user sees, and what the user is shown.
+
+A threshold whose overflow has no owner has not reduced risk; it moved it somewhere nobody
+measures.
+
+*Provenance, stated because the rest of this file traces to observed failures and this step
+does not: three of four baseline runs did this unprompted, and did the capacity arithmetic
+correctly. It is here as a field in the record, not as a correction of anything measured. What
+the baseline got wrong was the volume it fed in - a guessed coverage band from step 0's
+failure - not the step itself.*
+
+Produces: section 5 of the record, with a headroom figure.
+
+### Step 8 - Check the slices
+
+A target met globally can be missed badly on one segment: a guarantee that holds on average
+permits every error to land in the same place, and the reference file carries the source's own
+worked case of a split that satisfies the global target while covering one group never. Report
+coverage and precision per slice for the slices that matter (customer tier, language, document
+type, vendor, new versus known). A slice that misses the target is a finding even when the
+global number passes.
+
+*Provenance: this step comes from a measured claim rather than from an observed failure - no
+baseline run was given slices to miss. It is the one step this build has not seen fail.*
+
+Produces: the per-slice table in section 6.
+
+### Step 9 - Arm the re-validation
+
+A new model version, prompt, retrieval index or traffic mix moves the score distribution, so
+the same number means something different. Two things go in the record: a cadence or a trigger
+list, and an alarm band on the **abstention rate** - if it drifts under a fixed cut, the
+distribution moved.
+
+The same stated confidence can be worth tens of points more in-domain than out; the measured
+case is in the reference file. This is why a threshold is a calibration and not a constant.
+
+Produces: section 7, with a band and a named re-check date or event.
+
+## Standing rules, for every turn of this task and not only the first
+
+- Precision and coverage are quoted **as a pair**, every time, everywhere. A precision figure
+  with no coverage beside it is not a result, in a table, a summary or a sentence.
+- Every number traces to the holdout named in step 0. A figure with no n and no locator is a
+  guess, however precise it looks.
+- The holdout is never data used to build or prompt the system, on the first pass or on any
+  re-run. Step 9 sends this task back through steps 2 to 4 months later, when the obvious
+  sample is whatever the team has been iterating on.
+- No cut on a signal that failed step 4, at any coverage, for any deadline.
+- Any cut stricter than the target requires carries its price in the same breath - points of
+  coverage and cases per period surrendered, for points of precision gained. This applies
+  every time a cut is chosen or re-chosen, including when step 9 sends you back through step 6
+  months later, and it is the rule most likely to be dropped on the second pass because the
+  first one felt careful. The same applies to reading the sweep: precision usually rises with
+  the cut and is not guaranteed to, so the crossing row is found on the table in front of you,
+  on the first pass and on every re-run.
+- The abstained path is part of the design, not follow-up work.
+- Consequence gating is separate and composes with this: irreversible or outward-facing
+  actions need a human gate at any confidence (`agent-blast-radius-guard`).
+- Method only - your own reasoning and scoring runs over your own holdout. No external CLI
+  installs, no credentials, no hooks.
+
+## Bundled files
+
+- `assets/threshold-decision-record.md` - **read and fill.** The output shape: field names and
+  order with nothing filled in. Open it at step 0 and fill it as the steps produce numbers; a
+  slot still holding `<value>` at the end is an unfinished decision, not a formatting gap.
+- `references/uncertainty-signal-evidence.md` - **read** when a stakeholder disputes a step,
+  when you need a measured number to argue with, or before trusting any stated confidence.
+  Eleven claims from five papers, each with its verbatim quote, locator, fetch date and
+  limits, plus what would make each row untrue. Not needed to run the steps.
+- `evals/evals.json` - **read** only when changing this skill. Four cases with their
+  expectations, naming the two fixtures below.
+- `evals/scored_predictions.csv` - **read** only when running or changing the evals. 200 rows
+  of id, score and correct, on a signal that separates; the case where a cut exists and is not
+  a round number.
+- `evals/selfreported_confidence.csv` - **read** only when running or changing the evals. 200
+  rows of id, stated_confidence and correct, on a signal that does not separate; the case where
+  the right answer is that there is no cut.
+
+## In this repo (one instance)
+
+The factory's auto-versus-gate decisions are abstention thresholds, and "human gate
+proportional to autonomy" is this tradeoff in prose: description sharpening auto-applies while
+merges and deletions abstain to the human-gate ledger under `pipeline/ledgers/`. When a
+talent's eval verdict is the uncertainty signal, step 4 binds - a verdict reading "passed" for
+nearly every talent separates nothing against real quality and cannot carry an auto-adopt
+threshold. State the intended auto-adopt rate in `pipeline/BRAIN.md` before choosing the
+bar, and re-check it whenever scenario design changes. *This paragraph is an application of the
+steps to one repo, not a further rule: it inherits step 1's target-and-floor and step 9's
+re-validation, and adds nothing that F1-F4 or the claim set does not already carry.*

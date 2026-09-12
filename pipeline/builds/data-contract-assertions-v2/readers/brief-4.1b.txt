@@ -1,0 +1,51 @@
+You are an INDEPENDENT reader. You did not write this and you must not guess at how it was written. Rule on what is in front of you.
+
+The artefact you may see is at: /home/user/skills-repo/pipeline/builds/data-contract-assertions-v2/readers/r4.1/data-contract-assertions
+That directory holds exactly what this phase declared its reader needs, and nothing else. If something you expect is absent, that is because this phase's reader was not given it — say so as an observation, not as a defect in the skill.
+
+ALREADY SETTLED BY CODE — do not spend a word on any of it. The artefact checker was run on the exact directory above and its output is here verbatim:
+ON THE DIRECTORY YOU WERE GIVEN (a subset of the bundle):
+FAIL data-contract-assertions               err  2 · warn  1 · indet  9 · pass 31
+       [w] desc.target                999 chars, target 500
+       [?] fm.task-kind               needs package.content_kind, not supplied
+       [?] purpose.present            not mechanically decidable: 'text answering what the purpose is' cannot be distinguished from any other prose by code. Routed to the agent check.
+       [?] when.present               not mechanically decidable: 'text answering when to use it' cannot be distinguished from any other prose by code. Routed to the agent check.
+       [E] body.files-exist           unresolved: evals/evals.json
+       [E] ptr.resolves               unresolved: evals/evals.json
+       [?] eval.exists                absent, and package.verifiable not supplied — cannot say whether it is required
+       [?] eval.schema                evals/evals.json absent
+       [?] eval.min                   evals/evals.json absent
+       [?] eval.files-resolve         evals/evals.json absent
+       [?] eval.name-matches          evals/evals.json absent
+       [?] whole.bom                  needs the build's bill of materials, not supplied
+
+1 skill(s) · 2 error(s) · 1 warning(s) · 9 indeterminate · 31 pass
+An indeterminate is NOT a pass — it is a check that could not run.
+
+ON THE COMPLETE ARTEFACT, including the files this phase withheld from you:
+ok   data-contract-assertions               err  0 · warn  1 · indet  2 · pass 40
+       [w] desc.target                999 chars, target 500
+       [?] purpose.present            not mechanically decidable: 'text answering what the purpose is' cannot be distinguished from any other prose by code. Routed to the agent check.
+       [?] when.present               not mechanically decidable: 'text answering when to use it' cannot be distinguished from any other prose by code. Routed to the agent check.
+
+1 skill(s) · 0 error(s) · 1 warning(s) · 2 indeterminate · 40 pass
+An indeterminate is NOT a pass — it is a check that could not run.
+And the reader preflight said:
+SAFE_TO_DISPATCH
+  [-] waived, names a file phase 4.1 withheld by design: [E] body.files-exist           unresolved: evals/evals.json
+  [-] waived, names a file phase 4.1 withheld by design: [E] ptr.resolves               unresolved: evals/evals.json
+
+YOUR FIELD: references and assets, batched as one reader
+
+THE CONTRACT RULES FOR THIS FIELD are in /home/user/skills-repo/pipeline/contracts/skill.contract.json — open it, find the field with "id": "bundle.references" and the field with "id": "bundle.assets", and read its `rules` and its `agent_check` from the file. Do not work from memory or from a summary.
+
+THE QUESTION YOU ARE ASKED:
+ROUND 2. A previous independent reader returned RED on ONE class: a claim sentence asserting more than its verbatim quote carries. It named two instances (C2's 'and a large minority are never fixed', C9's 'at real tuning cost'). The author swept the class across all thirteen claims and reports changing four (C4, C6, C9, plus C3 reworded) and leaving nine. YOUR JOB: check the sweep, not only the two named instances. Take each of the thirteen claims in turn, read its claim sentence against the verbatim quote sitting beside it, and say whether the quote alone carries every assertion the sentence makes. Report per claim id, not in aggregate - 'the sweep looks complete' is not an answer. Then the standing questions: is anything in references/ that belongs in SKILL.md or vice versa (a passage in both is a contract ERROR); does any row state a value that MOVES on its own and must be fetched rather than written down; and rule on the assets/ NOT-NEEDED classification (the artefact the steps emit is a per-column checks table whose columns are named in the body, so a template would restate them in a second place) - is that a reason or a reason-shaped sentence? NOTE: all 13 quotes are byte-matched against the source package by script and every source carries a fetch date; do not re-verify that by eye.
+
+Answer in this shape and nothing else:
+
+VERDICT: GREEN or RED
+FINDINGS: one numbered line per finding. Each names the defect CLASS in three or four words, then quotes the exact text at fault, then says what is wrong with it. If a finding is an instance of a class that has more instances in the field, say so and say how many you counted.
+WHAT YOU DID NOT CHECK: anything you could not rule on, and why.
+
+RED for any error-severity rule broken or any agent_check you answer against the field. A warning alone is not RED; report it and stay GREEN. Do not soften a finding because the rest is good, and do not manufacture a finding because you were asked to look.
