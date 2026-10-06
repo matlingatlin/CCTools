@@ -73,6 +73,27 @@ desc_headroom.py --gate ............ PASS   92 descriptions, 5 declared above ta
 so the index is the same size by arithmetic rather than by luck, and `evals/README.md` is not in
 it because no area globs `evals/`.
 
+## The weekly watch is switched off, and what it managed to say first
+
+`kb-watch.yml` carried a `schedule:` that fired every Monday. It is gone as of 2026-10-06. It ran
+four Mondays and failed every one — and **all four failures were correct**: `watch.py` exits 1 when
+a watched page has moved, and measured 2026-10-06, **54 of 96 watched sources had changed** since
+they were read on 2026-09-11. 37 unchanged, 5 noise, 0 unreachable, 0 tampered.
+
+Nothing broken was switched off. A real finding was being reported into an empty room once a week,
+as a red run and an email. Nobody re-reads notes here, so there was no one for the finding to be
+addressed *by* — and a finding nobody can act on is noise however true it is.
+
+So **the watcher itself is untouched**: `workflow_dispatch` stays, `watch.py --offline` still runs
+on every push as part of `kb check` (it needs no network), and the predicate's 29 fixtures are
+unchanged. What was removed is the delivery, not the check. Softening `watch.py` so that a moved
+page stopped counting would have bought a green run by deleting the assertion instead.
+
+Run it on demand with `python3 knowledge/watch.py`, or Actions → kb watch → Run workflow.
+**Expect red.** The 54 are still outstanding, and every note citing one of them owes a re-read
+before it is leaned on. Restore the `schedule:` block the day this knowledge base is maintained
+again.
+
 ## `scio-architecture-five-layer/` is the one folder with work left in it
 
 10 notes and their 44 held source files, drained from a session branch and never promoted. Its

@@ -1,16 +1,25 @@
-# The watcher had the same defect its own review diagnosed in the lint: nothing ran it. It was
-# excluded from `kb-check` on purpose — that job is offline and must stay dependency- and
-# network-free — which left it a convention again. This is its trigger.
-#
 # A failing run is not a defect in the repository. It means a source moved and the notes citing
 # it are owed a re-read (llm-wiki-ingest, update branch). Unreachable rows do NOT fail the job:
 # a rate limit is not evidence of anything, which is why watch.py separates the two.
+#
+# THE WEEKLY SCHEDULE IS REMOVED, and that is a correction rather than a retreat. This repository
+# is an inert archive: nobody is re-reading notes here, so there is no one for the watcher's
+# finding to be addressed BY. It ran four Mondays (2026-09-14, -21, -28, 2026-10-05) and failed
+# every time, because this branch is the default branch and `schedule:` fires from it. All four
+# failures were correct: measured 2026-10-06, 54 of 96 watched sources had moved since they were
+# read on 2026-09-11, and watch.py exits 1 on a change by design.
+#
+# So the cron was not reporting a bug, it was reporting real work into an empty room, once a week,
+# as a red run and an email. A finding nobody can act on is noise however true it is, and the
+# honest fix is to stop sending it rather than to weaken the watcher that produced it: the
+# predicate is untouched, `workflow_dispatch` is kept, and `watch.py --offline` still runs on
+# every push as part of `kb check`, where it needs no network.
+#
+# Restore the `schedule:` block the day this knowledge base is being maintained again - and expect
+# the first run to be red, because the 54 are still outstanding.
 name: kb watch
 
 on:
-  schedule:
-    - cron: '17 6 * * 1'   # Mondays 06:17 UTC. Weekly, because the measured rate of real change
-                           # is days, not hours, and a noisy watcher is one nobody reads.
   workflow_dispatch:
 
 permissions:
